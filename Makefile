@@ -1,4 +1,4 @@
-FILENAME=sample-book
+FILENAME=mastering-cardano
 VERSION=v1.0.0
 
 all: epub pdf
