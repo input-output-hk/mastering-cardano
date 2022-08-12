@@ -1,15 +1,46 @@
 == The (E)UTxO Model
 
-This is the first chapter.
-It includes some highlighted source code:
+Every cryptocurrency needs an _accounting model_ to keep track of who owns what.
 
-[source,go,highlight=5-7]
+One popular option for such a model is the so-called _account based_ model, where users have accounts storing their balances
+and where transactions modify those balances.
+
+Ethereum is one example of a cryptocurrency which uses the account based model.
+If Alice and Bob initially hold 100 ETH and 50 ETH respectively
+and if Alices sends 40 ETH to Bob, then their balances would be updated as follows:
+
+[tikz,"image1",svg]
 ----
-package main
+    \usetikzlibrary{calc}
+    \begin{tikzpicture}[scale=1.8]
 
-import "fmt"
+        \coordinate (a) at (5,5);
+        \coordinate (b) at ($(a) + (10,-1)$);
 
-func main() {
-    fmt.Println("Hello world!")
-}
+        \node[draw, ultra thick, rectangle, fill=yellow] at (a)%
+        {\begin{tabular}{lr}
+            Alice & 100 ETH \\
+            Bob & 50 ETH \\
+            \ldots & \ldots \\
+        \end{tabular}};
+
+        \draw[->, ultra thick] ($(a) + (2,0)$) to[out=0, in=180] ($(b) + (-2,0)$);
+
+        \node[above right] at ($(a)!0.5!(b)$) {Alice to Bob};
+        \node[below left] at ($(a)!0.5!(b)$) {40~ETH};
+
+        \node[draw, ultra thick, rectangle, fill=yellow] at (b)%
+        {\begin{tabular}{lr}
+            Alice & 60 ETH \\
+            Bob & 90 ETH \\
+            \ldots & \ldots \\
+        \end{tabular}};
+
+    \end{tikzpicture}
 ----
+
+This model should be familiar to most readers with a bank account, because it is the model used by banks,
+which reflects the way most of us tend to think about accounting.
+
+The account based model is not the only model, though, and it is not the one used by Cardano.
+Instead, Cardano follows Bitcoin in this regard and extends Bitcoin's _UTxO model_ to the so-called _Extended UTxO model (EUTxO)_.
