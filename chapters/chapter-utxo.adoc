@@ -56,5 +56,55 @@ There are some exceptions and refinements to this simple rule:
     * Each transaction needs to include _transaction fees_,
       which get subtracted from the input values before comparing them to the output values.
     * Cardano native tokens can be _minted_ or _burnt_ in a transaction.
-    * Staking rewards can be withdrawn, getting added to the outputs without having compensating inputs.
-      (Those staking rewards come from an internal reward account, not a regular UTxO.)
+    * Staking rewards can be withdrawn, getting added to the outputs without having compensating
+      inputsfootnote:[Those staking rewards come from an internal reward account, not a regular UTxO.].
+
+=== Extending It: The EUTxO Model
+
+In the UTxO model, a transaction can spend inputs locked at a specific address if it is signed by the
+signing key corresponding to that address.
+
+In the _Extended_ UTxO model, this is generalized by replacing the need for certain signatures
+with arbitrary logic.
+
+In addition to using hashed public keys as (part of) addresses,
+the EUTxO model introduces addresses that contain hashed _scripts_, written in the scripting language
+_Plutus Core_.
+During validation, when a transaction has an input at such a _script_ address, the corresponding script is executed.
+If script execution completes without error, spending the input is valid; otherwise it is invalid.
+
+To make this idea work, three more ingredients are needed:
+
+    * In the UTxO model, a transaction output is given by an address and a value.
+      The EUTxO model adds a third component, a piece of data called
+      _datum_ footnote:[Adding a datum to an output is optional, but outputs at script addresses without datum
+      are unspendable. Datums can also be added to PubKey addresses].
+    * A transaction trying to spend an output at a script address must add another piece of data to the input,
+      the _redeemer_. The redeemer can be thought of as a "key" used to "unlock" an input,
+      a generalization of the signature used to unlock outputs at PubKey addresses.
+    * When a Plutus Core script is executed for validation, it gets datum, redeemer and a _context_
+      as arguments. The context contains the transaction being validated and all its inputs and outputs,
+      but nothing else.
+
+It turns out that this design hits a sweet spot regarding expressiveness and security:
+
+    * Bitcoin offers smart contract capabilities in the form of _Bitcoin Script_, but those scripts only "see"
+      the output being validated and the Bitcoin analog of a redeemer,
+      not the whole transaction with other inputs and outputs. As a consequence, Bitcoin Script is extremely limited
+      and unable to offer smart contracts of the type users have come to expect from blockchains like Ethereum.
+    * Ethereum smart contracts are very powerful and flexible, but also extremely hard to get right.
+      Their context is the whole blockchain, which makes it difficult to predict what will happen when they get executed.
+      This has led to several infamous exploits and bugs in the past, resulting in the unexpected loss of many millions
+      of ether.
+
+Cardano's EUTxO model with datums, redeemers and contexts is powerful and flexible enough to do whatever can be done
+on Ethereum, but also easy enough to make it much easier to predict the effect of a given transaction.
+
+Cardano transactions can be validated _locally_, without the need to submit them to the blockchain first,
+because the context only contains the transaction itself and its inputs and outputs.
+They can still fail when submitted, because some other transaction could have spent an expected input in the meantime,
+but if all inputs are still unspent, the transaction will have the predicted effect.
+
+As a consequence, Cardano transactions only incur a fee if they actually succeed and are included in the blockchain.
+On Ethereum, transactions can fail and still cost gas. This can never happen on
+Cardano (as long as a user does not go out of his way to circumvent all safety mechanisms).
