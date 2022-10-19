@@ -1,46 +1,60 @@
 == The (E)UTxO Model
 
+=== Accounting Models
+
 Every cryptocurrency needs an _accounting model_ to keep track of who owns what.
 
-One popular option for such a model is the so-called _account based_ model, where users have accounts storing their balances
-and where transactions modify those balances.
+One popular option for such a model is the so-called _account_ (or _balance_) _based_ model,
+where users have accounts storing their balances and where transactions modify those balances.
 
 Ethereum is one example of a cryptocurrency which uses the account based model.
-If Alice and Bob initially hold 100 ETH and 50 ETH respectively
-and if Alices sends 40 ETH to Bob, then their balances would be updated as follows:
+If Alice and Bob initially hold 100 ETH and 10 ETH respectively
+and if Alices sends 30 ETH to Bob, then their balances would be updated as follows:
 
-[tikz,"image1",svg]
-----
-    \usetikzlibrary{calc}
-    \begin{tikzpicture}[scale=1.8]
-
-        \coordinate (a) at (5,5);
-        \coordinate (b) at ($(a) + (10,-1)$);
-
-        \node[draw, ultra thick, rectangle, fill=yellow] at (a)%
-        {\begin{tabular}{lr}
-            Alice & 100 ETH \\
-            Bob & 50 ETH \\
-            \ldots & \ldots \\
-        \end{tabular}};
-
-        \draw[->, ultra thick] ($(a) + (2,0)$) to[out=0, in=180] ($(b) + (-2,0)$);
-
-        \node[above right] at ($(a)!0.5!(b)$) {Alice to Bob};
-        \node[below left] at ($(a)!0.5!(b)$) {40~ETH};
-
-        \node[draw, ultra thick, rectangle, fill=yellow] at (b)%
-        {\begin{tabular}{lr}
-            Alice & 60 ETH \\
-            Bob & 90 ETH \\
-            \ldots & \ldots \\
-        \end{tabular}};
-
-    \end{tikzpicture}
-----
+image::image28.png[]
 
 This model should be familiar to most readers with a bank account, because it is the model used by banks,
 which reflects the way most of us tend to think about accounting.
 
+=== The Pure UTxO Model
+
 The account based model is not the only model, though, and it is not the one used by Cardano.
 Instead, Cardano follows Bitcoin in this regard and extends Bitcoin's _UTxO model_ to the so-called _Extended UTxO model (EUTxO)_.
+
+The term "UTxO" is an acronym for _Unspent transaction output_ and denotes just that:
+the output of a transaction that has not yet been spent.
+
+_Transactions_ are the fundamental building blocks of all blockchains, no matter what accounting model they use.
+Transactions are what causes change and makes things happen.
+But where in the account based model, transactions update balances,
+in the UTxO model, they spend previously unspent outputs of past transactions and create new unspent outputs.
+
+Transactions in the UTxO model have one or more _inputs_ and one or more _outputs_.
+Each input spends an existing UTxO (and thereby renders it "spent"), each output creates a new UTxO,
+which can then later be used as input for another transaction.
+
+Outputs in the pure UTxO model are given by an _address_ and a _value_.
+The _address_, which in the case of Cardano contains a _PubKey Hash_ (the hash of a verification key),
+determines who is allowed to later spend this output: Transactions trying to spend the output need to be _signed_
+by the corresponding signing key (a transaction can be signed by arbitrarily many keys).
+The _value_ is an arbitraryfootnote:[A certain minimal amount of ada, the so-called "minimum deposit", always needs to be included.]
+mixture of ada and native tokens.
+
+UTxO's can only be spent as a whole, not partially. In this regard, they behave more like coins or banknotes:
+If you pay somebody with cash and do not have the exact amount in your wallet, you do not tear a banknote in half,
+but instead hand over too much money and expect change in return.
+
+Similarily, some transaction outputs can serve as _change_ and "go back to" the creator of the transaction.
+If for example Alice wants to pay 15 ada to Bob, but only has a UTxO worth 20 ada at her address,
+she can create, sign and submit a transaction with one input and two outputs as follows:
+
+image::image46.png[]
+
+Cardano transactions must be _balanced_: Roughly speaking, the sum of input values must equal the sum of output values.
+There are some exceptions and refinements to this simple rule:
+
+    * Each transaction needs to include _transaction fees_,
+      which get subtracted from the input values before comparing them to the output values.
+    * Cardano native tokens can be _minted_ or _burnt_ in a transaction.
+    * Staking rewards can be withdrawn, getting added to the outputs without having compensating inputs.
+      (Those staking rewards come from an internal reward account, not a regular UTxO.)
