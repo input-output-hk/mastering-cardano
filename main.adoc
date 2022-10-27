@@ -44,5 +44,5 @@ include::chapters/introduction.adoc[]
 :sectnums:
 
 // Include the numbered chapters.
-include::chapters/chapter-01.adoc[]
+include::chapters/chapter-introduction.adoc[]
 include::chapters/chapter-utxo.adoc[]
