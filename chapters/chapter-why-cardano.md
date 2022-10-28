@@ -6,6 +6,8 @@ Since its inception, the Cardano project had one clear goal: to alter the way cr
 
 Cardano is conceived as the _third-generation blockchain_ as it combines the properties of the prior generations such as Bitcoin and Ethereum and evolves to meet  the arising needs of users. The best solution must ensure the highest security, scalability (transaction throughput, data scale, network bandwidth), and functionality (besides transaction processing, the blockchain should provide all means for business deal settlement). Moreover, it is important to ensure that blockchain technology is constantly developing in terms of sustainability and is interoperable with other blockchains and financial institutions.
 
+![WhyCardano](2209_WhyCardano_Infographic_Icons_Twitter_Intro.png)
+
 To address these needs, Cardano focuses on such core concepts as:
 
 ### Scalability
