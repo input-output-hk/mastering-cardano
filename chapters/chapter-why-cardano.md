@@ -28,15 +28,13 @@ Some advantages of Cardano over other blockchain platfomrs include:
 - Functional environment for business use cases — Cardano is establishing a foundation for global, decentralized finance to develop a range of DApps that can run using functional and domain-specific smart contracts, providing multi-asset tokens for any needs.
 
 ### Cardano development themes
-Cardano’s development journey has been split into five main themes focusing on such core functionalities as:
+Cardano’s development journey has been split into five main themes with each theme centered around a set of functionalities that are being delivered across multiple code releases. While these development streams are delivered sequentially, the work for each happens in parallel – with research, prototyping, and development often in progress all at once across the different stages. Let’s take a closer look at these development themes:
 
 - Byron — foundation establishment
 - Shelley — decentralization
 - Goguen — smart contracts
 - Basho — scalability
 - Voltaire — governance
-
-Each theme is centered around a set of functionalities that are being delivered across multiple code releases. While these development streams are delivered sequentially, the work for each happens in parallel – with research, prototyping, and development often in progress all at once across the different stages. Let’s take a closer look at these development themes.
 
 #### Byron
 Byron set the foundation for Cardano development allowing users to buy and sell ada on a proof-of-stake blockchain network. Initially, the Cardano ledger was established as a federated network, where block production and transaction validation were maintained by Input Output Global (the company that develops Cardano technology) and Emurgo (the company that drives Cardano commercial adoption) stake pools. Byron saw the delivery of Daedalus and Yoroi wallets, and also provided users with a Block Explorer ‒ a tool specifically designed for browsing the blockchain.
