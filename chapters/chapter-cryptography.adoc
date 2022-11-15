@@ -17,6 +17,11 @@ The introduction of _asymmetric encryption_ in the 1970s provided a better solut
 Hashing algorithms
 
 
+=== Digital Signatures
+
+Digital Signatures
+
+
 === What does it do?
 
 What does it do?
