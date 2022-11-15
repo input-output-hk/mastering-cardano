@@ -45,4 +45,5 @@ include::chapters/introduction.adoc[]
 
 // Include the numbered chapters.
 include::chapters/chapter-introduction.adoc[]
+include::chapters/chapter-cryptography.adoc[]
 include::chapters/chapter-utxo.adoc[]
