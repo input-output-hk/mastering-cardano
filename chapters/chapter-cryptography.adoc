@@ -1,4 +1,49 @@
 == Cryptography
 
-Some text on cryptography...
+Cryptography is at the heart and a fundamental building block of blockchain, DLT, smart contracts and cryptocurrencies. An overview of what cryptography is, what it provides and its role in blockchain systems will now be covered in this chapter. We do not go internal details of how cryptography works as it is beyond the scope of this book, but at the end of the chapter we point readers to other resources to dig deeper if interested.
+
+
+=== Encryption techniques
+
+Cryptography finds its roots in and is typically used for encrypting and decrypting information -- providing a way for parties to securely communicate without eavesdroppers being able to decipher or understand what has been communicated. 
+
+_Encryption techniques_ are mainly classified into symmetric encryption and asymmetric encryption. _Symmetric encryption_ uses the same _key_ to both encrypt and decrypt data.  It requires that the key is shared amongst the different parties communicating, and requires that the key would have been shared in a secure manner typically prior to initiating communication. Imagine an eavesdropper was to listen in on communication and the first packet of data contains the encryption/decryption key -- they would be able to continue to eavesdrop and both decrypt messages as well as inject encrypted messages without any of the communicating parties knowing. 
+
+The introduction of _asymmetric encryption_ in the 1970s provided a better solution to minimise potential eavesdroppers, ensure that messages can only be decrypted by a party they were intended for and a way to authenticate the sender of a message. Asymmetric encryption makes use of two keys for each recipient: (i) a public key belonging to the recipient which will be used by anyone wanting to send information to the recipient to encrypt data; and (ii) a private key which the recipient keeps private to themselves and can be used to decrypt messages that others have encrypted using the recipient's public key. The public and private keys are intimately linked together (which is why they are termed a key-pair) and it is impossible footnote:[or rather computationally infeasible] to determine the private key from the public key.
+
+
+=== Hashing algorithms
+
+Hashing algorithms
+
+
+=== What does it do?
+
+What does it do?
+
+
+=== How does it work?
+
+How does it work?
+
+
+=== How it provides security
+
+How it provides security
+
+
+=== How it provides privacy
+
+How it provides privacy
+
+
+=== Its role in securing the blockchain
+
+Its role in securing the blockchain
+
+
+=== #Pointers to cryptography resources#
+
+#Pointers to cryptography resources#
+
 
