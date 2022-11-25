@@ -3,6 +3,8 @@
 * Cardano explained - JG/Niamh   _...shorter version of CFTM chapter_
 * Roles of IOG and the Cardano Foundation - JG    _...add to / edit extract from CFTM_
 * Cardano Community and Growth of the Ecosystem - JG    _reference Essential Cardano, CardanoCube.io, etc_
-* A Map of the Cardano Ecosystem - JG/Niamh    _see https://www.cardanocube.io/cardano-ecosystem-interactive-map ..._and https://builtoncardano.com/ _...I thought about this for CFTM, felt it was too challenging to capture this in readable book format (one-pager) and likely to keep changing. Could link to it or perhaps have page for each category: DEXs, Wallets, etc
+* A Map of the Cardano Ecosystem - JG/Niamh    
+
+see https://www.cardanocube.io/cardano-ecosystem-interactive-map ..._and https://builtoncardano.com/ ...I thought about this for CFTM, felt it was too challenging to capture this in readable book format (one-pager) and likely to keep changing. Could link to it or perhaps have page for each category: DEXs, Wallets, etc
 
    
