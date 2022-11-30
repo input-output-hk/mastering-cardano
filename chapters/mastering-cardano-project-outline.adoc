@@ -1,0 +1,181 @@
+== *_"Mastering Cardano"_*
+
+== *_Book Project Outline (DRAFT)_*
+
+
+
+=== *_Authors/Editors_*
+
+- Lars Brünjes, Director of Education, IOG and Prof. Joshua Ellul of the University of Malta (with the support of the education team) and Jesse
+- In addition to contributors per chapter (Romain, Aggelos, Simon, MPJ, Kevin etc) and John Greene author of Cardano for the Masses.
+
+[%hardbreaks]
+
+=== *_1. Brief Description_*
+
+The goal of the book project is quite simple; to produce the first book-length account of the Cardano blockchain, how it operates, and how to interact with it. It will be a definitive reference for those seeking educational material that describes how to interact with Cardano.
+
+For individuals currently seeking to learn how to write smart-contracts, to issue tokens, or to set up a stake pool on Cardano, there is a disjointed collection of technical articles, blog-posts, videos, posts in online forums, and other materials  While many of these posts are well written and highly informative, the book will provide a self-contained and definitive reference. It’s often difficult to find the proper starting point or know what background knowledge the reader is expected to already have. For each chapter, we will outline the (mostly self contained) prerequisites.
+
+Also, to inspire readers, we intend to start each chapter or collection of chapters (parts) by interviews with the IOHK researchers and developers who played significant roles in the development of the technology presented in that part. We hope to be able to capture the excitement of scientific discovery and engineering innovation that has gone into the development of the truly unique technology being used to build the system.
+
+_We plan to deliver and publish this book as a series of volumes #with the Plutus ebook version 2 being the first volume released# in the Mastering Cardano series._ 
+
+=== *_2. Outline_*
+
+The book will present a unified account of all the material needed by users of the Cardano blockchain. The following table of contents includes, at a minimum, the following topics:
+
+. Foreword _by Charles_
+. Introduction chapter: Vision of blockchain - Joshua
+** To democratize financial services to 2.3 billion people *(and other use-cases)* talk about Marlowe here
+*** To provide both privacy and transparency
+*** Banking the unbanked - SSID
+*** Potentially mention marlowe<->plutus interaction and what it enables (if it is possible)
+** Introduction to overview of a blockchain system/network (diagram with nodes, wallets - non-cardano specific just the high level concepts)
+** Getting Started with Cardano
+*** <Link to the https://book.world.dev.cardano.org/[Cardano World Book] repository> 
+** #*Cardano, Bitcoin and Ethereum?*#
+** #What are Smart contracts?#
+** #Why we use pure functional programming#
+. Orientation Section (how to navigate the book) - Niamh (at the end)
+. https://www.youtube.com/watch?v=zhFTO1jYjbk[What is Cardano?]
+** Cardano Explained - JC/Niamh
+** Roles of IOG and the Cardano Foundation - JG
+** Cardano Community and Growth of the Ecosystem - JG
+** A Map of the Cardano Ecosystem - JC/Niamh
+** Educating the world about Cardano - Niamh
+** Essential Cardano and how to navigate - Niamh
+** Developer Portal and Showcase - Markus
+. Governeance
+** #Introduction to governance#
+** Catalyst
+** Basho phase of development
+. Cryptography (give high level overview, and then allow non-techies to skip)
+** #What does it do? - Joshua#
+** #How does it work? - Joshua#
+** #Its role in security - Joshua#
+** #Its role in privacy - Joshua#
+** What users need to know.
+*** PGP
+*** Hash functions and Checksums
+*** Public Key Cryptography
+. How Cardano Works
+** Protocols
+** PoS vs PoW - what is it and why it matters
+** General overview of Cardano network protocols
+*** Components of the system - and how they relate to one another.
+** The Ouroboros Protocol (an overview) - Ajelandro
+*** Distributed Consensus
+*** Hydra
+** Incentives
+** UTXO and EUTXO models - Lars
+*** Comparative analysis with the Ethereum accounting model
+*** Spending Policies
+*** Multi-Assets
+*** Native Tokens, fungible and non-fungible
+. Nodes and Wallets
+** Introduction to nodes
+** Lite vs full-node wallets
+** Daedalus
+** Light wallets
+*** Eternl
+*** Yoroi
+*** Nami
+*** Typhon
+*** Flint
+*** etc. 
+** #Lace#
+.Stake Pools and Stake Pool Operations - Jesse/Guild
+** The CLI (Command Line Interface)
+*** Include useful community tools here as well
+** Cardano node API
+** Slot Battles, Height Battles, Forkers and Propogation - the nitty gritty details of making blocks - papacarp
+** Minting native tokens
+** Multi channel settlement
+. Smart contracts: Plutus and Marlowe
+** Smart contract case studies
+** Smart contract security and best practices
+** Account-based smart contracts vs UTxO model? 
+** An intro to features and benefits of Haskell
+** Binary formats
+*** Cardano Address formats
+** Writing smart contracts in Marlowe
+*** Peer-to-peer
+** Integrating with Plutus (calling Marlowe contracts within Plutus)
+**Writing smart contracts in Plutus
+*** In comparison to the EVM and Bitcoin Script
+*** As a target for a Haskell compiler
+*** Haskell code generating Plutus Core for the blockchain
+*** Validation scripts
+*** Vesting example
+*** Emulator Trace and Contract Monads
+*** Minting policy
+*** Oracles and Core, Swap, Funds and Test modules
+*** State machines
+*** QuickCheck
+*** Uniswap in the EUTxO-model - could be an example
+*** Staking and Plutus
+. DApps - Decentralized Applications - Joshua
+** What are DApps
+** Consolidate concepts introduced above
+** Onchain vs off chain code
+** Simple DApp simple JavaScript (maybe host it?)
+** Examples: Marlowe/Prism
+. Advanced Topics
+** DAOs - Decentralized Autonomous Organizations - Joshua
+*** Mechanism Design/Governance
+*** As legal entities in Wyoming (and potentially others)
+** Identity
+*** Input from Tony Rose
+*** Atala Prism
+** Tokens (and standards)
+** Oracles
+
+=== *_3. Competition_*
+
+A community member (John Greene) has published https://www.amazon.com/dp/B0B5KQVJ3T[Cardano for the Masses] so we will cross reference this book and vice versa. (https://www.booktoken.io/cardano-for-the-masses/)
+
+Bitcoin and Ethereum both have a number of books describing their ecosystems. There are many books on Bitcoin, as models we are looking to _Mastering Bitcoin: Programming the Open Blockchain_ by Andreas M. Antonopoulos, O’Reilly (2017), and _Programming Bitcoin: Learn how to Program Bitcoin from Scratch_, by Jimmy Song, O'Reilly (2019). Also, for Ethereum, we are looking to _Mastering Ethereum: Building Smart Contracts and DAPPS_ by A. Antonopoulos and Gavin Wood, O’Reilly (2019).
+
+There are undoubtedly other good ones as well.
+
+=== *_4. Apparatus_*
+
+The book will include extensive examples to illustrate the nuts and bolts features that a user needs to know to effectively use the system. Many aspects are yet to be determined, but the book will also certainly contain problems, a glossary, an extensive bibliography with references throughout the text (or perhaps at the end of each chapter.)
+
+With enough resources it may be possible to develop an interactive version in parallel with something like interactive Jupyter notebooks to accompany the text. Lipvaca’s Learn You a Haskell for Great Good has a Jupyter implementation.  This kind of implementation allows users to edit the code presented in the book to check their understanding.
+
+Now that work has begun on the book we have put it in a GitHub repository where it can be reviewed and edited by virtually anyone. We plan to release 2-3 chapters at a time in a modular fashion and update the Plutus sections post the Vasil HF.
+
+=== *_5. Audience_*
+
+The book is intended for, and targeted to, a very broad range of readers. Essentially, anyone with an interest in the Cardano blockchain will be able to get something useful out of it.  There will be non-technical readers  who are curious about Cardano and may like to understand more about what happens in a wallet.  There will be readers whose only goal is to learn how to mint their own NFTs.  Some readers may be looking to learn how to run a node and start a stake pool, but are not interested in programming smart contracts, DApps, or setting up a DAO.  The _primary audience_ for the book will be programmers, who may not yet know Haskell, who want to learn how to effectively program smart contacts on the Cardano blockchain.
+
+=== *_6. Market Considerations_*
+
+We will leave it to the marketing people to estimate the total market for the book. We believe that as the Cardano blockchain (and ada) becomes more dominant in the cryptocurrency market, but also as a blockchain supporting the most versatile array of blockchain applications, the market will be significant.
+
+As for the actual marketing of the book, both IOHK and Cardano have significant access to the potential market through their social media channels, their websites, forums, and blogs.
+
+=== *_7. Status and Resources_*
+
+Lars Brünjes has finished teaching the 1st iteration of the Marlowe Pioneer course and we have also finished the 3rd iteration of the online Plutus Pioneer course (which are both integral parts of the content of the book). He will devote a significant portion of his time to the project after that and use it for planning and materials for the 4th cohort of the PP.
+
+Based on similar books about Bitcoin and Ethereum, we expect to have approximately 300 pages, not including index, table of contents, etc. Depending on the font, that could be approximately 150,000 words. 
+
+We have included a line item in the budget for technical diagrams and illustrations, which we expect to be common in the text. The authors will provide line drawings and descriptions of required illustrations and diagrams.  Not knowing how to estimate that cost, that line of the budget has been left empty. It might be nice to include stylized portraits of the key scientific and engineering folks we interview for the prolegomenon to each part.
+
+=== *_8. Reviewers_*
+
+We expect to obtain technical reviews from IOG scientists and engineers.  This is perhaps a big ask from very busy people, but that’s our expectation.  We will also upload chapters to GitHub as they are ready for public review.  We expect that stake pool operators and others will be willing (and even eager) to read the draft and to provide corrections and suggestions for improvements.
+
+The IOG education team will also assist with a style and consistency review. Tony Quinn from Marcomms has also agreed to work on an editorial review.
+
+=== *_9. Publishing_*
+
+We are currently in conversations with O’Reilly who are interested in publishing.
+
+=== *_10. Notes_*
+
+* List references at the end of each chapter
+* 10 chapters with an average of 30 pages per chapter
