@@ -23,3 +23,7 @@ Alternatively, you can `make pdf` or `make epub` to build a single target.
 
 The AsciiDoctor [Writer's Guide](https://asciidoctor.org/docs/asciidoc-writers-guide/) is a nice introduction to writing content in AsciiDoc.
 Once you're familiar with the basics of that, you can start adding chapters in the `./chapters` folder, and include them in the `main.adoc` file.
+
+## Style
+
+Please refer to the [IOG Style Guide](https://docs.google.com/document/d/1atyPDfwyGJpbZzTHKlQX4NFygaUiuRMMOhC3e1W99sk/edit) for guidance on our writing style. 
