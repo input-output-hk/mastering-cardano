@@ -1,20 +1,29 @@
 == Cryptography
 
-Cryptography is at the heart and a fundamental building block of blockchain, DLT, smart contracts and cryptocurrencies. An overview of what cryptography is, what it provides and its role in blockchain systems will now be covered in this chapter. We do not go internal details of how cryptography works as it is beyond the scope of this book, but at the end of the chapter we point readers to other resources to dig deeper if interested.
+Cryptography is at the heart and a fundamental building block of blockchain, DLT, smart contracts and cryptocurrencies. An overview of what cryptography is, what it provides and its role in blockchain systems will now be covered in this chapter. We do not go into internal details of how cryptography works as it is beyond the scope of this book, but at the end of the chapter we point readers to other resources to dig deeper if interested.
 
 
 === Encryption techniques
 
 Cryptography finds its roots in and is typically used for encrypting and decrypting information -- providing a way for parties to securely communicate without eavesdroppers being able to decipher or understand what has been communicated. 
 
-_Encryption techniques_ are mainly classified into symmetric encryption and asymmetric encryption. _Symmetric encryption_ uses the same _key_ to both encrypt and decrypt data.  It requires that the key is shared amongst the different parties communicating, and requires that the key would have been shared in a secure manner typically prior to initiating communication. Imagine an eavesdropper was to listen in on communication and the first packet of data contains the encryption/decryption key -- they would be able to continue to eavesdrop and both decrypt messages as well as inject encrypted messages without any of the communicating parties knowing. 
+Encryption techniques are mainly classified into symmetric encryption and asymmetric encryption. _Symmetric encryption_ uses the same _key_ to both encrypt and decrypt data.  It requires that the key is shared amongst the different parties communicating, and requires that the key would have been shared in a secure manner typically prior to initiating communication. Imagine an eavesdropper was to listen in on communication and the first packet of data contains the encryption/decryption key -- they would be able to continue to eavesdrop and both decrypt messages as well as inject encrypted messages without any of the communicating parties knowing. 
 
-The introduction of _asymmetric encryption_ in the 1970s provided a better solution to minimise potential eavesdroppers, ensure that messages can only be decrypted by a party they were intended for and a way to authenticate the sender of a message. Asymmetric encryption makes use of two keys for each recipient: (i) a public key belonging to the recipient which will be used by anyone wanting to send information to the recipient to encrypt data; and (ii) a private key which the recipient keeps private to themselves and can be used to decrypt messages that others have encrypted using the recipient's public key. The public and private keys are intimately linked together (which is why they are termed a key-pair) and it is impossible footnote:[or rather computationally infeasible] to determine the private key from the public key.
+#include diagram of symmertic encryption#
 
+The introduction of _asymmetric encryption_ in the 1970s provided a better solution to minimise potential eavesdroppers, ensuring that messages can only be decrypted by the party they were intended for as well as a way to authenticate the sender of a message. Asymmetric encryption makes use of two keys (required by each recipient): (i) a _public key_ belonging to the recipient which will be used by any party that wants to encrypt data intended for the specific recipient; and (ii) a _private key_ which the recipient keeps private to themselves and can be used to decrypt messages sent to them that others have encrypted using the recipeint's public key. The public and private keys are intimately linked together (which is why they are termed a key-pair) and it is impossible footnote:[or rather computationally infeasible] to determine the private key from the public key.
 
-=== Hashing algorithms
+#include diagram of asymmertic encryption#
 
-Hashing algorithms
+=== Hash algorithms
+
+Encryption techniques discussed above provide a secure end-to-end means of digital communication yet do not provide a solution to guaranteeing that data (unencrypted or not) has not changed over time. Hash algorithms provide a solution towards this. Given any arbitrary data as an input, a hash algorithm will output a unique fingerprint, called a hash, for the specific data. No matter how many times the same exact input is passed in, the same hash (fingerprint) will be output. If even a single bit of the input data changes, the outputted hash will change drastically. This is a required feature of a hash algorithm, i.e. that it is impossible footnote:[again, computationally infeasible] to find some other data input that would result in the same hash. 
+
+#include diagram of hash algorithm#
+
+#Figure X depicts a hash algorithm...#
+
+Once a hash is generated, potentially sent, and ultimately stored somewhere, anyone that has a copy of the hash can be guaranteed that the associated data used to generate the hash, has not been changed. This is because the 
 
 
 === Digital Signatures

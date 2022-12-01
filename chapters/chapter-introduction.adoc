@@ -23,12 +23,12 @@ image::bcoverview.png[]
 A high-level overview of a blockchain system is presented in Figure #X# including:
 
     * _Users_ typically interact with blockchain systems in one of two ways: (i) by sending funds to a specified recipient; or (ii) when interacting with decentalised applications (dApps).
-    * _Wallets_ are used to both store cryptocurrency, other types of tokens and assets and also to authenticate users. A wallet typically has: (i) a _public address_ which uniquely identifies the wallet and is used to specify the specific wallet when transferring funds to it; and (ii) a _private key_ which can be thought of as a password which is used to authorise transfers or any other interaction with the wallet. Wallets are implemented using asymmetric cryptography (discussed further in Chapter #2#).
+    * _Wallets_ are used to both store cryptocurrency, other types of tokens and assets and also to authenticate users. A wallet typically has: (i) a _public address_ which uniquely identifies the wallet and is used when specifying to which account a transfer is to be made to; and (ii) a _private key_ which can be thought of as a password which is used to authorise transfers or any other interaction with the wallet. Wallets are implemented using asymmetric cryptography (discussed further in Chapter #2#).
     * _Nodes_, i.e. computers and other computational devices, collectively work together to keep the blockchain intact -- and that the rules of the system are not violated (e.g. that a user cannot spend more cryptocurrency than they have).
     * _Abstract Computer_ #include this?#
     * _Smart Contracts_, in a similar manner to software applications on traditional operating systems, allow for developers (and users) to write and run code on the blockchain as they deem necessary. They allow for blockchain systems to be used for much more than just what the blockchain inherently supports (e.g. transfer of cryptocurrency).
 
-The blockchain, which is collectively maintained by the distribued nodes, from one perspective can be seen as an append-only ledger -- where new transactions (i.e. transfers and any interaction with smart contracts) are written to in an immutable manner forever.  At the same time, the blockchain must ensure that certain rules are upheld to ensure integrity of the ledger, such rules typically include that:
+The blockchain, which is collectively maintained by the distribued nodes, from one perspective can be seen as an append-only ledger -- where new transactions (i.e. transfers and any interaction with smart contracts) are written to in an immutable manner forever.  At the same time, the blockchain must ensure that certain rules are upheld to ensure integrity of the ledger. Such rules typically include that:
 
     * no one can spend more funds than they have;
     * no one can spend another person's funds (unless authorisation had been granted);
