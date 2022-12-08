@@ -1,10 +1,12 @@
 ## What is Cardano?
 
-Cardano is an open source proof-of-stake blockchain project that began in 2015 to address existing blockchain challenges in the design and development of cryptocurrencies. It aims to provide a more balanced and sustainable ecosystem that better accounts for the needs of its users as well as other systems seeking integration. 
+Cardano is a third generation, open source, proof-of-stake blockchain platform. Its name derives from Gerolamo Cardano, a mid-16th century Italian physician and mathematician. Third generation blockchain platforms are designed to resolve the issues that the first two generations (Bitcoin and Ethereum) suffer from, including scalability and interoperability, while fulfilling an ambitious agenda of decentralization.
 
 Since its inception, the Cardano project had one clear goal: to alter the way cryptocurrencies are designed and developed. Instead of having a single, authoritative whitepaper, the project combined a range of scientific design principles and engineering best practices to produce a solid, pioneering, research-based blockchain. The key ideas of Cardano development were presented in the [Why Cardano](https://why.cardano.org/en/introduction/motivation/) essay and the [Cardano whiteboard video](https://www.youtube.com/watch?v=Ja9D0kpksxw) by Charles Hoskinson.
 
-Cardano is conceived as the _third-generation blockchain_ as it combines the properties of the prior generations such as Bitcoin and Ethereum and evolves to meet  the arising needs of users. The best solution must ensure the highest security, scalability (transaction throughput, data scale, network bandwidth), and functionality (besides transaction processing, the blockchain should provide all means for business deal settlement). Moreover, it is important to ensure that blockchain technology is constantly developing in terms of sustainability and is interoperable with other blockchains and financial institutions.
+Cardano’s development is guided by a methodical, research-based, and deliberate approach to innovation. Over five development phases, IOG introduced innovations, new functionality, and novel features, with each phase building upon the previous phase's achievements.
+
+Cardano, as the _third-generation blockchain_ combines the properties of the prior generations such as Bitcoin and Ethereum and evolves to meet the arising needs of users. The best solution must ensure the highest security, scalability (transaction throughput, data scale, network bandwidth), and functionality (besides transaction processing, the blockchain should provide all means for business deal settlement). Moreover, it is important to ensure that blockchain technology is constantly developing in terms of sustainability and is interoperable with other blockchains and financial institutions.
 
 ![WhyCardano](2209_WhyCardano_Infographic_Icons_Twitter_Intro.png)
 
