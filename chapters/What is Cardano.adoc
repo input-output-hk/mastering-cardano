@@ -7,4 +7,6 @@
 
 see https://www.cardanocube.io/cardano-ecosystem-interactive-map ..._and https://builtoncardano.com/ ...I thought about this for CFTM, felt it was too challenging to capture this in readable book format (one-pager) and likely to keep changing. Could link to it or perhaps have page for each category: DEXs, Wallets, etc
 
+Refer to this report when it's out -- https://www.iogservices.io/guide-to-the-ecosystem-ty?submissionGuid=7ee23255-2361-418d-9d47-d0cd41703e2e
+
    
