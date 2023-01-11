@@ -1,0 +1,14 @@
+
+=== What is a Stake Pool?
+
+Where Cardano is concered, a stake Pool is an entity tasked with securing and running the Cardano network by validating transactions and producing blocks. 
+
+A stake pool itself is a collection of nodes connected to the greater Cardano network (a decentralized assortment of interconnected stake pools and full nodes). Stake pool nodes typically consist of a block producing node and multiple separate relays. 
+
+A relay is a full node intended to sit between the cardano network and the stake pool. Its purpose is to allow a block producing node to interact with the network securely as the block producing node should be __**only**__ connected to the specific relays the stake pool operator has intended. 
+
+When a full node is started with a specific set of files, it becomes a block producer. These files are the Verified Random Function signing key (which will be referred to as vrf.skey), the operational certificate (node.cert), and the Key Evolving Signature signing key (kes.skey). 
+
+In order to prevent Sybil attacks, the Cardano design created an incentive model intended to encourage stake pool owners to associate as much pledge as possible with the pool in order to make the stake pool financially attractive to potential delegators. 
+
+(will add more...)
