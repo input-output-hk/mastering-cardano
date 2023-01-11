@@ -1,6 +1,7 @@
 == Stake Pools and Stake Pool Operation
 
 === Introduction
+* Stake Pool Glossary 
 * What is a Stake Pool (~1 page)
 ** Stake Pool Roles (~1 page *_explain the roles of Operator/Owner_*)
 ** Keys (~1 page, *_brief description of each key and its function_*)
