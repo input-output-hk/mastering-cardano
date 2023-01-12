@@ -28,3 +28,9 @@
 ** SSH
 ** Firewall
 * Offline Operations
+
+=== Slot Battles, Height Battles, Forkers and Propogation - the nitty gritty of making blocks - Papacarp
+
+=== Minting Native Tokens
+
+=== Multi Channel Settlement
