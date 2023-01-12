@@ -2,20 +2,20 @@
 
 === Introduction
 * Stake Pool Glossary 
-* What is a Stake Pool (~1 page)
-** Stake Pool Roles (~1 page *_explain the roles of Operator/Owner_*)
-** Keys (~1 page, *_brief description of each key and its function_*)
-** Addresses (~1 page, *_brief description of each address and its function_*)
-** Pledge vs Stake (~1 page, *_explalain the conceptial and practical differences between these_*)
-* Requirements (~1 page, *_a brief overview of the skills and requirements needed to operate a stake pool, include links to training materials_*)
+* What is a Stake Pool 
+** Stake Pool Roles 
+** Keys 
+** Addresses 
+** Pledge vs Stake 
+* Requirements 
 
 === Cardano CLI
-* Overview (~1 page)
-* CLI Reference (~1 page)
-* Key Generation (~1 page)
-* Address Generation (~1 page)
-* Transactions (~5 pages, *_go over transaction types and examples with markup_*)
-* Node Queries (~2 pages, *_go over the different queries and examples with markup_*)
+* Overview 
+* CLI Reference 
+* Key Generation 
+* Address Generation 
+* Transactions 
+* Node Queries 
 
 === Node Operations
 * Monitoring
