@@ -85,7 +85,7 @@ The book will present a unified account of all the material needed by users of t
 *** Flint
 *** etc. 
 ** #Lace#
-.Stake Pools and Stake Pool Operations - Jesse/Guild
+. Stake Pools and Stake Pool Operations - Jesse/Guild
 ** The CLI (Command Line Interface)
 *** Include useful community tools here as well
 ** Cardano node API
