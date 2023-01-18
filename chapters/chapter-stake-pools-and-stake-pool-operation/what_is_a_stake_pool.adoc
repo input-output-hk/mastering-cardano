@@ -1,4 +1,6 @@
 
+(this section will be a placeholder for now, another SPO volunteered to write it)
+
 === What is a Stake Pool?
 
 Where Cardano is concered, a stake Pool is an entity tasked with securing and running the Cardano network by validating transactions and producing blocks. 
