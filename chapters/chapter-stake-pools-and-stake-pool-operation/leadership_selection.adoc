@@ -2,8 +2,8 @@
 Andrew Westberg <andrewwestberg@gmail.com> 
 :description: How does a pool get chosen to make a block?
 :sectanchors: 
-:url-repo: https://github.com/input-output-hk/mastering-cardano/chapters/chapter-stake-pools-and-stake-pool-operation/leadership_selection_illustrations
-:imagesdir: leadership_selection_illustrations
+:url-repo: https://github.com/input-output-hk/mastering-cardano/chapters/chapter-stake-pools-and-stake-pool-operation
+:imagesdir: illustrations
 
 ==== Leadership Selection Overview
 On Proof-of-Work blockchains like bitcoin, miners make blocks by winning a race to see who can solve a cryptographic puzzle the fastest. This is resource-intensive and extremely wasteful. On the Cardano, a Proof-of-Stake blockchain, stakepools are chosen to make a block based on a stake-weighted lottery system. This lottery system is described in the https://eprint.iacr.org/2016/889.pdf[Ouroboros paper], but we will give a simplified overview here.
