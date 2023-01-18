@@ -1,0 +1,29 @@
+= Leadership Selection
+Andrew Westberg <andrewwestberg@gmail.com> 
+:description: How does a pool get chosen to make a block?
+:sectanchors: 
+:url-repo: https://github.com/input-output-hk/mastering-cardano/chapters/chapter-stake-pools-and-stake-pool-operation/leadership_selection_illustrations
+:imagesdir: leadership_selection_illustrations
+
+==== Leadership Selection Overview
+On Proof-of-Work blockchains like bitcoin, miners make blocks by winning a race to see who can solve a cryptographic puzzle the fastest. This is resource-intensive and extremely wasteful. On the Cardano, a Proof-of-Stake blockchain, stakepools are chosen to make a block based on a stake-weighted lottery system. This lottery system is described in the https://eprint.iacr.org/2016/889.pdf[Ouroboros paper], but we will give a simplified overview here.
+
+==== Epochs, Blocks, and Slots
+The Leadership schedule on Cardano is broken up into long periods of time called Epochs and short periods of time called Slots. On Cardano mainnet, a new epoch starts every 5 days and begins at 21:44:51 UTC time. Each epoch contains 432,000 Slots that are each 1-second long. Other cardano-based test networks or sidechains could of course have a different configuration, but we'll discuss the Cardano mainnet here. 
+
+In each Slot on Cardano, there is a non-zero chance that a block could be made. In order to maintain a secure system for making blocks, it's important for each stakepool node to determine whether they are:
+
+. Allowed to make a block in a given slot.
+. Able to prove to other nodes that they were allowed to make a block.
+. Able to hide from others that they are chosen to make a block in the future.
+
+image::limbo.png[width=100%,title="Limbo"]
+==== Playing Limbo
+To simplify the explanation of how a pool is chosen to make a block, we will treat it as a game of Limbo. In order to win at Limbo, a person (the stakepool) needs to go under the bar (a threshold value). For every Slot, the bar is uniquely set to a given height for each stakepool. The height is determined by how much stake is in the pool. Larger pools have a higher bar and thus it's easier for them to win the game (make blocks). Smaller pools will have the bar set lower for them. The bar is not set to the exact same height every time, but rather randomly placed for every pool participating and then adjusted up or down based on the stake in the pool.
+
+To determine whether or not the stakepool has made it under the bar in a given slot, several things are used to calculate. First is the epoch nonce value. The epoch nonce is a long random number made up of a combination of the rolling nonce, which is updated every block, and also a block hash. We choose the rolling nonce value from the block right before the start of the stability window of the previous epoch. Currently, the stability window is 1.5 days long, so we grab the value from the block before that window. If we're calculating for a future epoch, this means we can't calculate any leadership information until 1.5 days before the next epoch starts. The second value that goes into the epoch nonce is the hash of the last block of the previous epoch. Those values are concatenated and then hashed to give us the epoch nonce. The epoch nonce value is the same for all pools.
+
+The epoch nonce is combined with the absolute slot number and the pool's VRF secret key to give a random output for any given slot. This value is then weighted based on the how much stake is in the pool vs. the total amount of staked ada in the system. If this weighted random value is less than the threshold value, the pool is allowed to make a block. The pool has successfully won the game of Limbo for that slot!
+
+==== Security
+It's important that only the pool operator knows when they will be making a block in the future. For this reason, the pool's VRF secret key is used to check for leadership selection. The pool's VRF public key is published on the blockchain. Because of this, it's impossible for anyone other than the pool operator to know when they have a potential block-making opportunity. Other nodes can verify the VRF signature of the block using the pool's public VRF key only after the fact to ensure the algorithm is fair and that the pool was allowed to make the block. Due to this secrecy, security is preserved, and it is untennable for an attacker to perform any type of DDoS attack against any particular stakepool.
