@@ -7,7 +7,10 @@
 ** Keys 
 ** Addresses 
 ** Pledge vs Stake 
-* Requirements 
+* Requirements
+* https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/leadership_selection.adoc[Leadership Selection]
+* https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/making_blocks.adoc[Slot Battles, Height Battles, Forkers and Propagation]
+
 
 === Cardano CLI
 * Overview 
