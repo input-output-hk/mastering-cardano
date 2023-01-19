@@ -3,9 +3,6 @@
 
 Technical subjects often carry the baggage of being laden with a significant amount of technical terminology. The topic of stake pools on the Cardano blockchain is no different, and the reader may find it useful to read through and refer to the following list of relevant terms and definitions. 
 
-
-=== Test ===
-
 **ADA:** The name of the main currency on the Cardano blockchain. 
 
 **Block:** A list of ordered records containing the previous block hash, timestamp, transaction data, and other stored information. 
