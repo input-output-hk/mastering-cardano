@@ -1,4 +1,4 @@
-= Slot Battles, Height Battles, Forkers and Propogation
+= Slot Battles, Height Battles, Forkers and Propagation
 Mike Fullman <mike@fullman.net> 
 :description: The nitty gritty details of making blocks. 
 :sectanchors: 
