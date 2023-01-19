@@ -1,6 +1,6 @@
 == Cryptography
 
-Cryptography is at the heart and a fundamental building block of blockchain, DLT, smart contracts and cryptocurrencies. An overview of what cryptography is, what it provides and its role in blockchain systems will now be covered in this chapter. We do not go into internal details of how cryptography works as it is beyond the scope of this book, but at the end of the chapter we point readers to other resources to dig deeper if interested.
+Cryptography is at the heart of and is a fundamental building block of blockchain, DLT, smart contracts and cryptocurrencies. An overview of what cryptography is, what it provides and its role in blockchain systems will now be covered in this chapter. We do not go into internal details of how cryptography works as it is beyond the scope of this book, but at the end of the chapter we point readers to other resources to dig deeper if interested.
 
 
 === Encryption techniques
