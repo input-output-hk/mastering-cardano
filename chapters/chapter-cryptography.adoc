@@ -7,7 +7,7 @@ Cryptography is at the heart and a fundamental building block of blockchain, DLT
 
 Cryptography finds its roots in and is typically used for encrypting and decrypting information -- providing a way for parties to securely communicate without eavesdroppers being able to decipher or understand what has been communicated. 
 
-Encryption techniques are mainly classified into symmetric encryption and asymmetric encryption. _Symmetric encryption_ uses the same _key_ to both encrypt and decrypt data.  It requires that the key is shared amongst the different parties communicating, and requires that the key would have been shared in a secure manner typically prior to initiating communication. Imagine an eavesdropper was to listen in on communication and the first packet of data contains the encryption/decryption key -- they would be able to continue to eavesdrop and both decrypt messages as well as inject encrypted messages without any of the communicating parties knowing. 
+Encryption techniques are mainly classified into symmetric encryption and asymmetric encryption. _Symmetric encryption_ uses the same _key_ to both encrypt and decrypt data.  It requires that the key is shared amongst the different parties communicating, and requires that the key would have been shared in a secure manner typically using a different communication medium. Imagine an eavesdropper was to listen in on communication and the first packet of data contains the encryption/decryption key -- they would be able to continue to eavesdrop and both decrypt messages as well as inject encrypted messages without any of the communicating parties knowing. 
 
 #include diagram of symmertic encryption#
 
