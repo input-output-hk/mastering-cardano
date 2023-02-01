@@ -20,8 +20,7 @@ The Cardano Foundation (cardanofoundation.org), now based in the Swiss canton of
 
 In 2015, Hoskinson and Wood co-founded Input Output Global (iog.io), formerly IOHK (iohk.io). IOG is the development and science arm for Cardano. The rest of 2015 was focused on protocol development and a team of scientists were hired. The Cardano crowdsale  ran from late 2015 to January 2017, managed by a Japanese company called Attain  who aggregated all the funds. IOG got a 5-year contract to build Cardano. 
 
-*_
-Optional references (explainers):
+*_Optional references (explainers):_*
 
 The future will be decentralized | Charles Hoskinson | TEDxBermuda, youtube.com/watch?v=97ufCT6lQcY
 
@@ -30,4 +29,3 @@ Cardano Foundation Strategy - Core Focus Areas, youtu.be/89d8t72C4Uk
 A crowdsale is a type of crowdfunding that issues tokens that are stored on the user's device. The tokens can function like a share of stock and be bought and sold ("equity tokens"), or they can pay for services when the service is up and running ("user tokens"). 
 
 Cardano CrowdSale, nasdaq.com/articles/iohk-launches-cardano-blockchain-ada-now-trading-on-bittrex-2017-10-02
-_*
