@@ -22,10 +22,10 @@ Below is a list of commonly used best practices in IT server administration for 
 * Use a secure operating system with long-term support for your server to ensure that you have access to the latest security updates and patches.
 * Always start with a clean minimal setup as OS hosting your Cardano environment.
 * Ensure your day-to-day machine user account and cloud provider accounts have secure authentication methods, such as strong passwords and 2FA.
-* Where possible, always set your server to use 2 public IPs. One for administration purposes (SSH and/or VPN) and one for the service you want to expose. This will minimize targeted attacks on your administration pipelines and leave only the services you chose to expose publicly (i.e. Webserver) as targets (this is commonly referred to as`minimising the attack surface area`).
+* Where possible, always set your server to use 2 public IPs. One for administration purposes (SSH and/or VPN) and one for the service you want to expose. This will minimize targeted attacks on your administration pipelines and leave only the services you chose to expose publicly (i.e. Webserver) as targets (this is commonly referred to as`minimizing the attack surface area`).
 * It is important to be cautious when doing system administration and make sure to always have a plan, document it and test it before applying it to the production environment besides having an automated reporting system (i.e. Prometheus/Grafana). Additionally, it is always recommended to have a recovery plan in case of any incident.
 * Avoid running services as root when possible, as doing so increases the risk of unauthorized access or data breaches.
-* Mind the exposed services, as they can be a target for cyber attacks. Be aware of the services that are running on your server, and take steps to secure them. It is reccomended to not leave any unused ports open on your server, as they can be used to gain unauthorized access to your system. Disable any unneeded open port/service or at least filter them using an adequate firewall rule. You have several options to list open ports with their associated service (some of these commands will also list services listening on 127.0.0.1 which is on the lo interface i.e. loopback): `sudo netstat -latupen` , `sudo lsof -i`, `sudo ss -antlp`.
+* Mind the exposed services, as they can be a target for cyber attacks. Be aware of the services that are running on your server, and take steps to secure them. It is recommended to not leave any unused ports open on your server, as they can be used to gain unauthorized access to your system. Disable any unneeded open port/service or at least filter them using an adequate firewall rule. You have several options to list open ports with their associated service (some of these commands will also list services listening on 127.0.0.1 which is on the lo interface i.e. loopback): `sudo netstat -latupen` , `sudo lsof -i`, `sudo ss -antlp`.
 * Implement Fail2Ban to block unauthorized access attempts or DOS attempts. This tool can help you to block/delay persistent and/or malicious IPs (port scanners/ crawlers, bruteforce techniques) from accessing your server.
 * Change your server DNS to use known secure DNS (i.e. 1.1.1.1 and 1.0.0.1)
 * Use a hardware/software firewall on your server and lock down the ports to only allow necessary traffic. Firewall rules can also mitigate DoS attacks and port flooding by using connlimit rules, see `iptables-extensions(8)` for examples. Use a firewall as a backup mechanism, after minding the open services. While a firewall can help to prevent further admin incidents, it can also increase the level of complexity and require additional specific attention.
@@ -46,9 +46,9 @@ Below is a list of commonly used best practices in IT server administration for 
 
 '''''
 
-=== Containerized Enviroments
+=== Containerized Environments
 
-An other option is also the use containerized enviroments where the Cardano’s software can run logically separated from the hosting server, therefore containing possible breaches. As added layer of security the use of such software/enviroment it will increase also the level of IT knowledge to properly configure them.
+An other option is the use containerized environments where the Cardano’s software can run logically separated from the hosting server, therefore containing possible breaches. As an added layer of security the use of such software/environment will also increase the level of IT knowledge to properly configure them.
 
 Containerized Enviroments provides several advantages from a security point of view:
 
@@ -57,15 +57,15 @@ Containerized Enviroments provides several advantages from a security point of v
 * Segmentation: allows for the creation of multiple isolated networks for different containers. This allows for better segmentation of different services and reduces the attack surface.
 * Patching: allows for quick and easy patching of vulnerabilities in an application, without the need to patch the entire system.
 * Auditing: provides detailed information about the container environment, including system calls, network connections, and file access. This information can be used to identify potential security issues and track down the source of a security incident.
-* Security Scanning: provides security scanning feature and also severalthird party security scanning tools can be used to check images for vulnerabilities.
+* Security Scanning: provides security scanning feature and also several third party security scanning tools can be used to check images for vulnerabilities.
 * Sandboxing: containers run in a Sandboxed environment, so that any malicious activity is restricted and the host system is not affected.
-* Control over the environment: allows you to control the environment inwhich your application is running, and to ensure that it is running in a consistent and predictable environment.
+* Control over the environment: allows you to control the environment in which your application is running, and to ensure that it is running in a consistent and predictable environment.
 
 It is important to keep in mind that while using containerized environments can greatly enhance security, it is not a complete solution. Adequate configuration and security measures must still be implemented within the containerized environment to guarantee the safety of your system.
 
 A plethora of options exist that provide similar containerization functionality:
 
-* LXC (LinuX Containers), Docker, rkt (Rocket), OpenVZ, LXD (built ontop of LXC), Kubernetes, Mesos.
+* LXC (LinuX Containers), Docker, rkt (Rocket), OpenVZ, LXD (built on top of LXC), Kubernetes, Mesos.
 
 Please note that while these alternatives provide similar functionality, they may have different architectural designs and may require different configurations and management processes. It is essential to evaluate the needs of your organization and compare each solution before making a decision.
 
@@ -84,7 +84,7 @@ Given that SSH is frequently the primary method of remote server administration,
 . Disable password login in SSH. It is recommended not to use username/password authentication for SSH, instead use certificate-based (PKI) authentication for added security. Don’t forget to password protect your private key when you generate it. Example: `ssh-keygen -t rsa`
 . When applicable, restrict access to the only IP address you’ll be using to connect to your server. Example: `nano /etc/ssh/sshd_config` and add the line `AllowUsers user@xxx.xxx.xxx.xxx`
 . Use SFTP or SCP to transfer files (over SSH) to and from your server, as it provides an added layer of security compared to FTP.
-. You can use SSH tunneling to encrypt redirect you traffic within your remote nodes, in order to access to your infra backend.
+. You can use SSH tunneling to encrypt and redirect traffic within remote nodes, in order to access backend infrastructure.
 
 It is important to keep in mind that SSH is a fundamental service that allows remote access to a server, it is crucial to have it properly configured and secured to avoid any unauthorized access to your server.
 It is also recommended to have a plan for monitoring and auditing SSH access (Grafana/fail2ban), as well as regular security updates and patches.
