@@ -27,9 +27,7 @@
 ** gLiveview
 ** rtview
 * Timesync
-* Server Hardening
-** SSH
-** Firewall
+* https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/server_security_and_hardening.adoc[Server Hardening]
 * Offline Operations
 
 === Slot Battles, Height Battles, Forkers and Propogation - the nitty gritty of making blocks - Papacarp
