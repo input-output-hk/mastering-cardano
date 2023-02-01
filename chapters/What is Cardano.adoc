@@ -10,3 +10,24 @@ see https://www.cardanocube.io/cardano-ecosystem-interactive-map ..._and https:/
 Refer to this report when it's out -- https://www.iogservices.io/guide-to-the-ecosystem-ty?submissionGuid=7ee23255-2361-418d-9d47-d0cd41703e2e
 
    
+== Roles of IOG, Emurgo and the Cardano Foundation
+
+After leaving Ethereum, Charles Hoskinson did a TED Talk  in Bermuda. The talk centered around making finance universally accessible to everyone. Hoskinson proffered that the main point of blockchain technology is about economic identity, that it should be geared towards the three billion people in the world without access to a bank account, who don't have identity systems nor property systems and therefore, live in perpetual poverty as victims of geopolitical circumstance. 
+
+The talk was well received. Jeremy Wood, who had managed operations at Ethereum and stayed in touch with Hoskinson, invited him to Japan to talk about a new venture with local businesspeople. Negotiations went back and forth for a few months on the proposed structure, how funds could be raised, and they reviewed Hoskinson’s unused roadmap from Ethereum. Eventually a deal was reached with Japanese investors to start the ‘Ethereum of Japan’ which would become Cardano. The Japanese people formed a company which later became Emurgo (emurgo.io), the commercialization arm of Cardano. 
+
+The Cardano Foundation (cardanofoundation.org), now based in the Swiss canton of Zug, was set up as a governance body and is the legal custodian of the brand. Frederik Gregaard explained in a recent video  that the Foundation’s focus is on operational resilience, education and adoption.
+
+In 2015, Hoskinson and Wood co-founded Input Output Global (iog.io), formerly IOHK (iohk.io). IOG is the development and science arm for Cardano. The rest of 2015 was focused on protocol development and a team of scientists were hired. The Cardano crowdsale  ran from late 2015 to January 2017, managed by a Japanese company called Attain  who aggregated all the funds. IOG got a 5-year contract to build Cardano. 
+
+////
+Optional references (explainers):
+
+The future will be decentralized | Charles Hoskinson | TEDxBermuda, youtube.com/watch?v=97ufCT6lQcY
+
+Cardano Foundation Strategy - Core Focus Areas, youtu.be/89d8t72C4Uk
+
+A crowdsale is a type of crowdfunding that issues tokens that are stored on the user's device. The tokens can function like a share of stock and be bought and sold ("equity tokens"), or they can pay for services when the service is up and running ("user tokens"). 
+
+Cardano CrowdSale, nasdaq.com/articles/iohk-launches-cardano-blockchain-ada-now-trading-on-bittrex-2017-10-02
+////
