@@ -2,7 +2,7 @@
 
 === Introduction
 * https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/stake_pool_glossary.adoc[Stake Pool Glossary]
-* What is a Stake Pool 
+* https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/what_is_a_stake_pool.adoc[What is a Stake Pool] 
 ** Stake Pool Roles 
 ** Keys 
 ** Addresses 
