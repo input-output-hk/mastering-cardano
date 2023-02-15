@@ -1,16 +1,121 @@
-
-(this section will be a placeholder for now, another SPO volunteered to write it)
-
 === What is a Stake Pool?
 
-Where Cardano is concered, a stake Pool is an entity tasked with securing and running the Cardano network by validating transactions and producing blocks. 
+A Cardano stake pool is a server-based assortment of infrastructure that participates in the Cardano blockchain network by validating transactions and maintaining the network's ledger. 
+The infrastructure of a single stake pool could be one single node but is typically a collection of nodes connected to the greater Cardano network (a distributed assortment of interconnected stake pools and full nodes). A stake pool typically consists of a block producing node and multiple separate relays. 
 
-A stake pool itself is a collection of nodes connected to the greater Cardano network (a decentralized assortment of interconnected stake pools and full nodes). Stake pool nodes typically consist of a block producing node and multiple separate relays. 
+When a full node is started with a specific set of cryptographic files obtained when settting up a stake pool, it becomes an active block producer. These files are the "Verified Random Function" signing key (which will be referred to as vrf.skey), the "Operational Certificate" (op.cert), and the "Key Evolving Signature" signing key (kes.skey). 
 
-A relay is a full node intended to sit between the cardano network and the stake pool. Its purpose is to allow a block producing node to interact with the network securely as the block producing node should be __**only**__ connected to the specific relays the stake pool operator has intended. 
+When a full node is not started with these files, it is a so-called passive node or when connected to a block producer a so-called relay. A relay sits between the open Cardano network and block producing node(s) of a stake pool. Its purpose is to allow a block producing node to interact with the network securely as the block producing node should be __**only**__ connected and known to the specific relays the stake pool operator controls. This separation of concerns reduces the attack surface of a stake pool and allows the block producing node to focus on minting blocks and propagating these to a small set of well-known relays who will take care of the burden of propagating the block to the wider distributed Cardano network. Relays are typically publicly known as they are registered with the pool so other relays may find them in a peer-to-peer manner. Relays can be run privately with static topologies listing other relays.
 
-When a full node is started with a specific set of files, it becomes a block producer. These files are the Verified Random Function signing key (which will be referred to as vrf.skey), the operational certificate (node.cert), and the Key Evolving Signature signing key (kes.skey). 
+Cardano uses the "Proof of Stake" mechanism of consensus. Network participants holding the Cardano native token ADA can "delegate" their stake to a stake pool, effectively pooling their resources and increasing the pool's chances of being selected to validate a block and earn rewards.
 
-In order to prevent Sybil attacks, the Cardano design created an incentive model intended to encourage stake pool owners to associate as much pledge as possible with the pool in order to make the stake pool financially attractive to potential delegators. 
+Stake pools are run by "stake pool operators" who are responsible for maintaining the servers and ensuring that the pool operates reliably. The rewards earned by the pool are then distributed among the stakeholders who have delegated their ADA to the pool, proportional to their stake. 
 
-(will add more...)
+In this way, Cardano's consensus mechanism incentivizes a distributed network of participants to maintain the security and integrity of the network, rather than relying on a single entity to validate transactions.
+
+==== Stake Pool Roles 
+
+In the Cardano blockchain network, there are several roles that are elemental to the operation of a stake pool:
+
+* Stake Pool Operator (SPO): This is the individual or organization that runs the stake pool infrastructure and is responsible for its maintenance and uptime. This role determines and sets the operational parameters of the pool, such as the fee structure. Rewards are paid directly by the protocol. The SPO can influence the amount of rewards paid by influencing fee parameters, the SPO does not influence the rewards distribution itself.
+* Owner: The owner is the role contributing the pledge to the staking pool. The owner can be the SPO or a separate entity. Pledge is a specific type of delegation explained in a later chapter.
+* Delegator: A delegator is a participant in the network who holds ADA and delegates their stake to a stake pool. By doing so, they are able to participate in the validation of transactions and earn rewards.
+
+These roles work together to ensure the reliable and secure operation of the Cardano network and its consensus mechanism.
+
+==== Keys 
+
+Cardano cryptographic keys are made up of ed25519 key pairs, which include a public verification key file and a secret (private) key file. The public key file is commonly referred to as ``keyname.vkey``, whereas the private key file is referred to as ``keyname.skey``. The private key file, which is used to sign transactions, is extremely sensitive and should be adequately safeguarded. Under all circumstances, this entails limiting third-party access to your private keys. The most effective technique to prevent private key exposure is to guarantee that the necessary private key is never held for any length of time on any internet-connected machine (hot node). Please note the key pair filenames are examples and may be named differently.
+
+===== Wallet Keys
+
+``root.skey`` - is the most sensitive private secret key of any wallet, this key can be used to derive the Cardano wallet payment.skey and stake.skey from. A hardware wallet's 12 or 24 word seed phrase can be converted to a root.skey in the case of an emergency, if for example, a hardware wallet breaks and no other wallet of the same model is available, the payment and stake keys may be recovered by using the CLI and root.skey.
+A root.skey can thus not only be used to generate private keys for Cardano but for other blockchains such as Bitcoin. 
+
+``payment.skey`` - is a highly sensitive Cardano payment address secret (private) signing key file. The private signing key file gives you access to tokens in your payment address and should be kept safe at all times.
+
+``payment.vkey`` - is the public verification key file for the payment address (not sensitive; may be shared publicly).
+
+``stake.skey`` - is a sensitive Cardano stake address secret (private) signing key file. This private signing key file gives you access to any rewards held in the stake address, as well as the ability to delegate the wallet to a pool. 
+
+``stake.vkey`` - stake address public verification key file (not sensitive; may be shared publicly).
+
+===== VRF Hot Keys 
+
+The Verified Random Function keys control participation in the slot leader selection process.
+
+``vrf.skey`` -  secret (private) signing key file for a Cardano stake pool's VRF key (required to start a stake pool's block producing node; sensitive but must be placed on a hot node in order to start a stake pool).
+
+``vrf.vkey`` - public verification key file for a Cardano stake pool's vrf.skey (not sensitive and is not required to start a stake pool's block producing node).
+
+===== KES Hot Keys 
+
+The Key Evolving Signature keys are node operational keys that authenticate the rightful operator of a pool.
+
+``kes.skey`` -  secret (private) signature key file for the stake pool's KES key (needed to start the stake pool's block producing node; sensitive, but must be placed on a hot node to start a stake pool and rotated on a regular basis). KES keys are needed to establish a stake pool's operating certificate, which expires 90 days after the opcert's defined KES period has passed. As a result, fresh KES keys must be generated along with a new opcert every 90 days or sooner for a Cardano Stake pool to continue minting blocks.
+
+``kes.vkey`` - public verification key file for a Cardano stake pool's corresponding kes.skey (not sensitive and is not required to start a block producer).
+
+===== Stake Pool Keys and Supporting Files
+
+``cold.skey`` - secret (private) offline signing key file for a Cardano stake pool (extremely sensitive). The cold.skey is required to register a stake pool, to update a stake pool registration certificate parameters, to rotate stake pool KES keys and to retire a stake pool.
+
+``cold.vkey`` - public verification key file for a stake pool's cold.skey private signing key file (cold.vkey is not sensitive; can be shared publicly).
+
+``cold.counter`` - incrementing counter file that tracks the number of times an operational certificate (op.cert) has been generated for the relevant stake pool.
+
+*_Note:_*  Always rotate KES keys using the latest cold.counter and increment by exactly 1.
+
+``op.cert`` -  The operational certificate represents the link between the operator's cold.skey and their operational key kes.skey. The certificate's job is to check whether or not an operational key is valid, to prevent malicious interference. The certificate identifies the current operational key, and is signed by the offline cold.skey (sensitive and required to start a stake pool's block producing node; must be placed on a hot node in order to start a stake pool).
+
+==== Addresses 
+
+Current Cardano wallet addresses are encoded in bech32 and can have two parts: a payment address and a staking address. A payment address (together with its associated key pairs) is used to store, receive, and send money. A stake address (and related keys) is used to store and withdraw rewards, as well as to define the stake pool owner and rewards accounts, as well as the wallet's target stake pool delegation.
+
+An Enterprise address is a specific Cardano wallet address with no usable staking part. Enterprise addresses could be used for example by exchanges which wish to comply with regulation or whenever staking is not allowed for any other reason.
+
+``payment.addr `` -  payment address usually generated with the help of both a payment.vkey and a stake.vkey, thus the resulting payment address is associated with both keys. Usually the payment.vkey and stake.vkey are derived from the same cryptographic entropy or root.skey referring to the same original secret or seed phrase.
+The first payment address of any wallet is the so called base address. Cardano supports HD wallets, so any number of payment addresses can be derived from the same secret. 
+
+``stake.addr`` - stake address for a Cardano wallet generated with the stake.vkey file used to control protocol participation, create a stake pool, delegate and receive rewards.
+This address cannot receive payments but will receive the rewards from participating in the protocol. From one original secret only one stake address can be derived, thus all payment.addr with the same underlying secret share the same stake address part.
+
+It is also possible to combine payment.vkey and stake.vkey from two different original secrets, this creates a so called ``mangeled`` or https://www.youtube.com/watch?v=KULzovfWn-M[``Franken Address``]. If tokens are sent to such an address one wallet can spend the tokens the other wallet can participate in the protocol and earn rewards with the same tokens. 
+
+==== Pool Saturation
+
+The protocol parameter ``k`` defines the saturation point for stake pool rewards. This saturation point is defined as ``total supply of Cardano divided by k``, at the time of this writing with k at 500 the saturation point is at about 70M ADA. A stake pool with stake above the saturation point will be on average allotted more slots and should mint more blocks, however rewards for the pool are capped off at the saturation point. Resulting in the distribution of the same reward total to a larger amount of participating stake and delegator shares, diluting rewards for all pool participants. This incentivizes participants in a pool to be aware of pool saturation when delegating.
+
+This concept of saturation is meant to encourage stake distribution across stake pools instead of a majority of stake pooling in a single pool. 
+
+Reaching saturation is a positive sign for a pool, as it indicates that the pool has become popular and is receiving a large amount of stake. However, it also means that delegators may have to look for alternative pools if they wish to delegate additional stake. The SPO of the saturated pool can also opt to increase pool minting fees to manage the stake saturation level.
+
+It is also possible for the SPO to open more pools and attempt to use the popularity of the first pool to try to fill more pools. This topic of pool-splitting or multi-pools is highly contentious in the Cardano community. From a decentralization perspective a SPO should not engage in pool splitting unless he / she can saturate the existing pool completely with his / her own stake, turning effectively one pool into a private pool before opening the next public pool.
+Distributed pool production both helps increase the Minimum Attack Vector (MAV) and protect against Sybil attacks, (where one or a few entities may try to control block production, effectively taking over the network). 
+
+==== Pledge vs Stake
+
+Pledge is a specific type of delegation the SPO announces to the public in the pool registration by setting the pledge height in number of ADA tokens and also setting which owner wallets contribute to the pledge by delegation at all times. The SPO herby gives a pledge promise to the pool, if this pledge promise is broken and this broken promise is snapshotted at an epoch transition, no rewards will be paid until the pool registration is adapted to reduce the pledge and this becomes effective and valid again or the pledge is returned to the already specified owner addresses meeting the unmodified pledge promise.
+
+To prevent Sybil attacks, Cardano has an incentive model intended to encourage stake pool owners to associate as much pledge as possible with the pool in order to make the stake pool more financially attractive to potential delegators. 
+The higher the pledge, the higher staking rewards for all pool participants will be. Rewards rise linearly with pledge; maximum rewards are achieved when the pool is fully saturated with pledge. A pool saturated with pledge will earn about 30% more rewards than a pool with zero pledge, these pools are also called private stake pools, as they do not incentivize additional delegation by ADA holders as the pool is already saturated with pledge and will become oversaturated, diminishing rewards.
+
+As there is no minimum pledge requirement, zero pledge is a valid amount for a stake pool. Pledge shows skin in the game from the owner which can potentially gain trust from delegators.
+However, declaring pledge is not without risk as pledge is declared publicly. The SPO could become a target for criminal activity attempting to steal the pledge. Combined with regulation requirements with mandatory doxing of SPOs in some jurisdictions this could pose a potential security risk. 
+
+Franken addresses could come in handy in these scenarios: The SPO could declare the pledge and continue to manage the pool without having ready-access to the payment key of the pledge. The SPO would only have access to the SPO wallet with a payment key securing minimal funds for day-to-day operations sufficient to pay for pool maintenance fees. The main pledge is secured with the payment key of another wallet. The owner address would be made up of one payment address part of the pledge wallet and the staking address part of the SPO wallet. As long as the pledge resided on this mangled address the SPO can bring in the stake as pledge without the risk of physical extortion as the SPO has absolutely no access to the pledge payment key.
+
+Regular stake as opposed to pledge is just that, regular stake brought in by delegation. This stake is liquid and can move in and out of delegation at will. Pledge is not locked either, but moving it out before pledge commitment changes become active will break the pledge promise.
+
+==== Fee Structure
+
+The fee structure of a Cardano stake pool is determined solely by the stake pool operator and is critical for long-term sustainable operation. Costs covered by the fees generally include: Fixed server cost, time spent on pool and server maintenance, marketing cost or cost in relation to regulatory compliance like management of a company with respective reporting duties.
+
+The fee structure determines how much of the rewards generated by the pool will be kept by the operator and how much will be distributed to delegators. If the pool has not minted blocks in an epoch, no rewards are generated and no fees are paid. Pool fees are always taken from the rewards, so at best they diminish the delegator rewards, fees are never taken from delegator stake as Cardano natively uses non-custodial, liquid staking. 
+
+There are two different type of fees a Cardano stake pool operators can set:
+
+* Fixed fee specified in amount of ADA: This fee is meant to cover the fixed cost of pool operation, currently at the time of writing this is a mandatory fee of at least 340 ADA per epoch (the 340 ADA is also referred to as minPoolCost). 
+* Variable fee specified as a percentage: After deduction of the fixed fee an additional variable fee can be deducted from the total staking rewards from an epoch. While the fixed fee is independent on the number of blocks as long as there is at least one minted block in an epoch, the variable fee is highly depended on the performance of the pool and the number of minted blocks relative to expected blocks. The more blocks there are minted, the higher the total rewards will be, the higher the variable fee payout for the operator. Typically, at the time of writing, the variable fee is set between 0 and 5%.
+
+*_Note:_* While 5% variable fee might sound like a big number, this fee should always be set into relation with the expected return on staking (ROS). At the time of writing the ROS is about 4% per year. 5% variable fee set by a stake pool will reduce those 4% ROS per year by just 0.2 points to 3.8% ROS per year.
