@@ -33,3 +33,5 @@ Cardano CrowdSale, nasdaq.com/articles/iohk-launches-cardano-blockchain-ada-now-
 == Cardano Community and Growth of the Ecosystem
 
 Resume here...
+
+Suggestion: there are projects covering this on daily / weekly basis, CardanoWithPaul, 60blocks (bullish dumpling et al), + others. Also 'this week in cardano' with Sooraj, and 'cardano pills'...We can think of some way of capturing this, maybe a list in the book. 
