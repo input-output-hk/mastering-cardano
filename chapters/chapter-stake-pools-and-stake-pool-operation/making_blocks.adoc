@@ -7,10 +7,10 @@ Mike Fullman <mike@fullman.net>
 
 
 ==== Ouroboros leader selection review
-On the Cardano blockchain stake pools make blocks on behalf of their delegators according to the Ouroboros protocol.  In Ouroboros, the stake pool selection algorithm is a lottery that runs on every slot (1 slot per second according to current protocol parameters) and the probability of a pool being selected is proportional to the stake it holds. If a pool wins the lottery it is considered a leader for that slot.  The details of this algorithm are described in the https://eprint.iacr.org/2016/889.pdf[Ouroboros paper] and in other sections of this book and thus will not be repeated here but whats important is every pool with stake could theoretically be a leader (make a block) on any slot in any epoch thus leading to situations where multiple pools could be leaders for the same slot or nearly the same slot.  There can only be one block on the chain in a particular slot so when multiple pools create blocks that are in contention with each other the stage is set for what we have termed "battles" in the Cardano community.
+On the Cardano blockchain stake pools make blocks on behalf of their delegators according to the Ouroboros protocol. In Ouroboros, the stake pool selection algorithm is a lottery that runs on every slot (1 slot per second according to current protocol parameters) and the probability of a pool being selected is proportional to the stake it holds. If a pool wins the lottery it is considered a leader for that slot. The details of this algorithm are described in the  https://eprint.iacr.org/2016/889.pdf[Ouroboros paper] and in other sections of this book and thus will not be repeated here but whats important is every pool with stake could theoretically be a leader (make a block) on any slot in any epoch thus leading to situations where multiple pools could be leaders for the same slot or nearly the same slot. There can only be one block on the chain in a particular slot so when multiple pools create blocks that are in contention with each other the stage is set for what we have termed "battles" in the Cardano community.
 
 ==== Types of battles
-To understand the types of battles we can have in Cardano we need to review a few important parts of what makes blockchains work.  Referring to the illustration below for three blocks on chain starting with the one on the left at height 8,265,668 and in slot 244,252 with a block hash of "c7b2...8bac".  The next block with a hash of "f777...498c" at height 8,265,669 includes parent hash "c7b2...8bac" thus we say it is built ON the previous block.  Note that the slot for this block is 244,261 which means it was made 9 slots (9 seconds in current protocol parameters) after the previous block.  And finally the third block at height 8,265,670 includes parent hash "f777...498c" and was made in slot 244,309.  This demonstrates how blocks are built on top of each other and how the blockchain grows.
+To understand the types of battles we can have in Cardano we need to review a few important parts of what makes blockchains work. Referring to the illustration below for three blocks on chain starting with the one on the left at height 8,265,668 and in slot 244,252 with a block hash of "c7b2…​8bac". The next block with a hash of "f777…​498c" at height 8,265,669 includes parent hash "c7b2…​8bac" thus we say it is built ON the previous block. Note that the slot for this block is 244,261 which means it was made 9 slots (9 seconds in current protocol parameters) after the previous block. And finally the third block at height 8,265,670 includes parent hash "f777…​498c" and was made in slot 244,309. This demonstrates how blocks are built on top of each other and how the blockchain grows.
 
 image::nittygritty-illustration-1.png[width=100%,title="Basic blockchain illustration"]
 ===== Slot Battles
@@ -24,7 +24,7 @@ When two blocks are presented at exactly the same height AND have the same paren
 image::nittygritty-illustration-3.png[width=50%,title="Height Battle"]
 
 ===== Forkers
-The third classification that we track is Forkers which represents the situation where a pool operator has multiple block-producing nodes operating on the network at the same time.  This usually happens when a pool operator is upgrading their systems and have temporarily started a second instance of their node before shutting down their old instance.  Thus both instances will create a block and try to distribute it to the network.  This is not a battle but it is important to track because it can cause a lot of confusion and wasted effort for the chain and thus we try to minimize it as a community.
+The third classification that we track is Forkers which represents the situation where a pool operator has multiple block-producing nodes operating on the network at the same time. This usually happens when a pool operator is upgrading their systems and have temporarily started a second instance of their node before shutting down their old instance. Thus both instances will create a block and try to distribute it to the network. This is not a battle but it is important to track because it can cause a lot of confusion and wasted effort for the chain and thus we try to minimize it as a community.
 
 image::nittygritty-illustration-4.png[width=50%,title="Forker"]
 
@@ -39,26 +39,26 @@ The following table summarizes the types of contention we can have on the Cardan
 |=== 
 
 === Resolution of battles and forks
-When a battle or fork happens on the network, all nodes must reach consensus on which block to add to the chain and which one(s) to throw away.  There are two primary rules followed in the Praos era (after the vasil hard fork) to decide:
+When a battle or fork happens on the network, all nodes must reach consensus on which block to add to the chain and which one(s) to throw away. There are two primary rules followed in the Praos era (after the vasil hard fork) to decide:
 
 .  Chain Length, the longest chain length is always preferred.
 .  If the chain length is the same, we choose the block with the lowest block vrf.
 
 
 ==== Block VRF
-The block VRF is a number generated from the epoch nonce, the slot number, and the private VRF key registered by the pool.  The value of this function is not dependent on contents of the block and is not subject to manipulation by the pool operator.  Block VRF values can be very large and are represented as a 128 character hexadecimal number.  
+The block VRF is a number generated from the epoch nonce, the slot number, and the private VRF key registered by the pool. The value of this function is not dependent on contents of the block and is not subject to manipulation by the pool operator. Block VRF values can be very large and are represented as a 128 character hexadecimal number.  
 
 === Propagation
-When a pool makes a block, it must be distributed to the network in order to be added to the chain.  This is called "propagation" and is the process of sending the block to all other nodes on the network.  Pool operators spend a lot of time optimizing their setups to distribute their blocks to as many nodes on the network as possible.  The way this works is beyond the scope of this section, but it is important to understand that it takes time for blocks to make their way to all network participants and not all nodes receive the blocks at the same time.
+When a pool makes a block, it must be distributed to the network in order to be added to the chain. This is called "propagation" and is the process of sending the block to all other nodes on the network. Pool operators spend a lot of time optimizing their setups to distribute their blocks to as many nodes on the network as possible. The way this works is beyond the scope of this section, but it is important to understand that it takes time for blocks to make their way to all network participants and not all nodes receive the blocks at the same time.
 
-The cardano ecosystem has some tools avaliable to visualize each pools propogation time.  An example below shows a real example of a pool's measured propogation for the blocks it has created.  As you can see on average every node receives the block within about 600mS but there are some outliers that take much longer.  This is why it is important to have a good distribution strategy for your blocks.
+The cardano ecosystem has some tools avaliable to visualize each pools propogation time. An example below shows a real example of a pool’s measured propogation for the blocks it has created. As you can see on average every node receives the block within about 600mS but there are some outliers that take much longer. This is why it is important to have a good distribution strategy for your blocks.
 
 image::nittygritty-illustration-5.png[width=50%,title="Propogation time"]
 
 ==== Tying it all together: Some real examples
 
 ===== The typical situation:
-90%+ of the blocks on the chain are created with a normal cycle and no drama.  The following illustration shows a normal example of a pool creating a block and then the next pool creating a block on top of it.  The first pool creates a block in slot 10 and the second pool creates a block in slot 15.  The second pool's block is built on top of the first pool's block and the chain continues.
+90%+ of the blocks on the chain are created with a normal cycle and no drama. The following illustration shows a normal example of a pool creating a block and then the next pool creating a block on top of it. The first pool creates a block in slot 10 and the second pool creates a block in slot 15. The second pool’s block is built on top of the first pool’s block and the chain continues.
 
 <need illustration>
 
@@ -68,23 +68,23 @@ image::nittygritty-illustration-5.png[width=50%,title="Propogation time"]
 4.  Pool B creates a block in slot 15 and because it already has seen Pool A's block, it builds on top of it and extends the chain further and the cycle continues.
 
 ===== The height battle example:
-But what if pool B creates a block in slot 15 and it does not have Pool A's block yet?  This is where we have a height battle as both Pool A's block in slot 10 and pool B's block in slot 15 will have the same parent block and thus the contention is settled by the block VRF value.  The block with the lowest block VRF value will be added to the chain and the other block will be thrown away.
+But what if pool B creates a block in slot 15 and it does not have Pool A’s block yet? This is where we have a height battle as both Pool A’s block in slot 10 and pool B’s block in slot 15 will have the same parent block and thus the contention is settled by the block VRF value. The block with the lowest block VRF value will be added to the chain and the other block will be thrown away.
 
 ===== The slot battle example:
-Alternatively if both Pool A and Pool B create a block in slot 10 there is immediate contention.  This is a slot battle and the block with the lowest block VRF value will be the one that is added to the chain and the other block will be thrown away.
+Alternatively if both Pool A and Pool B create a block in slot 10 there is immediate contention. This is a slot battle and the block with the lowest block VRF value will be the one that is added to the chain and the other block will be thrown away.
 
 [sidebar]
 .Interesting Historical Trivia
 --
-In previous versions of the Cardano Incentivized testnet protocol the first pool to submit a block would win the battle.  This lead to centralization as nodes with faster internet connections or those that were proximate to most other nodes would always win the battle.
+In previous versions of the Cardano Incentivized testnet protocol the first pool to submit a block would win the battle. This lead to centralization as nodes with faster internet connections or those that were proximate to most other nodes would always win the battle.
 --
  
 ===== The underpowered node problem:
-Sometimes pool operators will have problems with their node that makes it slow to produce blocks.  Usually this is because the hardware is underpowered or the node is not optimized.  This can cause other pool operators to loose their blocks through no fault of their own.  The example below shows what can happen to in this case.
+Sometimes pool operators will have problems with their node that makes it slow to produce blocks. Usually this is because the hardware is underpowered or the node is not optimized. This can cause other pool operators to loose their blocks through no fault of their own. The example below shows what can happen to in this case.
 
 1.  Pool A creates a block in slot 10
 2.  Pool B is assigned a block in slot 11 but is very slow to generate the block and it takes 5 seconds to create and propogate the block to other nodes.
 3.  Meanwhile Pool C is assigned a block in slot 14 and since it hasn't seen Pool B's block yet, it builds on top of Pool A's block.
-4.  Finally in slot 15 Pool B's block is distributed and all nodes need to pick between Pool B's block and Pool C's block when if all pools were operating at full speed, Pool B's block would have been the one that was added to the chain and then Pool C's block would have built on top of that.
+4.  Finally in slot 15 Pool B’s block is distributed and all nodes need to pick between Pool B’s block and Pool C’s block when if all pools were operating at full speed, Pool B’s block would have been the one that was added to the chain and then Pool C’s block would have built on top of that.
 
-Underpowered nodes cause pools to loose blocks without good reason thus leading to lower chain density and less decentralization.  This underpins the importance a for pool operators to have a good block distribution strategy.
+Underpowered nodes cause pools to loose blocks without good reason thus leading to lower chain density and less decentralization. This underpins the importance a for pool operators to have a good block distribution strategy.
