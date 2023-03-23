@@ -1,19 +1,19 @@
 == Server Security and Hardening
 
 
-``Security is a state of being that is characterized by a lack of fear or anxiety about one’s physical, economic, technological, or social well-being, or about the well-being of those for whom one is responsible. To reach this state in IT, it is necessary to take all preventative measures, put security policies and procedures into place, and carry out routine security assessments to find and address potential vulnerabilities. IT security is essential to achieving this state of affairs today with the widespread use of electronic communication by safeguarding computer systems, networks, and the data they store and transmit as well as by preventing data breaches.``
+``Security is a state of being that is characterized by a lack of fear or anxiety about one’s physical, economic, technological, or social well-being, or about the well-being of those for whom one is responsible. To reach this state in information technology (IT), it is necessary to take all preventative measures, put security policies and procedures into place, and carry out routine security assessments to find and address potential vulnerabilities. IT security is essential to achieving this state of affairs today with the widespread use of electronic communication by safeguarding computer systems, networks, and the data they store and transmit as well as by preventing data breaches.``
 
 '''''
 
-Here, we will acknowledge the security aspects involved with becoming a Stake Pool Operator (SPO). We will first look at the basic security principles of system administration in general, and then we will cover Cardano Node security, containerized environments, how to secure SSH, the benefits of using a VPN, and offer our final thoughts on Stake Pool security.
+In this topic, we will acknowledge the security aspects involved with becoming a stake pool operator (SPO). We will first look at the basic security principles of system administration in general, and then we will cover Cardano node security, containerized environments, how to configure secure shell (SSH), the benefits of using a virtual private network (VPN), and offer our final thoughts on stake pool security.
 
 === System Administration security
 
-Below is a list of commonly used best practices in IT server administration for any project.
+Some commonly used best practices in IT server administration for any project are outlined here.
 
 *NOTE*
 
-==== All examples listed here are just suggestions of the commands you can use on Unix OS. Do not take anything for granted and please do your own research (DYOR) or read the command related manual (RTFM).
+==== All examples listed here are just suggestions of the commands you can use on the Unix operating system (OS). Do not take anything for granted and please do your own research (DYOR) or read the command related manual (RTFM).
 
 '''''
 
@@ -28,7 +28,7 @@ Below is a list of commonly used best practices in IT server administration for 
 * Mind the exposed services, as they can be a target for cyber attacks. Be aware of the services that are running on your server, and take steps to secure them. It is recommended to not leave any unused ports open on your server, as they can be used to gain unauthorized access to your system. Disable any unneeded open port/service or at least filter them using an adequate firewall rule. You have several options to list open ports with their associated service (some of these commands will also list services listening on 127.0.0.1 which is on the lo interface i.e. loopback): `sudo netstat -latupen` , `sudo lsof -i`, `sudo ss -antlp`.
 * Implement Fail2Ban to block unauthorized access attempts or DOS attempts. This tool can help you to block/delay persistent and/or malicious IPs (port scanners/ crawlers, bruteforce techniques) from accessing your server.
 * Change your server DNS to use known secure DNS (i.e. 1.1.1.1 and 1.0.0.1)
-* Use a hardware/software firewall on your server and lock down the ports to only allow necessary traffic. Firewall rules can also mitigate DoS attacks and port flooding by using connlimit rules, see `iptables-extensions(8)` for examples. Use a firewall as a backup mechanism, after minding the open services. While a firewall can help to prevent further admin incidents, it can also increase the level of complexity and require additional specific attention.
+* Use a hardware/software firewall on your server and lock down the ports to only allow necessary traffic. Firewall rules can also mitigate DoS attacks and port flooding by using connlimit rules, see iptables-extensions(8) for examples. Use a firewall as a backup mechanism, after minding the open services. While a firewall can help to prevent further admin incidents, it can also increase the level of complexity and require additional specific attention.
 * Keep your server’s operating system and installed software up-to-date with the latest updates to ensure that you have the latest security patches and fixes.
 * Disable IPv6 on your server if you are not using it, as it can be used as a potential attack vector. Example command: `nano /etc/sysctl.conf` and add the line net.ipv6.conf.all.disable_ipv6 = 1
 * Limit the programs with suid or sgid bit set, you may list them all with: `$ sudo find / -type f \( -perm -4000 -o -perm -2000 \) -exec ls -l {} \;`
@@ -48,7 +48,7 @@ Below is a list of commonly used best practices in IT server administration for 
 
 === Containerized Environments
 
-An other option is the use containerized environments where the Cardano’s software can run logically separated from the hosting server, therefore containing possible breaches. As an added layer of security the use of such software/environment will also increase the level of IT knowledge to properly configure them.
+Another option is to use containerized environments where the Cardano’s software can run logically separated from the hosting server, therefore containing possible breaches. As an added layer of security the use of such software/environment will also increase the level of IT knowledge to properly configure them.
 
 Containerized Enviroments provides several advantages from a security point of view:
 
@@ -86,15 +86,13 @@ Given that SSH is frequently the primary method of remote server administration,
 . Use SFTP or SCP to transfer files (over SSH) to and from your server, as it provides an added layer of security compared to FTP.
 . You can use SSH tunneling to encrypt and redirect traffic within remote nodes, in order to access backend infrastructure.
 
-It is important to keep in mind that SSH is a fundamental service that allows remote access to a server, it is crucial to have it properly configured and secured to avoid any unauthorized access to your server.
-It is also recommended to have a plan for monitoring and auditing SSH access (Grafana/fail2ban), as well as regular security updates and patches.
+It is important to keep in mind that SSH is a fundamental service that allows remote access to a server, it is crucial to have it properly configured and secured to avoid any unauthorized access to your server. It is also recommended to have a plan for monitoring and auditing SSH access (Grafana/fail2ban), as well as regular security updates and patches.
 
 ==== Use a VPN (as alternative to ssh tunneling)
 
 Using a VPN (i.e. Wireguard) to access a server backend (Grafana/Prometheus/etc) is especially important for Stake Pool Operators (SPO) as it provides several benefits in terms of security and accessibility. A VPN (Virtual Private Network) creates a secure and encrypted connection between the client device and the server backend, protecting the data transmitted over the connection from potential eavesdropping or tampering.
 
-This is particularly important when accessing sensitive information such as financial data, personal information, or confidential blockchain information. Additionally, a VPN allows remote access to the server backend, enabling SPOs to access the backend from anywhere in the world, as long as they have an internet connection. This can be especially useful for SPOs who are running their nodes remotely or in different locations.
-Furthermore, using a VPN can also help to bypass any geographical restrictions or censorship. Overall, using a VPN to access a server backend is an effective way to secure and facilitate access to sensitive information and resources for SPOs.
+This is particularly important when accessing sensitive information such as financial data, personal information, or confidential blockchain information. Additionally, a VPN allows remote access to the server backend, enabling SPOs to access the backend from anywhere in the world, as long as they have an internet connection. This can be especially useful for SPOs who are running their nodes remotely or in different locations. Furthermore, using a VPN can also help to bypass any geographical restrictions or censorship. Overall, using a VPN to access a server backend is an effective way to secure and facilitate access to sensitive information and resources for SPOs.
 
 
 '''''
