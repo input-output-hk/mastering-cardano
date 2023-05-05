@@ -5,6 +5,7 @@ This chapter explains how the Cardano platform works and outlines the core compo
 === Overview of Cardano Network Protocols
 
 === About the Ouroboros Protocol
+Fundamentally, Cardano has been built as a resilient and sustainable blockchain with a proof-of-stake consensus protocol called https://iohk.io/en/blog/posts/2020/06/23/the-ouroboros-path-to-decentralization/[Ouroboros] which is proven to have the same security guarantees and is undoubtedly more energy efficient than proof-of-work protocols.
 
 === Reaching Consensus using Proof-of-Stake
 
