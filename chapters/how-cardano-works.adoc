@@ -15,3 +15,7 @@ Cardano has been designed in modules, with linked components that can be used in
 === Incentives in Cardano
 
 === UTXO and EUTXO Models
+Cardano builds upon Bitcoin’s UTXO model and implements an extended UTXO (EUTXO) accounting model that supports smart contracts. 
+
+=== Hard Fork Combinator
+One of the features of Cardano is seamless upgrades. Traditionally, blockchains upgrade using hard forks. When conducting a hard fork, the current protocol would stop operating, new rules and changes would be implemented, and the chain would restart – with its previous history being erased. Cardano handles hard forks differently. Instead of implementing radical changes, the Cardano hard-fork combinator technology ensures a smooth transition to a new protocol while saving the history of the previous blocks and not causing any disruptions for end users.
