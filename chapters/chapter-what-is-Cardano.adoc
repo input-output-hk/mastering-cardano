@@ -6,7 +6,7 @@ The core mission of Cardano is to improve the systems of the world to enable eco
 
 _“Cardano is an open platform that seeks to provide economic identity to the billions who lack it by providing decentralized applications to manage identity, value and governance”  (Charles Hoskinson, 2020)._
 
-Cardano is a fully decentralized environment which is maintained by almost 3,000 distributed stake pools that are operated by the community. All blocks and transactions are validated by participants of the network without any reliance on a centralized authority. This means that decisions and ownership of information are shared amongst all users. 
+Cardano is a fully decentralized environment which is maintained by almost 3,000 distributed stake pools that are operated by the community. All blocks and transactions are validated by participants of the network without any reliance on a centralized authority. This means that decisions and ownership of information are shared amongst all users who in turn are helping to create a more decentralized and equitable world.
 
 === Core Pillars of Cardano
 As a third-generation blockchain, Cardano combines the properties of previous generations like Bitcoin and Ethereum, and has been built as a resilient and sustainable platform using the core principles of security, scalability, and interoperability.
