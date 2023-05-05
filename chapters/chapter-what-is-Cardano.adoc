@@ -1,21 +1,15 @@
 == What is Cardano     
 
-Cardano is a third-generation, open source, proof-of-stake blockchain platform. It has been built by scientists, developers, and the extended team at Input Output Global (IOG), and led by https://iohk.io/en/leadership/charles-hoskinson[Charles Hoskinson]. 
+Cardano is a third-generation, open source, proof-of-stake blockchain platform. It is an open source project with a thriving ecosystem of developers and builders. Cardano has been built by scientists, developers, and the extended team at https://iohk.io/[Input Output Global] (IOG) previosly IOHK, and led by https://iohk.io/en/leadership/charles-hoskinson[Charles Hoskinson]. IOG is a pre-eminent blockchain infrastructure research and engineering company with over 600 emplolyees around the globe. 
 
-Cardano is an open source project with a thriving ecosystem of developers and builders. The core mission of Cardano is to improve the systems of the world to enable economic inclusion and empowerment for all. The Cardano project is jointly supported by IOG, the https://cardanofoundation.org/[Cardano Foundation] and https://emurgo.io/[Emurgo]. 
+The core mission of Cardano is to improve the systems of the world to enable economic inclusion and empowerment for all. The Cardano project is jointly supported by IOG, the https://cardanofoundation.org/[Cardano Foundation] and https://emurgo.io/[Emurgo]. 
 
 _“Cardano is an open platform that seeks to provide economic identity to the billions who lack it by providing decentralized applications to manage identity, value and governance”  (Charles Hoskinson, 2020)._
 
-Cardano is a fully decentralized environment which is maintained by almost 3,000 distributed stake pools that are operated by the community. All blocks and transactions are validated by network participants without any reliance on a centralized authority. This means that decisions and ownership of information is shared amongst all users. 
-
-Fundamentally, Cardano has been built as a resilient and sustainable blockchain with a proof-of-stake consensus protocol called https://iohk.io/en/blog/posts/2020/06/23/the-ouroboros-path-to-decentralization/[Ouroboros] which is proven to have the same security guarantees and is undoubtedly more energy efficient than proof-of-work protocols.
-
-Cardano builds upon Bitcoin’s UTXO model and implements an extended UTXO (EUTXO) accounting model that supports smart contracts. To learn more about EUTXO, read the <ETXO chapter x-ref>.
-
-One of the features of Cardano is seamless upgrades. Traditionally, blockchains upgrade using hard forks. When conducting a hard fork, the current protocol would stop operating, new rules and changes would be implemented, and the chain would restart – with its previous history being erased. Cardano handles hard forks differently. Instead of implementing radical changes, the Cardano hard-fork combinator technology ensures a smooth transition to a new protocol while saving the history of the previous blocks and not causing any disruptions for end users.
+Cardano is a fully decentralized environment which is maintained by almost 3,000 distributed stake pools that are operated by the community. All blocks and transactions are validated by participants of the network without any reliance on a centralized authority. This means that decisions and ownership of information are shared amongst all users. 
 
 === Core Pillars of Cardano
-As a third-generation blockchain, Cardano combines the properties of previous generations  like Bitcoin and Ethereum, and has been built as a resilient and sustainable platform using the core principles of security, scalability, and interoperability.
+As a third-generation blockchain, Cardano combines the properties of previous generations like Bitcoin and Ethereum, and has been built as a resilient and sustainable platform using the core principles of security, scalability, and interoperability.
 
 Let’s learn more about these core pillars of Cardano.
 
