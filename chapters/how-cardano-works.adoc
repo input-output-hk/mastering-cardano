@@ -1,0 +1,16 @@
+== How Cardano Works
+
+This chapter explains how the Cardano platform works and outlines the core components of the system. Let's take a closer look at the software running Cardano. 
+
+=== Overview of Cardano Network Protocols
+
+=== About the Ouroboros Protocol
+
+=== Reaching Consensus using Proof-of-Stake
+
+=== Components of Cardano
+Cardano has been designed in modules, with linked components that can be used in various ways. These components of the Cardano platform stack work together under the hood to support the construction and use of the live Cardano blockchain.
+
+=== Incentives in Cardano
+
+=== UTXO and EUTXO Models
