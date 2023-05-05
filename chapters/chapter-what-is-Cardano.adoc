@@ -50,7 +50,7 @@ Cardano’s development journey has been split into five main themes focusing on
 
 Each theme is centered around a set of functionalities that are being delivered across multiple code releases. While these development streams are delivered sequentially, the work for each happens in parallel – with research, prototyping, and development often in progress all at once across the different stages.
 
-=== Further Reading/Suggested Reading
+=== Suggested Reading
 - https://www.essentialcardano.io/glossary/cardano-roadmap[Cardano Roadmap]
 - https://docs.cardano.org/new-to-cardano/why-use-cardano[Why Use Cardano]
 
