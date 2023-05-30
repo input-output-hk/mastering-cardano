@@ -1,12 +1,18 @@
 == What is Cardano     
 
-Cardano is a third-generation proof-of-stake blockchain platform. It is an open source project with a thriving ecosystem of developers and builders. Cardano has been built by scientists, developers, and the extended team at https://iohk.io/[Input Output Global] (IOG), and led by https://iohk.io/en/leadership/charles-hoskinson[Charles Hoskinson]. IOG is a pre-eminent blockchain infrastructure research and engineering company with over 600 emplolyees around the globe. 
+Cardano is a third-generation proof-of-stake blockchain platform. It is an open source project with a thriving ecosystem of developers and builders. Cardano has been built by scientists, developers, and the extended team at https://iohk.io/[Input Output Global] (IOG), and led by https://iohk.io/en/leadership/charles-hoskinson[Charles Hoskinson]. IOG is a pre-eminent blockchain infrastructure research and engineering company with over 600 employees around the globe. 
 
 The core mission of Cardano is to improve the systems of the world to enable economic inclusion and empowerment for all. The Cardano project is jointly supported by IOG, the https://cardanofoundation.org/[Cardano Foundation] and https://emurgo.io/[Emurgo]. 
 
 _“Cardano is an open platform that seeks to provide economic identity to the billions who lack it by providing decentralized applications to manage identity, value and governance”  (Charles Hoskinson, 2020)._
 
 Cardano is a fully decentralized platform that is maintained by almost 3,000 distributed stake pools that are operated by the Cardano community members. All blocks and transactions are validated by participants of the network without any reliance on a centralized authority. This means that decisions and ownership of information are shared amongst all users who in turn are helping to create a more decentralized and equitable world.
+
+Fundamentally, Cardano has been built as a resilient and sustainable blockchain with a proof-of-stake consensus protocol called https://iohk.io/en/blog/posts/2020/06/23/the-ouroboros-path-to-decentralization/[Ouroboros] which is proven to have the same security guarantees and is undoubtedly more energy efficient than proof-of-work protocols.
+
+Cardano builds upon Bitcoin’s UTXO model and implements an extended UTXO (EUTXO) accounting model that supports smart contracts. To learn more about EUTXO, read the <ETXO chapter x-ref>.
+
+One of the features of Cardano is seamless upgrades. Traditionally, blockchains upgrade using hard forks. When conducting a hard fork, the current protocol would stop operating, new rules and changes would be implemented, and the chain would restart – with its previous history being erased. Cardano handles hard forks differently. Instead of implementing radical changes, the Cardano hard-fork combinator technology ensures a smooth transition to a new protocol while saving the history of the previous blocks and not causing any disruptions for end users.
 
 === Core Pillars of Cardano
 As a third-generation blockchain, Cardano combines the properties of previous generations like Bitcoin and Ethereum and has been built as a resilient and sustainable platform using the core principles of security, scalability, and interoperability.
@@ -26,11 +32,11 @@ All of the research and technical specifications that underpin Cardano are publi
 The Cardano network is capable of processing an increasing number of transactions as user demand grows. Scalability also provides higher bandwidth capabilities to allow transactions to carry a significant amount of supportive data that can be easily managed within the network. For these needs, Cardano is implementing various techniques (like data compression for instance) and is working to introduce Hydra, which will enable multiple state channels functionality.
 
 ==== Interoperability
-The ability to interact with other systems, or interoperability, is a fundamental design feature of Cardano. One of the current design innovations in Cardano is the use of sidechains, which means that you can compartmentalize the system and enable interoperability within the blockchain platform. Data can be kept off the main chain in what is called a sidechain. Multiple side chains can run concurrently, so if one part fails, the rest of the system does not fail, as it is maintained separately. This results in greater assurance and reliability within the blockchain. By using sidechains you can transfer assets between parallel blockchains that operate in different rules, mechanisms or languages and ways of utilizing the network.
+The ability to interact with other systems, or interoperability, is a fundamental design feature of Cardano. One of the current design innovations in Cardano is the use of sidechains, which means that you can compartmentalize the system and enable interoperability within the blockchain platform. Data can be kept off the main chain in what is called a sidechain. Multiple side chains can run concurrently, so if one part fails, the rest of the system does not fail, as it is maintained separately. This results in greater assurance and reliability within the blockchain. By using sidechains you can transfer assets between parallel blockchains that operate in different rules, mechanisms, or languages and ways of utilizing the network.
 
-Cardano is being developed to support cross-chain transfers, multiple token types, and commonly used smart contracts languages.
+Cardano is also being developed to support cross-chain transfers, multiple token types, and commonly used smart contracts languages.
 
-==== Sustainability and Governance
+=== Sustainability and Governance
 Governance is also central to the design of Cardano to ensure system sustainability and adaptability. A well-developed governance strategy will enable effective, democratic funding for Cardano’s long-term development. 
 
 One of the key pillars for Cardano's viability is active community engagement and participation. This necessitates an effective governance mechanism. Using an iterative, anti-fragile approach and setting high standards for effective decision making, IOG provides the Cardano community with the mechanisms and human-processes required to help decide & build the future of Cardano. IOG plans to deliver this through absolute Liquid democracy - collective decision-making through direct participation and dynamic representation.
@@ -40,7 +46,7 @@ Designing a proof-of-stake blockchain means it is vital to ensure that the syste
 Central to the treasury is a democratized voting mechanism where ada holders will themselves decide how funds are allocated by voting on funding proposals. This will ensure that decisions are made by a democratic vote rather than by just a handful of stakeholders. This voting system will influence decisions such as funding initiatives, authorizing updates to the protocol, and rolling out any constitutional updates such as changes to the decision-making process, or the minting of new tokens.
 
 === Cardano Developement Themes
-Cardano’s development journey has been split into five main themes focusing on such core functionalities as:
+Cardano’s development journey has been split into five main themes:
 
 - Byron — foundation establishment
 - Shelley — decentralization
@@ -48,7 +54,7 @@ Cardano’s development journey has been split into five main themes focusing on
 - Basho — scalability
 - Voltaire — governance
 
-Each theme is centered around a set of functionalities that are being delivered across multiple code releases. While these development streams are delivered sequentially, the work for each happens in parallel – with research, prototyping, and development often in progress all at once across the different stages.
+Each theme is centered around a set of feature that are being delivered across multiple code releases. While these development streams are delivered sequentially, the work for each happens in parallel – with research, prototyping, and development often in progress all at once across the different stages.
 
 === Suggested Reading
 - https://www.essentialcardano.io/glossary/cardano-roadmap[Cardano Roadmap]
