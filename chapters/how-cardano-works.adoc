@@ -2,6 +2,22 @@
 
 This chapter explains how the Cardano platform works and outlines the core components of the system. Let's take a closer look at the software running Cardano. 
 
+=== Cardano Architecture
+
+Cardano's design includes three layers:
+- Consensus layer
+- Ledger layer
+- Network layer
+
+==== Consensus Layer
+This layer runs the Ouroboros protocol and makes decisions such as producing blocks, adopting blocks, and making a choice about competing chains. It also maintains the state of the entities needed to make these decisions.
+
+==== Ledger Layer
+This layer manages the state of the ledger and updates the ledger for each new block that is made. It handles the transitions between sucessive ledger states as outlined in the ledger rules to cater for epoch boundary transitions and hard fork combinator events.
+
+==== Network Layer
+This layer manages the connections between all the distributed nodes within the Cardano network, transmits blocks between nodes, obtains new blocks from the block producing nodes, manages relay nodes, and builds newly minted transactions into blocks. 
+
 === Overview of Cardano Network Protocols
 
 === About the Ouroboros Protocol
