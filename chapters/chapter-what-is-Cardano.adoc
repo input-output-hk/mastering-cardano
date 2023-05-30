@@ -1,22 +1,22 @@
 == What is Cardano     
 
-Cardano is a third-generation, open source, proof-of-stake blockchain platform. It is an open source project with a thriving ecosystem of developers and builders. Cardano has been built by scientists, developers, and the extended team at https://iohk.io/[Input Output Global] (IOG) previosly IOHK, and led by https://iohk.io/en/leadership/charles-hoskinson[Charles Hoskinson]. IOG is a pre-eminent blockchain infrastructure research and engineering company with over 600 emplolyees around the globe. 
+Cardano is a third-generation proof-of-stake blockchain platform. It is an open source project with a thriving ecosystem of developers and builders. Cardano has been built by scientists, developers, and the extended team at https://iohk.io/[Input Output Global] (IOG), and led by https://iohk.io/en/leadership/charles-hoskinson[Charles Hoskinson]. IOG is a pre-eminent blockchain infrastructure research and engineering company with over 600 emplolyees around the globe. 
 
 The core mission of Cardano is to improve the systems of the world to enable economic inclusion and empowerment for all. The Cardano project is jointly supported by IOG, the https://cardanofoundation.org/[Cardano Foundation] and https://emurgo.io/[Emurgo]. 
 
 _“Cardano is an open platform that seeks to provide economic identity to the billions who lack it by providing decentralized applications to manage identity, value and governance”  (Charles Hoskinson, 2020)._
 
-Cardano is a fully decentralized environment which is maintained by almost 3,000 distributed stake pools that are operated by the Cardano community members. All blocks and transactions are validated by participants of the network without any reliance on a centralized authority. This means that decisions and ownership of information are shared amongst all users who in turn are helping to create a more decentralized and equitable world.
+Cardano is a fully decentralized platform that is maintained by almost 3,000 distributed stake pools that are operated by the Cardano community members. All blocks and transactions are validated by participants of the network without any reliance on a centralized authority. This means that decisions and ownership of information are shared amongst all users who in turn are helping to create a more decentralized and equitable world.
 
 === Core Pillars of Cardano
-As a third-generation blockchain, Cardano combines the properties of previous generations like Bitcoin and Ethereum, and has been built as a resilient and sustainable platform using the core principles of security, scalability, and interoperability.
+As a third-generation blockchain, Cardano combines the properties of previous generations like Bitcoin and Ethereum and has been built as a resilient and sustainable platform using the core principles of security, scalability, and interoperability.
 
 Let’s learn more about these core pillars of Cardano.
 
 ==== Security
-Cardano has been built using formal methods which guarantees the functional correctness of core components of the system. These formal methods, such as mathematical specifications, property-based tests, and proofs, are the best way to deliver high assurance software systems and give confidence to users for the management of their digital funds. 
+Cardano has been built using formal methods which guarantees the functional correctness of core components of the system. These formal methods, such as mathematical specifications, property-based tests, and proofs, are the best way to deliver high-assurance software systems and give confidence to users in the management of their digital funds. 
 
-Cardano is mostly written in Haskell, a secure functional programming language that encourages building a system using pure functions, which leads to a design where components are conveniently testable in isolation. Furthermore, advanced features of Haskell enable us to employ a whole range of powerful methods for ensuring correctness of the code, such as basing the implementation on formal and executable specifications, extensive property-based testing, and running tests in simulation.
+Cardano is mostly written in Haskell, a secure functional programming language that encourages building a system using pure functions, which leads to a design where components are conveniently testable in isolation. Furthermore, the advanced features of Haskell enable us to employ a whole range of powerful methods for ensuring correctness of the code, such as basing the implementation on formal and executable specifications, extensive property-based testing, and running tests in simulation.
 
 Ouroboros (the Cardano proof-of-stake protocol) establishes rigorous security guarantees; it was delivered with several peer-reviewed papers presented in top-tier conferences and publications in the area of cybersecurity and cryptography.
 
