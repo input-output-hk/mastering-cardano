@@ -29,7 +29,11 @@ Suggested readings and courses:
 
 SPOs are required to not only keep nodes up-to-date, but to keep themselves up-to-date and informed as new node versions are released and on-chain changes are proposed and introduced with new node versions.
 
-The Cardano node source-code is open-source, meaning that it can be looked at, cloned, forked, compiled and improved by the community and SPOs. Cardano’s code is currently released on github.com, although it could be released on any version control platform. An SPO should be able to look at a project on github such as Cardano, read through documentation and compile and run the node. 
+The Cardano node source-code is open-source, meaning that it can be looked at, cloned, forked, compiled and improved by the community and SPOs. Cardano’s code is currently released on Github.com, although it could be released on any version control platform. An SPO should be able to look at a project on Github such as Cardano, read through documentation, understand and follow along well enough to compile and run the node. 
+
+Suggested reading:
+
+* https://developers.cardano.org/docs/get-started/installing-cardano-node/[Cardano.org guide for installing Cardano node]
 
 ==== *Getting Started*
 
@@ -47,3 +51,20 @@ Here are a few useful guides and courses for setting up a stake pool:
 * https://www.coincashew.com/coins/overview-ada/guide-how-to-build-a-haskell-stakepool-node[Concashew’s Stake Pool Guide]
 
 *Please note:* The recommended readings and courses shared in this section are not endorsements but rather suggested potential starting points for those interested in learning more and gaining experience in operations relative to stake pool operation.
+
+==== *Putting it all together, long time maintenance*
+
+Due of the stability of the Haskell-node, basic node operation is not quite the challenge it was in the early days of the Incentivized Testnet (ITN), especially when the current node is paired with community tools mentioned in "Getting Started" like https://cardano-community.github.io/guild-operators/[CNTools], https://bitbucket.org/muamw10/jormanager/src/develop/[JorManager], https://github.com/gitmachtl/scripts[StakePool Operator Scripts], or others not listed. 
+
+Listed below are some things prospective SPOs should consider mastering or getting a firm grasp of before operating on mainnet in a professional manner. 
+
+* Monitor node health and configure alerting for when something goes wrong such as missed blocks, node crashes, stuck block height, etc.
+* Read and interpret logs from cardano-node to troubleshoot and find potential issues. 
+  Investigate each missed blocks and determine what went wrong. Long-term luck should be near 100% and while block collisions that occur when the same slot is assigned to more than one pool happen, they are uncommon. More on this subject can be found in the https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/making_blocks.adoc[Slot Battles, Height Battles, Forkers and Propogation] chapter. 
+* Help other SPOs analyze, contribute, and create cardano-node Github issues on the testnets or mainnet.
+* Perform pool maintenance such as node or infrastructure updates without any service interruption.
+* https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/server_security_and_hardening.adoc[Harden the pool environment.]
+* https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/timesync.adoc[Keep the node and server synced to universal time.]
+* Perform pool-relevant tasks such like pool registration updates without exposing keys.
+* Expand resource provisioning for cardano-node without service interruption.
+* Plan and configure failover for critical node failure.
