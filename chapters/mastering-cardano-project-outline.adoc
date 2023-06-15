@@ -86,12 +86,23 @@ The book will present a unified account of all the material needed by users of t
 *** etc. 
 ** #Lace#
 . Stake Pools and Stake Pool Operations - Jesse/Guild
-** The CLI (Command Line Interface)
-*** Include useful community tools here as well
-** Cardano node API
-** Slot Battles, Height Battles, Forkers and Propogation - the nitty gritty details of making blocks - papacarp
-** Minting native tokens
-** Multi channel settlement
+* Introduction
+** https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/stake_pool_glossary.adoc[Stake Pool Glossary]
+** https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/what_is_a_stake_pool.adoc[What is a Stake Pool]
+** https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/SPO_requirements.adoc[SPO Requirements]
+** https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/leadership_selection.adoc[Leadership Selection]
+** https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/making_blocks.adoc[Slot Battles, Height Battles, Forkers and Propagation]
+
+
+* https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/cardano-cli-SPO.adoc[Cardano CLI]
+
+* Node Operations
+** Monitoring
+** https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/timesync.adoc[Timesync]
+** https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/server_security_and_hardening.adoc[Server Hardening]
+** Offline Operations
+
+* Multi Channel Settlement
 . Smart contracts: Plutus and Marlowe
 ** Smart contract case studies
 ** Smart contract security and best practices
