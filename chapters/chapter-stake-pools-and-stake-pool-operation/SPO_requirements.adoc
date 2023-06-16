@@ -60,7 +60,7 @@ Listed below are some things prospective SPOs should consider mastering or getti
 
 * Monitor node health and configure alerting for when something goes wrong such as missed blocks, node crashes, stuck block height, etc.
 * Read and interpret logs from cardano-node to troubleshoot and find potential issues. 
-  Investigate each missed blocks and determine what went wrong. Long-term luck should be near 100% and while block collisions that occur when the same slot is assigned to more than one pool happen, they are uncommon. More on this subject can be found in the https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/making_blocks.adoc[Slot Battles, Height Battles, Forkers and Propagation] chapter. 
+  Investigate each missed block and determine what went wrong. Long-term luck should be near 100% and while block collisions that occur when the same slot is assigned to more than one pool happen, they are uncommon. More on this subject can be found in the https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/making_blocks.adoc[Slot Battles, Height Battles, Forkers and Propagation] chapter. 
 * Help other SPOs analyze, contribute, and create cardano-node Github issues on the testnets or mainnet.
 * Perform pool maintenance such as node or infrastructure updates without any service interruption.
 * https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/server_security_and_hardening.adoc[Harden the pool environment.]
