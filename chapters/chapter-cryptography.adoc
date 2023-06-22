@@ -22,12 +22,19 @@ image::symmetricenc.png[]
 
     * Thereafter, _Party A_, the sending party, will transmit the encrypted data output from Step 1 to the intended recipient, _Party B_. Eavesdroppers will not be able to decrypt messages if the key is only known to Parties A and B, even if the encrypted data message is overheard by an eavesdropper footnote:[Provided that the encryption/decryption key strength is sufficient.].
 
-    * _Party B_, the receiving party, receives the encrypted data, they can decrypt the data by passing the encryption/decryption key and the received decrypted data into the decryption algorithm which would output the unencrypted data.
+    * Upon receiving the enrypted data, _Party B_, the receiving party, can decrypt the data with the key using the decryption algorithm.
 
-Whilst, symmetric encryption is both rather trivial to comprehend and implement given that it makes use of a single encryption/decryption key that is shared amongst all participating parties, it also does not provide any guarantees with respect to: (i) being able to prove who sent a particular message -- i.e. any party can encrypt data and there's no way using this technique to know who encrypted and sent the data; and (ii) ensuring that communication intended for a particular party is only seen be that party.
+Symmetric encryption is rather trivial to comprehend and implement since it makes use of a single encryption/decryption key. However, it does not provide any guarantees with respect to: 
+    * being able to prove who sent a particular message -- i.e. any party can encrypt data and there's no way to know who sent the encrypted data; 
+    
+    * ensuring that communication intended for a particular party is only seen be that party.
 
-The introduction of _asymmetric encryption_ in the 1970s provided a better solution to minimise potential eavesdroppers, ensuring that messages can only be decrypted by the party they were intended for as well as a way to authenticate the sender of a message. Asymmetric encryption makes use of two keys (required by each recipient): (i) a _public key_ belonging to the recipient which will be used by any party that wants to encrypt data intended for the specific recipient; and (ii) a _private key_ which the recipient keeps private to themselves and can be used to decrypt messages sent to them that others have encrypted using the recipeint's public key. The public and private keys are intimately linked together (which is why they are termed a key-pair) and it is impossible footnote:[or rather computationally infeasible] to determine the private key from the public key.
+The introduction of _asymmetric encryption_ in the 1970s provided a better solution to minimise potential eavesdroppers. It ensures that messages can only be decrypted by the party they were intended for and also a way to authenticate the sender of a message. Asymmetric encryption makes use of two keys (required by each recipient): 
+    * a _public key_ belonging to the recipient which will be used by any party that wants to encrypt data intended for the specific recipient; 
+    
+    * a _private key_ which the recipient keeps private to themselves and can be used to decrypt messages sent to them that others have encrypted using the recipeint's public key. 
 
+The public and private keys are intimately linked together (which is why they are termed a key-pair) and it is impossible footnote:[or rather computationally infeasible] to determine the private key from the public key.
 
 An overview of how typical communication takes place using assymetric key encryption is depicted in <<img_asym>>. The main differences in the process are depicted in red, and a description of the steps involved in the process follow:
 
