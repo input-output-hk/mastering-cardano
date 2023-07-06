@@ -1,13 +1,19 @@
 == Cryptography
 
-Cryptography is a fundamental building block of blockchain, DLT, smart contracts and cryptocurrencies. An overview of cryptography and its role in blockchain systems will be covered in this chapter. We do not go into technical details as it is beyond the scope of this book, but we point readers to other resources at the end of the chapter to dig deeper if interested.
+Cryptography is a fundamental building block of blockchain, DLT, smart contracts and cryptocurrencies. An overview of cryptography and its role in blockchain systems will be covered in this chapter. We do not go deep into technical details as it is beyond the scope of this book, but we point readers to other resources at the end of the chapter to dig deeper if interested.
+
+The following main topics will now be covered: Encryption Techniques, Hash Functions, Digital Signatures and #TO UPDATE#.
+
+Blockchain platforms do not primarily make use of encryption and decryption of data in the traditional sense. Yet encryption and decryption are fundamental for digital signatures. We therefore start with an overview of encryption and decryption techniques so as to be able to appreciate the content presented later.
 
 
 === Encryption techniques
 
-Cryptography finds its roots in and is typically used for encrypting and decrypting information. It provides a way for parties to securely communicate without eavesdroppers being able to decipher or understand what has been communicated. 
+Cryptography finds its roots in and is typically used for encrypting and decrypting information. It provides a way for parties to securely communicate without eavesdroppers being able to decipher or understand what has been communicated. Encryption techniques are classified into symmetric and asymmetric encryption. 
 
-Encryption techniques are classified into symmetric and asymmetric encryption. _Symmetric encryption_ uses the same _key_ to both encrypt and decrypt data.  In a similar manner to a physical lock the key is used both when locking and unlocking. More specifically when encrypting or decrypting. The digital key is shared amongst the different parties communicating. This requires that the key would have been shared in a secure manner typically using a different communication medium. Imagine an eavesdropper was listening to communication, and the first thing communicated is the key. If the communicating parties would then encrypt/decrypt information using the key, then they would be able to continue to eavesdrop and both decrypt messages as well as inject encrypted messages without any of the communicating parties knowing. 
+==== Symmetric Encryption
+
+_Symmetric encryption_ uses the same _key_ to both encrypt and decrypt data.  In a similar manner to a physical lock the key is used both when locking and unlocking. More specifically when  encrypting or decrypting. The digital key is shared amongst the different parties communicating. This requires that the key would have been shared in a secure manner typically using a different communication medium. Imagine an eavesdropper was listening to communication, and the first thing communicated is the key. If the communicating parties would then encrypt/decrypt information using the key, then they would be able to continue to eavesdrop and both decrypt messages as well as inject encrypted messages without any of the communicating parties knowing. 
 
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
 .An overview of typical communication using symmetric encryption. 
@@ -25,9 +31,13 @@ image::symmetricenc.png[]
     * Upon receiving the enrypted data, _Party B_, the receiving party, can decrypt the data with the key using the decryption algorithm.
 
 Symmetric encryption is rather trivial to comprehend and implement since it makes use of a single encryption/decryption key. However, it does not provide any guarantees with respect to: 
+
     * being able to prove who sent a particular message -- i.e. any party can encrypt data and there's no way to know who sent the encrypted data; 
     
     * ensuring that communication intended for a particular party is only seen be that party.
+
+
+==== Asymmetric Encryption
 
 The introduction of _asymmetric encryption_ in the 1970s provided a better solution to minimise potential eavesdroppers. It ensures that messages can only be decrypted by the party they were intended for and also a way to authenticate the sender of a message. Asymmetric encryption makes use of two keys (required by each recipient): 
     * a _public key_ belonging to the recipient which will be used by any party that wants to encrypt data intended for the specific recipient; 
@@ -36,18 +46,31 @@ The introduction of _asymmetric encryption_ in the 1970s provided a better solut
 
 The public and private keys are intimately linked together (which is why they are termed a key-pair) and it is impossible footnote:[or rather computationally infeasible] to determine the private key from the public key.
 
-An overview of how typical communication takes place using assymetric key encryption is depicted in <<img_asym>>. The main differences in the process are depicted in red, and a description of the steps involved in the process follow:
-
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
 .An overview of typical communication using asymmetric encryption.
 [#img_asym]
 image::asymmetricenc.png[]
 
-#JE to continue asymmetric encryption process#
+An overview of how typical communication takes place using assymetric key encryption is depicted in <<img_asym>>. The main differences in the process are depicted in red, and a description of the steps involved in the process follow:
 
-=== Hash algorithms
+* Rather than requiring for communicating parties to agree upon some shared encryption/decryption key, using assymetric encryption, parties just need to disclose their public keys. Parties can make public keys visible for the entire world to see. Depicted in Step 0, _Party B_'s public key is somehow made available to _Party A_.
 
-Encryption techniques discussed above provide a secure end-to-end means of digital communication yet do not provide a solution to guaranteeing that data (unencrypted or not) has not changed over time. Hash algorithms provide a solution towards this. Given any arbitrary data as an input, a hash algorithm will output a unique fingerprint, called a hash, for the specific data. No matter how many times the same exact input is passed in, the same hash (fingerprint) will be output. If even a single bit of the input data changes, the outputted hash will change drastically. This is a required feature of a hash algorithm, i.e. that it is impossible footnote:[again, computationally infeasible] to find some other data input that would result in the same hash. 
+* _Party A_ can then encrypt messages intended for _Party B_ by passing in the raw data (in this case it is "Data2"), along with _Party B_'s public key into the asymmetric encryption algorithm (depicted in Step 1). The encryption algorithm will output the encrypted data.
+
+* Thereafter, _Party A_ can send the encrypted data to _Party B_, knowing (depicted in Step 2), knowing that only _Party B_ will be able to decipher the data -- since it is only possible to be decrypted using _Party B_'s private key that they should keep private to themselves.
+
+* Finally, _Party B_ can then pass the encrypted data received and their private key into the decryption algorithm (depicted in Step 3) which will output the actual message intended for them (which was "Data2").
+
+Unlike symmertic encryption, would could allow for _Party B_ to also send messages back to _Party A_ using the same encryption/decryption key, assymetric encryption does not. This is by design, to ensure that messages intended for a party can only be decrypted by that specific party. To reply back, using assymetric encryption, _Party B_ could follow the same process by using _Party A_'s public key to encrypt messages it would like to send back to _Party A_. 
+
+Whilst, assymetric encryption guarantees that only the intended recipient of a particular message can decrypt them, it does not stop a sender from pretending to be someone else -- and the same goes for symmertic key encryption (when the shared encryption/decryption key is leaked). Consider a malicious actor, _Party C_, who also knows _Party B_'s public key. _Party C_ could encrypt messages intended for _Party B_, and when sending the encrypted data to _Party B_ they could pretend to be _Party A_. _Party B_ would have no way to know that it is actually receiving messages from _Party C_. The solution to this, _Digital Signatures_, are discussed later in this chapter.
+
+#Another problem the above discussed encryption techniques have is that on their own, there is no way to provide guarantees the data sent by the sending pary <LEAD ON TO HASHES>#
+
+
+=== Hash Functions
+
+Encryption techniques discussed above provide a secure end-to-end means of digital communication yet do not provide a solution that guarantees data (unencrypted or not) has not changed over time. Hash algorithms provide a solution towards this. Given any arbitrary data as an input, a hash algorithm will output a unique fingerprint, called a hash, for the specific data. No matter how many times the same exact input is passed in, the same hash (fingerprint) will be output. If even a single bit of the input data changes, the outputted hash will change drastically. This is a required feature of a hash algorithm, i.e. that it is impossible footnote:[again, computationally infeasible] to find some other data input that would result in the same hash. 
 
 #include diagram of hash algorithm#
 
@@ -58,7 +81,8 @@ Once a hash is generated, potentially sent, and ultimately stored somewhere, any
 
 === Digital Signatures
 
-Digital Signatures
+Digital signatures solve the problem discussed above. They provide a way for anyone to verify that a message was actually created and "digitally signed" by a specific party.
+
 
 
 === What does it do?
