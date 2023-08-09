@@ -45,7 +45,7 @@ The book will present a unified account of all the material needed by users of t
 ** A Map of the Cardano Ecosystem - JC/Niamh
 ** Educating the world about Cardano - Niamh
 ** Essential Cardano and how to navigate - Niamh
-** Developer Portal and Showcase - Markus
+** https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/developer-portal.adoc[Developer Portal and Showcase] - Markus
 . Governeance
 ** #Introduction to governance#
 ** Catalyst
