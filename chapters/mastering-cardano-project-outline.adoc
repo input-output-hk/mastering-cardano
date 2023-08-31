@@ -46,7 +46,7 @@ The book will present a unified account of all the material needed by users of t
 ** Educating the world about Cardano - Niamh
 ** Essential Cardano and how to navigate - Niamh
 ** https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/developer-portal.adoc[Developer Portal and Showcase] - Markus
-. Governeance
+. Governance
 ** #Introduction to governance#
 ** Catalyst
 ** Basho phase of development
