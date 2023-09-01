@@ -16,7 +16,7 @@ Input Output Global, or IOG, is the engineering company originally tasked with b
 
 Cardano Foundation (add logo)
 
-The Cardano Foundation is a Swiss-based independent standards body. Its responsibilities are overseeing and supervising the Cardano's development and its ecosystem. The Cardano Foundation focuses on three core areas: operational resilience, education and adoption. 
+The Cardano Foundation is a Swiss-based independent standards body. Its responsibilities are overseeing and supervising Cardano's development and its ecosystem. The Cardano Foundation focuses on three core areas: operational resilience, education and adoption. 
 
 EMURGO (add logo)
 
