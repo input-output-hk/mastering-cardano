@@ -5,33 +5,30 @@
 * Cardano Community and Growth of the Ecosystem - JG    _reference Essential Cardano, CardanoCube.io, etc_
 * A Map of the Cardano Ecosystem - JG/Niamh    
 
-see https://www.cardanocube.io/cardano-ecosystem-interactive-map ..._and https://builtoncardano.com/ ...I thought about this for CFTM, felt it was too challenging to capture this in readable book format (one-pager) and likely to keep changing. Could link to it or perhaps have page for each category: DEXs, Wallets, etc
-
-Refer to this report when it's out -- https://www.iogservices.io/guide-to-the-ecosystem-ty?submissionGuid=7ee23255-2361-418d-9d47-d0cd41703e2e
-
    
 == Roles of IOG, Emurgo and the Cardano Foundation
 
-After leaving Ethereum, Charles Hoskinson did a TED Talk in Bermuda. The talk centered around making finance universally accessible to everyone. Hoskinson proffered that the main point of blockchain technology is about economic identity, that it should be geared towards the three billion people in the world without access to a bank account, who don't have identity systems nor property systems and therefore, live in perpetual poverty as victims of geopolitical circumstance. 
+Cardano was designed by a global team of experts across multiple disciplines including distributed systems, programming languages and game theory. Cardano has traditionally been supported by three core entities: Input Output Global, the Cardano Foundation and EMURGO. 
 
-The talk was well received. Jeremy Wood, who had managed operations at Ethereum and stayed in touch with Hoskinson, invited him to Japan to talk about a new venture with local businesspeople. Negotiations went back and forth for a few months on the proposed structure, how funds could be raised, and they reviewed Hoskinson’s unused roadmap from Ethereum. Eventually a deal was reached with Japanese investors to start the ‘Ethereum of Japan’ which would become Cardano. The Japanese people formed a company which later became Emurgo (emurgo.io), the commercialization arm of Cardano. 
+Input Output Global (add logo)
 
-The Cardano Foundation (cardanofoundation.org), now based in the Swiss canton of Zug, was set up as a governance body and is the legal custodian of the brand. Frederik Gregaard explained in a recent video that the Foundation’s focus is on operational resilience, education, and adoption.
+Input Output Global, or IOG, is the engineering company originally tasked with building Cardano. Founded by Charles Hoskinson and Jeremy Wood as Input Output Hong Kong, or IOHK, the company was renamed IOG to reflect its global presence. IOG is committed to innovation through rigorous scientific peer review and the most stringent quality assurance standards in software development. IOG has several partnerships with leading universities to uphold the highest academic standards and to commit to a positive impact on the broader scientific community.
 
-In 2015, Hoskinson and Wood co-founded Input Output Global (iog.io), formerly IOHK (iohk.io). IOG is the development and science arm for Cardano. The rest of 2015 was focused on protocol development and a team of scientists were hired. The Cardano crowdsale ran from late 2015 to January 2017, managed by a Japanese company called Attain who aggregated all the funds. IOG got a 5-year contract to build Cardano. 
+Cardano Foundation (add logo)
 
-*_Optional references (explainers):_*
+The Cardano Foundation is a Swiss-based independent standards body. Its responsibilities are overseeing and supervising the Cardano's development and its ecosystem. The Cardano Foundation focuses on three core areas: operational resilience, education and adoption. 
 
-The future will be decentralized | Charles Hoskinson | TEDxBermuda, youtube.com/watch?v=97ufCT6lQcY
+EMURGO (add logo)
 
-Cardano Foundation Strategy - Core Focus Areas, youtu.be/89d8t72C4Uk
+EMURGO was entrusted with creating, fostering, and supporting Cardano's commercial potential. It facilitates the integration of businesses into Cardano and serves as the for-profit division of the network. Through commercial initiatives, EMURGO aims to enhance the platform and increase usage.
 
-A crowdsale is a type of crowdfunding that issues tokens that are stored on the user's device. The tokens can function like a share of stock and be bought and sold ("equity tokens"), or they can pay for services when the service is up and running ("user tokens"). 
-
-Cardano CrowdSale, nasdaq.com/articles/iohk-launches-cardano-blockchain-ada-now-trading-on-bittrex-2017-10-02
+The voyage was began by these three entities. They now comprise the driving force that propels the Cardano blockchain forward along with the broader Cardano community.  
 
 == Cardano Community and Growth of the Ecosystem
 
-Resume here...
+see https://www.cardanocube.io/cardano-ecosystem-interactive-map ..._and https://builtoncardano.com/ ...This is challenging to capture this in readable book format (one-pager) and likely to keep changing. Could link to it or perhaps have page for each category: DEXs, Wallets, etc
 
-Suggestion: there are projects covering this on daily / weekly basis, CardanoWithPaul, 60blocks (bullish dumpling et al), + others. Also 'this week in cardano' with Sooraj, and 'cardano pills'...We can think of some way of capturing this, maybe a list in the book. 
+The ecosystem is covered in this report from Dec 2022 -- https://www.iogservices.io/guide-to-the-ecosystem-ty?submissionGuid=7ee23255-2361-418d-9d47-d0cd41703e2e
+
+Suggestion: there are projects covering this on daily / weekly basis, CardanoWithPaul, CardanoOverCoffeee, + others. Also 'this week in cardano' with Sooraj, and 'cardano pills'...We can think of some way of capturing this, maybe a list in the book. 
+
