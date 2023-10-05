@@ -1,4 +1,4 @@
-Essential Cardano
+**Essential Cardano**
 
 [Essential Cardano](https://www.essentialcardano.io/) is a central hub and definitive guide to Cardano. As a community-driven resource platform, it serves as the canonical reference to help you navigate our growing ecosystem. Along with links to active projects, it includes official resources and community-generated materials.
 
