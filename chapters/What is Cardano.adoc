@@ -1,12 +1,9 @@
-== What is Cardano?
+== Learn About Cardano
 
-* Cardano explained - Niamh   
-* Roles of IOG and the Cardano Foundation - JG    _...add to / edit extract from CFTM_
-* Cardano Community and Growth of the Ecosystem - JG    _reference Essential Cardano, CardanoCube.io, etc_
-* A Map of the Cardano Ecosystem - JG/Niamh    
+=== What is Cardano?
 
    
-== Roles of IOG, Emurgo and the Cardano Foundation
+=== Roles of IOG, Emurgo, and the Cardano Foundation
 
 Cardano was designed by a global team of experts across multiple disciplines including distributed systems, programming languages and game theory. Cardano has traditionally been supported by three core entities: Input Output Global, the Cardano Foundation and EMURGO. 
 
@@ -24,7 +21,7 @@ EMURGO was entrusted with creating, fostering, and supporting Cardano's commerci
 
 The voyage was began by these three entities. They now comprise the driving force that propels the Cardano blockchain forward along with the broader Cardano community.  
 
-== Cardano Community and Growth of the Ecosystem
+=== Cardano Community and Growth of the Ecosystem
 
 see https://www.cardanocube.io/cardano-ecosystem-interactive-map ..._and https://builtoncardano.com/ ...This is challenging to capture this in readable book format (one-pager) and likely to keep changing. Could link to it or perhaps have page for each category: DEXs, Wallets, etc
 
@@ -32,3 +29,25 @@ The ecosystem is covered in this report from Dec 2022 -- https://www.iogservices
 
 Suggestion: there are projects covering this on daily / weekly basis, CardanoWithPaul, CardanoOverCoffeee, + others. Also 'this week in cardano' with Sooraj, and 'cardano pills'...We can think of some way of capturing this, maybe a list in the book. 
 
+=== Educating the World about Cardano
+
+==== IOG Academy
+
+==== Cardano Days Events
+
+==== Essential Cardano
+https://www.essentialcardano.io[Essential Cardano] is a central hub and definitive guide to Cardano. As a community-driven resource platform, it serves as the canonical reference to help you navigate our growing ecosystem. Along with links to active projects, it includes official resources and community-generated materials.
+
+Essential Cardano outlines organizations, partners, and projects that are part of the Cardano ecosystem, as well as a comprehensive collection of resources to help you learn more about Cardano. Whether you want to understand what Cardano is, who our partners are, learn about our mission and roadmap, or get stuck in and build on Cardano, this is the place to start. Inspired by GitHub's well known _Awesome lists_, Essential Cardano provides an outline of our thriving ecosystem, as well as a comprehensive list of resources to help you learn more and get started. 
+
+It was conceived as a curated library of materials, a one-stop shop where you can find various resources for Cardano and track activity. We recognised the need for a central location for Cardano, to bring everything together and make it easy for people to find what they need. We have provided links to all official sites, channels, and resources, as well as to a collection of material such as explainers, guides, developer resources, glossaries, primers, tutorials, and much more. On top of that, we have identified assets developed by the community which we think provide great value and complement the content that we produce. Our aim is that the Cardano community will now help us to grow and improve this platform.
+
+We also maintain the original https://github.com/input-output-hk/essential-cardano[Essential Cardano list] which provides an outline and central library of materials, including official IOG, Cardano Foundation, and Emurgo resources, as well as community-generated materials. This list is a fully open source repository and we encourage you to add new content, relationships, and innovations, so that we can update this list and build out the ecosystem.
+
+==== Cardano Docs
+
+=== Developer Portal and Showcase
+
+=== Suggested Reading
+- https://docs.cardano.org/introduction/[Cardano Docs]
+- https://iohk.io/en/blog/posts/page-1/[IOG Blog]
