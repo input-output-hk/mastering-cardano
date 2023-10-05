@@ -9,3 +9,7 @@ It was conceived as a curated library of materials, a one-stop shop where you ca
 We also maintain the original [Essential Cardano list](https://github.com/input-output-hk/essential-cardano) which provides an outline and central library of materials, including official IOG, Cardano Foundation, and Emurgo resources, as well as community-generated materials. This list is a fully open source repository and we encourage you to add new content, relationships, and innovations, so that we can update this list and build out the ecosystem.
 
 **Note:** Inclusion in Essential Cardano does not constitute any kind of ‘official’ endorsement by IOG or any other entity. Projects are added upon community request and as ever, we encourage every community member to do their own research when evaluating projects. Inclusion does not constitute an endorsement - please be cautious and do your own research.
+
+***Suggested Reading***
+- [Cardano Docs](https://docs.cardano.org/introduction/)
+- [IOG Blog](https://iohk.io/en/blog/posts/page-1/)
