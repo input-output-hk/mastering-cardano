@@ -1,0 +1,8 @@
+== Decentralized Applications
+
+=== Overview of Decentralized Applications
+
+=== Onchain vs Off Chain Code
+In the Cardano and Plutus context, on-chain and off-chain codes refer to two different aspects of the same smart contract system.
+
+On-chain code refers to the part of a smart contract that runs on the blockchain itself. This code is written in Plutus Core, and it essentially implements the custom logic that controls how the contract's assets can be spent. Once a smart contract is deployed, its on-chain code becomes unchangeable—it is, in fact, a part of the blockchain.
