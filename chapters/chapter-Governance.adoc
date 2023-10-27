@@ -5,7 +5,7 @@
 ** Catalyst
 ** Basho phase of development
 
-** 'SoK: Blockchain Governance' was just before Catalyst pause. Lists seven fundamental properties for blockchain governance: Suffrage, Confidentiality, Verifiability, Accountability, Sustainability, Pareto efficiency, Liveness...explain each and conclusion of paper was no blockchain achieves all today.
+** 'SoK: Blockchain Governance' paper was just before Catalyst pause. Lists seven fundamental properties for blockchain governance: Suffrage, Confidentiality, Verifiability, Accountability, Sustainability, Pareto efficiency, Liveness...explain each and conclusion of paper was no blockchain achieves all today. Good anchor to then explain how Cardano is addressing them in roadmap.
 ** pre 'strategic pause' for Catalyst and everything since...
 ** CIP 1694, intersect, cardano ballot, govtool, roadmap 2024 
 
