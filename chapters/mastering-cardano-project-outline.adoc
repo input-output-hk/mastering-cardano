@@ -86,7 +86,7 @@ The book will present a unified account of all the material needed by users of t
 *** etc. 
 ** #Lace#
 . Stake Pools and Stake Pool Operations - Jesse/Guild
-* Introduction
+* https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/introduction.adoc[Introduction]
 * https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/stake_pool_glossary.adoc[Stake Pool Glossary]
 * https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/what_is_a_stake_pool.adoc[What is a Stake Pool]
 * https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/SPO_requirements.adoc[SPO Requirements]
