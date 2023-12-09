@@ -266,7 +266,7 @@ First is the epoch nonce value. The epoch nonce is a long random number made up 
 
 Currently, the stability window is 1.5 days long, so the value from the block before that window is taken. Leadership information cannot be calculated until 1.5 days before the next epoch starts for the next epoch. The second value that goes into the epoch nonce is the hash of the last block of the previous epoch. Those values are concatenated and then hashed to give us the epoch nonce. The epoch nonce value is the same for all pools.
 
-The epoch nonce is combined with the absolute slot number and the pool’s verifiable random functon (VRF) secret key to give a random output for any given slot. This value is then weighted based on how much stake is in the pool versus the total amount of ada that is delegated in the system. If this weighted random value is less than the threshold value, the pool is allowed to create a block. The pool has successfully won the game of Limbo for that slot!
+The epoch nonce is combined with the absolute slot number and the pool’s verifiable random function (VRF) secret key to give a random output for any given slot. This value is then weighted based on how much stake is in the pool versus the total amount of ada that is delegated in the system. If this weighted random value is less than the threshold value, the pool is allowed to create a block. The pool has successfully won the game of Limbo for that slot!
 
 ==== Security
 It’s important that only the pool operator knows when they will be making a block in the future. For this reason, the pool’s VRF secret key is used to check for leadership selection. The pool’s VRF public key is published on the blockchain. Because of this, it’s impossible for anyone other than the pool operator to know when they have a potential block-making opportunity. Other nodes can verify the VRF signature of the block using the pool’s public VRF key only after the fact to ensure the algorithm is fair and that the pool was allowed to make the block. Due to this secrecy, security is preserved, and it is untenable for an attacker to perform any type of DDoS attack against any particular stake pool.
@@ -278,14 +278,14 @@ It’s important that only the pool operator knows when they will be making a bl
 
 
 ==== Ouroboros leader selection review
-On the Cardano blockchain stake pools make blocks on behalf of their delegators according to the Ouroboros protocol. In Ouroboros, the stake pool selection algorithm is a lottery that runs on every slot (1 slot per second according to current protocol parameters) and the probability of a pool being selected is proportional to the stake it holds. If a pool wins the lottery it is considered a leader for that slot. The details of this algorithm are described in the  https://eprint.iacr.org/2016/889.pdf[Ouroboros paper] and in other sections of this book and thus will not be repeated here but whats important is every pool with stake could theoretically be a leader (make a block) on any slot in any epoch thus leading to situations where multiple pools could be leaders for the same slot or nearly the same slot. There can only be one block on the chain in a particular slot so when multiple pools create blocks that are in contention with each other the stage is set for what we have termed "battles" in the Cardano community.
+On the Cardano blockchain, stake pools make blocks on behalf of their delegators according to the Ouroboros protocol. In Ouroboros, the stake pool selection algorithm is a lottery that runs on every slot (1 slot per second according to current protocol parameters) and the probability of a pool being selected is proportional to the stake it holds. If a pool wins the lottery it is considered a leader for that slot. The details of this algorithm are described in the  https://eprint.iacr.org/2016/889.pdf[Ouroboros paper] and in other sections of this book and thus will not be repeated here but what's important is every pool with stake could theoretically be a leader (make a block) on any slot in any epoch thus leading to situations where multiple pools could be leaders for the same slot or nearly the same slot. There can only be one block on the chain in a particular slot so when multiple pools create blocks that are in contention with each other the stage is set for what we have termed "battles" in the Cardano community.
 
 ==== Types of battles
 To understand the types of battles we can have in Cardano we need to review a few important parts of what makes blockchains work. Referring to the illustration below for three blocks on chain starting with the one on the left at height 8,265,668 and in slot 244,252 with a block hash of "c7b2…​8bac". The next block with a hash of "f777…​498c" at height 8,265,669 includes parent hash "c7b2…​8bac" thus we say it is built ON the previous block. Note that the slot for this block is 244,261 which means it was made 9 slots (9 seconds in current protocol parameters) after the previous block. And finally the third block at height 8,265,670 includes parent hash "f777…​498c" and was made in slot 244,309. This demonstrates how blocks are built on top of each other and how the blockchain grows.
 
 image::nittygritty-illustration-1.png[width=100%,title="Basic blockchain illustration"]
 ===== Slot Battles
-When two blocks are presented at exactly the same height AND have the same parent hash AND slot have the same slot, we have whats called a "Slot Battle".  
+When two blocks are presented at exactly the same height AND have the same parent hash AND slot have the same slot, we have what's called a "Slot Battle".  
 
 image::nittygritty-illustration-2.png[width=50%,title="Slot Battle"]
 
@@ -322,9 +322,9 @@ The block VRF is a number generated from the epoch nonce, the slot number, and t
 === Propagation
 When a pool makes a block, it must be distributed to the network in order to be added to the chain. This is called "propagation" and is the process of sending the block to all other nodes on the network. Pool operators spend a lot of time optimizing their setups to distribute their blocks to as many nodes on the network as possible. The way this works is beyond the scope of this section, but it is important to understand that it takes time for blocks to make their way to all network participants and not all nodes receive the blocks at the same time.
 
-The cardano ecosystem has some tools avaliable to visualize each pools propogation time. An example below shows a real example of a pool’s measured propogation for the blocks it has created. As you can see on average every node receives the block within about 600mS but there are some outliers that take much longer. This is why it is important to have a good distribution strategy for your blocks.
+The cardano ecosystem has some tools available to visualize each pools propagation time. An example below shows a real example of a pool’s measured propagation for the blocks it has created. As you can see on average every node receives the block within about 600mS but there are some outliers that take much longer. This is why it is important to have a good distribution strategy for your blocks.
 
-image::nittygritty-illustration-5.png[width=50%,title="Propogation time"]
+image::nittygritty-illustration-5.png[width=50%,title="propagation time"]
 
 ==== Tying it all together: Some real examples
 
@@ -347,18 +347,18 @@ Alternatively if both Pool A and Pool B create a block in slot 10 there is immed
 [sidebar]
 .Interesting Historical Trivia
 --
-In previous versions of the Cardano Incentivized testnet protocol the first pool to submit a block would win the battle. This lead to centralization as nodes with faster internet connections or those that were proximate to most other nodes would always win the battle.
+In previous versions of the Cardano Incentivized testnet protocol the first pool to submit a block would win the battle. This led to centralization as nodes with faster internet connections or those that were proximate to most other nodes would always win the battle.
 --
  
 ===== The underpowered node problem:
-Sometimes pool operators will have problems with their node that makes it slow to produce blocks. Usually this is because the hardware is underpowered or the node is not optimized. This can cause other pool operators to loose their blocks through no fault of their own. The example below shows what can happen to in this case.
+Sometimes pool operators will have problems with their node that makes it slow to produce blocks. Usually this is because the hardware is underpowered or the node is not optimized. This can cause other pool operators to lose their blocks through no fault of their own. The example below shows what can happen.
 
 1.  Pool A creates a block in slot 10
 2.  Pool B is assigned a block in slot 11 but is very slow to generate the block and it takes 5 seconds to create and propogate the block to other nodes.
 3.  Meanwhile Pool C is assigned a block in slot 14 and since it hasn't seen Pool B's block yet, it builds on top of Pool A's block.
 4.  Finally in slot 15 Pool B’s block is distributed and all nodes need to pick between Pool B’s block and Pool C’s block when if all pools were operating at full speed, Pool B’s block would have been the one that was added to the chain and then Pool C’s block would have built on top of that.
 
-Underpowered nodes cause pools to loose blocks without good reason thus leading to lower chain density and less decentralization. This underpins the importance a for pool operators to have a good block distribution strategy.
+Underpowered nodes cause pools to lose blocks without good reason thus leading to lower chain density and less decentralization. This underpins the importance for pool operators to have a good block distribution strategy.
 
 == `cardano-cli`
 
@@ -634,7 +634,7 @@ A `kes.sk` used by a node has a validity range of 93 days (or 62 kes-periods) an
 Create an `operational certificate`:
 
 ----
-cardano-cli node issue-op-cert --kes-verification-key-file ./kes.vk --cold-signing-key-file ./pool.sk --operational-certificate-issue-counter-file ./counter --kes-period 694 --out-file opcert
+cardano-cli node issue-op-cert --kes-verification-key-file ./kes.vk --cold-signing-key-file ./pool.sk --operational-certificate-issue-counter-file ./counter --kes-period 694 --out-file op.cert
 ----
 
 *Some explanations are in order:*
@@ -675,14 +675,14 @@ ____
 `cardano-cli` offers a query that recapitulates all that:
 +
 ----
-cardano-cli query kes-period-info --op-cert-file ./opcert --mainnet
+cardano-cli query kes-period-info --op-cert-file ./op.cert --mainnet
 ----
 +
 and replies
 +
 ----
 ✓ Operational certificate's KES period is within the correct KES period interval
-✗ No blocks minted so far with the operational certificate at: ./opcert
+✗ No blocks minted so far with the operational certificate at: ./op.cert
   On disk operational certificate counter: 0
 {
     "qKesCurrentKesPeriod": 695,
@@ -737,7 +737,7 @@ counter
 kes.sk
 kes.vk
 new.counter <<< Example file that can safely be destroyed.
-opcert
+op.cert
 payment.addr
 payment.sk
 payment.vk
@@ -761,7 +761,7 @@ Certificates are actions performed on the ledger that allow us to:
 [discrete]
 ==== Address registration (and deregistration)
 
-The stake component contained within a `base.addr` must be registered on the ledger prior being able to delegate ada, receive staking rewards, or use this `base.addr` as way to declare the pool's pledge or receive pool rewards. This is done by sending a registration certificate for the corresponding `stake.addr` on the blockchain.
+The stake component contained within a `base.addr` must be registered on the ledger prior to being able to delegate ada, receive staking rewards, or use this `base.addr` as way to declare the pool's pledge or receive pool rewards. This is done by sending a registration certificate for the corresponding `stake.addr` on the blockchain.
 
 For the moment, let's construct this registration certificate and we will send it on-chain later:
 
@@ -802,14 +802,14 @@ cardano-cli stake-pool registration-certificate \
 `--pool-reward-account-verification-key-file`: The `stake.vk` of the `base.addr` you would like to receive the rewards for running the pool. There can be only one.
 
 ____
-The reward address will not by required to sign the transaction sending the certificate on-chain.
+The reward address will not be required to sign the transaction sending the certificate on-chain.
 ____
 
 `--pool-cost`: the fixed cost the pool will charge before calculating the margin fee. It cannot be set lower than 340 ada or 340000000 lovelaces at this time on mainnet.
 
 `--pool-margin`: the percentage fee taken by the pool on the remaining rewards after pool cost has been deducted from all block rewards. Its boundaries are 0 (0 %)  and 1 (100%). In this example, it is set at 2%.
 
-`--pool-owner-stake-verification-key-file`: The `stake.vk` of the `base.addr` you would like to use as pledge for the pool. It can be the same as the reward account, but different one may be used. You can have more than one pledge `base.addr`.
+`--pool-owner-stake-verification-key-file`: The `stake.vk` of the `base.addr` you would like to use as pledge for the pool. It can be the same as the reward account, but a different one may be used. You can have more than one pledge `base.addr`.
 
 ____
 *The transaction sending the certificate will include a signature for each and every address referenced as a pool owner.*
@@ -841,7 +841,7 @@ Alternatively, the `--single-host-pool-relay` can be used to declare a  stake po
 --pool-relay-port xxxx \
 ----
 
-`--metadata-url`: a publicly available URL that serves the metadata of the pool. Below an example of a pool's metadata.json file.
+`--metadata-url`: a publicly available URL that serves the metadata of the pool. Below is an example of a pool's metadata.json file.
 
 ----
 {
@@ -852,7 +852,7 @@ Alternatively, the `--single-host-pool-relay` can be used to declare a  stake po
 }
 ----
 
-`--metadata-hash`: A hash of the accessible metadata.json must be provided to ensure it has not been tempered with. Once the metadata.json file has been downloaded from the url, we can generate a hash with `cardano-cli`:
+`--metadata-hash`: A hash of the accessible metadata.json must be provided to ensure it has not been tampered with. Once the metadata.json file has been downloaded from the url, we can generate a hash with `cardano-cli`:
 
 ----
 cardano-cli stake-pool metadata-hash --pool-metadata-file ./metadata.json --out-file ./metadata.hash
@@ -869,7 +869,7 @@ If you wish to retire a pool, you can easily create a `deregistration certificat
 cardano-cli stake-pool deregistration-certificate --cold-verification-key-file ./pool.vk --epoch 410 --out-file pool.deregistration
 ----
 
-The  `--epoch`  parameter defines the desired epoch the pool is to become inactive. The epoch must obviously be in the future, but not too far out! No more than 18 months to be precise. This is determinged on Cardano mainnet by a parameter in the `mainnet-shelley-genesis.json` configuration file as the  `eMax`  value. This pool deregistration certificate will have to be sent on-chain and to incentivize pool operators, deregistering a pool refunds the 500 ada deposit paid for pool registration.
+The  `--epoch`  parameter defines the desired epoch the pool is to become inactive. The epoch must obviously be in the future, but not too far out! No more than 18 months to be precise. This is determined on Cardano mainnet by a parameter in the `mainnet-shelley-genesis.json` configuration file as the  `eMax`  value. This pool deregistration certificate will have to be sent on-chain and to incentivize pool operators, deregistering a pool refunds the 500 ada deposit paid for pool registration.
 
 ____
 *Only the pool cold keys are required to retire a pool. The owner has no say in it if they are not the pool operator!*
@@ -903,7 +903,7 @@ kes.sk
 kes.vk
 new.counter <<< Example file that can safely be destroyed.
 metadata.hash
-opcert
+op.cert
 payment.addr
 payment.sk
 payment.vk
@@ -1011,7 +1011,7 @@ Because it is a `tx.draft` all values are set to `0` .
 * `--tx-in`: the UTxO that will be consumed in the format *`TxHash#TxIx`*. Nothing prevents you from consuming more UTxO! Use additional `--tx-in` lines to do so.
 * `--tx-out`: the address where ada change will be sent back to. Nothing prevents you from specifying more than one address! Use additional `--tx-out` lines to do so.
 * `--invalid-hereafter`: the transaction will be valid until this slot height is reached.
-* `--fee`: the transaction fee what we want to calculate!
+* `--fee`: the transaction fee of what we want to calculate!
 * `--certificate-file`: adding a certificate to the transaction.
 
 Once we have the `tx.draft`, we can calculate the fees.
@@ -1068,7 +1068,7 @@ cardano-cli transaction build-raw \
 * Registering an address requires a deposit of 2 ada (2000000 lovelaces).
 * Registering a pool requires a deposit of 500 ada (500000000 lovelaces).
 * This means that the change to the `base.addr` will be : *_value = input - (502 deposit + transaction fee)_*
-* Deregistration of an address or a pool will be accounted for by adding 2 ada or 500 ada, respectively, to the ada change value one must calculate to correctly balance a transaction! For example, to degerister simultaneously a base address and a pool: *_value = (input + 502 deposit) - transaction fee_*
+* Deregistration of an address or a pool will be accounted for by adding 2 ada or 500 ada, respectively, to the ada change value one must calculate to correctly balance a transaction! For example, to deregister simultaneously a base address and a pool: *_value = (input + 502 deposit) - transaction fee_*
 ====
 
 * `--invalid-hereafter`: The slot tip of the network plus some slots to give your transaction time to get accepted by the network. Here, 1000 slots (seconds on mainnet) or ~ 15 minutes in the future, from the last query we made at `"slot": 90368116`.
@@ -1307,7 +1307,7 @@ Some commonly used best practices in IT server administration for any project ar
 === Node Security:
 
 * It is highly recommended to not operate both the `Block Producer` and a `Public Relay` on the same host, as the relay is exposed to the public and if it is compromised or under attack (DOS), your block producer will also be offline, resulting in missing the opportunity to produce blocks, which can negatively impact your ranking and associated rewards. To prevent this, it is best to secure the block producer behind a firewall and only allow it to connect to the relay nodes. The relay nodes can then connect to the block producer and other peer relays.
-* It is recommended to only store the essential files (such as kes.skey, vrf.skey, etc.) on your server for running the cardano-node. It is also strongly recommended to keep other files related to your wallet/pool, such as private keys, on a separate, secure, and preferrably air-gapped device.
+* It is recommended to only store the essential files (such as kes.skey, vrf.skey, etc.) on your server for running the cardano-node. It is also strongly recommended to keep other files related to your wallet/pool, such as private keys, on a separate, secure, and preferably air-gapped device.
 * Additionally, it is important to avoid running any programs, including `cardano-node` and `db-sync`, with root privileges. Instead, create a non-privileged account and use it for these tasks, and this applies to both non-containerized and containerized environments.
 * It is always advisable to use a hardware wallet for your Pool as it will keep your private keys safe and secure.
 * It is important to keep in mind that having a proper server security is crucial to ensure the availability, integrity, and confidentiality of your blockchain network. Having a proper segregation of different functionalities and roles in different servers and using unprivileged accounts can help to reduce the risk of unauthorized access or data breaches.
@@ -1318,7 +1318,7 @@ Some commonly used best practices in IT server administration for any project ar
 
 Another option is to use containerized environments where the Cardano’s software can run logically separated from the hosting server, therefore containing possible breaches. As an added layer of security the use of such software/environment will also increase the level of IT knowledge to properly configure them.
 
-Containerized Enviroments provides several advantages from a security point of view:
+Containerized Environments provides several advantages from a security point of view:
 
 * Isolation: containers are isolated from one another and from the host system. This means that a security vulnerability or attack in one container will not affect other containers or the host system.
 * Least Privilege: Each container runs with a specific set of permissions, reducing the risk of privilege escalation. This means that a malicious container will only have access to the resources it needs to function.
