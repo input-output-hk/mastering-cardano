@@ -1,17 +1,9 @@
 == Governance on Cardano     
 
 
-** #Introduction to governance#
-** Catalyst
-** Basho phase of development
-
-** 'SoK: Blockchain Governance' paper was just before Catalyst pause. Lists seven fundamental properties for blockchain governance: Suffrage, Confidentiality, Verifiability, Accountability, Sustainability, Pareto efficiency, Liveness...explain each and conclusion of paper was no blockchain achieves all today. Good anchor to then explain how Cardano is addressing them in roadmap.
-** pre 'strategic pause' for Catalyst and everything since...
-** CIP 1694, intersect, cardano ballot, govtool, roadmap 2024 
+Will upload draft next week. A full chapter is written for 'Cardano for the masses' (for Jan 2024) which can serve as starting point for 'Mastering Cardano' but adjusted based on different guidelines and Voltaire updates in the coming months.
 
 
-=== Suggested Reading
-- https://sancho.net
-- https://1694.io
-- https://intersectmbo.org
+Chapter currently under review by SMEs:
 
+https://docs.google.com/document/d/1KygJtqqvUmdnHp5_6-JRy7EheBTsaphq/edit
