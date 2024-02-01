@@ -6,7 +6,7 @@ A full chapter has been written for 'Cardano for the masses' (up to date Jan 202
 It is available here in CFTM repo as an .md file,
 https://github.com/johnnygreeney/CardanoForTheMasses/blob/main/Chapter-9-Voltaire.md
 
-...I will update and reformat as .adoc next
+...I will update and reformat here as .adoc next
 
 Chapter currently under review, shared by SMEs:
 https://docs.google.com/document/d/1KygJtqqvUmdnHp5_6-JRy7EheBTsaphq/edit
