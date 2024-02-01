@@ -1,11 +1,12 @@
 == Governance on Cardano     
 
 
-A full chapter has been written for 'Cardano for the masses' (up to date Jan 2024) which can serve as starting point for 'Mastering Cardano' but adjusted based on different guidelines and Voltaire updates in the coming months.
+A full chapter has been written for 'Cardano for the masses' (up to date Jan 2024) which can serve as starting point for 'Mastering Cardano' governance chapter, but adjusted based on different guidelines and Voltaire updates in the coming months.
 
-I will upload to CFTM repo  as .md file, then here as .adoc shortly, once back from holidays..
-https://github.com/johnnygreeney/CardanoForTheMasses
+It is available here in CFTM repo as an .md file,
+https://github.com/johnnygreeney/CardanoForTheMasses/blob/main/Chapter-9-Voltaire.md
 
+...I will update and reformat as .adoc next
 
 Chapter currently under review, shared by SMEs:
 https://docs.google.com/document/d/1KygJtqqvUmdnHp5_6-JRy7EheBTsaphq/edit
