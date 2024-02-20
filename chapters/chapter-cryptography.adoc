@@ -1,3 +1,4 @@
+[[chap-crypto]]
 == Cryptography
 
 Cryptography is a fundamental building block of blockchain, DLT, smart contracts and cryptocurrencies. An overview of cryptography and its role in blockchain systems will be covered in this chapter. We do not go deep into technical details as it is beyond the scope of this book, but we point readers to other resources at the end of the chapter to dig deeper if interested.
