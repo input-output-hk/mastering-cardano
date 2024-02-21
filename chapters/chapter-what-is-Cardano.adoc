@@ -1,6 +1,6 @@
 == What is Cardano     
 
-Cardano is a third generation, proof-of-stake blockchain platform. It combines pioneering technologies to provide a more secure and scalable infrastructure for the development of decentralized applications (DApps) and smart contracts. The project aims to address the shortcomings of existing blockchain platforms by focusing on _scalability_, _interoperability_, and _sustainability_. As a fully decentralized blockchain, it can support a wide range of applications, from financial services to supply chain management, and beyond. 
+Cardano is a third generation, proof-of-stake blockchain platform. It combines pioneering technologies to provide a more secure and scalable infrastructure for the development of decentralized applications (DApps) and smart contracts. The project aims to address the shortcomings of existing blockchain platforms by focusing on _scalability_, _interoperability_, and _sustainability_. As a fully decentralized blockchain, Cardano can support a wide range of applications, from financial services to supply chain management, and beyond. 
 
 === Who built Cardano? ===
 Cardano was founded on peer-reviewed research and developed through evidence-based methods. It was built by scientists, developers, and the extended team at https://iohk.io/[Input Output Global (IOG)], led by https://iohk.io/en/leadership/charles-hoskinson[Charles Hoskinson]. 
