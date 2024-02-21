@@ -1,14 +1,33 @@
 == What is Cardano     
 
-Cardano is a third-generation proof-of-stake blockchain platform. It is an open source project with a thriving ecosystem of developers and builders. Cardano has been built by scientists, developers, and the extended team at https://iohk.io/[Input Output Global] (IOG), and led by https://iohk.io/en/leadership/charles-hoskinson[Charles Hoskinson]. IOG is a pre-eminent blockchain infrastructure research and engineering company with over 600 employees around the globe. 
+Cardano is a third generation, proof-of-stake blockchain platform. It combines pioneering technologies to provide a more secure and scalable infrastructure for the development of decentralized applications (DApps) and smart contracts. It is fully decentralized and can support a wide range of applications, from financial services to supply chain management, and beyond. The project aims to address the shortcomings of existing blockchain platforms by focusing on _scalability_, _interoperability_, and _sustainability_.
 
-The core mission of Cardano is to improve the systems of the world to enable economic inclusion and empowerment for all. The Cardano project is jointly supported by IOG, the https://cardanofoundation.org/[Cardano Foundation] and https://emurgo.io/[Emurgo]. 
+=== Who built Cardano? ===
+Cardano was founded on peer-reviewed research and developed through evidence-based methods. It was built by scientists, developers, and the extended team at https://iohk.io/[Input Output Global (IOG)], led by https://iohk.io/en/leadership/charles-hoskinson[Charles Hoskinson]. 
+
+IOG (initially, IOHK) is a pre-eminent blockchain infrastructure research and engineering company with over 600 employees globally. This extends to a focused innovation ecosystem.
+
+The Cardano project was launched in 2017 and is jointly supported by IOG, the https://cardanofoundation.org/[Cardano Foundation], https://emurgo.io/[Emurgo], and other third parties. It is named after https://www.britannica.com/biography/Girolamo-Cardano[Girolamo Cardano], the 16th century Italian physician and mathematician and its native cryptocurrency is ada, inspired by https://www.britannica.com/biography/Ada-Lovelace[Ada Lovelace], the 19th century English mathematician and programmer.
+
+=== Mission ===
+The core mission of Cardano, as a fully decentralized platform, is to improve the systems of the world to enable economic inclusion and empowerment for all. 
 
 _“Cardano is an open platform that seeks to provide economic identity to the billions who lack it by providing decentralized applications to manage identity, value and governance”  (Charles Hoskinson, 2020)._
 
-Cardano is a fully decentralized platform that is maintained by almost 3,000 distributed stake pools that are operated by the Cardano community members. All blocks and transactions are validated by participants of the network without any reliance on a centralized authority. This means that decisions and ownership of information are shared amongst all users who in turn are helping to create a more decentralized and equitable world.
+=== Open Source Ethos ===
+Cardano is a thriving open source project with a healthy and vibrant ecosystem of active developers and builders. Open source principles are integral to Cardano’s identity as a decentralized blockchain platform. Collaboration and transparency with the Cardano community results in a robust and inclusive ecosystem that empowers users and developers alike. 
 
-Fundamentally, Cardano has been built as a resilient and sustainable blockchain with a proof-of-stake consensus protocol called https://iohk.io/en/blog/posts/2020/06/23/the-ouroboros-path-to-decentralization/[Ouroboros] which is proven to have the same security guarantees and is undoubtedly more energy efficient than proof-of-work protocols.
+All of the research and technical specifications that underpin Cardano are publicly available, the codebase is open, and all Cardano development activity is published online.
+
+=== Decentralization ===
+Cardano is a fully decentralized blockchain. Let's take a closer look at what this means.
+
+Cardano is maintained by almost 3,000 distributed stake pools that are operated by the community, making it fully decentralized. All blocks and transactions are validated by network participants without any reliance on a centralized authority. Decisions and ownership of information is shared amongst all users. 
+
+Every ada holder also holds a stake in the Cardano network. Ada stored in a wallet can be delegated to a stake pool to earn rewards – to participate in the successful running of the network – or pledged to a stake pool to increase the pool’s likelihood of receiving rewards. In time, ada will also be usable for a variety of applications and services on the Cardano platform.
+
+=== Proof of Stake ===
+Cardano uses proof-of-stake to reach consensus. Fundamentally, Cardano has been built as a resilient and sustainable blockchain with a proof-of-stake consensus protocol called Ouroboros which is proven to have the same security guarantees as proof-of-work protocols and is undoubtedly more energy efficient. To learn more about Ouroboros, read the <x ref to Ouroboros chapter>.
 
 Cardano builds upon Bitcoin’s UTXO model and implements an extended UTXO (EUTXO) accounting model that supports smart contracts. To learn more about EUTXO, read the <ETXO chapter x-ref>.
 
@@ -45,8 +64,10 @@ Designing a proof-of-stake blockchain means it is vital to ensure that the syste
 
 Central to the treasury is a democratized voting mechanism where ada holders will themselves decide how funds are allocated by voting on funding proposals. This will ensure that decisions are made by a democratic vote rather than by just a handful of stakeholders. This voting system will influence decisions such as funding initiatives, authorizing updates to the protocol, and rolling out any constitutional updates such as changes to the decision-making process, or the minting of new tokens.
 
-=== Cardano Developement Themes
-Cardano’s development journey has been split into five main themes:
+Launched in 2023, https://www.intersectmbo.org/[Intersect] is a member-based organization for the Cardano ecosystem and puts the community at the core of Cardano’s future development. Bringing members together behind a shared vision, Intersect enables a more resilient, secure, transparent, and innovative Cardano ecosystem that puts members in the driving seat of Cardano’s future.
+
+=== Cardano Roadmap ===
+The https://roadmap.cardano.org/en/[Cardano roadmap] includes the following five eras:
 
 - Byron — foundation establishment
 - Shelley — decentralization
@@ -54,7 +75,7 @@ Cardano’s development journey has been split into five main themes:
 - Basho — scalability
 - Voltaire — governance
 
-Each theme is centered around a set of feature that are being delivered across multiple code releases. While these development streams are delivered sequentially, the work for each happens in parallel – with research, prototyping, and development often in progress all at once across the different stages.
+Each era is centered around a set of feature that are being delivered across multiple code releases. While these development eras are delivered sequentially, the work for each happens in parallel – with research, prototyping, and development often in progress all at once across the different stages.
 
 === Suggested Reading
 - https://www.essentialcardano.io/glossary/cardano-roadmap[Cardano Roadmap]
