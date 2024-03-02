@@ -66,57 +66,31 @@ Consider the CIP repository to be a collection of useful tools - some may play w
 
 *Notable CIPs*:
 
-* CIP 1 - CIP process 
+* CIP 1 - CIP process. ‘A Cardano improvement proposal (CIP) is a formalized design document for the Cardano community, providing information or describing a new feature for the Cardano network, its processes, or environment in a concise and technically efficient manner.’ CIP 1 specifies three statuses: Proposed, Active and Inactive and each CIP falls into a category.footnote:[ CIP-0001 categories, github.com/cardano-foundation/CIPs/tree/master/CIP-0001#categories]
 
-‘A Cardano improvement proposal (CIP) is a formalized design document for the Cardano community, providing information or describing a new feature for the Cardano network, its processes, or environment in a concise and technically efficient manner.’ CIP 1 specifies three statuses: Proposed, Active and Inactive and each CIP falls into a category.footnote:[ CIP-0001 categories, github.com/cardano-foundation/CIPs/tree/master/CIP-0001#categories]
+* CIP 9 - Protocol Parameters. ‘This CIP is an informational CIP that describes the initial protocol parameter settings for the Shelley era of the Cardano blockchain, plus the changes that have been made. It is intended to serve as a historic record, allowing protocol parameter changes to be tracked back to the original settings.’
 
-* CIP 9 - Protocol Parameters
+* CIP 25 - NFT Metadata Standard. This proposal defines an NFT Metadata Standard for Native Tokens.
 
-‘This CIP is an informational CIP that describes the initial protocol parameter settings for the Shelley era of the Cardano blockchain, plus the changes that have been made. It is intended to serve as a historic record, allowing protocol parameter changes to be tracked back to the original settings.’
+* CIP 27 - CNFT Community Royalties Standard. A community standard for royalties' functionality, that does not require smart contracts to implement.
 
-* CIP 25 - NFT Metadata Standard
+* CIP 30 - Cardano dApp-Wallet Web Bridge. This CIP describes the communication bridge allowing dApps to interface with Cardano wallets.
 
-This proposal defines an NFT Metadata Standard for Native Tokens.
+* CIP 31 - Reference Inputs. ‘We introduce a new kind of input, a reference input, which allows looking at an output without spending it. This will facilitate access to information stored on the blockchain without the churn associated with spending and recreating UTXOs.’
 
-* CIP 27 - CNFT Community Royalties Standard
+* CIP 32 - Inline datums. ‘We propose to allow datums themselves to be attached to outputs instead of datum hashes. This will allow much simpler communication of datum values between users.’
 
-A community standard for royalties' functionality, that does not require smart contracts to implement.
+* CIP 33 - Reference scripts. ‘We propose to allow scripts ("reference scripts") to be attached to outputs, and to allow reference scripts to be used to satisfy script requirements during validation, rather than requiring the spending transaction to do so. This will allow transactions using common scripts to be much smaller.’
 
-* CIP 30 - Cardano dApp-Wallet Web Bridge
+* CIP 50 - Liesenfelt Shelleys Voltaire Decentralization Update. Proposed by Dr Michael Liesenfelt, this CIP discusses the justification, methods, metrics, and implementation schedule to increase Cardano’s decentralization.
 
-This CIP describes the communication bridge allowing dApps to interface with Cardano wallets.
+* CIP 68 - Datum Metadata Standard. This proposal defines a metadata standard for native assets making use of output datums not only for NFTs but any asset class.
 
-* CIP 31 - Reference Inputs
-
-‘We introduce a new kind of input, a reference input, which allows looking at an output without spending it. This will facilitate access to information stored on the blockchain without the churn associated with spending and recreating UTXOs.’
-
-* CIP 32 - Inline datums
-
-‘We propose to allow datums themselves to be attached to outputs instead of datum hashes. This will allow much simpler communication of datum values between users.’
-
-* CIP 33 - Reference scripts
-
-‘We propose to allow scripts ("reference scripts") to be attached to outputs, and to allow reference scripts to be used to satisfy script requirements during validation, rather than requiring the spending transaction to do so. This will allow transactions using common scripts to be much smaller.’
-
-* CIP 50 - Liesenfelt Shelleys Voltaire Decentralization Update 
-
-Proposed by Dr Michael Liesenfelt, this CIP discusses the justification, methods, metrics, and implementation schedule to increase Cardano’s decentralization.
-
-* CIP 68 - Datum Metadata Standard
-
-This proposal defines a metadata standard for native assets making use of output datums not only for NFTs but any asset class.
-
-* CIP 79 - Implement Ouroboros Leois to increase Cardano throughput
-
-This CIP discusses the implementation of _Ouroboros Leios_. 
+* CIP 79 - Implement Ouroboros Leois to increase Cardano throughput. This CIP discusses the implementation of _Ouroboros Leios_. 
  
-* CIP1694 - A First Step Towards On-Chain Decentralized Governance
+* CIP1694 - A First Step Towards On-Chain Decentralized Governance. A proposal for Cardano's on-chain governance system to support the new requirements for Voltaire. The busiest CIP to date, based on comments and updates. See 1694.io which presents the CIP in a tidier format, maintained by LIDO Nation.
 
-A proposal for Cardano's on-chain governance system to support the new requirements for Voltaire. The busiest CIP to date, based on comments and updates. See 1694.io which presents the CIP in a tidier format, maintained by LIDO Nation.
-
-* CIP999 (read as ‘CIP minus 1’) - Cardano Problem Statements (CPS)
-
-CPSs complement CIPs. CIP999 explains the need for CPSs, their set structure, statuses and criteria for their success. CPSs were introduced to simplify the process when explaining the problem statement of complex CIPs, replacing the more elaborate ‘motivation’ section. They may also exist as standalone ‘requests for proposals from ecosystem actors who've identified a problem but are yet to find any suitable solution’.
+* CIP999 (read as ‘CIP minus 1’) - Cardano Problem Statements (CPS). CPSs complement CIPs. CIP999 explains the need for CPSs, their set structure, statuses and criteria for their success. CPSs were introduced to simplify the process when explaining the problem statement of complex CIPs, replacing the more elaborate ‘motivation’ section. They may also exist as standalone ‘requests for proposals from ecosystem actors who've identified a problem but are yet to find any suitable solution’.
 
 image::https://github.com/johnnygreeney/CardanoForTheMasses/blob/main/images/fig92.png[]
 
