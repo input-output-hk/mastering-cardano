@@ -56,7 +56,8 @@ There are three different types of CIP:
 
 Every CIP has the following format: Preamble, Abstract, Motivation, Specification, Rationale, Path to Active, Copyright. The concept is developed as a written proposal and submitted as a pull request to the CIP repository after initial discussion and feedback. The updated Draft CIP is then publicly processed in the following manner:
 
-image::https://github.com/johnnygreeney/CardanoForTheMasses/blob/main/images/fig91.png []
+image::https://github.com/johnnygreeney/CardanoForTheMasses/blob/main/images/fig91.png[]
+
 Figure 9.1: CIP workflow from CIP0001
 
 CIPs are processed in a semi-formal manner: Editors of CIP proposals meet on a regular basis to discuss and assess ideas. Meeting minutes are available to the public,footnote:[CIP biweekly meetings, github.com/cardano-foundation/CIPs/tree/master/BiweeklyMeetings] and meetings are held every two weeks. Authors are encouraged to contribute and offer comments, and discussions often take place simultaneously in the Cardano forum CIPs section and/or in the GitHub pull requests. If you have designs on becoming a CIP editor, you should read Robert Phair’s blog about his experience in the role.footnote:[Cardano Improvement Proposals (CIPs) — Introduction from an Insider, rxphair.medium.com/cardano-improvement-proposals-cips-introduction-from-an-insider-7b2f7cc94d01]
