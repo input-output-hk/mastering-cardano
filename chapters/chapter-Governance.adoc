@@ -1,12 +1,12 @@
-== Governance on Cardano     
-
 https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/
 
 
 Chapter currently under review, shared by SMEs:
 https://docs.google.com/document/d/1KygJtqqvUmdnHp5_6-JRy7EheBTsaphq/edit
 
-Money is social
+== Governance on Cardano     
+
+===Money is social
 With a few noteworthy exceptions most blockchains have made no provision for future upgrades. The capacity to effectively drive a soft or hard fork is critical to a cryptocurrency’s long-term viability. As a result, investors are unlikely to spend millions of dollars on protocols whose roadmap and participants are fleeting, petty, or extremist. There must be an efficient procedure for forming agreement on a vision for the underlying protocol’s evolution. Fragmentation might split the group apart if this process is difficult.
 
 Cryptocurrencies are an excellent illustration of money’s social component. When comparing Bitcoin, Litecoin and Dogecoin merely on the basis of technology, there is little difference between the three. Despite this, both Litecoin and Dogecoin have relatively large market capitalizations, active communities, and their own social agendas.
@@ -29,9 +29,9 @@ In the worst-case scenario, moral authority to act might simply devolve to whome
 
 Some cryptocurrencies like Tezos have a model where the cryptocurrency protocol is handled as a constitution, with three parts (Transaction, Consensus, and Network) and a set of explicit rules and procedures for updating the constitution. However, there is still a lot of work to be done on incentives and how to represent and update a crypto protocol using a formal language.
 
-IOG have been researching governance in crypto for years.footnote:[Kaidalov, Kovalchuk, Nastenko, Rodinko, Shevtzov, Oliynykov (2017), ‘A proposal for an Ethereum Classic Treasury System’, iohk.io/en/research/library/papers/a-proposal-for-an-ethereum-classic-treasury-system/] They have written papers as far back as 2017 on proposing a treasury for Ethereum Classic. Another paper, authored out of Lancaster University,footnote[Zhang, Oliynykov and Balogun (2019), ‘A Treasury System for Cryptocurrencies: Enabling Better Collaborative Intelligence’, eprint.iacr.org/2018/435.pdf] focused on the concept of a treasury system and a viable, democratic method to long-term development financing for Cardano.
+IOG have been researching governance in crypto for years.footnote:[Kaidalov, Kovalchuk, Nastenko, Rodinko, Shevtzov, Oliynykov (2017), ‘A proposal for an Ethereum Classic Treasury System’, iohk.io/en/research/library/papers/a-proposal-for-an-ethereum-classic-treasury-system/] They have written papers as far back as 2017 on proposing a treasury for Ethereum Classic. Another paper, authored out of Lancaster University,footnote:[Zhang, Oliynykov and Balogun (2019), ‘A Treasury System for Cryptocurrencies: Enabling Better Collaborative Intelligence’, eprint.iacr.org/2018/435.pdf] focused on the concept of a treasury system and a viable, democratic method to long-term development financing for Cardano.
 
-Formal methods, machine comprehensible specifications, and combining a treasury with this process for financial incentives are just some of the solutions IOG pursued. Looking back now, it’s clear they were putting the chess pieces in place, to create the apparatus necessary for the _Age of Voltaire_ vision presented at ScotFestfootnote[ IO Scotfest: The age of Voltaire, youtube.com/playlist?list=PLnPTB0CuBOBxjkB8DdMhy57MriBCHT1RM] in November 2022. More on this later. 
+Formal methods, machine comprehensible specifications, and combining a treasury with this process for financial incentives are just some of the solutions IOG pursued. Looking back now, it’s clear they were putting the chess pieces in place, to create the apparatus necessary for the _Age of Voltaire_ vision presented at ScotFestfootnote:[ IO Scotfest: The age of Voltaire, youtube.com/playlist?list=PLnPTB0CuBOBxjkB8DdMhy57MriBCHT1RM] in November 2022. More on this later. 
 
 
 *Rest of chapter to be uploaded shortly* 
