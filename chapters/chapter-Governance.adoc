@@ -221,6 +221,27 @@ Following the pilot, IOG allowed Catalyst Natives to accept more challenges from
 
 Catalyst Natives is an opportunity for businesses of all sizes to have access to a vault of ideas and the people who can help them come to life. Catalyst Natives is now aiming to assist Cardano ecosystem partners, and native asset token projects, handle particular pain points for which they either do not have the resources, or simply do not have a solution, and outsource them as Catalyst challenges for proposers to solve. 
 
+== Later Funds
+
+Every Catalyst fund cycle has provided new, remarkable accomplishments. Fund7 was no different. 
+
+image::https://github.com/johnnygreeney/CardanoForTheMasses/blob/main/images/fig96.png[]
+*Figure 9.6:* Fund7 stats
+
+After the votes were tabulated and counted in Fund7, 269 additional initiatives were selected to get ada. Given that each of these projects was created in response to 24 real-world problems provided by the Cardano community, as well as one additional task issued by COTI, Cardano’s first Catalyst Native pioneer, these were impressive numbers. 
+
+This time around, over 52,500 wallets registered to vote, and community advisers reviewed over 900 proposals to assist voters make informed judgements. The number of ideas financed by the Cardano Treasury had almost quadrupled in a short period of time, reaching 575 projects. 
+
+The Cardano Treasury now contained roughly 800m ada in order to maintain and build the ecosystem. Many of the projects that were funded in previous rounds have now been completed and their end products were being showcased.
+
+*Fund8*
+
+Every three months, a new Project Catalyst innovation fund campaign launches, offering the chance to obtain resources from the Cardano Treasury. Fund8 offered $16m funding in ada.
+
+Fund8 results confirmed the momentum just keeps growing as voting turnout increased and a diverse range of projects were funded. One of the smallest amounts requested, and funded, was also one of the most significant. Sebastien Guillemot’s successful proposal meant he was the first CIP editor to be paid for his time. More editors followed, serving as stewards of the CIP process. 
+
+Catalyst also partnered with the Financial Times and Seedstars (seedstars.com) to launch the **FT x Cardano Blockchain Challenge** where selected startups participated in a 3-day Bootcamp and connected to Seedstars’ network of mentors. 24 startups were selected to participate in a 3-month Acceleration Program.’ 
+
 == The Cardano cFund
 == dReps
 == Tactical Pause for Catalyst
