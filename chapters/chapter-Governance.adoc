@@ -196,7 +196,19 @@ Fund4 was the most accessible and ambitious round yet, as well as the first mill
 IOG continued to make the project more available to the Cardano community during 2021 to promote participation. Voter registration increased considerably. The redesigned registration center was now completely connected with the Daedalus wallet. Yoroi lite wallet users could easily register via a browser plugin. After that, voters could finish the process using a specific mobile voting app, which can be downloaded on iOS or Android. Project Catalyst had risen to become the world’s biggest decentralized autonomous organization (DAO) in less than six months.
 
 == Catalyst Circle 
+
+As Fund4 came to an end in July 2021, Catalyst had already proven itself as a one-stop hub for teamwork and decentralized innovation. However, this rapid expansion brought with it new obstacles. 
+
+Project Catalyst was gaining in contributions from increasingly different functional groups who were helping to bring the collective intelligence forward. Specifically, community advisors, funded-proposers, stake pool operators (SPOs), toolmakers & maintainers, all who contribute to Catalyst’s success and expansion.
+
+Project Catalyst gains from having a broader set of participants as it results in more diverse ideas and proposals. It also makes communication between all of these groups more difficult. Every cohort wants to be heard, and their thoughts and concerns need to be aired at the project level.
+
+These groups need representation and trustworthy leadership to advocate for them. Project Catalyst’s influence would be severely reduced if such representation was inadequate or non-existent. This is why the Catalyst Circle was created as a ‘human sensor array’ that served as a representative body for all the Project Catalyst participants. The Circle kept track of Catalyst’s present state and future intentions for governance. Within the Catalyst ecosystem, it identified and discussed issues, objections, and possibilities. For example, the Circle might debate the amounts distributed to a fund, tweaks or conditions to incentive parameters, the Catalyst API, and so on.
+
+This activity gave an insight into the hopes, desires, needs, and worries of the community inside Project Catalyst by documenting meetings and collecting activities in a backlog available to everyone. The Circle was also in charge of choosing its own future form and designing the Circle election procedures. Catalyst Circle was paused after V4. It will likely restart, or resurface in a new form, with the learnings and experiences key to any future incarnations.  
+
 == Catalyst Natives 
+
 == The Cardano cFund
 == dReps
 == Tactical Pause for Catalyst
