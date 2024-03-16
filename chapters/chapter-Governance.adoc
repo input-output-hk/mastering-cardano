@@ -243,6 +243,18 @@ Fund8 results confirmed the momentum just keeps growing as voting turnout increa
 Catalyst also partnered with the Financial Times and Seedstars (seedstars.com) to launch the **FT x Cardano Blockchain Challenge** where selected startups participated in a 3-day Bootcamp and connected to Seedstars’ network of mentors. 24 startups were selected to participate in a 3-month Acceleration Program.’ 
 
 == dReps
+IOG introduced the notion of delegating your voting rights to a Delegate Representatives (dReps), and urged people interested to register during a Fund8 Project Catalyst Town Hall. 
+
+The ongoing growth of the Cardano ecosystem is great news but, on the other hand, offers a problem. The community’s obligation to examine and vote on ideas grows as the quantity of proposals grows. A new approach was needed to guarantee that all ideas get the attention they deserve, as well as to support further development.
+
+Ada holders may give their votes to one or more dReps through delegation. This provides the more passive voter with a chance to have their voice heard, but now across a larger number of proposals than they could read and evaluate personally.
+
+Catalyst dReps will vote on most Project Catalyst proposals, improving the quality of decision-making within each Fund. dReps will collaborate to develop policy, gather and evaluate data, consult with experts, and ultimately vote on a variety of initiatives and issues proposed by the community. If you’d like to get involved, you can join the dRep pioneers here.footnote:[Catalyst dRep applications, bit.ly/3rSyHvP]  
+
+*Fund9*
+
+Catalyst’s relentless, Borg-like momentum continued with Fund9 opening in June 2022. There is typically something new and innovative with the arrival of each fund, and this time Cardashift joined the Catalyst Natives program. Their challenge was based on value creation through positive impact-oriented projects. Cardashift listed Cardano’s ‘green’ credentials, its focus on Africa and its deterministic nature among their reasons for partnering with Catalyst. As with every quarterly fund, the rewards for successful proposals increased. The Fund9 launch guide outlined how the 16m ada was to be allocated. 
+
 == Tactical Pause for Catalyst
 == The Age of Voltaire
 == Intersect
