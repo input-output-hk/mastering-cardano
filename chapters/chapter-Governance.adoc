@@ -240,7 +240,7 @@ Every three months, a new Project Catalyst innovation fund campaign launches, of
 
 Fund8 results confirmed the momentum just keeps growing as voting turnout increased and a diverse range of projects were funded. One of the smallest amounts requested, and funded, was also one of the most significant. Sebastien Guillemot’s successful proposal meant he was the first CIP editor to be paid for his time. More editors followed, serving as stewards of the CIP process. 
 
-Catalyst also partnered with the Financial Times and Seedstars (seedstars.com) to launch the **FT x Cardano Blockchain Challenge** where selected startups participated in a 3-day Bootcamp and connected to Seedstars’ network of mentors. 24 startups were selected to participate in a 3-month Acceleration Program.’ 
+Catalyst also partnered with the Financial Times and Seedstars (seedstars.com) to launch the _FT x Cardano Blockchain Challenge_ where selected startups participated in a 3-day Bootcamp and connected to Seedstars’ network of mentors. 24 startups were selected to participate in a 3-month Acceleration Program.’ 
 
 == dReps
 IOG introduced the notion of delegating your voting rights to a Delegate Representatives (dReps), and urged people interested to register during a Fund8 Project Catalyst Town Hall. 
@@ -279,9 +279,9 @@ The paper lists seven properties by which to assess different requirements for e
 image::https://github.com/johnnygreeney/CardanoForTheMasses/blob/main/images/fig97.png[]
 *Figure 9.7*: The partition map of governance properties from the ‘SoK: Blockchain Governance’ paper
 
-The paper concludes that while each blockchain displays some of the properties, no blockchain meets all the requirements for effective governance. It was food for thought just before the dawn of the **Age of Voltaire**. 
+The paper concludes that while each blockchain displays some of the properties, no blockchain meets all the requirements for effective governance. It was food for thought just before the dawn of the _Age of Voltaire_. 
 
-With the Catalyst pause after Fund9 and the **Age of Voltaire** still in its infancy, the Catalyst team introduced a new concept in the first Town Hall of 2023 called **Special Voting Events (SVE)** that leveraged Catalyst tooling. A SVE was a vote held that was unrelated to Catalyst fund cycles. It was a stopgap measure for obtaining community consent on important decisions before Catalyst resumed with Fund10 and new governance tools were being built to allow for polls and temperature checks. We learned in **ScotFest 2022** presentations that Catalyst is merely a sighter for the **Age of Voltaire**, and 2023 would be about integrating tooling to ultimately facilitate the implementation of CIP 1694footnote:[CIP 1694, github.com/cardano-foundation/CIPs/tree/master/CIP 1694] which we will discuss shortly. 
+With the Catalyst pause after Fund9 and the _Age of Voltaire_ still in its infancy, the Catalyst team introduced a new concept in the first Town Hall of 2023 called _Special Voting Events (SVE)_ that leveraged Catalyst tooling. A SVE was a vote held that was unrelated to Catalyst fund cycles. It was a stopgap measure for obtaining community consent on important decisions before Catalyst resumed with Fund10 and new governance tools were being built to allow for polls and temperature checks. We learned in _ScotFest 2022_ presentations that Catalyst is merely a sighter for the _Age of Voltaire_, and 2023 would be about integrating tooling to ultimately facilitate the implementation of CIP 1694footnote:[CIP 1694, github.com/cardano-foundation/CIPs/tree/master/CIP 1694] which we will discuss shortly. 
 
 *Fund10* 
 
@@ -299,19 +299,19 @@ ____
 ‘We learned a lot about experiments with Community governance through everything that's happened in Catalyst and the contributions everyone here has made’ 
 ____
 
-There was pushback from some proposers, for example on Twitter (X),  PACE posted: **‘This is a massive concern as IOG has a direct incentive to remove competition from categories they are competing in’.** There was also an article highlighting that a very small fraction of the community has disproportionately large voting power and that up to 50% of wallet holders have virtually no influence, controlling only 1% of the voting power. 
+There was pushback from some proposers, for example on Twitter (X),  PACE posted: _‘This is a massive concern as IOG has a direct incentive to remove competition from categories they are competing in’._ There was also an article highlighting that a very small fraction of the community has disproportionately large voting power and that up to 50% of wallet holders have virtually no influence, controlling only 1% of the voting power. 
 
-Some suggested Quadratic Voting could address this issue, while others rejected the suggestion. Quadratic voting is a collective decision-making procedure which involves individuals allocating votes to express the degree of their preferences, rather than just the direction of their preferences. Adam Rusch posted his views that **Quadratic Voting is not a silver bullet for Governance** on Cardano Forum. 
+Some suggested Quadratic Voting could address this issue, while others rejected the suggestion. Quadratic voting is a collective decision-making procedure which involves individuals allocating votes to express the degree of their preferences, rather than just the direction of their preferences. Adam Rusch posted his views that _Quadratic Voting is not a silver bullet for Governance_ on Cardano Forum. 
 
 Each project team was now obliged to provide more transparency by formulating their 'Statement of Milestones,' using the Milestone Module, which monitors critical checkpoints throughout the project’s lifecycle.
 
 Projectcatalyst.io also had a full data refresh updating with all the Fund10 cohort data. This enabled users to track the progress of each funded project within the milestone program. LIDO NATION had previously blogged that “the hardest part of providing the Catalyst Explorer has been getting the data.” 
 
-Another notable funded proposal was submitted by former IOG employees, Johnny Nguyen and Dor Garbash. Their project is **‘For the community, by the community: Optimizing the ROI of Catalyst through listening to builders, expert analysis and assessment of Cardano’s Community Grants Fund. Brought to you by Catalyst and Intersect MBO Architects.’**
+Another notable funded proposal was submitted by former IOG employees, Johnny Nguyen and Dor Garbash. Their project is _‘For the community, by the community: Optimizing the ROI of Catalyst through listening to builders, expert analysis and assessment of Cardano’s Community Grants Fund. Brought to you by Catalyst and Intersect MBO Architects.’_
 
 *Fund11*
 
-Updates to Fund11 were announced at the Dubai Cardano Summit in November 2023. Many of the changes addressed feedback from the community. The ‘downvote’ made a welcome exit, a cap of five proposals per person was introduced and proposers could not have anything projects open from Fund7 or earlier. Fund11 also saw the birth of ‘Working Groups’. It’s not clear how they will function just yet, but will likely be something similar to what **Catalyst Circle** was. Fund11 saw the following three categories:
+Updates to Fund11 were announced at the Dubai Cardano Summit in November 2023. Many of the changes addressed feedback from the community. The ‘downvote’ made a welcome exit, a cap of five proposals per person was introduced and proposers could not have anything projects open from Fund7 or earlier. Fund11 also saw the birth of ‘Working Groups’. It’s not clear how they will function just yet, but will likely be something similar to what _Catalyst Circle_ was. Fund11 saw the following three categories:
 
 * Concept: for brand new ideas limited to a budget of 100K ada.
 * Solution: projects who already have at least a proof of concept for review, limited to 300K ada.
@@ -325,9 +325,9 @@ Updates to Fund11 were announced at the Dubai Cardano Summit in November 2023. M
 * Catalyst Systems Improvements: Discovery
 * Catalyst System Improvements: Development
 
-Daniel Ribar (Community and Product at Project Catalyst) talked in depth about Fund11 in a **Cardano with Paul** interview. With the longtime Catalyst leadership team now voted in for another year to run affairs, the team clarified that they will apply fund rules. Proposals submitted incorrectly, in the wrong track or out of scope, will be notified with guidance on how to come inline, otherwise they risk being withdrawn. 
+Daniel Ribar (Community and Product at Project Catalyst) talked in depth about Fund11 in a _Cardano with Paul_ interview. With the longtime Catalyst leadership team now voted in for another year to run affairs, the team clarified that they will apply fund rules. Proposals submitted incorrectly, in the wrong track or out of scope, will be notified with guidance on how to come inline, otherwise they risk being withdrawn. 
 
-There is plenty of feedback and suggestions coming from the community. For example, Santiago Carmuega, of TxPipe, explained his case for an alternative parameter that would be more effective than max number of proposals per team. Small details can have a big impact on a business model of small teams following an open-source software philosophy. Founder of **Axo**, Jarek Hirniak felt Catalyst needs to be more open to ‘bold experiments’. 
+There is plenty of feedback and suggestions coming from the community. For example, Santiago Carmuega, of TxPipe, explained his case for an alternative parameter that would be more effective than max number of proposals per team. Small details can have a big impact on a business model of small teams following an open-source software philosophy. Founder of _Axo_, Jarek Hirniak felt Catalyst needs to be more open to ‘bold experiments’. 
 
 Despite its detractors, Catalyst continues to evolve and improve based on past learnings. There is a Fund11 proposal in flight to pave a way forward for different working groups. Meanwhile, Catalyst marches on with the following impressive stats at time of writing: 
 
