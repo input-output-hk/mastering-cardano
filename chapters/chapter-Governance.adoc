@@ -1,7 +1,7 @@
 cheat sheet: https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/
 
 
-Chapter currently under review, shared by SMEs:
+Governance Chapter will need to be updated right up until publication... a draft is in the doc below, shared with SMEs for review:
 https://docs.google.com/document/d/1KygJtqqvUmdnHp5_6-JRy7EheBTsaphq/edit
 
 == Governance on Cardano     
