@@ -1,9 +1,9 @@
 ____
 As governance is unfolding on a daily/weekly basis throughout 2024, I’m compiling notes from reference points below and will try write to give content a ‘shelf life’. 
 
-CF Forum - https://forum.cardano.org/t/voltaire-update-q1-in-review-cardano-s-governance-advances-and-future-outlook/129533
-Intersect team to review/input, weekly newsletter
-Latest infographics https://able-pool.io/voltaire
+* CF Forum - https://forum.cardano.org/t/voltaire-update-q1-in-review-cardano-s-governance-advances-and-future-outlook/129533
+* Intersect team to review/input, weekly newsletter
+* Latest infographics https://able-pool.io/voltaire
 
 Target content drop dates:
 April 19th, May 9th, May 30th
