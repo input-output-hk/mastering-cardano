@@ -1,0 +1,113 @@
+== *Monitoring*
+
+Monitoring is a crucial part of stake pool operation. It helps minimize the chance for lost blocks and can allow the operator to maximize rewards for delegators along with contributing to strong network performance on the Cardano blockchain.
+
+* Reliability: Monitoring helps ensure the full-time availability of a stake pool to mint and propagate assigned blocks in a reliable manner. By diligent monitoring of key metrics such as blockheight, uptime, timesync, KES expiry period, unadopted blocks, missed slots, etc. patterns of Stake Pool service disruption can be detected and prevented.
+* Capacity Planning: By analyzing historical resource usage data, future resource requirements can be forecast to anticipate capacity constraints and allow the operator to scale infrastructure proactively to meet evolving Cardano Stake Pool operation needs, thereby avoiding performance degradation or service outages due to insufficient resources.
+
+==== *Prometheus*
+
+Prometheus is an open-source monitoring and alerting toolkit. It is designed for reliability, scalability, and simplicity in monitoring complex IT environments. Prometheus is often recommended for scraping Cardano Stake Pools metrics for several reasons:
+
+* Powerful Data Model and Query Language: Prometheus employs a multi-dimensional data model and PromQL (Prometheus Query Language) for querying and analyzing time-series data. This model allows for flexible and efficient querying of metrics based on various dimensions such as labels, enabling operators to gain deep insights into the performance and health of an operator’s stake pool infrastructure. With PromQL, operators can perform complex aggregations, transformations, and statistical analysis on time-series data, making it easier to identify trends, anomalies, and patterns in monitored metrics.
+* Scalability and Reliability: Prometheus is designed to be highly scalable and reliable, capable of handling large-scale deployments with thousands of servers, containers, or microservices. It employs a pull-based model, where Prometheus servers periodically scrape metrics from instrumented targets, providing a scalable approach to monitoring dynamic environments. Additionally, Prometheus supports federation, allowing multiple Prometheus servers to aggregate and federate metrics from different sources, enabling horizontal scalability and distributed monitoring setups. Its robust architecture and proven reliability make it suitable for mission-critical IT environments where uptime and performance are paramount.
+* Rich Ecosystem and Integration: Prometheus has a vibrant ecosystem with a wide range of integrations and exporters for collecting metrics from various systems, applications, and services. It supports integrations with popular technologies such as Kubernetes, Docker, AWS, and more, making it easy to monitor modern cloud-native environments and microservices architectures. Additionally, Prometheus integrates seamlessly with other tools in the monitoring ecosystem, such as Grafana for visualization, Alertmanager for alerting, and third-party storage solutions like Thanos for long-term storage and high availability. This rich ecosystem of integrations and complementary tools enhances the flexibility and extensibility of Prometheus, making it a versatile choice for monitoring diverse IT environments.
+
+For Cardano Stake Pools these are typical targets to scrape for Prometheus:
+
+* The Cardano-node built-in EKG Prometheus exporter with Cardano node metrics on blockheight, missed-slots, KES expiry and more.
+* The open source ``node_exporter``, an open source Prometheus exporter for hardware and OS metrics exposed by *NIX kernels for metrics on CPU, memory, disk usage, timesync and others.
+* https://cardano-community.github.io/guild-operators/[Cardano Guild Operators Koios SPO Tools] to expose `CNCLI` Prometheus metrics on block.db metrics such as number of sequentially missed blocks, adopted blocks, epoch luck, etc.
+
+The Prometheus scrape targets are defined via a ``.yml`` configuration file (typically named ``prometheus.yml``). To double check syntax, you can run ``./promtool check config prometheus.yml ``.
+Before adding a visualization layer to Prometheus like Grafana it is recommended to connect to the Prometheus web portal (by default on localhost:9090) to double check that scraping targets are reachable. Check that the status is green and ``up`` on all configured endpoints in ``Status -> Targets``. This status page is very helpful to debug scrape endpoint connections. 
+
+To scrape remote servers securely various techniques exist, see also https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/server_security_and_hardening.adoc[Server Hardening].
+For example, one could use a web server such as Nginx and configure it as a Reverse Proxy for the endpoint metrics to be scraped by Prometheus with Transport Layer Security (TLS) encryption in place. You can use TLS for IPs. You can also scrape Prometheus over a WireGuard VPN or other VPN service. Firewall rules should ensure that only the Prometheus monitoring server may access the remote endpoint.
+
+*_Note:_*  Prometheus and Grafana server should be run separately from the block producing node, to avoid competition of compute resources, and disruption of block production. Ideally, a separate monitoring host should be set up. If a separate host is not available, a passive relay host may be used.
+
+==== *Grafana*
+
+Grafana is an open-source platform for monitoring and observability, specializing in data visualization and analytics. It allows operators to create dashboards, charts, and graphs to visualize and analyze metrics from various data sources. It is an ideal companion to display Prometheus metrics. Stake pool operators generally opt to use Grafana alongside Prometheus for the following reasons:
+
+* Flexible Visualization and Dashboards: Grafana provides a highly flexible and customizable platform for visualizing metrics and building dashboards. It offers a wide variety of visualization options, including graphs, gauges, tables, heatmaps, and more, allowing operators to create rich, interactive dashboards tailored to their specific monitoring needs. Grafana supports multiple data sources, including Prometheus, Graphite, InfluxDB, Elasticsearch, and many others, enabling operators to consolidate metrics from different sources into a single unified dashboard for comprehensive monitoring and analysis.
+* Extensibility and Integration: Grafana is highly extensible and supports integration with a vast ecosystem of data sources, plugins, and extensions. It offers a plugin architecture that allows developers to create custom data source plugins, panel visualizations, and integrations with third-party services. This extensibility enables Grafana to adapt to diverse monitoring environments and integrate seamlessly with existing tools and systems. Additionally, Grafana supports features such as annotations, templating, and alerts, enhancing its functionality and making it a versatile platform for monitoring IT services.
+* Community and Adoption: Grafana has a large and active community of users, developers, and contributors, driving innovation and adoption in the monitoring space. The Grafana community has developed a wide range of plugins, dashboards, and integrations, which are freely available through the Grafana Plugin Repository and community forums. This vibrant ecosystem of community-contributed content provides operators with access to a wealth of resources and pre-built solutions for monitoring various technologies, applications, and infrastructure components. Additionally, Grafana’s popularity and widespread adoption make it a de facto standard for visualization and monitoring in many organizations, ensuring long-term support, stability, and continued development of the platform.
+
+Some Prometheus exporters like ``node_exporter`` come with their own pre-configured Grafana dashboard.  ``Cardano-node`` does not have a default Grafana dashboard yet, but the community has created various dashboards and shared those online to copy and adapt or for inspiration. 
+
+Grafana dashboards can be easily configured with a graphical drag & drop interface or editing the JSON configuration file.
+
+==== *Alerting with Prometheus and Grafana*
+
+Effective alerting options exist within Prometheus and Grafana, and alerts may be configured with either service:
+
+* Prometheus Alertmanager: Alertmanager is a component of the Prometheus monitoring system responsible for handling alerts generated by Prometheus servers. It receives alerts from Prometheus via its alerting rules and then performs actions based on those alerts, such as sending notifications to various alerting channels (e.g., email, Slack, PagerDuty, Telegram, xMatters). Alertmanager focuses on managing and routing alerts efficiently, ensuring that the right notifications reach the appropriate recipients according to defined alert routing and suppression rules. Alertmanager is tightly integrated with Prometheus and is primarily designed to work with Prometheus-generated alerts. It provides native integration with Prometheus’s alerting rules and relies on Prometheus’s pull-based model for collecting metrics. While Alertmanager can integrate with other monitoring systems and services via webhooks and APIs, its primary focus is on handling alerts generated by Prometheus. The Prometheus Alertmanager is configured via YAML-files.
+
+* Grafana Alerting: Grafana Alerting is a feature built into the Grafana platform that enables operators to create and manage alerts directly within the graphical Grafana dashboards. It allows operators to define alert conditions based on query results from data sources and configure alert notifications to be sent via various channels (e.g., email, Slack, PagerDuty, Telegram, xMatters) Grafana Alerting is tightly integrated with Grafana’s visualization and dashboarding capabilities, enabling operators to create rich, interactive dashboards with embedded alerts and seamlessly transition between monitoring and alerting workflows within the Grafana interface. Grafana Alerting offers integration capabilities with various data sources and external systems. Grafana Alerting allows operators to define alert conditions based on data queries from diverse data sources, enabling flexible and customizable alerting workflows tailored to specific monitoring environments. Additionally, Grafana Alerting can integrate with external notification services and platforms, providing users with a wide range of options for alert notification delivery.
+
+Thresholds can be defined for each relevant monitoring metric to determine when alerts are triggered. Useful alerts include:
+
+* Last blockheight: Did the block producer lag behind the anticipated blockheight?
+* Disc usage: Is disk space running out?
+* Missed or ghosted blocks: Did the block producer miss minting or propagating a sequential number of assigned blocks?
+* Missed slot leadership checks: Did the block producer miss checking leadership eligibility for a large number of slots?
+* Available memory: Is memory usage too high and potentially affecting node performance?
+* Endpoint availability: Are all relevant endpoints for scraping available?
+* KES expiry: How much time is left before KES keys expire?
+* Time synchronization: Is the server time out of sync?
+
+For advanced alert routing and communication, cloud platforms such as xMatters or PagerDuty can be added as another layer between the generated alerts from either Prometheus or Grafana with the potential benefits:
+
+* Reducing MTTR (mean time to respond) by suppressing redundant alerts and only relay the most critical insights to on-call resolvers.
+* Customizing alert data and response actions to eliminate manual work.
+* Allowing resolvers to pause and resume. An example being Grafana alerts directly from xMatters notifications as resolution is reached.
+
+*_Note:_*  xMatters has a free tier that works for both Prometheus Alertmanager and Grafana Alerting.
+
+==== *Zabbix*
+
+https://www.zabbix.com/[Zabbix] is another integrated, all-in-one monitoring solution with out-of-the-box capabilities for monitoring diverse IT components and can be configured to monitor Cardano Nodes. Prometheus and Grafana do offer more scalability, flexibility, and customization options, but Zabbix is an alternative.
+
+==== *RTView*
+
+https://docs.cardano.org/cardano-components/cardano-rtview[RTView] is a real-time monitoring program that provides visibility on the state of running Cardano nodes. It supports multiple node monitoring, even if the nodes work on different machines.
+
+The main benefit of RTView is simplicity. It is simple to use; technically there is no installation, you just unpack an archive and run an executable. It is also simple to configure through an interactive dialog and shows particular changes the user should make in the node configuration files. 
+
+RTView does render a webpage dashboard and offers a less-complex but robust alternative to a well-configured Prometheus and Grafana monitoring setup.
+
+==== *Koios gLiveview*
+
+https://cardano-community.github.io/guild-operators/Scripts/gliveview/[Koios gLiveView] is a local monitoring tool to use in addition to remote monitoring tools like Prometheus and Grafana, Zabbix or RTView. This is especially useful for systemd deployments  as it provides a terminal UI to monitor real time node status for Stake Pool operators.
+
+*_Note:_*  If Koios gLiveView is launched on a block producer with an up-to-date block.db the tool will show block minting metrics and real-time left until the next block.
+
+==== *Manual Cardano Log Review*
+
+For Stake pool operators it is important to be able to read and interpret logs from cardano-node to troubleshoot and find potential issues. It is best practice to investigate each missed block and determine what went wrong. Long-term luck should be near 100% and while block collisions within the same slot occur, they are uncommon. About 5% of all blocks result in slot battles, as the outcome of a slot battle is random, about 2.5% of blocks are expected to be lost over time.
+
+Ideally, an operator will investigate issues that affect block production within a stake pool and make adjustments to ensure smooth and reliable operation moving forward.
+
+This is a typical debugging sequence:
+
+* Determine the slot number missed from the calculated leaderlog.
+* Was more than one block missed in sequence? If so, this is likely a serious issue such as an improperly started node, expired KES keys, or hardware or server failure.
+* If a single block was lost, it is time to debug.
+* Search the node log for the slot number it missed.
+* Did the block producer recognize it was it’s turn to mint a block (nodeIsLeader)?
+* Did the block producer mint the block? What was the blockheight and blockhash?
+* Did the block producer add this block to its local chain or did it run into an internal fork?
+* Did the relays see this blockhash and add it to their local chains? 
+* Blockheight can also be investigated in any of the public Cardano blockchain explorers.
+* Did another pool mint this blockheight with the same slot number? If so, this was the result of a slot collision and is normal.
+* Did another pool mint this blockheight with a different slot number? This is considered a Height battle and is usually the result of a misconfigured pool. 
+** If the block was propagated within its slot time (one second) it was very likely a race condition and the other pool was awarded the block based on a lower VRF hash. Not much can be done about these conditions at this time outside of working with the pool operators with misconfigured stake pools.
+** If block propagation took longer than the awarded slot, it needs to be investigated. It is possible that a bottleneck or misconfiguration exists, preventing speedy propagation such as poor upload bandwidth.
+
+Pool operators may choose to assist in diagnosing network-wide issues while, although rare, benefit from as many data-points as possible. Operators can consider contributing information about nodes to the following community services and keep informed about new and upcoming services:
+
+* Operators may send the current chain tip of their block producer to Pooltool via https://github.com/cardano-community/cncli/blob/develop/USAGE.md#sendtip-command[cncli-SendTip]. This will show a green badge on Pooltool with current tip height and helps Pooltool to capture orphan blocks. While this doesn’t guarantee every orphan block made will be seen by Pooltool, a large number of reported orphaned blocks across pools can help diagnose wider network issues.
+* Operators may also share the number of blocks assigned for an epoch and validate the correctness of past epochs via https://github.com/cardano-community/cncli/blob/develop/USAGE.md#sendslots-command[cncli-SendSlots]. This helps to debug issues on Leaderlog calculation and can increase pool performance visibility for delegators. 
+* Block propagation metrics may also be sent to monitor network propagation of new blocks as seen by the local cardano-node with the https://cardano-community.github.io/guild-operators/Scripts/blockperf/[blockPerf.sh] script; a public dashboard is in the works to display these metrics. Pooltool may also be checked regularly and operators can compare their own block propagation times with other operators.
