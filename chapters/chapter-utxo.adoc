@@ -88,6 +88,32 @@ There are some exceptions and refinements to this simple rule:
     * Staking rewards can be withdrawn, getting added to the outputs without having compensating
       inputsfootnote:[Those staking rewards come from an internal reward account, not a regular UTxO.].
 
+=== What changes?
+
+Without change, there can be no impact on the real world. _Something_ has to change as the result of a transaction, otherwise the transaction is pointless.
+
+In the account based model, the change is in the balances of the accounts.
+
+If you know about imperative programming, you can think of the balances in the account based model as _global_ variables that get updated by transactions.
+
+In the UTxO model, the change is in the set of UTxO's: Some UTxO's get spent, some new UTxO's get created, but no output ever gets modified. Once an output has been created, it will remain unchanged forever. The only effect a transaction has is to spend existing outputs and create new ones.
+
+If you know about functional programming, you can think of the UTxO's as _immutable_ data structures that get _consumed_ by transactions, but never _modified_.
+
+In the example above, before Alice sends 30 ADA to Bob, the UTxO-set consists of Alice's two UTxO's (60 ADA and 40 ADA) and Bob's UTxO of 10 ADA.
+
+.The old UTxO-set before Alice's transaction
+image::change_before_utxo.png[]
+
+Alice's transaction consumes her UTxO worth 40 ADA and creates two new UTxO's, one worth 30 ADA going to Bob, the other worth 10 ADA going back to Alice.
+
+So while no individual output changes, the _set_ of unspent outputs changes: One output is removed from the set (because it is now _spent_), and two new ones are added.
+
+.The new UTxO-set after Alice's transaction
+image::change_after_utxo.png[]
+
+Of course there may be many more UTxO's on the blockchain that we are not considering here, but they have no influence on the transaction we are looking at.
+
 === Extending It: The EUTxO Model
 
 The UTxO model is simple and elegant, and it allows users to receive and send funds from and to arbitrary other users.
@@ -141,3 +167,55 @@ but if all inputs are still unspent, the transaction will have the predicted eff
 As a consequence, Cardano transactions only incur a fee if they actually succeed and are included in the blockchain.
 On Ethereum, transactions can fail and still cost gas. This can never happen on
 Cardano (as long as a user does not go out of his way to circumvent all safety mechanisms).
+
+This is an extremely important point and deserves further explanations:
+
+On a blockchain like Ethereum, the outcome of a transaction can potentially be influenced by _anything_ happening on the blockchain. It is therefore impossible to determine the effect of a transaction offchain, before submitting it.
+
+On a blockchain using the EUTxO model, the outcome of a transaction is determined by the transaction itself, its inputs and outputs, and nothing else. It therefore _is_ possible to determine the effect of a transaction offchain, before submitting it.
+
+As noted above, the only thing that can possibly change on an EUTxO blockchain is the set of UTxO's, but the outputs themselves can never change. So it _is_ possible that a transaction has inputs that are consumed by other transactions before it is submitted, in which case it will fail (without incurring a fee). But if all inputs are still unspent, the transaction will have the predicted effect.
+
+=== Atomic Swaps
+
+Let's make this more concrete with an example: _Atomic swaps_.
+
+We have mentioned _native tokens_ and NFT's before, and we will look at them in more detail later, but for now, let's just assume that they exist.
+
+Let's say Alice is the owner of an NFT, and she is willing to sell it to Bob for 100 ADA.
+
+She doesn't necessarily trust Bob, so she doesn't just want to send her NFT to Bob and hope he will pay her 100 ADA later.
+
+Likewise, Bob doesn't trust Alice and doesn't want to send her 100 ADA, hoping she will send him the NFT afterwards.
+
+This problem can actually be solved with the UTxO model, even withough smart contracts: Alice or Bob can craft a transaction with two inputs, Alice's NFT and Bob's 100 ADA and outputs 100 ADA for Alice and the NFT for Bob. Alice can _partially_ sign the transaction, then send it (offchain, for example by email) to Bob. Bob can then add his signature and submit the transaction to the blockchain.
+
+Note that this is secure: Alice can't submit the transaction without Bob's signature, and Bob can't submit the transaction without Alice's signature. Furthermore, Bob can't manipulate the transaction to his advantage before signing, because Alice's signature would no longer be valid.
+
+Such a transaction is an example of an _atomic swap_: The transactions swaps Alice's NFT and Bob's 100 ADA "atomically", without the need for trust. Either Alice receives her 100 ADA and Bob receives the NFT, or neither of them does.
+
+.Alice and Bob perform an atomic swap in the UTxO model
+image::atomic-swap-utxo.png[]
+
+This approach has at least two problems: The partially signed transaction needs to be sent offchain, which is neither ideal nor very user friendly. And Alice "somehow" needs to find Bob and agree with him on the terms of the swap - again an offchain process.
+
+Within the EUtxO model, this can be improved by using  a script to enforce the terms of the swap. Alice can craft a transaction that spends her NFT and creates an output locked by a script that requires _someone_ (maybe Bob, but Alice doesn't care) to send 100 ADA to Alice to unlock it.
+
+So how does this work?
+
+Alice will send her NFT to a _script address_ and put the price (100 ADA in our example) into the _datum_ of the output.
+
+In order to unlock that UTxO and spend it, the script will check that the spending transaction contains an output of 100 ADA to Alice. Remember that the script can "see" the whole spending transaction (and nothing else), so in particular, it can see the outputs of the transaction and can therefore check whether one such output is 100 ADA to Alice.
+
+(In practice, the script will probably also allow Alice to reclaim her NFT at any time - otherwise, she might have problems getting it back if nobody wants to buy it.)
+
+Anybody will be able to spend this UTxO and get Alice's NFT, _provided_ they also send 100 ADA to Alice.
+
+So in this example, Alice ceases control of her NFT by sending it to a script address, but she also ensures that she will get paid 100 ADA if somebody other than herself wants to spend that UTxO.
+
+Note how in this example, the second transaction only needs to be signed by Bob (to authorize spending the 100 ADA belonging to him). Spending the NFT is authorized by running the script and not by anybody signing the transaction.
+
+.Alice and Bob perform an atomic swap in the EUTxO model
+image::atomic-swap-eutxo.png[]
+
+We will see later that there is a problem with this smart contract, the so-called _double satisfaction_ problem, but rest assured that it can be solved within the EUTxO model.
