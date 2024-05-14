@@ -3,12 +3,36 @@
 
 Cryptography is a fundamental building block of blockchain, DLT, smart contracts and cryptocurrencies. An overview of cryptography and its role in blockchain systems will be covered in this chapter. We do not go deep into technical details as it is beyond the scope of this book, but we point readers to other resources at the end of the chapter to dig deeper if interested.
 
-The following main topics will now be covered: Encryption Techniques, Hash Functions, Digital Signatures and #TO UPDATE#.
+The following main topics will now be covered: Hash Functions, Hash Functions, Digital Signatures and #TO UPDATE#.
 
-Blockchain platforms do not primarily make use of encryption and decryption of data in the traditional sense. Yet encryption and decryption are fundamental for digital signatures. We therefore start with an overview of encryption and decryption techniques so as to be able to appreciate the content presented later.
+=== Hash Functions
+
+When digital systems communicate, messages sent between communicating systems could end up being altered in between sending and receiving devices. Such errors sometimes occur due to the physical communication medium playing up. Early on in the history of computing, it was realised that a solution to this problem was needed. Early solutions proposed included adding an extra "parity bit" to data sent between devices that would be used as a safety guarantee to determine whether data changed between the sender and receiver. Given that a computer "bit" can store a 0 or 1 only, there is a high chance that errors could occur and go unnoticed. Expanding along the same lines, "checksums" were proposed that instead of encoding the sanity check information into a single computer bit, larger amounts of data could be used as a means of encoding such sanity checks (from a byte to many bytes).
+
+#Add diagram?#
+
+In fact, such sanity checks of data are not only useful to ensure data has not been changed between sending data from one computer to another, but in general for ensuring that data has not been altered. While checksums are great for providing sanity-checks, there are still possibilities that an error could occur and go unnoticed. This is because two different pieces of data could result in the same checksum (sanity check) value. 
+
+#Add diagram?#
+
+A better sanity check was needed. This is where hashes come in. They act as a sanity check like checksums, but they should do so in a manner that makes in next to impossible for original data and some altered data to result in the same sanity check hash value. They can be thought of as a unique digital fingerprint that identifies a specific piece of data. Given any arbitrary data as an input, a hash algorithm will output a unique fingerprint, called a hash, for the specific data. No matter how many times the same exact input is passed in, the same hash (fingerprint) will be output.
+
+Again in a manner where it is next to impossible that the same fingerprint is generated for two different input data. If even a single bit of the input data changes, the outputted hash will change drastically. By storing or sending the fingerprint with the original data, it is possible to come verify whether the orginal data has been altered, since if it has been then the fingerprint would not match. Also, the algoritms used to generate hashes need to ensure that it is next to impossible for an altered piece of data and associated fingerprint (hash) to result in a match. In summary, hash functions provide a solution that guarantees a piece of data has not changed over time and space (by comparing the data with the generated hash value).
+
+<!-- Encryption techniques discussed above provide a secure end-to-end means of digital communication yet do not provide a solution that guarantees data (unencrypted or not) has not changed over time. Hash algorithms provide a solution towards this. -->
+
+<!-- This is a required feature of a hash algorithm, i.e. that it is impossible footnote:[again, computationally infeasible] to find some other data input that would result in the same hash. -->
+
+#include diagram of hash algorithm#
+
+#Figure X depicts a hash algorithm...#
+
+Once a hash is generated, potentially sent, and ultimately stored somewhere, anyone that has a copy of the hash can be guaranteed that the associated data used to generate the hash, has not been changed. This is because the 
 
 
 === Encryption techniques
+
+Blockchain platforms do not primarily make use of encryption and decryption of data in the traditional sense. Yet encryption and decryption are fundamental for digital signatures. We therefore now provide an overview of encryption and decryption techniques so as to be able to appreciate the content presented later.
 
 Cryptography finds its roots in and is typically used for encrypting and decrypting information. It provides a way for parties to securely communicate without eavesdroppers being able to decipher or understand what has been communicated. Encryption techniques are classified into symmetric and asymmetric encryption. 
 
@@ -64,20 +88,12 @@ An overview of how typical communication takes place using assymetric key encryp
 
 Unlike symmertic encryption, would could allow for _Party B_ to also send messages back to _Party A_ using the same encryption/decryption key, assymetric encryption does not. This is by design, to ensure that messages intended for a party can only be decrypted by that specific party. To reply back, using assymetric encryption, _Party B_ could follow the same process by using _Party A_'s public key to encrypt messages it would like to send back to _Party A_. 
 
-Whilst, assymetric encryption guarantees that only the intended recipient of a particular message can decrypt them, it does not stop a sender from pretending to be someone else -- and the same goes for symmertic key encryption (when the shared encryption/decryption key is leaked). Consider a malicious actor, _Party C_, who also knows _Party B_'s public key. _Party C_ could encrypt messages intended for _Party B_, and when sending the encrypted data to _Party B_ they could pretend to be _Party A_. _Party B_ would have no way to know that it is actually receiving messages from _Party C_. The solution to this, _Digital Signatures_, are discussed later in this chapter.
+Whilst, assymetric encryption guarantees that only the intended recipient of a particular message can decrypt that message, it does not stop a sender from pretending to be someone else -- and the same goes for symmertic key encryption (when the shared encryption/decryption key is leaked). Consider a malicious actor, _Party C_, who also knows _Party B_'s public key. _Party C_ could encrypt messages intended for _Party B_, and when sending the encrypted data to _Party B_ they could pretend to be _Party A_. _Party B_ would have no way to know that it is actually receiving messages from _Party C_. The solution to this, _Digital Signatures_, are discussed later in this chapter.
 
-#Another problem the above discussed encryption techniques have is that on their own, there is no way to provide guarantees the data sent by the sending pary <LEAD ON TO HASHES>#
+#Another problem the encryption techniques discussed above have is that on their own, there is no way to provide guarantees that the data sent by the sending party has not been changed by the time it reaches the  <LEAD ON TO HASHES>#
 
 
-=== Hash Functions
 
-Encryption techniques discussed above provide a secure end-to-end means of digital communication yet do not provide a solution that guarantees data (unencrypted or not) has not changed over time. Hash algorithms provide a solution towards this. Given any arbitrary data as an input, a hash algorithm will output a unique fingerprint, called a hash, for the specific data. No matter how many times the same exact input is passed in, the same hash (fingerprint) will be output. If even a single bit of the input data changes, the outputted hash will change drastically. This is a required feature of a hash algorithm, i.e. that it is impossible footnote:[again, computationally infeasible] to find some other data input that would result in the same hash. 
-
-#include diagram of hash algorithm#
-
-#Figure X depicts a hash algorithm...#
-
-Once a hash is generated, potentially sent, and ultimately stored somewhere, anyone that has a copy of the hash can be guaranteed that the associated data used to generate the hash, has not been changed. This is because the 
 
 
 === Digital Signatures
