@@ -88,7 +88,7 @@ There are some exceptions and refinements to this simple rule:
     * Staking rewards can be withdrawn, getting added to the outputs without having compensating
       inputsfootnote:[Those staking rewards come from an internal reward account, not a regular UTxO.].
 
-=== What changes?
+==== What changes?
 
 Without change, there can be no impact on the real world. _Something_ has to change as the result of a transaction, otherwise the transaction is pointless.
 
@@ -140,7 +140,7 @@ To make this idea work, three more ingredients are needed:
       are unspendable. Datums can also be added to PubKey addresses].
     * A transaction trying to spend an output at a script address must add another piece of data to the input,
       the _redeemer_. The redeemer can be thought of as a "key" used to "unlock" an input,
-      a generalization of the signature used to unlock outputs at PubKey addressesfootnote.
+      a generalization of the signature used to unlock outputs at PubKey addresses.
     * When a Plutus Core script is executed for validation, it gets datum, redeemer and a _context_
       as arguments. The context contains the transaction being validated and all its inputs and outputs,
       but nothing else.
@@ -161,8 +161,8 @@ on Ethereum, but also simple enough to make it much easier to predict the effect
 
 Cardano transactions can be validated _locally_, without the need to submit them to the blockchain first,
 because the context only contains the transaction itself and its inputs and outputs.
-They can still fail when submitted, because some other transaction could have spent an expected input in the meantime,
-but if all inputs are still unspent, the transaction will have the predicted effect.
+They can still fail when submitted, for example because some other transaction could have spent an expected input in the meantime,
+but if it succeeds, the transaction will have the predicted effect.
 
 As a consequence, Cardano transactions only incur a fee if they actually succeed and are included in the blockchain.
 On Ethereum, transactions can fail and still cost gas. This can never happen on
@@ -176,7 +176,9 @@ On a blockchain using the EUTxO model, the outcome of a transaction is determine
 
 As noted above, the only thing that can possibly change on an EUTxO blockchain is the set of UTxO's, but the outputs themselves can never change. So it _is_ possible that a transaction has inputs that are consumed by other transactions before it is submitted, in which case it will fail (without incurring a fee). But if all inputs are still unspent, the transaction will have the predicted effect.
 
-=== Atomic Swaps
+(There is one exception to this rule, which has to do with how the concept of _time_ is handled. We will discuss this later.)
+
+==== Atomic Swaps
 
 Let's make this more concrete with an example: _Atomic swaps_.
 
@@ -219,3 +221,19 @@ Note how in this example, the second transaction only needs to be signed by Bob 
 image::atomic-swap-eutxo.png[]
 
 We will see later that there is a problem with this smart contract, the so-called _double satisfaction_ problem, but rest assured that it can be solved within the EUTxO model.
+
+==== Determinism and Time
+
+As explained above, _determinism_ is an important and powerful feature of transactions in the EUTxO model: The outcome of a transaction is determined by the transaction itself, its inputs and outputs, and nothing else.
+
+However, some smart contracts need to deal with _time_. Consider a _vesting contract_, for example, whose purpose is to only unlock funds after a certain period of time has passed.
+
+How can this possibly be deterministic? The outcome of the unlocking transaction obviously depends on the current time: If sufficient time has passed, the transaction will succeed, otherwise it will fail.
+
+==== Validation
+
+==== The Double Satisfaction Problem
+
+=== Beyond Validation: Other Uses of Smart Contracts
+
+==== The Anatomy of a Cardano Address
