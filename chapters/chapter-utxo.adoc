@@ -222,6 +222,59 @@ image::atomic-swap-eutxo.png[]
 
 We will see later that there is a problem with this smart contract, the so-called _double satisfaction_ problem, but rest assured that it can be solved within the EUTxO model.
 
+==== Validation
+
+So far, we have brushed over some of the details of how Cardano nodes validate transactions.
+
+Validation happens in two _phases_.
+
+===== Phase 1
+
+The first phase consists of "cheap", quick checks. They do not incur a fee, even if they fail. Those checks include the "indeterministic" aspects of validation, things that cannot be checked before submitting the transaction.
+
+One such check looks at the availability of inputs: A transaction is only valid if all its inputs are _unspent_. It is certainly possible that one or more transaction inputs are spent between the time the transaction is constructed and submitted and the time a node validates it. So the transaction might look perfectly valid upon submission, but becomes invalid later, before it can be included in a block, because in the meantime another, concurrent transaction, has spend one of its inputs.
+
+Transactions also include a _validity interval_, a time interval determining the times at which the transaction is valid. Both ends of this interval can either be unrestricted or be specific slots. A transaction is only valid in a block whose slot falls into this validity interval, so during validation, the node needs to check this condition before including the transaction in a block.
+
+.Validity Intervals
+image::validity_intervals.png[]
+
+Another piece of information included in each transaction is a set of _required signatures_, and nodes check for the presence of the listed signatures during the first phase of validation as well.
+
+===== Phase 2
+
+The second phase of validation is more costly, but it will only be performed after all checks of Phase 1 have passed. This means that this phase can be done offchain, before a transaction is ever submitted.
+
+The checks in this phase consist of executing scripts. Most importantly, if a transaction tries to spend one or more script inputs, the corresponding scripts are evaluated, one after the other. If at least one script fails, the transaction is invalid, and validation fails.
+
+As we will see later, there are other uses of scripts (related to native tokens and staking), and all those scripts will be executed during this validation phase as well.
+
+===== Script Outputs
+
+In order to execute the scripts, the node must obviously _have_ those scripts. Remember that they are _not_ included in the inputs, because a script address in given by the _hash_ of the script and not the script itself, and it is (practically) impossible to reverse hashing and to recover the script from its hash.
+
+This means the transaction itself needs to include all the scripts that need to be executed during Phase 2 validation.
+
+This can lead to quite a lot of duplication on the blockchain and to larger transaction sizes, in particular if the script in question is used over and over again.
+
+For this reason, so called _script outputs_ have been introduced to Cardano: In addition to address, value and datum, outputs can optionally contain a script, and such _script outputs_ can in turn be referenced by transactions. So instead of including a script, a transaction can reference a script output containing that script, provided there is such an output.
+
+Whether or not the author of a script should create a script output containing it depends on several considerations and trade-offs. 
+
+If the script is only used once, a script output makes little sense.
+
+If a script is used over and over again, it might make sense to create a script output, which will make the transaction with that script output larger and hence more expensive, but will make all future transactions referencing that script smaller and cheaper.
+
+===== Collateral
+
+It is possible to force submission of a transaction that will fail during Phase 2 validation, even though there is never a good reason to do so.
+
+If this happens, nodes are forced to do a lot of unnecessary and costly work.
+
+In order to compensate for this, transactions that require Phase 2 validation (because they for example try to spend a script input) must include _collateral_, an input from a PubKey address which contains a certain minimum amount of ada. If Phase 2 validation fails, that collateral is forfeit.
+
+But remember that this will never happen in practice, because invalid transactions never get that far if the user does not enforce it.
+
 ==== Determinism and Time
 
 As explained above, _determinism_ is an important and powerful feature of transactions in the EUTxO model: The outcome of a transaction is determined by the transaction itself, its inputs and outputs, and nothing else.
@@ -230,7 +283,24 @@ However, some smart contracts need to deal with _time_. Consider a _vesting cont
 
 How can this possibly be deterministic? The outcome of the unlocking transaction obviously depends on the current time: If sufficient time has passed, the transaction will succeed, otherwise it will fail.
 
-==== Validation
+To resolve this seeming contradiction, recall the _validity interval_ included in every transaction.
+
+Phase 2 validation will only ever be reached once Phase 1 validation has succeeded, and as explained above, Phase 1 validation includes checking validity intervals. This means a script can assume that the validity interval of the transaction contains the current time. It does not _know_ the exact current time, but it knows that it falls into the validity interval of the transaction.
+
+In this way, the outcome of evaluating the script is still completely deterministic, even though the script can take time into account.
+
+===== A Vesting Example
+
+Let us look at the example of creating a vesting contract that only allows spending after January 1st, 2050.
+
+In this case the script will need to check that the _start_ of the transaction's validity interval is after January 1st, 2050.
+
+The script has no way of knowing the current time, but it knows the current time falls into the validity interval. So if the start of this interval is _after_ January 1st, 2050, the current time must be after that date as well.
+
+If the script encounters a validity interval starting _before_ January 1st, 2050, it will fail, because the current time _could_ be before that date. The current time might very well be after January 1st, 2050, but the script has no way of knowing that.
+
+.Vesting Example
+image::vesting_example.png[]
 
 ==== The Double Satisfaction Problem
 
