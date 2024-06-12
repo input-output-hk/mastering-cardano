@@ -197,7 +197,7 @@ Note that this is secure: Alice can't submit the transaction without Bob's signa
 Such a transaction is an example of an _atomic swap_: The transactions swaps Alice's NFT and Bob's 100 ADA "atomically", without the need for trust. Either Alice receives her 100 ADA and Bob receives the NFT, or neither of them does.
 
 .Alice and Bob perform an atomic swap in the UTxO model
-image::atomic-swap-utxo.png[]
+image::atomic_swap_utxo.png[]
 
 This approach has at least two problems: The partially signed transaction needs to be sent offchain, which is neither ideal nor very user friendly. And Alice "somehow" needs to find Bob and agree with him on the terms of the swap - again an offchain process.
 
@@ -205,7 +205,13 @@ Within the EUtxO model, this can be improved by using  a script to enforce the t
 
 So how does this work?
 
-Alice will send her NFT to a _script address_ and put the price (100 ADA in our example) into the _datum_ of the output.
+.Alice has an NFT she wants to sell
+image::atomic_swap_eutxo_1.png[]
+
+Alice creates an atomic-swap-script, sends her NFT to the corresponding _script address_ (given by the hash of the script) and puts the price (100 ADA in our example) into the _datum_ of the output.
+
+.Alice locks her NFT in a script output guarded by the atomic-swap-script
+image::atomic_swap_eutxo_2.png[]
 
 In order to unlock that UTxO and spend it, the script will check that the spending transaction contains an output of 100 ADA to Alice. Remember that the script can "see" the whole spending transaction (and nothing else), so in particular, it can see the outputs of the transaction and can therefore check whether one such output is 100 ADA to Alice.
 
@@ -213,12 +219,12 @@ In order to unlock that UTxO and spend it, the script will check that the spendi
 
 Anybody will be able to spend this UTxO and get Alice's NFT, _provided_ they also send 100 ADA to Alice.
 
+.Alice and Bob perform an atomic swap in the EUTxO model
+image::atomic_swap_eutxo_3.png[]
+
 So in this example, Alice ceases control of her NFT by sending it to a script address, but she also ensures that she will get paid 100 ADA if somebody other than herself wants to spend that UTxO.
 
 Note how in this example, the second transaction only needs to be signed by Bob (to authorize spending the 100 ADA belonging to him). Spending the NFT is authorized by running the script and not by anybody signing the transaction.
-
-.Alice and Bob perform an atomic swap in the EUTxO model
-image::atomic-swap-eutxo.png[]
 
 We will see later that there is a problem with this smart contract, the so-called _double satisfaction_ problem, but rest assured that it can be solved within the EUTxO model.
 
@@ -230,9 +236,12 @@ Validation happens in two _phases_.
 
 ===== Phase 1
 
-The first phase consists of "cheap", quick checks. They do not incur a fee, even if they fail. Those checks include the "indeterministic" aspects of validation, things that cannot be checked before submitting the transaction.
+The first phase consists of "cheap", quick checks. They do not incur a fee, even if they fail. Those checks include, but are not restricted to, the "indeterministic" aspects of validation, things that cannot be checked before submitting the transaction.
 
 One such check looks at the availability of inputs: A transaction is only valid if all its inputs are _unspent_. It is certainly possible that one or more transaction inputs are spent between the time the transaction is constructed and submitted and the time a node validates it. So the transaction might look perfectly valid upon submission, but becomes invalid later, before it can be included in a block, because in the meantime another, concurrent transaction, has spend one of its inputs.
+
+Another check is the _balance check_: The sum of the input values must equal the sum of the output values, minus the transaction fees (for simplicity, we are ignoring the possible minting or burning of _native tokens_ here).
+This check is perfectly deterministic and can be done before submission.
 
 Transactions also include a _validity interval_, a time interval determining the times at which the transaction is valid. Both ends of this interval can either be unrestricted or be specific slots. A transaction is only valid in a block whose slot falls into this validity interval, so during validation, the node needs to check this condition before including the transaction in a block.
 
@@ -361,9 +370,11 @@ Because Alice will probably include an _order number_ or _invoice number_ in her
 Bob can not cheat, because he has to include the one or the other invoice number with his payment, but can not include both. So he will not get away with only paying once.
 
 Luckily, we can use the same idea to fix the atomic-swap-contract and make it secure and invulnerable to the double satisfaction problem.
+footnote:[The solution to the double satisfaction problem we present here is not the only possible solution. For example, one could also modify the atomic-swap-script to only allow one input from the corresponding script address. However, that would hamper composability.]
 
-Instead of just searching for a payment output to Alice with the correct price, the script can instead search for such an output that _also_ has the _UTxO reference_ of the NFT output in its datum.
+Instead of just searching for a payment output to Alice with the correct price, the script can instead search for such an output that _also_ has the _UTxO reference_ footnote:[On Cardano, the _UTxO reference_ is given by a pair consisting of the hash of the transaction that created the output and the _index_ of that output in the list of all outputs of that transaction. The first output has index #0, the second output has index #1 and so on.] of the NFT output in its datum.
 (Remember that _any_ output can carry a datum, not just script outputs.)
+
 UTxO references are unique on the blockchain, no two different UTxO's can ever have the same reference.
 So in our example, the output containing NFT B will have a reference that is different from the reference of the output containing NFT C. In order to satisfy validation of spending the output containing NFT B, Bob will have to include a payment output to Alice that contains the UTxO reference of the output containing NFT B in its datum. The same goes for the output containing NFT C. These two references are different, so Bob can no longer cheat and get away with a single payment output to Alice.
 
@@ -371,6 +382,37 @@ So in our example, the output containing NFT B will have a reference that is dif
 image::double_satisfaction_3.png[]
 
 ===== Flash Loans
+
+The composability of smart contracts in the EUTxO models offen leads to unexpected features "for free" that would need to be explicitly implemented in other models.
+
+We already saw one example of this above when we showed how atomic swaps can be combined into a single transaction.
+
+Another example is _flash loans_: A flash loan is a loan that is taken out and repaid in the same transaction. The popular Uniswap DEX (Decentralized Exchange) on Ethereum offers such flash loans as a special feature, a feature that needed to be explicitly implemented in the Ethereum smart contract code.
+
+Our simple atomic-swap script allows for flash loans "out of the box", without any need to explicitly enable them.
+
+For example, let us assume that Alice wants to sell 100 ADA for a price of 45 DJED, and Bob wants to sell 50 DJED for a price of 100 ADA. Both Alice and Bob use the simple atomic-swap-script to make their offers on the Cardano blockchain.
+
+.Alice and Bob offer atomic swaps.
+image::flash_loan_1.png[]
+
+Charlie sees the two offers and realizes that he could make a profit if he could temporarily borrow 45 DJED:
+
+* Charlie takes out a loan of 45 DJED.
+* He uses those 45 DJED to buy 100 ADA from Alice.
+* He then uses those 100 ADA to buy 50 DJED from Bob.
+* Finally, he repays the loan and walks away with 5 DJED in profit.
+
+Charlie can do all of this in a single transaction on Cardano without the need to explicitly borrow money.
+
+.Charlie uses an "automatic flash loan" to earn 5 DJED.
+image::flash_loan_2.png[]
+
+During Phase 2 validation, the script guarding Alice's 100 ADA checks the transaction for a payment output to Alice over 45 DJED with the right reference, finds it and allows the transaction to proceed. 
+
+The script guarding Bob's 50 DJED does the same and finds the payment output to Bob over 100 ADA with the correct reference.
+
+The transaction is balanced (100 ADA + 50 DJED go in, 100 ADA + 45 DJED + 5 DJED go out), so validation succeeds, and Alice, Bob and Charlie walk away satisfied, each having gotten what they wanted.
 
 === Beyond Validation: Other Uses of Smart Contracts
 
