@@ -416,4 +416,78 @@ The transaction is balanced (100 ADA + 50 DJED go in, 100 ADA + 45 DJED + 5 DJED
 
 === Beyond Validation: Other Uses of Smart Contracts
 
+One way to look at going from the plain UTxO model to the EUTxO model is to look at addresses: In the UTxO model, whenever a transaction tries to spend a UTxO from an address, the transaction needs to be signed by the signing key corresponding to that address. In the EUTxO model, we add script addresses, such that transactions trying to spend outputs from script addresses need to be validated by the corresponding script.
+
+The address of a UTxO determines how spending it is validated, and by going from the UTxO model to the EUTxO model, we add a new way of validating spending inputs, namely by running scripts.
+
+On Cardano, however, addresses do not only determine how UTxO's can be _spent_, they also determine if and how that UTxO is _staked_.
+
+To understand this, we need to have a closer look at the "anatomy" of Cardano (Shelleyfootnote:[There is an old type of address on Cardano, called a _Byron address_, which was introduced in the first era of Cardano, the Byron era. Shelley addresses came with the Shelley era. During the Byron era, Cardano used the plain UTxO model, and there was no staking, so we ignore Byron addresses in this chapter.]) addresses and how that relates to staking.
+
 ==== The Anatomy of a Cardano Address
+
+Every address has a _spending_ or _payment_ part, which determines under which conditions a UTxO "sitting" at that address can be spent:
+
+* If the payment part of an address is given by a _payment pub key hash_, the hash of a _payment verification key_, then each transaction trying to spend a UTxO at that address needs to be signed by the corresponding _payment signing key_. 
+
+* The payment part of an address can also be given by the hash of a _script_, in which case when validating a transaction trying to spend a UTxO at that address, the script is evaluated.
+
+Until now in this chapter, we have only been talking about this (mandatory) payment part of an address.
+
+But on Cardano, every (Shelley) address can also carry an optional _staking_ part, the _staking credentials_, and as for the payment part, this staking part can either be a _staking pub key hash_, the hash of a _staking verification key_, or a _script hash_.
+
+We thus have _six_ different types of addresses on Cardano:
+
+[cols="1,1"]
+|===
+|Payment Part |Staking Part
+
+|Payment Pub Key Hash
+|No Staking
+
+|Script Hash
+|No Staking
+
+|Payment Pub Key Hash
+|Staking Pub Key Hash
+
+|Script Hash
+|Staking Pub Key Hash
+
+|Payment Pub Key Hash
+|Script Hash
+
+|Script Hash
+|Script Hash
+|===
+
+Where the payment part of an address determines under which conditions a UTxO at that address can be spent by a transaction, the staking part determines if the ada contained in a UTxO at that address are _staked_ to a stake pool and if so, to which one. If they are staked, they earn staking rewards.
+
+In addition to consuming inputs and producing outputs, Cardano transactions can also register and deregister _staking certificates_, create _delegation certificates_ and _withdraw rewards_.
+
+Once a staking certificate has been registered for given staking credentials and a delegation certificate to a stake pool has been created, staking rewards are earned and can later be withdrawn.
+
+All these staking-related actions need to be validated, just like spending of UTxO's does:
+
+* A transaction performing a staking-related action for staking credentials given by a staking pub key hash needs to be signed by the corresponding staking signing key.
+
+* A transaction performing a staking-related action for staking credentials given by a script hash needs to be validated by the corresponding script, which is evaluated during Phase 2 validation.
+
+==== Cardano Native Tokens
+
+Finally, scripts play a crucial role in the minting and burning of _Cardano Native Tokens_.
+
+The "native" currency on the Cardano blockchain is ADA, but Cardano also supports the creation of _custom_ tokens, which can be _fungible_ (like ADA) or _non-fungible_ (like NFT's).
+
+Such tokens would be pointless if they could freely be minted and burned at a whim without any restrictions,
+so minting and burning of native tokens is also guarded by scripts.
+
+A Cardano native token is identified by two parts, the _policy id_ and the _token name_. 
+
+The token name is an arbitrary byte string with a length of at most 32 bytes.
+
+The policy id, however, is the hash of a script.
+
+Whenever a transaction tries to mint or burn a token, the corresponding script is evaluated during Phase 2 validation.
+
+These so-called _minting scripts_ cover a wide variety of use-cases, ranging from the totally permissible "everything goes" (no restrictions on minting or burning whatsoever) over requiring a specific signature for each minting or burning transaction to more sophisticated rules that for example enforce the uniqueness of the token, turning it into an NFT.
