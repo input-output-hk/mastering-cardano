@@ -21,8 +21,8 @@ Lars Brünjes <lars.bruenjes@iohk.io>; Joshua Ellul <joshua.ellul@um.edu.mt>;
 :toclevels: 2
 :toc-title: Table of Contents
 //
-// Number the first 2 levels of headings.
-:sectnumlevels: 2
+// Number the first 5 levels of headings.
+:sectnumlevels: 5
 //
 // Hide the scheme from links in the text.
 // e.g. a link to https://github.com/ should appear as github.com/.
@@ -46,4 +46,5 @@ include::chapters/introduction.adoc[]
 // Include the numbered chapters.
 include::chapters/chapter-introduction.adoc[]
 include::chapters/chapter-cryptography.adoc[]
+include::chapters/chapter-incentives.adoc[]
 include::chapters/chapter-utxo.adoc[]

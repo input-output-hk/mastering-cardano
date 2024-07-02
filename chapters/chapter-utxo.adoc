@@ -1,3 +1,4 @@
+
 == The (E)UTxO Model
 
 === Accounting Models
@@ -51,8 +52,13 @@ This is how it works in the UTxO model as well: One or more of the outputs of a 
 
 This analogy with cash is not perfect, though, because even though you need to spend complete UTxO's, you can create new UTxO's with arbitrary values. If you pay somebody with cash, you can't just create new banknotes or coins out of thin air. But in the UTxO model, you can create new UTxO's with arbitrary values, as long as the values of the newly created UTxO's do not exceed the values of the UTxO's you spend.
 
+[example]
+=====
 So for example, if you have an input "coin" worth 100 ADA, you can create outputs worth 70 ADA and 30 ADA respectively, something you certainly cannot do with caseh.
+=====
 
+[example]
+=====
 Let us look at the example of Alice and Bob again, but this time in the UTxO model: Alice and Bob have 100 ADA and 10 ADA respectively. Alice might have two UTxO's, one worth 60 ADA, the other worth 40 ADA. Bob might have one UTxO worth 10 ADA. 
 
 If Alice wants to send 30 ADA to Bob, she can create a transaction with one input (her UTxO worth 40 ADA) and two outputs, one output worth 30 ADA going to Bob, the other output worth 10 ADA going back to Alice.
@@ -60,6 +66,7 @@ If Alice wants to send 30 ADA to Bob, she can create a transaction with one inpu
 She could also use her other UTxO, worth 60 ADA, and send 30 ADA back to herself. She could even use _both_ her UTxO's as inputs and create a change output worth 70 ADA. Or _two_ change outputs worth 50 ADA and 20 ADA or any other combination that adds up to 70 ADA.
 
 EVen with this simple example, Alice has almost infinite possibilities to structure her transaction, as long as the sum of the output values equals the sum of the input values, the outputs going to Bob add up to 30 ADA and the change outputs add up to the correct change.
+=====
 
 This sounds complicated, and it is, but in practice, no user has to worry about this: Wallets take care of all the details and create transactions automatically, picking the right UTxO's as inputs and creating the right outputs. Here the process of picking the right inputs is called _coin selection_.
 
