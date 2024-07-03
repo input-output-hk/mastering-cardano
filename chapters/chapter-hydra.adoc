@@ -1,5 +1,4 @@
-:url-repo: https://github.com/input-output-hk/mastering-cardano/edit/main
-:imagesdir: images
+:imagesdir: https://github.com/input-output-hk/mastering-cardano/tree/main/images
 
 
 == *A Scaling Vision (The Scaling Chapter…?)*
