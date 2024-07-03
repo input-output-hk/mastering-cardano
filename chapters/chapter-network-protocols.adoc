@@ -1,0 +1,145 @@
+:imagesdir: images
+
+== *Overview of Cardano Network Protocols*
+
+The Cardano network is a distributed infrastructure of interconnected Cardano nodes that communicate with each other to maintain distributed consensus of the Cardano ledger at a global scale. Contained within the node is a stack of protocols and mini protocols that form the network layer or data diffusion layer, which is responsible for opening and maintaining connections between nodes, diffusing transaction data, informing peers of new blocks, and sharing those blocks throughout the rest of the network.
+
+=== *A Brief History of Cardano Networking*
+
+Since its inception, the Cardano network has evolved and continues to change with the purposes of facilitating increased decentralization while meeting the growing demands of the Cardano blockchain. 
+
+* *The Federated Network:* Introduced in the Byron era in 2017, the network was maintained by IOG, Emurgo, and the Cardano Foundation. Nodes relied on static topologies to connect with one-another.
+
+image::network_revised_federatednetwork.png[]
+
+* *The Hybrid Network:* When the Shelley development phase began in 2020, the network was handed over to stake pool operators resulting in further decentralization of Cardano network. While nodes still required statically configured topologies to connect with one-another, the community-made https://cardano-community.github.io/guild-operators/Scripts/topologyupdater/[Topology Updater] script helped automate this process. The script lists peers based on geographical distance. It selects, skips, and again selects the peers to the end of the list to ensure that each node connects to a well-distributed variety of peers.
+
+image::network_revised_hybridnetwork.png[]
+
+* *Dynamic Peer to Peer(P2P):* This evolution of the Cardano network allowed nodes to automatically connect with other peers. However, trusted peers or relays are still required to be statically configured in order to bootstrap and synchronize to the network.
+
+image::network_revised_dynamicp2p.png[]
+
+* *Ouroboros Genesis:* The fully realized iteration of P2P, Ouroboros Genesis will allow nodes to self-bootstrap from the Cardano network, shedding the requirement for nodes to connect to trusted peers. However, peer selection still utilizes on-chain registered stake pool relays.
+
+image::network_revised_ouroborosgenesis.png[]
+
+* *Peer Sharing:* Peer sharing will allow the discovery of any node connected to the Cardano network, rather than only registered relays. This will allow non SPO nodes to contribute to running the network.
+
+image::network_revised_peersharing.png[]
+
+
+=== *Protocol Overview*
+
+The Ouroboros network is currently designed to work over the Transmission Control Protocol/Internet Protocol(TCP/IP), the set of communication protocol standards the internet and most networks are shaped around. TCP/IP gives the Cardano networking protocols access to two-way communication between nodes. The guaranteed ordered delivery of network packets makes the TCP/IP protocols well suited for blockchain networks. 
+
+=== *Mini Protocols*
+
+The _networking layer_ of the Cardano node consists of smaller building-blocks called mini protocols. Structuring the Cardano network stack around modular mini protocols allows for flexibility and reduces design complexity. At any given time a node will run many instances of mini protocols, often including many instances of the same mini protocol.
+
+=== *All Implemented Mini Protocols*
+
+* *Ping Pong Protocol:* A simple protocol used between a client and server to check responsiveness. A ping is sent to the server at regular intervals, and if the server is connected and responsive it will reply with a pong message.
+* *Request Response Protocol:* Functions similar to the ping pong protocol, but further allows data exchange between server and client.
+* *Handshake Mini Protocol:* Used to negotiate protocol version and parameters between client and server. It runs once upon connection initiation and consists of a single request from the client and a single response from the server.
+* *Keep Alive Mini Protocol(keep-alive):* A member of the Node-to-Node(NtN) protocol suite, this protocol provides keep alive messages and measures the round trip times of these messages.
+* *Chain Synchronization Protocol(chain-sync):* Allows for local synchronization of the blockchain via communication with several upstream and downstream nodes. This protocol is responsible for the transfer of full blocks when used as part of the Node to Client(NtC) protocol, whereas instances used as part of the Node to Node(NtN) protocol only transfers block headers. 
+* *Block Fetch Protocol(block-fetch):* Enables a node to request and download blocks from other nodes.
+* *Node-to-Node Transaction Submission Protocol(tx-submission):* A protocol used to transfer transactions between nodes, where the initiator requests new transactions and the responder returns them. In this protocol, the server acts as the initiator while the client acts as the responder, making it well suited for a trustless setting.
+* *Local Transaction Submission Protocol(local-tx-submission):* Used by local clients (typically wallets or CLI tools) for the purpose of submitting transactions to the local node. The client sends a request with a single transaction and the server either accepts the transaction (returning a confirmation) or rejects it (returning the reason).
+* *Local State Query Protocol(local-state-query):* As part of the NtC protocol suite, the local state query mini-protocol allows querying of the consensus and ledger state. Queries depend on the era (Byron, Shelley, etc.) and basic operations include acquiring and releasing the ledger state or running queries against the acquired ledger state.
+
+=== *Inter-Process Communication(IPC) Protocols*
+
+The Cardano node IPC protocols are best described as protocol suites containing a number of mini protocols that allow communication between Cardano node processes. These protocol suites come in two flavors: Node-to-Node(NtN) and Node-to-Client(NtC). 
+
+==== *Node-to-Node(NtN) IPC*
+
+The NtN IPC is responsible for transferring transactions, block header transfers, and fetching blocks between TCP connected nodes. This IPC uses the following mini protocols:
+
+* *chain-sync*
+* *block-fetch*
+* *tx-submission*
+* *keep-alive*
+
+image::network_ntn.png[]
+_Figure N: Operational flow of the NtN protocol suite between connected nodes_
+
+
+==== *Node-to-Client(NtC) IPC*
+
+The NtC IPC facilitates the connection between a local full node and a local client that consumes data but does not actively participate in consensus, such as a wallet. The NtC allows local applications to interact with the blockchain through the connected full node. Much like the NtN IPC, the NtC IPC uses a similar design but rather than using TCP to connect to other nodes over a public network, the NtC uses local pipes. This IPC uses the following mini protocols:
+
+* *chain-sync*
+* *local-tx-submission*
+* *local-state-query*
+
+image::network_ntc.png[]
+_Figure N: Operational flow of the NtC protocol suite between node and client_
+
+=== *Multiplexing*
+
+Within the _network layer_ of the Cardano node is a _multiplexing layer_, which allows the NtN protocol suite mini protocols to run in parallel through a single channel via TCP. The _multiplexing layer_ is implemented via the *network-mux* standalone multiplexing library.  This multiplexer uses a MUX thread to split the de-serialized messages from the mini protocols, assign a segment header and transmit the segments to the receiving DEMUX thread of another connected node, which in turn uses the segment headers to reassemble the messages from the sending node’s MUX thread.
+
+image::network_mux.png[]
+_Figure N. Multiple multiplexed NtN protocols running in parallel over a single TCP connection_
+
+=== *Peer to Peer(P2P) Networking*
+
+The Cardano network benefits from the capabilities of a dynamic P2P system where nodes may automatically search for, connect with, and actively manage connections with other nodes allowing the network to be robust, decentralized, and flexible. The P2P stack is under continual development with regular increases in functionality. Through active peer selection and policy based exclusively on local information of the node, Cardano’s P2P system significantly reduces data diffusion times across the network.
+
+image::network_p2pcomponents.png[]
+_Figure N. P2P components_
+
+
+The following components make Cardano’s P2P system possible:
+
+* *Outbound governor:* Manages outbound connections and classifies peers. It creates a connectivity map of the network and is responsible for dropping poorly-performing peer connections.
+* *Server:* Responsible for accepting incoming connections.
+* *Inbound protocol governor:* Once a connection is established, the inbound protocol governor manages the mini protocols running over that connection.
+* *Connection manager:* Tracks the state of classified inbound connections, which determines whether connections are allowed to participate in consensus or whether they simply keep connectivity.
+
+*Outbound Governor*
+
+The outbound governor bears the responsibility of peer classification, which includes regular promotion and demotion of peers into three distinct categories:
+
+* *Cold peers:* A category of peers known to the node, but currently lack an established network connection.
+* *Warm peers:* A connected peer used for network measurements without implementation of any NtN protocols.
+* *Hot peers:* A connected peer with full NtN utilization.
+
+All newly discovered peers are automatically added to the cold peer set. From this cold peer set, the outbound governor will begin the process classifying, demoting and promoting peers among the three peer classifications.
+
+The outbound governor establishes connectivity between nodes by: 
+
+* promoting cold peers to warm peers
+* demoting warm peers to cold peers
+* promoting warm peers to hot peers
+* demoting hot peers to warm peers
+
+It is also responsible for establishing and maintaining:
+
+* a number of cold peers (100 for example)
+* a number of warm peers (between 10-50 for example)
+* a number of hot peers (between 2-20 for example)
+* a diverse set of warm peers in terms of hop distance and geographic locations based on the connectivity map
+* frequent churn for hot, warm, cold, and unknown peer changes
+
+image::network_peerdiscovery.png[]
+_Figure N. The peer discovery process for P2P on Cardano_
+
+Research found 2-20 to be ideal for hot peers since block headers, rather than full blocks are exchanged among them, with the block body only being requested once and being fetched by the peer with the quickest path to the requesting node.
+
+Warm peers can be quickly promoted to hot peers as candidates during the hot peer churn. The promotions and demotions between warm and hot rely on upstream measurements, while the churn between warm and cold is intended to discover network distances with the purpose of continually searching for better peers in a constantly changing network, where nodes may join and leave the network at any time.
+
+For those wishing to further research the mechanisms behind Cardnao networking protocols, please refer to the following sources:
+
+
+* https://docs.cardano.org/about-cardano/explore-more/cardano-network/[Cardano Docs Networking Page]
+* https://ouroboros-network.cardano.intersectmbo.org/pdfs/network-spec/network-spec.pdf[The Shelley Networking Protocol Spec]
+* https://ouroboros-network.cardano.intersectmbo.org/pdfs/network-design/network-design.pdf[Introduction to the design of the Data Diffusion and Networking for Cardano Shelley Design Document]
+* https://www.essentialcardano.io/article/engineering-dive-into-cardanos-dynamic-p2p-design[Essential Cardano: Engineering dive into Cardano’s Dynamic P2P Design]
+* https://iohk.io/en/blog/posts/2024/03/14/approaching-full-p2p-node-operations/[IOHK Blog: Approaching full P2P node operations]
+* https://iohk.io/en/blog/posts/2023/03/16/dynamic-p2p-is-coming-to-cardano/[IOHK Blog: Dynamic P2P is available on mainnet]
+* https://iohk.io/en/blog/posts/2023/02/09/ouroboros-genesis-enhanced-security-in-a-dynamic-environment/[IOHK Blog: Ouroboros Genesis: enhanced security in a dynamic environment]
+* https://iohk.io/en/blog/posts/2021/04/06/boosting-network-decentralization-with-p2p/[IOHK Blog: Boosting network decentralization with P2P]
+* https://iohk.io/en/blog/posts/2020/07/09/cardanos-path-to-decentralization-by-marcin-szamotulski/[IOHK Blog: Cardano’s path to decentralization]
