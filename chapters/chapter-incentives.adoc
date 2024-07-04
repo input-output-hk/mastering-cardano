@@ -23,7 +23,7 @@ When we talk about incentives, we usually talk about _monetary incentives_ in th
 
 However, there are also other types of incentives, such as idealism, morality, and the general desire to "do the right thing".
 
-The main design goal of the Cardano incentives mechanism has been to align this monetary incentives with those non-monetary ones, so that the financial interests of individual node operators align with the interests of the network as a whole.
+The main design goal of the Cardano incentives mechanism has been to align these monetary incentives with those non-monetary ones, so that the financial interests of individual node operators align with the interests of the network as a whole.
 
 Nobody should be forced to neglect their own financial interests in order to do the right thing for the network.
 
@@ -49,7 +49,7 @@ Cardano incentives have been designed from the ground up to prevent such conflic
 
 The security of the Cardano blockchain is guaranteed as long as there is an _honest majority of stake_: The majority of stake on Cardano must be delegated to stake pools who faithfully follow the Cardano protocol.
 
-The more such stake pools there are, the more decentralized the network becomes. And ideally, those stake pools each should control a roughly equal amount of stake, so that none of them becomes to big and powerful.
+The more such stake pools there are, the more decentralized the network becomes. And ideally, those stake pools each should control a roughly equal amount of stake, so that none of them become too big and powerful.
 
 On the other hand, the more stake pools there are, the less _efficient_ the network becomes, both in a technical sense and from a financial point of view. More stake pools imply more network traffic and more redundant copies of data, and the operators of all those stake pools need to be incentivized with ADA, which means those funds are no longer available for other purposes like the treasury or staking rewards for ADA holders.
 
@@ -61,7 +61,7 @@ The goal of the incentives mechanism is to lead to a configuration where a solid
 
 === Sources of Incentives
 
-So far we have discussed why incentives are needed in the first place and what behvior they should actually incentivize. Of course those incentives have to come from _somewhere_, and in this section, we look at those sources, of which there are two on the Cardano blockchain.
+So far we have discussed why incentives are needed in the first place and what behavior they should actually incentivize. Of course those incentives have to come from _somewhere_, and in this section, we look at those sources, of which there are two on the Cardano blockchain.
 
 ==== Transaction Fees
 
@@ -88,7 +88,7 @@ The hope is that this decline in rewards that are coming from monetary expansion
 
 === Distribution
 
-Distribution of rewards happens once every epoch, so once every five days. Each time rewards are calculated and paid out, all transaction fees that have been collected since the last distribution are combined with a the part of remaining rewards given by ρ into a virtual _rewards pot_.
+Distribution of rewards happens once every epoch, so once every five days. Each time rewards are calculated and paid out, all transaction fees that have been collected since the last distribution are combined with a part of the remaining rewards given by ρ into a virtual _rewards pot_.
 
 A fixed percentage τ of the rewards pot is given to the treasury. The rest is distributed among the stake pools.
 
@@ -107,8 +107,8 @@ For example, consider pool operator Alice and ADA holders Bob and Charlie who de
 Let us assume that Alice delegates 100,000 ADA to her own pool, Bob delegates 200,000 ADA, and Charlie delegates 300,000 ADA. Let us further assume that the pool rewards for the epoch we look at are 1,000 ADA.
 
 * Distribution starts by Alice taking her fixed costs of 200 ADA.
-* After that, Alice take her 1% margin of the remaining 800 ADA, which is 8 ADA.
-* Finally, the remaining 792 ADA are distributed amont Alice, Bob and Charlie proportional to their stake, i.e. in proportions 1:2:3. This means that Alice gets 132 ADA, Bob gets 264 ADA, and Charlie gets 396 ADA.
+* After that, Alice takes her 1% margin of the remaining 800 ADA, which is 8 ADA.
+* Finally, the remaining 792 ADA are distributed among Alice, Bob and Charlie proportional to their stake, i.e. in proportions 1:2:3. This means that Alice gets 132 ADA, Bob gets 264 ADA, and Charlie gets 396 ADA.
 
 In the end, Alice received 200 + 8 + 132 = 340 ADA, Bob received 264 ADA, and Charlie received 396 ADA.
 =====
@@ -117,13 +117,13 @@ In the end, Alice received 200 + 8 + 132 = 340 ADA, Bob received 264 ADA, and Ch
 
 Now that we have seen how rewards _within_ a pool are distributed, let us turn to the question of how rewards _among_ stake pools are distributed.
 
-The basic idea is simple: Pool rewards should be proportional to pool stakes. The more ADA have been delegated to a pool, the more rewards that pool should receive.
+The basic idea is simple: Pool rewards should be proportional to pool stakes. The more ADA delegated to a pool, the more rewards that pool should receive.
 
 ==== Problems
 
 There are a number of problems with this basic idea, however:
 
-* _Large Pools_: If rewards are proportional to stakes, then the same problem that Bitcoin suffers from arises.Two pools will always have an incentive to merge, as the rewards for the merged pool will be the same as the sum of the rewards for the two pools, but the costs of the merged pool can be lower than the sum of the costs of the pools. This is bad for decentralization, because it will lead to a few very large pools controlling most of the stake.
+* _Large Pools_: If rewards are proportional to stake, then the same problem that Bitcoin suffers from arises.Two pools will always have an incentive to merge, as the rewards for the merged pool will be the same as the sum of the rewards for the two pools, but the costs of the merged pool can be lower than the sum of the costs of the pools. This is bad for decentralization, because it will lead to a few very large pools controlling most of the stake.
 
 [example]
 =====
@@ -173,7 +173,7 @@ Assuming k=1000 again, let's look at two pools, one with 0.05% of total stake, o
 
 Stake pools should be penalized for not being online when it is their turn. Rewards will be proportional to performance, ensuring that pools follow the protocol faithfully. Whenever a pool is elected to create a block, it should create that block. If it fails to do so, it should be penalized. We therefore want to modify the pool rewards by a _performance factor_, which is given by the number of blocks a pool _did_ produce in an epoch divided by the number of blocks it _should_ have produced. So a pool missing half its blocks should only receive half its rewards.
 
-There is, however, a problem with implementing this idea directly: Leader election on Cardano is _priviate_, so that only the elected leaders themselves know that they have been elected. We therefore do not _know_ how many blocks a pool _should_ have produced in an epoch.
+There is, however, a problem with implementing this idea directly: Leader election on Cardano is _private_, so that only the elected leaders themselves know that they have been elected. We therefore do not _know_ how many blocks a pool _should_ have produced in an epoch.
 
 We can, however, _estimate_ this number: The probability to be elected slot leader in a given slot is proportional to the pool's stake. A pool with twice the stake will - on average - be elected twice as often. We also know that - again on average - there _will_ be a leader every twenty slots. Combining these two pieces of information, we can estimate how many blocks a pool _should_ have produced in an epoch and use that estimate to calculate the (approximate) performance factor.
 
@@ -188,7 +188,7 @@ Our example pool has been delegated 1/2000 of the total stake, so on average, it
 
 Note that where the "true" performance can never be greater than one (because a pool can never produce a block if it has _not_ been elected slot leader), the _estimated_ performance factor _can_ exceed one. Leader election is (pseudo-)random, and a pool can get lucky and be elected more often than its stake would indicate.
 
-This is no problem, however, because this effect will average out over time. Some pools get lucky, other have bad luck, but in the long run, this will even out.
+This is no problem, however, because this effect will average out over time. Some pools get lucky, others have bad luck, but in the long run, this will even out.
 
 ==== Third Refinement: Sybil Prevention
 
@@ -212,7 +212,7 @@ These refinements can lead to situations where not all funds in the rewards pool
 
 === Not Being Short-Sighted
 
-Both pool operators and delegators might be tempted to change their strategiesfootnote:[The strategy of a pool operator is to set costs and margin, the strategy of a delegator is to choose one or more pools to delegate to.] for short-term gains. A popular pool with many delegators, for example, could suddently increase his margin. This would be short-sighted, however, because delegators would leave the pool, and the pool operator would end up with less rewards than before. Similarily, delegators might refrain from delegating to a good pool that just started, not taking into account that the pool will attract more delegators in the future.
+Both pool operators and delegators might be tempted to change their strategiesfootnote:[The strategy of a pool operator is to set costs and margin, the strategy of a delegator is to choose one or more pools to delegate to.] for short-term gains. A popular pool with many delegators, for example, could suddenly increase his margin. This would be short-sighted, however, because delegators would leave the pool, and the pool operator would end up with less rewards than before. Similarly, delegators might refrain from delegating to a good pool that just started, not taking into account that the pool will attract more delegators in the future.
 
 This is handled by careful _ranking_ of pools when they are displayed to users to decide where to delegate. Instead of basing that ranking on the rewards of the last epoch, the ranking is instead based on the expectation that in the long run, only the k most "attractive" pools (with the most favorable combination of cost, margin, pledge and performance) will become saturated. This for example means that a pool that has just started and has not yet attracted many delegators will still be ranked high if it has a good combination of pool parameters that make it attractive, even if rewards will be somewhat lower while the pool is still growing.
 
@@ -222,7 +222,7 @@ _Game theory_ is a branch of mathematics that studies strategic interactions bet
 
 Real people in the real world are of course not always rational, but the assumption of rationality is a good starting point to understand how people will behave in a given situation.
 
-One of the pioneers of game theory was John von Neumann, who contributed to a staggering amount of different fields in mathematics, physics and economy and is - amoung other things - famous for his work on the Manhattan project and on computer architecture.
+One of the pioneers of game theory was John von Neumann, who contributed to a staggering amount of different fields in mathematics, physics and economy and is - among other things - famous for his work on the Manhattan project and on computer architecture.
 He has been called one of the most intelligent people in modern history.
 
 .John von Neumann (Los Alamos). By LANL - http://www.lanl.gov/history/atomicbomb/images/NeumannL.GIF (archive copy at the Wayback Machine), Attribution, https://commons.wikimedia.org/w/index.php?curid=3429594
@@ -241,7 +241,7 @@ So if all other players stick to their strategies, it would be irrational for an
 
 [example]
 =====
-A famous example of a _game_ in the sense of game theory is the so-called _Prisoner's Dilemma_: Two suspected burglars are being interrogated by the policy in two separate interrogation rooms, unable to communicate with each other. The police wants to get a confession from at least one of them, and they offer both of them a deal: If one of them confesses and the other one does not, the one who confesses will be set free, and the other one will be sentenced to ten years in prison. If both confess, both will be sentenced to five years in prison. If neither of them confesses, both will be sentenced to one year in prison.
+A famous example of a _game_ in the sense of game theory is the so-called _Prisoner's Dilemma_: Two suspected burglars are being interrogated by the police in two separate interrogation rooms, unable to communicate with each other. The police want to get a confession from at least one of them, and they offer both of them a deal: If one of them confesses and the other one does not, the one who confesses will be set free, and the other one will be sentenced to ten years in prison. If both confess, both will be sentenced to five years in prison. If neither of them confess, both will be sentenced to one year in prison.
 
 [cols="1,1,1"]
 |===
@@ -270,7 +270,7 @@ If both stay silent and thus need to go to prison for one year, then each of the
 
 If one of them stays silent and the other confesses, then the one staying silent can reduce his prison term from ten years to five years by confessing as well.
 
-(The one confessing has _no_ incentive to switch his strategy in this case, because then instead of going free, he would need to spend one year in prison. However, for an outcome to be a Nash Equlibrium, _none_ of the players must have an incentive to switch his strategy.)
+(The one confessing has _no_ incentive to switch his strategy in this case, because then instead of going free, he would need to spend one year in prison. However, for an outcome to be a Nash Equilibrium, _none_ of the players must have an incentive to switch his strategy.)
 
 Many people find this result surprising and somewhat depressing: "Clearly", if both simply stayed silent, they would be better off than if both confessed. And they maybe both _would_ stay silent if they had a chance to communicate and coordinate. But the Nash Equilibrium is that both confess, and that is the only outcome that is stable in the sense that no player has an incentive to unilaterally change his strategy.
 
@@ -278,4 +278,4 @@ Many people find this result surprising and somewhat depressing: "Clearly", if b
 
 In a 2022 research paperfootnote:[_Reward Sharing Schemes for Stake Pools_, Lars Brünjes, Aggelos Kiayias, Elias Koutsoupias, Aikaterini-Panagiota Stouka, Euro S&P 2022], game theory was applied to the Cardano incentives mechanism. It was shown that if the reward distribution follows the rules explained above, then each Nash Equilibrium of the "staking game" will have k stake pools of the same size.
 
-As stated before, real people in the real world do not always behave rationally, and they have other objectives than just maximizing their profit. But the mathematical result that under some idealizing assumptions, all Nash Equilibria of the staking game leed to the desired outcome of k equally sized stake pools, is a strong argument that the Cardano incentives mechanism is well-designed and will indeed set the right incentives for pool operators and delegators, resulting in a secure and highly decentralized network for everyone to enjoy.
+As stated before, real people in the real world do not always behave rationally, and they have other objectives than just maximizing their profit. But the mathematical result that under some idealizing assumptions, all Nash Equilibria of the staking game leads to the desired outcome of k equally sized stake pools, is a strong argument that the Cardano incentives mechanism is well-designed and will indeed set the right incentives for pool operators and delegators, resulting in a secure and highly decentralized network for everyone to enjoy.
