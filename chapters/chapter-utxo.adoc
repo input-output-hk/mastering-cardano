@@ -13,7 +13,7 @@ which reflects the way most of us tend to think about accounting.
 
 Ethereum is one example of a cryptocurrency which uses the account based model.
 If Alice and Bob initially hold 100 ETH and 10 ETH respectively
-and if Alices sends 30 ETH to Bob, then their balances would be updated as follows:
+and if Alice sends 30 ETH to Bob, then their balances would be updated as follows:
 
 .Alice sends 30 ETH to Bob in the account based model
 image::Alice_sends_30_ETH_to_Bob.png[]
@@ -54,7 +54,7 @@ This analogy with cash is not perfect, though, because even though you need to s
 
 [example]
 =====
-So for example, if you have an input "coin" worth 100 ADA, you can create outputs worth 70 ADA and 30 ADA respectively, something you certainly cannot do with caseh.
+So for example, if you have an input "coin" worth 100 ADA, you can create outputs worth 70 ADA and 30 ADA respectively, something you certainly cannot do with cash.
 =====
 
 [example]
@@ -125,7 +125,7 @@ Of course there may be many more UTxO's on the blockchain that we are not consid
 
 The UTxO model is simple and elegant, and it allows users to receive and send funds from and to arbitrary other users.
 
-These days however, users expect more from a blockchain than just the ablity to send and receive funds. They want to be able to create _smart contracts_ that can do more than just move funds around, that can implement arbitrary logic and enforce complex rules. They also want to be able to create _fungible_ or _non-fungible_ tokens (sometimes called _NFT's_) and trade them on decentralized exchanges or sell them on decentralized marketplaces.
+These days however, users expect more from a blockchain than just the ability to send and receive funds. They want to be able to create _smart contracts_ that can do more than just move funds around, that can implement arbitrary logic and enforce complex rules. They also want to be able to create _fungible_ or _non-fungible_ tokens (sometimes called _NFT's_) and trade them on decentralized exchanges or sell them on decentralized marketplaces.
 
 In the UTxO model, a transaction can spend inputs locked at a specific address if it is signed by the
 signing key corresponding to that address.
@@ -197,7 +197,7 @@ She doesn't necessarily trust Bob, so she doesn't just want to send her NFT to B
 
 Likewise, Bob doesn't trust Alice and doesn't want to send her 100 ADA, hoping she will send him the NFT afterwards.
 
-This problem can actually be solved with the UTxO model, even withough smart contracts: Alice or Bob can craft a transaction with two inputs, Alice's NFT and Bob's 100 ADA and outputs 100 ADA for Alice and the NFT for Bob. Alice can _partially_ sign the transaction, then send it (offchain, for example by email) to Bob. Bob can then add his signature and submit the transaction to the blockchain.
+This problem can actually be solved with the UTxO model, even without smart contracts: Alice or Bob can craft a transaction with two inputs, Alice's NFT and Bob's 100 ADA and outputs 100 ADA for Alice and the NFT for Bob. Alice can _partially_ sign the transaction, then send it (offchain, for example by email) to Bob. Bob can then add his signature and submit the transaction to the blockchain.
 
 Note that this is secure: Alice can't submit the transaction without Bob's signature, and Bob can't submit the transaction without Alice's signature. Furthermore, Bob can't manipulate the transaction to his advantage before signing, because Alice's signature would no longer be valid.
 
@@ -390,7 +390,7 @@ image::double_satisfaction_3.png[]
 
 ===== Flash Loans
 
-The composability of smart contracts in the EUTxO models offen leads to unexpected features "for free" that would need to be explicitly implemented in other models.
+The composability of smart contracts in the EUTxO models often leads to unexpected features "for free" that would need to be explicitly implemented in other models.
 
 We already saw one example of this above when we showed how atomic swaps can be combined into a single transaction.
 
