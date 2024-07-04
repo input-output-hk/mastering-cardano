@@ -17,6 +17,8 @@ So while decentralization is great, it comes with costs, and it is important to 
 
 For Cardano in particular, people need to be incentivized to become node operators and then be online when needed, participate in the election process of slot leaders and create a block when they themselves are elected.
 
+Not every user on Cardano has the necessary technical skills, the time or the desire to run a node, however. Most users will simply delegate their ADA to a stake pool, earn staking rewards, and let the pool operator do the work. It is important to set the right incentives for this majority of people as well, so that they delegate to stake pools that are online when needed and faithfully follow the protocol. The more delegation a stake pool receives, the more blocks it will be able to produce, so delegating wisely is important for the security and efficiency of the network.
+
 === Types of Incentives
 
 When we talk about incentives, we usually talk about _monetary incentives_ in the form of _staking rewards_ that are paid out in ADA.
@@ -43,7 +45,9 @@ The danger is very real and not just a theoretical concern: In 2014, the mining 
 
 There was a real conflict between the financial interests of the miners and the security of the network, and the conflict was only resolved by the miners voluntarily reducing their mining power.
 
-Cardano incentives have been designed from the ground up to prevent such conflicts of interests: By simply following their best financial interests, Cardano node operators will also do the right thing for the network, keeping it decentralized and secure.
+Cardano incentives have been designed from the ground up to prevent such conflicts of interests: By simply following their best financial interests, Cardano node operators and delegators will also do the right thing for the network, keeping it decentralized and secure.
+
+This alignment will of course never be perfect, because people are obviously driven by more than just money. For example, somebody might delegate to a stake pool that pays less rewards than another pool, because the first pool is run by a charity or a non-profit organization that uses the rewards to fund a good cause. But the incentives scheme does not need to be perfect. It just needs to be "good" enough" and work well even if people are not perfectly rational.
 
 === Desired Configuration
 
