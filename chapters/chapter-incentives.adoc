@@ -45,7 +45,7 @@ The danger is very real and not just a theoretical concern: In 2014, the mining 
 
 There was a real conflict between the financial interests of the miners and the security of the network, and the conflict was only resolved by the miners voluntarily reducing their mining power.
 
-Cardano incentives have been designed from the ground up to prevent such conflicts of interests: By simply following their best financial interests, Cardano node operators and delegators will also do the right thing for the network, keeping it decentralized and secure.
+Cardano incentives have been designed from the ground up to prevent such conflicts of interest: By simply following their best financial interests, Cardano node operators and delegators will also do the right thing for the network, keeping it decentralized and secure.
 
 This alignment will of course never be perfect, because people are obviously driven by more than just money. For example, somebody might delegate to a stake pool that pays less rewards than another pool, because the first pool is run by a charity or a non-profit organization that uses the rewards to fund a good cause. But the incentives scheme does not need to be perfect. It just needs to be "good" enough" and work well even if people are not perfectly rational.
 
