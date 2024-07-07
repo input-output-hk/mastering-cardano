@@ -1,3 +1,5 @@
+:imagesdir: images
+
 == Introduction
 
 The past few years have seen many claims that blockchain, distributed ledger technology (DLT), cryptocurrencies, smart contracts, non-fungible tokens (NFTs) and decentralized autonomous organizations (DAOs) will change society as we know it. Yet, to most people, what these technologies are, what they mean to them, and how they will change society is unclear. 
