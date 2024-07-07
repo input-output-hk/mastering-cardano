@@ -1,3 +1,5 @@
+:imagesdir: images
+
 [[chap-crypto]]
 == Cryptography
 
