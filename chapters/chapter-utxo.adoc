@@ -74,7 +74,7 @@ If Alice wants to send 30 ADA to Bob, she can create a transaction with one inpu
 
 She could also use her other UTxO, worth 60 ADA, and send 30 ADA back to herself. She could even use _both_ her UTxO's as inputs and create a change output worth 70 ADA. Or _two_ change outputs worth 50 ADA and 20 ADA or any other combination that adds up to 70 ADA.
 
-EVen with this simple example, Alice has almost infinite possibilities to structure her transaction, as long as the sum of the output values equals the sum of the input values, the outputs going to Bob add up to 30 ADA and the change outputs add up to the correct change.
+Even with this simple example, Alice has almost infinite possibilities to structure her transaction, as long as the sum of the output values equals the sum of the input values, the outputs going to Bob add up to 30 ADA and the change outputs add up to the correct change.
 =====
 
 This sounds complicated, and it is, but in practice, no user has to worry about this: Wallets take care of all the details and create transactions automatically, picking the right UTxO's as inputs and creating the right outputs. Here the process of picking the right inputs is called _coin selection_.
@@ -184,7 +184,7 @@ As a consequence, Cardano transactions only incur a fee if they actually succeed
 On Ethereum, transactions can fail and still cost gas. This can never happen on
 Cardano (as long as a user does not go out of his way to circumvent all safety mechanisms).
 
-This is an extremely important point and deserves further explanations:
+This is an extremely important point and deserves further explanations.
 
 On a blockchain like Ethereum, the outcome of a transaction can potentially be influenced by _anything_ happening on the blockchain. It is therefore impossible to determine the effect of a transaction offchain, before submitting it.
 
@@ -192,7 +192,7 @@ On a blockchain using the EUTxO model, the outcome of a transaction is determine
 
 As noted above, the only thing that can possibly change on an EUTxO blockchain is the set of UTxO's, but the outputs themselves can never change. So it _is_ possible that a transaction has inputs that are consumed by other transactions before it is submitted, in which case it will fail (without incurring a fee). But if all inputs are still unspent, the transaction will have the predicted effect.
 
-(There is one exception to this rule, which has to do with how the concept of _time_ is handled. We will discuss this later.)
+(There is one exception to this rule, which has to do with how the concept of _time_ is handled in the EUTxO model. We will discuss this later.)
 
 ==== Atomic Swaps
 
@@ -217,7 +217,7 @@ image::atomic_swap_utxo.png[]
 
 This approach has at least two problems: The partially signed transaction needs to be sent offchain, which is neither ideal nor very user friendly. And Alice "somehow" needs to find Bob and agree with him on the terms of the swap - again an offchain process.
 
-Within the EUtxO model, this can be improved by using  a script to enforce the terms of the swap. Alice can craft a transaction that spends her NFT and creates an output locked by a script that requires _someone_ (maybe Bob, but Alice doesn't care) to send 100 ADA to Alice to unlock it.
+Within the EUtxO model, this can be improved by using a script to enforce the terms of the swap. Alice can craft a transaction that spends her NFT and creates an output locked by a script that requires _someone_ (maybe Bob, but Alice doesn't care) to send 100 ADA to Alice to unlock it.
 
 So how does this work?
 
