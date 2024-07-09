@@ -3,6 +3,13 @@
 
 == The (E)UTxO Model
 
+// We can add a chapter overview as follows
+=== Overview
+
+This chapter delves into the intricacies of the Cardano blockchain's transaction processing model, explicitly focusing on the Unspent Transaction Output (UTxO) model and its advanced variant, the Extended UTxO (EUTxO) model.
+
+This chapter provides readers with a comprehensive understanding of how transactions are managed and recorded on the Cardano network. It explains the core principles behind UTxO, highlighting its advantages over traditional account-based models, and introduces the enhancements brought by the EUTxO model. The chapter aims to demystify complex concepts by using analogies and detailed explanations, making them accessible to readers of all backgrounds. It also explores the practical implications of the EUTxO model, including its impact on transaction fees, security, and smart contract functionality, positioning Cardano as a versatile and secure blockchain platform.
+
 === Accounting Models
 
 Every cryptocurrency needs an _accounting model_ to keep track of who owns what, and Cardano is no exception.
