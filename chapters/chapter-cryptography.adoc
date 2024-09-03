@@ -106,11 +106,25 @@ While assymetric encryption guarantees that only the intended recipient of a par
 
 === Digital Signatures
 
-Digital signatures solve the problem discussed above. They provide a way for anyone to verify that a message was actually created and "digitally signed" by a specific sending party and that the data has not been changed.
+Digital signatures solve the problem discussed above. They provide a way for anyone to verify that a message was created and "digitally signed" by a specific sending party and that the content has not been changed. Digital signatures are created using two building blocks discussed above: _public key encryption_ and _hashing algorithms_. To process to create a digital signature involves the following steps:
 
+* The content of the message is "hashed" (i.e. is passed through a hash function) so that a unique fingerprint (hash) of the original data can be created, and used to uniquely identify the content in its original unaltered form.
 
+* The hash (created in the previous step), is then encrypted using public key encryption (discussed above) with the sender's private key. The generated encrypted hash is the digital signature.
 
+* The sender can then transmit the content of the message along with the generated digital signature (created in the previous step). Any recipient can thereafter verify that the message was created by the sender and has not been changed (as will now be discussed).
 
+In order for a recipient, or anyone really, to be able to verify that a digitally signed message was created by a partcular sender, the recipient would follow these steps:
+
+* The receiver should first of all have received the message and the digital signature.
+
+* The receiver can then decrypt the digital signature using the sender's public key. The decrypted value should then be the hash (unique fingerprint) of the original message.
+
+* The receiver can then compare the hash of the message received (by computing the hash themselves), and the decrypted hash computed in the previous step. If the two match then the recipient has 100% guarantees that the sender really did create the message they received. To be more specific, the recipient can guarantee that the sender's private/public key pair was indeed used to generate the digital signature. Since the digital signature is the encrypted hash, and since the hash uniquely identifies the specific piece of data, then it can be ascertained that the data has not been changed since the digital signature was created and that it was created by the sender (i.e. using their public/private key-pair).
+
+#Consider adding diagram for digital signatures...#
+
+Having introduced the main cryptographic building blocks used in blockchain systems, we'll now delve into how they help maintain and secure them.
 
 === Its role in securing the blockchain
 How it provides security
