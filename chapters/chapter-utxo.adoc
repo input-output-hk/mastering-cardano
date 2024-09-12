@@ -1,502 +1,437 @@
 
 :imagesdir: images
 
-== The (E)UTxO Model
+== The EUTXO model
 
-=== Accounting Models
+=== Accounting models
 
-Every cryptocurrency needs an _accounting model_ to keep track of who owns what, and Cardano is no exception.
+Every cryptocurrency requires an _accounting model_ to track ownership, and Cardano is no exception.
 
-One popular option for such a model is the so-called _account_ (or _balance_) _based_ model,
-where users have accounts storing their balances and where transactions modify those balances.
+One widely used option is the _account-based_ (or _balance-based_) model, where users hold accounts that store their balances, and transactions adjust those balances. This model will likely be familiar to most readers with a bank account, as it mirrors the system banks use and aligns with how many of us typically understand accounting.
 
-This model should be familiar to most readers with a bank account, because it is the model used by banks,
-which reflects the way most of us tend to think about accounting.
+Ethereum is one example of a cryptocurrency that uses the account-based model.
+For instance, if Alice initially holds 100 ETH and Bob holds 10 ETH, and Alice sends 30 ETH to Bob, their balances would be updated as follows:
 
-Ethereum is one example of a cryptocurrency which uses the account based model.
-If Alice and Bob initially hold 100 ETH and 10 ETH respectively
-and if Alice sends 30 ETH to Bob, then their balances would be updated as follows:
-
-.Alice sends 30 ETH to Bob in the account based model
+.Alice sends 30 ETH to Bob in the account-based model
 image::Alice_sends_30_ETH_to_Bob.png[]
 
-=== The Pure UTxO Model
+=== The UTXO Model
 
-The account based model is not the only model, though, and it is not the one used by Cardano.
-Instead, Cardano follows Bitcoin in this regard and extends Bitcoin's _UTxO model_ to the so-called _Extended UTxO model (EUTxO)_.
+The account-based model is not the only option, nor is it used by Cardano. Instead, Cardano follows Bitcoin's _UTXO model_ and extends it to the _extended UTXO model (EUTXO)_.
 
-The term "UTxO" is an acronym for _Unspent transaction output_ and denotes just that:
-the output of a transaction that has not yet been spent.
+The term 'UTXO' is an acronym for _unspent transaction output_ and denotes just that: the output of a transaction that has not yet been spent.
 
-_Transactions_ are the fundamental building blocks of all blockchains, no matter what accounting model they use.
-Transactions are what causes change and makes things happen.
-But where in the account based model, transactions update balances,
-in the UTxO model, they spend previously unspent outputs of past transactions and create new unspent outputs.
+_Transactions_ are the fundamental building blocks of all blockchains, regardless of the accounting model they employ. Transactions trigger changes and facilitate actions. However, while the account-based model updates balances, the UTXO model spends previously unspent outputs from past transactions and generates new unspent outputs.
 
-Transactions in the UTxO model have one or more _inputs_ and one or more _outputs_.
-Each input spends an existing UTxO (and thereby renders it "spent"), each output creates a new UTxO,
-which can then later be used as input for another transaction.
+Transactions in the UTXO model have one or more _inputs_ and one or more _outputs_. Each input spends an existing UTXO (thereby rendering it ‘spent’), while each output creates a new UTXO, which can later be used as input for another transaction.
 
-You can think of (unspent) transaction outputs as "coins" or "banknotes" that can be spent in future transactions.
-When you receive a payment, you receive a new coin or banknote, which you can then spend in a future transaction.
-When you spend money, you hand over coins or banknotes you received in the past.
+You can think of unspent transaction outputs as ‘coins’ or ‘banknotes’ that can be spent in future transactions. When you receive a payment, you receive a new coin or banknote, which you can use in a future transaction. When you spend money, you hand over coins or banknotes you received in the past.
 
-In a sense, the UTxO model is finer grained than the account based model: It keeps track of each individual coin or banknote, not just of total balances.
+In a sense, the UTXO model is finer-grained than the account-based model – it tracks each ‘coin or banknote’ rather than just total balances.
 
+The UTXO model resembles cash, whereas the account-based model is more like a bank account. When paying with cash, you hand over whole banknotes or coins, which are unspent outputs from past transactions (when someone paid you). UTXOs work the same way – they must be spent in full, just like coins or banknotes. If you don’t have the exact amount, you hand over more and receive change in return.
 
-Where the account based model resembles a bank account, the UTxO model resembles cash: If you pay somebody with cash, you hand over banknotes or coins from your wallet, which are unspent outputs of past transactions (when somebody paid _you_). You always have to spend whole banknotes and coins, you can't just keep half a coin in your wallet and hand over the other half.
+In the UTXO model, this change is called a _change output_, where one or more outputs from a transaction typically return to yourself.
 
-UTxO's can only be spent as a whole, not partially. In this regard, they really behave like coins or banknotes:
-If you pay somebody with cash and do not have the exact amount in your wallet, you do not tear a banknote in half,
-but instead hand over too much money and expect change in return.
-
-This is how it works in the UTxO model as well: One or more of the outputs of a transaction typically go back to yourself as change and are called _change outputs_.
-
-This analogy with cash is not perfect, though, because even though you need to spend complete UTxO's, you can create new UTxO's with arbitrary values. If you pay somebody with cash, you can't just create new banknotes or coins out of thin air. But in the UTxO model, you can create new UTxO's with arbitrary values, as long as the values of the newly created UTxO's do not exceed the values of the UTxO's you spend.
+However, the analogy with cash is not perfect. While you must spend entire UTXOs, you can create new UTXOs with arbitrary values, provided the total value of the new UTXOs does not exceed the value of the UTXOs being spent. This differs from cash transactions, where you cannot simply create new banknotes or coins.
 
 [example]
 =====
-So for example, if you have an input "coin" worth 100 ADA, you can create outputs worth 70 ADA and 30 ADA respectively, something you certainly cannot do with cash.
+For example, if you have an input ‘coin’ worth 100 ada, you can create two outputs: one worth 70 ada and another worth 30 ada. You cannot do this with cash, where splitting a banknote into smaller denominations is impossible without receiving change from a third party.
 =====
 
 [example]
 =====
-Let us look at the example of Alice and Bob again, but this time in the UTxO model: Alice and Bob have 100 ADA and 10 ADA respectively. Alice might have two UTxO's, one worth 60 ADA, the other worth 40 ADA. Bob might have one UTxO worth 10 ADA. 
+Let’s reconsider the example of Alice and Bob using the UTXO model: Alice has 100 ada split between two UTXOs – one worth 60 ada and the other worth 40 ada. Bob has a single UTXO worth 10 ada.
 
-If Alice wants to send 30 ADA to Bob, she can create a transaction with one input (her UTxO worth 40 ADA) and two outputs, one output worth 30 ADA going to Bob, the other output worth 10 ADA going back to Alice.
+If Alice wants to send 30 ada to Bob, she can create a transaction using one of her UTXOs, for instance, the 40 ada UTXO. The transaction will have two outputs: one output worth 30 ada to Bob and another worth 10 ada as change back to Alice.
 
-She could also use her other UTxO, worth 60 ADA, and send 30 ADA back to herself. She could even use _both_ her UTxO's as inputs and create a change output worth 70 ADA. Or _two_ change outputs worth 50 ADA and 20 ADA or any other combination that adds up to 70 ADA.
+Alternatively, Alice could use her 60 ada UTXO and send 30 ada back to herself. She could also combine both her UTXOs (60 ada and 40 ada) as inputs and create one or more change outputs, such as 70 ada total, or even split it into two outputs like 50 ada and 20 ada, as long as they sum up to 70 ada.
 
-EVen with this simple example, Alice has almost infinite possibilities to structure her transaction, as long as the sum of the output values equals the sum of the input values, the outputs going to Bob add up to 30 ADA and the change outputs add up to the correct change.
+Even with this simple example, Alice has numerous ways to structure her transaction. The key is that the sum of the output values must match the sum of the input values, with the outputs to Bob adding up to 30 ada and the change outputs reflecting the remaining balance.
+
 =====
 
-This sounds complicated, and it is, but in practice, no user has to worry about this: Wallets take care of all the details and create transactions automatically, picking the right UTxO's as inputs and creating the right outputs. Here the process of picking the right inputs is called _coin selection_.
+While this process sounds complex, in practice, users don't need to worry about the details – wallets handle it automatically. They select the appropriate UTXOs as inputs and create the correct transaction outputs. This process of selecting the right inputs is known as _coin selection_.
 
-Coin selection is really analogous to the process of picking the right coins and banknotes from your physical wallet when you pay with cash: You don't want too many coins in your wallet, you don't want to receive too many small coinsfootnote:[Such small coins are called _dust_ in the context of cryptocurrencies - UTxO's with a small value.] as change, but you also do not want to hand over all your small change. Wallets try to find a good balance between these competing goals.
+Coin selection works similarly to choosing the right coins and banknotes from a physical wallet when paying with cash – you don't want too many coins cluttering your wallet, you avoid receiving too many small coinsfootnote:[In the cryptocurrency context, small-value UTXOs are known as _dust_. ] as change, but you also don’t want to use up all your small change. Wallets aim to strike a balance between these competing objectives.
 
-.Alice sends 30 ADA to Bob in the UTxO model
+.Alice sends 30 ada to Bob in the UTXO model
 image::Alice_sends_30_ADA_to_Bob.png[]
 
-Note that this example is idealized: In reality, Alice would need to pay _transaction fees_ for the transaction, so the change outputs going back to herself would be slightly smaller than the difference between her inputs and the 30 ADA she sends to Bob.
+It is important to note that this example is simplified. In reality, Alice would also need to account for _transaction fees_, which means the change outputs returning to her would be slightly less than the difference between her inputs and the 30 ada sent to Bob.
 
-Outputs in the pure UTxO model are given by an _address_ and a _value_.
-The _address_, which in the case of Cardano contains a _PubKey Hash_ (the hash of a verification key),
-determines who is allowed to later spend this output: 
+In the pure UTXO model, outputs consist of an _address_ and a _value_. The address – which, in Cardano’s case, includes a _PubKey Hash_ (the hash of a verification key) – specifies who is allowed to spend the output later. To spend this output, transactions must be _signed_ using the corresponding signing key, and multiple signing keys can be used.
 
-Transactions trying to spend the output need to be _signed_
-by the corresponding signing key (a transaction can be signed by arbitrarily many keys).
-The _value_ is an arbitraryfootnote:[A certain minimal amount of ADA, the so-called _minimum deposit_, always needs to be included.]
-mixture of ADA and native tokens.
+The _value_ represents an arbitraryfootnote:[A certain minimum amount of ada – _minimum deposit_, which always needs to be included.] combination of ada and native tokens.
 
-Cardano transactions must be _balanced_: Roughly speaking, the sum of input values must equal the sum of output values.
-There are some exceptions and refinements to this simple rule:
+Cardano transactions must be _balanced_ – roughly speaking, the sum of input values must equal the sum of output values. There are some exceptions and refinements to this simple rule:
 
     * Each transaction needs to include _transaction fees_,
-      which get subtracted from the input values before comparing them to the output values.
-    * Cardano native tokens can be _minted_ or _burnt_ in a transaction.
+      which get subtracted from the input values before being compared to the output values
+    * Cardano native tokens can be _minted_ (created) or _burnt_ (destroyed) in a transaction
     * Staking rewards can be withdrawn, getting added to the outputs without having compensating
-      inputsfootnote:[Those staking rewards come from an internal reward account, not a regular UTxO.].
+      inputsfootnote:[These staking rewards come from an internal reward account, not a regular UTXO.].
 
-==== What changes?
+==== About change
 
-Without change, there can be no impact on the real world. _Something_ has to change as the result of a transaction, otherwise the transaction is pointless.
+Change is essential for a transaction to have any real-world effect. Without it, a transaction serves no purpose. In the account-based model, change is in the account balances. For those familiar with imperative programming, account balances in this model are like _global_ variables that get updated by transactions. In the UTXO model, change happens within the set of UTXOs – some UTXOs are spent, and new ones are created. However, no output is ever modified. Once created, an output remains unchanged permanently. The transaction’s effect lies solely in consuming existing outputs and generating new ones. For those familiar with functional programming, UTXOs are comparable to _immutable_ data structures, which are _consumed_ but never modified by transactions.
 
-In the account based model, the change is in the balances of the accounts.
+In the example above, before Alice sends 30 ada to Bob, the UTXO set consists of Alice's two UTXOs (60 ada and 40 ada) and Bob's UTXO of 10 ada.
 
-If you know about imperative programming, you can think of the balances in the account based model as _global_ variables that get updated by transactions.
-
-In the UTxO model, the change is in the set of UTxO's: Some UTxO's get spent, some new UTxO's get created, but no output ever gets modified. Once an output has been created, it will remain unchanged forever. The only effect a transaction has is to spend existing outputs and create new ones.
-
-If you know about functional programming, you can think of the UTxO's as _immutable_ data structures that get _consumed_ by transactions, but never _modified_.
-
-In the example above, before Alice sends 30 ADA to Bob, the UTxO-set consists of Alice's two UTxO's (60 ADA and 40 ADA) and Bob's UTxO of 10 ADA.
-
-.The old UTxO-set before Alice's transaction
+.The old UTXO set before Alice's transaction
 image::change_before_utxo.png[]
 
-Alice's transaction consumes her UTxO worth 40 ADA and creates two new UTxO's, one worth 30 ADA going to Bob, the other worth 10 ADA going back to Alice.
+Alice’s transaction consumes her UTXO worth 40 ada and generates two new UTXOs – one worth 30 ada sent to Bob and another worth 10 ada returned to Alice.
 
-So while no individual output changes, the _set_ of unspent outputs changes: One output is removed from the set (because it is now _spent_), and two new ones are added.
+So while no individual output changes, the _set_ of unspent outputs changes – one output is removed from the set (because it is now _spent_), and two new ones are added.
 
-.The new UTxO-set after Alice's transaction
+.The new UTXO set after Alice's transaction
 image::change_after_utxo.png[]
 
-Of course there may be many more UTxO's on the blockchain that we are not considering here, but they have no influence on the transaction we are looking at.
+Of course, there may be many more UTXOs on the blockchain that are not considered here, but they have no impact on the specific transaction examined here.
 
-=== Extending It: The EUTxO Model
+=== Extending it: the EUTXO model
 
-The UTxO model is simple and elegant, and it allows users to receive and send funds from and to arbitrary other users.
+The UTXO model is simple and elegant, allowing users to send and receive funds without restriction.
 
-These days however, users expect more from a blockchain than just the ability to send and receive funds. They want to be able to create _smart contracts_ that can do more than just move funds around, that can implement arbitrary logic and enforce complex rules. They also want to be able to create _fungible_ or _non-fungible_ tokens (sometimes called _NFT's_) and trade them on decentralized exchanges or sell them on decentralized marketplaces.
+​​​​These days, however, users expect more from a blockchain than just the ability to send and receive funds. They want to create smart contracts that can do more than merely move funds; they seek the ability to implement arbitrary logic and enforce complex rules. They also want to create fungible or non-fungible tokens (NFTs) and trade them on decentralized exchanges or sell them on decentralized marketplaces.
 
-In the UTxO model, a transaction can spend inputs locked at a specific address if it is signed by the
-signing key corresponding to that address.
+In the UTXO model, a transaction can spend inputs locked at a specific address if it is signed by the corresponding signing key.
 
-In the _Extended_ UTxO model, this is generalized by replacing the need for certain signatures
-with arbitrary logic.
+In the extended UTXO model, this concept is generalized by replacing the requirement for specific signatures with arbitrary logic.
 
-In addition to using hashed public keys as (part of) addresses,
-the EUTxO model introduces addresses that contain hashed _scripts_, written in a programming language (_Plutus Core_ in the case of Cardano).
+In addition to using hashed public keys as part of addresses, the EUTXO model introduces addresses that contain hashed _scripts_, written in a programming language (_Plutus Core_ in the case of Cardano).
 
-During validation, when a transaction has an input at such a _script_ address, the corresponding script (also called _validator_ in this context) is executed.
-If script execution completes without error, spending the input is valid; otherwise it is invalid.
+During validation, when a transaction has an input at a script address, the corresponding script (also referred to as a _validator_ in this context) is executed. If the script execution completes without error, spending the input is considered valid; otherwise, it is deemed invalid.
 
-To make this idea work, three more ingredients are needed:
+To make this idea work, three additional components are needed:
 
-    * In the UTxO model, a transaction output is given by an address and a value.
-      The EUTxO model adds a third component, a piece of data called
-      _datum_ footnote:[Adding a datum to an output is optional, but outputs at script addresses without datum
-      are unspendable. Datums can also be added to PubKey addresses].
-    * A transaction trying to spend an output at a script address must add another piece of data to the input,
-      the _redeemer_. The redeemer can be thought of as a "key" used to "unlock" an input,
-      a generalization of the signature used to unlock outputs at PubKey addresses.
-    * When a Plutus Core script is executed for validation, it gets datum, redeemer and a _context_
-      as arguments. The context contains the transaction being validated and all its inputs and outputs,
-      but nothing else.
+* In the UTXO model, a transaction output consists of an address and a value. The EUTXO model adds a third component – a piece of data called a datum.footnote:[Adding a datum to an output is optional, but outputs at script addresses without a datum are unspendable. Datums can also be added to public key addresses.]
 
-It turns out that this design hits a sweet spot regarding expressiveness and security:
+* A transaction attempting to spend an output at a script address must include another piece of data in the input, known as the _redeemer_. The redeemer acts as a ‘key’ to ‘unlock’ an input – a generalization of the signature used to unlock outputs at public key addresses.
 
-    * Bitcoin offers smart contract capabilities in the form of _Bitcoin Script_, but those scripts only "see"
-      the output being validated and the Bitcoin analog of a redeemer,
-      not the whole transaction with other inputs and outputs. As a consequence, Bitcoin Script is extremely limited
-      and unable to offer smart contracts of the type users have come to expect from blockchains like Ethereum.
-    * Ethereum smart contracts are very powerful and flexible, but also extremely hard to get right.
-      Their context is the whole state of the blockchain, which makes it difficult to predict what will happen when they get executed.
-      This has led to several infamous exploits and bugs in the past, resulting in the unexpected loss of many millions
-      of ether.
+* When a Plutus Core script is executed for validation, it receives the datum, redeemer, and  _context_ as arguments. The context contains the transaction being validated along with all its inputs and outputs, but no other information.
 
-Cardano's EUTxO model with datums, redeemers and contexts is powerful and flexible enough to do whatever can be done
-on Ethereum, but also simple enough to make it much easier to predict the effect of a given transaction.
+This design strikes a balance between expressiveness and security:
 
-Cardano transactions can be validated _locally_, without the need to submit them to the blockchain first,
-because the context only contains the transaction itself and its inputs and outputs.
-They can still fail when submitted, for example because some other transaction could have spent an expected input in the meantime,
-but if it succeeds, the transaction will have the predicted effect.
+* Bitcoin provides smart contract capabilities through _Bitcoin script_, but these scripts can only access the output being validated and the Bitcoin equivalent of a redeemer, not the entire transaction with all inputs and outputs. As a result, Bitcoin script is highly limited and cannot support the sophisticated smart contracts that users expect from blockchains like Ethereum.
 
-As a consequence, Cardano transactions only incur a fee if they actually succeed and are included in the blockchain.
-On Ethereum, transactions can fail and still cost gas. This can never happen on
-Cardano (as long as a user does not go out of his way to circumvent all safety mechanisms).
+* Ethereum smart contracts are powerful and flexible but also extremely challenging to implement correctly. Their context encompasses the entire state of the blockchain, complicating the prediction of execution outcomes. This has led to several notorious exploits and bugs, resulting in the unexpected loss of millions of ether.
 
-This is an extremely important point and deserves further explanations:
 
-On a blockchain like Ethereum, the outcome of a transaction can potentially be influenced by _anything_ happening on the blockchain. It is therefore impossible to determine the effect of a transaction offchain, before submitting it.
+Cardano's EUTXO model, incorporating datums, redeemers, and contexts, is both powerful and flexible enough to match the capabilities of Ethereum while remaining simple enough to enhance predictability regarding transaction outcomes.
 
-On a blockchain using the EUTxO model, the outcome of a transaction is determined by the transaction itself, its inputs and outputs, and nothing else. It therefore _is_ possible to determine the effect of a transaction offchain, before submitting it.
+Cardano transactions can be validated _locally_, without needing to submit them to the blockchain first, since the context includes only the transaction itself along with its inputs and outputs. Although a transaction may fail upon submission – such as when another transaction has already spent an expected input – if it succeeds, it will yield the predicted result.
 
-As noted above, the only thing that can possibly change on an EUTxO blockchain is the set of UTxO's, but the outputs themselves can never change. So it _is_ possible that a transaction has inputs that are consumed by other transactions before it is submitted, in which case it will fail (without incurring a fee). But if all inputs are still unspent, the transaction will have the predicted effect.
+As a result, Cardano transactions incur a fee only if they succeed and are included in the blockchain. In contrast, Ethereum transactions can fail yet still cost gas. This scenario is unlikely to occur on Cardano, provided users adhere to the established safety mechanisms.
 
-(There is one exception to this rule, which has to do with how the concept of _time_ is handled. We will discuss this later.)
+Transaction determinism is extremely important and deserves further explanation:
 
-==== Atomic Swaps
+On a blockchain like Ethereum, the outcome of a transaction can potentially be influenced by _any_ activity occurring on the blockchain. This makes it impossible to determine the effect of a transaction off-chain before submission.
 
-Let's make this more concrete with an example: _Atomic swaps_.
+In contrast, on a blockchain using the EUTXO model, the outcome of a transaction is solely determined by the transaction itself, its inputs and outputs, and nothing else. Therefore, it _is_ possible to predict the effect of a transaction off-chain before submission.
 
-We have mentioned _native tokens_ and NFT's before, and we will look at them in more detail later, but for now, let's just assume that they exist.
+As mentioned above, the only aspect that may change on an EUTXO blockchain is the set of UTXOs. However, the outputs themselves remain immutable. A transaction may encounter a situation where its inputs are consumed by other transactions before it is submitted, leading to failure without incurring a fee. Nonetheless, if all inputs remain unspent, the transaction will produce the predicted outcome.
 
-Let's say Alice is the owner of an NFT, and she is willing to sell it to Bob for 100 ADA.
+One exception to this rule – related to the handling of time – will be discussed later.
 
-She doesn't necessarily trust Bob, so she doesn't just want to send her NFT to Bob and hope he will pay her 100 ADA later.
+==== Atomic swaps
 
-Likewise, Bob doesn't trust Alice and doesn't want to send her 100 ADA, hoping she will send him the NFT afterwards.
+Let's clarify this with an example – _atomic swaps_.
 
-This problem can actually be solved with the UTxO model, even without smart contracts: Alice or Bob can craft a transaction with two inputs, Alice's NFT and Bob's 100 ADA and outputs 100 ADA for Alice and the NFT for Bob. Alice can _partially_ sign the transaction, then send it (offchain, for example by email) to Bob. Bob can then add his signature and submit the transaction to the blockchain.
+We have mentioned _native tokens_ and NFTs before, and we will explore them in more detail later, but for now, let's discuss a simple example.
 
-Note that this is secure: Alice can't submit the transaction without Bob's signature, and Bob can't submit the transaction without Alice's signature. Furthermore, Bob can't manipulate the transaction to his advantage before signing, because Alice's signature would no longer be valid.
+Let's say Alice is the owner of an NFT, and she is willing to sell it to Bob for 100 ada.
 
-Such a transaction is an example of an _atomic swap_: The transactions swaps Alice's NFT and Bob's 100 ADA "atomically", without the need for trust. Either Alice receives her 100 ADA and Bob receives the NFT, or neither of them does.
+She doesn't necessarily trust Bob, so she doesn't just want to send her NFT to Bob and hope he will pay her 100 ada later.
 
-.Alice and Bob perform an atomic swap in the UTxO model
+Likewise, Bob doesn't trust Alice and doesn't want to send her 100 ada, hoping she will send him the NFT afterward.
+
+This problem can be addressed using the UTXO model, even without smart contracts. For instance, Alice or Bob can create a transaction with two inputs: Alice's NFT and Bob's 100 ada. The outputs would be 100 ada for Alice and the NFT for Bob. Alice can then partially sign the transaction and send it to Bob off-chain (for example, via email). Bob can subsequently add his signature and submit the transaction to the blockchain.
+
+This approach is secure because neither party can submit the transaction without the other's signature. Additionally, Bob cannot manipulate the transaction to his advantage prior to signing, as doing so would invalidate Alice's signature.
+
+This transaction exemplifies an _atomic swap_ – it facilitates the exchange of Alice's NFT and Bob's 100 ada ‘atomically,’ without requiring trust. Either Alice receives her 100 ada, and Bob receives the NFT, or neither party completes the transaction.
+
+.Alice and Bob perform an atomic swap in the UTXO model
 image::atomic_swap_utxo.png[]
 
-This approach has at least two problems: The partially signed transaction needs to be sent offchain, which is neither ideal nor very user friendly. And Alice "somehow" needs to find Bob and agree with him on the terms of the swap - again an offchain process.
+This approach has at least two issues: first, the partially signed transaction must be sent off-chain, which is not ideal and can be cumbersome for users. Second, Alice must find Bob and agree on the terms of the swap, which again requires an off-chain process.
 
-Within the EUtxO model, this can be improved by using  a script to enforce the terms of the swap. Alice can craft a transaction that spends her NFT and creates an output locked by a script that requires _someone_ (maybe Bob, but Alice doesn't care) to send 100 ADA to Alice to unlock it.
+Within the EUTXO model, this can be enhanced by employing a script to enforce the swap's terms. Alice can create a transaction that spends her NFT and generates an output locked by a script that requires _someone_ (potentially Bob, but Alice does not need to specify) to send 100 ada to Alice to unlock it.
 
 So how does this work?
 
 .Alice has an NFT she wants to sell
 image::atomic_swap_eutxo_1.png[]
 
-Alice creates an atomic-swap-script, sends her NFT to the corresponding _script address_ (given by the hash of the script) and puts the price (100 ADA in our example) into the _datum_ of the output.
+Alice creates an atomic-swap script, sends her NFT to the corresponding _script address_ (given by the hash of the script), and sets the price (100 ada in our example) within the _datum_ of the output.
 
-.Alice locks her NFT in a script output guarded by the atomic-swap-script
+.Alice locks her NFT in a script output guarded by the atomic-swap script
 image::atomic_swap_eutxo_2.png[]
 
-In order to unlock that UTxO and spend it, the script will check that the spending transaction contains an output of 100 ADA to Alice. Remember that the script can "see" the whole spending transaction (and nothing else), so in particular, it can see the outputs of the transaction and can therefore check whether one such output is 100 ADA to Alice.
+To unlock that UTXO and spend it, the script will verify that the spending transaction includes an output of 100 ada directed to Alice. The script can 'see' the entire spending transaction (but nothing beyond that), allowing it to check for an output of 100 ada to Alice.
 
-(In practice, the script will probably also allow Alice to reclaim her NFT at any time - otherwise, she might have problems getting it back if nobody wants to buy it.)
+In practice, the script will likely also enable Alice to reclaim her NFT at any time. Without this functionality, she might encounter difficulties retrieving her NFT if no one expresses interest in purchasing it.
 
-Anybody will be able to spend this UTxO and get Alice's NFT, _provided_ they also send 100 ADA to Alice.
+Anyone will be able to spend this UTXO and obtain Alice's NFT, provided they also send 100 ada to Alice.
 
-.Alice and Bob perform an atomic swap in the EUTxO model
+.Alice and Bob perform an atomic swap in the EUTXO model
 image::atomic_swap_eutxo_3.png[]
 
-So in this example, Alice ceases control of her NFT by sending it to a script address, but she also ensures that she will get paid 100 ADA if somebody other than herself wants to spend that UTxO.
+In this example, Alice ceases control of her NFT by sending it to a script address while ensuring that she will receive 100 ada if someone other than herself wishes to spend that UTXO.
 
-Note how in this example, the second transaction only needs to be signed by Bob (to authorize spending the 100 ADA belonging to him). Spending the NFT is authorized by running the script and not by anybody signing the transaction.
+Note that in this case, the second transaction only requires a signature from Bob to authorize the spending of the 100 ada that belongs to him. Spending the NFT is permitted by executing the script, rather than requiring anyone to sign the transaction.
 
-We will see later that there is a problem with this smart contract, the so-called _double satisfaction_ problem, but rest assured that it can be solved within the EUTxO model.
+Later, we will discuss a potential issue with this smart contract, known as the _double satisfaction_ problem, but it can be effectively resolved within the EUTXO model.
 
 ==== Validation
 
-So far, we have brushed over some of the details of how Cardano nodes validate transactions.
+So far, we have briefly touched on how Cardano nodes validate transactions.
 
-Validation happens in two _phases_.
+Validation occurs in two _phases_.
 
 ===== Phase 1
 
-The first phase consists of "cheap", quick checks. They do not incur a fee, even if they fail. Those checks include, but are not restricted to, the "indeterministic" aspects of validation, things that cannot be checked before submitting the transaction.
+The first phase consists of ‘cheap’, quick checks. These checks do not incur a fee, even if they fail. They include, but are not limited to, the ‘indeterministic’ aspects of validation – things that cannot be verified before submission.
 
-One such check looks at the availability of inputs: A transaction is only valid if all its inputs are _unspent_. It is certainly possible that one or more transaction inputs are spent between the time the transaction is constructed and submitted and the time a node validates it. So the transaction might look perfectly valid upon submission, but becomes invalid later, before it can be included in a block, because in the meantime another, concurrent transaction, has spend one of its inputs.
+One such check concerns the availability of inputs: a transaction is only valid if all its inputs remain _unspent_. It is possible for a transaction's inputs to be consumed between its creation and submission and the time when a node validates it. This means that while the transaction may appear valid upon submission, it can become invalid if a concurrent transaction spends one of its inputs before it is included in a block.
 
-Another check is the _balance check_: The sum of the input values must equal the sum of the output values, minus the transaction fees (for simplicity, we are ignoring the possible minting or burning of _native tokens_ here).
-This check is perfectly deterministic and can be done before submission.
+Another check is the _balance check_: the sum of input values must equal the sum of output values minus transaction fees (ignoring the minting or burning of _native tokens_ for simplicity). This check is deterministic and can be performed before submission.
 
-Transactions also include a _validity interval_, a time interval determining the times at which the transaction is valid. Both ends of this interval can either be unrestricted or be specific slots. A transaction is only valid in a block whose slot falls into this validity interval, so during validation, the node needs to check this condition before including the transaction in a block.
+Transactions also include a _validity interval_, specifying a time range within which the transaction is valid. Both ends of this interval can either be unrestricted or tied to specific slots. For a transaction to be valid, the block’s slot must fall within this interval, so during validation, the node ensures this condition is met before including the transaction in a block.
 
-.Validity Intervals
+.Validity intervals
 image::validity_intervals.png[]
 
-Another piece of information included in each transaction is a set of _required signatures_, and nodes check for the presence of the listed signatures during the first phase of validation as well.
+Each transaction also includes a set of _required signatures_, which nodes verify during the first validation phase to ensure that all the necessary signatures are present.
 
 ===== Phase 2
 
-The second phase of validation is more costly, but it will only be performed after all checks of Phase 1 have passed. This means that this phase can be done offchain, before a transaction is ever submitted.
+The second validation phase is more costly, but it is only performed after all phase 1 checks have passed. This phase can also be conducted off-chain before the transaction is submitted.
 
-The checks in this phase consist of executing scripts. Most importantly, if a transaction tries to spend one or more script inputs, the corresponding scripts are evaluated, one after the other. If at least one script fails, the transaction is invalid, and validation fails.
+In this phase, scripts are executed. Most importantly, if a transaction attempts to spend script inputs, the corresponding scripts are evaluated one by one. If any script fails, the entire transaction is deemed invalid, and validation fails.
 
-As we will see later, there are other uses of scripts (related to native tokens and staking), and all those scripts will be executed during this validation phase as well.
+As we will discuss later, scripts are also used in other contexts, such as native tokens and staking, and all related scripts are executed during this validation phase.
 
-===== Script Outputs
 
-In order to execute the scripts, the node must obviously _have_ those scripts. Remember that they are _not_ included in the inputs, because a script address in given by the _hash_ of the script and not the script itself, and it is (practically) impossible to reverse hashing and to recover the script from its hash.
+===== Script outputs
 
-This means the transaction itself needs to include all the scripts that need to be executed during Phase 2 validation.
+To execute scripts during phase 2 validation, nodes must _have_ these scripts. Since script addresses are determined by the _hash_ of the script rather than the script itself, the transaction must include all relevant scripts, as it is practically impossible to reverse the hashing process and recover the script from its hash.
 
-This can lead to quite a lot of duplication on the blockchain and to larger transaction sizes, in particular if the script in question is used over and over again.
+However, including scripts directly in transactions can lead to duplication on the blockchain and larger transaction sizes, especially when the same script is reused multiple times.
 
-For this reason, so called _script outputs_ have been introduced to Cardano: In addition to address, value and datum, outputs can optionally contain a script, and such _script outputs_ can in turn be referenced by transactions. So instead of including a script, a transaction can reference a script output containing that script, provided there is such an output.
+To mitigate this, Cardano introduced _script outputs_. In addition to address, value, and datum, an output can optionally include a script. Transactions can then reference these script outputs instead of including the entire script, as long as a relevant script output already exists.
 
-Whether or not the author of a script should create a script output containing it depends on several considerations and trade-offs. 
+The decision to create a script output depends on the expected usage of the script:
 
-If the script is only used once, a script output makes little sense.
+- If the script is only used once, creating a script output is unnecessary.
+- If the script is reused frequently, creating a script output can be beneficial. Although the initial transaction with the script output may be larger and more expensive, future transactions referencing that script will be smaller and cheaper.
 
-If a script is used over and over again, it might make sense to create a script output, which will make the transaction with that script output larger and hence more expensive, but will make all future transactions referencing that script smaller and cheaper.
 
 ===== Collateral
 
-It is possible to force submission of a transaction that will fail during Phase 2 validation, even though there is never a good reason to do so.
+It is technically possible to force the submission of a transaction that will fail during phase 2 validation, although there is never a legitimate reason to do so. When this occurs, nodes must perform unnecessary and resource-intensive work.
 
-If this happens, nodes are forced to do a lot of unnecessary and costly work.
+To discourage this, transactions requiring phase 2 validation, such as those attempting to spend a script input, must include _collateral_. This is an input from a `PubKey` address that holds a minimum amount of ada. If phase 2 validation fails, the collateral is forfeited.
 
-In order to compensate for this, transactions that require Phase 2 validation (because they for example try to spend a script input) must include _collateral_, an input from a PubKey address which contains a certain minimum amount of ada. If Phase 2 validation fails, that collateral is forfeit.
+However, in practice, this scenario is unlikely to happen because invalid transactions typically fail earlier, preventing unnecessary validation if users follow the standard processes.
 
-But remember that this will never happen in practice, because invalid transactions never get that far if the user does not enforce it.
+### Determinism and time
 
-==== Determinism and Time
+As mentioned earlier, _determinism_ is a key feature of transactions in the EUTXO model: the outcome of a transaction is determined solely by the transaction itself, its inputs, and its outputs.
 
-As explained above, _determinism_ is an important and powerful feature of transactions in the EUTxO model: The outcome of a transaction is determined by the transaction itself, its inputs and outputs, and nothing else.
+However, certain smart contracts must account for _time_. For example, a _vesting contract_ aims to release funds only after a specified period.
 
-However, some smart contracts need to deal with _time_. Consider a _vesting contract_, for example, whose purpose is to only unlock funds after a certain period of time has passed.
+This raises a question: how can a transaction that depends on time remain deterministic? The success of the unlocking transaction clearly depends on whether the appropriate amount of time has elapsed; if enough time has passed, the transaction succeeds, and if not, it fails.
 
-How can this possibly be deterministic? The outcome of the unlocking transaction obviously depends on the current time: If sufficient time has passed, the transaction will succeed, otherwise it will fail.
+The solution lies in the concept of the _validity interval_, which is included in every transaction.
 
-To resolve this seeming contradiction, recall the _validity interval_ included in every transaction.
+Since phase 2 validation occurs only after phase 1 has succeeded, and phase 1 checks the validity interval, a script can safely assume that the transaction's validity interval includes the current time. While the script does not ‘know’ the exact time, the current time is guaranteed to fall within the specified validity interval.
 
-Phase 2 validation will only ever be reached once Phase 1 validation has succeeded, and as explained above, Phase 1 validation includes checking validity intervals. This means a script can assume that the validity interval of the transaction contains the current time. It does not _know_ the exact current time, but it knows that it falls into the validity interval of the transaction.
+This ensures that the script's execution remains completely deterministic, even though it takes time into account.
 
-In this way, the outcome of evaluating the script is still completely deterministic, even though the script can take time into account.
+===== A vesting example
 
-===== A Vesting Example
+Consider the example of creating a vesting contract that restricts spending until after January 1, 2050.
 
-Let us look at the example of creating a vesting contract that only allows spending after January 1st, 2050.
+In this case, the script must check that the _start_ of the transaction's validity interval is after January 1, 2050.
 
-In this case the script will need to check that the _start_ of the transaction's validity interval is after January 1st, 2050.
+While the script does not know the exact current time, it does know that the current time falls within the validity interval. Therefore, if the interval starts after January 1, 2050, the current time must also be after that date.
 
-The script has no way of knowing the current time, but it knows the current time falls into the validity interval. So if the start of this interval is _after_ January 1st, 2050, the current time must be after that date as well.
+If the validity interval starts before January 1, 2050, the script will fail, since the current time _could_ be before that date. Even if the current time is after January 1, 2050, the script cannot verify this with certainty and will therefore reject the transaction.
 
-If the script encounters a validity interval starting _before_ January 1st, 2050, it will fail, because the current time _could_ be before that date. The current time might very well be after January 1st, 2050, but the script has no way of knowing that.
 
-.Vesting Example
+.Vesting example
 image::vesting_example.png[]
 
 ==== Composability
 
-One of the most important and useful features of the EUTxO model is easy _composability_ of smart contracts.
+One of the key strengths of the EUTXO model is the _composability_ of smart contracts.
 
-In the account based model, smart contracts can interact with each other, but this interaction is not always easy to predict and can lead to unexpected results.
+In the account-based model, while smart contracts can interact with each other, these interactions can be unpredictable and may lead to unintended outcomes.
 
-In the EUTxO model, the spending of individual script outputs is guarded by their individual validators, which can be the same script, but could also be different scripts.
+In the EUTXO model, each script output is protected by its validator. Although different outputs can be governed by the same script, they can also have separate validators. Each validator independently decides whether the transaction meets the conditions to spend the input it protects without depending on other validators. As a result, well-constructed scripts can easily be combined in a transaction without concerns about unforeseen interactions.
 
-Each validator "decides" if the transaction being validated has the "right" to spend the input guarded by the validator, and this is completely independent of the rules enforced by other validators. If the validator scripts are well written, such inputs can therefore easily be combined in a transaction, without the need to worry about interactions between the different scripts.
+Let’s recall the <<atomic swaps>> example:
 
-Let us look at the example of <<Atomic Swaps>> again:
+Suppose Alice has several NFTs she wants to sell and creates a script output secured by the atomic-swap script for each of them. Bob can then create a transaction that spends all the outputs containing the NFTs he wishes to purchase and generates payment outputs for each of them.
 
-Maybe Alice has several NFT's that she wants to sell and creates a script output guarded by the atomic-swap-script for each of them. Bob can then create a transaction that spends all the outputs containing an NFT he wants to buy and creates payment outputs for each of them.
-
-.Bob buys two NFT's from Alice in a single transaction
+.Bob buys two NFTs from Alice in a single transaction
 image::atomic_swap_combined.png[]
 
-The ability to combine several atomic swaps into one transaction does not need to be explicitly implemented in the atomic-swap-script, it is a natural consequence of the way the EUTxO model works.
+Combining multiple atomic swaps into one transaction does not require explicit implementation in the atomic-swap script; it is a natural consequence of how the EUTXO model works.
 
-===== The Double Satisfaction Problem
+===== The double satisfaction problem
 
-As we mentioned before, there is, however, a problem with the atomic-swap-script, the so-called _double satisfaction problem_.
+As previously mentioned, there is a challenge with the atomic-swap script known as the double satisfaction problem.
 
-Let us look at the example of Alice and Bob again, but let us assume that Alice changes the price of NFT C from 300 ADA to 200 ADA.
+Let’s recall the example of Alice and Bob, this time assuming that Alice changes the price of NFT C from 300 ada to 200 ada.
 
-.Bob again buys two NFT's from Alice, but for different prices
+.Bob buys two NFTs from Alice, but for different prices
 image::double_satisfaction_1.png[]
 
 This looks fine, and both Alice and Bob get what they want.
 
-Unfortunately, Bob can instead do the following and cheat Alice out of 200 ADA:
+Unfortunately, Bob can instead do the following and cheat Alice out of 200 ada:
 
-.Bob cheats Alice by making one payment for two NFT's.
+.Bob cheats Alice by making one payment for two NFTs
 image::double_satisfaction_2.png[]
 
-So instead of creating one payment output to Alice for each NFT he buys from her, he only creates a single payment output, thus paying 200 ADA instead of 400 ADA.
+So instead of creating one payment output to Alice for each NFT he buys from her, Bob only creates a single payment output, thus paying 200 ada instead of 400 ada.
 
-His Tx 2 will validate just fine: As explained above, the scripts guarding the NFT's will be executed one after the other.
+His transaction (Tx 2) will validate correctly: as explained above, the scripts guarding the NFTs will be executed sequentially:
 
-The one guarding NFT B will check whether the transaction contains a payment output to Alice worth 200 ADA, finds it and gives its okay.
+- The script for NFT B will check whether the transaction contains a payment output to Alice worth 200 ada, find it, and validate the transaction. 
+- The script for NFT C will do the same, verifying _the same_ payment output to Alice and also validating the transaction.
 
-Then the script guarding NFT C will do the same, check whether the transaction contains a payment output to Alice worth 200 ADA, finds it (the same one) and gives its okay as well.
+This issue arises from how validation works during phase 2 – all validator scripts run sequentially and independently, lacking a mechanism to share information between them. Consequently, the first script cannot ‘mark’ the payment output it finds or ‘claim it for itself.’
 
-This is the problem with the way validation during Phase 2 works: All validator scripts are run in sequence, independently of each other, and they have no way of sharing information between each other. So there is no way for the first script to "mark" the payment output it finds and "claim it for itself".
+Note that this situation can also occur in real life. For example, Alice runs a mail order business, and Bob orders one item for 200 USD at the beginning of the month. Later that month, he orders another item for 200 USD.
 
-Note that this is a situation that could also occur in "real life": 
-Say Alice runs a mail order business and Bob orders one item for 200 USD at the beginning of the month. Later that month, he orders another item for 200 USD.
-Alice sends him two invoices, but Bob only pays one of those.
-At the end of the month, Alice goes over her accounts and checks whether all invoices have been paid.
-She checks the first invoice to Bob, sees an incoming payment of 200 USD and marks the invoice as paid.
-Later she checks the second invoice, sees the same incoming payment of 200 USD and marks the second invoice as paid as well.
+Alice sends him two invoices, but Bob only pays one. At the end of the month, Alice reviews her accounts and checks whether all invoices have been paid. She examines the first invoice, sees an incoming payment of 200 USD, and marks it as paid. Later, she checks the second invoice, sees the same incoming payment of 200 USD, and marks that invoice as paid as well.
 
-Why does this not cause problems in "real life"?
+Why does this not cause problems in ‘real life’? Because Alice will likely include an order number or invoice number in her invoice, which Bob must reference in his payment. This way, Alice can identify which payment corresponds to each invoice.
 
-Because Alice will probably include an _order number_ or _invoice number_ in her invoice, which Bob needs to include in his payment. This way, Alice can tell which payment belongs to which invoice.
+Bob cannot cheat because he must include the invoice number with his payment, but he cannot include both invoices. Therefore, he cannot get away with making only one payment.
 
-Bob can not cheat, because he has to include the one or the other invoice number with his payment, but can not include both. So he will not get away with only paying once.
+Fortunately, we can apply the same principle to fix the atomic-swap contract and secure it against the double satisfaction problem.footnote:[The solution to the double satisfaction problem presented here is not the only option. For example, one could modify the atomic-swap script to allow only one input from the corresponding script address. However, this would hinder composability.] 
 
-Luckily, we can use the same idea to fix the atomic-swap-contract and make it secure and invulnerable to the double satisfaction problem.
-footnote:[The solution to the double satisfaction problem we present here is not the only possible solution. For example, one could also modify the atomic-swap-script to only allow one input from the corresponding script address. However, that would hamper composability.]
+Instead of merely searching for a payment output to Alice with the correct price, the script can look for such an output that also includes the _UTXO reference_ footnote:[On Cardano, the UTXO reference is represented by a pair consisting of the hash of the transaction that created the output and the index of that output in the list of all outputs of that transaction. The first output has index #0, the second output has index #1, and so on.] of the NFT output in its datum.
+Remember that any output can carry a datum, not just script outputs.
 
-Instead of just searching for a payment output to Alice with the correct price, the script can instead search for such an output that _also_ has the _UTxO reference_ footnote:[On Cardano, the _UTxO reference_ is given by a pair consisting of the hash of the transaction that created the output and the _index_ of that output in the list of all outputs of that transaction. The first output has index #0, the second output has index #1 and so on.] of the NFT output in its datum.
-(Remember that _any_ output can carry a datum, not just script outputs.)
+UTXO references are unique on the blockchain; no two different UTXOs can have the same reference. In our example, the output containing NFT B will have a reference distinct from the one for NFT C. To satisfy validation for spending the output containing NFT B, Bob must include a payment output to Alice that contains the UTXO reference of the output for NFT B in its datum. The same requirement applies to the output for NFT C. Since these two references differ, Bob can no longer cheat by providing only a single payment output to Alice.
 
-UTxO references are unique on the blockchain, no two different UTxO's can ever have the same reference.
-So in our example, the output containing NFT B will have a reference that is different from the reference of the output containing NFT C. In order to satisfy validation of spending the output containing NFT B, Bob will have to include a payment output to Alice that contains the UTxO reference of the output containing NFT B in its datum. The same goes for the output containing NFT C. These two references are different, so Bob can no longer cheat and get away with a single payment output to Alice.
-
-.Bob buys two NFT's from Alice with no way of cheating.
+.Bob buys two NFTs from Alice with no way of cheating
 image::double_satisfaction_3.png[]
 
-===== Flash Loans
+===== Flash loans
 
-The composability of smart contracts in the EUTxO models often leads to unexpected features "for free" that would need to be explicitly implemented in other models.
+The composability of smart contracts in the EUTXO model often results in unexpected features ‘for free’ that would need to be explicitly implemented in other models.
 
-We already saw one example of this above when we showed how atomic swaps can be combined into a single transaction.
+As discussed earlier, one example is the ability to combine atomic swaps into a single transaction.
 
-Another example is _flash loans_: A flash loan is a loan that is taken out and repaid in the same transaction. The popular Uniswap DEX (Decentralized Exchange) on Ethereum offers such flash loans as a special feature, a feature that needed to be explicitly implemented in the Ethereum smart contract code.
+Another example is _flash loans_. A flash loan is a loan taken out and repaid within the same transaction. On Ethereum, the popular decentralized exchange (DEX) Uniswap offers flash loans as a special feature that required explicit implementation in its smart contract code.
 
-Our simple atomic-swap script allows for flash loans "out of the box", without any need to explicitly enable them.
+Our simple atomic-swap script enables flash loans ‘out of the box’, without the need for explicit implementation.
 
-For example, let us assume that Alice wants to sell 100 ADA for a price of 45 DJED, and Bob wants to sell 50 DJED for a price of 100 ADA. Both Alice and Bob use the simple atomic-swap-script to make their offers on the Cardano blockchain.
+For instance, suppose Alice wants to sell 100 ada for 45 DJED, and Bob wants to sell 50 DJED for 100 ada. Both Alice and Bob use the simple atomic-swap script to list their offers on the Cardano blockchain.
 
-.Alice and Bob offer atomic swaps.
+.Alice and Bob offer atomic swaps
 image::flash_loan_1.png[]
 
-Charlie sees the two offers and realizes that he could make a profit if he could temporarily borrow 45 DJED:
+Charlie notices both offers and realizes he could make a profit by temporarily borrowing 45 DJED:
 
-* Charlie takes out a loan of 45 DJED.
-* He uses those 45 DJED to buy 100 ADA from Alice.
-* He then uses those 100 ADA to buy 50 DJED from Bob.
-* Finally, he repays the loan and walks away with 5 DJED in profit.
+- Charlie takes out a loan of 45 DJED
+- He uses those 45 DJED to buy 100 ada from Alice
+- He then uses the 100 ada to buy 50 DJED from Bob
+- Finally, he repays the loan and receives a 5 DJED profit.
 
-Charlie can do all of this in a single transaction on Cardano without the need to explicitly borrow money.
+Charlie can complete this entire process in a single transaction on Cardano without needing to explicitly borrow funds.
 
-.Charlie uses an "automatic flash loan" to earn 5 DJED.
+.Charlie uses an automatic flash loan to earn 5 DJED
 image::flash_loan_2.png[]
 
-During Phase 2 validation, the script guarding Alice's 100 ADA checks the transaction for a payment output to Alice over 45 DJED with the right reference, finds it and allows the transaction to proceed. 
+During phase 2 validation, the script guarding Alice’s 100 ada checks for a payment output to Alice of 45 DJED with the correct reference, finds it, and approves the transaction.
 
-The script guarding Bob's 50 DJED does the same and finds the payment output to Bob over 100 ADA with the correct reference.
+Similarly, the script guarding Bob’s 50 DJED checks for a payment output to Bob of 100 ada with the correct reference and allows the transaction.
 
-The transaction is balanced (100 ADA + 50 DJED go in, 100 ADA + 45 DJED + 5 DJED go out), so validation succeeds, and Alice, Bob and Charlie walk away satisfied, each having gotten what they wanted.
+The transaction is balanced (100 ada + 50 DJED go in, 100 ada + 45 DJED + 5 DJED go out), so validation succeeds, leaving Alice, Bob, and Charlie satisfied, each receiving what they wanted.
 
-=== Beyond Validation: Other Uses of Smart Contracts
+=== Beyond validation: other uses of smart contracts
 
-One way to look at going from the plain UTxO model to the EUTxO model is to look at addresses: In the UTxO model, whenever a transaction tries to spend a UTxO from an address, the transaction needs to be signed by the signing key corresponding to that address. In the EUTxO model, we add script addresses, such that transactions trying to spend outputs from script addresses need to be validated by the corresponding script.
+One way to understand the transition from the UTXO model to the EUTXO model is by examining addresses. In the UTXO model, whenever a transaction tries to spend a UTXO, it must be signed using the signing key corresponding to the address. The EUTXO model introduces script addresses, meaning that transactions trying to spend outputs from script addresses must be validated by the corresponding script.
 
-The address of a UTxO determines how spending it is validated, and by going from the UTxO model to the EUTxO model, we add a new way of validating spending inputs, namely by running scripts.
+The address of a UTXO determines how spending it is validated. By moving from the UTXO model to the EUTXO model, a new method for validating inputs is added – by executing scripts.
 
-On Cardano, however, addresses do not only determine how UTxO's can be _spent_, they also determine if and how that UTxO is _staked_.
+On Cardano, however, addresses not only define how UTXOs are _spent_ but also determine if and how the UTXO is _staked_.
 
-To understand this, we need to have a closer look at the "anatomy" of Cardano (Shelleyfootnote:[There is an old type of address on Cardano, called a _Byron address_, which was introduced in the first era of Cardano, the Byron era. Shelley addresses came with the Shelley era. During the Byron era, Cardano used the plain UTxO model, and there was no staking, so we ignore Byron addresses in this chapter.]) addresses and how that relates to staking.
+To better understand this, we need to look closely at the ‘anatomy’ of Cardano Shelleyfootnote:[There is an older type of address on Cardano, known as a _Byron address_, introduced during the first era of Cardano, the Byron era. Shelley addresses were introduced in the Shelley era. In the Byron era, Cardano used the plain UTXO model without staking, so Byron addresses are not discussed in this chapter.] addresses and their relation to staking.
 
-==== The Anatomy of a Cardano Address
+==== The anatomy of a Cardano address
 
-Every address has a _spending_ or _payment_ part, which determines under which conditions a UTxO "sitting" at that address can be spent:
+Every address contains a _spending_ or _payment_ part, which dictates the conditions under which a UTXO at that address can be spent:
 
-* If the payment part of an address is given by a _payment pub key hash_, the hash of a _payment verification key_, then each transaction trying to spend a UTxO at that address needs to be signed by the corresponding _payment signing key_. 
+* If the payment part of an address is represented by a _payment public key hash_ – the hash of a _payment verification key_ – then any transaction attempting to spend a UTXO from that address must be signed by the corresponding _payment signing key_.
 
-* The payment part of an address can also be given by the hash of a _script_, in which case when validating a transaction trying to spend a UTxO at that address, the script is evaluated.
+* Alternatively, the payment part of an address can be represented by the hash of a _script_, in which case the script is executed when validating a transaction attempting to spend a UTXO at that address.
 
-Until now in this chapter, we have only been talking about this (mandatory) payment part of an address.
+So far in this chapter, we have focused only on this mandatory payment part of an address.
 
-But on Cardano, every (Shelley) address can also carry an optional _staking_ part, the _staking credentials_, and as for the payment part, this staking part can either be a _staking pub key hash_, the hash of a _staking verification key_, or a _script hash_.
+On Cardano, however, every (Shelley) address may also include an optional _staking_ part, known as _staking credentials_. Like the payment part, the staking part can either be a _staking public key hash_ – the hash of a _staking verification key_ – or a _script hash_.
 
-We thus have _six_ different types of addresses on Cardano:
+As a result, Cardano supports six different types of addresses:
 
 [cols="1,1"]
 |===
-|Payment Part |Staking Part
+|Payment part |Staking part
 
-|Payment Pub Key Hash
-|No Staking
+|Payment PubKey hash
+|No staking
 
-|Script Hash
-|No Staking
+|Script hash
+|No staking
 
-|Payment Pub Key Hash
-|Staking Pub Key Hash
+|Payment PubKey hash
+|Staking PubKey hash
 
-|Script Hash
-|Staking Pub Key Hash
+|Script hash
+|Staking PubKey hash
 
-|Payment Pub Key Hash
-|Script Hash
+|Payment PubKey hash
+|Script hash
 
-|Script Hash
-|Script Hash
+|Script hash
+|Script hash
 |===
 
-Where the payment part of an address determines under which conditions a UTxO at that address can be spent by a transaction, the staking part determines if the ada contained in a UTxO at that address are _staked_ to a stake pool and if so, to which one. If they are staked, they earn staking rewards.
+While the payment part of an address defines the conditions under which a UTXO at that address can be spent, the staking part determines whether the ada in a UTXO is _staked_ to a stake pool and, if so, to which one. Staked ada earns staking rewards.
 
-In addition to consuming inputs and producing outputs, Cardano transactions can also register and deregister _staking certificates_, create _delegation certificates_ and _withdraw rewards_.
+Beyond consuming inputs and producing outputs, Cardano transactions can also handle _staking certificates_, _delegation certificates_, and _withdraw rewards_.
 
-Once a staking certificate has been registered for given staking credentials and a delegation certificate to a stake pool has been created, staking rewards are earned and can later be withdrawn.
+Once a staking certificate is registered for specific staking credentials and a delegation certificate is created for a stake pool, staking rewards accumulate and can be withdrawn later.
 
-All these staking-related actions need to be validated, just like spending of UTxO's does:
+All staking-related actions must be validated, similar to UTXO spending:
 
-* A transaction performing a staking-related action for staking credentials given by a staking pub key hash needs to be signed by the corresponding staking signing key.
+- A transaction that performs a staking-related action for staking credentials given by a staking public key hash must be signed by the corresponding staking signing key.
 
-* A transaction performing a staking-related action for staking credentials given by a script hash needs to be validated by the corresponding script, which is evaluated during Phase 2 validation.
+- A transaction that performs a staking-related action for staking credentials given by a script hash must be validated by the corresponding script, which is evaluated during phase 2 validation.
 
-==== Cardano Native Tokens
+==== Cardano native tokens
 
-Finally, scripts play a crucial role in the minting and burning of _Cardano Native Tokens_.
+Finally, scripts play a crucial role in the minting and burning of _Cardano native tokens_.
 
-The "native" currency on the Cardano blockchain is ADA, but Cardano also supports the creation of _custom_ tokens, which can be _fungible_ (like ADA) or _non-fungible_ (like NFT's).
+While ada is the native currency of the Cardano blockchain, Cardano also supports the creation of _custom tokens_, which can be either _fungible_ (like ada) or _non-fungible_ (like NFTs).
 
-Such tokens would be pointless if they could freely be minted and burned at a whim without any restrictions,
-so minting and burning of native tokens is also guarded by scripts.
+Minting and burning custom tokens must have restrictions, otherwise, they would be pointless if allowed freely. Therefore, these actions are also governed by scripts.
 
-A Cardano native token is identified by two parts, the _policy id_ and the _token name_. 
+A Cardano native token is identified by two components: the _policy ID_ and the _token name_:
 
-The token name is an arbitrary byte string with a length of at most 32 bytes.
+- The token name is an arbitrary byte string, up to 32 bytes long
+- The policy ID is the hash of a script.
 
-The policy id, however, is the hash of a script.
+Whenever a transaction mints or burns a token, the corresponding script is evaluated during phase 2 validation.
 
-Whenever a transaction tries to mint or burn a token, the corresponding script is evaluated during Phase 2 validation.
+These _minting scripts_ can range from completely permissive (allowing unrestricted minting and burning) to more controlled cases requiring specific signatures or enforcing complex rules, such as ensuring the uniqueness of tokens to create NFTs.
 
-These so-called _minting scripts_ cover a wide variety of use-cases, ranging from the totally permissible "everything goes" (no restrictions on minting or burning whatsoever) over requiring a specific signature for each minting or burning transaction to more sophisticated rules that for example enforce the uniqueness of the token, turning it into an NFT.
