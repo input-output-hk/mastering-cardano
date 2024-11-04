@@ -4,127 +4,133 @@
 [[chap-crypto]]
 == Cryptography
 
-Cryptography is a fundamental building block of blockchain systems, other distributed ledger technologies (DLT), smart contracts and cryptocurrencies. An overview of cryptography and its role in blockchain systems will be covered in this chapter. We do not go deep into technical details as it is beyond the scope of this book, but we point readers to other resources at the end of the chapter to dig deeper if interested.
+Cryptography is a fundamental building block of blockchain systems, distributed ledger technologies (DLT), smart contracts, and cryptocurrencies. This chapter offers an overview of cryptography and its role in blockchain, focusing on hash functions, encryption techniques, and digital signatures, along with their contributions to securing these systems. While technical details are beyond the scope of this book, resources for further exploration are provided at the end of the chapter.
 
-The following main topics will now be covered: Hash Functions, Encryption Techniques, Digital Signatures and their role in securing blockchain systems.
+=== Hash functions
 
-=== Hash Functions
+When digital systems communicate, messages sent between them may be altered during transmission due to issues with the physical communication medium. Early in computing history, the need for a solution to this problem became evident. An initial solution involved adding an extra 'parity bit' to the data sent between devices, serving as a safety guarantee to determine whether the data changed between the sender and receiver. A computer bit can either be 0 or 1. In a naive implementation of a parity bit, if the total number of bits set to 1 in the data being sent is odd, the parity bit is set to 1; if even, it is set to 0. However, since the parity bit can only store a single 0 or 1, there is a high chance that errors could occur undetected. For example, if two bits that were originally 0s were altered to 1s, the naive parity bit would still appear valid. Although better parity schemes exist, they remain insufficient for the large amounts of data being transmitted.
 
-When digital systems communicate, messages sent between communicating systems could end up being altered in between sending and receiving devices. Such errors sometimes sometimes occur due to physical communication mediums playing up. Early on in the history of computing, it was realised that a solution to this problem was needed. An early solution to this proposed adding an extra "parity bit" to data sent between devices that would be used as a safety guarantee to determine whether data changed between the sender and receiver. A computer "bit" can either be a 0 or a 1. A naive implementation of a parity bit follows: if the total number of bits set to 1 in the data being sent is odd then the parity bit would be set to 1, otherwise if even the parity bit would be set to 0. Since the parity "bit" can store a 0 or 1 only, there is a high chance that errors could occur and go unnoticed. For example, consider two bits that were originally 0s in the original data somehow were altered and became 1s. The naive parity bit just discussed would still be valid. Better parity bit schemes could be used, but they would still not be adequate for the large amounts of data being sent.
-
-Expanding along the same lines, "checksums" were proposed. Instead of encoding sanity check information into a single computer bit, checksums use larger amounts of data as a means of encoding such sanity checks ranging from checksums that are single bytes to many bytes in terms of size.
+Building on this concept, 'checksums' were introduced. Unlike parity bits, which encode sanity check information into a single bit, checksums use larger data sizes for encoding such checks, ranging from single to multiple bytes.
 
 #Add diagram?#
 
-In fact sanity checks are not only useful to ensure data has not been changed between one computer to another, but in general for ensuring that data has not been altered (even for data that has been stored on the same computer). While checksums are great for providing sanity-checks, there are still possibilities that an error could occur and go unnoticed. This is because two different pieces of data could result in the same checksum (sanity check) value. 
+In fact, sanity checks are not only essential for ensuring data integrity during transmission between computers but also for verifying that data has not been altered when stored on the same device. While checksums are effective for providing these sanity checks, there remains a risk of undetected errors. This risk arises because two different pieces of data can yield the same checksum value.
 
 #Add diagram?#
 
-A better sanity check was needed. This is where hashes come in. They also act as a sanity check like checksums. Yet they aim to do so in a manner that makes in next to impossible for some original data and some altered version of the original data to result in the same sanity check hash value. They can be thought of as a unique digital fingerprint that identifies a specific piece of data. Given any arbitrary data as an input, a hash algorithm will output a unique fingerprint called a hash. No matter how many times the same exact input data is passed in, the same hash (fingerprint) will be output.
+A more effective sanity check was needed, which is where hashes came into play. Hashes serve as sanity checks similar to checksums but are designed to make it nearly impossible for an original piece of data and its altered version to produce the same hash value. They can be thought of as unique digital fingerprints that identify specific data. Given any arbitrary input, a hash algorithm will output a unique fingerprint, or hash. The same input will consistently yield the same hash output.
 
-To reiterate the point, it will do so in a manner where it is next to impossible that the same fingerprint is generated for two different inputs of data. If even a single bit of the input data changes, the outputted hash will change drastically. By storing or sending the fingerprint with the original data, it is possible to verify whether the orginal data has been altered, since if it has been altered then the fingerprint would not match. Also, the algoritms used to generate hashes need to ensure that it is next to impossible for an altered piece of data and associated fingerprint (hash) to result in a match. In summary, hash functions provide a solution that guarantees a piece of data has not changed over time and space.
+To reiterate the point, the algorithm will produce a unique fingerprint in a manner where it is nearly impossible for two different inputs of data to generate the same hash. If even a single bit of the input data changes, the outputted hash will change drastically. By storing or sending the fingerprint with the original data, it is possible to verify whether the original data has been altered; if it has been altered, then the fingerprint will not match. Additionally, the algorithms used to generate hashes must ensure that it is nearly impossible for an altered piece of data and its associated fingerprint (hash) to result in a match. In summary, hash functions provide a solution that guarantees a piece of data has not changed over time and space.
 
-// Encryption techniques discussed above provide a secure end-to-end means of digital communication yet do not provide a solution that guarantees data (unencrypted or not) has not changed over time. Hash algorithms provide a solution towards this. -->
+// Encryption techniques discussed above provide a secure end-to-end means of digital communication. However, they do not guarantee that data – whether encrypted or unencrypted – has not changed over time. Hash algorithms address this issue by ensuring data integrity. -->
 
-// This is a required feature of a hash algorithm, i.e. that it is impossible footnote:[again, computationally infeasible] to find some other data input that would result in the same hash. -->
+// This is a required feature of a hash algorithm: it is impossible [footnote: again, computationally infeasible] to find another data input that produces the same hash. -->
 
 #include diagram of hash algorithm#
 
 #Figure X depicts a hash algorithm...#
 
-// Once a hash is generated, potentially sent, and ultimately stored somewhere, anyone that has a copy of the hash can be guaranteed that the associated data used to generate the hash, has not been changed. This is because the 
+// Once a hash is generated, potentially sent, and ultimately stored, anyone with a copy of the hash can be assured that the associated data used to generate the hash has not been altered. 
 
-Hash functions provide a way to guarantee that some data has not been changed -- by storing the generated hash (fingerprint) of the respective data. As long as the hash (fingerprint) has not changed, then it can be verified that the respective data has not been changed. Indeed if someone changes the data and changes the hash to match the newly generated data, it would be impossible for a receiver to detect this change. We'll discuss a solution to this soon. Nonetheless hash functions solved a major problem for communicating devices, yet they do not provide a solution for ensuring the privacy of data being communicated. We will now discuss encryption techniques introduced to provide a means of guaranteeing privacy of data communicated between different parties.
+Hash functions guarantee that data remains unchanged by storing the generated hash of the respective data. As long as the hash remains unchanged, it can be verified that the respective data has not been modified. However, if someone alters the data and adjusts the hash to match the new data, the receiver would be unable to detect this change. We will discuss a solution to this issue soon.
+
+While hash functions solve a significant problem for communicating devices, they do not ensure the privacy of the data being transmitted. We will now explore encryption techniques designed to provide privacy for data communicated between different parties.
 
 
 === Encryption techniques
 
-Though blockchain platforms do not primarily make use of encryption techniques to guarantee data privacy in the traditional sense, they do make use of them to provide other guarantees that we discuss later on in this chapter. We therefore now provide an overview of encryption techniques so as to be able to appreciate the content presented later.
+Though blockchain platforms do not primarily utilize encryption techniques to guarantee data privacy in the traditional sense, they do employ these techniques to provide other essential guarantees, which we will discuss later in this chapter. We will now provide an overview of encryption techniques to help readers appreciate the content presented later.
 
 // Yet encryption and decryption are fundamental for digital signatures. 
 
-Encryption techniques were originally proposed to provide a way for parties to securely communicate without eavesdroppers being able to decipher or understand what has been communicated. Encryption techniques are classified into symmetric and asymmetric encryption that we'll cover now. 
+Encryption techniques were originally proposed to enable secure communication between parties, preventing eavesdroppers from deciphering or understanding the exchanged information. These techniques are classified into *symmetric* and *asymmetric* encryption. 
 
-==== Symmetric Encryption
+==== Symmetric encryption
 
-Encryption uses "keys" to both secure/encrypt (lock) data and to decrypt (unlock) data. _Symmetric encryption_ uses the same _key_ to both encrypt and decrypt data.  In a similar manner to a physical lock, the same key is used both when locking and unlocking. More specifically, when encrypting or decrypting. The digital key is shared amongst the different communicating parties. This requires that the key would have been shared prior typically using a different communication medium. Imagine an eavesdropper was listening to the inital communication, and the first thing communicated is the key. When the communicating parties would later encrypt/decrypt information using the key, the eavesdropper would be able to continue to eavesdrop and both decrypt messages as well as inject encrypted messages without any of the communicating parties knowing. This is possible since the eavesdropper would have also seen the encryption/decryption key that was shared before encryption/decryption could take place. This is why it is cruical for such keys to be shared in a secure manner that guarantees that an eavesdropper could not have seen the key in the first place.
+Encryption uses keys to both secure (encrypt) and decrypt (unlock) data. _Symmetric encryption_ employs the same key for both processes. Similar to a physical lock, the same key is used for locking and unlocking, specifically during encryption and decryption. This digital key is shared among the communicating parties, which typically requires prior sharing through a different communication medium.
+
+If an eavesdropper listens to the initial communication where the key is shared, they can decrypt future messages and inject encrypted messages without either party being aware. This occurs because the eavesdropper would have access to the encryption/decryption key. Therefore, it is crucial to share such keys securely, ensuring that an eavesdropper cannot intercept them.
 
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
 .An overview of typical communication using symmetric encryption. 
 [#img_sym]
 image::symmetricenc.png[]
 
-<<img_sym>> depicts how symmetric encryption would typically be used amongst two parties -- wherein _Party A_ wants to send encrypted data to _Party B_. The following notation is used in the diagram: the different steps in the process are denoted by a number in a circle; the solid line in Step 2 denotes communication between the parties; the dashed lines at the top denotes some form of prior communication to agree on the shared key; and the dotted lines represent actions that the parties (or their computers) undertake themselves. The steps involved in the process follow:
+<<img_sym>> depicts how symmetric encryption is typically used between two parties, where _party A_ intends to send encrypted data to _party B_. The following notation is used in the diagram:
+
+- the different steps in the process are denoted by numbers in circles
+- the solid line in _step 2_ represents communication between the parties
+- the dashed lines at the top indicate some form of prior communication to agree on the shared key
+- the dotted lines represent actions that the parties (or their computers) undertake themselves.
+
+The steps involved in the process are as follows:
     
-    * Step 0 typically takes place before the parties communicate over the medium that will be used to pass encrypted data. The parties must somehow agree on a shared encryption/decryption key. This key will be used both for encryption and decryption as discussed above. This key could be generated by _Party A_, _Party B_, or any other party and shared amongst Parties A and B. It is important to note that any party that has the specific key in their possession will be able to decrypt messages (as well as encrypt).
+    * Step 0 typically occurs before the parties communicate over the medium used to transmit encrypted data. The parties must agree on a shared encryption/decryption key, which will be used for both encryption and decryption. This key could be generated by _party A_, _party B_, or any other party and subsequently shared between them. It is important to note that any party possessing the specific key can decrypt messages and encrypt them.
 
-    * Once the sending party (in this case _Party A_) has the key, they can proceed to encrypt data to be sent to the other party by encrypting the data with the key using the symmertic encryption algorithm as depicted in Step 1. The algorithm will output the encrypted data.
+    * Once the sending party (in this case, _party A_) has the key, they can encrypt the data intended for the other party by applying the symmetric encryption algorithm using the key, as depicted in step 1. The algorithm will output the encrypted data.
 
-    * Thereafter, _Party A_, the sending party, will transmit the encrypted data generated in Step 1 to the intended recipient, _Party B_. Eavesdroppers will not be able to decrypt messages if the key is only known to Parties A and B, even if the encrypted data message is overheard by an eavesdropper footnote:[Provided that the encryption/decryption key strength is sufficient.].
+    * After that, _party A_, the sending party, will transmit the encrypted data generated in step 1 to the intended recipient, _party B_. Eavesdroppers will not be able to decrypt the messages if the key is known only to parties A and B, even if the encrypted data message is overheard by an eavesdropper footnote:[provided that the encryption/decryption key strength is sufficient].
 
-    * Upon receiving the enrypted data, _Party B_, the receiving party, can decrypt the data with the key using the decryption algorithm.
+    * Upon receiving the encrypted data, _party B_, the receiving party, can decrypt it with the key using the decryption algorithm.
 
-The same key can continue to be used to both encrypt and decrypt data by both _Party A_ and _Party B_ which will allow for them to securely send and receive messages to eachother. That is as long as the key is kept only by the two parties and not leaked out to anyone else.
+The same key can be used by both _party A_ and _party B_ to encrypt and decrypt data, allowing them to securely send and receive messages to each other. This security relies on the key remaining confidential and not being leaked to any third party.
 
-Symmetric encryption is rather trivial to comprehend and implement since it makes use of a single encryption/decryption key. However, it does not provide any guarantees with respect to: 
+Symmetric encryption is straightforward to understand and implement, as it relies on a single encryption/decryption key. However, it does not offer guarantees regarding:
 
-    * being able to prove who sent a particular message -- i.e. any party that has access to the shared key can encrypt data and there's no way to know who sent the encrypted data; 
-    
-    * ensuring that communication intended for a particular party is only seen by that party.
+- **Provenance of messages**: any party with access to the shared key can encrypt data, making it impossible to determine the sender of the encrypted message.
 
+- **Confidentiality of communication**: there is no assurance that messages intended for a specific party will be viewed exclusively by that party.
 
-==== Asymmetric Encryption
+==== Asymmetric encryption
 
-The introduction of _asymmetric encryption_ in the 1970s provided a better solution to minimise potential eavesdroppers. It ensures that messages can only be decrypted by the party they were intended for. With asymmetric encryption, each communicating party is associated with two keys: 
-    
-    * a _public key_ belonging to the recipient which is made publicly known. Any party that wants to encrypt data intended for the specific recipient will use this key to encrypt data to be sent to the recipient; 
-    
-    * a _private key_ which the recipient keeps private to themselves. The _private key_ can be used to decrypt messages sent to them that others have encrypted using the recipeint's public key. 
+The introduction of _asymmetric encryption_ in the 1970s provided a more secure solution to mitigate potential eavesdroppers. It ensures that messages can only be decrypted by the intended recipient. In asymmetric encryption, each communicating party has two keys:
 
-The public and private keys are intimately linked together (which is why they are termed a key-pair) and it is impossible footnote:[or rather computationally infeasible] to determine the private key from the public key.
+- A _public key_ associated with the recipient, which is made publicly available. Any party wishing to encrypt data intended for the recipient will use this key to encrypt the data.
+
+- A _private key_ that the recipient keeps confidential. This private key is used to decrypt messages sent to them that have been encrypted with their public key.
+
+The public and private keys are intimately linked (hence the term 'key pair'), and it is impossible footnote:[or rather computationally infeasible] to determine the private key from the public key.
 
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
 .An overview of typical communication using asymmetric encryption.
 [#img_asym]
 image::asymmetricenc.png[]
 
-An overview of how typical communication takes place using assymetric key encryption is depicted in <<img_asym>>. The main differences in the process are depicted in red, and a description of the steps involved in the process follow:
+An overview of how typical communication takes place using asymmetric key encryption is depicted in <<img_asym>>. The main differences in the process are highlighted in red, and a description of the steps involved follows:
 
-* Rather than requiring communicating parties to agree upon some shared encryption/decryption key, using assymetric encryption, parties just need to disclose their public keys. Parties can make public keys visible for the entire world to see. Depicted in Step 0, _Party B_'s public key is somehow made available to _Party A_.
+* Instead of requiring communicating parties to agree on a shared encryption/decryption key, asymmetric encryption allows parties to disclose their public keys. Parties can make their public keys visible to the entire world. As shown in step 0, _party B’s_ public key is made available to _party A_.
 
-* _Party A_ can then encrypt messages intended for _Party B_ by passing in the raw data (in this case it is "Data2"), along with _Party B_'s public key into the asymmetric encryption algorithm (depicted in Step 1). The encryption algorithm will output the encrypted data.
+* _Party A_ can then encrypt messages intended for _party B_ by inputting the raw data (in this case, 'Data2') along with _party B’s_ public key into the asymmetric encryption algorithm (depicted in step 1). The encryption algorithm will produce the encrypted data.
 
-* Thereafter, _Party A_ can send the encrypted data to _Party B_ (depicted in Step 2), knowing that only _Party B_ will be able to decipher the data -- since it is only possible to be decrypted using _Party B_'s private key that they should keep private to themselves.
+* After that, _party A_ can send the encrypted data to _party B_ (depicted in step 2), confident that only _party B_ will be able to decrypt the data since it can only be decrypted using _party B’s_ private key, which they keep confidential.
 
-* Finally, _Party B_ can then pass the encrypted data received and their private key into the decryption algorithm (depicted in Step 3) which will output the actual message intended for them (which was "Data2").
+* Finally, _party B_ can input the received encrypted data and their private key into the decryption algorithm (depicted in step 3), which will output the actual message intended for them (which is 'Data2').
 
-Unlike symmertic encryption which allows for _Party B_ to also send messages back to _Party A_ using the same encryption/decryption key, assymetric encryption does not. This is by design, to ensure that messages intended for a party can only be decrypted by that specific party. To reply back, using assymetric encryption, _Party B_ could follow the same process by using _Party A_'s public key to encrypt messages it would like to send back to _Party A_. 
+Unlike symmetric encryption, which allows _party B_ to send messages back to _party A_ using the same encryption/decryption key, asymmetric encryption does not enable this. This design ensures that messages intended for a specific party can only be decrypted by that party. To reply, _party B_ can follow the same process by using _party A_'s public key to encrypt messages they wish to send back to _party A_.
 
-While assymetric encryption guarantees that only the intended recipient of a particular message can decrypt that message, it does not stop a sender from pretending to be someone else -- and the same goes for symmertic key encryption (when the shared encryption/decryption key is leaked). Consider a malicious actor, _Party C_, who also knows _Party B_'s public key. _Party C_ could encrypt messages intended for _Party B_, and when sending the encrypted data to _Party B_ they could pretend to be _Party A_. _Party B_ would have no way to know that it is actually receiving messages from _Party C_. The solution to this, _Digital Signatures_, will now be discussed.
+While asymmetric encryption ensures that only the intended recipient can decrypt a particular message, it does not prevent a sender from impersonating someone else. This also applies to symmetric key encryption when the shared encryption/decryption key is compromised. For instance, consider a malicious actor, _party C_, who has access to _party B_'s public key. _Party C_ could encrypt messages intended for _party B_ and send them, falsely claiming to be _party A_. _Party B_ would have no means to identify that the messages are actually from _party C_. The solution to this issue is _digital signatures_, which will be discussed next.
 
+=== Digital signatures
 
+Digital signatures address the issue of sender impersonation by allowing anyone to verify that a message was created and 'digitally signed' by a specific sending party and that the content remains unchanged. They are established using two fundamental components: _public key encryption_ and _hashing algorithms_. The process to create a digital signature involves the following steps:
 
-=== Digital Signatures
+* The content of the message is hashed by passing it through a hash function, creating a unique fingerprint (hash) of the original data. This fingerprint uniquely identifies the content in its original, unaltered form.
 
-Digital signatures solve the problem discussed above. They provide a way for anyone to verify that a message was created and "digitally signed" by a specific sending party and that the content has not been changed. Digital signatures are created using two building blocks discussed above: _public key encryption_ and _hashing algorithms_. To process to create a digital signature involves the following steps:
+* The hash created in the previous step is then encrypted using public key encryption with the sender's private key. The resulting encrypted hash is the digital signature.
 
-* The content of the message is "hashed" (i.e. is passed through a hash function) so that a unique fingerprint (hash) of the original data can be created, and used to uniquely identify the content in its original unaltered form.
+* The sender can then transmit the message content along with the generated digital signature. Any recipient can verify that the sender created the message and that it has not been altered.
 
-* The hash (created in the previous step), is then encrypted using public key encryption (discussed above) with the sender's private key. The generated encrypted hash is the digital signature.
+To verify that a particular sender created a digitally signed message, the recipient would follow these steps:
 
-* The sender can then transmit the content of the message along with the generated digital signature (created in the previous step). Any recipient can thereafter verify that the message was created by the sender and has not been changed (as will now be discussed).
+* The recipient should first receive the message and the digital signature.
 
-In order for a recipient, or anyone really, to be able to verify that a digitally signed message was created by a partcular sender, the recipient would follow these steps:
+* The recipient then decrypts the digital signature using the sender's public key. The decrypted value should be the hash (unique fingerprint) of the original message.
 
-* The receiver should first of all have received the message and the digital signature.
+* The recipient computes the hash of the received message and compares it to the decrypted hash obtained in the previous step. If the two match, the recipient can be certain that the sender created the message. Specifically, the recipient can guarantee that the sender's private/public key pair was used to generate the digital signature. Since the digital signature is the encrypted hash, and the hash uniquely identifies the specific piece of data, it can be confirmed that the data has not been altered since the digital signature was created and that it originated from the sender (using their public/private key pair).
 
-* The receiver can then decrypt the digital signature using the sender's public key. The decrypted value should then be the hash (unique fingerprint) of the original message.
+#Consider adding a diagram for digital signatures...#
 
-* The receiver can then compare the hash of the message received (by computing the hash themselves), and the decrypted hash computed in the previous step. If the two match then the recipient has 100% guarantees that the sender really did create the message they received. To be more specific, the recipient can guarantee that the sender's private/public key pair was indeed used to generate the digital signature. Since the digital signature is the encrypted hash, and since the hash uniquely identifies the specific piece of data, then it can be ascertained that the data has not been changed since the digital signature was created and that it was created by the sender (i.e. using their public/private key-pair).
-
-#Consider adding diagram for digital signatures...#
-
-Having introduced the main cryptographic building blocks used in blockchain systems, we'll now delve into how they help maintain and secure them.
+Having introduced the main cryptographic building blocks used in blockchain systems, this section will explore how they help maintain and secure these systems.
 
 === Its role in securing the blockchain
 How it provides security
