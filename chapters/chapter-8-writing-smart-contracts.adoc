@@ -881,6 +881,7 @@ Blockly in the Marlowe Playground in the following
 https://youtu.be/fldaBHmYfqk[_Plutus Pioneer program_] video.
 
 Below, you can see the contract code in the Marlowe language:
+
 [source,shell]
 ----
 When
@@ -1580,7 +1581,6 @@ compiles directly to UPLC, which Cardano nodes execute. This process is
 illustrated on the diagram below:
 
 image:Pictures/100000010000043E000002CFAE90714DEF5D4FF6.png[image,width=590,height=390]
-
 Aiken code transformation
 (https://cardanofoundation.org/blog/aiken-the-future-of-smart-contracts[_Cardano
 Foundation blog_])
@@ -1768,53 +1768,40 @@ which can be packed into common lists and maps associated with an
 integer. Let’s examine a simple untyped validator script that always
 succeeds:
 
-\{-# LANGUAGE DataKinds #-}
-
-\{-# LANGUAGE ImportQualifiedPost #-}
-
-\{-# LANGUAGE NoImplicitPrelude #-}
-
-\{-# LANGUAGE TemplateHaskell #-}
-
+[source,haskell]
+----
+{-# LANGUAGE DataKinds           #-}
+{-# LANGUAGE ImportQualifiedPost #-}
+{-# LANGUAGE NoImplicitPrelude   #-}
+{-# LANGUAGE TemplateHaskell     #-}
+ 
 module Gift where
-
+ 
 import qualified Plutus.V2.Ledger.Api as PlutusV2
-
-import PlutusTx (BuiltinData, _compile_)
-
-import Prelude (IO)
-
-import Utilities (_writeValidatorToFile_)
-
---_----------------------------------------------------------------------------_
-
---_------------------------- ON-CHAIN CODE / VALIDATOR
-------------------------_
-
---_ This validator always succeeds_
-
---_ Datum Redeemer ScriptContext_
-
-_mkGiftValidator_ :: BuiltinData -> BuiltinData -> BuiltinData -> ()
-
+import           PlutusTx             (BuiltinData, compile)
+import           Prelude              (IO)
+import           Utilities            (writeValidatorToFile)
+ 
+------------------------------------------------------------------------------
+--------------------------- ON-CHAIN CODE / VALIDATOR ------------------------
+ 
+-- This validator always succeeds
+--                    Datum         Redeemer     ScriptContext
+mkGiftValidator :: BuiltinData -> BuiltinData -> BuiltinData -> ()
 mkGiftValidator _ _ _ = ()
-
-\{-# INLINABLE mkGiftValidator #-}
-
-_validator_ :: PlutusV2.Validator
-
+{-# INLINABLE mkGiftValidator #-}
+ 
+validator :: PlutusV2.Validator
 validator = PlutusV2.mkValidatorScript $$(PlutusTx.compile
+                                      	[|| mkGiftValidator ||])
 
-[|| mkGiftValidator ||])
 
---_----------------------------------------------------------------------------_
-
--------------------------------- HELPER FUNCTIONS
-----------------------------
-
-_saveVal_ :: IO ()
-
+------------------------------------------------------------------------------
+-------------------------------- HELPER FUNCTIONS ----------------------------
+ 
+saveVal :: IO ()
 saveVal = writeValidatorToFile "./gift.plutus" validator
+----
 
 First, we add various language extensions required by the code. Notably,
 the NoImplicitPrelude extensionprevents the standard __Prelude __module
@@ -1866,75 +1853,54 @@ writing the validator variable to a file. For this, we use the
 _writeValidatorToFile_ helper function defined in the __Utilities
 __module. The code for this module is shown below:
 
-\{-# LANGUAGE LambdaCase #-}
+[source,haskell]
+----
+{-# LANGUAGE LambdaCase #-}
 
 module Utilities.Serialise
+  ( validatorToScript
+  , writeValidatorToFile
+  ) where
 
-( _validatorToScript_
-
-, _writeValidatorToFile_
-
-) where
-
-import Cardano.Api (Error (_displayError_), PlutusScript,
-
-PlutusScriptV2, _writeFileTextEnvelope_)
-
-import Cardano.Api.Shelley (PlutusScript (..))
-
-import Codec.Serialise (Serialise, _serialise_)
-
-import qualified Data.ByteString.Lazy as BSL
-
+import           Cardano.Api           (Error (displayError), PlutusScript,
+                                        PlutusScriptV2, writeFileTextEnvelope)
+import           Cardano.Api.Shelley   (PlutusScript (..))
+import           Codec.Serialise       (Serialise, serialise)
+import qualified Data.ByteString.Lazy  as BSL
 import qualified Data.ByteString.Short as BSS
+import qualified Plutus.V2.Ledger.Api  as PlutusV2
 
-import qualified Plutus.V2.Ledger.Api as PlutusV2
+serializableToScript :: Serialise a => a -> PlutusScript PlutusScriptV2
+serializableToScript = PlutusScriptSerialised . BSS.toShort . BSL.toStrict 
+                       . serialise 
 
-_serializableToScript_ :: Serialise a => a -> PlutusScript
-PlutusScriptV2
-
-serializableToScript = PlutusScriptSerialised . BSS.toShort .
-BSL.toStrict
-
-. serialise
-
---_ Serialize validator_
-
-_validatorToScript_ :: PlutusV2.Validator -> PlutusScript PlutusScriptV2
-
+-- Serialize validator
+validatorToScript :: PlutusV2.Validator -> PlutusScript PlutusScriptV2
 validatorToScript = serializableToScript
 
---_ Create file with Plutus script_
-
-_writeScriptToFile_ :: FilePath -> PlutusScript PlutusScriptV2 -> IO ()
-
+-- Create file with Plutus script
+writeScriptToFile :: FilePath -> PlutusScript PlutusScriptV2 -> IO ()
 writeScriptToFile filePath script =
+  writeFileTextEnvelope filePath Nothing script >>= \case
+    Left err -> print $ displayError err
+    Right () -> putStrLn $ "Serialized script to: " ++ filePath
 
-writeFileTextEnvelope filePath Nothing script >>= \_case_
-
-Left err -> print $ displayError err
-
-Right () -> putStrLn $ "Serialized script to: " ++ filePath
-
---_ Create file with compiled Plutus validator_
-
-_writeValidatorToFile_ :: FilePath -> PlutusV2.Validator -> IO ()
-
-writeValidatorToFile filePath = writeScriptToFile filePath .
-validatorToScript
+-- Create file with compiled Plutus validator
+writeValidatorToFile :: FilePath -> PlutusV2.Validator -> IO ()
+writeValidatorToFile filePath = writeScriptToFile filePath . validatorToScript
+----
 
 If we execute the _writeValidatorToFile_ function from the Gift module,
 the content is written to the _gift.plutus_ file:
 
-\{
-
-"type": "PlutusScriptV2",
-
-"description": "",
-
-"cborHex": "49480100002221200101"
-
+[source,shell]
+----
+{
+	"type": "PlutusScriptV2",
+	"description": "",
+	"cborHex": "49480100002221200101"
 }
+----
 
 The output is a JSON representation containing validator information. It
 indicates that the smart contract is a Plutus version 2 script, and the
@@ -1946,42 +1912,33 @@ transaction. Let’s now explore an example where the validation logic
 always fails, regardless of the input. This module is called _Burn_, as
 no funds can be reclaimed from the contract once sent.
 
-\{-# LANGUAGE DataKinds #-}
-
-\{-# LANGUAGE NoImplicitPrelude #-}
-
-\{-# LANGUAGE OverloadedStrings #-}
-
-\{-# LANGUAGE TemplateHaskell #-}
-
+[source,haskell]
+----
+{-# LANGUAGE DataKinds         #-}
+{-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE TemplateHaskell   #-}
+ 
 module Burn where
-
+ 
 import qualified Plutus.V2.Ledger.Api as PlutusV2
+import           PlutusTx             (BuiltinData, compile)
+import           PlutusTx.Prelude     (traceError)
+ 
+------------------------------------------------------------------------------
+------------------------------ ON-CHAIN / VALIDATOR --------------------------
 
-import PlutusTx (BuiltinData, _compile_)
 
-import PlutusTx.Prelude (_traceError_)
-
---_----------------------------------------------------------------------------_
-
------------------------------- ON-CHAIN / VALIDATOR
---------------------------
-
---_ This validator always fails_
-
---_ Datum Redeemer ScriptContext_
-
-_mkBurnValidator_ :: BuiltinData -> BuiltinData -> BuiltinData -> ()
-
+-- This validator always fails
+--                    Datum         Redeemer     ScriptContext
+mkBurnValidator :: BuiltinData -> BuiltinData -> BuiltinData -> ()
 mkBurnValidator _ _ _ = traceError "it burns!!!"
-
-\{-# INLINABLE mkBurnValidator #-}
-
-_validator_ :: PlutusV2.Validator
-
+{-# INLINABLE mkBurnValidator #-}
+ 
+validator :: PlutusV2.Validator
 validator = PlutusV2.mkValidatorScript $$(PlutusTx.compile
-
-[|| mkBurnValidator ||])
+                                      	[|| mkBurnValidator ||])
+----
 
 To implement the Burn module, we need one additional import compared to
 the Gift module: the__ traceError__ function from the _PlutusTx.Prelude_
@@ -1996,50 +1953,36 @@ Below is an example of the redeemer in the validation logic. The
 validation passes if the redeemer is an integer with the value 42;
 otherwise, it fails:
 
-\{-# LANGUAGE DataKinds #-}
-
-\{-# LANGUAGE ImportQualifiedPost #-}
-
-\{-# LANGUAGE NoImplicitPrelude #-}
-
-\{-# LANGUAGE OverloadedStrings #-}
-
-\{-# LANGUAGE TemplateHaskell #-}
-
+[source,haskell]
+----
+{-# LANGUAGE DataKinds           #-}
+{-# LANGUAGE ImportQualifiedPost #-}
+{-# LANGUAGE NoImplicitPrelude   #-}
+{-# LANGUAGE OverloadedStrings   #-}
+{-# LANGUAGE TemplateHaskell     #-}
+ 
 module FortyTwo where
-
+ 
 import qualified Plutus.V2.Ledger.Api as PlutusV2
-
-import PlutusTx (BuiltinData, _compile_)
-
-import PlutusTx.Builtins as Builtins (_mkI_)
-
-import PlutusTx.Prelude (_otherwise_, _traceError_, (_==_))
-
---_----------------------------------------------------------------------------_
-
------------------------------- ON-CHAIN / VALIDATOR
---------------------------
-
---_ This validator succeeds only if the redeemer is 42_
-
---_ Datum Redeemer ScriptContext_
-
-_mk42Validator_ :: BuiltinData -> BuiltinData -> BuiltinData -> ()
-
+import           PlutusTx             (BuiltinData, compile)
+import           PlutusTx.Builtins    as Builtins (mkI)
+import           PlutusTx.Prelude     (otherwise, traceError, (==))
+ 
+------------------------------------------------------------------------------
+------------------------------ ON-CHAIN / VALIDATOR --------------------------
+ 
+-- This validator succeeds only if the redeemer is 42
+--                  Datum         Redeemer     ScriptContext
+mk42Validator :: BuiltinData -> BuiltinData -> BuiltinData -> ()
 mk42Validator _ r _
-
-| r == Builtins.mkI 42 = ()
-
-| otherwise = traceError "expected 42"
-
-\{-# INLINABLE mk42Validator #-}
-
-_validator_ :: PlutusV2.Validator
-
-validator = PlutusV2.mkValidatorScript $$(PlutusTx.compile
-
-[|| mk42Validator ||])
+    | r == Builtins.mkI 42 = ()
+    | otherwise            = traceError "expected 42"
+{-# INLINABLE mk42Validator #-}
+ 
+validator :: PlutusV2.Validator
+validator = PlutusV2.mkValidatorScript $$(PlutusTx.compile 
+                                          [|| mk42Validator ||])
+----
 
 In the example above, we compare the redeemer to the BuiltinData type I
 42, created using the _Builtins.mkI_ function. If the actual redeemer is
@@ -2047,50 +1990,36 @@ an integer number with value 42, the function returns unit, otherwise,
 it raises an error. Let’s examine the same example but written as a
 typed validator:
 
-\{-# LANGUAGE DataKinds #-}
-
-\{-# LANGUAGE ImportQualifiedPost #-}
-
-\{-# LANGUAGE NoImplicitPrelude #-}
-
-\{-# LANGUAGE OverloadedStrings #-}
-
-\{-# LANGUAGE TemplateHaskell #-}
-
+[source,haskell]
+----
+{-# LANGUAGE DataKinds           #-}
+{-# LANGUAGE ImportQualifiedPost #-}
+{-# LANGUAGE NoImplicitPrelude   #-}
+{-# LANGUAGE OverloadedStrings   #-}
+{-# LANGUAGE TemplateHaskell     #-}
+ 
 module FortyTwoTyped where
-
+ 
 import qualified Plutus.V2.Ledger.Api as PlutusV2
-
-import PlutusTx (_compile_)
-
-import PlutusTx.Prelude (Bool, Eq ((_==_)), Integer, _traceIfFalse_,
-
-(_$_))
-
-import Prelude (IO)
-
-import Utilities (_wrap_)
-
---_----------------------------------------------------------------------------_
-
------------------------------- ON-CHAIN / VALIDATOR
---------------------------
-
---_ This validator succeeds only if the redeemer is 42_
-
---_ Datum Redeemer ScriptContext_
-
-_mk42Validator_ :: () -> Integer -> PlutusV2.ScriptContext -> Bool
-
+import           PlutusTx             (compile)
+import           PlutusTx.Prelude     (Bool, Eq ((==)), Integer, traceIfFalse,
+                                       ($))
+import           Prelude              (IO)
+import           Utilities            (wrap)
+ 
+------------------------------------------------------------------------------
+------------------------------ ON-CHAIN / VALIDATOR --------------------------
+ 
+-- This validator succeeds only if the redeemer is 42
+--              Datum  Redeemer        ScriptContext
+mk42Validator :: () -> Integer -> PlutusV2.ScriptContext -> Bool
 mk42Validator _ r _ = traceIfFalse "expected 42" $ r == 42
-
-\{-# INLINABLE mk42Validator #-}
-
-_validator_ :: PlutusV2.Validator
-
+{-# INLINABLE mk42Validator #-}
+ 
+validator :: PlutusV2.Validator
 validator = PlutusV2.mkValidatorScript $$(PlutusTx.compile
-
-[|| wrap mk42Validator ||])
+                                      	[|| wrap mk42Validator ||])
+----
 
 We can use the unit type for the datum since the latter is not used. For
 the redeemer, we use the Integer type. The script context has to be of
@@ -2102,45 +2031,32 @@ parameters of type BuiltinData and returns unit, we need to apply the
 __wrap __function to the validator function before compiling it. Below
 you can see the function definition:
 
-\{-# LANGUAGE NoImplicitPrelude #-}
-
-\{-# LANGUAGE RankNTypes #-}
-
+[source,haskell]
+----
+{-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE RankNTypes        #-}
+ 
 module Utilities.PlutusTx
-
-( _wrap_
-
-) where
-
-import Plutus.V2.Ledger.Api (ScriptContext, UnsafeFromData,
-
-_unsafeFromBuiltinData_)
-
-import PlutusTx.Prelude (Bool, BuiltinData, _check_, (_$_))
-
-\{-# INLINABLE wrap #-}
-
-_wrap_ :: forall a b.
-
-( UnsafeFromData a
-
-, UnsafeFromData b
-
-)
-
-=> (a -> b -> ScriptContext -> Bool)
-
--> (BuiltinData -> BuiltinData -> BuiltinData -> ())
-
+  ( wrap
+  ) where
+ 
+import           Plutus.V2.Ledger.Api (ScriptContext, UnsafeFromData,
+                                       unsafeFromBuiltinData)
+import           PlutusTx.Prelude     (Bool, BuiltinData, check, ($))
+ 
+{-# INLINABLE wrap #-}
+wrap :: forall a b.
+        ( UnsafeFromData a
+        , UnsafeFromData b
+        )
+      => (a -> b -> ScriptContext -> Bool)
+      -> (BuiltinData -> BuiltinData -> BuiltinData -> ())
 wrap f a b ctx =
-
-check $ f
-
-(unsafeFromBuiltinData a)
-
-(unsafeFromBuiltinData b)
-
-(unsafeFromBuiltinData ctx)
+  check $ f
+      (unsafeFromBuiltinData a)
+      (unsafeFromBuiltinData b)
+      (unsafeFromBuiltinData ctx)
+----
 
 Here, the wrap function accepts the type signature of a typed validator
 function and returns the type signature of an untyped validator
@@ -2150,23 +2066,18 @@ conversion function _unsafeFromBuiltinData_. For this function to be
 applicable to the types a and b, both types need to have an instance of
 the UnsafeFromData type class.
 
+[source,shell]
+----
 Prelude> import Plutus.V2.Ledger.Api
-
 Prelude Plutus.V2.Ledger.Api> :i UnsafeFromData
-
-type UnsafeFromData :: * -> Constraint
-
+type UnsafeFromData :: * -> Constraint  
 class UnsafeFromData a where
-
-unsafeFromBuiltinData :: BuiltinData -> a
-
+  unsafeFromBuiltinData :: BuiltinData -> a
 ...
-
-Instance UnsafeFromData ScriptContext
-
--- Defined in `Plutus.V2.Ledger.Contexts`
-
+Instance UnsafeFromData ScriptContext 
+  -- Defined in `Plutus.V2.Ledger.Contexts`
 ...
+----
 
 If we look at this type class, it has the single method called
 __unsafeFromBuiltinData __that we can use to convert the BuiltinData
@@ -2188,70 +2099,46 @@ class for these types. But because there is template Haskell support for
 doing this, you can choose another way. Below is an example where we
 define a custom data type for our redeemer:
 
-\{-# LANGUAGE DataKinds #-}
-
-\{-# LANGUAGE ImportQualifiedPost #-}
-
-\{-# LANGUAGE NoImplicitPrelude #-}
-
-\{-# LANGUAGE OverloadedStrings #-}
-
-\{-# LANGUAGE TemplateHaskell #-}
-
+[source,haskell]
+----
+{-# LANGUAGE DataKinds           #-}
+{-# LANGUAGE ImportQualifiedPost #-}
+{-# LANGUAGE NoImplicitPrelude   #-}
+{-# LANGUAGE OverloadedStrings   #-}
+{-# LANGUAGE TemplateHaskell     #-}
+ 
 module CustomTypes where
-
+ 
 import qualified Plutus.V2.Ledger.Api as PlutusV2
-
-import PlutusTx (BuiltinData, _compile_,
-
-_ unstableMakeIsData_)
-
-import PlutusTx.Prelude (Bool, Eq ((_==_)), Integer, _traceIfFalse_,
-
-(_$_))
-
-import Prelude (IO)
-
-import Utilities (_wrap_)
-
---_----------------------------------------------------------------------------_
-
------------------------------- ON-CHAIN / VALIDATOR
---------------------------
-
---_ We can create custom data types for our datum and redeemer like
-this:_
-
+import           PlutusTx             (BuiltinData, compile, 
+                                       unstableMakeIsData)
+import           PlutusTx.Prelude     (Bool, Eq ((==)), Integer, traceIfFalse,
+                                       ($))
+import           Prelude              (IO)
+import           Utilities            (wrap) 
+ 
+------------------------------------------------------------------------------
+------------------------------ ON-CHAIN / VALIDATOR --------------------------
+ 
+-- We can create custom data types for our datum and redeemer like this:
 newtype MySillyRedeemer = MkMySillyRedeemer Integer
-
-PlutusTx.unstableMakeIsData ''MySillyRedeemer
-
---_ Use TH to create an instance for IsData._
-
---_ This validator succeeds only if the redeemer is `MkMySillyRedeemer
-42`_
-
---_ Datum Redeemer ScriptContext_
-
-_mkCTValidator_ :: () -> MySillyRedeemer -> PlutusV2.ScriptContext ->
-Bool
-
-mkCTValidator _ (MkMySillyRedeemer r) _ = traceIfFalse "expected 42" $ r
-== 42
-
-\{-# INLINABLE mkCTValidator #-}
-
-_wrappedMkVal_ :: BuiltinData -> BuiltinData -> BuiltinData -> ()
-
+PlutusTx.unstableMakeIsData ''MySillyRedeemer 
+-- Use TH to create an instance for IsData.
+ 
+-- This validator succeeds only if the redeemer is `MkMySillyRedeemer 42`
+--              Datum     Redeemer            ScriptContext
+mkCTValidator :: () -> MySillyRedeemer -> PlutusV2.ScriptContext -> Bool
+mkCTValidator _ (MkMySillyRedeemer r) _ = traceIfFalse "expected 42" $ r == 42
+{-# INLINABLE mkCTValidator #-}
+ 
+wrappedMkVal :: BuiltinData -> BuiltinData -> BuiltinData -> ()
 wrappedMkVal = wrap mkCTValidator
-
-\{-# INLINABLE wrappedMkVal #-}
-
-_validator_ :: PlutusV2.Validator
-
-validator = PlutusV2.mkValidatorScript $$(PlutusTx.compile
-
-[|| wrappedMkVal ||])
+{-# INLINABLE wrappedMkVal #-}
+ 
+validator :: PlutusV2.Validator
+validator = PlutusV2.mkValidatorScript $$(PlutusTx.compile 
+                                          [|| wrappedMkVal ||])
+----
 
 Here, we define a new type in the code called MySillyRedeemer, which is
 simply a wrapper for an integer. We use this type as the redeemer and
@@ -2528,122 +2415,78 @@ schema. In this scenario, a person sends a gift of ada to the smart
 contract, and the beneficiary can reclaim this gift after a set deadline
 has passed. Here is a code example:
 
-\{-# LANGUAGE DataKinds #-}
-
-\{-# LANGUAGE NoImplicitPrelude #-}
-
-\{-# LANGUAGE OverloadedStrings #-}
-
-\{-# LANGUAGE TemplateHaskell #-}
-
+[source,haskell]
+----
+{-# LANGUAGE DataKinds         #-}
+{-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE TemplateHaskell   #-}
+ 
 module Vesting where
-
-import Data.Maybe (_fromJust_)
-
-import Plutus.V1.Ledger.Interval (_contains_)
-
-import Plutus.V2.Ledger.Api (BuiltinData, POSIXTime,
-
-PubKeyHash,
-
-ScriptContext
-
-(_scriptContextTxInfo_),
-
-TxInfo (_txInfoValidRange_),
-
-Validator, _from_,
-
-_ mkValidatorScript_)
-
-import Plutus.V2.Ledger.Contexts (_txSignedBy_)
-
-import PlutusTx (_compile_, _unstableMakeIsData_)
-
-import PlutusTx.Prelude (Bool, _traceIfFalse_, (_$_), (_&&_))
-
-import Prelude (IO, String)
-
-import Utilities (Network, _posixTimeFromIso8601_,
-
-_printDataToJSON_,
-
-_validatorAddressBech32_, _wrap_,
-
-_writeValidatorToFile_)
-
---_----------------------------------------------------------------------------_
-
------------------------------- ON-CHAIN / VALIDATOR
---------------------------
-
+ 
+import           Data.Maybe                (fromJust)
+import           Plutus.V1.Ledger.Interval (contains)
+import           Plutus.V2.Ledger.Api      (BuiltinData, POSIXTime, 
+                                            PubKeyHash,
+                                            ScriptContext 
+                                            (scriptContextTxInfo),
+                                            TxInfo (txInfoValidRange),
+                                            Validator, from, 
+                                            mkValidatorScript)
+import           Plutus.V2.Ledger.Contexts (txSignedBy)
+import           PlutusTx                  (compile, unstableMakeIsData)
+import           PlutusTx.Prelude          (Bool, traceIfFalse, ($), (&&))
+import           Prelude                   (IO, String)
+import           Utilities                 (Network, posixTimeFromIso8601,
+                                            printDataToJSON,
+                                            validatorAddressBech32, wrap,
+                                            writeValidatorToFile)
+ 
+------------------------------------------------------------------------------
+------------------------------ ON-CHAIN / VALIDATOR --------------------------
+ 
 data VestingDatum = VestingDatum
-
-\{ beneficiary :: PubKeyHash
-
-, deadline :: POSIXTime
-
-}
-
+    { beneficiary :: PubKeyHash
+    , deadline    :: POSIXTime
+    }
+ 
 unstableMakeIsData ''VestingDatum
-
-\{-# INLINABLE mkVestingValidator #-}
-
-_mkVestingValidator_ :: VestingDatum -> () -> ScriptContext -> Bool
-
-mkVestingValidator dat () ctx = traceIfFalse "beneficiary's signature
-missing"
-
-signedByBeneficiary &&
-
-traceIfFalse "deadline not reached"
-
-deadlineReached
-
-where
-
-_info_ :: TxInfo
-
-info = scriptContextTxInfo ctx
-
-_signedByBeneficiary_ :: Bool
-
-signedByBeneficiary = txSignedBy info $ beneficiary dat
-
-_deadlineReached_ :: Bool
-
-deadlineReached = contains (from $ deadline dat) $ txInfoValidRange info
-
-\{-# INLINABLE mkWrappedVestingValidator #-}
-
-_mkWrappedVestingValidator_ :: BuiltinData -> BuiltinData -> BuiltinData
--> ()
-
+ 
+{-# INLINABLE mkVestingValidator #-}
+mkVestingValidator :: VestingDatum -> () -> ScriptContext -> Bool
+mkVestingValidator dat () ctx = traceIfFalse "beneficiary's signature missing" 
+                                             signedByBeneficiary &&
+                                traceIfFalse "deadline not reached" 
+                                             deadlineReached
+  where
+    info :: TxInfo
+    info = scriptContextTxInfo ctx
+ 
+    signedByBeneficiary :: Bool
+    signedByBeneficiary = txSignedBy info $ beneficiary dat
+ 
+    deadlineReached :: Bool
+    deadlineReached = contains (from $ deadline dat) $ txInfoValidRange info
+ 
+{-# INLINABLE  mkWrappedVestingValidator #-}
+mkWrappedVestingValidator :: BuiltinData -> BuiltinData -> BuiltinData -> ()
 mkWrappedVestingValidator = wrap mkVestingValidator
-
-_validator_ :: Validator
-
-validator = mkValidatorScript $$(compile [|| mkWrappedVestingValidator
-||])
-
---_----------------------------------------------------------------------------_
-
--------------------------------- HELPER FUNCTIONS
-----------------------------
-
-_saveVal_ :: IO ()
-
+ 
+validator :: Validator
+validator = mkValidatorScript $$(compile [|| mkWrappedVestingValidator ||])
+ 
+------------------------------------------------------------------------------
+-------------------------------- HELPER FUNCTIONS ----------------------------
+ 
+saveVal :: IO ()
 saveVal = writeValidatorToFile "./assets/vesting.plutus" validator
-
-_printVestingDatumJSON_ :: PubKeyHash -> String -> IO ()
-
+ 
+printVestingDatumJSON :: PubKeyHash -> String -> IO ()
 printVestingDatumJSON pkh time = printDataToJSON $ VestingDatum
-
-\{ beneficiary = pkh
-
-, deadline = fromJust $ posixTimeFromIso8601 time
-
-}
+    { beneficiary = pkh
+    , deadline    = fromJust $ posixTimeFromIso8601 time
+    }
+----
 
 The validator uses a typed version with a custom data type for the
 datum, called VestingDatum. It includes two fields: beneficiary, of type
@@ -2665,40 +2508,27 @@ time in ISO 8601 format and prints the datum in JSON format to the
 terminal. If we run this function and input a date and time together
 with a public key hash, we get the following example output:
 
+[source,shell]
+----
 Prelude> import Vesting
-
 Prelude Vesting> :set -XOverloadedStrings
-
 Prelude Vesting> import Plutus.V2.Ledger.Api
-
-Prelude Vesting Plutus.V1.Ledger.Api> +
+Prelude Vesting Plutus.V1.Ledger.Api> 
 pkh1 = "cff6e39ec5b3cf84b1078976c98706b73774d2c5523af4daaf7c5109"
-
 Prelude Vesting Plutus.V1.Ledger.Api>
-
 printVestingDatumJSON pkh1 "2023-03-11T13:12:11.123Z"
-
-\{
-
-"constructor": 0,
-
-"fields": [
-
-\{
-
-"bytes": "cff6e39ec5b3cf84b1078976c98706b73774d2c5523af4daaf7c5109"
-
-},
-
-\{
-
-"int": 1678540331123
-
+{
+	"constructor": 0,
+	"fields": [
+    		{
+        	      "bytes": "cff6e39ec5b3cf84b1078976c98706b73774d2c5523af4daaf7c5109"
+    		},
+    		{
+        	      "int": 1678540331123
+    		}
+	]
 }
-
-]
-
-}
+----
 
 This datum can then be stored in a JSON file and later used in off-chain
 code. In the examples we have seen so far, we had one specific validator
@@ -2710,124 +2540,78 @@ integrated into the contract by adding a parameter variable to the
 validator function. The code below shows this, containing a modified
 version of the previous code example:
 
-\{-# LANGUAGE DataKinds #-}
-
-\{-# LANGUAGE MultiParamTypeClasses #-}
-
-\{-# LANGUAGE NoImplicitPrelude #-}
-
-\{-# LANGUAGE OverloadedStrings #-}
-
-\{-# LANGUAGE ScopedTypeVariables #-}
-
-\{-# LANGUAGE TemplateHaskell #-}
-
+[source,haskell]
+----
+{-# LANGUAGE DataKinds             #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE NoImplicitPrelude     #-}
+{-# LANGUAGE OverloadedStrings     #-}
+{-# LANGUAGE ScopedTypeVariables   #-}
+{-# LANGUAGE TemplateHaskell       #-}
+ 
 module ParameterizedVesting where
-
-import Plutus.V1.Ledger.Interval (_contains_)
-
-import Plutus.V2.Ledger.Api (BuiltinData, POSIXTime,
-
-PubKeyHash,
-
-ScriptContext
-
-(_scriptContextTxInfo_),
-
-TxInfo (_txInfoValidRange_),
-
-Validator, _from_,
-
-_ mkValidatorScript_)
-
-import Plutus.V2.Ledger.Contexts (_txSignedBy_)
-
-import PlutusTx (_applyCode_, _compile_, _liftCode_,
-
-_makeLift_)
-
-import PlutusTx.Prelude (Bool, _traceIfFalse_, (_$_), (_&&_),
-
-(_._))
-
-import Prelude (IO)
-
-import Utilities (_wrapValidator_,
-
-_ writeValidatorToFile_)
-
---_----------------------------------------------------------------------------_
-
----------------------------- ON-CHAIN / VALIDATOR
-----------------------------
-
+ 
+import           Plutus.V1.Ledger.Interval (contains)
+import           Plutus.V2.Ledger.Api      (BuiltinData, POSIXTime, 
+                                            PubKeyHash,
+                                            ScriptContext 
+                                            (scriptContextTxInfo),
+                                            TxInfo (txInfoValidRange),
+                                            Validator, from, 
+                                            mkValidatorScript)
+import           Plutus.V2.Ledger.Contexts (txSignedBy)
+import           PlutusTx                  (applyCode, compile, liftCode,
+                                            makeLift)
+import           PlutusTx.Prelude          (Bool, traceIfFalse, ($), (&&), 
+                                            (.))
+import           Prelude                   (IO)
+import           Utilities                 (wrapValidator, 
+                                            writeValidatorToFile)
+ 
+------------------------------------------------------------------------------
+---------------------------- ON-CHAIN / VALIDATOR ----------------------------
+ 
 data VestingParams = VestingParams
-
-\{ beneficiary :: PubKeyHash
-
-, deadline :: POSIXTime
-
-}
-
+    { beneficiary :: PubKeyHash
+    , deadline    :: POSIXTime
+    }
 makeLift ''VestingParams
-
-\{-# INLINABLE mkParameterizedVestingValidator #-}
-
-_mkParameterizedVestingValidator_ :: VestingParams -> () -> () ->
-
-ScriptContext -> Bool
-
+ 
+{-# INLINABLE mkParameterizedVestingValidator #-}
+mkParameterizedVestingValidator :: VestingParams -> () -> () -> 
+                                   ScriptContext -> Bool
 mkParameterizedVestingValidator params () () ctx =
-
-traceIfFalse "beneficiary's signature missing" signedByBeneficiary &&
-
-traceIfFalse "deadline not reached" deadlineReached
-
-where
-
-_info_ :: TxInfo
-
-info = scriptContextTxInfo ctx
-
-_signedByBeneficiary_ :: Bool
-
-signedByBeneficiary = txSignedBy info $ beneficiary params
-
-_deadlineReached_ :: Bool
-
-deadlineReached = contains (from $ deadline params) $
-
-txInfoValidRange info
-
-\{-# INLINABLE mkWrappedParameterizedVestingValidator #-}
-
-_mkWrappedParameterizedVestingValidator_ :: VestingParams -> BuiltinData
-->
-
-BuiltinData -> BuiltinData -> ()
-
-mkWrappedParameterizedVestingValidator = wrapValidator .
-
-mkParameterizedVestingValidator
-
-_validator_ :: VestingParams -> Validator
-
+    traceIfFalse "beneficiary's signature missing" signedByBeneficiary &&
+    traceIfFalse "deadline not reached" deadlineReached
+  where
+    info :: TxInfo
+    info = scriptContextTxInfo ctx
+ 
+    signedByBeneficiary :: Bool
+    signedByBeneficiary = txSignedBy info $ beneficiary params
+ 
+    deadlineReached :: Bool
+    deadlineReached = contains (from $ deadline params) $ 
+                               txInfoValidRange info
+ 
+{-# INLINABLE  mkWrappedParameterizedVestingValidator #-}
+mkWrappedParameterizedVestingValidator :: VestingParams -> BuiltinData -> 
+                                          BuiltinData -> BuiltinData -> ()
+mkWrappedParameterizedVestingValidator = wrapValidator . 
+                                         mkParameterizedVestingValidator
+ 
+validator :: VestingParams -> Validator
 validator params = mkValidatorScript ($$(compile [||
-
-mkWrappedParameterizedVestingValidator
-
-||]) `applyCode` liftCode params)
-
---_----------------------------------------------------------------------------_
-
------------------------------ HELPER FUNCTIONS
--------------------------------
-
-_saveVal_ :: VestingParams -> IO ()
-
+                                  	  mkWrappedParameterizedVestingValidator    
+                                      ||]) `applyCode` liftCode params)  
+ 
+------------------------------------------------------------------------------
+----------------------------- HELPER FUNCTIONS -------------------------------
+ 
+saveVal :: VestingParams -> IO ()
 saveVal = writeValidatorToFile "./assets/parameterized-vesting.plutus" .
-
-validator
+                      	       validator
+----
 
 First, we create the VestingParams type, which was previously called
 VestingDatum. It holds the beneficiary’s public key hash and the
@@ -2878,7 +2662,10 @@ class. Because we are using a custom defined type in our on-chain code,
 we can use a template Haskell mechanism to define an instance for our
 type. We do this with the following code:
 
+[source,shell]
+----
 makeLift ''VestingParams
+----
 
 This line only compiles if the MultiParamTypeClasses and
 ScopedTypeVariables language extensions are enabled.
@@ -2944,63 +2731,46 @@ interfaces and type aliases https://deno.land/x/lucid@0.9.1/mod.ts[_on
 this page_]. We will use Lucid version 0.9.1 and call the code file
 _lucid-vesting.ts_.
 
-_import_ \{
-
-Data,
-
-Lucid,
-
-Blockfrost,
-
-getAddressDetails,
-
-SpendingValidator,
-
-TxHash,
-
-Datum,
-
-UTxO,
-
-Address,
-
-AddressDetails,
-
-} _from_ "https://deno.land/x/lucid@0.9.1/mod.ts"
-
-//_ create a seed.ts file with your seed_
-
-_import_ \{ secretSeed } _from_ "./seed.ts"
-
-//_ set blockfrost endpoint_
-
-const__ lucid __=__ await Lucid.new__(
-
-__ __new_ Blockfrost_(
-
-_ _"https://cardano-preview.blockfrost.io/api/v0",
-
-_ _"insert your own api key here"
-
-_ _),
-
-_ _"Preview"
-
+[source,typescript]
+----
+import {
+    Data,
+    Lucid,
+    Blockfrost,
+    getAddressDetails,
+    SpendingValidator,
+    TxHash,
+    Datum,
+    UTxO,
+    Address,
+    AddressDetails,
+} from "https://deno.land/x/lucid@0.9.1/mod.ts"
+// create a seed.ts file with your seed
+import { secretSeed } from "./seed.ts"
+ 
+// set blockfrost endpoint
+const lucid = await Lucid.new(
+  new Blockfrost(
+    "https://cardano-preview.blockfrost.io/api/v0",
+    "insert your own api key here"
+  ),
+  "Preview"
 );
-
-//_ load local stored seed as a wallet into lucid_
-
-lucid__.selectWalletFromSeed__(secretSeed);
-
-const__ addr__:__ Address __=_ await lucid.wallet.address_();
-
-console__.log__(addr);
+ 
+// load local stored seed as a wallet into lucid
+lucid.selectWalletFromSeed(secretSeed);
+const addr: Address = await lucid.wallet.address();
+console.log(addr);
+----
 
 First, we import the necessary components. The seed.ts file should
 contain the seed for your Cardano wallet, with all the words separated
 by spaces, as shown in the following example:
 
+[source,shell]
+----
 export const secretSeed = "seed_word1 seed_word2 ... seed_wordN";
+----
 
 Next, we initiate Lucid as a constant using the new method, which
 requires a provider and a network. The provider enables fetching and
@@ -3020,9 +2790,11 @@ and log the address of our wallet. To get the address, run the following
 command from the VSCode terminal, which you can set up using
 instructions from section 8.5.4:
 
+[source,shell]
+----
 /<path>/<to>/<file># deno run -A lucid-vesting.ts
-
 addr_test1vr8ldcu7ckeulp93q7yhdjv8q6mnwaxjc4fr4ax64a79zzgm5xd7e
+----
 
 The wallet address is then displayed in the terminal. If multiple
 accounts reside in the wallet, you can specify one by adding the
@@ -3032,67 +2804,48 @@ sequentially and store their addresses in different variables. The last
 selected account is the one that Lucid keeps track of. Below is an
 example code:
 
-lucid__.selectWalletFromSeed__(secretSeed, \{ accountIndex: 0 });
+[source,typescript]
+----
+lucid.selectWalletFromSeed(secretSeed, { accountIndex: 0 });
+const addr0: Address = await lucid.wallet.address();
+console.log("Address for account 0: " + addr0);
+lucid.selectWalletFromSeed(secretSeed, { accountIndex: 1 });
+const addr1: Address = await lucid.wallet.address();
+console.log("Address for account 1: " + addr1);
+----
 
-const__ addr0__:__ Address __=_ await lucid.wallet.address_();
+Next, let’s look at some variables we define in our TypeScript code: 
 
-console__.log__("Address for account 0: " + addr0);
-
-lucid__.selectWalletFromSeed__(secretSeed, \{ accountIndex: 1 });
-
-const__ addr1__:__ Address __=_ await lucid.wallet.address_();
-
-console__.log__("Address for account 1: " + addr1);
-
-Next, let’s look at some variables we define in our TypeScript code:
-
-//_ Define the vesting Plutus script_
-
-const__ vestingScript__:__ SpendingValidator __=_ _\{
-
-_ type_:_ _"PlutusV2",
-
-_ script_:_ _"590b30590b2d01000032323233223232332…",
-
+[source,typescript]
+----
+// Define the vesting Plutus script
+const vestingScript: SpendingValidator = {
+    type: "PlutusV2",
+    script: "590b30590b2d01000032323233223232332…",
 };
-
-const__ vestingAddress__:__ Address __=_
-lucid.utils.validatorToAddress_(_vestingScript_);
-
-//_ Create the vesting datum type_
-
-const__ VestingDatum __=__ Data.Object__(\{
-
-_ beneficiary_:_ Data.String_,
-
-_ deadline_:_ Data.BigInt_,
-
+const vestingAddress: Address = lucid.utils.validatorToAddress(vestingScript);
+ 
+// Create the vesting datum type
+const VestingDatum = Data.Object({
+    beneficiary: Data.String,
+    deadline: Data.BigInt,
 });
-
-type VestingDatum = Data__.__Static<typeof VestingDatum>;
-
-//_ Set the vesting deadline_
-
-const__ deadlineDate__:__ Date __=__ __new_
-Date_("2023-03-19T00:00:00Z")
-
-const__ deadlinePosIx __=__ BigInt__(_deadlineDate.getTime_());
-
-//_ Set the vesting beneficiary to our own key._
-
-const__ details__:__ AddressDetails __=_ getAddressDetails_(_addr_);
-
-const__ beneficiaryPKH__:__ string __=_ details.paymentCredential.hash_
-
-//_ Creating a datum with a beneficiary and deadline_
-
-const__ datum__:__ VestingDatum __=_ _\{
-
-_ beneficiary_:_ beneficiaryPKH_,
-
-_ deadline_:_ deadlinePosIx_,
-
+type VestingDatum = Data.Static<typeof VestingDatum>;
+ 
+// Set the vesting deadline
+const deadlineDate: Date = new Date("2023-03-19T00:00:00Z")
+const deadlinePosIx = BigInt(deadlineDate.getTime());
+ 
+// Set the vesting beneficiary to our own key.
+const details: AddressDetails = getAddressDetails(addr);
+const beneficiaryPKH: string = details.paymentCredential.hash
+ 
+// Creating a datum with a beneficiary and deadline
+const datum: VestingDatum = {
+    beneficiary: beneficiaryPKH,
+    deadline: deadlinePosIx,
 };
+----
 
 First, we define the vesting script that will be of type
 SpendingValidator (we can copy it from our _vesting.plutus_ file created
@@ -3102,11 +2855,12 @@ is very long. Then, we compute the vesting address from the script and
 define the vesting datum type. To play around with the types, we start a
 Deno REPL:
 
+[source,shell]
+----
 # deno repl
-
 > import * as L from "https://deno.land/x/lucid@0.9.1/mod.ts"
-
 > L.data
+----
 
 The last command provides a list of possible types for constructing the
 datum. Next, we define the datum type and compute the deadline variable,
@@ -3115,34 +2869,23 @@ POSIX time, compute the address details, and define the beneficiary’s
 payment public key hash. Finally, we specify the datum for the contract
 and attempt to construct and sign the transaction.
 
-//_ An asynchronous function that sends an amount of Lovelace to the
-script _
-
-//_ with the above datum._
-
-_async_ function _vestFunds_(amount: bigint): Promise<TxHash> \{
-
-const__ dtm__:__ Datum __=__
-Data.to__<__VestingDatum__>(_datum_,_VestingDatum_);
-
-const__ tx __=__ await lucid__
-
-_.newTx_()
-
-_.payToContract_(vestingAddress, \{ inline: dtm }, \{ lovelace: amount
-})
-
-_.complete_();
-
-const__ signedTx __=__ await tx.sign__()_.complete_();
-
-const__ txHash __=__ await signedTx.submit__();
-
-_return_ txHash
-
+[source,typescript]
+----
+// An asynchronous function that sends an amount of Lovelace to the script 
+// with the above datum.
+async function vestFunds(amount: bigint): Promise<TxHash> {
+    const dtm: Datum = Data.to<VestingDatum>(datum,VestingDatum);
+    const tx = await lucid
+      .newTx()
+      .payToContract(vestingAddress, { inline: dtm }, { lovelace: amount })
+      .complete();
+    const signedTx = await tx.sign().complete();
+    const txHash = await signedTx.submit();
+    return txHash
 }
-
-console__.log__(_await_ _vestFunds_(100000000n));
+ 
+console.log(await vestFunds(100000000n));
+----
 
 The classes used to manage a transaction are called Tx, TxComplete, and
 TxSigned. To construct a transaction, we use the newTx function, which
@@ -3156,46 +2899,31 @@ function submit from the TxSigned class to submit the transaction, which
 returns a transaction hash that we return at the end of the vestFunds
 function. Next we look at the function that claims the vested funds.
 
-_async_ function _claimVestedFunds_(): Promise<TxHash> \{
-
-const__ dtm__:__ Datum __=__
-Data.to__<__VestingDatum__>(_datum_,_VestingDatum_);
-
-const__ utxoAtScript__:_ UTxO_[]__ __=_ await
-lucid.utxosAt_(_vestingAddress_);
-
-const__ ourUTxO__:_ UTxO_[]__ __=_ utxoAtScript.filter_((_utxo_)__
-__=>__ utxo.datum __==_ dtm_);
-
-if (ourUTxO && ourUTxO__.__length > 0) \{
-
-const__ tx __=__ await lucid__
-
-_.newTx_()
-
-_.collectFrom_(ourUTxO, Data__.void__())
-
-_.addSignerKey_(beneficiaryPKH)
-
-_.attachSpendingValidator_(vestingScript)
-
-_.validFrom_(Date_.now_()-100000)
-
-_.complete_();
-
-const__ signedTx __=__ await tx.sign__()_.complete_();
-
-const__ txHash __=__ await signedTx.submit__();
-
-_return_ txHash
-
+[source,typescript]
+----
+async function claimVestedFunds(): Promise<TxHash> {
+    const dtm: Datum = Data.to<VestingDatum>(datum,VestingDatum);
+    const utxoAtScript: UTxO[] = await lucid.utxosAt(vestingAddress);
+    const ourUTxO: UTxO[] = utxoAtScript.filter((utxo) => utxo.datum == dtm);
+   
+    if (ourUTxO && ourUTxO.length > 0) {
+        const tx = await lucid
+            .newTx()
+            .collectFrom(ourUTxO, Data.void())
+            .addSignerKey(beneficiaryPKH)
+            .attachSpendingValidator(vestingScript)
+            .validFrom(Date.now()-100000)
+            .complete();
+ 
+        const signedTx = await tx.sign().complete();
+        const txHash = await signedTx.submit();
+        return txHash
+    }
+    else return "No UTxO's found that can be claimed"
 }
-
-else _return_ "No UTxO's found that can be claimed"
-
-}
-
-console__.log__(_await_ _claimVestedFunds_());
+ 
+console.log(await claimVestedFunds());
+----
 
 First, we define the datum. Then, we look up which UTXOs reside at our
 script address using https://blockfrost.io/[_Blockfrost_] as initialized
@@ -3213,7 +2941,10 @@ with our datum is found, or a message indicating that no UTXO with the
 specified datum could be claimed at the vesting address. We can run the
 entire code from our _lucid-vesting.ts_ file in the VSCode terminal.
 
+[source,shell]
+----
 /<path>/<to>/<file># deno run -A lucid-vesting.ts
+----
 
 After completing the transactions, the transaction hashes output to the
 console can be used to check transaction details on the
@@ -3232,110 +2963,65 @@ burned, it becomes unspendable and permanently accessible. Let’s look at
 an example where we create such a UTXO and attach the vesting script
 from the previous example.
 
-_import_ \{
+[source,typescript]
+----
+import {
+    Data,
+    Lucid,
+    Blockfrost,
+} from "https://deno.land/x/lucid@0.9.1/mod.ts"
+// create a seed.ts file with your seed
+import { secretSeed } from "./seed.ts"
 
-Data,
-
-Lucid,
-
-Blockfrost,
-
-} _from_ "https://deno.land/x/lucid@0.9.1/mod.ts"
-
-//_ create a seed.ts file with your seed_
-
-_import_ \{ secretSeed } _from_ "./seed.ts"
-
-//_ set blockfrost endpoint and select wallet_
-
-const__ lucid __=__ await Lucid.new__(
-
-__ __new_ Blockfrost_(
-
-_ _"https://cardano-preview.blockfrost.io/api/v0",
-
-_ _"insert your own api key here"
-
-_ _),
-
-_ _"Preview"
-
+// set blockfrost endpoint and select wallet
+const lucid = await Lucid.new(
+  new Blockfrost(
+    "https://cardano-preview.blockfrost.io/api/v0",
+    "insert your own api key here"
+  ),
+  "Preview"
 );
+lucid.selectWalletFromSeed(secretSeed);
 
-lucid__.selectWalletFromSeed__(secretSeed);
-
-//_ define burn and vesting script _
-
-const__ burnScript __=__ __\{
-
-_ type_:_ _"PlutusV2",
-
-_ script_:_
-_"581f581d01000022232632498cd5ce24810b6974206275726e732121210…"
-
+// define burn and vesting script  
+const burnScript = {
+    type: "PlutusV2",
+    script: "581f581d01000022232632498cd5ce24810b6974206275726e732121210…"
+};
+const burnAddress = lucid.utils.validatorToAddress(burnScript);
+const vestingScript = {
+    type: "PlutusV2",
+    script: "590b30590b2d01000032323233223232332232323232323232332232332…",
 };
 
-const__ burnAddress __=__
-lucid.utils.validatorToAddress__(_burnScript_);
-
-const__ vestingScript __=__ __\{
-
-_ type_:_ _"PlutusV2",
-
-_ script_:_
-_"590b30590b2d01000032323233223232332232323232323232332232332…",
-
-};
-
-//_ functions for signing and submitting a transaction_
-
-_async_ function _submitCardanoTx_(signedTx) \{
-
-const__ tid __=__ await signedTx.submit__();
-
-console__.log__("Cardano tx submitted: " + tid);
-
+// functions for signing and submitting a transaction
+async function submitCardanoTx(signedTx) {
+    const tid = await signedTx.submit();
+    console.log("Cardano tx submitted: " + tid);
+}
+async function signAndSubmitCardanoTx(tx) {
+    try {
+        const signedTx = await tx.sign().complete();
+        await submitCardanoTx(signedTx);
+    } catch (err) {
+        alert(`Cardano transaction:\ninfo: ${err.info}\nmessage: 
+            ${err.message}`);
+        throw (err);
+    }
 }
 
-_async_ function _signAndSubmitCardanoTx_(tx) \{
-
-_try_ \{
-
-const__ signedTx __=__ await tx.sign__()_.complete_();
-
-_await_ _submitCardanoTx_(signedTx);
-
-} _catch_ (err) \{
-
-_alert_(`Cardano transaction:\ninfo: $\{err__.__info}\nmessage:
-
-$\{err__.__message}`);
-
-_throw_ (err);
-
+// function for deploying a refernce script
+async function deploy() {
+    const tx = await lucid
+        .newTx()
+        .payToContract(burnAddress, { inline: Data.void(), 
+                       scriptRef: vestingScript }, {})
+        .complete();
+    signAndSubmitCardanoTx(tx);
 }
 
-}
-
-//_ function for deploying a refernce script_
-
-_async_ function _deploy_() \{
-
-const__ tx __=__ await lucid__
-
-_.newTx_()
-
-_.payToContract_(burnAddress, \{ inline: Data__.void__(),
-
-scriptRef: vestingScript }, \{})
-
-_.complete_();
-
-_signAndSubmitCardanoTx_(tx);
-
-}
-
-_await_ _onDeploy_();
+await onDeploy(); 
+----
 
 We import the necessary libraries, initialize Lucid with our own
 Blockfrost API key on the preview network, and select our wallet. Then,
@@ -3351,70 +3037,52 @@ transaction, save this code to the deploy.ts file, and run it with Deno.
 The submitCardanoTx function will print a transaction hash, which we
 need to save for referencing the vesting script later.
 
+[source,shell]
+----
 /<path>/<to>/file# deno run -A deploy.ts
-
 ecddb39e726a0b4d718de3190e3e7e02ac7901ee4eb1ff8c2e77bc6d38864909
+----
 
 After deploying the script, we can modify the previous off-chain code
 located in the lucid-vesting.ts file. Below is the modified part of the
 code:
 
-_async_ function _getReferenceUTxO_() \{
-
-const__ utxos __=__ await lucid.utxosByOutRef__([\{
-
-_ txHash_:
-
-_ _"ecddb39e726a0b4d718de3190e3e7e02ac7901ee4eb1ff8c2e77bc6d38864909",
-
-_ outputIndex_:__ __0
-
-_ _}]);
-
-_return_ utxos[0];
-
+[source,typescript]
+----
+async function getReferenceUTxO() {
+  const utxos = await lucid.utxosByOutRef([{
+      txHash:
+        "ecddb39e726a0b4d718de3190e3e7e02ac7901ee4eb1ff8c2e77bc6d38864909",
+      outputIndex: 0
+  }]);
+  return utxos[0];
 }
+const referenceUTxO = await getReferenceUTxO();
 
-const__ referenceUTxO __=__ await getReferenceUTxO__();
 
-_async_ function _claimVestedFunds_(): Promise<TxHash> \{
+async function claimVestedFunds(): Promise<TxHash> {
+  const dtm: Datum = Data.to<VestingDatum>(datum,VestingDatum);
+  const utxoAtScript: UTxO[] = await lucid.utxosAt(vestingAddress);
+  const ourUTxO: UTxO[] = utxoAtScript.filter((utxo) => utxo.datum == dtm);
 
-const__ dtm__:__ Datum __=__
-Data.to__<__VestingDatum__>(_datum_,_VestingDatum_);
 
-const__ utxoAtScript__:_ UTxO_[]__ __=_ await
-lucid.utxosAt_(_vestingAddress_);
+  if (ourUTxO && ourUTxO.length > 0) {
+    const tx = await lucid
+      .newTx()
+      .collectFrom(ourUTxO, Data.void())
+      .addSignerKey(beneficiaryPKH)
+      .readFrom([referenceUTxO])
+      .validFrom(Date.now()-100000)
+      .complete();
 
-const__ ourUTxO__:_ UTxO_[]__ __=_ utxoAtScript.filter_((_utxo_)__
-__=>__ utxo.datum __==_ dtm_);
 
-if (ourUTxO && ourUTxO__.__length > 0) \{
-
-const__ tx __=__ await lucid__
-
-_.newTx_()
-
-_.collectFrom_(ourUTxO, Data__.void__())
-
-_.addSignerKey_(beneficiaryPKH)
-
-_.readFrom_([referenceUTxO])
-
-_.validFrom_(Date_.now_()-100000)
-
-_.complete_();
-
-const__ signedTx __=__ await tx.sign__()_.complete_();
-
-const__ txHash __=__ await signedTx.submit__();
-
-_return_ txHash
-
+    const signedTx = await tx.sign().complete();
+    const txHash = await signedTx.submit();
+    return txHash
+  }
+  else return "No UTxO's found that can be claimed"
 }
-
-else _return_ "No UTxO's found that can be claimed"
-
-}
+----
 
 We added the function getReferenceUTxO that returns the UTXO to which we
 have attached our vesting script. We hard-coded the transaction hash
@@ -3449,29 +3117,21 @@ https://github.com/spacebudz/lucid/pull/254[_includes one_]. Users can
 clone the repository locally and reference the mod.ts file directly in
 their code.
 
-_import_ \{
-
-Data,
-
-Lucid,
-
-Blockfrost,
-
-getAddressDetails,
-
-SpendingValidator,
-
-TxHash,
-
-Datum,
-
-UTxO,
-
-Address,
-
-AddressDetails,
-
-} _from_ "./<path>/<to>/local/lucid/mod.ts"
+[source,typescript]
+----
+import {
+    Data,
+    Lucid,
+    Blockfrost,
+    getAddressDetails,
+    SpendingValidator,
+    TxHash,
+    Datum,
+    UTxO,
+    Address,
+    AddressDetails,
+} from "./<path>/<to>/<local>/lucid/mod.ts"
+----
 
 If you use the latest Lucid updates, you should also use an up-to-date
 Deno version. The Deno version in the Docker container for the Plinth
@@ -3519,56 +3179,59 @@ With the assetClassValueOf function, we can check how many tokens of a
 specific asset class are contained in a value type variable. Below, you
 can see the type signatures of these functions.
 
+[source,shell]
+----
 assetClass :: CurrencySymbol -> TokenName -> AssetClass
-
 assetClassValue :: AssetClass -> Integer -> Value
-
 assetClassValueOf :: Value -> AssetClass -> Integer
+----
 
 To construct a value variable and check the amount of tokens in it for a
 specific asset class, we can do so as follows from Prelude:
 
+[source,shell]
+----
 Prelude> import Plutus.V1.Ledger.Value
-
 Prelude Plutus.V1.Ledger.Value> :set -XOverloadedStrings
-
 Prelude Plutus.V1.Ledger.Value> myAssetClass = assetClass "a507ff33"
 "MyToken"
-
 Prelude Plutus.V1.Ledger.Value> myTokenValue = assetClassValue
 myAssetClass 77
+----
 
 To construct an asset class for ada, we can use the adaSymbol and
 adaToken variables provided by the _Plutus.V1.Ledger.Value_ module.
 
+[source,shell]
+----
 Prelude Plutus.V1.Ledger.Value> ada = assetClass adaSymbol adaToken
-
 Prelude Plutus.V1.Ledger.Value> adaValue = assetClassValue ada 100000000
+----
 
 We can also combine different variables of type value with the semigroup
 operator <> as the value type has an instance of the semigroup type
 class. Using the assetClassValueOf function, we can get the quantity of
 a given asset class contained in a value.
 
+[source,shell]
+----
 Prelude Plutus.V1.Ledger.Value> combined = myTokenValue <> adaValue
-
 Value (Map [(,Map [("",100000000)]),(a507ff33,Map [("MyToken",77)])])
-
 Prelude Plutus.V1.Ledger.Value> assetClassValueOf combined myAssetClass
-
 77
+----
 
 We can also extract information from a value type variable as a list of
 triples using the flattenValue function, which takes a value type and
 returns a list of triples.
 
+[source,shell]
+----
 Prelude Plutus.V1.Ledger.Value> :t flattenValue
-
 flattenValue :: Value -> [(CurrencySymbol, TokenName, Integer)]
-
 Prelude Plutus.V1.Ledger.Value> flattenValue combined
-
 {empty}[(,"",100000000),(a507ff33,"MyToken",77)]
+----
 
 So far, we have focused on the spending constructor of the ScriptPurpose
 type variable within the ScriptContext data type, which takes a
@@ -3597,92 +3260,61 @@ acting like a central bank in traditional finance, responsible for
 minting and burning fiat currencies. Our minting policy will be
 parameterized, accepting an additional public key hash as a parameter.
 
-\{-# LANGUAGE DataKinds #-}
-
-\{-# LANGUAGE NoImplicitPrelude #-}
-
-\{-# LANGUAGE OverloadedStrings #-}
-
-\{-# LANGUAGE TemplateHaskell #-}
-
+[source,haskell]
+----
+{-# LANGUAGE DataKinds         #-}
+{-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE TemplateHaskell   #-}
+ 
 module Signed where
-
-import Plutus.V2.Ledger.Api (BuiltinData, CurrencySymbol,
-
-MintingPolicy, PubKeyHash,
-
-ScriptContext
-
-(_scriptContextTxInfo_),
-
-_mkMintingPolicyScript_)
-
-import Plutus.V2.Ledger.Contexts (_txSignedBy_)
-
+ 
+import           Plutus.V2.Ledger.Api      (BuiltinData, CurrencySymbol,
+                                            MintingPolicy, PubKeyHash,
+                                            ScriptContext 
+                                              (scriptContextTxInfo),
+                                            mkMintingPolicyScript)
+import           Plutus.V2.Ledger.Contexts (txSignedBy)
 import qualified PlutusTx
-
-import PlutusTx.Prelude (Bool, _traceIfFalse_, (_$_), (_._))
-
-import Prelude (IO, Show (_show_))
-
-import Text.Printf (_printf_)
-
-import Utilities (_currencySymbol_, _wrapPolicy_,
-
-_writeCodeToFile_,
-
-_ writePolicyToFile_)
-
-\{-# INLINABLE mkSignedPolicy #-}
-
-_mkSignedPolicy_ :: PubKeyHash -> () -> ScriptContext -> Bool
-
+import           PlutusTx.Prelude          (Bool, traceIfFalse, ($), (.))
+import           Prelude                   (IO, Show (show))
+import           Text.Printf               (printf)
+import           Utilities                 (currencySymbol, wrapPolicy,
+                                            writeCodeToFile, 
+                                            writePolicyToFile)
+ 
+{-# INLINABLE mkSignedPolicy #-}
+mkSignedPolicy :: PubKeyHash -> () -> ScriptContext -> Bool
 mkSignedPolicy pkh () ctx = traceIfFalse "missing signature" $
-
-txSignedBy (scriptContextTxInfo ctx) pkh
-
-\{-# INLINABLE mkWrappedSignedPolicy #-}
-
-_mkWrappedSignedPolicy_ :: BuiltinData -> BuiltinData -> BuiltinData ->
-()
-
+                            txSignedBy (scriptContextTxInfo ctx) pkh
+ 
+{-# INLINABLE mkWrappedSignedPolicy #-}
+mkWrappedSignedPolicy :: BuiltinData -> BuiltinData -> BuiltinData -> ()
 mkWrappedSignedPolicy pkh = wrapPolicy (mkSignedPolicy $
-
-PlutusTx.unsafeFromBuiltinData pkh)
-
-_signedCode_ :: PlutusTx.CompiledCode (BuiltinData -> BuiltinData ->
-
-BuiltinData -> ())
-
+                                        PlutusTx.unsafeFromBuiltinData pkh)
+ 
+signedCode :: PlutusTx.CompiledCode (BuiltinData -> BuiltinData ->
+                                 	 BuiltinData -> ())
 signedCode = $$(PlutusTx.compile [|| mkWrappedSignedPolicy ||])
-
-_signedPolicy_ :: PubKeyHash -> MintingPolicy
-
+ 
+signedPolicy :: PubKeyHash -> MintingPolicy
 signedPolicy pkh = mkMintingPolicyScript $ signedCode
-
-`PlutusTx.applyCode` PlutusTx.liftCode
-
-(PlutusTx.toBuiltinData pkh)
-
---_----------------------------------------------------------------------------_
-
-–------------------------------ HELPER FUNCTIONS
------------------------------
-
-_saveSignedCode_ :: IO ()
-
+                   `PlutusTx.applyCode` PlutusTx.liftCode
+                   (PlutusTx.toBuiltinData pkh)
+ 
+------------------------------------------------------------------------------
+–------------------------------ HELPER FUNCTIONS -----------------------------
+ 
+saveSignedCode :: IO ()
 saveSignedCode = writeCodeToFile "assets/signed.plutus" signedCode
-
-_saveSignedPolicy_ :: PubKeyHash -> IO ()
-
-saveSignedPolicy pkh = writePolicyToFile (printf
-"assets/signed-%s.plutus" $
-
-show pkh) $ signedPolicy pkh
-
-_signedCurrencySymbol_ :: PubKeyHash -> CurrencySymbol
-
+ 
+saveSignedPolicy :: PubKeyHash -> IO ()
+saveSignedPolicy pkh = writePolicyToFile (printf "assets/signed-%s.plutus" $
+                                      	show pkh) $ signedPolicy pkh
+ 
+signedCurrencySymbol :: PubKeyHash -> CurrencySymbol
 signedCurrencySymbol = currencySymbol . signedPolicy
+----
 
 We define our minting policy with the mkSignedPolicy function that takes
 a public key hash as an additional parameter to the redeemer and script
@@ -3707,68 +3339,44 @@ https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[
 iteration_] GitHub repository. Now we showcase how to use off-chain code
 with Lucid to apply the public key hash parameter:
 
-_import_ \{
-
-Lucid,
-
-Blockfrost,
-
-Address,
-
-MintingPolicy,
-
-PolicyId,
-
-Unit,
-
-fromText,
-
-Data,
-
-getAddressDetails,
-
-applyParamsToScript
-
-} _from_ "https://deno.land/x/lucid@0.9.1/mod.ts"
-
-_import_ \{ blockfrostKey, secretSeed } _from_ "./secret.ts"
-
-function _readAmount_(): bigint \{
-
-const__ input __=__ prompt__("amount: ");
-
-_return_ input ? _BigInt_(Number_.parseInt_(input)) : 1000000n;
-
+[source,typescript]
+----
+import {
+    Lucid,
+    Blockfrost,
+    Address,
+    MintingPolicy,
+    PolicyId,
+    Unit,
+    fromText,
+    Data,
+    getAddressDetails,
+    applyParamsToScript
+} from "https://deno.land/x/lucid@0.9.1/mod.ts"
+import { blockfrostKey, secretSeed } from "./secret.ts"
+ 
+function readAmount(): bigint {
+    const input = prompt("amount: ");
+    return input ? BigInt(Number.parseInt(input)) : 1000000n;
 }
-
-//_ set blockfrost endpoint_
-
-const__ lucid __=__ await Lucid.new__(
-
-__ __new_ Blockfrost_(
-
-_ _"https://cardano-preview.blockfrost.io/api/v0",
-
-_ blockfrostKey_
-
-_ _),
-
-_ _"Preview"
-
+ 
+// set blockfrost endpoint
+const lucid = await Lucid.new(
+    new Blockfrost(
+        "https://cardano-preview.blockfrost.io/api/v0",
+        blockfrostKey
+    ),
+    "Preview"
 );
-
-//_ load local stored seed as a wallet into lucid_
-
-lucid__.selectWalletFromSeed__(secretSeed);
-
-const__ addr__:__ Address __=_ await lucid.wallet.address_();
-
-console__.log__("own address: " + addr);
-
-const__ pkh__:__ string __=_
-getAddressDetails_(_addr_)__.paymentCredential?.hash __||_ _"";
-
-console__.log__("own pubkey hash: " + pkh);
+ 
+// load local stored seed as a wallet into lucid
+lucid.selectWalletFromSeed(secretSeed);
+const addr: Address = await lucid.wallet.address();
+console.log("own address: " + addr);
+ 
+const pkh: string = getAddressDetails(addr).paymentCredential?.hash || "";
+console.log("own pubkey hash: " + pkh); 
+----
 
 First, we import all necessary Lucid classes, functions, types, our
 Blockfrost API key, and the secret seed of our wallet. Then, we define
@@ -3780,51 +3388,36 @@ the public key hash and also log it. This script will enable the owner
 of the secret seed to mint and burn tokens. Then comes the code for
 constructing the minting transaction with the parameterized script:
 
-const__ Params __=__ Data.Tuple__([_Data.String_]);
-
-type Params = Data__.__Static<typeof Params>;
-
-const__ signedPolicy__:__ MintingPolicy __=_ _\{
-
-_ type_:_ _"PlutusV2",
-
-_ script_:__ applyParamsToScript__<__Params__>(
-
-_
-_"59081a590817010000323232332232323232323232323233223233223232323232…",
-
-_ _[_pkh_],
-
-_ Params_)
-
+[source,typescript]
+----
+const Params = Data.Tuple([Data.String]);
+type Params = Data.Static<typeof Params>;
+ 
+const signedPolicy: MintingPolicy = {
+    type: "PlutusV2",
+    script: applyParamsToScript<Params>(
+        "59081a590817010000323232332232323232323232323233223233223232323232…",
+        [pkh],
+        Params)
 };
-
-const__ policyId__:__ PolicyId __=_
-lucid.utils.mintingPolicyToId_(_signedPolicy_);
-
-console__.log__("minting policy: " + policyId);
-
-const__ unit__:__ Unit __=__ policyId __+_ fromText_("PPP Signed");
-
-const__ amount__:__ bigint __=_ readAmount_();
-
-const__ tx __=__ await lucid__
-
-_.newTx_()
-
-_.mintAssets_(\{[unit]: amount}, Data__.void__())
-
-_.attachMintingPolicy_(signedPolicy)
-
-_.addSignerKey_(pkh)
-
-_.complete_();
-
-const__ signedTx __=__ await tx.sign__()_.complete_();
-
-const__ txHash __=__ await signedTx.submit__();
-
-console__.log__("tid: " + txHash);
+ 
+const policyId: PolicyId = lucid.utils.mintingPolicyToId(signedPolicy);
+console.log("minting policy: " + policyId);
+ 
+const unit: Unit = policyId + fromText("PPP Signed");
+const amount: bigint = readAmount();
+ 
+const tx = await lucid
+    .newTx()
+    .mintAssets({[unit]: amount}, Data.void())
+    .attachMintingPolicy(signedPolicy)
+    .addSignerKey(pkh)
+    .complete();
+ 
+const signedTx = await tx.sign().complete();
+const txHash = await signedTx.submit();
+console.log("tid: " + txHash);
+----
 
 We first define our Params type, which is a tuple with one list
 parameter. You can have more than multiple parameters in this list,
@@ -3847,7 +3440,10 @@ and submit the transaction and log the transaction hash. We can now mint
 our tokens by running this code, which we saved to the _lucid-signed.ts_
 file with the following command:
 
+[source,shell]
+----
 deno run -A lucid-signed.ts
+----
 
 Next, we input the number of tokens to mint. After a short period, the
 tokens named PPP Signed will appear in the wallet. If the number is
@@ -3872,91 +3468,57 @@ minting policy – namely, the UTXO transaction hash and ID – and have the
 policy check that the transaction performing the minting consumes that
 specific UTXO. Let’s look at an example of such a minting script.
 
-\{-# LANGUAGE DataKinds #-}
-
-\{-# LANGUAGE NoImplicitPrelude #-}
-
-\{-# LANGUAGE OverloadedStrings #-}
-
-\{-# LANGUAGE TemplateHaskell #-}
-
+[source,haskell]
+----
+{-# LANGUAGE DataKinds         #-}
+{-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE TemplateHaskell   #-}
+ 
 module NFT where
-
-import qualified Data.ByteString.Char8 as BS8
-
-import Plutus.V1.Ledger.Value (_flattenValue_)
-
-import Plutus.V2.Ledger.Api (BuiltinData, CurrencySymbol,
-
-MintingPolicy,
-
-ScriptContext
-
-(_scriptContextTxInfo_),
-
-TokenName (_unTokenName_),
-
-TxId (TxId, _getTxId_),
-
-TxInInfo (_txInInfoOutRef_),
-
-TxInfo (_txInfoInputs_,
-
-_ txInfoMint_),
-
-TxOutRef (TxOutRef, _txOutRefId_,
-
-_txOutRefIdx_),
-
-_mkMintingPolicyScript_)
-
+ 
+import qualified Data.ByteString.Char8      as BS8
+import           Plutus.V1.Ledger.Value     (flattenValue)
+import           Plutus.V2.Ledger.Api       (BuiltinData, CurrencySymbol,
+                                             MintingPolicy,
+                                             ScriptContext 
+                                               (scriptContextTxInfo),
+                                             TokenName (unTokenName),
+                                             TxId (TxId, getTxId),
+                                             TxInInfo (txInInfoOutRef),
+                                             TxInfo (txInfoInputs, 
+                                                     txInfoMint),
+                                             TxOutRef (TxOutRef, txOutRefId,
+                                                       txOutRefIdx),
+                                             mkMintingPolicyScript)
 import qualified PlutusTx
-
-import PlutusTx.Builtins.Internal (BuiltinByteString
-
-(BuiltinByteString))
-
-import PlutusTx.Prelude (Bool (False), Eq ((_==_)), _any_,
-
-_traceIfFalse_, (_$_), (_&&_))
-
-import Prelude (IO, Show (_show_), String)
-
-import Text.Printf (_printf_)
-
-import Utilities (_bytesToHex_, _currencySymbol_,
-
-_wrapPolicy_, _writeCodeToFile_,
-
-_writePolicyToFile_)
-
-\{-# INLINABLE mkNFTPolicy #-}
-
-_mkNFTPolicy_ :: TxOutRef -> TokenName -> () -> ScriptContext -> Bool
-
-mkNFTPolicy oref tn () ctx = traceIfFalse "UTxO not consumed" hasUTxO &&
-
-traceIfFalse "wrong amount minted"
-
-checkMintedAmount
-
-where
-
-_info_ :: TxInfo
-
-info = scriptContextTxInfo ctx
-
-_hasUTxO_ :: Bool
-
-hasUTxO = any (\i -> txInInfoOutRef i == oref) $ txInfoInputs info
-
-_checkMintedAmount_ :: Bool
-
-checkMintedAmount = _case_ flattenValue (txInfoMint info) _of_
-
-[(_, tn'', amt)] -> tn'' == tn && amt == 1
-
-_ -> False
+import           PlutusTx.Builtins.Internal (BuiltinByteString
+                                         	  (BuiltinByteString))
+import           PlutusTx.Prelude           (Bool (False), Eq ((==)), any,
+                                             traceIfFalse, ($), (&&))
+import           Prelude                    (IO, Show (show), String)
+import           Text.Printf                (printf)
+import           Utilities                  (bytesToHex, currencySymbol,
+                                             wrapPolicy, writeCodeToFile,
+                                             writePolicyToFile)
+ 
+{-# INLINABLE mkNFTPolicy #-}
+mkNFTPolicy :: TxOutRef -> TokenName -> () -> ScriptContext -> Bool
+mkNFTPolicy oref tn () ctx = traceIfFalse "UTxO not consumed"   hasUTxO &&
+                             traceIfFalse "wrong amount minted" 
+                                          checkMintedAmount
+  where
+    info :: TxInfo
+    info = scriptContextTxInfo ctx
+ 
+    hasUTxO :: Bool
+    hasUTxO = any (\i -> txInInfoOutRef i == oref) $ txInfoInputs info
+ 
+    checkMintedAmount :: Bool
+    checkMintedAmount = case flattenValue (txInfoMint info) of
+        [(_, tn'', amt)] -> tn'' == tn && amt == 1
+        _                -> False
+----
 
 Our script will be parameterized by two inputs: the transaction output
 reference (TxOutRef) of the UTXO we are spending and the token name. The
@@ -3970,48 +3532,33 @@ checks ensure only one coin is minted with the currency symbol tied to a
 specific parameterized script. Finally, let us look at how to convert
 the validator function to an untyped version and compile it.
 
-\{-# INLINABLE mkWrappedNFTPolicy #-}
-
-_mkWrappedNFTPolicy_ :: BuiltinData -> BuiltinData -> BuiltinData ->
-
-BuiltinData -> BuiltinData -> ()
-
+[source,haskell]
+----
+{-# INLINABLE mkWrappedNFTPolicy #-}
+mkWrappedNFTPolicy :: BuiltinData -> BuiltinData -> BuiltinData ->
+                      BuiltinData -> BuiltinData -> ()
 mkWrappedNFTPolicy tid ix tn' = wrapPolicy $ mkNFTPolicy oref tn
-
-where
-
-_oref_ :: TxOutRef
-
-oref = TxOutRef
-
-(TxId $ PlutusTx.unsafeFromBuiltinData tid)
-
-(PlutusTx.unsafeFromBuiltinData ix)
-
-_tn_ :: TokenName
-
-tn = PlutusTx.unsafeFromBuiltinData tn'
-
-_nftCode_ :: PlutusTx.CompiledCode (BuiltinData -> BuiltinData ->
-BuiltinData ->
-
-BuiltinData -> BuiltinData -> ())
-
+  where
+    oref :: TxOutRef
+    oref = TxOutRef
+        (TxId $ PlutusTx.unsafeFromBuiltinData tid)
+        (PlutusTx.unsafeFromBuiltinData ix)
+ 
+    tn :: TokenName
+    tn = PlutusTx.unsafeFromBuiltinData tn'
+ 
+nftCode :: PlutusTx.CompiledCode (BuiltinData -> BuiltinData -> BuiltinData ->
+                                  BuiltinData -> BuiltinData -> ())
 nftCode = $$(PlutusTx.compile [|| mkWrappedNFTPolicy ||])
-
-_nftPolicy_ :: TxOutRef -> TokenName -> MintingPolicy
-
+ 
+nftPolicy :: TxOutRef -> TokenName -> MintingPolicy
 nftPolicy oref tn = mkMintingPolicyScript $ nftCode
-
-`PlutusTx.applyCode` PlutusTx.liftCode (PlutusTx.toBuiltinData $
-
-getTxId $ txOutRefId oref)
-
-`PlutusTx.applyCode` PlutusTx.liftCode (PlutusTx.toBuiltinData $
-
-txOutRefIdx oref)
-
-`PlutusTx.applyCode` PlutusTx.liftCode (PlutusTx.toBuiltinData tn)
+        `PlutusTx.applyCode` PlutusTx.liftCode (PlutusTx.toBuiltinData $
+                                                getTxId $ txOutRefId oref)
+        `PlutusTx.applyCode` PlutusTx.liftCode (PlutusTx.toBuiltinData $
+                                      	      txOutRefIdx oref)
+        `PlutusTx.applyCode` PlutusTx.liftCode (PlutusTx.toBuiltinData tn)
+----
 
 There are now three input parameters for our script: the transaction
 hash (also called transaction ID), the transaction index, and the token
@@ -4023,40 +3570,29 @@ function and define the nftPolicy function, which creates a minting
 policy using two specific input parameters. Finally, we explore a helper
 function that serializes the compiled minting policy to disk.
 
---_----------------------------------------------------------------------------_
-
--------------------------------- HELPER FUNCTIONS
-----------------------------
-
-_saveNFTCode_ :: IO ()
-
+[source,haskell]
+----
+------------------------------------------------------------------------------
+-------------------------------- HELPER FUNCTIONS ----------------------------
+ 
+saveNFTCode :: IO ()
 saveNFTCode = writeCodeToFile "assets/nft.plutus" nftCode
-
-_saveNFTPolicy_ :: TxOutRef -> TokenName -> IO ()
-
+ 
+saveNFTPolicy :: TxOutRef -> TokenName -> IO ()
 saveNFTPolicy oref tn = writePolicyToFile
-
-(printf "assets/nft-%s#%d-%s.plutus"
-
-(show $ txOutRefId oref)
-
-(txOutRefIdx oref) $
-
-tn') $
-
-nftPolicy oref tn
-
-where
-
-_tn'_ :: String
-
-tn' = _case_ unTokenName tn _of_
-
-(BuiltinByteString bs) -> BS8.unpack $ bytesToHex bs
-
-_nftCurrencySymbol_ :: TxOutRef -> TokenName -> CurrencySymbol
-
+    (printf "assets/nft-%s#%d-%s.plutus"
+        (show $ txOutRefId oref)
+        (txOutRefIdx oref) $
+        tn') $
+    nftPolicy oref tn
+  where
+    tn' :: String
+    tn' = case unTokenName tn of
+        (BuiltinByteString bs) -> BS8.unpack $ bytesToHex bs
+ 
+nftCurrencySymbol :: TxOutRef -> TokenName -> CurrencySymbol
 nftCurrencySymbol oref tn = currencySymbol $ nftPolicy oref tn
+----
 
 The saveNFTCode function writes the unparameterized Plinth script to
 file _nft.plutus_. This is useful because we get an unparameterized
@@ -4068,60 +3604,39 @@ know the UTXO that we will spend. The nftCurrencySymbol function
 computes the currency symbol of the script that is parameterized with
 two concrete parameters. Let’s look at the off-chain code:
 
-_import_ \{
-
-Lucid,
-
-Blockfrost,
-
-Address,
-
-MintingPolicy,
-
-PolicyId,
-
-Unit,
-
-fromText,
-
-Data,
-
-applyParamsToScript
-
-} _from_ "https://deno.land/x/lucid@0.9.1/mod.ts"
-
-_import_ \{ blockfrostKey, secretSeed } _from_ "./secret.ts"
-
-//_ set blockfrost endpoint_
-
-const__ lucid __=__ await Lucid.new__(
-
-__ __new_ Blockfrost_(
-
-_ _"https://cardano-preview.blockfrost.io/api/v0",
-
-_ blockfrostKey_
-
-_ _),
-
-_ _"Preview"
-
+[source,typescript]
+----
+import {
+    Lucid,
+    Blockfrost,
+    Address,
+    MintingPolicy,
+    PolicyId,
+    Unit,
+    fromText,
+    Data,
+    applyParamsToScript
+} from "https://deno.land/x/lucid@0.9.1/mod.ts"
+import { blockfrostKey, secretSeed } from "./secret.ts"
+ 
+// set blockfrost endpoint
+const lucid = await Lucid.new(
+    new Blockfrost(
+        "https://cardano-preview.blockfrost.io/api/v0",
+        blockfrostKey
+    ),
+    "Preview"
 );
-
-//_ load local stored seed as a wallet into lucid_
-
-lucid__.selectWalletFromSeed__(secretSeed);
-
-const__ addr__:__ Address __=_ await lucid.wallet.address_();
-
-console__.log__("own address: " + addr);
-
-const__ utxos __=__ await lucid.utxosAt__(_addr_);
-
-const__ utxo __=__ utxos__[0];
-
-console__.log__("utxo: " + utxo__.__txHash + "#" +
-utxo__.__outputIndex);
+ 
+// load local stored seed as a wallet into lucid
+lucid.selectWalletFromSeed(secretSeed);
+const addr: Address = await lucid.wallet.address();
+console.log("own address: " + addr);
+ 
+const utxos = await lucid.utxosAt(addr);
+const utxo = utxos[0];
+console.log("utxo: " + utxo.txHash + "#" + utxo.outputIndex);
+----
 
 We import the necessary Lucid functions, classes and types, our API key
 and the secret seed. Then, we initialize Lucid with our API key and
@@ -4130,52 +3645,35 @@ address, along with information about the first UTXO we get when
 querying it at our address. Next, comes the code that handles the
 minting:
 
-const__ tn __=__ fromText__("PPP NFT");
-
-const__ Params __=__ Data.Tuple__([_Data.String_,_ Data.BigInt_,_
-Data.String_]);
-
-type Params = Data__.__Static<typeof Params>;
-
-const__ nftPolicy__:__ MintingPolicy __=_ _\{
-
-_ type_:_ _"PlutusV2",
-
-_ script_:__ applyParamsToScript__<__Params__>(
-
-_
-_"590906590903010000323322332232323232323232323232323232323232323232…",
-
-_ _[_utxo.txHash_,_ BigInt_(_utxo.outputIndex_),_ tn_],
-
-_ Params_)
-
+[source,typescript]
+----
+const tn = fromText("PPP NFT");
+const Params = Data.Tuple([Data.String, Data.BigInt, Data.String]);
+type Params = Data.Static<typeof Params>;
+const nftPolicy: MintingPolicy = {
+    type: "PlutusV2",
+    script: applyParamsToScript<Params>(
+        "590906590903010000323322332232323232323232323232323232323232323232…",
+        [utxo.txHash, BigInt(utxo.outputIndex), tn],
+        Params)
 };
+ 
+const policyId: PolicyId = lucid.utils.mintingPolicyToId(nftPolicy);
+console.log("minting policy: " + policyId);
+const unit: Unit = policyId + tn; 
 
-const__ policyId__:__ PolicyId __=_
-lucid.utils.mintingPolicyToId_(_nftPolicy_);
 
-console__.log__("minting policy: " + policyId);
-
-const__ unit__:__ Unit __=__ policyId __+_ tn_;
-
-const__ tx __=__ await lucid__
-
-_.newTx_()
-
-_.mintAssets_(\{[unit]: 1n}, Data__.void__())
-
-_.attachMintingPolicy_(nftPolicy)
-
-_.collectFrom_([utxo])
-
-_.complete_();
-
-const__ signedTx __=__ await tx.sign__()_.complete_();
-
-const__ txHash __=__ await signedTx.submit__();
-
-console__.log__("tid: " + txHash);
+const tx = await lucid
+    .newTx()
+    .mintAssets({[unit]: 1n}, Data.void())
+    .attachMintingPolicy(nftPolicy)
+    .collectFrom([utxo])
+    .complete();
+ 
+const signedTx = await tx.sign().complete();
+const txHash = await signedTx.submit();
+console.log("tid: " + txHash);
+----
 
 First, we define our token name, followed by the Params variable, which
 holds the data types for our parameters. Next, we define the actual
@@ -4220,27 +3718,24 @@ First, let’s see how to use a state monad to represent a blockchain and
 keep track of transactions. The PSM library uses a state monad. Below is
 a simple example:
 
+[source,haskell]
+----
 module State where
 
-import Control.Monad.State (State, _get_, _put_, _runState_)
-
---_ Mock UTxO type_
-
-data UTxO = UTxO \{ owner :: String , value :: Integer }
-
-deriving (Show, Eq)
-
---_ Mock blockchain type_
-
-newtype Mock = Mock \{ utxos :: [UTxO] }
-
-deriving (Show, Eq)
-
---_ Initial blockchain state_
-
-_initialMockS_ :: Mock
-
+import Control.Monad.State (State, get, put, runState)
+ 
+-- Mock UTxO type
+data UTxO = UTxO { owner :: String , value :: Integer }
+    deriving (Show, Eq)
+ 
+-- Mock blockchain type
+newtype Mock = Mock { utxos :: [UTxO] }
+    deriving (Show, Eq)
+ 
+-- Initial blockchain state
+initialMockS :: Mock
 initialMockS = Mock [ UTxO "Alice" 1000 ]
+----
 
 The UTxO data type contains the owner of the UTXO and the value sitting
 at the UTXO, which, in our case, is just an integer number. We create
@@ -4252,53 +3747,37 @@ Next, using the state monad, we create a function that enables the
 transfer of value from one user to another, which we will use in several
 transactions.
 
---_ newtype State s a = State \{ runState :: s -> (a, s) }_
+[source,haskell]
+----
+-- Definition of the State type 
+-- newtype State s a = State { runState :: s -> (a, s) }
 
-_sendValue_ :: String -> Integer -> String -> State Mock Bool
-
-sendValue from amount to = _do_
-
-mockS <- get
-
-let senderUtxos = filter ((== from) . owner) (utxos mockS)
-
-blockchainWithoutSenderUtxos = filter ((/= from) . owner)
-
-(utxos mockS)
-
-totalSenderFunds = sum (map value senderUtxos)
-
-receiverUtxo = UTxO to amount
-
-senderChange = UTxO from (totalSenderFunds - amount)
-
-_if_ totalSenderFunds >= amount
-
-_then_ _do_
-
-put $ Mock $ [receiverUtxo] ++ [senderChange] ++
-
-blockchainWithoutSenderUtxos
-
-return True
-
-_else_ return False
-
-_multipleTx_ :: (Bool, Mock)
-
-multipleTx = runState (_do_
-
-isOk <- sendValue "Alice" 100 "Bob"
-
-isOk2 <- sendValue "Alice" 300 "Bob"
-
-isOk3 <- sendValue "Bob" 200 "Rick"
-
-return (isOk && isOk2 && isOk3))
-
-initialMockS
-
+sendValue :: String -> Integer -> String -> State Mock Bool
+sendValue from amount to = do
+    mockS <- get
+    let senderUtxos = filter ((== from) . owner) (utxos mockS)
+        blockchainWithoutSenderUtxos = filter ((/= from) . owner) 
+                                              (utxos mockS)
+        totalSenderFunds = sum (map value senderUtxos)
+        receiverUtxo = UTxO to amount
+        senderChange = UTxO from (totalSenderFunds - amount)
+    if totalSenderFunds >= amount
+        then do
+            put $ Mock $ [receiverUtxo] ++ [senderChange] ++
+                     	blockchainWithoutSenderUtxos
+            return True
+        else return False
+ 
+multipleTx :: (Bool, Mock)
+multipleTx = runState (do
+    isOk  <- sendValue "Alice" 100 "Bob"
+    isOk2 <- sendValue "Alice" 300 "Bob"
+    isOk3 <- sendValue "Bob"   200 "Rick"
+    return (isOk && isOk2 && isOk3))
+    initialMockS
+ 
 type Run a = State Mock a
+----
 
 The sendValue function takes the following parameters in the specified
 order:
@@ -4322,59 +3801,42 @@ the blockchain. In the multipleTx function, we create three transactions
 and return final parameters of the state monad. We can now look in the
 REPL at the results that the multipleTx function returns:
 
+[source,shell]
+----
 Prelude State> fst multipleTx
-
 True
-
 Prelude State> snd multipleTx
-
 Mock \{utxos = [UTxO \{owner = "Rick", value = 200},UTxO \{owner =
 "Bob", value = 200},UTxO \{owner = "Alice", value = 600}]}
+----
 
 The Mock type is also used in the PSM library. The source code of this
 library shows how Mock and Run types are defined:
 
-data Mock = Mock
+[source,haskell]
+----
+  { mockUsers :: !(Map PubKeyHash User)
+  , mockAddresses :: !(Map Address (Set TxOutRef))
+  , mockUtxos :: !(Map TxOutRef TxOut)
+  -- ^ Since 0.4, reference script UTxOs are also included.
+  , mockDatums :: !(Map DatumHash Datum)
+  , mockStake :: !Stake
+  , mockTxs :: !(Log TxStat)
+  , mockConfig :: !MockConfig
+  , mockCurrentSlot :: !Slot
+  , mockUserStep :: !Integer
+  , mockFails :: !(Log FailReason)
+  , mockInfo :: !(Log String)
+  , mustFailLog :: !(Log MustFailLog)
+  , mockNames :: !MockNames
+  -- ^ human readable names. Idea is to substitute for them
+  -- in pretty printers for error logs, user names, script names.
+  }
 
-\{ mockUsers :: !(Map PubKeyHash User)
-
-, mockAddresses :: !(Map Address (Set TxOutRef))
-
-, mockUtxos :: !(Map TxOutRef TxOut)
-
-_-- ^ Since 0.4, reference script UTxOs are also included._
-
-, mockDatums :: !(Map DatumHash Datum)
-
-, mockStake :: !Stake
-
-, mockTxs :: !(Log TxStat)
-
-, mockConfig :: !MockConfig
-
-, mockCurrentSlot :: !Slot
-
-, mockUserStep :: !Integer
-
-, mockFails :: !(Log FailReason)
-
-, mockInfo :: !(Log String)
-
-, mustFailLog :: !(Log MustFailLog)
-
-, mockNames :: !MockNames
-
-_-- ^ human readable names. Idea is to substitute for them_
-
---_ in pretty printers for error logs, user names, script names._
-
-}
-
--- |__ State monad wrapper to run blockchain.__
-
+-- | State monad wrapper to run blockchain.
 newtype Run a = Run (State Mock a)
-
-deriving newtype (Functor, Applicative, Monad, MonadState Mock)
+  deriving newtype (Functor, Applicative, Monad, MonadState Mock)
+----
 
 The source code for the Mock data type can be found in the following
 https://github.com/mlabs-haskell/plutus-simple-model/blob/main/psm/src/Plutus/Model/Mock.hs[_GitHub
@@ -4382,45 +3844,10 @@ _]file. Below is an example that uses the PSM library. We will test two
 mock transactions, where one should succeed and one should fail due to
 insufficient funds.
 
-\{-# LANGUAGE NumericUnderscores #-}
+[source,haskell]
+----
 
-module Main where
-
-import Prelude
-
-import Test.Tasty (_defaultMain_, _testGroup_)
-
-import Control.Monad (_replicateM_)
-
-import Plutus.Model (Ada (Lovelace), Run, _ada_, _adaValue_,
-
-_defaultBabbage_, _mustFail_, _newUser_,
-
-_noErrors_, _sendValue_, _testNoErrors_,
-
-_valueAt_)
-
-import Plutus.V1.Ledger.Api (PubKeyHash)
-
-_main_ :: IO ()
-
-main = defaultMain $ _do_
-
-testGroup
-
-"Test simple user transactions"
-
-[ good "Simple spend" simpleSpend
-
-, bad "Not enough funds" notEnoughFunds
-
-]
-
-where
-
-bad msg = good msg . mustFail
-
-good = testNoErrors (adaValue 10_000_000) defaultBabbage
+----
 
 We import the _Test.Tasty_ and the _Plutus.Model_ libraries, and then we
 define our tests in the main function. At the beginning of the main
