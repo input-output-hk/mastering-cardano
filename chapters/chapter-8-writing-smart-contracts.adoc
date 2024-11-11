@@ -3846,7 +3846,29 @@ insufficient funds.
 
 [source,haskell]
 ----
-
+{-# LANGUAGE NumericUnderscores #-}
+ 
+module Main where
+ 
+import           Prelude
+import           Test.Tasty           (defaultMain, testGroup)
+import           Control.Monad        (replicateM)
+import           Plutus.Model         (Ada (Lovelace), Run, ada, adaValue,
+                                       defaultBabbage, mustFail, newUser,
+                                       noErrors, sendValue, testNoErrors,
+                                       valueAt)
+import           Plutus.V1.Ledger.Api (PubKeyHash)
+ 
+main :: IO ()
+main = defaultMain $ do
+    testGroup
+      "Test simple user transactions"
+      [ good "Simple spend" simpleSpend
+      , bad  "Not enough funds" notEnoughFunds
+      ]
+      where
+        bad msg = good msg . mustFail
+        good = testNoErrors (adaValue 10_000_000) defaultBabbage
 ----
 
 We import the _Test.Tasty_ and the _Plutus.Model_ libraries, and then we
@@ -3866,14 +3888,20 @@ transaction, so this test should fail. The code shows that we run the
 tests using the good and bad functions. The good function is a partially
 applied testNoErrors function.
 
+[source,shell]
+----
 testNoErrors :: Value -> MockConfig -> String -> Run a -> TestTree
+----
 
 The first parameter is the value we provide to the admin user. As in the
 previous section, we will start with a single UTXO. We provide
 10.000.000 lovelace to the adaValue function that takes an integer and
 returns a variable of the Plinth type Value.
 
+[source,shell]
+----
 adaValue :: Integer -> Value
+----
 
 We also provide the default Babbage mock configuration, which configures
 our mock blockchain. The description of the test and the run action,
@@ -3885,70 +3913,43 @@ first scenario, we expect the test to succeed, while in the second
 scenario, we anticipate a failure. Now, let’s examine the actual code
 for the tests:
 
---_ Set many users at once_
-
-_setupUsers_ :: Run [PubKeyHash]
-
+[source,haskell]
+----
+-- Set many users at once
+setupUsers :: Run [PubKeyHash]
 setupUsers = replicateM 3 $ newUser $ ada (Lovelace 1000)
-
---_ Function to test that a simple transaction works_
-
-_simpleSpend_ :: Run Bool
-
-simpleSpend = _do_
-
---_ Create 3 users and assign each 1000 lovelaces_
-
-users <- setupUsers
-
---_ Give names to individual users_
-
-let [u1, u2, u3] = users
-
---_ Send 100 lovelaces from user 1 to user 2_
-
-sendValue u1 (adaValue 100) u2
-
---_ Send 100 lovelaces from user 2 to user 3_
-
-sendValue u2 (adaValue 100) u3
-
---_ Check that all TXs were accepted without errors_
-
-isOk <- noErrors
-
---_ Read user values_
-
-vals <- mapM valueAt users
-
---_ Check isOk and that all users have correct values_
-
-return $ isOk &&
-
-(vals == fmap adaValue [900, 1000, 1100])
-
---_ Function to test that a transaction fails if there are not enough
-funds_
-
-_notEnoughFunds_ :: Run Bool
-
-notEnoughFunds = _do_
-
---_ Create 3 users and assign each 1000 lovelaces_
-
-users <- setupUsers
-
---_ Give names to individual users_
-
-let [u1, u2, _u3] = users
-
---_ Send 10.000 lovelaces from user 1 to user 2_
-
-sendValue u1 (adaValue 10000) u2
-
---_ Check that all TXs were accepted without errors (should fail)_
-
-noErrors
+ 
+-- Function to test that a simple transaction works
+simpleSpend :: Run Bool
+simpleSpend = do
+	-- Create 3 users and assign each 1000 lovelaces
+    users <- setupUsers  
+    -- Give names to individual users
+    let [u1, u2, u3] = users  
+    -- Send 100 lovelaces from user 1 to user 2
+    sendValue u1 (adaValue 100) u2  
+	-- Send 100 lovelaces from user 2 to user 3
+    sendValue u2 (adaValue 100) u3 
+	-- Check that all TXs were accepted without errors
+    isOk <- noErrors  
+	-- Read user values
+    vals <- mapM valueAt users  
+	-- Check isOk and that all users have correct values
+    return $ isOk &&  
+           (vals == fmap adaValue [900, 1000, 1100])
+ 
+-- Function to test that a transaction fails if there are not enough funds
+notEnoughFunds :: Run Bool
+notEnoughFunds = do
+  -- Create 3 users and assign each 1000 lovelaces
+  users <- setupUsers  
+  -- Give names to individual users
+  let [u1, u2, _u3] = users  
+  -- Send 10.000 lovelaces from user 1 to user 2
+  sendValue u1 (adaValue 10000) u2
+  -- Check that all TXs were accepted without errors (should fail)
+  noErrors  
+----
 
 First, we create the helper function setupUsers, which creates three new
 users. The newUser function creates a new user and transfers an input
@@ -3981,21 +3982,18 @@ balance of u1, this transaction should fail. We return the result of the
 noErrors action. We can name our test in the cabal file PMS and run it
 using the following cabal command to obtain the test results:
 
+[source,shell]
+----
 /<path>/<to>/<cabal_file># cabal test PSM
-
 ...
-
 Running 1 test suites...
-
 Test suite PSM: RUNNING...
-
 Test simple user transactions
-
-Simple spend: OK (1.21s)
-
-Not enough funds: OK
+  Simple spend:      OK (1.21s)
+  Not enough funds:  OK
 
 All 2 tests passed (1.28s)
+----
 
 Let’s now run a unit test for a smart contract that checks:
 
@@ -4007,188 +4005,118 @@ has passed.
 Below, you can see the smart contract code, where we name our module
 _NegativeRTime_:
 
-\{-# LANGUAGE DataKinds #-}
-
-\{-# LANGUAGE ImportQualifiedPost #-}
-
-\{-# LANGUAGE NoImplicitPrelude #-}
-
-\{-# LANGUAGE OverloadedStrings #-}
-
-\{-# LANGUAGE TemplateHaskell #-}
-
+[source,haskell]
+----
+{-# LANGUAGE DataKinds           #-}
+{-# LANGUAGE ImportQualifiedPost #-}
+{-# LANGUAGE NoImplicitPrelude   #-}
+{-# LANGUAGE OverloadedStrings   #-}
+{-# LANGUAGE TemplateHaskell     #-}
+ 
 module NegativeRTimed where
-
-import Plutus.V1.Ledger.Interval (_contains_)
-
-import Plutus.V2.Ledger.Api (POSIXTime,
-
-ScriptContext
-
-(_scriptContextTxInfo_),
-
-TxInfo (_txInfoValidRange_), _from_)
-
-import qualified Plutus.V2.Ledger.Api as PlutusV2
-
-import PlutusTx (_compile_, _unstableMakeIsData_)
-
-import PlutusTx.Builtins (BuiltinData, Integer)
-
-import PlutusTx.Prelude (Bool, Ord ((_<=_)), _traceIfFalse_,
-
-(_$_), (_&&_))
-
-import Utilities (_wrapValidator_)
-
---_----------------------------------------------------------------------------_
-
----------------------------- ON-CHAIN / VALIDATOR
----------------------------
-
-newtype CustomDatum = MkCustomDatum \{ deadline :: POSIXTime }
-
+ 
+import           Plutus.V1.Ledger.Interval (contains)
+import           Plutus.V2.Ledger.Api      (POSIXTime,
+                                            ScriptContext 
+                                            (scriptContextTxInfo),
+                                            TxInfo (txInfoValidRange), from)
+import qualified Plutus.V2.Ledger.Api      as PlutusV2
+import           PlutusTx                  (compile, unstableMakeIsData)
+import           PlutusTx.Builtins         (BuiltinData, Integer)
+import           PlutusTx.Prelude          (Bool, Ord ((<=)), traceIfFalse, 
+                                            ($), (&&))
+import           Utilities                 (wrapValidator)
+ 
+------------------------------------------------------------------------------
+---------------------------- ON-CHAIN / VALIDATOR ---------------------------
+ 
+newtype CustomDatum = MkCustomDatum { deadline :: POSIXTime }
 unstableMakeIsData ''CustomDatum
+ 
+{-# INLINABLE mkValidator #-}
+mkValidator :: CustomDatum -> Integer -> ScriptContext -> Bool
+mkValidator (MkCustomDatum d) r ctx = traceIfFalse 
+                                      "expected a negative redeemer"
+                                  	  $ r <= 0 &&
+                                      traceIfFalse "deadline not reached"
+                                  	  deadlineReached
+    where 
+        info :: TxInfo
+        info = scriptContextTxInfo ctx
+ 
+        deadlineReached :: Bool
+        deadlineReached = contains (from d) $ txInfoValidRange info
 
-\{-# INLINABLE mkValidator #-}
 
-_mkValidator_ :: CustomDatum -> Integer -> ScriptContext -> Bool
-
-mkValidator (MkCustomDatum d) r ctx = traceIfFalse
-
-"expected a negative redeemer"
-
-$ r <= 0 &&
-
-traceIfFalse "deadline not reached"
-
-deadlineReached
-
-where
-
-_info_ :: TxInfo
-
-info = scriptContextTxInfo ctx
-
-_deadlineReached_ :: Bool
-
-deadlineReached = contains (from d) $ txInfoValidRange info
-
-\{-# INLINABLE mkWrappedValidator #-}
-
-_mkWrappedValidator_ :: BuiltinData -> BuiltinData -> BuiltinData -> ()
-
+{-# INLINABLE  mkWrappedValidator #-}
+mkWrappedValidator :: BuiltinData -> BuiltinData -> BuiltinData -> ()
 mkWrappedValidator = wrapValidator mkValidator
-
-_validator_ :: PlutusV2.Validator
-
+ 
+validator :: PlutusV2.Validator
 validator = PlutusV2.mkValidatorScript $$(PlutusTx.compile
-
-[|| mkWrappedValidator ||])
+                                      	[|| mkWrappedValidator ||])
+----
 
 Let’s now look at the unit test for this contract that uses the PSM
 library. We can name the file for writing unit tests _UTNegativeRTimed_.
 
-\{-# LANGUAGE DataKinds #-}
-
-\{-# LANGUAGE NoImplicitPrelude #-}
-
-\{-# LANGUAGE NumericUnderscores #-}
-
+[source,haskell]
+----
+{-# LANGUAGE DataKinds          #-}
+{-# LANGUAGE NoImplicitPrelude  #-}
+{-# LANGUAGE NumericUnderscores #-}
+ 
 module Main where
-
-import Control.Monad (_mapM_, _replicateM_, _unless_)
-
-import qualified NegativeRTimed as OnChain
-
-import Plutus.Model (Ada (Lovelace), DatumMode (HashDatum),
-
-Run, Tx, TypedValidator
-
-(TypedValidator),
-
-UserSpend, _ada_, _adaValue_,
-
-_ currentTimeRad_,
-
-_defaultBabbage_, _logError_, _mustFail_,
-
-_newUser_, _payToKey_, _payToScript_, _spend_,
-
-_spendScript_, _submitTx_, _testNoErrors_,
-
-_toV2_, _userSpend_, _utxoAt_, _validateIn_,
-
-_valueAt_, _waitUntil_)
-
-import Plutus.V2.Ledger.Api (POSIXTime, PubKeyHash,
-
-TxOut (_txOutValue_), TxOutRef, Value)
-
-import PlutusTx.Builtins (Integer, _mkI_)
-
-import PlutusTx.Prelude (Eq ((_==_)), (_$_), (_&&_), (_._))
-
-import Prelude (IO, _mconcat_)
-
-import Test.Tasty (_defaultMain_, _testGroup_)
-
---_----------------------------------------------------------------------------_
-
--------------------------------- TESTING MAIN
---------------------------------
-
-_main_ :: IO ()
-
-main = defaultMain $ _do_
-
-testGroup
-
-"Testing validator with some sensible values"
-
-[ good "User 1 locks and user 2 takes with R = -42 after
-
-deadline succeeds"
-
-$ testScript 50 (-42)
-
-, good "User 1 locks and user 2 takes with R = 0 after
-
-deadline succeeds"
-
-$ testScript 50 0
-
-, bad "User 1 locks and user 2 takes with R = 42 after
-
-deadline fails"
-
-$ testScript 50 42
-
-, bad "User 1 locks and user 2 takes with R = -42 before
-
-deadline fails"
-
-$ testScript 5000 (-42)
-
-, bad "User 1 locks and user 2 takes with R = 0 before
-
-deadline fails"
-
-$ testScript 5000 0
-
-, bad "User 1 locks and user 2 takes with R = 42 before
-
-deadline fails"
-
-$ testScript 5000 42
-
-]
-
-where
-
-bad msg = good msg . mustFail
-
-good = testNoErrors (adaValue 10_000_000) defaultBabbage
+ 
+import           Control.Monad        (mapM, replicateM, unless)
+import qualified NegativeRTimed       as OnChain
+import           Plutus.Model         (Ada (Lovelace), DatumMode (HashDatum),
+                                       Run, Tx, TypedValidator 
+                                       (TypedValidator),
+                                       UserSpend, ada, adaValue, 
+                                       currentTimeRad,
+                                       defaultBabbage, logError, mustFail,
+                                       newUser, payToKey, payToScript, spend,
+                                       spendScript, submitTx, testNoErrors,
+                                       toV2, userSpend, utxoAt, validateIn,
+                                       valueAt, waitUntil)
+import           Plutus.V2.Ledger.Api (POSIXTime, PubKeyHash,
+                                       TxOut (txOutValue), TxOutRef, Value)
+import           PlutusTx.Builtins    (Integer, mkI)
+import           PlutusTx.Prelude     (Eq ((==)), ($), (&&), (.))
+import           Prelude              (IO, mconcat)
+import           Test.Tasty           (defaultMain, testGroup)
+ 
+------------------------------------------------------------------------------
+-------------------------------- TESTING MAIN --------------------------------
+ 
+main :: IO ()
+main = defaultMain $ do
+    testGroup
+      "Testing validator with some sensible values"
+      [ good "User 1 locks and user 2 takes with R = -42 after 
+              deadline succeeds"
+         	$ testScript 50 (-42)
+      , good "User 1 locks and user 2 takes with R = 0   after 
+              deadline succeeds"
+         	$ testScript 50 0
+      , bad  "User 1 locks and user 2 takes with R = 42  after 
+              deadline fails"
+         	$ testScript 50 42
+      , bad  "User 1 locks and user 2 takes with R = -42 before 
+              deadline fails"
+         	$ testScript 5000 (-42)
+      , bad  "User 1 locks and user 2 takes with R = 0   before 
+              deadline fails"
+         	$ testScript 5000 0
+      , bad  "User 1 locks and user 2 takes with R = 42  before 
+              deadline fails"
+         	$ testScript 5000 42
+      ]
+    where
+      bad msg = good msg . mustFail
+      good = testNoErrors (adaValue 10_000_000) defaultBabbage
+----
 
 Our main function contains a list of tests with their descriptions. The
 first two tests should pass, and the rest of the tests should fail. We
@@ -4200,58 +4128,39 @@ consuming transaction to 1,000.
 
 Let’s now explore helper functions:
 
---_----------------------------------------------------------------------------_
-
------------------------------- HELPER FUNCTIONS
-------------------------------
-
-_waitBeforeConsumingTx_ :: POSIXTime
-
+[source,haskell]
+----
+------------------------------------------------------------------------------
+------------------------------ HELPER FUNCTIONS ------------------------------
+ 
+waitBeforeConsumingTx :: POSIXTime
 waitBeforeConsumingTx = 1000
-
---_ Set many users at once_
-
-_setupUsers_ :: Run [PubKeyHash]
-
+ 
+-- Set many users at once
+setupUsers :: Run [PubKeyHash]
 setupUsers = replicateM 2 $ newUser $ ada (Lovelace 1000)
-
---_ Validator's script_
-
-_valScript_ :: TypedValidator datum redeemer
-
+ 
+-- Validator's script
+valScript :: TypedValidator datum redeemer
 valScript = TypedValidator $ toV2 OnChain.validator
-
---_ Create transaction that spends "usp" to lock "val" in "valScript"_
-
-_lockingTx_ :: POSIXTime -> UserSpend -> Value -> Tx
-
+  
+-- Create transaction that spends "usp" to lock "val" in "valScript"
+lockingTx :: POSIXTime -> UserSpend -> Value -> Tx
 lockingTx dl usp val =
-
-mconcat
-
-[ userSpend usp
-
-, payToScript valScript (HashDatum (OnChain.MkCustomDatum dl)) val
-
-]
-
---_ Create transaction that spends "ref" to unlock "val" from the
-"valScript"_
-
+  mconcat
+    [ userSpend usp
+    , payToScript valScript (HashDatum (OnChain.MkCustomDatum dl)) val
+    ]
+  
+-- Create transaction that spends "ref" to unlock "val" from the "valScript"
 -- validator
-
-_consumingTx_ :: POSIXTime -> Integer -> PubKeyHash -> TxOutRef -> Value
--> Tx
-
+consumingTx :: POSIXTime -> Integer -> PubKeyHash -> TxOutRef -> Value -> Tx
 consumingTx dl redeemer usr ref val =
-
-mconcat
-
-[ spendScript valScript ref (mkI redeemer) (OnChain.MkCustomDatum dl)
-
-, payToKey usr val
-
-]
+  mconcat
+    [ spendScript valScript ref (mkI redeemer) (OnChain.MkCustomDatum dl)
+    , payToKey usr val
+    ]
+----
 
 First, we define the time to wait between the locking and consuming
 transactions. Then, we set up two users, giving each 1,000 lovelace.
@@ -4270,23 +4179,19 @@ transaction. We follow a similar approach to build the consuming
 transaction. Let’s now check from the REPL which types the payToScript
 function accepts:
 
+[source,shell]
+----
 Prelude> import Plutus.Model
-
-Prelude Plutus.Model> :i payToScript
-
+Prelude Plutus.Model> :i payToScript 
 payToScript :: (HasDatum script, HasAddress script) =>
+  script
+  -> DatumMode (DatumType script)
+  -> Plutus.V1.Ledger.Value.Value
+  -> Tx
 
-script
-
--> DatumMode (DatumType script)
-
--> Plutus.V1.Ledger.Value.Value
-
--> Tx
-
-Prelude Plutus.Model> :i DatumMode
-
+Prelude Plutus.Model> :i DatumMode 
 data DatumMode a = InlineDatum a | HashDatum a
+----
 
 The DatumMode type can be either an inline datum or a datum hash. The
 consumingTx function defines the consuming transaction. Because want to
@@ -4299,93 +4204,59 @@ the transaction created by the payToKey function, which specifies the
 public key hash to which the funds will be sent. We now look at the
 spendScript function from the REPL:
 
+[source,shell]
+----
 Prelude Plutus.Model> :i spendScript
-
 spendScript ::
-
-IsValidator script =>
-
-script
-
--> Plutus.V1.Ledger.Tx.TxOutRef
-
--> RedeemerType script
-
--> DatumType script
-
--> Tx
+  IsValidator script =>
+  script
+  -> Plutus.V1.Ledger.Tx.TxOutRef
+  -> RedeemerType script
+  -> DatumType script
+  -> Tx 
+----
 
 It takes a script, a transaction output reference, a redeemer and a
 datum. Let’s now look at the testScript function that defines our actual
 test:
 
---_----------------------------------------------------------------------------_
-
---_---------------------------- TESTING REDEEMERS
------------------------------_
-
---_ Function to test if both creating and consuming script UTxOs works
-properly_
-
-_testScript_ :: POSIXTime -> Integer -> Run ()
-
-testScript d r = _do_
-
---_ SETUP USERS_
-
-[u1, u2] <- setupUsers
-
---_ USER 1 LOCKS 100 lovelace ("val") IN VALIDATOR_
-
---_ Define value to be transfered_
-
-let val = adaValue 100
-
---_ Get user's UTXO that we should spend_
-
-sp <- spend u1 val
-
---_ User 1 submits "lockingTx" transaction_
-
-submitTx u1 $ lockingTx d sp val
-
---_ WAIT FOR A BIT_
-
-waitUntil waitBeforeConsumingTx
-
---_ USER 2 TAKES "val" FROM VALIDATOR_
-
---_ Query blockchain to get all UTxOs at script_
-
-utxos <- utxoAt valScript
-
---_ We know there is only one UTXO (the one we created before)_
-
-let [(ref, out)] = utxos
-
---_ Create time interval with equal radius around current time_
-
-ct <- currentTimeRad 100
-
---_ Build Tx_
-
-tx <- validateIn ct $ consumingTx d r u2 ref (txOutValue out)
-
---_ User 2 submits "consumingTx" transaction_
-
-submitTx u2 tx
-
---_ CHECK THAT FINAL BALANCES MATCH EXPECTED BALANCES_
-
---_ Get final balances of both users_
-
-{empty} [v1, v2] <- mapM valueAt [u1, u2]
-
---_ Check if final balances match expected balances_
-
-unless (v1 == adaValue 900 && v2 == adaValue 1100) $
-
-logError "Final balances are incorrect"
+[source,haskell]
+----
+------------------------------------------------------------------------------
+------------------------------ TESTING REDEEMERS -----------------------------
+ 
+-- Function to test if both creating and consuming script UTxOs works properly
+testScript :: POSIXTime -> Integer -> Run ()
+testScript d r = do
+  -- SETUP USERS
+  [u1, u2] <- setupUsers
+  -- USER 1 LOCKS 100 lovelace ("val") IN VALIDATOR
+  -- Define value to be transfered
+  let val = adaValue 100  
+  -- Get user's UTXO that we should spend
+  sp <- spend u1 val      
+  -- User 1 submits "lockingTx" transaction
+  submitTx u1 $ lockingTx d sp val  
+  -- WAIT FOR A BIT
+  waitUntil waitBeforeConsumingTx
+  -- USER 2 TAKES "val" FROM VALIDATOR
+  -- Query blockchain to get all UTxOs at script
+  utxos <- utxoAt valScript  
+  -- We know there is only one UTXO (the one we created before)
+  let [(ref, out)] = utxos  
+  -- Create time interval with equal radius around current time
+  ct <- currentTimeRad 100  
+  -- Build Tx
+  tx <- validateIn ct $ consumingTx d r u2 ref (txOutValue out)  
+  -- User 2 submits "consumingTx" transaction
+  submitTx u2 tx  
+  -- CHECK THAT FINAL BALANCES MATCH EXPECTED BALANCES
+  -- Get final balances of both users
+  [v1, v2] <- mapM valueAt [u1, u2]  
+  -- Check if final balances match expected balances
+  unless (v1 == adaValue 900 && v2 == adaValue 1100) $  
+    logError "Final balances are incorrect"
+----
 
 It takes the datum that contains the POSIX time and the redeemer. Then,
 it returns the updated blockchain in the run monad parameterized by the
@@ -4395,9 +4266,11 @@ a public key hash and a value, and returns all the UTXOs owned by that
 user to pay for the value. The spend function has the following type
 signature:
 
+[source,shell]
+----
 Prelude Plutus.Model> :i spend
-
 spend :: PubKeyHash -> Value -> Run UserSpend
+----
 
 We can now submit the locking transaction by passing the lockingTx
 function the spending value, which includes the UTXOs, along with the
@@ -4405,60 +4278,54 @@ value we want to send and the attached datum. We then submit this
 transaction using the submitTx function, which also requires the public
 key hash of the user submitting the transaction.
 
+[source,shell]
+----
 Prelude Plutus.Model> :i submitTx
-
 submitTx :: PubKeyHash -> Tx -> Run ()
+----
 
 Next, we indicate that user two submits the transaction. At the end of
 the test, we check if users’ balances are as expected, if not, we log an
 error.
 
+[source,shell]
+----
 Prelude Plutus.Model> :i logError
-
 logError :: String -> Run ()
+----
 
 The logError function takes a string and returns a run monad
 parameterized by unit. We can name our test case in the cabal file
 _UTNegativeRTimed_:
 
+[source,shell]
+----
 test-suite UTNegativeRTimed
-
-import: common-all
-
-type: exitcode-stdio-1.0
-
-main-is: UTNegativeRTimed.hs
-
-hs-source-dirs: tests
-
-build-depends: testing
+    import:             common-all
+    type:               exitcode-stdio-1.0
+    main-is:            UTNegativeRTimed.hs
+    hs-source-dirs:     tests
+    build-depends:      testing
+----
 
 We can then run the tests with the following cabal command:
 
+[source,shell]
+----
 /<path>/<to>/<cabal_file># cabal test UTNegativeRTimed
-
 ...
-
 Running 1 test suites...
-
 Test suite UTNegativeRTimed: RUNNING...
-
 Testing validator with some sensible values
-
-User 1 locks and user 2 takes with R = -42 after deadline succeeds: OK
-(0.54s)
-
-User 1 locks and user 2 takes with R = 0 after deadline succeeds: OK
-
-User 1 locks and user 2 takes with R = 42 after deadline fails : OK
-
-User 1 locks and user 2 takes with R = -42 before deadline fails : OK
-
-User 1 locks and user 2 takes with R = 0 before deadline fails : OK
-
-User 1 locks and user 2 takes with R = 42 before deadline fails : OK
+  User 1 locks and user 2 takes with R = -42 after deadline succeeds: OK (0.54s)
+  User 1 locks and user 2 takes with R = 0   after deadline succeeds: OK
+  User 1 locks and user 2 takes with R = 42  after deadline fails   : OK
+  User 1 locks and user 2 takes with R = -42 before deadline fails  : OK
+  User 1 locks and user 2 takes with R = 0   before deadline fails  : OK
+  User 1 locks and user 2 takes with R = 42  before deadline fails  : OK
 
 All 6 tests passed (0.57s)
+----
 
 If we choose our tests carefully in unit testing, we can pinpoint logic
 errors and issues in our smart contracts. However, with unit testing, we
@@ -4480,115 +4347,69 @@ use it to test any code, not just smart contracts. Let’s now look at our
 property tests. We name the file that contains them
 _PTNegativeRTimed.hs_:
 
-\{-# LANGUAGE DataKinds          #-}
-
-\{-# LANGUAGE FlexibleInstances  #-}
-
-\{-# LANGUAGE NoImplicitPrelude  #-}
-
-\{-# LANGUAGE NumericUnderscores #-}
-
-\{-# OPTIONS_GHC -Wno-orphans #-}
+[source,haskell]
+----
+{-# LANGUAGE DataKinds          #-}
+{-# LANGUAGE FlexibleInstances  #-}
+{-# LANGUAGE NoImplicitPrelude  #-}
+{-# LANGUAGE NumericUnderscores #-}
+{-# OPTIONS_GHC -Wno-orphans #-}
 
 module Main where
 
-import qualified NegativeRTimed       as OnChain
+import qualified NegativeRTimed       as OnChain
+import           Control.Monad           (mapM, replicateM)
+import           Plutus.Model            (Ada (Lovelace), DatumMode (HashDatum),
+                                          Run, Tx,
+                                          TypedValidator (TypedValidator),
+                                          UserSpend, ada, adaValue,
+                                          defaultBabbage, initMock, mustFail,
+                                          newUser, payToKey, payToScript,
+                                          runMock, spend, spendScript, 
+                                          submitTx, toV2, userSpend, utxoAt, 
+                                          valueAt, waitUntil, currentTimeRad, 
+                                          validateIn)
+import           Plutus.V2.Ledger.Api    (PubKeyHash, TxOut (txOutValue),
+                                          TxOutRef, Value, POSIXTime 
+                                          (POSIXTime, getPOSIXTime))
+import           PlutusTx.Builtins       (Integer, mkI) 
+import           PlutusTx.Prelude        (Bool (..), Eq ((==)),
+                                          return, ($), (&&), (.))
+import           Prelude                 (IO, Ord ((<), (>)), mconcat)
+import           Test.QuickCheck         (Property, Testable (property),
+                                          collect, (==>), Arbitrary
+                                          (arbitrary), choose)
+import           Test.QuickCheck.Monadic (assert, monadic, run)
+import           Test.Tasty              (defaultMain, testGroup)
+import           Test.Tasty.QuickCheck   as QC (testProperty)
 
-import           Control.Monad           (_mapM_, _replicateM_)
+------------------------------------------------------------------------------
+--------------------------------- TESTING MAIN -------------------------------
 
-import           Plutus.Model            (Ada (Lovelace), DatumMode
-(HashDatum),
-
-                                          Run, Tx,
-
-                                          TypedValidator
-(TypedValidator),
-
-                                          UserSpend, _ada_, _adaValue_,
-
-                                          _defaultBabbage_, _initMock_,
-_mustFail_,
-
-                                          _newUser_, _payToKey_,
-_payToScript_,
-
-                                          _runMock_, _spend_,
-_spendScript_,
-
-_ submitTx_, _toV2_, _userSpend_, _utxoAt_,
-
-_ valueAt_, _waitUntil_, _currentTimeRad_,
-
-_ validateIn_)
-
-import           Plutus.V2.Ledger.Api    (PubKeyHash, TxOut
-(_txOutValue_),
-
-                                          TxOutRef, Value, POSIXTime
-
-(POSIXTime, _getPOSIXTime_))
-
-import           PlutusTx.Builtins       (Integer, _mkI_)
-
-import           PlutusTx.Prelude        (Bool (..), Eq ((_==_)),
-
-                                          _return_, (_$_), (_&&_),
-(_._))
-
-import           Prelude                 (IO, Ord ((_<_), (_>_)),
-_mconcat_)
-
-import           Test.QuickCheck         (Property, Testable
-(_property_),
-
-                                          _collect_, (_==>_), Arbitrary
-
-(_arbitrary_), _choose_)
-
-import           Test.QuickCheck.Monadic (_assert_, _monadic_, _run_)
-
-import           Test.Tasty              (_defaultMain_, _testGroup_)
-
-import           Test.Tasty.QuickCheck   as QC (_testProperty_)
-
---_----------------------------------------------------------------------------_
-
---------------------------------- TESTING MAIN
--------------------------------
-
--- |__ Test the validator script__
-
-_main_ :: IO ()
-
-main = defaultMain $ _do_
-
-    testGroup
-
-      "Testing script properties"
-
-      [ testProperty "Anything before the deadline always fails"
-
-prop_Before_Fails
-
-      , testProperty "Positive redeemer after deadline always fails"
-
-prop_PositiveAfter_Fails
-
-      , testProperty "Negative redeemer after deadline always succeeds"
-
-prop_NegativeAfter_Succeeds
-
-      ]
+-- | Test the validator script
+main :: IO ()
+main = defaultMain $ do
+    testGroup
+      "Testing script properties"
+      [ testProperty "Anything before the deadline always fails" 
+                     prop_Before_Fails
+      , testProperty "Positive redeemer after deadline always fails" 
+                     prop_PositiveAfter_Fails
+      , testProperty "Negative redeemer after deadline always succeeds" 
+                     prop_NegativeAfter_Succeeds
+      ]
+----
 
 We use the defaultMain and testGroup functions from the tasty module. To
 generate a test tree, we now use the testProperty function, which is
 also contained in the tasty package.
 
+[source,shell]
+----
 Prelude> import Test.Tasty.QuickCheck
-
 Prelude Test.Tasty.QuickCheck> :i testProperty
-
 testProperty :: Testable a => TestName -> a -> TestTree
+----
 
 The final testing functions we provide to the testProperty function also
 accept parameters, but we do not provide any, since the QuickCheck
@@ -4602,85 +4423,60 @@ redeemer submitted after the deadline always succeeds.
 Let’s now look at the helper functions we will use in the testing
 function:
 
---_----------------------------------------------------------------------------_
+[source,haskell]
+----
+------------------------------------------------------------------------------
+-------------------------- HELPER FUNCTIONS/INSTANCES ------------------------
 
--------------------------- HELPER FUNCTIONS/INSTANCES
-------------------------
 
--- |__ Make Run an instance of Testable so we can use it with
-QuickCheck__
-
+-- | Make Run an instance of Testable so we can use it with QuickCheck
 instance Testable a => Testable (Run a) where
+  property rp = let (a,_) = runMock rp $ initMock defaultBabbage 
+                                         (adaValue 10_000_000) 
+                in property a
 
-  property rp = let (a,_) = runMock rp $ initMock defaultBabbage
 
-(adaValue 10_000_000)
-
-in property a
-
---_ Make POSIXTime an instance of Arbitrary so QuickCheck can generate
-random _
-
+-- Make POSIXTime an instance of Arbitrary so QuickCheck can generate random 
 -- values to test
-
 instance Arbitrary POSIXTime where
+  arbitrary = do
+    n <- choose (0, 2000)
+    return (POSIXTime n)
 
-  arbitrary = _do_
 
-    n <- choose (0, 2000)
-
-    return (POSIXTime n)
-
---_ Time to wait before consumming UTxO from script_
-
-_waitBeforeConsumingTx_ :: POSIXTime
-
+-- Time to wait before consumming UTxO from script
+waitBeforeConsumingTx :: POSIXTime
 waitBeforeConsumingTx = 1000
 
---_ Set many users at once_
 
-_setupUsers_ :: Run [PubKeyHash]
-
+-- Set many users at once
+setupUsers :: Run [PubKeyHash]
 setupUsers = replicateM 2 $ newUser $ ada (Lovelace 1000)
 
---_ Validator's script_
 
-_valScript_ :: TypedValidator datum redeemer
-
+-- Validator's script
+valScript :: TypedValidator datum redeemer
 valScript = TypedValidator $ toV2 OnChain.validator
 
---_ Create transaction that spends "usp" to lock "val" in "giftScript"_
 
-_lockingTx_ :: POSIXTime -> UserSpend -> Value -> Tx
-
+-- Create transaction that spends "usp" to lock "val" in "giftScript"
+lockingTx :: POSIXTime -> UserSpend -> Value -> Tx
 lockingTx dl usp val =
+  mconcat
+    [ userSpend usp
+    , payToScript valScript (HashDatum (OnChain.MkCustomDatum dl)) val
+    ]
 
-  mconcat
 
-    [ userSpend usp
-
-    , payToScript valScript (HashDatum (OnChain.MkCustomDatum dl)) val
-
-    ]
-
---_ Create transaction that spends "giftRef" to unlock "giftVal" from
-the _
-
+-- Create transaction that spends "giftRef" to unlock "giftVal" from the 
 -- "valScript" validator
-
-_consumingTx_ :: POSIXTime -> Integer -> PubKeyHash -> TxOutRef -> Value
--> Tx
-
+consumingTx :: POSIXTime -> Integer -> PubKeyHash -> TxOutRef -> Value -> Tx
 consumingTx dl redeemer usr ref val =
-
-  mconcat
-
-    [ spendScript valScript ref (mkI redeemer) (OnChain.MkCustomDatum
-dl)
-
-    , payToKey usr val
-
-    ]
+  mconcat
+    [ spendScript valScript ref (mkI redeemer) (OnChain.MkCustomDatum dl)
+    , payToKey usr val
+    ]
+----
 
 We use the same helper functions from the previous section that
 demonstrated how to unit test a smart contract. In addition to these, we
@@ -4697,30 +4493,26 @@ then return it as POSIXTime.
 
 Let’s now look at how we define our property functions for testing:
 
---_----------------------------------------------------------------------------_
+[source,haskell]
+----
+------------------------------------------------------------------------------
+------------------------------ TESTING PROPERTIES ----------------------------
 
------------------------------- TESTING PROPERTIES
-----------------------------
 
---_ All redeemers fail before deadline _
-
-_prop_Before_Fails_ :: POSIXTime -> Integer -> Property
-
+-- All redeemers fail before deadline 
+prop_Before_Fails :: POSIXTime -> Integer -> Property
 prop_Before_Fails d r = (d > 1001) ==> runChecks False d r
 
---_ Positive redeemer always fail after deadline_
 
-_prop_PositiveAfter_Fails_ :: POSIXTime -> Integer -> Property
+-- Positive redeemer always fail after deadline
+prop_PositiveAfter_Fails :: POSIXTime -> Integer -> Property
+prop_PositiveAfter_Fails d r = (r > 0 && d < 999) ==> runChecks False d r
 
-prop_PositiveAfter_Fails d r = (r > 0 && d < 999) ==> runChecks False d
-r
 
---_ Negative redeemers always succeed after deadline_
-
-_prop_NegativeAfter_Succeeds_ :: POSIXTime -> Integer -> Property
-
-prop_NegativeAfter_Succeeds d r = (r < 0 && d < 999) ==> runChecks True
-d r
+-- Negative redeemers always succeed after deadline
+prop_NegativeAfter_Succeeds :: POSIXTime -> Integer -> Property
+prop_NegativeAfter_Succeeds d r = (r < 0 && d < 999) ==> runChecks True d r
+----
 
 All the property functions take a POSIX time and an integer variable
 that represents the redeemer. They return a Property type variable.
@@ -4735,9 +4527,12 @@ variable that has an instance of the testable type class, which the
 Property type has, and the runChecks function returns. Below are the
 type signatures of these functions.
 
+[source,shell]
+----
 runChecks :: Bool -> POSIXTime -> Integer -> Property
 
 (==>) :: Testable prop => Bool -> prop -> Property
+----
 
 For the first property test, we only allow deadlines larger than 1,001
 milliseconds to be passed to the runChecks function. Thus, this property
@@ -4751,100 +4546,57 @@ tests should pass.
 
 Let’s now look at the testing functions:
 
---_----------------------------------------------------------------------------_
+[source,haskell]
+----
+------------------------------------------------------------------------------
+------------------------------ RUNNING THE TESTS -----------------------------
 
------------------------------- RUNNING THE TESTS
------------------------------
 
--- |__ Check that the expected and real balances match after using the
-validator __
-
+-- | Check that the expected and real balances match after using the validator 
 -- with different redeemers
+runChecks :: Bool -> POSIXTime -> Integer -> Property
+runChecks shouldConsume deadline redeemer = 
+  collect (redeemer, getPOSIXTime deadline) $ monadic property check
+    where check = do
+            balancesMatch <- run $ testValues shouldConsume deadline redeemer
+            assert balancesMatch 
 
-_runChecks_ :: Bool -> POSIXTime -> Integer -> Property
 
-runChecks shouldConsume deadline redeemer =
-
-  collect (redeemer, getPOSIXTime deadline) $ monadic property check
-
-    where check = _do_
-
-            balancesMatch <- run $ testValues shouldConsume deadline
-redeemer
-
-            assert balancesMatch
-
---_ Function to test if both creating and consuming script UTxOs works
-properly_
-
-_testValues_ :: Bool -> POSIXTime -> Integer -> Run Bool
-
-testValues shouldConsume datum redeemer = _do_
-
-  --_ SETUP USERS_
-
-  [u1, u2] <- setupUsers
-
-  --_ USER 1 LOCKS 100 ADA ("val") IN VALIDATOR_
-
---_ Define value to be transferred_
-
-  let val = adaValue 100                    
-
---_ Get user's UTXOs that we should spend_
-
-  sp <- spend u1 val                        
-
---_ User 1 submits "lockingTx" transaction_
-
-  submitTx u1 $ lockingTx datum sp val      
-
-  --_ WAIT FOR A BIT_
-
-  waitUntil waitBeforeConsumingTx
-
-  --_ USER 2 TAKES "val" FROM VALIDATOR_
-
---_ Query blockchain to get all UTxOs at script_
-
-  utxos <- utxoAt valScript                
-
---_ We know there is only one UTXO (the one we created before)_
-
-  let [(oRef, oOut)] = utxos                
-
---_ Define transaction to be submitted_
-
-      tx = consumingTx datum redeemer u2 oRef (txOutValue oOut)        
-   
-
---_ Define expected balance for user 2_
-
-      v2Expected = _if_ shouldConsume _then_ adaValue 1100 _else_
-adaValue 1000  
-
---_ Create time interval with equal radius around current time_
-
-  ct  <- currentTimeRad 100                
-
---_ Build final consuming Tx_
-
-  tx' <- validateIn ct tx                  
-
---_ User 2 submits "consumingTx" transaction_
-
-  _if_ shouldConsume _then_ submitTx u2 tx' _else_ mustFail . submitTx
-u2 $ tx'  
-
-  --_ CHECK THAT FINAL BALANCES MATCH EXPECTED BALANCES_
-
---_ Get final balances_
-
-  [v1, v2] <- mapM valueAt [u1, u2]              
-
---_ Check if final balances match expected balances_
-
-  return $ v1 == adaValue 900 && v2 == v2Expected
+-- Function to test if both creating and consuming script UTxOs works properly
+testValues :: Bool -> POSIXTime -> Integer -> Run Bool
+testValues shouldConsume datum redeemer = do
+  -- SETUP USERS
+  [u1, u2] <- setupUsers
+  -- USER 1 LOCKS 100 ADA ("val") IN VALIDATOR
+  -- Define value to be transferred
+  let val = adaValue 100                    
+  -- Get user's UTXOs that we should spend
+  sp <- spend u1 val                        
+  -- User 1 submits "lockingTx" transaction
+  submitTx u1 $ lockingTx datum sp val      
+  -- WAIT FOR A BIT
+  waitUntil waitBeforeConsumingTx
+  -- USER 2 TAKES "val" FROM VALIDATOR
+  -- Query blockchain to get all UTxOs at script
+  utxos <- utxoAt valScript                 
+  -- We know there is only one UTXO (the one we created before)
+  let [(oRef, oOut)] = utxos                
+      -- Define transaction to be submitted
+      tx = consumingTx datum redeemer u2 oRef (txOutValue oOut)            
+      -- Define expected balance for user 2
+      v2Expected = if shouldConsume then adaValue 1100 else adaValue 1000  
+  -- Create time interval with equal radius around current time
+  ct  <- currentTimeRad 100                 
+  -- Build final consuming Tx
+  tx' <- validateIn ct tx                   
+  -- User 2 submits "consumingTx" transaction
+  if shouldConsume then submitTx u2 tx' else mustFail . submitTx u2 $ tx'  
+  -- CHECK THAT FINAL BALANCES MATCH EXPECTED BALANCES
+  -- Get final balances
+  [v1, v2] <- mapM valueAt [u1, u2]               
+  -- Check if final balances match expected balances
+  return $ v1 == adaValue 900 && v2 == v2Expected 
+----
 
 The collect function is used such that QuickCheck actually displays the
 values that are being generated and tested against our properties. The
@@ -4852,25 +4604,21 @@ monadic and the property functions are used to generate a Property type
 variable from our test that is contained in the check variable. You can
 see the type signature of all those three functions below:
 
+[source,shell]
+----
 Prelude> import Test.QuickCheck
-
-Prelude Test.QuickCheck> :i collect
-
+Prelude Test.QuickCheck> :i collect 
 collect :: (Show a, Testable prop) => a -> prop -> Property
 
 Prelude> import Test.QuickCheck.Monadic
-
 Prelude Test.QuickCheck.Monadic> :i monadic
-
-monadic :: (Testable a, Monad m) => (m Property -> Property) ->
-
-PropertyM m a -> Property
+monadic :: (Testable a, Monad m) => (m Property -> Property) -> 
+                                    PropertyM m a -> Property
 
 Prelude Test.QuickCheck> :i property
-
 class Testable prop where
-
-property :: prop -> Property
+  property :: prop -> Property
+----
 
 The check variable is of type PropertyM m a, which is a property monad.
 Given that m has an instance of the monad type class, PropertyM also has
@@ -4888,17 +4636,16 @@ that takes our Boolean and returns a property monad parameterized by
 unit. If the Boolean is false, it raises an error. You can see the type
 signatures of the run and assert functions below:
 
+[source,shell]
+----
 Prelude Test.QuickCheck.Monadic> :i run
-
 run :: Monad m => m a -> PropertyM m a
 
-Prelude Test.QuickCheck.Monadic> :i assert
-
+Prelude Test.QuickCheck.Monadic> :i assert 
 assert :: Monad m => Bool -> PropertyM m ()
-
-assert True = return ()
-
+assert True  = return ()
 assert False = fail "Assertion failed"
+----
 
 The testValues function is structured very similarly to the example in
 the previous section. The difference is that we compose the expected
@@ -4909,61 +4656,38 @@ the end, we compare the expected balances of user one and two with their
 actual balances. Below is an example output when running these property
 tests:
 
-/<path>/<to>/<cabal_file># cabal test PTNegativeRTimed
-
+[source,shell]
+----
+/<path>/<to>/<cabal_file># cabal test PTNegativeRTimed 
 ...
-
 Running 1 test suites...
-
 Test suite PTNegativeRTimed: RUNNING...
-
 Testing script properties
-
-Anything before the deadline always fails : OK (0.94s)
-
-+++ OK, passed 100 tests; 127 discarded:
-
-1% (-1,1162)
-
-1% (-10,1450)
-
-... 96 other tests
-
-1% (83,1783)
-
-1% (9,1568)
-
-Positive redeemer after deadline always fails : OK (0.33s)
-
-+++ OK, passed 100 tests; 341 discarded:
-
-1% (1,208)
-
-1% (1,248)
-
-... 96 other tests
-
-1% (9,588)
-
-1% (9,699)
-
-Negative redeemer after deadline always succeeds: OK (0.30s)
-
-+++ OK, passed 100 tests; 285 discarded:
-
-1% (-1,176)
-
-1% (-1,185)
-
-... 96 other tests
-
-1% (-8,820)
-
-1% (-80,446)
-
+  Anything before the deadline always fails       : OK (0.94s)
+    +++ OK, passed 100 tests; 127 discarded:
+     1% (-1,1162)
+     1% (-10,1450)
+     ... 96 other tests
+     1% (83,1783)
+     1% (9,1568)
+  Positive redeemer after deadline always fails   : OK (0.33s)
+    +++ OK, passed 100 tests; 341 discarded:
+     1% (1,208)
+     1% (1,248)
+     ... 96 other tests
+     1% (9,588)
+     1% (9,699)
+  Negative redeemer after deadline always succeeds: OK (0.30s)
+    +++ OK, passed 100 tests; 285 discarded:
+     1% (-1,176)
+     1% (-1,185)
+     ... 96 other tests
+     1% (-8,820)
+     1% (-80,446)
+ 
 All 3 tests passed (1.58s)
-
 Test suite PTNegativeRTimed: PASS
+----
 
 === Staking and Plinth
 
@@ -5001,7 +4725,10 @@ version 1.35.5.
 To run the testnet, execute the _automate.sh_ script located in the
 _scripts/_ folder from the root directory of the GitHub project:
 
+[source,shell]
+----
 /<path>/<to>/cardano-private-testnet-setup# scripts/automate.sh
+----
 
 This takes a couple of seconds. Once you have the private testnet up and
 running, you will see the message ‘_Congrats! Your network is ready for
@@ -5014,11 +4741,12 @@ them manually. On mainnet, every stake pool operator needs to regenerate
 the KES keys every couple of weeks. Use the following script to see
 testnet parameters and the sync progress:
 
+[source,shell]
+----
 #!/bin/bash
-
 export CARDANO_NODE_SOCKET_PATH=/<path>/<to>/node.sock
-
 cardano-cli query tip --testnet-magic 42
+----
 
 In the _private-testnet/_ folder, you can find the public and private
 payment and staking keys, along with the addresses for the three users
@@ -5067,156 +4795,93 @@ address. This script allows withdrawals from corresponding staking
 credentials given by the script, provided that at least half of the
 withdrawn rewards are directed to the specified address.
 
-\{-# LANGUAGE DataKinds #-}
-
-\{-# LANGUAGE FlexibleContexts #-}
-
-\{-# LANGUAGE MultiParamTypeClasses #-}
-
-\{-# LANGUAGE NoImplicitPrelude #-}
-
-\{-# LANGUAGE OverloadedStrings #-}
-
-\{-# LANGUAGE ScopedTypeVariables #-}
-
-\{-# LANGUAGE TemplateHaskell #-}
-
-\{-# LANGUAGE TypeApplications #-}
-
-\{-# LANGUAGE TypeFamilies #-}
-
-\{-# LANGUAGE TypeOperators #-}
-
+[source,haskell]
+----
+{-# LANGUAGE DataKinds             #-}
+{-# LANGUAGE FlexibleContexts      #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE NoImplicitPrelude     #-}
+{-# LANGUAGE OverloadedStrings     #-}
+{-# LANGUAGE ScopedTypeVariables   #-}
+{-# LANGUAGE TemplateHaskell       #-}
+{-# LANGUAGE TypeApplications      #-}
+{-# LANGUAGE TypeFamilies          #-}
+{-# LANGUAGE TypeOperators         #-}
+ 
 module Staking
-
-( _stakeValidator_
-
-, _saveStakeValidator_
-
-) where
-
-import Plutus.V1.Ledger.Value (_valueOf_)
-
-import Plutus.V2.Ledger.Api (Address, BuiltinData,
-
-ScriptContext (_scriptContextPurpose_,
-
-_scriptContextTxInfo_),
-
-ScriptPurpose (Certifying, Rewarding),
-
-StakeValidator, StakingCredential,
-
-TxInfo (_txInfoOutputs_, _txInfoWdrl_),
-
-TxOut (_txOutAddress_, _txOutValue_),
-
-_adaSymbol_, _adaToken_,
-
-_mkStakeValidatorScript_)
-
+    ( stakeValidator
+    , saveStakeValidator
+    ) where
+ 
+import           Plutus.V1.Ledger.Value (valueOf)
+import           Plutus.V2.Ledger.Api   (Address, BuiltinData,
+                                         ScriptContext (scriptContextPurpose,
+                                                        scriptContextTxInfo),
+                                         ScriptPurpose (Certifying, Rewarding),
+                                         StakeValidator, StakingCredential,
+                                         TxInfo (txInfoOutputs, txInfoWdrl),
+                                         TxOut (txOutAddress, txOutValue),
+                                         adaSymbol, adaToken,
+                                         mkStakeValidatorScript)
 import qualified PlutusTx
-
-import qualified PlutusTx.AssocMap as PlutusTx
-
-import PlutusTx.Prelude (AdditiveSemigroup ((_+_)), Bool (..),
-
-Eq ((_==_)), Integer,
-
-Maybe (Just, Nothing),
-
-MultiplicativeSemigroup ((_*_)),
-
-Ord ((_>=_)), Semigroup ((_<>_)), _foldl_,
-
-_otherwise_, _traceError_, _traceIfFalse_,
-
-(_$_), (_._))
-
-import Prelude (IO, String, _ioError_)
-
-import System.IO.Error (_userError_)
-
-import Utilities (_tryReadAddress_, _wrapStakeValidator_,
-
-_writeStakeValidatorToFile_)
-
-\{-# INLINABLE mkStakeValidator #-}
-
-_mkStakeValidator_ :: Address -> () -> ScriptContext -> Bool
-
-mkStakeValidator addr () ctx = _case_ scriptContextPurpose ctx _of_
-
-Certifying _ -> True
-
-Rewarding cred -> traceIfFalse "insufficient reward sharing" $
-
-2 * paidToAddress >= amount cred
-
-_ -> False
-
-where
-
-_info_ :: TxInfo
-
-info = scriptContextTxInfo ctx
-
-_amount_ :: StakingCredential -> Integer
-
-amount cred = _case_ PlutusTx.lookup cred $ txInfoWdrl info _of_
-
-Just amt -> amt
-
-Nothing -> traceError "withdrawal not found"
-
-_paidToAddress_ :: Integer
-
-paidToAddress = foldl f 0 $ txInfoOutputs info
-
-where
-
-_f_ :: Integer -> TxOut -> Integer
-
-f n o
-
-| txOutAddress o == addr = n + valueOf (txOutValue o)
-
-adaSymbol adaToken
-
-| otherwise = n
-
-\{-# INLINABLE mkWrappedStakeValidator #-}
-
-_mkWrappedStakeValidator_ :: Address -> BuiltinData -> BuiltinData -> ()
-
+import qualified PlutusTx.AssocMap      as PlutusTx
+import           PlutusTx.Prelude       (AdditiveSemigroup ((+)), Bool (..),
+                                         Eq ((==)), Integer,
+                                         Maybe (Just, Nothing),
+                                         MultiplicativeSemigroup ((*)),
+                                         Ord ((>=)), Semigroup ((<>)), foldl,
+                                         otherwise, traceError, traceIfFalse,
+                                         ($), (.))
+import           Prelude                (IO, String, ioError)
+import           System.IO.Error        (userError)
+import           Utilities              (tryReadAddress, wrapStakeValidator,
+                                         writeStakeValidatorToFile)
+ 
+{-# INLINABLE mkStakeValidator #-}
+mkStakeValidator :: Address -> () -> ScriptContext -> Bool
+mkStakeValidator addr () ctx = case scriptContextPurpose ctx of
+    Certifying _   -> True
+    Rewarding cred -> traceIfFalse "insufficient reward sharing" $
+                  	2 * paidToAddress >= amount cred
+    _              -> False
+  where
+    info :: TxInfo
+    info = scriptContextTxInfo ctx
+ 
+    amount :: StakingCredential -> Integer
+    amount cred = case PlutusTx.lookup cred $ txInfoWdrl info of
+        Just amt -> amt
+        Nothing  -> traceError "withdrawal not found"
+ 
+    paidToAddress :: Integer
+    paidToAddress = foldl f 0 $ txInfoOutputs info
+      where
+        f :: Integer -> TxOut -> Integer
+        f n o
+            | txOutAddress o == addr = n + valueOf (txOutValue o)
+                                   	   adaSymbol adaToken
+            | otherwise              = n
+ 
+{-# INLINABLE mkWrappedStakeValidator #-}
+mkWrappedStakeValidator :: Address -> BuiltinData -> BuiltinData -> ()
 mkWrappedStakeValidator = wrapStakeValidator . mkStakeValidator
-
-_stakeValidator_ :: Address -> StakeValidator
-
+ 
+stakeValidator :: Address -> StakeValidator
 stakeValidator addr = mkStakeValidatorScript $
-
-$$(PlutusTx.compile [|| mkWrappedStakeValidator ||])
-
-`PlutusTx.applyCode`
-
-PlutusTx.liftCode addr
-
---_----------------------------------------------------------------------------_
-
---_---------------------------- HELPER FUNCTIONS
-------------------------------_
-
-_saveStakeValidator_ :: String -> IO ()
-
-saveStakeValidator bech32 = _do_
-
-_case_ tryReadAddress bech32 _of_
-
-Nothing -> ioError $ userError $ "Invalid address: " <> bech32
-
-Just addr -> writeStakeValidatorToFile "./assets/staking.plutus" $
-
-stakeValidator addr
+    $$(PlutusTx.compile [|| mkWrappedStakeValidator ||])
+    `PlutusTx.applyCode`
+    PlutusTx.liftCode addr
+ 
+------------------------------------------------------------------------------
+------------------------------ HELPER FUNCTIONS ------------------------------
+ 
+saveStakeValidator :: String -> IO ()
+saveStakeValidator bech32 = do
+    case tryReadAddress bech32 of
+        Nothing   -> ioError $ userError $ "Invalid address: " <> bech32
+        Just addr -> writeStakeValidatorToFile "./assets/staking.plutus" $ 
+                     stakeValidator addr
+----
 
 We use a typed version for our validator. In the mkStakeValidator
 function, the first argument, which is the address, is the script’s
