@@ -4963,18 +4963,22 @@ address we use as a parameter. From the three users that the testnet
 provides, we take the second one. Their address is the one stored in the
 _payment2.addr_ file from the _private-testnet/addresses/_.
 
+[source,shell]
+----
 addr_test1qzxkl9zxmyptd4ua8zw2gcwr5qyj9djdr7ucu97gs8sh5uwm9kpwsxt2ksuf5yqnxqjeq8k59nar9nacqgj793xgwa6q0j2rhv
+----
 
 We start a REPL and serialize the stake validator to the__
 staking.plutus __file, where we provide the payment address from user
 two:
 
+[source,shell]
+----
 /<path>/<to>/<project># cabal repl
-
 Prelude Staking> saveStakeValidator
 "addr_test1qzxkl9zxmyptd4ua8zw2gcwr5qyj9djdr7ucu97gs8sh5uwm9kpwsxt2ksuf5yqnxqjeq8k59nar9nacqgj793xgwa6q0j2rhv"
-
 Serialized script to: ./assets/staking.plutus
+----
 
 After that, we have to build a stake address from this script. This will
 be the first example of a stake address that is not based on a key pair,
@@ -4986,121 +4990,81 @@ https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[
 iteration_] GitHub repository in third and fourth week code examples and
 lectures. We call the script below, _register-and-delegate.sh_.
 
+[source,shell]
+----
 #!/bin/bash
 
 tmp=/<path>/<to>/address-and-certificate-files
-
 txin=$1
-
 echo "txin: $txin"
 
 script=/<path>/<to>/staking.plutus
-
 script_stake_addr=$tmp/user1-script-stake.addr
-
 script_payment_addr=$tmp/user1-script.addr
-
 registration=$tmp/registration.cert
-
 delegation=$tmp/delegation.cert
-
 pp=$tmp/protocol-params.json
-
 body=$tmp/tx.txbody
-
 signed=$tmp/tx.tx
 
-export
-CARDANO_NODE_SOCKET_PATH=/<path>/<to>/cardano-private-testnet-setup/private-
-
-testnet/node-spo1/node.sock
+export CARDANO_NODE_SOCKET_PATH=/<path>/<to>/cardano-private-testnet-setup/private-
+                            	testnet/node-spo1/node.sock
 
 cardano-cli stake-address build \
-
---testnet-magic 42 \
-
---stake-script-file $script \
-
---out-file $script_stake_addr
+	--testnet-magic 42 \
+	--stake-script-file $script \
+	--out-file $script_stake_addr
 
 echo "stake address: $(cat $script_stake_addr)"
 
 cardano-cli address build \
-
---testnet-magic 42 \
-
---payment-verification-key-file=/<path>/<to>/cardano-private-testnet-setup/ +
-private-testnet/stake-delegator-keys/ +
-payment1.vkey \
-
---stake-script-file=$script \
-
---out-file $script_payment_addr
+	--testnet-magic 42 \
+	--payment-verification-key-file=/<path>/<to>/cardano-private-testnet-setup/
+                                     private-testnet/stake-delegator-keys/
+                                     payment1.vkey \
+	--stake-script-file=$script \
+	--out-file $script_payment_addr
 
 echo "payment address: $(cat $script_payment_addr)"
 
 cardano-cli stake-address registration-certificate \
-
---stake-script-file $script \
-
---out-file $registration
+	--stake-script-file $script \
+	--out-file $registration
 
 cardano-cli stake-address delegation-certificate \
-
---stake-script-file $script \
-
---stake-pool-id=$(/<path>/<to>/query-stake-pools.sh | +
-head -n 1) \
-
---out-file $delegation
+	--stake-script-file $script \
+	--stake-pool-id=$(/<path>/<to>/query-stake-pools.sh | 
+                       head -n 1) \
+	--out-file $delegation
 
 cardano-cli query protocol-parameters \
-
---testnet-magic 42 \
-
---out-file $pp
+	--testnet-magic 42 \
+	--out-file $pp
 
 cardano-cli transaction build \
-
---babbage-era \
-
---testnet-magic 42 \
-
---change-address $(cat $script_payment_addr) \
-
---out-file $body \
-
---tx-in $txin \
-
---tx-in-collateral $txin \
-
---certificate-file $registration \
-
---certificate-file $delegation \
-
---certificate-script-file $script \
-
---certificate-redeemer-file /<path>/<to>/unit.json \
-
---protocol-params-file $pp
+	--babbage-era \
+	--testnet-magic 42 \
+	--change-address $(cat $script_payment_addr) \
+	--out-file $body \
+	--tx-in $txin \
+	--tx-in-collateral $txin \
+	--certificate-file $registration \
+	--certificate-file $delegation \
+	--certificate-script-file $script \
+	--certificate-redeemer-file /<path>/<to>/unit.json \
+	--protocol-params-file $pp
 
 cardano-cli transaction sign \
-
---testnet-magic 42 \
-
---tx-body-file $body \
-
---out-file $signed \
-
---signing-key-file
-/<path>/<to>/cardano-private-testnet-setup/private-testnet/ +
-stake-delegator-keys/payment1.skey
+	--testnet-magic 42 \
+	--tx-body-file $body \
+	--out-file $signed \
+	--signing-key-file /<path>/<to>/cardano-private-testnet-setup/private-testnet/
+                        stake-delegator-keys/payment1.skey
 
 cardano-cli transaction submit \
-
---testnet-magic 42 \
-
---tx-file $signed
+	--testnet-magic 42 \
+	--tx-file $signed  
+----
 
 Because we need to build and submit a transaction, we need an input,
 which we store in the _txin_ parameter. We store all of our certificate
@@ -5151,38 +5115,36 @@ using only user one’s payment key. Finally, we submit the transaction.
 To use that script, we look up the UTXO available for spending using the
 _query-utxo-user1.sh_ script.
 
-TxHash TxIx Amount
-
--------------------------------------------------------------------------------------
-
-4184b0b1b8363b81b30c58bfb5f3972dfce9a2dcf886998e37929964f3b3619b 0
-342271389694
-
-lovelace +
-
-TxOutDatumNone
+[source,shell]
+----
+                         	TxHash                          	      TxIx     Amount
+------------------------------------------------------------------------------------
+4184b0b1b8363b81b30c58bfb5f3972dfce9a2dcf886998e37929964f3b3619b   0 	  342271389694
+                                                                          lovelace +
+                                                                      TxOutDatumNone
+----
 
 When we use the previously defined script for registration and
 delegation of our funds, we input the above transaction hash and index 0
 to it.
 
-/<path>/<to>/<script># ./register-and-delegate.sh
-
-4184b0b1b8363b81b30c58bfb5f3972dfce9a2dcf886998e37929964f3b3619b#0
+[source,shell]
+----
+/<path>/<to>/<script># ./register-and-delegate.sh 4184b0b1b8363b81b30c58bfb5f3972dfce9a2dcf886998e37929964f3b3619b#0
+----
 
 An example output of the above command can be seen below:
 
+[source,shell]
+----
 txin: b1d51a046b9cd92ce504382fdd83ea4436d265ff97cb0a6eefb1dce6f8096550#0
-
 stake address:
 stake_test17q7pv2ap3scy9s9qurfjgwg6mmvsva87x5r8pydw9a66jqcuqdj7g
-
 payment address:
 addr_test1ypnuk08vjnrjq66frsj0cnk0fgexkf4d66d2tdvd2vgedqeuzc46rrpsgtq2pcxnysu34hkeqe60udgxwzg6utm44ypswpjxdv
-
 Estimated transaction fee: Lovelace 345564
-
 Transaction successfully submitted.
+----
 
 We see the log messages and the spent UTXO. The newly created stake
 address is now based on our script. We also created the payment address
@@ -5193,119 +5155,83 @@ one, there will be none. Using the script _query-utxo-user1-script.sh_
 we can check the funds for the new address we have just created. The
 script can be seen below:
 
+[source,shell]
+----
 #!/bin/bash
-
-export
-CARDANO_NODE_SOCKET_PATH=/<path>/<to>/cardano-private-testnet-setup/private-
-
-testnet/node-spo1/node.sock
-
+export CARDANO_NODE_SOCKET_PATH=/<path>/<to>/cardano-private-testnet-setup/private-
+                            	testnet/node-spo1/node.sock
 cardano-cli query utxo \
-
---testnet-magic 42 \
-
---address $(cat /<path>/<to>/user1-script.addr)
+	--testnet-magic 42 \
+	--address $(cat /<path>/<to>/user1-script.addr)
+----
 
 If we execute the query, we see that almost all the 300,000 ada has been
 transferred to this address. The small difference is attributed to the
 registration deposit and transaction fees.
 
-TxHash TxIx Amount
-
--------------------------------------------------------------------------------------
-
-7c018e5e39649a52b9e1f9527e9ac8dcc70b1da818629dc30e6322cbea6f4e44 0
-299999654436
-
-lovelace +
-
-TxOutDatumNone
+[source,shell]
+----
+                         	TxHash                          	      TxIx     Amount
+------------------------------------------------------------------------------------
+7c018e5e39649a52b9e1f9527e9ac8dcc70b1da818629dc30e6322cbea6f4e44   0    299999654436
+                                                                          lovelace +
+                                                                      TxOutDatumNone
+----
 
 After some time, when the rewards at the staking address have
 accumulated, we can construct a transaction to withdraw them, ensuring
 that half of the rewards are sent to user two. The example script below
 demonstrates how to accomplish this using the cardano-cli tool:
 
+[source,shell]
+----
 #!/bin/bash
 
 txin=$1
-
 tmp=/<path>/<to>/address-and-certificate-files
-
-amt1=$(/<path>/<to>/scripts/query-stake-address-info-user1-script.sh |
-
-jq .[0].rewardAccountBalance)
-
+amt1=$(/<path>/<to>/scripts/query-stake-address-info-user1-script.sh | 
+     jq .[0].rewardAccountBalance)
 amt2=$(expr $amt1 / 2 + 1)
-
 pp=$tmp/protocol-params.json
-
 body=$tmp/tx.txbody
-
 signed=$tmp/tx.tx
 
 echo "txin = $1"
-
 echo "amt1 = $amt1"
-
 echo "amt2 = $amt2"
 
-export
-CARDANO_NODE_SOCKET_PATH=/<path>/<to>/cardano-private-testnet-setup/private-testnet/
-
-node-spo1/node.sock
+export CARDANO_NODE_SOCKET_PATH=/<path>/<to>/cardano-private-testnet-setup/private-testnet/
+                         node-spo1/node.sock
 
 cardano-cli query protocol-parameters \
-
---testnet-magic 42 \
-
---out-file $pp
+    --testnet-magic 42 \
+    --out-file $pp
 
 cardano-cli transaction build \
-
---babbage-era \
-
---testnet-magic 42 \
-
---change-address $(cat $tmp/user1-script.addr) \
-
---out-file $body \
-
---tx-in $txin \
-
---tx-in-collateral $txin \
-
---tx-out "$(cat
-/<path>/<to>/cardano-private-testnet-setup/private-testnet/
-
-addresses/payment2.addr)+$amt2 lovelace" \
-
---withdrawal "$(cat $tmp/user1-script-stake.addr)+$amt1" \
-
---withdrawal-script-file /<path>/<to>/staking.plutus \
-
---withdrawal-redeemer-file /<path>/<to>/unit.json \
-
---protocol-params-file $pp
+    --babbage-era \
+    --testnet-magic 42 \
+    --change-address $(cat $tmp/user1-script.addr) \
+    --out-file $body \
+    --tx-in $txin \
+    --tx-in-collateral $txin \
+    --tx-out "$(cat /<path>/<to>/cardano-private-testnet-setup/private-testnet/
+                    addresses/payment2.addr)+$amt2 lovelace" \
+    --withdrawal "$(cat $tmp/user1-script-stake.addr)+$amt1" \
+    --withdrawal-script-file /<path>/<to>/staking.plutus \
+    --withdrawal-redeemer-file /<path>/<to>/unit.json \
+    --protocol-params-file $pp
 
 cardano-cli transaction sign \
-
---testnet-magic 42 \
-
---tx-body-file $body \
-
---out-file $signed \
-
---signing-key-file
-/<path>/<to>/cardano-private-testnet-setup/private-testnet/
-
-stake-delegator-keys/payment1.skey
+    --testnet-magic 42 \
+    --tx-body-file $body \
+    --out-file $signed \
+    --signing-key-file /<path>/<to>/cardano-private-testnet-setup/private-testnet/
+                       stake-delegator-keys/payment1.skey
 
 cardano-cli transaction submit \
-
---testnet-magic 42 \
-
---tx-file $signed
+    --testnet-magic 42 \
+    --tx-file $signed
+----
 
 The objective is for user one to withdraw rewards from the newly created
 stake address. First, we set the temporary folder. The amount to
@@ -5337,56 +5263,51 @@ submit the transaction. Now we can use the UTXO returned by the
 _query-utxo-user1-script.sh_ script as input. We can now run the
 following command:
 
+[source,shell]
+----
 /<path>/<to>/<script># ./withdraw-user1-script.sh
-
 7c018e5e39649a52b9e1f9527e9ac8dcc70b1da818629dc30e6322cbea6f4e44#0
+----
 
 If we submit the transaction with the line that pays half of the rewards
 to user two, the transaction passes successfully. We can then query user
 two’s funds – we see that he has the initial UTXO and also a second one
 with rewards.
 
-TxHash TxIx Amount
-
--------------------------------------------------------------------------------------
-
-9f54c1a9319b02a2da7110bb90946845dbe8e5fce0f770a4e8ee2955eed223cb 0
-300000000000
-
-lovelace +
-
-TxOutDatumNone
-
-902aba5b2b72df2423ee33d4af294e21e0903c31e34917a4de8570b3e8d08c7b 0
-5070281709
-
-lovelace +
-
-TxOutDatumNone
+[source,shell]
+----
+                         	TxHash                          	      TxIx     Amount
+------------------------------------------------------------------------------------
+9f54c1a9319b02a2da7110bb90946845dbe8e5fce0f770a4e8ee2955eed223cb   0    300000000000
+                                                                          lovelace +
+                                                                      TxOutDatumNone
+902aba5b2b72df2423ee33d4af294e21e0903c31e34917a4de8570b3e8d08c7b   1      5070281709
+                                                                          lovelace +
+                                                                      TxOutDatumNone
+----
 
 If we query the funds for user one with the _query-utxo-user1-script.sh_
 script, he has now more than the original 300,000 ada because he also
 got the other half of the rewards.
 
-TxHash TxIx Amount
-
--------------------------------------------------------------------------------------
-
-902aba5b2b72df2423ee33d4af294e21e0903c31e34917a4de8570b3e8d08c7b 0
-305069582064
-
-lovelace +
-
-TxOutDatumNone
+[source,shell]
+----
+                         	TxHash                          	      TxIx     Amount
+------------------------------------------------------------------------------------
+902aba5b2b72df2423ee33d4af294e21e0903c31e34917a4de8570b3e8d08c7b   0    305069582064
+                                                                          lovelace +
+                                                                      TxOutDatumNone
+----
 
 If we removed the line below from the withdrawal script, we would get an
 error with the message ‘__insufficient reward sharing’ , __which__ __we
 have defined in the Plinth script.
 
---tx-out "$(cat
-/<path>/<to>/cardano-private-testnet-setup/private-testnet/
-
-addresses/payment2.addr)+$amt2 lovelace" \
+[source,shell]
+----
+--tx-out "$(cat /<path>/<to>/cardano-private-testnet-setup/private-testnet/
+                addresses/payment2.addr)+$amt2 lovelace" \
+----
 
 === PlutusV3 features
 
@@ -5481,146 +5402,83 @@ Let us look now at a PlutusV3 script, where we check that the redeemer
 is the number 42, that we already showed as a PlutusV2 script in section
 8.5.5 _Simple validation scripts_.
 
-\{-# LANGUAGE DataKinds #-}
-
-\{-# LANGUAGE DerivingStrategies #-}
-
-\{-# LANGUAGE GeneralizedNewtypeDeriving #-}
-
-\{-# LANGUAGE ImportQualifiedPost #-}
-
-\{-# LANGUAGE MultiParamTypeClasses #-}
-
-\{-# LANGUAGE OverloadedStrings #-}
-
-\{-# LANGUAGE PatternSynonyms #-}
-
-\{-# LANGUAGE ScopedTypeVariables #-}
-
-\{-# LANGUAGE Strict #-}
-
-\{-# LANGUAGE TemplateHaskell #-}
-
-\{-# LANGUAGE TypeApplications #-}
-
-\{-# LANGUAGE NoImplicitPrelude #-}
-
-\{-# OPTIONS_GHC -fno-full-laziness #-}
-
-\{-# OPTIONS_GHC -fno-ignore-interface-pragmas #-}
-
-\{-# OPTIONS_GHC -fno-omit-interface-pragmas #-}
-
-\{-# OPTIONS_GHC -fno-spec-constr #-}
-
-\{-# OPTIONS_GHC -fno-specialise #-}
-
-\{-# OPTIONS_GHC -fno-strictness #-}
-
-\{-# OPTIONS_GHC -fno-unbox-small-strict-fields #-}
-
-\{-# OPTIONS_GHC -fno-unbox-strict-fields #-}
-
-\{-# OPTIONS_GHC -fplugin-opt PlutusTx.Plugin:target-version=1.1.0 #-}
+[source,haskell]
+----
+{-# LANGUAGE DataKinds #-}
+{-# LANGUAGE DerivingStrategies #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE ImportQualifiedPost #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE PatternSynonyms #-}
+{-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE Strict #-}
+{-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE TypeApplications #-}
+{-# LANGUAGE NoImplicitPrelude #-}
+{-# OPTIONS_GHC -fno-full-laziness #-}
+{-# OPTIONS_GHC -fno-ignore-interface-pragmas #-}
+{-# OPTIONS_GHC -fno-omit-interface-pragmas #-}
+{-# OPTIONS_GHC -fno-spec-constr #-}
+{-# OPTIONS_GHC -fno-specialise #-}
+{-# OPTIONS_GHC -fno-strictness #-}
+{-# OPTIONS_GHC -fno-unbox-small-strict-fields #-}
+{-# OPTIONS_GHC -fno-unbox-strict-fields #-}
+{-# OPTIONS_GHC -fplugin-opt PlutusTx.Plugin:target-version=1.1.0 #-}
 
 module Week02.Validators where
 
 import PlutusLedgerApi.Common (
-
-FromData (_fromBuiltinData_),
-
-SerialisedScript,
-
-_serialiseCompiledCode_,
-
-)
-
+  FromData (fromBuiltinData),
+  SerialisedScript,
+  serialiseCompiledCode,
+ )
 import PlutusLedgerApi.V3 (
-
-Redeemer (_getRedeemer_),
-
-ScriptContext (..),
-
-)
-
+  Redeemer (getRedeemer),
+  ScriptContext (..),
+ )
 import PlutusTx (
-
-BuiltinData,
-
-CompiledCode,
-
-UnsafeFromData (_unsafeFromBuiltinData_),
-
-_compile_,
-
-)
-
+  BuiltinData,
+  CompiledCode,
+  UnsafeFromData (unsafeFromBuiltinData),
+  compile,
+ )
 import PlutusTx.Bool (Bool (..))
-
 import PlutusTx.Prelude (
+  BuiltinUnit,
+  Eq (..),
+  Integer,
+  Maybe (..),
+  check,
+  traceError,
+  traceIfFalse,
+  ($),
+ )
 
-BuiltinUnit,
+{- ------------------------------------------------------------------------ -}
+{------------------------------ 42 validator ------------------------------ -}
 
-Eq (..),
+{-# INLINEABLE fortyTwoVal #-}
+fortyTwoVal :: ScriptContext -> Bool
+fortyTwoVal ctx = traceIfFalse "Redeemer is a number different than 42" 
+                  $ 42 == r
+ where
+  r = case fromBuiltinData $ getRedeemer (scriptContextRedeemer ctx) of
+    Just @Integer n -> n
+    Nothing -> traceError "Redeemer is not a number"
 
-Integer,
+{- ------------------------------------------------------------------------ -}
+{--------------------------------- HELPERS -------------------------------- -}
 
-Maybe (..),
-
-_check_,
-
-_traceError_,
-
-_traceIfFalse_,
-
-(_$_),
-
-)
-
-\{-_
-------------------------------------------------------------------------
-_-}
-
-\{-_----------------------------- 42 validator
------------------------------- _-}
-
-\{-# INLINEABLE fortyTwoVal #-}
-
-_fortyTwoVal_ :: ScriptContext -> Bool
-
-fortyTwoVal ctx = traceIfFalse "Redeemer is a number different than 42"
-
-$ 42 == r
-
-where
-
-r = _case_ fromBuiltinData $ getRedeemer (scriptContextRedeemer ctx)
-_of_
-
-Just @Integer n -> n
-
-Nothing -> traceError "Redeemer is not a number"
-
-\{-_
-------------------------------------------------------------------------
-_-}
-
-\{-_-------------------------------- HELPERS
--------------------------------- _-}
-
-_compiledFortyTwoVal_ :: CompiledCode (BuiltinData -> BuiltinUnit)
-
+compiledFortyTwoVal :: CompiledCode (BuiltinData -> BuiltinUnit)
 compiledFortyTwoVal = $$(compile [||wrappedVal||])
+ where
+  wrappedVal :: BuiltinData -> BuiltinUnit
+  wrappedVal ctx = check $ fortyTwoVal (unsafeFromBuiltinData ctx)
 
-where
-
-_wrappedVal_ :: BuiltinData -> BuiltinUnit
-
-wrappedVal ctx = check $ fortyTwoVal (unsafeFromBuiltinData ctx)
-
-_serializedFortyTwoValidator_ :: SerialisedScript
-
+serializedFortyTwoValidator :: SerialisedScript
 serializedFortyTwoValidator = serialiseCompiledCode compiledFortyTwoVal
+----
 
 The language extensions and import statements change in comparison with
 the PlutusV2 script to accommodate for PlutusV3 changes. The validator
@@ -5639,192 +5497,111 @@ beneficiary has signed the transaction. Both of this information has to
 be attached to the datum of the UTXO we are creating at this script
 address.
 
-\{-# LANGUAGE DataKinds #-}
-
-\{-# LANGUAGE DeriveAnyClass #-}
-
-\{-# LANGUAGE DeriveGeneric #-}
-
-\{-# LANGUAGE DerivingStrategies #-}
-
-\{-# LANGUAGE FlexibleInstances #-}
-
-\{-# LANGUAGE GeneralizedNewtypeDeriving #-}
-
-\{-# LANGUAGE ImportQualifiedPost #-}
-
-\{-# LANGUAGE MultiParamTypeClasses #-}
-
-\{-# LANGUAGE NoImplicitPrelude #-}
-
-\{-# LANGUAGE OverloadedStrings #-}
-
-\{-# LANGUAGE PatternSynonyms #-}
-
-\{-# LANGUAGE ScopedTypeVariables #-}
-
-\{-# LANGUAGE Strict #-}
-
-\{-# LANGUAGE TemplateHaskell #-}
-
-\{-# LANGUAGE TypeApplications #-}
-
-\{-# LANGUAGE UndecidableInstances #-}
-
-\{-# LANGUAGE ViewPatterns #-}
-
-\{-# OPTIONS_GHC -fno-full-laziness #-}
-
-\{-# OPTIONS_GHC -fno-ignore-interface-pragmas #-}
-
-\{-# OPTIONS_GHC -fno-omit-interface-pragmas #-}
-
-\{-# OPTIONS_GHC -fno-spec-constr #-}
-
-\{-# OPTIONS_GHC -fno-specialise #-}
-
-\{-# OPTIONS_GHC -fno-strictness #-}
-
-\{-# OPTIONS_GHC -fno-unbox-small-strict-fields #-}
-
-\{-# OPTIONS_GHC -fno-unbox-strict-fields #-}
-
-\{-# OPTIONS_GHC -fplugin-opt PlutusTx.Plugin:target-version=1.1.0 #-}
+[source,haskell]
+----
+{-# LANGUAGE DataKinds                  #-}
+{-# LANGUAGE DeriveAnyClass             #-}
+{-# LANGUAGE DeriveGeneric              #-}
+{-# LANGUAGE DerivingStrategies         #-}
+{-# LANGUAGE FlexibleInstances          #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE ImportQualifiedPost        #-}
+{-# LANGUAGE MultiParamTypeClasses      #-}
+{-# LANGUAGE NoImplicitPrelude          #-}
+{-# LANGUAGE OverloadedStrings          #-}
+{-# LANGUAGE PatternSynonyms            #-}
+{-# LANGUAGE ScopedTypeVariables        #-}
+{-# LANGUAGE Strict                     #-}
+{-# LANGUAGE TemplateHaskell            #-}
+{-# LANGUAGE TypeApplications           #-}
+{-# LANGUAGE UndecidableInstances       #-}
+{-# LANGUAGE ViewPatterns               #-}
+{-# OPTIONS_GHC -fno-full-laziness #-}
+{-# OPTIONS_GHC -fno-ignore-interface-pragmas #-}
+{-# OPTIONS_GHC -fno-omit-interface-pragmas #-}
+{-# OPTIONS_GHC -fno-spec-constr #-}
+{-# OPTIONS_GHC -fno-specialise #-}
+{-# OPTIONS_GHC -fno-strictness #-}
+{-# OPTIONS_GHC -fno-unbox-small-strict-fields #-}
+{-# OPTIONS_GHC -fno-unbox-strict-fields #-}
+{-# OPTIONS_GHC -fplugin-opt PlutusTx.Plugin:target-version=1.1.0 #-}
 
 module Week03.Vesting where
 
-import GHC.Generics (Generic)
+import           GHC.Generics                  (Generic)
+import           PlutusLedgerApi.Common        (FromData (fromBuiltinData),
+                                                SerialisedScript,
+                                                serialiseCompiledCode)
+import           PlutusLedgerApi.Data.V3       (POSIXTime, PubKeyHash, from)
+import           PlutusLedgerApi.V1.Interval   (contains)
+import           PlutusLedgerApi.V3            (ScriptContext (..),
+                                                ScriptInfo (..),
+                                                TxInfo (txInfoValidRange),
+                                                getDatum)
+import           PlutusLedgerApi.V3.Contexts   (txSignedBy)
+import           PlutusTx                      (BuiltinData, CompiledCode,
+                                                UnsafeFromData
+                                                  (unsafeFromBuiltinData),
+                                                compile,
+                                                makeIsDataSchemaIndexed)
+import           PlutusTx.Blueprint            (HasBlueprintDefinition)
+import           PlutusTx.Blueprint.Definition (definitionRef)
+import           PlutusTx.Bool                 (Bool (..), (&&))
+import           PlutusTx.Prelude              (BuiltinUnit, Maybe (..), 
+                                                check,traceError,
+                                                traceIfFalse, ($), (.))
 
-import PlutusLedgerApi.Common (FromData (_fromBuiltinData_),
-
-SerialisedScript,
-
-_serialiseCompiledCode_)
-
-import PlutusLedgerApi.Data.V3 (POSIXTime, PubKeyHash, _from_)
-
-import PlutusLedgerApi.V1.Interval (_contains_)
-
-import PlutusLedgerApi.V3 (ScriptContext (..),
-
-ScriptInfo (..),
-
-TxInfo (_txInfoValidRange_),
-
-_getDatum_)
-
-import PlutusLedgerApi.V3.Contexts (_txSignedBy_)
-
-import PlutusTx (BuiltinData, CompiledCode,
-
-UnsafeFromData
-
-(_unsafeFromBuiltinData_),
-
-_compile_,
-
-_makeIsDataSchemaIndexed_)
-
-import PlutusTx.Blueprint (HasBlueprintDefinition)
-
-import PlutusTx.Blueprint.Definition (_definitionRef_)
-
-import PlutusTx.Bool (Bool (..), (_&&_))
-
-import PlutusTx.Prelude (BuiltinUnit, Maybe (..),
-
-_ check_,_traceError_,
-
-_traceIfFalse_, (_$_), (_._))
-
-\{-_
-------------------------------------------------------------------------
-_-}
-
-\{-_-------------------_-_-------------- TYPES
--------------------------------- _-}
+{- ------------------------------------------------------------------------ -}
+{----------------------------------- TYPES -------------------------------- -}
 
 data VestingDatum = VestingDatum
-
-\{ beneficiary :: PubKeyHash
-
-, deadline :: POSIXTime
-
-}
-
-deriving stock (Generic)
-
-deriving anyclass (HasBlueprintDefinition)
+  { beneficiary :: PubKeyHash
+  , deadline    :: POSIXTime
+  }
+  deriving stock (Generic)
+  deriving anyclass (HasBlueprintDefinition)
 
 makeIsDataSchemaIndexed ''VestingDatum [('VestingDatum, 0)]
 
-\{-_
-------------------------------------------------------------------------
-_-}
+{- ------------------------------------------------------------------------ -}
+{--------------------------------- VALIDATOR ------------------------------ -}
 
-\{-_-------------------_-_------------ VALIDATOR
------------------------------- _-}
-
-\{-# INLINEABLE vestingVal #-}
-
-_vestingVal_ :: ScriptContext -> Bool
-
+{-# INLINEABLE vestingVal #-}
+vestingVal :: ScriptContext -> Bool
 vestingVal ctx =
+  traceIfFalse "Is not the beneficiary" checkBeneficiary && 
+  traceIfFalse "Deadline not reachec" checkDeadline
+ where
+  checkBeneficiary :: Bool
+  checkBeneficiary = txSignedBy info (beneficiary vestingDatum)
 
-traceIfFalse "Is not the beneficiary" checkBeneficiary &&
+  checkDeadline :: Bool
+  checkDeadline = from (deadline vestingDatum) `contains` 
+                  txInfoValidRange info
 
-traceIfFalse "Deadline not reachec" checkDeadline
+  vestingDatum :: VestingDatum
+  vestingDatum = case scriptContextScriptInfo ctx of
+    SpendingScript _txRef (Just datum) -> 
+      case (fromBuiltinData @VestingDatum . getDatum) datum of
+        Just d  -> d
+        Nothing -> traceError "Expected correctly shaped datum"
+    _ -> traceError "Expected SpendingScript with datum"
 
-where
+  info :: TxInfo
+  info = scriptContextTxInfo ctx
 
-_checkBeneficiary_ :: Bool
+{- ------------------------------------------------------------------------ -}
+{--------------------------------- HELPERS -------------------------------- -}
 
-checkBeneficiary = txSignedBy info (beneficiary vestingDatum)
-
-_checkDeadline_ :: Bool
-
-checkDeadline = from (deadline vestingDatum) `contains`
-
-txInfoValidRange info
-
-_vestingDatum_ :: VestingDatum
-
-vestingDatum = _case_ scriptContextScriptInfo ctx _of_
-
-SpendingScript _txRef (Just datum) ->
-
-_ case_ (fromBuiltinData @VestingDatum . getDatum) datum _of_
-
-Just d -> d
-
-Nothing -> traceError "Expected correctly shaped datum"
-
-_ -> traceError "Expected SpendingScript with datum"
-
-_info_ :: TxInfo
-
-info = scriptContextTxInfo ctx
-
-\{-_
-------------------------------------------------------------------------
-_-}
-
-\{-_-------------------_-_------------ HELPERS
--------------------------------- _-}
-
-_compiledVestingVal_ :: CompiledCode (BuiltinData -> BuiltinUnit)
-
+compiledVestingVal :: CompiledCode (BuiltinData -> BuiltinUnit)
 compiledVestingVal = $$(compile [||wrappedVal||])
+ where
+  wrappedVal :: BuiltinData -> BuiltinUnit
+  wrappedVal ctx = check $ vestingVal (unsafeFromBuiltinData ctx)
 
-where
-
-_wrappedVal_ :: BuiltinData -> BuiltinUnit
-
-wrappedVal ctx = check $ vestingVal (unsafeFromBuiltinData ctx)
-
-_serializedVestingVal_ :: SerialisedScript
-
+serializedVestingVal :: SerialisedScript
 serializedVestingVal = serialiseCompiledCode compiledVestingVal
+----
 
 The validator code is mostly the same as compared to the PlutusV2
 script, with the exception that we look up the datum in the
@@ -6363,9 +6140,9 @@ identified and grouped into categories:
 * *Critical vulnerabilities* that pose a big risk for the DApp
 * *High vulnerabilities* that may affect a large portion of the DApp’s
 security
-* **Medium vulnerabilities **are issues that affect the proper working
+* *Medium vulnerabilities* are issues that affect the proper working
 of a DApp but are not security threats that would need immediate action
-* **Low vulnerabilities **that** **may affect things such as performance
+* *Low vulnerabilities* that may affect things such as performance
 but pose no risk to security.
 
 Examples of common security vulnerabilities in Plutus smart contracts
@@ -6469,7 +6246,7 @@ Marlowe’s safety:
 * Looping is not supported.
 * Functions or macros may not be defined.
 * Timeouts must be numeric constants.
-* Only **Case **continuations may be merkleized. The Faustus programming
+* Only *Case* continuations may be merkleized. The Faustus programming
 language relaxes some of the limitations above, yet it compiles to safe
 Marlowe. Besides Faustus, you can ‘relax’ the above limitations if you
 embed Marlowe into another language (JavaScript, for example). By using
