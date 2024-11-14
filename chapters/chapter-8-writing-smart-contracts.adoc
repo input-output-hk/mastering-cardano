@@ -1755,7 +1755,17 @@ __and _dataToBuiltinData_, which can convert back and forth to the
 __Data __type. The __Data __type has its constructor exposed, as
 illustrated in the image below:
 
-image:Pictures/10000001000001340000011734DEF93C5EFDE5B6.png[image,width=173,height=156]
+[source,haskell]
+----
+data Data  
+    = Constr Integer [Data]
+    | Map [(Data, Data)]
+    | List [Data]
+    | I Integer
+    | B BS.ByteString
+    deriving stock (Show, Read, Eq, Ord, Generic, Data.Data.Data)
+    deriving anyclass (Hashable, NFData, NoThunks)
+----
 
 It is a recursive data type that contains integers and byte strings,
 which can be packed into common lists and maps associated with an
@@ -2166,7 +2176,14 @@ _Plutus smart contracts_ section, we will focus on data types used in
 PlutusV2 scripts and highlight differences to PlutusV3 data types. 
 Below is the PlutusV2 ScriptContext data type:
 
-image:Pictures/100000010000037D000001D5FA0555D6773FA295.png[image,width=278,height=145]
+[source,haskell]
+----
+data ScriptContext = ScriptContext
+    { scriptContextTxInfo  :: TxInfo 
+    , scriptContextPurpose :: ScriptPurpose 
+    }
+    deriving stock (Generic, Haskell.Show)
+----
 
 As previously mentioned, in Plinth, the validation script has access to
 the datum, redeemer, and the transaction (script) context, which
@@ -2187,12 +2204,30 @@ script context. The redeemer can be accessed directly from the script
 context type, and the datum of a UTXO that we want to spend can be
 accessed from the ScriptInfo field.
 
-image:Pictures/10000001000003550000021A2D1151510F5D45FB.png[image,width=447,height=281]
+[source,haskell]
+----
+data ScriptContext = ScriptContext
+    { scriptContextTxInfo     :: TxInfo
+    , scriptContextRedeemer   :: V2.Redeemer
+    , scriptContextScriptInfo :: ScriptInfo
+    }
+    deriving stock (Generic, Haskell.Eq, Haskell.Show)
+    deriving anyclass (HasBlueprintDefinition)
+----
 
 The ScriptPurpose data type for PlutusV2 indicates the purpose of the
 Plinth script, and there are four possible values for this data type.
 
-image:Pictures/10000001000002F50000026AD7C01FA8BC90226C.png[image,width=243,height=198]
+[source,haskell]
+----
+data ScriptPurpose
+    = Minting CurrencySymbol
+    | Spending TxOutRef
+    | Rewarding StakingCredential
+    | Certifying DCert
+    deriving stock (Generic, Haskell.Show, Haskell.Eq)
+    deriving Pretty via (PrettyShow ScriptPurpose)
+----
 
 Minting is used when minting (creating) or burning (destroying) native
 tokens. Spending is used to spend funds sitting at a script address.
@@ -2207,13 +2242,37 @@ contain a datum. In PlutusV2 this is not possible and an empty datum
 needs to be attached to the UTXO if the datum is not being used by the
 smart contract code.
 
-image:Pictures/100000010000033F000002890EBEF0A7EAA93A1B.png[image,width=454,height=356]
+[source,haskell]
+----
+data ScriptInfo
+    = MintingScript V2.CurrencySymbol
+    | SpendingScript V3.TxOutRef (Haskell.Maybe V2.Datum)
+    | RewardingScript V2.Credential
+    | CertifyingScript
+        Haskell.Integer
+        TxCert
+    | VotingScript Voter
+    | ProposingScript
+        Haskell.Integer
+        ProposalProcedure
+    deriving stock (Generic, Haskell.Show, Haskell.Eq)
+    deriving anyclass (HasBlueprintDefinition)
+    deriving (Pretty) via (PrettyShow ScriptInfo)
+----
 
 In this section, we will focus on the spending purpose, so we look at
 the transaction output reference TxOutRef data type that is contained in
 the spending constructor:
 
-image:Pictures/100000010000041F0000029DAEECC7456A47F4EF.png[image,width=358,height=228]
+[source,haskell]
+----
+data TxOutRef = TxOutRef {
+    txOutRefId  :: TxId, 
+    txOutRefIdx :: Integer 
+    }
+    deriving stock (Show, Eq, Ord, Generic)
+    deriving anyclass (NFData)
+----
 
 It defines a UTXO reference that is composed of the transaction ID,
 which is an SHA-256 hash, and the transaction index, which is an integer
@@ -2232,7 +2291,23 @@ Let’s now look at the transaction information – TxInfo – data type that
 constitutes the second half of information contained in the script
 context:
 
-image:Pictures/10000001000006310000059C024E89955B55196D.png[image,width=529,height=478]
+[source,haskell]
+----
+data TxInfo = TxInfo
+    { txInfoInputs          :: [TxInInfo] 
+    , txInfoReferenceInputs :: [TxInInfo] 
+    , txInfoOutputs         :: [TxOut] 
+    , txInfoFee             :: Value 
+    , txInfoMint            :: Value 
+    , txInfoDCert           :: [DCert] 
+    , txInfoWdrl            :: Map StakingCredential Integer 
+    , txInfoValidRange      :: POSIXTimeRange 
+    , txInfoSignatories     :: [PubKeyHash] 
+    , txInfoRedeemers       :: Map ScriptPurpose Redeemer 
+    , txInfoData            :: Map DatumHash Datum 
+    , txInfoId              :: TxId  
+    } deriving stock (Generic, Haskell.Show)
+----
 
 In the beginning, it contains a list of transaction inputs and reference
 inputs. Reference inputs are inputs accessible by the script context but
@@ -2253,38 +2328,84 @@ transactions. Transaction inputs and reference inputs are lists of type
 transaction input info TxInInfo that defines the input of a pending
 transaction.
 
-image:Pictures/10000001000002A900000220A18B49D1991B646C.png[image,width=230,height=183]
+[source,haskell]
+----
+data TxInInfo = TxInInfo
+    { txInInfoOutRef   :: TxOutRef
+    , txInInfoResolved :: TxOut
+    } deriving stock (Generic, Haskell.Show, Haskell.Eq)
+----
 
 It is defined by a transaction output reference and resolved transaction
 input information, which is defined by the transaction output TxOut data
 type.
 
-image:Pictures/1000000100000409000002D37AF4BC474D66EF1E.png[image,width=355,height=248]
+[source,haskell]
+----
+data TxOut = TxOut {
+    txOutAddress         :: Address,
+    txOutValue           :: Value,
+    txOutDatum           :: OutputDatum,
+    txOutReferenceScript :: Maybe ScriptHash
+    }
+    deriving stock (Show, Eq, Generic)
+----
 
 The resolved input information defines the address where the UTXO
 resides, the value it contains, the output datum attached to the UTXO,
 and a possible script hash also associated with the UTXO. Below is the
 address data type:
 
-image:Pictures/10000001000003A10000016B58D186B3E17FA788.png[image,width=494,height=192]
+[source,haskell]
+----
+data Address = Address
+    { addressCredential        :: Credential
+    , addressStakingCredential :: Maybe StakingCredential
+    }
+    deriving stock (Eq, Ord, Show, Generic, Typeable)
+    deriving anyclass (NFData, HasBlueprintDefinition)
+----
 
 As explained in section <<Cardano addresses>>, an address is composed
 of two parts: the payment part and the optional staking part. The
 payment part, defined with the Credential data type, contains either a
 public key hash or a script hash:
 
-image:Pictures/100000010000032100000189FF0FD03611B6D63A.png[image,width=419,height=205]
+[source,haskell]
+----
+data Credential
+    = PubKeyCredential PubKeyHash
+    | ScriptCredential ScriptHash
+      deriving stock (Eq, Ord, Show, Generic, Typeable)
+      deriving anyclass (NFData, HasBlueprintDefinition)
+----
 
 The hashes are both of type BuiltinByteString. The staking part is
 defined with the StakingCredential data type that can be either a
 staking hash or a staking pointer.
 
-image:Pictures/10000001000002F50000029545A5CF4EADEEEB10.png[image,width=411,height=359]
+[source,haskell]
+----
+data StakingCredential
+    = StakingHash Credential
+    | StakingPtr
+        Integer -- ^ the slot number
+        Integer -- ^ the transaction index (within the block)
+        Integer -- ^ the certificate index (within the transaction)
+    deriving stock (Eq, Ord, Show, Generic, Typeable)
+    deriving anyclass (NFData, HasBlueprintDefinition)
+----
 
 Next is the Value type that defines an amount of ada and/or native
 tokens:
 
-image:Pictures/10000001000002DD000000FAD367F239157BA6EA.png[image,width=405,height=136]
+[source,haskell]
+----
+newtype Value = Value { getValue :: Map.Map CurrencySymbol (Map.Map TokenName Integer) }
+    deriving stock (Generic, Typeable, Haskell.Show)
+    deriving newtype (PlutusTx.ToData, PlutusTx.FromData, PlutusTx.UnsafeFromData)
+    deriving Pretty via (PrettyShow Value)
+----
 
 Every native token is defined with a currency symbol and a token name.
 They are both of type BuiltinByteString. The currency symbol is computed
@@ -2294,7 +2415,15 @@ is defined by an empty byte string both for currency symbol and token
 name, which means you cannot mint ada. Next, we examine the OutputDatum
 data type:
 
-image:Pictures/1000000100000289000001638EC47FB48CEB51EB.png[image,width=340,height=185]
+[source,haskell]
+----
+data OutputDatum 
+    = NoOutputDatum 
+    | OutputDatumHash DatumHash 
+    | OutputDatum Datum
+    deriving stock (Show, Eq, Generic)
+    deriving anyclass (NFData)
+----
 
 UTXO can either contain no datum, a datum hash or a datum. A datum hash
 contains a string of type BuiltinByteString and the datum type is a
@@ -2305,7 +2434,28 @@ components are the constructors for fees and minting, both of which are
 of type Value. Then follows the constructor that handles certificates,
 which is defined by a list of the DCert data type:
 
-image:Pictures/10000001000002ED00000301D1AEA6AA0B1B9729.png[image,width=410,height=421]
+[source,haskell]
+----
+data DCert
+    = DCertDelegRegKey StakingCredential
+    | DCertDelegDeRegKey StakingCredential
+    | DCertDelegDelegate
+        StakingCredential -- delegator
+        PubKeyHash        -- delegatee
+    | -- A digest of the PoolParams
+      DCertPoolRegister
+        PubKeyHash        -- poolId
+        PubKeyHash        -- pool VFR
+    | -- The retirement certificate and the Epoch in which the retirement will take place
+      DCertPoolRetire PubKeyHash Integer 
+    | -- A really terse Digest
+      DCertGenesis
+    | -- Another really terse Digest
+      DCertMir
+      deriving stock (Eq, Ord, Show, Generic, Typeable)
+      deriving anyclass (NFData, HasBlueprintDefinition)
+      deriving Pretty via (PrettyShow DCert)
+----
 
 The DCert data type has seven constructors representing the following
 certificates:
@@ -2328,7 +2478,27 @@ rewards. This is covered in section <<Staking and Plinth>>. Next
 follows the transaction validity range, which is defined with the data
 type POSIXTimeRange:
 
-image:Pictures/1000000100000341000000E26E5EA43BE6FA3200.png[image,width=265,height=71]
+[source,haskell]
+----
+newtype POSIXTime = POSIXTime {getPOSIXTime :: Integer}
+    deriving stock (Haskell.Eq, Haskell.Ord, Haskell.Show, Generic, Typeable)
+    deriving anyclass (NFData, HasBlueprintDefinition)
+    deriving newtype
+      ( AdditiveSemigroup
+      , AdditiveMonoid
+      , AdditiveGroup
+      , Eq
+      , Ord
+      , Enum
+      , PlutusTx.ToData
+      , PlutusTx.FromData
+      , PlutusTx.UnsafeFromData
+      , Haskell.Num
+      , Haskell.Enum
+      , Haskell.Real
+      , Haskell.Integral
+      )
+----
 
 The POSIXTime data type contains an Interval type, parameterized with
 the POSIXTime type. POSIXTime is a wrapper for an integer, representing
@@ -2336,12 +2506,25 @@ the number of milliseconds that have passed since January 1, 1970, at
 00:00. The interval type holds data about the lower and upper bounds of
 the validity interval for the specified transaction.
 
-image:Pictures/1000000100000418000002FC53C222465F98C08A.png[image,width=359,height=261]
+[source,haskell]
+----
+data Interval a = Interval 
+    { ivFrom :: LowerBound a, 
+      ivTo :: UpperBound a 
+    }  
+    deriving stock (Haskell.Show, Generic)
+    deriving anyclass (NFData)
+----
 
 The lower and upper bound types are structured in the same way. They
 hold the Extended and Closure types:
 
-image:Pictures/1000000100000289000000FA020E52F746191D18.png[image,width=356,height=136]
+[source,haskell]
+----
+data LowerBound a = LowerBound (Extended a) Closure
+    deriving stock (Haskell.Show, Generic)
+    deriving anyclass (NFData)
+----
 
 The closure type is just a wrapper for a Boolean which indicates whether
 the boundary is included in the interval or not. The extended type has
@@ -2395,7 +2578,29 @@ validation script. In Plutus V3 the transaction information type in
 addition to the changed certification part, four additional constructors
 are added. The PlutusV3 TxInfo data type is illustrated below.
 
-image:Pictures/10000001000002D3000003B550663C2D55F901F9.png[image,width=394,height=517]
+[source,haskell]
+----
+data TxInfo = TxInfo
+  { txInfoInputs                :: [TxInInfo]
+  , txInfoReferenceInputs       :: [TxInInfo]
+  , txInfoOutputs               :: [V2.TxOut]
+  , txInfoFee                   :: V2.Lovelace
+  , txInfoMint                  :: V2.Value
+  , txInfoTxCerts               :: [TxCert]
+  , txInfoWdrl                  :: Map V2.Credential V2.Lovelace
+  , txInfoValidRange            :: V2.POSIXTimeRange
+  , txInfoSignatories           :: [V2.PubKeyHash]
+  , txInfoRedeemers             :: Map ScriptPurpose V2.Redeemer
+  , txInfoData                  :: Map V2.DatumHash V2.Datum
+  , txInfoId                    :: V3.TxId
+  , txInfoVotes                 :: Map Voter (Map GovernanceActionId Vote)
+  , txInfoProposalProcedures    :: [ProposalProcedure]
+  , txInfoCurrentTreasuryAmount :: Haskell.Maybe V2.Lovelace
+  , txInfoTreasuryDonation      :: Haskell.Maybe V2.Lovelace
+  }
+  deriving stock (Generic, Haskell.Show, Haskell.Eq)
+  deriving anyclass (HasBlueprintDefinition)
+----
 
 The four additional constructors focus on voting, proposals, and
 interactions with the Cardano treasury. Learn more about governance
@@ -2640,7 +2845,12 @@ function if you create an instance of the type class Lift. Then, we only
 need to apply the function liftCode to the data to compile the input
 parameter at runtime. Let us take a look at the Lift class:
 
-image:Pictures/10000001000005760000027AE10B1966A45F6404.png[image,width=439,height=198]
+[source,haskell]
+----
+class Lift uni a where
+    -- | Get a Plutus IR term corresponding to the given value.
+    lift :: a -> RTCompile uni fun (Term TyName Name uni fun ())
+----
 
 It contains only the _lift_ method, but we will not use that directly.
 There are a lot of instances for this type class for all possible data
@@ -2649,7 +2859,17 @@ is not used for functions, as they cannot be used to compile Haskell to
 Plutus validators. The _PlutusTx_ module defines this type class, and
 the _liftCode_ function:
 
-image:Pictures/100000010000060F00000184B6EEE524AB81C276.png[image,width=506,height=126]
+[source,haskell]
+----
+liftCode
+    :: ( Lift.Lift uni a, PLC.GEq uni, ThrowableBuiltins uni fun, PLC.Typecheckable uni fun
+       , Default (PLC.CostingPart uni fun)
+       , Default (PIR.BuiltinsInfo uni fun)
+       , Default (PIR.RewriteRules uni fun)
+       , Hashable fun
+       )
+    => PLC.Version -> a -> CompiledCodeIn uni fun a
+----
 
 The input variable of type a must-have an instance of the _Lift_ type
 class. Because we are using a custom defined type in our on-chain code,
@@ -3149,7 +3369,15 @@ is defined in the module _Plutus.V1.Ledger.Value_. Even if we are using
 Plutus V2 scripts, this module has not changed, and we can still use V1
 version for it.
 
-image:Pictures/1000000100000330000000B88A56660DF699B2F3.png[image,width=439,height=99]
+[source,haskell]
+----
+newtype Value = Value 
+    { getValue :: Map.Map CurrencySymbol (Map.Map TokenName Integer) 
+    }
+    deriving stock (Generic, Typeable, Haskell.Show)
+    deriving newtype (PlutusTx.ToData, PlutusTx.FromData, PlutusTx.UnsafeFromData)
+    deriving Pretty via (PrettyShow Value)
+----
 
 The Value type is a map object that connects a currency symbol to
 another map, which uses token names as its keys. Both token names and
@@ -3158,7 +3386,25 @@ representing a byte string. These two byte strings define a native token
 or coin, while the integer represents the token’s amount. Additionally,
 there is another type called AssetClass.
 
-image:Pictures/1000000100000294000000AFA91305F5DF7FCAB1.png[image,width=360,height=95]
+[source,haskell]
+----
+newtype AssetClass = AssetClass 
+    { unAssetClass :: (CurrencySymbol, TokenName) 
+    }
+    deriving stock (Generic, Data, Typeable)
+    deriving newtype
+      ( Haskell.Eq
+      , Haskell.Ord
+      , Haskell.Show
+      , Eq
+      , Ord
+      , PlutusTx.ToData
+      , PlutusTx.FromData
+      , PlutusTx.UnsafeFromData
+      )
+    deriving anyclass (NFData, HasBlueprintDefinition)
+    deriving (Pretty) via (PrettyShow (CurrencySymbol, TokenName))
+----
 
 It combines the currency symbol and token name to define an asset class,
 which can represent a native token or ada. The currency symbol and token
@@ -4619,7 +4865,11 @@ a monad instance. The figure below depicts that the property monad has
 also an instance of the IO monad (MonadIO) and the Fail monad
 (MonadFail) given that m has an instance of both monads.
 
-image:Pictures/100000000000031A000003AD4270A4E5F1F03596.png[image,width=447,height=536]
+[source,haskell]
+----
+newtype PropertyM m a =
+  MkPropertyM { unPropertyM :: (a -> Gen (m Property)) -> Gen (m Property) }
+----
 
 In the check variable, we first call our testValues function and use the
 run function to raise our run monad to a property monad, and then
@@ -5379,7 +5629,16 @@ access the script context as a parameter to the script and the redeemer
 and datum can then be accessed within the script context. Let us recall
 the structure of the script context type for PlutusV3.
 
-image:Pictures/10000001000003550000021A2D1151510F5D45FB.png[image,width=447,height=281]
+[source,haskell]
+----
+data ScriptContext = ScriptContext
+  { scriptContextTxInfo     :: TxInfo
+  , scriptContextRedeemer   :: V2.Redeemer
+  , scriptContextScriptInfo :: ScriptInfo
+  }
+  deriving stock (Generic, Haskell.Eq, Haskell.Show)
+  deriving anyclass (HasBlueprintDefinition)
+----
 
 To recap, when a transaction is spending multiple UTXOs at a script
 address, the spending script is run individually for every UTXO we are
@@ -5814,7 +6073,14 @@ fixed-size integers, and the ledger itself tracks the movement of
 tokens. The table below compares the security features of Ethereum
 ERC-20 tokens with Cardano native tokens.
 
-image:Pictures/10000001000003150000016BF76DFB548F4B913D.png[image,width=499,height=229]
+[cols="1,1,1,1", options="header"]
+|===
+| |ERC20 |Native tokens |Comment 
+|User errors in copying standard code |YES |NO |All shared functionality is provided by the ledger 
+|Over-/under-flow vulnerabilities |YES |NO |Cardano's scripting languages don't have fixed-size integers
+|Unprotected functions |YES |NO |User code is called only in very specific cases to validate minting
+|Denial of service via gas price attacks |YES |NO |Denial of service attacks on the entire system are still possible 
+|=== 
 
 A comparison of various characteristics between Ethereum ERC-20 and
 Cardano native tokens can be found on
