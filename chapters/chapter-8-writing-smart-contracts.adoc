@@ -1,8 +1,5 @@
 = Writing smart contracts
 
-:url-repo: https://github.com/input-output-hk/mastering-cardano
-:imagesdir: images
-
 == Smart contract programming languages
 
 Cardano smart contract languages can be grouped into three categories:
@@ -346,6 +343,9 @@ and restricts spending to only unspent transaction outputs, making the
 reward system more deterministic.
 
 == Cardano addresses
+
+:url-repo: https://github.com/input-output-hk/mastering-cardano
+:imagesdir: images
 
 A blockchain address serves as a communication link between the
 blockchain and the user. With the introduction of stake pools in the
