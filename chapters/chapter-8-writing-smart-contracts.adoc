@@ -1,5 +1,8 @@
 = Writing smart contracts
 
+:url-repo: https://github.com/input-output-hk/mastering-cardano
+:imagesdir: images
+
 == Smart contract programming languages
 
 Cardano smart contract languages can be grouped into three categories:
@@ -349,7 +352,7 @@ blockchain and the user. With the introduction of stake pools in the
 Shelley era, a Cardano address consists of two parts: the _payment_ part
 and the _staking_ part.
 
-image:Pictures/1000000100000155000000A32A6EFF7EE147F4B2.png[image,width=340,height=163]
+image::sc_cardano_address.png[sc_cardano_address,width=340,height=163]
 
 Both parts of a Cardano address are cryptographically derived from the
 private key, containing the same owner information. The payment part,
