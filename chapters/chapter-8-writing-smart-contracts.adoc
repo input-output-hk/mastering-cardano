@@ -1578,10 +1578,7 @@ contract language that complines to Plutus Core. Written in Rust, it
 compiles directly to UPLC, which Cardano nodes execute. This process is
 illustrated on the diagram below:
 
-image:Pictures/100000010000043E000002CFAE90714DEF5D4FF6.png[image,width=590,height=390]
-Aiken code transformation
-(https://cardanofoundation.org/blog/aiken-the-future-of-smart-contracts[_Cardano
-Foundation blog_])
+image::sc_aiken_compilation.png[width=590,height=390,title="Aiken code transformation, source: https://cardanofoundation.org/blog/aiken-the-future-of-smart-contracts[CF blog]"]
 
 Aiken was developed by the https://txpipe.io/[_TxPipe_] company with
 help of the https://cardanofoundation.org/[_Cardano Foundation_], taking
@@ -4575,7 +4572,7 @@ cannot say much about the properties of our smart contracts, other than
 that they pass the tests in these specific scenarios. We can graphically
 display the unit tests we have run above with the illustration below:
 
-image:Pictures/1000000000000780000008343671BA6D0DD4A7B9.png[image,width=549,height=313]
+image::sc_test_cases.png[width=549,height=313,title="Unit test cases"]
 
 The green dots represent the tests that should pass, and the red dots
 represent the tests that should fail. The surface of the diagram
@@ -5886,10 +5883,7 @@ that unaudited Web3 projects account for a substantially larger
 cumulative loss of funds, even though their number is not much higher
 than the number of audited projects.
 
-image:Pictures/10000001000004C60000033429E7BAB63D2AE234.png[image,width=635,height=421]
-
-Source:
-https://www.cyfrin.io/blog/competitive-vs-private-audits-comparison[_Cyfrin_]
+image::sc_loss_of_funds.png[width=635,height=421,title="Loss of funds, source: https://www.cyfrin.io/blog/competitive-vs-private-audits-comparison[Cyfrin blog]"]
 
 Nevertheless, a $1.3bn loss in audited projects is still high. This
 implies that an audit by itself may not always ensure a project’s
@@ -6169,7 +6163,7 @@ compiling however it likes. Under the hood, though, the compilation
 process is more complex. The image below shows the compilation process
 of the on-chain validation code.
 
-image:Pictures/10000000000005AC0000007C6A2005CB58CAD783.jpg[image,width=624,height=53]
+image::sc_plutus_compilation.jpg[width=624,height=53,title="Plutus compilation pipeline"]
 
 We start with Plinth, a subset of Haskell representing the high-level
 language developers use to code the smart contract. Compiling this code
