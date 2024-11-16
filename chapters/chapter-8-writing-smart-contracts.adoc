@@ -32,8 +32,7 @@ The Alonzo era introduced the Plutus Core scripting language, often
 referred to as Plutus. Since Plutus smart contracts validate
 transactions, they are also called validation scripts or validators.
 Plutus is a simple, functional language that enables general-purpose
-https://en.wikipedia.org/wiki/Turing_completeness[_Turing-complete_]
-smart contracts on Cardano. It implements Cardano’s extended UTXO
+Turing-complete (see <<Glosary>>) smart contracts on Cardano. It implements Cardano’s extended UTXO
 (EUTXO) model, which is as powerful in expressing smart contract logic
 as Ethereum’s account-based model, allowing for arbitrary logic in smart
 contracts. The EUTXO model is explained in detail in section 
@@ -77,21 +76,21 @@ programming language. Some examples include:
 
 * https://aiken-lang.org/[_Aiken_]: a unique, typed, purely functional
 DSL; IO plans to support its development in the future
-* https://github.com/plutonomicon/plutarch-plutus[_Plutarch_]: a typed
-eDSL in Haskell for writing efficient Plutus validators
 * https://github.com/HarmonicLabs/plu-ts[_Plu-ts_]: a typed eDSL in
 TypeScript
+* https://opshin.dev/[_OpShin_]: a typed eDSL in Python
 * https://github.com/hyperion-bt/helios[_Helios_]: a
 Javascript/Typescript SDK and typed DSL
-* https://opshin.dev/[_OpShin_]: a typed eDSL in Python
+* https://github.com/plutonomicon/plutarch-plutus[_Plutarch_]: a typed
+eDSL in Haskell for writing efficient Plutus validators
+* https://scalus.org/[_Scalus_]: a typed eDSL in Scala.
 * https://github.com/Plutonomicon/pluto[_Pluto_]: a DSL resembling UPLC
 with some syntactic sugar, written in a Haskell-like syntax
-* https://scalus.org/[_Scalus_]: a typed eDSL in Scala.
 
 You can refer to the
-https://cardano-foundation.github.io/state-of-the-developer-ecosystem/2023/#what-do-you-use-or-plan-to-use-for-writing-plutus-script-validators-smart-contracts[_State
-of the Cardano Developer Ecosystem report_] – 2023 to see how much these
-languages are used in practice. As of 2023, the most commonly used ones
+https://cardano-foundation.github.io/state-of-the-developer-ecosystem/2024/#what-do-you-use-or-plan-to-use-for-writing-plutus-script-validators-smart-contracts[_State
+of the Cardano Developer Ecosystem report_] – 2024 to see how much these
+languages are used in practice. As of 2024, the most commonly used ones
 are Aiken and Plinth. A comparison of these languages is discussed in
 section <<Plinth in comparison to Aiken>>. A brief comparison of
 some of the listed languages can also be found in the following blog
@@ -125,18 +124,19 @@ https://minswap.org/[_MinSwap_], https://sundaeswaap.com/[_SundaeSwap_],
 https://www.geniusyield.co/[_GeniusYield_])
 * Automated lending and borrowing platforms
 (https://liqwid.finance/[_Liqwid_], https://www.meld.com/[_MELD_],
-https://lenfi.io/[_Lenfi_]. https://fluidtokens.com/[_FluidTokens_])
+https://lenfi.io/[_Lenfi_], https://fluidtokens.com/[_FluidTokens_])
 * Digital identity management platforms
-(https://atalaprism.io/[_AtalaPRISM_], https://iamx.id/[_IAMX_],
-https://www.profila.com/[_Profila_])
+(https://github.com/hyperledger/identus[_Identus_], https://iamx.id/[_IAMX_],
+https://www.profila.com/[_Profila_], https://identity.cardanofoundation.org/[_Identity wallet_])
 * Decentralized, blockchain-powered mobile network
 (https://worldmobile.io/en[_WorldMobile_])
 * Decentralized artificial intelligence systems
 (https://singularitynet.io/[_SingularityNET_],
 https://cardanogpt.ai/[_CardanoGPT_])
 * Decentralized autonomous organizations (DAO)
-(https://www.adadao.org/[_adaDAO_], https://nft-dao.org/[_NFT-DAO_],
-https://indigoprotocol.io/[_IndigoDAO_])
+(https://indigoprotocol.io/#indigo-dao[_IndigoDAO_], 
+https://www.clarity.vote/organizations/CharityDAO[_Charity DAO_], 
+https://github.com/eLearningDAO[_eLarning DAO_])
 * Decentralized synthetic assets protocol
 (https://indigoprotocol.io/[_IndigoProtocol_])
 * Decentralized prediction markets (https://foreon.network/[_Foreon_])
@@ -216,15 +216,15 @@ Blockfrost API layer for Cardano. The SDK is provided in various
 programming languages such as Arduino, .NET, Crystal, Elixir, Go,
 Haskell, Java, JavaScript, Kotlin, PHP, Python, Ruby, Rust, Scala and
 Swift.
-* https://lucid.spacebudz.io/[_Lucid_]: a popular JavaScript/Typescript
-library for off-chain code, which will be further maintained by the
-https://github.com/Anastasia-Labs/lucid-evolution[_Lucid Evolution_]
-project funded by
-https://projectcatalyst.io/funds/11/cardano-open-developers/anastasia-labs-lucid-evolution-redefining-off-chain-transactions-in-cardano[_Catalyst
-Fund11_].
 * https://meshjs.dev/[_MeshJS_]: a NodeJS-based open-source library
 providing numerous tools to easily build DApps on Cardano. It also
 integrates the popular https://react.dev/[_React_] library.
+* https://lucid.spacebudz.io/[_Lucid_]: a popular JavaScript/Typescript
+library for off-chain code, which will be further maintained by the
+https://anastasia-labs.github.io/lucid-evolution/[_Lucid Evolution_]
+project funded by
+https://projectcatalyst.io/funds/11/cardano-open-developers/anastasia-labs-lucid-evolution-redefining-off-chain-transactions-in-cardano[_Catalyst
+Fund11_].
 * https://atlas-app.io/[_Atlas_]: an all-in-one, Haskell-native
 application backend for writing off-chain code for Plutus smart
 contracts.
@@ -240,8 +240,8 @@ https://www.essentialcardano.io/article/a-list-of-community-built-developer-tool
 community-built developer tools_] list hosted on Essential Cardano.
 
 You can also look at the State of the Cardano Developer Ecosystem report
-– 2023, listing the most commonly used
-https://cardano-foundation.github.io/state-of-the-developer-ecosystem/2023/#which-libraries-do-you-use-in-your-projects[_Cardano
+– 2024, listing the most commonly used
+https://cardano-foundation.github.io/state-of-the-developer-ecosystem/2024/#which-libraries-do-you-use-in-your-projects[_Cardano
 libraries_].
 
 This chapter also presents the Lucid tool and showcases how to write
@@ -3326,9 +3326,11 @@ Cardano era and Lucid version, or any other off-chain library, may not
 work in future eras if blockchain parameters change. As of this writing,
 Lucid version 0.10.7 also lacks a fix, but the main branch of the
 https://github.com/spacebudz/lucid[_Lucid repository_]
-https://github.com/spacebudz/lucid/pull/254[_includes one_]. Users can
-clone the repository locally and reference the ``mod.ts`` file directly in
-their code.
+https://github.com/spacebudz/lucid/pull/254[_includes one_]. You can 
+check the Lucid page at https://deno.land/x/lucid[_Deno land_] if there 
+will be a newer version published at the time of reading. In case it is not, 
+users can clone the repository locally and reference the ``mod.ts`` file 
+directly in their code.
 
 [source,typescript]
 ----
@@ -3349,8 +3351,8 @@ import {
 If you use the latest Lucid updates, you should also use an up-to-date
 Deno version. The Deno version in the Docker container for the Plinth
 development environment (discussed in section <<Setting up a Plinth development environment>>) will not compile
-code with the latest Lucid updates. It’s important to note that the
-Lucid project is no longer actively maintained, with further development
+code with the latest Lucid updates. It’s important to note that the Lucid 
+project is not very actively maintained, and further development is
 occurring under the Lucid Evolution project by AnastasiaLabs, funded in
 https://projectcatalyst.io/funds/11/cardano-open-developers/anastasia-labs-lucid-evolution-redefining-off-chain-transactions-in-cardano[_Catalyst
 Fund11_]. Once Lucid Evolution is available and actively maintained,
