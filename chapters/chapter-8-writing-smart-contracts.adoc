@@ -2897,7 +2897,8 @@ write off-chain code for the on-chain code example presented in the
 previous section.
 
 After the Alonzo era, when smart contracts became available on Cardano,
-the Plutus application platform provided a way to write off-chain code.
+the https://github.com/IntersectMBO/plutus-apps[Plutus application platform] 
+provided a way to write off-chain code.
 Developed by IO and implemented as a set of Haskell libraries, it
 allowed users to write and submit transactions using the Contract monad.
 A single Haskell file could contain on-chain and off-chain code.
@@ -2929,7 +2930,9 @@ off-chain and on-chain code at this point. Because Cardano uses the hard fork
 combinator technology, all Plutus script versions are supported by the
 blockchain (read more in section <<Cardano node layers>>). Once you have writen on-chain
 code that works, it will work indefinitely. That is not the case for
-off-chain code. Some of the off-chain code example presented in this section may
+off-chain code. 
+
+Some of the off-chain code example presented in this section may
 not work in the Conway era because Lucid version 0.9.1, used in this
 section, does not correctly calculate the minimum ada for instance when attaching a
 reference script to a transaction. Off-chain code built for a specific
@@ -2941,7 +2944,7 @@ https://github.com/spacebudz/lucid/pull/254[_include one_]. You can
 check the Lucid page at https://deno.land/x/lucid[_Deno land_] if there 
 is a newer version published at the time of reading. In case it is not, 
 you can clone the repository locally and reference the ``mod.ts`` file 
-directly in their code.
+directly in the code.
 
 [source,typescript]
 ----
@@ -2964,7 +2967,8 @@ Deno version. The Deno version in the Docker container for the Plinth
 development environment (discussed in section <<Setting up a Plinth development environment>>) will not compile
 code with the latest Lucid updates. It’s important to note that the Lucid 
 project is not very actively maintained, and further development is
-occurring under the Lucid Evolution project by AnastasiaLabs, funded in
+occurring under the https://github.com/Anastasia-Labs/lucid-evolution[Lucid Evolution] 
+project by AnastasiaLabs, funded in
 https://projectcatalyst.io/funds/11/cardano-open-developers/anastasia-labs-lucid-evolution-redefining-off-chain-transactions-in-cardano[_Catalyst
 Fund11_]. Once Lucid Evolution is available and actively maintained,
 developers will simply need to upgrade to the latest version and re-test
