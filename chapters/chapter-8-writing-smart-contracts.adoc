@@ -352,7 +352,7 @@ blockchain and the user. With the introduction of stake pools in the
 Shelley era, a Cardano address consists of two parts: the _payment_ part
 and the _staking_ part.
 
-image::sc_cardano_address.png[width=500,height=250,title="Cardano address"]
+image::sc_cardano_address.png[width=400,height=200,title="Cardano address"]
 
 Both parts of a Cardano address are cryptographically derived from the
 private key, containing the same owner information. The payment part,
@@ -1089,7 +1089,7 @@ When [
 
 The next image shows the contract implemented using the Blockly tool:
 
-image::sc_marlowe_contract_escrow.png[width=295,height=832,title="Marlowe escrow contract"]
+image::sc_marlowe_contract_escrow.png[width=400,height=1130,title="Marlowe escrow contract"]
 
 First, the buyer must deposit the funds into the seller’s internal
 account, with the amount defined by the _Price_ parameter. The next
