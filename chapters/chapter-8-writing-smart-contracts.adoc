@@ -750,7 +750,7 @@ bar.
 
 Below is the Marlowe Runtime architecture:
 
-image::sc_marlowe_runtime_architecture.png[width=605,height=364,title="Marlowe runtime architecture, source: https://github.com/input-output-hk/marlowe-cardano/blob/main/marlowe-runtime/doc/ReadMe.md[Marlowe GitHub]"]
+image::sc_marlowe_runtime_architecture.png[width=605,height=364,title="Marlowe runtime architecture, source: https://github.com/input-output-hk/marlowe-cardano/blob/main/marlowe-runtime/doc/ReadMe.md#architecture[Marlowe GitHub]"]
 
 The Marlowe Runtime backend consists of a chain-indexing and query
 service (marlowe-chain-indexer / marlowe-chain-sync), a
@@ -765,9 +765,9 @@ Access to the backend services is provided via a command-line client
 JSON payloads. Web applications can integrate with a
 https://cips.cardano.org/cips/cip30/[_CIP-30 light wallet_] for
 transaction signing, whereas enterprise applications can integrate with
-https://github.com/input-output-hk/cardano-wallet[_cardano-wallet_], 
-https://github.com/input-output-hk/cardano-node/blob/master/cardano-cli/README.md[_cardano-cli_], 
-or https://github.com/vacuumlabs/cardano-hw-cli/blob/develop/README.md[_cardano-hw-cli_]
+https://github.com/cardano-foundation/cardano-wallet[_cardano-wallet_], 
+https://github.com/IntersectMBO/cardano-cli[_cardano-cli_], 
+or https://github.com/vacuumlabs/cardano-hw-cli/tree/develop[_cardano-hw-cli_]
 for the same purpose.
 
 The backend services use typed protocols over TCP sockets, with separate
@@ -957,8 +957,7 @@ The *When* constructor, in the beginning, waits for an external action
 that we specify in square brackets. If this external action does not
 happen, we will close the contract. We do this by specifying a timeout
 in POSIX time (measured as milliseconds after UNIX epoch –
-00:00:00https://en.wikipedia.org/wiki/Coordinated_Universal_Time[
-]https://en.wikipedia.org/wiki/Coordinated_Universal_Time[_UTC_] on
+00:00:00 https://en.wikipedia.org/wiki/Coordinated_Universal_Time[_UTC_] on
 January, 1, 1970) after the closing square bracket of the *When*
 constructor and add the *Close* constructor at the end. If the
 external action does not happen before this timeout, the contract
@@ -1142,7 +1141,7 @@ https://github.com/input-output-hk/marlowe-cardano/tree/main/marlowe-actus[_Marl
 ACTUS implementation_] is available for the ACTUS financial standard.
 
 Marlowe DApps can be discovered by searching the keyword ‘Marlowe’ in
-various https://projectcatalyst.io/funds[_Project Catalyst_] proposals.
+various https://projectcatalyst.io/search?q=marlowe[_Project Catalyst_] proposals.
 The Marlowe team at IO has also developed the following Marlowe DApps:
 
 * https://github.com/input-output-hk/marlowe-payouts[_Marlowe Payouts_]
@@ -1391,7 +1390,7 @@ developers with a richer smart contract creation toolkit, enhancing both
 developer and user experiences, and unlocking new possibilities for
 decentralized applications (DApps) on Cardano.
 
-Section <<PlutusV3 features>>_dives deeper into PlutusV3
+Section <<PlutusV3 features>> dives deeper into PlutusV3
 advantages and presents some basic code examples to highlight the
 differences to PlutusV2. Cardano’s hard fork combinator technology,
 presented in section <<Cardano node layers>>, subsection
@@ -1427,7 +1426,7 @@ https://github.com/input-output-hk/plutus-pioneer-program/tree/aiken-fourth-iter
 branch. Further learning resources and smart contract examples in
 Plinth, Aiken and other smart contract languages can be found at:
 
-* https://docs.gomaestro.org/Cardano/ManagedContracts/Introduction#smart-contract-marketplace[_Cardano’s
+* https://www.gomaestro.org/smart-contracts[_Cardano’s
 smart contract marketplace_] – hosted by Maestro. This DApp platform
 provides powerful APIs and developer tools to build and scale DApps with
 ease.
@@ -1443,7 +1442,7 @@ their GitHub repositories.
 Aiken specific learning resources are presented at the end of section
 8.5.3 _Plinth in comparison to Aiken_. Commercial training for
 developers interested in building on Cardano is offered by
-https://education.emurgo.io/[_Emurgo Academy_]. At the time of writing,
+https://education.emurgo.io/about-us/[_Emurgo Academy_]. At the time of writing,
 the offered courses include:
 
 * Cardano solutions architect
@@ -1638,12 +1637,9 @@ project_], covering the following topics:
 * writing a test
 * Lucid and PyCardano off-chain code.
 
-Thehttps://github.com/aiken-lang/awesome-aiken[
-]https://github.com/aiken-lang/awesome-aiken[_Awesome Aiken_] repository
+The https://github.com/aiken-lang/awesome-aiken[_Awesome Aiken_] repository
 provides many links to Aiken libraries, DApps, tutorials and video
-lessons. One can also see
-thehttps://piefayth.github.io/blog/pages/aiken1/[
-]https://piefayth.github.io/blog/pages/aiken1/[_Aiken for amateurs_]
+lessons. One can also see https://piefayth.github.io/blog/pages/aiken1/[_Aiken for amateurs_]
 tutorial that is at the time of writing not included in the Awesome
 Aiken repository.
 
@@ -2928,16 +2924,57 @@ enabling the creation of a backend for decentralized applications.
 This section explores the https://lucid.spacebudz.io/[_Lucid_] tool,
 developed by Spacebuzd. It can be used as a NodeJS package to construct
 and submit transactions interacting with a smart contract using
-JavaScript or TypeScript. Future development of Lucid is being carried
-out by AnastasiaLabs under the
-https://github.com/Anastasia-Labs/lucid-evolution[_Lucid Evolution_]
-project. Our code will reside in TypeScript files to leverage some of
-the type system’s features.
+JavaScript or TypeScript. We make an important distinction between
+off-chain and on-chain code at this point. Because Cardano uses the hard fork
+combinator technology, all Plutus script versions are supported by the
+blockchain (read more in section <<Cardano node layers>>). Once you have writen on-chain
+code that works, it will work indefinitely. That is not the case for
+off-chain code. Some of the off-chain code example presented in this section may
+not work in the Conway era because Lucid version 0.9.1, used in this
+section, does not correctly calculate the minimum ada for instance when attaching a
+reference script to a transaction. Off-chain code built for a specific
+Cardano era and a Lucid library version, or any other off-chain library, may not
+work in future eras if blockchain parameters change. As the time of writing,
+Lucid version 0.10.7 also lacks a fix, but the main branch of the
+https://github.com/spacebudz/lucid[_Lucid repository_] does 
+https://github.com/spacebudz/lucid/pull/254[_include one_]. You can 
+check the Lucid page at https://deno.land/x/lucid[_Deno land_] if there 
+is a newer version published at the time of reading. In case it is not, 
+you can clone the repository locally and reference the ``mod.ts`` file 
+directly in their code.
 
-For our example, we will write off-chain code that interacts with the
-vesting smart contract presented in section 
-<<Time-dependent and parameterized validators>>. We will run our code using
-https://deno.com/[_Deno_], which is a runtime for JavaScript and
+[source,typescript]
+----
+import {
+    Data,
+    Lucid,
+    Blockfrost,
+    getAddressDetails,
+    SpendingValidator,
+    TxHash,
+    Datum,
+    UTxO,
+    Address,
+    AddressDetails,
+} from "./<path>/<to>/<local>/lucid/mod.ts"
+----
+
+If you use the latest Lucid updates, you should also use an up-to-date
+Deno version. The Deno version in the Docker container for the Plinth
+development environment (discussed in section <<Setting up a Plinth development environment>>) will not compile
+code with the latest Lucid updates. It’s important to note that the Lucid 
+project is not very actively maintained, and further development is
+occurring under the Lucid Evolution project by AnastasiaLabs, funded in
+https://projectcatalyst.io/funds/11/cardano-open-developers/anastasia-labs-lucid-evolution-redefining-off-chain-transactions-in-cardano[_Catalyst
+Fund11_]. Once Lucid Evolution is available and actively maintained,
+developers will simply need to upgrade to the latest version and re-test
+their DApp’s off-chain code.
+
+For our example, we will write off-chain code with Lucid 0.9.1 that interacts 
+with the vesting smart contract presented in section 
+<<Time-dependent and parameterized validators>>. Our code will reside in 
+TypeScript files to leverage some of the type system’s features. We will run 
+our code using https://deno.com/[_Deno_], which is a runtime for JavaScript and
 TypeScript. To use Deno, you can find definitions and short code
 examples for Lucid name spaces, classes, variables, functions,
 interfaces and type aliases https://deno.land/x/lucid@0.9.1/mod.ts[_on
@@ -3313,52 +3350,6 @@ the Cardano CLI tool, with a
 https://github.com/perturbing/vasil-tests/blob/main/referencing-scripts-cip-33.md[_tutorial
 available here_].
 
-At the end of this section, we make an important distinction between
-off-chain and on-chain code. Because Cardano uses the hard fork
-combinator technology, all Plutus script versions are supported by the
-blockchain (read more in section <<Cardano node layers>>). Once you have writen on-chain
-code that works, it will work indefinitely. That is not the case for
-off-chain code. The off-chain code example using a reference script will
-not work in the Conway era because Lucid version 0.9.1, used in this
-section, does not correctly calculate the minimum ada when attaching a
-reference script to a transaction. Off-chain code built for a specific
-Cardano era and Lucid version, or any other off-chain library, may not
-work in future eras if blockchain parameters change. As of this writing,
-Lucid version 0.10.7 also lacks a fix, but the main branch of the
-https://github.com/spacebudz/lucid[_Lucid repository_]
-https://github.com/spacebudz/lucid/pull/254[_includes one_]. You can 
-check the Lucid page at https://deno.land/x/lucid[_Deno land_] if there 
-will be a newer version published at the time of reading. In case it is not, 
-users can clone the repository locally and reference the ``mod.ts`` file 
-directly in their code.
-
-[source,typescript]
-----
-import {
-    Data,
-    Lucid,
-    Blockfrost,
-    getAddressDetails,
-    SpendingValidator,
-    TxHash,
-    Datum,
-    UTxO,
-    Address,
-    AddressDetails,
-} from "./<path>/<to>/<local>/lucid/mod.ts"
-----
-
-If you use the latest Lucid updates, you should also use an up-to-date
-Deno version. The Deno version in the Docker container for the Plinth
-development environment (discussed in section <<Setting up a Plinth development environment>>) will not compile
-code with the latest Lucid updates. It’s important to note that the Lucid 
-project is not very actively maintained, and further development is
-occurring under the Lucid Evolution project by AnastasiaLabs, funded in
-https://projectcatalyst.io/funds/11/cardano-open-developers/anastasia-labs-lucid-evolution-redefining-off-chain-transactions-in-cardano[_Catalyst
-Fund11_]. Once Lucid Evolution is available and actively maintained,
-developers will simply need to upgrade to the latest version and re-test
-their DApp’s off-chain code.
-
 === Minting policies
 
 In Plutus, a minting policy defines the conditions under which native
@@ -3702,7 +3693,7 @@ and for that, we use UTXOs. UTXOs can exist only once, and once consumed
 as input to a transaction, they can never exist again. UTXOs are defined
 by transaction hashes and output indices, which are unique. The reason
 why every transaction has a unique hash was explained in section 
-<<Explaining script context>>.
+<<Explaining the script context>>.
 
 When minting an NFT, the idea is to include a specific parameter in the
 minting policy – namely, the UTXO transaction hash and ID – and have the
