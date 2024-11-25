@@ -32,7 +32,7 @@ The Alonzo era introduced the Plutus Core scripting language, often
 referred to as Plutus. Since Plutus smart contracts validate
 transactions, they are also called validation scripts or validators.
 Plutus is a simple, functional language that enables general-purpose
-Turing-complete (see <<Glosary>>) smart contracts on Cardano. It implements Cardano’s extended UTXO
+Turing-complete (see <<Glossary>>) smart contracts on Cardano. It implements Cardano’s extended UTXO
 (EUTXO) model, which is as powerful in expressing smart contract logic
 as Ethereum’s account-based model, allowing for arbitrary logic in smart
 contracts. The EUTXO model is explained in detail in section 
@@ -352,7 +352,7 @@ blockchain and the user. With the introduction of stake pools in the
 Shelley era, a Cardano address consists of two parts: the _payment_ part
 and the _staking_ part.
 
-image::sc_cardano_address.png[width=600,height=250,title="Cardano address"]
+image::sc_cardano_address.png[width=500,height=250,title="Cardano address"]
 
 Both parts of a Cardano address are cryptographically derived from the
 private key, containing the same owner information. The payment part,
@@ -408,7 +408,7 @@ contrast, Byron addresses are encoded in Base58, allowing for easy
 differentiation from Shelley-era addresses. Below are examples of the
 different address types:
 
-image::sc_address_types.png[width=624,height=98,title="Address types, source: https://cips.cardano.org/cip/CIP-19[CIP-19]"]
+image::sc_address_types.png[width=936,height=147,title="Address types, source: https://cips.cardano.org/cip/CIP-19[CIP-19]"]
 
 In Cardano addresses, the sequence of bytes (decoded from _Bech32_ or
 _Base58_) consists of two parts – a one-byte header and a payload of
@@ -570,7 +570,7 @@ developers to build and deploy enterprise and Web3 DApp solutions
 validators and run Marlowe contracts manually
 * *Marlowe starter kit* – provides tutorials for developers to learn and
 run simple Marlowe contracts on Cardano
-* *Marlowe TypeScript SDK *(currently in beta) – a suite of
+* *Marlowe TypeScript SDK* (currently in beta) – a suite of
 TypeScript/JavaScript libraries for developing web DApps on Cardano
 using Marlowe technologies
 * *Demeter.Run integration* – a web service that allows building Marlowe
@@ -758,16 +758,16 @@ contract-indexing and query service for Marlowe contracts
 (marlowe-indexer / marlowe-sync), and a transaction-creation service for
 Marlowe contracts (marlowe-tx). These backend services work together,
 relying upon
-https://github.com/input-output-hk/cardano-node/blob/master/README.rst[_cardano-node_]
+https://github.com/input-output-hk/cardano-node/[_cardano-node_]
 for blockchain connectivity and PostgreSQL for persistent storage.
 Access to the backend services is provided via a command-line client
 (marlowe-runtime-cli), or a REST/WebSocket server (web-server) that uses
 JSON payloads. Web applications can integrate with a
 https://cips.cardano.org/cips/cip30/[_CIP-30 light wallet_] for
 transaction signing, whereas enterprise applications can integrate with
-https://github.com/input-output-hk/cardano-wallet/blob/master/README.md[_cardano-wallet_],https://github.com/input-output-hk/cardano-node/blob/master/cardano-cli/README.md[_
-cardano-cli_], or
-https://github.com/vacuumlabs/cardano-hw-cli/blob/develop/README.md[_cardano-hw-cli_]
+https://github.com/input-output-hk/cardano-wallet[_cardano-wallet_], 
+https://github.com/input-output-hk/cardano-node/blob/master/cardano-cli/README.md[_cardano-cli_], 
+or https://github.com/vacuumlabs/cardano-hw-cli/blob/develop/README.md[_cardano-hw-cli_]
 for the same purpose.
 
 The backend services use typed protocols over TCP sockets, with separate
