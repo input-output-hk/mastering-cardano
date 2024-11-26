@@ -5920,11 +5920,12 @@ because its account-based model has a global state that transactions
 update and smart contracts can access. This means that the state can
 change between when a user submits a transaction and when it is
 processed, which means the transaction can fail even after the user pays
-the transaction fee. There is no global state in Cardano, and a smart
-contract only sees the datum of the UTXO the transaction is consuming,
-the redeemer, and other data contained in the transaction context that
-also provides access to all inputs and outputs. Section 
-<<Plutus smart contracts>> explains these concepts in detail.
+the transaction fee. You can read more about this topic in the following 
+https://academy.geniusyield.co/articles/what-is-cardano[GeniusYield Academy blog]. 
+There is no global state in Cardano, and a smart contract only sees the datum 
+of the UTXO the transaction is consuming, the redeemer, and other data contained 
+in the transaction context that also provides access to all inputs and outputs. 
+Section <<Plutus smart contracts>> explains these concepts in detail.
 
 In theory, there can be multiple transactions processed simultaneously,
 given that they consume different input UTXOs. This is because
@@ -6091,8 +6092,7 @@ explain the advantages and best practices for them separately.
 
 Blockchain programming platforms often depend on a custom smart contract
 language, such as Ethereum’s Solidity. Cardano offers Plinth (formerly
-known as PlutusTx), which is a
-https://en.wikipedia.org/wiki/Turing_completeness[_Turing-complete_]
+known as PlutusTx), which is a Turing-complete (see <<Glossary>>) 
 smart contract language realized on top of Haskell, a high-assurance,
 pure functional programming language with a strong type system. You can
 read more about the characteristics and advantages of the Haskell
@@ -6138,7 +6138,7 @@ compiling however it likes. Under the hood, though, the compilation
 process is more complex. The image below shows the compilation process
 of the on-chain validation code.
 
-image::sc_plutus_compilation.jpg[width=624,height=53,title="Plutus compilation pipeline"]
+image::sc_plutus_compilation.png[width=624,height=53,title="Plutus compilation pipeline"]
 
 We start with Plinth, a subset of Haskell representing the high-level
 language developers use to code the smart contract. Compiling this code
@@ -6178,12 +6178,9 @@ and tools that enable developers to build high-assurance software. To
 assess the security of the Plutus language, formal methods were used
 that are the most stringent form of reasoning about code correctness.
 Formal methods are mathematically rigorous techniques for
-thehttps://en.wikipedia.org/wiki/Formal_specification[
-]https://en.wikipedia.org/wiki/Formal_specification[_specification_],
-development,https://en.wikipedia.org/wiki/Program_analysis[
-]https://en.wikipedia.org/wiki/Program_analysis[_analysis_],
-andhttps://en.wikipedia.org/wiki/Formal_verification[
-]https://en.wikipedia.org/wiki/Formal_verification[_verification_] of
+the https://en.wikipedia.org/wiki/Formal_specification[_specification_],
+development, https://en.wikipedia.org/wiki/Program_analysis[_analysis_],
+and https://en.wikipedia.org/wiki/Formal_verification[_verification_] of
 software and hardware systems. They are not well suited for any
 arbitrary programming language but work well with pure functional
 programming languages such as Haskell. With formal methods, one can
@@ -6343,10 +6340,9 @@ replicated.
 information.
 
 You can read further details of the above points in
-https://developers.cardano.org/docs/governance/cardano-improvement-proposals/cip-0052/[_CIP-0052_],
+https://cips.cardano.org/cip/CIP-52[_CIP-0052_],
 which defines guidelines and best practices for auditing DApps built on
-Cardano. Furthermore,
-https://developers.cardano.org/docs/governance/cardano-improvement-proposals/cip-0057[_CIP-0057_]
+Cardano. Furthermore, https://cips.cardano.org/cip/CIP-57[_CIP-0057_]
 defines a language specification for documenting Plutus contracts
 through the form of a JSON schema that sets the vocabulary and
 validation rules to specify the Plutus contract interface. This enables
@@ -6403,7 +6399,7 @@ auditing companies Tweag and Vacuumlabs that made some of their audit
 reports freely available to the public:
 
 * https://github.com/tweag/tweag-audit-reports[_Tweag audit reports_]
-* https://github.com/vacuumlabs/audits[_Vacuum Labs audit reports. _]
+* https://github.com/vacuumlabs/audits[_Vacuum Labs audit reports_].
 
 === Plutus best practices
 
@@ -6648,7 +6644,7 @@ https://github.com/input-output-hk/marlowe-cardano/blob/main/marlowe/best-practi
 best practices guide_], which explains how to avoid protocol limits when
 designing Marlowe contracts in the following cases:
 
-[arabic, start=8]
+[arabic, start=1]
 . Choose role and token names that are no longer than 32 bytes
 . Ensure that the contract's initial state is valid
 . Ensure that the initial value in the contract contains sufficient
@@ -6690,7 +6686,7 @@ https://github.com/input-output-hk/marlowe-cardano/blob/main/marlowe/security.md
 security guide_] answers all these questions in detail. As a conclusion,
 when developing a Marlowe smart contract, one should:
 
-* Use the https://play.marlowe.iohk.io/#/[_Marlowe Playground_] to
+* Use the https://playground.marlowe-lang.org/#/[_Marlowe Playground_] to
 simulate the contract and perform static analysis
 * Use the _marlowe-cli run analyze_ tool to check if the contract can
 run on the Cardano network and does not violate any of the Cardano
