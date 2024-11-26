@@ -4665,13 +4665,11 @@ function:
 ------------------------------------------------------------------------------
 -------------------------- HELPER FUNCTIONS/INSTANCES ------------------------
 
-
 -- | Make Run an instance of Testable so we can use it with QuickCheck
 instance Testable a => Testable (Run a) where
   property rp = let (a,_) = runMock rp $ initMock defaultBabbage 
                                          (adaValue 10_000_000) 
                 in property a
-
 
 -- Make POSIXTime an instance of Arbitrary so QuickCheck can generate random 
 -- values to test
@@ -4680,21 +4678,17 @@ instance Arbitrary POSIXTime where
     n <- choose (0, 2000)
     return (POSIXTime n)
 
-
 -- Time to wait before consumming UTxO from script
 waitBeforeConsumingTx :: POSIXTime
 waitBeforeConsumingTx = 1000
-
 
 -- Set many users at once
 setupUsers :: Run [PubKeyHash]
 setupUsers = replicateM 2 $ newUser $ ada (Lovelace 1000)
 
-
 -- Validator's script
 valScript :: TypedValidator datum redeemer
 valScript = TypedValidator $ toV2 OnChain.validator
-
 
 -- Create transaction that spends "usp" to lock "val" in "giftScript"
 lockingTx :: POSIXTime -> UserSpend -> Value -> Tx
@@ -4703,7 +4697,6 @@ lockingTx dl usp val =
     [ userSpend usp
     , payToScript valScript (HashDatum (OnChain.MkCustomDatum dl)) val
     ]
-
 
 -- Create transaction that spends "giftRef" to unlock "giftVal" from the 
 -- "valScript" validator
@@ -4735,16 +4728,13 @@ Let’s now look at how we define our property functions for testing:
 ------------------------------------------------------------------------------
 ------------------------------ TESTING PROPERTIES ----------------------------
 
-
 -- All redeemers fail before deadline 
 prop_Before_Fails :: POSIXTime -> Integer -> Property
 prop_Before_Fails d r = (d > 1001) ==> runChecks False d r
 
-
 -- Positive redeemer always fail after deadline
 prop_PositiveAfter_Fails :: POSIXTime -> Integer -> Property
 prop_PositiveAfter_Fails d r = (r > 0 && d < 999) ==> runChecks False d r
-
 
 -- Negative redeemers always succeed after deadline
 prop_NegativeAfter_Succeeds :: POSIXTime -> Integer -> Property
@@ -4788,7 +4778,6 @@ Let’s now look at the testing functions:
 ------------------------------------------------------------------------------
 ------------------------------ RUNNING THE TESTS -----------------------------
 
-
 -- | Check that the expected and real balances match after using the validator 
 -- with different redeemers
 runChecks :: Bool -> POSIXTime -> Integer -> Property
@@ -4797,7 +4786,6 @@ runChecks shouldConsume deadline redeemer =
     where check = do
             balancesMatch <- run $ testValues shouldConsume deadline redeemer
             assert balancesMatch 
-
 
 -- Function to test if both creating and consuming script UTxOs works properly
 testValues :: Bool -> POSIXTime -> Integer -> Run Bool
@@ -5358,9 +5346,9 @@ To use that script, we look up the UTXO available for spending using the
 
 [source,shell]
 ----
-                         	TxHash                          	      TxIx     Amount
+                          TxHash                                  TxIx     Amount   
 ------------------------------------------------------------------------------------
-4184b0b1b8363b81b30c58bfb5f3972dfce9a2dcf886998e37929964f3b3619b   0 	  342271389694
+4184b0b1b8363b81b30c58bfb5f3972dfce9a2dcf886998e37929964f3b3619b   0    342271389694
                                                                           lovelace +
                                                                       TxOutDatumNone
 ----
