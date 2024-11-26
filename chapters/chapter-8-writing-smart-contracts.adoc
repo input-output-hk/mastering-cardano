@@ -4051,6 +4051,7 @@ library shows how Mock and Run types are defined:
 
 [source,haskell]
 ----
+data Mock = Mock
   { mockUsers :: !(Map PubKeyHash User)
   , mockAddresses :: !(Map Address (Set TxOutRef))
   , mockUtxos :: !(Map TxOutRef TxOut)
@@ -4075,8 +4076,8 @@ newtype Run a = Run (State Mock a)
 ----
 
 The source code for the Mock data type can be found in the following
-https://github.com/mlabs-haskell/plutus-simple-model/blob/main/psm/src/Plutus/Model/Mock.hs[_GitHub
-_]file. Below is an example that uses the PSM library. We will test two
+https://github.com/mlabs-haskell/plutus-simple-model/blob/main/psm/src/Plutus/Model/Mock.hs[GitHub file]. 
+Below is an example that uses the PSM library. We will test two
 mock transactions, where one should succeed and one should fail due to
 insufficient funds.
 
@@ -4569,7 +4570,7 @@ cannot say much about the properties of our smart contracts, other than
 that they pass the tests in these specific scenarios. We can graphically
 display the unit tests we have run above with the illustration below:
 
-image::sc_test_cases.png[width=549,height=313,title="Unit test cases"]
+image::sc_test_cases.png[width=450,height=320,title="Unit test cases"]
 
 The green dots represent the tests that should pass, and the red dots
 represent the tests that should fail. The surface of the diagram
