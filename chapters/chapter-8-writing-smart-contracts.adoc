@@ -2163,7 +2163,7 @@ creates one or more UTXOs at a script address. We will see examples of
 how to construct producing and spending transactions in section 
 <<Off-chain code with Lucid>>.
 
-=== Explaining the script context
+=== Script context explained
 
 In the previous example, the script context was not used in the
 validation logic. However, in most validator scripts, the ScriptContext
@@ -3697,7 +3697,7 @@ and for that, we use UTXOs. UTXOs can exist only once, and once consumed
 as input to a transaction, they can never exist again. UTXOs are defined
 by transaction hashes and output indices, which are unique. The reason
 why every transaction has a unique hash was explained in section 
-<<Explaining the script context>>.
+<<Script context explained>>.
 
 When minting an NFT, the idea is to include a specific parameter in the
 minting policy – namely, the UTXO transaction hash and ID – and have the
@@ -4920,7 +4920,7 @@ Test suite PTNegativeRTimed: PASS
 
 === Staking and Plinth
 
-Section <<Explaining the script context>> discussed that the
+Section <<Script context explained>> discussed that the
 possible script purposes are minting, spending, rewarding, and
 certifying. This section covers the _rewarding_ purpose and explains how
 to use Plinth to influence the conditions under which staking rewards
@@ -5236,8 +5236,7 @@ pp=$tmp/protocol-params.json
 body=$tmp/tx.txbody
 signed=$tmp/tx.tx
 
-export CARDANO_NODE_SOCKET_PATH=/<path>/<to>/cardano-private-testnet-setup/private-
-                            	testnet/node-spo1/node.sock
+export CARDANO_NODE_SOCKET_PATH=/<path>/<to>/cardano-private-testnet-setup/private-testnet/node-spo1/node.sock
 
 cardano-cli stake-address build \
 	--testnet-magic 42 \
@@ -5248,9 +5247,7 @@ echo "stake address: $(cat $script_stake_addr)"
 
 cardano-cli address build \
 	--testnet-magic 42 \
-	--payment-verification-key-file=/<path>/<to>/cardano-private-testnet-setup/
-                                     private-testnet/stake-delegator-keys/
-                                     payment1.vkey \
+	--payment-verification-key-file=/<path>/<to>/cardano-private-testnet-setup/private-testnet/stake-delegator-keys/payment1.vkey \
 	--stake-script-file=$script \
 	--out-file $script_payment_addr
 
@@ -5262,8 +5259,7 @@ cardano-cli stake-address registration-certificate \
 
 cardano-cli stake-address delegation-certificate \
 	--stake-script-file $script \
-	--stake-pool-id=$(/<path>/<to>/query-stake-pools.sh | 
-                       head -n 1) \
+	--stake-pool-id=$(/<path>/<to>/query-stake-pools.sh | head -n 1) \
 	--out-file $delegation
 
 cardano-cli query protocol-parameters \
@@ -5287,8 +5283,7 @@ cardano-cli transaction sign \
 	--testnet-magic 42 \
 	--tx-body-file $body \
 	--out-file $signed \
-	--signing-key-file /<path>/<to>/cardano-private-testnet-setup/private-testnet/
-                        stake-delegator-keys/payment1.skey
+	--signing-key-file /<path>/<to>/cardano-private-testnet-setup/private-testnet/stake-delegator-keys/payment1.skey
 
 cardano-cli transaction submit \
 	--testnet-magic 42 \
@@ -5349,8 +5344,8 @@ To use that script, we look up the UTXO available for spending using the
                           TxHash                                  TxIx     Amount   
 ------------------------------------------------------------------------------------
 4184b0b1b8363b81b30c58bfb5f3972dfce9a2dcf886998e37929964f3b3619b   0    342271389694
-                                                                          lovelace +
-                                                                      TxOutDatumNone
+                                                                            lovelace
+                                                                    + TxOutDatumNone
 ----
 
 When we use the previously defined script for registration and
@@ -5387,24 +5382,23 @@ script can be seen below:
 [source,shell]
 ----
 #!/bin/bash
-export CARDANO_NODE_SOCKET_PATH=/<path>/<to>/cardano-private-testnet-setup/private-
-                            	testnet/node-spo1/node.sock
+export CARDANO_NODE_SOCKET_PATH=/<path>/<to>/cardano-private-testnet-setup/private-testnet/node-spo1/node.sock
 cardano-cli query utxo \
 	--testnet-magic 42 \
 	--address $(cat /<path>/<to>/user1-script.addr)
 ----
 
-If we execute the query, we see that almost all the 300,000 ada has been
+If we execute the query, we see that almost all the 300.000 ada has been
 transferred to this address. The small difference is attributed to the
 registration deposit and transaction fees.
 
 [source,shell]
 ----
-                         	TxHash                          	      TxIx     Amount
+                          TxHash                                  TxIx     Amount   
 ------------------------------------------------------------------------------------
 7c018e5e39649a52b9e1f9527e9ac8dcc70b1da818629dc30e6322cbea6f4e44   0    299999654436
-                                                                          lovelace +
-                                                                      TxOutDatumNone
+                                                                            lovelace
+                                                                    + TxOutDatumNone
 ----
 
 After some time, when the rewards at the staking address have
@@ -5418,8 +5412,7 @@ demonstrates how to accomplish this using the cardano-cli tool:
 
 txin=$1
 tmp=/<path>/<to>/address-and-certificate-files
-amt1=$(/<path>/<to>/scripts/query-stake-address-info-user1-script.sh | 
-     jq .[0].rewardAccountBalance)
+amt1=$(/<path>/<to>/scripts/query-stake-address-info-user1-script.sh | jq .[0].rewardAccountBalance)
 amt2=$(expr $amt1 / 2 + 1)
 pp=$tmp/protocol-params.json
 body=$tmp/tx.txbody
@@ -5429,8 +5422,7 @@ echo "txin = $1"
 echo "amt1 = $amt1"
 echo "amt2 = $amt2"
 
-export CARDANO_NODE_SOCKET_PATH=/<path>/<to>/cardano-private-testnet-setup/private-testnet/
-                         node-spo1/node.sock
+export CARDANO_NODE_SOCKET_PATH=/<path>/<to>/cardano-private-testnet-setup/private-testnet/node-spo1/node.sock
 
 cardano-cli query protocol-parameters \
     --testnet-magic 42 \
@@ -5443,8 +5435,7 @@ cardano-cli transaction build \
     --out-file $body \
     --tx-in $txin \
     --tx-in-collateral $txin \
-    --tx-out "$(cat /<path>/<to>/cardano-private-testnet-setup/private-testnet/
-                    addresses/payment2.addr)+$amt2 lovelace" \
+    --tx-out "$(cat /<path>/<to>/cardano-private-testnet-setup/private-testnet/addresses/payment2.addr)+$amt2 lovelace" \
     --withdrawal "$(cat $tmp/user1-script-stake.addr)+$amt1" \
     --withdrawal-script-file /<path>/<to>/staking.plutus \
     --withdrawal-redeemer-file /<path>/<to>/unit.json \
@@ -5454,8 +5445,7 @@ cardano-cli transaction sign \
     --testnet-magic 42 \
     --tx-body-file $body \
     --out-file $signed \
-    --signing-key-file /<path>/<to>/cardano-private-testnet-setup/private-testnet/
-                       stake-delegator-keys/payment1.skey
+    --signing-key-file /<path>/<to>/cardano-private-testnet-setup/private-testnet/stake-delegator-keys/payment1.skey
 
 cardano-cli transaction submit \
     --testnet-magic 42 \
@@ -5505,14 +5495,14 @@ with rewards.
 
 [source,shell]
 ----
-                         	TxHash                          	      TxIx     Amount
+                          TxHash                                  TxIx     Amount   
 ------------------------------------------------------------------------------------
 9f54c1a9319b02a2da7110bb90946845dbe8e5fce0f770a4e8ee2955eed223cb   0    300000000000
-                                                                          lovelace +
-                                                                      TxOutDatumNone
+                                                                            lovelace
+                                                                    + TxOutDatumNone
 902aba5b2b72df2423ee33d4af294e21e0903c31e34917a4de8570b3e8d08c7b   1      5070281709
-                                                                          lovelace +
-                                                                      TxOutDatumNone
+                                                                            lovelace
+                                                                    + TxOutDatumNone
 ----
 
 If we query the funds for user one with the ``query-utxo-user1-script.sh``
@@ -5521,11 +5511,11 @@ got the other half of the rewards.
 
 [source,shell]
 ----
-                         	TxHash                          	      TxIx     Amount
+                          TxHash                                  TxIx     Amount   
 ------------------------------------------------------------------------------------
 902aba5b2b72df2423ee33d4af294e21e0903c31e34917a4de8570b3e8d08c7b   0    305069582064
-                                                                          lovelace +
-                                                                      TxOutDatumNone
+                                                                            lovelace
+                                                                    + TxOutDatumNone
 ----
 
 If we removed the line below from the withdrawal script, we would get an
@@ -5534,8 +5524,7 @@ have defined in the Plinth script.
 
 [source,shell]
 ----
---tx-out "$(cat /<path>/<to>/cardano-private-testnet-setup/private-testnet/
-                addresses/payment2.addr)+$amt2 lovelace" \
+--tx-out "$(cat /<path>/<to>/cardano-private-testnet-setup/private-testnet/addresses/payment2.addr)+$amt2 lovelace" \
 ----
 
 === PlutusV3 features
