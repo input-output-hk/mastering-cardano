@@ -1625,8 +1625,7 @@ other Cardano smart contract language that compiles to Plutus.
 To learn the Aiken smart contract language, one can check out the
 https://aiken-lang.org/language-tour/primitive-types[_Language tour_] on
 the official documentation, which also provides a walkthrough of
-creating ahttps://aiken-lang.org/example--hello-world/basics[
-]https://aiken-lang.org/example--hello-world/basics[_Hello World
+creating a https://aiken-lang.org/example--hello-world/basics[_Hello World
 project_], covering the following topics:
 
 * pre-requisites
@@ -6549,11 +6548,12 @@ https://github.com/input-output-hk/marlowe/tree/master/marlowe-spec-test[_marlow
 software tool, with which a Marlowe interpreter written in any smart
 contract language can be validated for compliance with the Marlowe
 formal specifications. The specifications can be found in the
-marlowe-cardanohttps://github.com/input-output-hk/marlowe-cardano/tree/main/marlowe/specification[_
-GitHub repository_] that contains the official Cardano implementation of
+marlowe-cardano 
+https://github.com/input-output-hk/marlowe-cardano/tree/main/marlowe/specification[_GitHub repository_] 
+that contains the official Cardano implementation of
 Marlowe. The Marlowe interpreter and the role-payout validator are
 implemented as Plinth scripts and can be found in the
-marlowe-plutushttps://github.com/input-output-hk/marlowe-plutus[_ GitHub
+marlowe-plutus https://github.com/input-output-hk/marlowe-plutus[_GitHub
 repository_], which also provides instructions on how to compile the
 scripts.
 
