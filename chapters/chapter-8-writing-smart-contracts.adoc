@@ -4570,7 +4570,7 @@ cannot say much about the properties of our smart contracts, other than
 that they pass the tests in these specific scenarios. We can graphically
 display the unit tests we have run above with the illustration below:
 
-image::sc_test_cases.png[width=450,height=320,title="Unit test cases"]
+image::sc_test_cases.png[width=400,height=320,title="Unit test cases"]
 
 The green dots represent the tests that should pass, and the red dots
 represent the tests that should fail. The surface of the diagram
