@@ -199,13 +199,13 @@ explore the security of Marlowe in more detail.
 Sometimes, smart contract code is referred to as on-chain code because
 it runs in the node during the inclusion of new transactions that aim to
 spend a UTXO at a script address. Off-chain code, in contrast, runs on
-the user’s or a service provider’s device. A web application that
+the user’s or a service provider’s device and queries the blockchain, 
+builds, signs and submits transactions. A web application that
 connects with a wallet and interacts with one or more smart contracts is
 called a decentralized application (DApp). Chapter <<Decentralized applications>> 
 covers DApps in more detail. Every DApp contains some
 off-chain code and interacts with one or more smart contracts that
-represent the on-chain code. With off-chain code, one can query the
-blockchain, build transactions, and submit them. These tasks can be
+represent the on-chain code. Off-chain code tasks can be
 performed with a command line tool, such as the
 https://github.com/IntersectMBO/cardano-cli/tree/main[_Cardano CLI_], or
 with the help of libraries and builder tools that are embedded in
