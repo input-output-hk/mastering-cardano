@@ -650,7 +650,7 @@ Cardano node directly. There are two ways to interface with Marlowe
 Runtime:
 
 * Using Marlowe Runtime web REST API
-* Using marlowe-runtime-cli command line tool.
+* Using `marlowe-runtime-cli` command line tool.
 
 The role of Runtime is to facilitate the mapping between the Marlowe
 conceptual model and the Cardano ledger model in both directions. Users
@@ -680,7 +680,7 @@ https://docs.marlowe.iohk.io/docs/developer-tools/marlowe-cli[Marlowe
 CLI] is a command-line tool that provides access to Marlowe
 capabilities on testnet and mainnet. It is specifically built to run
 Marlowe contracts directly without needing a web browser or a mobile
-app. Just as the cardano-cli tool enables plain transactions, simple
+app. Just as the `cardano-cli` tool enables plain transactions, simple
 scripts, and Plutus scripts, the Marlowe CLI tool facilitates the
 ability to interact with and develop Marlowe contracts. Users can
 measure transaction size, submit transactions, test wallet integration,
@@ -779,7 +779,7 @@ backend maximizes the node as the single source of truth, minimizing the
 danger of downstream components receiving inconsistent information. The
 Haskell types in the client API for Runtime Clients are independent of
 various Cardano packages for ledger, node, and Plutus, resulting in a
-Haskell client for Runtime having minimal dependencies in its .cabal
+Haskell client for Runtime having minimal dependencies in its `.cabal`
 file.
 
 Please note that the Marlowe Runtime architecture may evolve. Refer to
@@ -847,8 +847,8 @@ data Contract = Close
 ----
 
 Marlowe has _six_ ways of building contracts. Five of these methods –
-Pay, Let, If, When, and Assert – build a complex contract from simpler
-contracts, and the sixth method, Close, is a simple contract. At each
+`Pay`, `Let`, `If`, `When`, and `Assert` – build a complex contract from simpler
+contracts, and the sixth method, `Close`, is a simple contract. At each
 step of execution, besides returning a new state and continuation
 contract, it is possible that effects – payments – and warnings can also
 be generated. A description of each of the methods that the Contract
@@ -1803,19 +1803,19 @@ saveVal = writeValidatorToFile "./gift.plutus" validator
 ----
 
 First, we add various language extensions required by the code. Notably,
-the NoImplicitPrelude extensionprevents the standard __Prelude __module
-from being imported. The PlutusTx module defines a custom prelude where
+the [purple]#NoImplicitPrelude# extension prevents the standard `Prelude` module
+from being imported. The `PlutusTx` module defines a custom prelude where
 all functions use strict evaluation rather than the lazy one. This also
 applies to all other functions defined in any module used for Plinth
-coding. Then, we import the Plutus module that defines functions for
+coding. Then, we import the `Plutus` module that defines functions for
 working with Plutus V2 scripts and two functions from the PlutusTx
-module. Finally, we import the IO type from the standard Prelude module
-and a function from a user-defined __Utilities __module, which will be
+module. Finally, we import the IO type from the standard `Prelude` module
+and a function from a user-defined `Utilities` module, which will be
 shown later. After that follows the on-chain code.
 
-We name the validator function _mkGiftValidator_. It takes three
+We name the validator function [blue]#mkGiftValidator#. It takes three
 arguments in the following order: the datum, the redeemer, and the
-script context. All of these arguments are BuiltinData types. It returns
+script context. All of these arguments are [purple]#BuiltinData# types. It returns
 an empty tuple, called unit. This type has a single value and can be
 compared to the Void type used in other programming languages like Java
 or C++. In the body of the function, all input values are ignored, and
@@ -1824,33 +1824,33 @@ checks a given transaction, so it might be expected to return a Boolean
 value, which is true when using the high-level implementation. In the
 low-level implementation, the unit is returned when validation succeeds,
 and an error is raised if it fails. The next example will cover this
-case. It is now clear why this module is called _Gift_ – anyone can
+case. It is now clear why this module is called `Gift` – anyone can
 claim funds from this address, since the validation will always succeed.
 
-Next, we define the validator parameter, which is the PlutusV2.Validator
+Next, we define the [blue]#validator# parameter, which is the [purple]#PlutusV2.Validator#
 type. To get it, we need to compile the validator function to Plutus
-script. The _PlutusTx.compile_ function takes a syntax tree of a
-function as input, which we can get if we put the Oxford brackets [||
-__mkGiftValidator __||] around the validator function. The compile
+script. The [blue]#PlutusTx.compile# function takes a syntax tree of a
+function as input, which we can get if we put the Oxford brackets 
+`[|| mkGiftValidator ||]` around the validator function. The [blue]#compile#
 function produces another syntax tree written in the Plutus language.
-Then the $$ symbol, called splice, takes a syntax tree and splices it
+Then the `$$` symbol, called splice, takes a syntax tree and splices it
 back to Haskell source code, which is needed to be added to the
-__mkValidatorScript __function. The splice operator and the Oxford
-brackets can be used because we added the TemplateHaskell language
+[blue]#mkValidatorScript# function. The splice operator and the Oxford
+brackets can be used because we added the [purple]#TemplateHaskell# language
 pragma, which enables this language extension.
 
 It is important to note that normally in Oxford brackets, you cannot
 reference anything defined outside of them. This can become an issue
 when validator functions are long expressions, or when library functions
 are called within their body. A workaround is to make the function
-inlinable. By adding the INLINABLE pragma statement after the function
+inlinable. By adding the [purple]#INLINABLE# pragma statement after the function
 definition, the GHC compiler replaces the function call in the Oxford
 brackets with the actual function body.
 
 This completes the on-chain code. Next is a helper function that allows
 writing the validator variable to a file. For this, we use the
-_writeValidatorToFile_ helper function defined in the __Utilities
-__module. The code for this module is shown below:
+[blue]#writeValidatorToFile# helper function defined in the `Utilities` 
+module. The code for this module is shown below:
 
 [source,haskell]
 ----
@@ -1889,7 +1889,7 @@ writeValidatorToFile :: FilePath -> PlutusV2.Validator -> IO ()
 writeValidatorToFile filePath = writeScriptToFile filePath . validatorToScript
 ----
 
-If we execute the _writeValidatorToFile_ function from the Gift module,
+If we execute the _writeValidatorToFile_ function from the `Gift` module,
 the content is written to the _gift.plutus_ file:
 
 [source,shell]
@@ -1908,7 +1908,7 @@ contract is simple, the cborHex value is short. For more complex
 contracts, this value would increase in length. This information can
 then be used in off-chain code when attaching the validator to a
 transaction. Let’s now explore an example where the validation logic
-always fails, regardless of the input. This module is called _Burn_, as
+always fails, regardless of the input. This module is called `Burn`, as
 no funds can be reclaimed from the contract once sent.
 
 [source,haskell]
@@ -1939,8 +1939,8 @@ validator = PlutusV2.mkValidatorScript $$(PlutusTx.compile
                                       	[|| mkBurnValidator ||])
 ----
 
-To implement the Burn module, we need one additional import compared to
-the Gift module: the__ traceError__ function from the _PlutusTx.Prelude_
+To implement the `Burn` module, we need one additional import compared to
+the `Gift` module: the __traceError__ function from the `PlutusTx.Prelude` 
 module. This function accepts a BuiltinString, a wrapper around the Text
 type, so we also need to add the OverloadedStrings language extension.
 In the _mkBurnValidator_ function, the datum, redeemer, and script
@@ -2525,7 +2525,7 @@ The closure type is just a wrapper for a Boolean which indicates whether
 the boundary is included in the interval or not. The extended type has
 three possible constructor values, which represent negative infinity,
 positive infinity, or a finite bound parameterized, in our case, by a
-POSIXTime type. The module _Plutus.V2.Ledger.Interval_ defines the
+POSIXTime type. The module `Plutus.V2.Ledger.Interval` defines the
 following helper functions that work with time intervals:
 
 * _member_: checks whether a value is in an interval
@@ -2851,7 +2851,7 @@ It contains only the _lift_ method, but we will not use that directly.
 There are a lot of instances for this type class for all possible data
 types such as _BuiltinData_, _Data_, _Integer_ and _Bool_. However, this
 is not used for functions, as they cannot be used to compile Haskell to
-Plutus validators. The _PlutusTx_ module defines this type class, and
+Plutus validators. The `PlutusTx` module defines this type class, and
 the _liftCode_ function:
 
 [source,haskell]
@@ -2942,7 +2942,7 @@ https://github.com/spacebudz/lucid[Lucid repository] does
 https://github.com/spacebudz/lucid/pull/254[include one]. You can 
 check the Lucid page at https://deno.land/x/lucid[Deno land] if there 
 is a newer version published at the time of reading. In case it is not, 
-you can clone the repository locally and reference the ``mod.ts`` file 
+you can clone the repository locally and reference the `mod.ts` file 
 directly in the code.
 
 [source,typescript]
@@ -2982,7 +2982,7 @@ TypeScript. To use Deno, you can find definitions and short code
 examples for Lucid name spaces, classes, variables, functions,
 interfaces and type aliases https://deno.land/x/lucid@0.9.1/mod.ts[on
 this page]. We will use Lucid version 0.9.1 and call the code file
-``lucid-vesting.ts``.
+`lucid-vesting.ts`.
 
 [source,typescript]
 ----
@@ -3016,7 +3016,7 @@ const addr: Address = await lucid.wallet.address();
 console.log(addr);
 ----
 
-First, we import the necessary components. The ``seed.ts`` file should
+First, we import the necessary components. The `seed.ts` file should
 contain the seed for your Cardano wallet, with all the words separated
 by spaces, as shown in the following example:
 
@@ -3192,7 +3192,7 @@ current time and extend it until infinity. Finally, we sign and submit
 the transaction. The function returns the transaction hash if a UTXO
 with our datum is found, or a message indicating that no UTXO with the
 specified datum could be claimed at the vesting address. We can run the
-entire code from our ``lucid-vesting.ts`` file in the VSCode terminal.
+entire code from our `lucid-vesting.ts` file in the VSCode terminal.
 
 [source,shell]
 ----
@@ -3286,7 +3286,7 @@ the previously computed burn address. In the payToContract function, we
 inline a void datum and attach the vesting script. The field specifying
 how much ada to send is left empty, allowing Lucid to calculate the
 minimum required amount for the UTXO. Then, we sign and submit the
-transaction, save this code to the ``deploy.ts`` file, and run it with Deno.
+transaction, save this code to the `deploy.ts` file, and run it with Deno.
 The submitCardanoTx function will print a transaction hash, which we
 need to save for referencing the vesting script later.
 
@@ -3297,7 +3297,7 @@ ecddb39e726a0b4d718de3190e3e7e02ac7901ee4eb1ff8c2e77bc6d38864909
 ----
 
 After deploying the script, we can modify the previous off-chain code
-located in the ``lucid-vesting.ts`` file. Below is the modified part of the
+located in the `lucid-vesting.ts` file. Below is the modified part of the
 code:
 
 [source,typescript]
@@ -3339,7 +3339,7 @@ async function claimVestedFunds(): Promise<TxHash> {
 
 We added the function getReferenceUTxO that returns the UTXO to which we
 have attached our vesting script. We hard-coded the transaction hash
-that was printed by the ``deploy.ts`` script and fixed the output index to
+that was printed by the `deploy.ts` script and fixed the output index to
 0. If you are not sure if the UTXO carrying the reference script was
 assigned output index 0 in the transaction where the script was
 deployed, you can print the reference UTXO to the console and verify
@@ -3361,7 +3361,7 @@ a datum. In previous examples, the value was always ada. To include
 native tokens in a UTXO, they must be explicitly created.
 
 Let’s look again at the Haskell definition of the Value type. This type
-is defined in the module _Plutus.V1.Ledger.Value_. Even if we are using
+is defined in the module `Plutus.V1.Ledger.Value`. Even if we are using
 Plutus V2 scripts, this module has not changed, and we can still use V1
 version for it.
 
@@ -3435,7 +3435,7 @@ myAssetClass 77
 ----
 
 To construct an asset class for ada, we can use the adaSymbol and
-adaToken variables provided by the _Plutus.V1.Ledger.Value_ module.
+adaToken variables provided by the `Plutus.V1.Ledger.Value` module.
 
 [source,shell]
 ----
@@ -3568,7 +3568,7 @@ serialize it to disk. The saveSignedCode function, which uses this
 helper function, writes the Plinth script to the _signed.plutus_ file
 where the parameter, the public key hash, has not been applied yet. It
 saves it to the __signed.plutus __file. The helper functions, imported
-from the __Utilities __module, can be found in the _code/Utilities_
+from the `Utilities` module, can be found in the _code/Utilities_
 folder of the Plutus Pioneer program’s
 https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[4th
 iteration] GitHub repository. Now we showcase how to use off-chain code
@@ -3672,7 +3672,7 @@ we want to mint. It also takes a redeemer, which, in our case, is of
 type void. Then, we attach the minting policy and add the signature of
 our address that corresponds to our public key hash. Finally, we sign
 and submit the transaction and log the transaction hash. We can now mint
-our tokens by running this code, which we saved to the ``lucid-signed.ts``
+our tokens by running this code, which we saved to the `lucid-signed.ts`
 file with the following command:
 
 [source,shell]
@@ -4111,9 +4111,9 @@ We import the _Test.Tasty_ and the _Plutus.Model_ libraries, and then we
 define our tests in the main function. At the beginning of the main
 function, which serves as the entry point of our code, there is some
 standard code that repeats in every test. We use the defaultMain
-function, part of the tasty module, to transform a tree of tests into
+function, part of the `Tasty` module, to transform a tree of tests into
 the IO action that the main function needs to run. The testGroup
-function, also provided by the tasty module, allows us to give a name to
+function, also provided by the `Tasty` module, allows us to give a name to
 a list of tests. This is handy when you have multiple groups of tests,
 and you want to classify them. Finally, we have the list of tests, each
 with its own description and the actual test. In the _Simple spend_
@@ -4239,7 +4239,7 @@ zero
 has passed.
 
 Below, you can see the smart contract code, where we name our module
-_NegativeRTime_:
+`NegativeRTime`:
 
 [source,haskell]
 ----
@@ -4401,7 +4401,7 @@ consumingTx dl redeemer usr ref val =
 First, we define the time to wait between the locking and consuming
 transactions. Then, we set up two users, giving each 1,000 lovelace.
 Next, we define the validator script using the actual validator from the
-_NegativeRTimed_ module, which we imported and named OnChain. Finally,
+`NegativeRTimed` module, which we imported and named OnChain. Finally,
 we create two functions to produce helper transactions – one to create
 the UTXO at the script address and another to consume it.
 
@@ -4581,7 +4581,7 @@ generate numerous random tests. This increases our confidence in the
 smart contract behavior. This library is a Haskell library, and you can
 use it to test any code, not just smart contracts. Let’s now look at our
 property tests. We name the file that contains them
-``PTNegativeRTimed.hs``:
+`PTNegativeRTimed.hs`:
 
 [source,haskell]
 ----
@@ -4636,7 +4636,7 @@ main = defaultMain $ do
       ]
 ----
 
-We use the defaultMain and testGroup functions from the tasty module. To
+We use the defaultMain and testGroup functions from the `Tasty` module. To
 generate a test tree, we now use the testProperty function, which is
 also contained in the tasty package.
 
@@ -4950,7 +4950,7 @@ Plutus V2 development environment presented in section
 <<Setting up a Plinth development environment>>, provides the Cardano 
 node and CLI version 1.35.5.
 
-To run the testnet, execute the ``automate.sh`` script located in the
+To run the testnet, execute the `automate.sh` script located in the
 _scripts/_ folder from the root directory of the GitHub project:
 
 [source,shell]
@@ -5162,7 +5162,7 @@ we are withdrawing to the given address, the validation logic passes. If
 not, we raise an error with the message "_insufficient reward sharing_".
 
 After we have defined our validator, we have to convert it into an
-untyped version. In the Utilities module, defined in the
+untyped version. In the `Utilities` module, defined in the
 _code/Utilities_ folder of the Plutus Pioneer GitHub repository
 (https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[4th
 iteration]), we define the wrapStakeValidator helper function, which
@@ -5176,14 +5176,14 @@ module. If we want to use this from the cardano-cli, we need a way to
 execute it and serialize the resulting stake validator to disk. We can
 use the function writeStakeValidatorToFile from the
 https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration/code/Utilities[Utilities
-module] in the ``Serialise.hs`` file located in the 4th iteration branch
+module] in the `Serialise.hs` file located in the 4th iteration branch
 of the Plutus Pioneer GitHub repository. To apply this, we need a Plutus
 address. Normally, Plutus addresses are in the form of a string in the
 bech32 representation. For example, if we use this private testnet
 setup, we have user addresses in the form of such a string. It is not
 completely trivial to take such a script and convert it to a Plutus
-address. For this, we use the Conversion module, which is also defined
-as a part of the previously mentioned Utilities module, where the
+address. For this, we use the `Conversion` module, which is also defined
+as a part of the previously mentioned `Utilities` module, where the
 function tryReadAddress is defined.
 
 We can now use this code on the testnet. First, we need to decide which
@@ -5216,7 +5216,7 @@ bash script to accomplish this. Cardano CLI explanations and script
 examples can be found in the Plutus Pioneer program’s
 https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[4th
 iteration] GitHub repository in third and fourth week code examples and
-lectures. We call the script below, ``register-and-delegate.sh``.
+lectures. We call the script below, `register-and-delegate.sh`.
 
 [source,shell]
 ----
@@ -5309,7 +5309,7 @@ key of user one, the staking script file, and the output file path.
 
 After that, we create a registration certificate for this script-based
 stake address and a delegation certificate. To do this, we need the pool
-ID we want to delegate to. We use the script ``query-stake-pools.sh`` and
+ID we want to delegate to. We use the script `query-stake-pools.sh` and
 select the first pool available. All scripts referenced in the above
 code can be found in the
 https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration/code/Week08/scripts[code/Week08/script/]
@@ -5336,7 +5336,7 @@ We input the redeemer JSON file representing a unit and add the protocol
 parameters file. After building our transaction, we need to sign it
 using only user one’s payment key. Finally, we submit the transaction.
 To use that script, we look up the UTXO available for spending using the
-``query-utxo-user1.sh`` script.
+`query-utxo-user1.sh` script.
 
 [source,shell]
 ----
@@ -5374,7 +5374,7 @@ address is now based on our script. We also created the payment address
 and submitted the transaction. Now, there should not be any funds left
 at the initial address, as all the funds have been moved to the new
 payment address we created. Therefore, if we query the funds for user
-one, there will be none. Using the script ``query-utxo-user1-script.sh``
+one, there will be none. Using the script `query-utxo-user1-script.sh`
 we can check the funds for the new address we have just created. The
 script can be seen below:
 
@@ -5455,7 +5455,7 @@ The objective is for user one to withdraw rewards from the newly created
 stake address. First, we set the temporary folder. The amount to
 withdraw is the same as before. Since we are now using the script-based
 stake address, we query the accumulated rewards with the
-``query-utxo-user1-script.sh`` script, specifying the new address we
+`query-utxo-user1-script.sh` script, specifying the new address we
 created. We extract the amount using the _jq_ tool.
 
 Next, we calculate a second amount, ensuring that at least half of the
@@ -5478,7 +5478,7 @@ file.
 When signing this transaction, only the payment part requires a
 signature because the staking part is managed by the script. Finally, we
 submit the transaction. Now we can use the UTXO returned by the
-``query-utxo-user1-script.sh`` script as input. We can now run the
+`query-utxo-user1-script.sh` script as input. We can now run the
 following command:
 
 [source,shell]
@@ -5504,7 +5504,7 @@ with rewards.
                                                                     + TxOutDatumNone
 ----
 
-If we query the funds for user one with the ``query-utxo-user1-script.sh``
+If we query the funds for user one with the `query-utxo-user1-script.sh`
 script, he has now more than the original 300,000 ada because he also
 got the other half of the rewards.
 
