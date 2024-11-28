@@ -279,7 +279,7 @@ different responsibilities:
 Chain. They provide an authentication layer (decentralized identity
 module), manage all blockchain transactions (blockchain module), and
 include a telecommunications layer (telecommunications layer).
-* https://airnode.worldmobile.io/[*_Air nodes_*] are located in areas
+* https://airnode.worldmobile.io/[*Air nodes*] are located in areas
 where connectivity is needed. They serve as the first point of contact
 with the network for individual users or entire communities.
 * *Aether nodes* interface with legacy telecommunications networks. They
