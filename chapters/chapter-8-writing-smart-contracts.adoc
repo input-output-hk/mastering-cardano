@@ -1889,8 +1889,8 @@ writeValidatorToFile :: FilePath -> PlutusV2.Validator -> IO ()
 writeValidatorToFile filePath = writeScriptToFile filePath . validatorToScript
 ----
 
-If we execute the _writeValidatorToFile_ function from the `Gift` module,
-the content is written to the _gift.plutus_ file:
+If we execute the [blue]#writeValidatorToFile# function from the `Gift` module,
+the content is written to the `gift.plutus` file:
 
 [source,shell]
 ----
@@ -1940,13 +1940,13 @@ validator = PlutusV2.mkValidatorScript $$(PlutusTx.compile
 ----
 
 To implement the `Burn` module, we need one additional import compared to
-the `Gift` module: the __traceError__ function from the `PlutusTx.Prelude` 
-module. This function accepts a BuiltinString, a wrapper around the Text
-type, so we also need to add the OverloadedStrings language extension.
-In the _mkBurnValidator_ function, the datum, redeemer, and script
+the `Gift` module: the [blue]#traceError# function from the `PlutusTx.Prelude` 
+module. This function accepts a [purple]#BuiltinString#, a wrapper around the [purple]#Text#
+type, so we also need to add the [purple]#OverloadedStrings# language extension.
+In the [blue]#mkBurnValidator# function, the datum, redeemer, and script
 context are ignored, and an error with a message is raised, ensuring the
 validation fails regardless of the inputs. Alternatively, we could use
-the _error_ function, which raises an error without a message.
+the [blue]#error# function, which raises an error without a message.
 
 Below is an example of the redeemer in the validation logic. The
 validation passes if the redeemer is an integer with the value 42;
@@ -1983,8 +1983,8 @@ validator = PlutusV2.mkValidatorScript $$(PlutusTx.compile
                                           [|| mk42Validator ||])
 ----
 
-In the example above, we compare the redeemer to the BuiltinData type I
-42, created using the _Builtins.mkI_ function. If the actual redeemer is
+In the example above, we compare the redeemer to the [purple]#BuiltinData# type I
+42, created using the [blue]#Builtins.mkI# function. If the actual redeemer is
 an integer number with value 42, the function returns unit, otherwise,
 it raises an error. Let’s examine the same example but written as a
 typed validator:
@@ -2021,13 +2021,13 @@ validator = PlutusV2.mkValidatorScript $$(PlutusTx.compile
 ----
 
 We can use the unit type for the datum since the latter is not used. For
-the redeemer, we use the Integer type. The script context has to be of
-type ScriptContext. This setup allows for a direct comparison of the
-redeemer to the number 42. We also use the _traceIfFalse_ function that
+the redeemer, we use the [pruple]#Integer# type. The script context has to be of
+type [pruple]#ScriptContext#. This setup allows for a direct comparison of the
+redeemer to the number 42. We also use the [blue]#traceIfFalse# function that
 raises an error if the condition passed to it is false. Because the
-_PlutusTx.compile_ function still expects a function that accepts three
-parameters of type BuiltinData and returns unit, we need to apply the
-__wrap __function to the validator function before compiling it. Below
+[blue]#PlutusTx.compile# function still expects a function that accepts three
+parameters of type [purple]#BuiltinData# and returns unit, we need to apply the
+[blue]#wrap# function to the validator function before compiling it. Below
 you can see the function definition:
 
 [source,haskell]
@@ -2060,10 +2060,10 @@ wrap f a b ctx =
 Here, the wrap function accepts the type signature of a typed validator
 function and returns the type signature of an untyped validator
 function. To convert a function that takes variables of custom types
-into one that accepts variables of the BuiltinData type, we use the
-conversion function _unsafeFromBuiltinData_. For this function to be
+into one that accepts variables of the [purple]#BuiltinData# type, we use the
+conversion function [blue]#unsafeFromBuiltinData#. For this function to be
 applicable to the types a and b, both types need to have an instance of
-the UnsafeFromData type class.
+the [purple]#UnsafeFromData# type class.
 
 [source,shell]
 ----
@@ -2079,11 +2079,11 @@ Instance UnsafeFromData ScriptContext
 ----
 
 If we look at this type class, it has the single method called
-__unsafeFromBuiltinData __that we can use to convert the BuiltinData
-type to a custom Haskell type. It's unsafe because the BuiltinData type
+[blue]#unsafeFromBuiltinData# that we can use to convert the [purple]#BuiltinData#
+type to a custom Haskell type. It's unsafe because the [purple]#BuiltinData# type
 might fail to convert to the given custom Haskell type. The unit,
 integer, and script context data types have instances of the
-UnsafeFromData type class.
+[purple]#UnsafeFromData# type class.
 
 As mentioned before, the untyped version has a performance advantage. If
 we compare the cborHex strings for the typed and untyped script
@@ -2093,7 +2093,7 @@ The final example shows how to use a custom defined type in the on-chain
 code. For specific business problems, code will have very specific data
 structures, often in the form of record types. Ideally, these can be
 used for the datum and the redeemer. One way to achieve this in
-validator functions is by writing an instance of the UnsafeFromData type
+validator functions is by writing an instance of the [purple]#UnsafeFromData# type
 class for these types. But because there is template Haskell support for
 doing this, you can choose another way. Below is an example where we
 define a custom data type for our redeemer:
@@ -2139,18 +2139,18 @@ validator = PlutusV2.mkValidatorScript $$(PlutusTx.compile
                                           [|| wrappedMkVal ||])
 ----
 
-Here, we define a new type in the code called MySillyRedeemer, which is
+Here, we define a new type in the code called [purple]#MySillyRedeemer#, which is
 simply a wrapper for an integer. We use this type as the redeemer and
 validate that the integer it holds is equal to 42. We can use the
-_PlutusTx.unstableMakeIsData_ function to define an UnsafeFromData
+[blue]#PlutusTx.unstableMakeIsData# function to define an [purple]#UnsafeFromData#
 instance for our type. There is also a stable version of this function,
 which gives more control over the deserialization process but requires
 additional details to be provided. In template Haskell, you need to add
 two single quotes in front of the type’s name to use it as an input
-variable. This line of code also creates toData and fromData instances.
-We can now pattern match our redeemer value in the __mkCTValidator
-__validator function. Finally, in the separate __wrappedMkVal
-__function, we apply our _wrap_ function before computing the validator.
+variable. This line of code also creates [blue]#toData# and [blue]#fromData# instances.
+We can now pattern match our redeemer value in the [blue]#mkCTValidator# 
+validator function. Finally, in the separate [blue]#wrappedMkVal#
+function, we apply our [blue]#wrap# function before computing the validator.
 
 We note if a transaction tries to spend multiple UTXOs at a script
 address, the spending script is run for every UTXO individually. The
@@ -2165,11 +2165,11 @@ how to construct producing and spending transactions in section
 === Script context explained
 
 In the previous example, the script context was not used in the
-validation logic. However, in most validator scripts, the ScriptContext
+validation logic. However, in most validator scripts, the [purple]#ScriptContext#
 data type is necessary. Since we are working with PlutusV2 scripts the 
-_Plutus smart contracts_ section, we will focus on data types used in 
+<<Plutus smart contracts>> section, we will focus on data types used in 
 PlutusV2 scripts and highlight differences to PlutusV3 data types. 
-Below is the PlutusV2 ScriptContext data type:
+Below is the PlutusV2 [purple]#ScriptContext# data type:
 
 [source,haskell]
 ----
@@ -2186,7 +2186,7 @@ provides information about the inputs and outputs of the transaction
 being validated. The image above shows the Haskell implementation of
 this data type.
 
-ScriptContext is a record syntax type with two fields: one containing
+[purple]#ScriptContext# is a record syntax type with two fields: one containing
 transaction information and the other representing the script’s purpose.
 The script purpose is assigned individually for every action in a
 transaction. This means if a transaction tries to mint a native asset
@@ -2197,7 +2197,7 @@ and policies that are triggered by this transaction can access it. In
 the PlutusV3 script context, the datum and redeemer are moved inside the
 script context. The redeemer can be accessed directly from the script
 context type, and the datum of a UTXO that we want to spend can be
-accessed from the ScriptInfo field.
+accessed from the [purple]#ScriptInfo# field.
 
 [source,haskell]
 ----
@@ -2210,7 +2210,7 @@ data ScriptContext = ScriptContext
     deriving anyclass (HasBlueprintDefinition)
 ----
 
-The ScriptPurpose data type for PlutusV2 indicates the purpose of the
+The [purple]#ScriptPurpose# data type for PlutusV2 indicates the purpose of the
 Plinth script, and there are four possible values for this data type.
 
 [source,haskell]
@@ -2227,7 +2227,7 @@ data ScriptPurpose
 Minting is used when minting (creating) or burning (destroying) native
 tokens. Spending is used to spend funds sitting at a script address.
 Rewarding is used for withdrawing staking rewards. Certifying is for
-issuing certificates. The PlutusV3 script purpose is called ScriptInfo
+issuing certificates. The PlutusV3 script purpose is called [purple]#ScriptInfo#
 and is illustrated below. Compared to the PlutusV2 script purpose, it
 contains in addition constructors for a voting script and a proposing
 script. Also for spending it contains a maybe datum which is present in
@@ -2256,7 +2256,7 @@ data ScriptInfo
 ----
 
 In this section, we will focus on the spending purpose, so we look at
-the transaction output reference TxOutRef data type that is contained in
+the transaction output reference [purple]#TxOutRef# data type that is contained in
 the spending constructor:
 
 [source,haskell]
@@ -2271,8 +2271,8 @@ data TxOutRef = TxOutRef {
 
 It defines a UTXO reference that is composed of the transaction ID,
 which is an SHA-256 hash, and the transaction index, which is an integer
-number. The TxId data type is a wrapper around the type
-BuiltinByteString. Each UTXO a transaction creates gets a transaction
+number. The [purple]#TxId# data type is a wrapper around the type
+[purple]#BuiltinByteString#. Each UTXO a transaction creates gets a transaction
 index assigned starting with 0 and increasing by 1. Because transaction
 IDs are unique, a UTXO defined by the transaction ID and the output
 index is also unique and can exist only once. Transaction hashes are
@@ -2282,7 +2282,7 @@ consuming at least one UTXO as it needs to pay some fees. By a simple
 induction argument, it follows that two identical transaction hashes can
 never exist.
 
-Let’s now look at the transaction information – TxInfo – data type that
+Let’s now look at the transaction information – [purple]#TxInfo# – data type that
 constitutes the second half of information contained in the script
 context:
 
@@ -2320,7 +2320,7 @@ transaction cost. A code example of this is presented in section
 that several transactions in the same block can use the same UTXO as a
 reference input, since it is not being consumed by any of those
 transactions. Transaction inputs and reference inputs are lists of type
-transaction input info TxInInfo that defines the input of a pending
+transaction input info [purple]#TxInInfo# that defines the input of a pending
 transaction.
 
 [source,haskell]
@@ -2332,7 +2332,7 @@ data TxInInfo = TxInInfo
 ----
 
 It is defined by a transaction output reference and resolved transaction
-input information, which is defined by the transaction output TxOut data
+input information, which is defined by the transaction output [purple]#TxOut# data
 type.
 
 [source,haskell]
@@ -2363,7 +2363,7 @@ data Address = Address
 
 As explained in section <<Cardano addresses>>, an address is composed
 of two parts: the payment part and the optional staking part. The
-payment part, defined with the Credential data type, contains either a
+payment part, defined with the [purple]#Credential# data type, contains either a
 public key hash or a script hash:
 
 [source,haskell]
@@ -2375,8 +2375,8 @@ data Credential
       deriving anyclass (NFData, HasBlueprintDefinition)
 ----
 
-The hashes are both of type BuiltinByteString. The staking part is
-defined with the StakingCredential data type that can be either a
+The hashes are both of type [purple]#BuiltinByteString#. The staking part is
+defined with the [purple]#StakingCredential# data type that can be either a
 staking hash or a staking pointer.
 
 [source,haskell]
@@ -2391,7 +2391,7 @@ data StakingCredential
     deriving anyclass (NFData, HasBlueprintDefinition)
 ----
 
-Next is the Value type that defines an amount of ada and/or native
+Next is the [purple]#Value# type that defines an amount of ada and/or native
 tokens:
 
 [source,haskell]
@@ -2403,11 +2403,11 @@ newtype Value = Value { getValue :: Map.Map CurrencySymbol (Map.Map TokenName In
 ----
 
 Every native token is defined with a currency symbol and a token name.
-They are both of type BuiltinByteString. The currency symbol is computed
+They are both of type [purple]#BuiltinByteString#. The currency symbol is computed
 as the hash of the minting policy, and the token name can be an
 arbitrary string (but should not be longer than 32 bytes). The ada token
 is defined by an empty byte string both for currency symbol and token
-name, which means you cannot mint ada. Next, we examine the OutputDatum
+name, which means you cannot mint ada. Next, we examine the [purple]#OutputDatum#
 data type:
 
 [source,haskell]
@@ -2421,13 +2421,13 @@ data OutputDatum
 ----
 
 UTXO can either contain no datum, a datum hash or a datum. A datum hash
-contains a string of type BuiltinByteString and the datum type is a
-wrapper around the BuiltinData type. The last constructor for the TxOut
-data type contains a Maybe ScriptHash, which is also a wrapper around a
-BuiltinByteString. If we return to the TxInfo data type, the next
+contains a string of type [purple]#BuiltinByteString# and the datum type is a
+wrapper around the [purple]#BuiltinData# type. The last constructor for the [purple]#TxOut#
+data type contains a [purple]#Maybe ScriptHash#, which is also a wrapper around a
+[purple]#BuiltinByteString#. If we return to the [purple]#TxInfo# data type, the next
 components are the constructors for fees and minting, both of which are
-of type Value. Then follows the constructor that handles certificates,
-which is defined by a list of the DCert data type:
+of type [purple]#Value#. Then follows the constructor that handles certificates,
+which is defined by a list of the [purple]#DCert# data type:
 
 [source,haskell]
 ----
@@ -2452,7 +2452,7 @@ data DCert
       deriving Pretty via (PrettyShow DCert)
 ----
 
-The DCert data type has seven constructors representing the following
+The [purple]#DCert# data type has seven constructors representing the following
 certificates:
 
 [arabic]
@@ -2466,12 +2466,21 @@ certificates:
 treasury.
 
 In PlutusV3, the names and structures change. The constructor becomes
-txInfoTxCerts, and the type becomes TxCert. The constructors and
-structure of TxCert also differ in comparison to Plutus V2. After
+[blue]#txInfoTxCerts#, and the type becomes [purple]#TxCert#. The constructors and
+structure of [purple]#TxCert# also differ in comparison to Plutus V2. After
 certificates comes the constructor that manages withdrawals of staking
 rewards. This is covered in section <<Staking and Plinth>>. Next
 follows the transaction validity range, which is defined with the data
-type POSIXTimeRange:
+type [purple]#POSIXTimeRange#:
+
+[source,haskell]
+----
+type POSIXTimeRange = Interval POSIXTime
+----
+
+The [purple]#POSIXTimeRange# data type contains an [purple]#Interval# type, parameterized with
+the [purple]#POSIXTime# type. [purple]#POSIXTime# is a wrapper for an integer, representing
+the number of milliseconds that have passed since January 1, 1970, at 00:00. 
 
 [source,haskell]
 ----
@@ -2495,10 +2504,7 @@ newtype POSIXTime = POSIXTime {getPOSIXTime :: Integer}
       )
 ----
 
-The POSIXTime data type contains an Interval type, parameterized with
-the POSIXTime type. POSIXTime is a wrapper for an integer, representing
-the number of milliseconds that have passed since January 1, 1970, at
-00:00. The interval type holds data about the lower and upper bounds of
+The [purple]#Interval# type holds data about the lower and upper bounds of
 the validity interval for the specified transaction.
 
 [source,haskell]
@@ -2512,7 +2518,7 @@ data Interval a = Interval
 ----
 
 The lower and upper bound types are structured in the same way. They
-hold the Extended and Closure types:
+hold the [purple]#Extended# and [purple]#Closure# types:
 
 [source,haskell]
 ----
@@ -2521,39 +2527,39 @@ data LowerBound a = LowerBound (Extended a) Closure
     deriving anyclass (NFData)
 ----
 
-The closure type is just a wrapper for a Boolean which indicates whether
+The [purple]#Closure# type is just a wrapper for a Boolean which indicates whether
 the boundary is included in the interval or not. The extended type has
 three possible constructor values, which represent negative infinity,
 positive infinity, or a finite bound parameterized, in our case, by a
-POSIXTime type. The module `Plutus.V2.Ledger.Interval` defines the
+[purple]#POSIXTime# type. The module `Plutus.V2.Ledger.Interval` defines the
 following helper functions that work with time intervals:
 
-* _member_: checks whether a value is in an interval
-* _interval_: takes two parameters as input and constructs an interval
+* [blue]#member#: checks whether a value is in an interval
+* [blue]#interval#: takes two parameters as input and constructs an interval
 with included boundaries
-* _from_: takes a value and returns an interval that includes all values
+* [blue]#from#: takes a value and returns an interval that includes all values
 greater than or equal to the given value
-* _to_: takes a value and returns an interval that includes all values
+* [blue]#to#: takes a value and returns an interval that includes all values
 that are smaller than or equal to the given value
-* _always_: an interval that covers every possible time
-* _never_: an interval that is empty
-* _singleton_: takes a value and returns an interval that only contains
+* [blue]#always#: an interval that covers every possible time
+* [blue]#never#: an interval that is empty
+* [blue]#singleton#: takes a value and returns an interval that only contains
 the single value
-* _hull_: takes two intervals as input and returns the smallest interval
+* [blue]#hull#: takes two intervals as input and returns the smallest interval
 containing both intervals
-* _intersection_: takes two intervals as input and returns the largest
+* [blue]#intersection#: takes two intervals as input and returns the largest
 interval contained in both of the intervals, if it exists
-* _overlap_: checks whether two intervals have a value in common and
+* [blue]#overlap#: checks whether two intervals have a value in common and
 returns a Boolean
-* _contains_: checks whether the second interval is contained in the
+* [blue]#contains#: checks whether the second interval is contained in the
 first one, and returns a Boolean
-* _isEmpty_: checks whether an interval is empty and returns a Boolean
-* _before_: checks whether a given time is before the given interval and
+* [blue]#isEmpty#: checks whether an interval is empty and returns a Boolean
+* [blue]#before#: checks whether a given time is before the given interval and
 returns a Boolean
-* _after_: checks whether a given time is after the given interval and
+* [blue]#after#: checks whether a given time is after the given interval and
 returns a Boolean.
 
-After the validity range in the TxInfo data type, the transaction
+After the validity range in the [purple]#TxInfo# data type, the transaction
 information continues with the following elements:
 
 [arabic]
@@ -2568,10 +2574,10 @@ hash, the actual datum must be attached to the spending transaction and
 can be accessed through this field
 . Transaction hash: the unique identifier for the transaction itself.
 
-All of this information in the TxInfo data type is accessible by a
+All of this information in the [purple]#TxInfo# data type is accessible by a
 validation script. In Plutus V3 the transaction information type in
 addition to the changed certification part, four additional constructors
-are added. The PlutusV3 TxInfo data type is illustrated below.
+are added. The PlutusV3 [purple]#TxInfo# data type is illustrated below.
 
 [source,haskell]
 ----
@@ -2683,20 +2689,20 @@ printVestingDatumJSON pkh time = printDataToJSON $ VestingDatum
 ----
 
 The validator uses a typed version with a custom data type for the
-datum, called VestingDatum. It includes two fields: beneficiary, of type
-PubKeyHash, and deadline, of type POSIXTime. The validation logic
+datum, called [purple]#VestingDatum#. It includes two fields: [blue]#beneficiary#, of type
+[purple]#PubKeyHash#, and [blue]#deadline#, of type [purple]#POSIXTime#. The validation logic
 indicates that the funds can be unlocked only when the deadline has been
 reached and the transaction is signed by the beneficiary. The validation
-code includes helper variables signedByBeneficiary and deadlineReached,
-which are of type Bool. In the first variable, we use the helper
-function _txSignedBy_ that takes a transaction info and a public key
+code includes helper variables [blue]#signedByBeneficiary# and [blue]#deadlineReached#,
+which are of type [purple]#Bool#. In the first variable, we use the helper
+function [blue]#txSignedBy# that takes a transaction info and a public key
 hash and checks whether this transaction has been signed with this
 public key hash. In the second variable, we access the transaction
 validity range and check whether it is contained inside the interval
 starting with the deadline and going to infinity. Then, we wrap the
-validator function and compile it to a Validator type. In the helper
-functions section, we have the _saveVal_ function that writes the
-validator to a _.plutus_ file. There is also a _printVestingDatumJSON_
+validator function and compile it to a [purple]#Validator# type. In the helper
+functions section, we have the [blue]#saveVal# function that writes the
+validator to a `.plutus` file. There is also a [blue]#printVestingDatumJSON#
 function that takes a public key hash and a string, which contains the
 time in ISO 8601 format and prints the datum in JSON format to the
 terminal. If we run this function and input a date and time together
@@ -2726,7 +2732,7 @@ printVestingDatumJSON pkh1 "2023-03-11T13:12:11.123Z"
 
 This datum can then be stored in a JSON file and later used in off-chain
 code. In the examples we have seen so far, we had one specific validator
-that was a Haskell value of type Validator. If there is any variability
+that was a Haskell value of type [purple]#Validator#. If there is any variability
 in the contract, we model that by using the datum as in the vesting
 example, where the datum contained the beneficiary and the deadline. An
 alternative approach is parameterized contracts, where variability is
@@ -2807,23 +2813,23 @@ saveVal = writeValidatorToFile "./assets/parameterized-vesting.plutus" .
                       	       validator
 ----
 
-First, we create the VestingParams type, which was previously called
-VestingDatum. It holds the beneficiary’s public key hash and the
+First, we create the [purple]#VestingParams# type, which was previously called
+[purple]#VestingDatum#. It holds the beneficiary’s public key hash and the
 deadline after which the beneficiary can claim the funds. We do not need
-the unstableMakeIsData instance. The type signature of the validator
+the [blue]#unstableMakeIsData# instance. The type signature of the validator
 function changes such that it takes the additional vesting parameter.
 Additionally, the datums type changes to unit. We note that a validator
 function can take any number of parameters. Our example uses only one
 parameter. Then, for the input arguments of the validator function, we
-add the parameter _params_ and change the __dat __parameter to unit. We
+add the parameter [blue]#params# and change the [blue]#dat# parameter to unit. We
 also need to update the type signature of the
-_mkWrappedParameterizedVestingValidator_ function. We then write the
-body of the function with point free style using only the dot . operator
-that we have to import. For the _validator,_ we expect a function
+[blue]#mkWrappedParameterizedVestingValidator# function. We then write the
+body of the function with point free style using only the dot `.` operator
+that we have to import. For the [blue]#validator#, we expect a function
 instead of a single value, so we update its type signature accordingly,
 which now represents a family of validators. Now, in the body of the
 validator, we cannot simply pass the input parameter to the
-mkWrappedParameterizedVestingValidator function. Because we are using
+[blue]#mkWrappedParameterizedVestingValidator# function. Because we are using
 template Haskell, all the data that template Haskell splices must be
 known at compile time because this step runs before our program is even
 compiled. However, the parameter we are passing to the validator
@@ -2831,14 +2837,14 @@ function is only known at runtime. So, template Haskell does not know
 what code to generate and splice into the source code. What we can do is
 apply the compiled validator function to the compiled input parameter
 because the compiled validator function in Plinth script is still a
-function. We do this with the help of the applyCode function, which
+function. We do this with the help of the [blue]#applyCode# function, which
 allows us to pass a parameter to a script function. But we still need to
 know the value of the input parameter at compile time, which is not
 possible. Note that the input parameter is not some arbitrary Haskell
 function, it is static data, which you can pass at runtime to a script
-function if you create an instance of the type class Lift. Then, we only
-need to apply the function liftCode to the data to compile the input
-parameter at runtime. Let us take a look at the Lift class:
+function if you create an instance of the type class [purple]#Lift#. Then, we only
+need to apply the function [blue]#liftCode# to the data to compile the input
+parameter at runtime. Let us take a look at the [purple]#Lift# class:
 
 [source,haskell]
 ----
@@ -2847,12 +2853,12 @@ class Lift uni a where
     lift :: a -> RTCompile uni fun (Term TyName Name uni fun ())
 ----
 
-It contains only the _lift_ method, but we will not use that directly.
+It contains only the [blue]#lift# method, but we will not use that directly.
 There are a lot of instances for this type class for all possible data
-types such as _BuiltinData_, _Data_, _Integer_ and _Bool_. However, this
-is not used for functions, as they cannot be used to compile Haskell to
-Plutus validators. The `PlutusTx` module defines this type class, and
-the _liftCode_ function:
+types such as [purple]#BuiltinData#, [purple]#Data#, [purple]#Integer# and 
+[purple]#Bool#. However, this is not used for functions, as they cannot be 
+used to compile Haskell to Plutus validators. The `PlutusTx` module defines 
+this type class, and the [blue]#liftCode# function:
 
 [source,haskell]
 ----
@@ -2866,7 +2872,7 @@ liftCode
     => PLC.Version -> a -> CompiledCodeIn uni fun a
 ----
 
-The input variable of type a must-have an instance of the _Lift_ type
+The input variable of type a must-have an instance of the [purple]#Lift# type
 class. Because we are using a custom defined type in our on-chain code,
 we can use a template Haskell mechanism to define an instance for our
 type. We do this with the following code:
@@ -2876,12 +2882,12 @@ type. We do this with the following code:
 makeLift ''VestingParams
 ----
 
-This line only compiles if the MultiParamTypeClasses and
-ScopedTypeVariables language extensions are enabled.
+This line only compiles if the [purple]#MultiParamTypeClasses# and
+[purple]#ScopedTypeVariables# language extensions are enabled.
 
 We have now presented the procedure on writing parameterized contracts.
 If there would be more than one parameter, we would need to use the
-applyCode function multiple times for each of the lifted parameters one
+[blue]#applyCode# function multiple times for each of the lifted parameters one
 after the other. An example is included in section <<Minting policies>>.
 
 === Off-chain code with Lucid
@@ -3101,7 +3107,7 @@ const datum: VestingDatum = {
 ----
 
 First, we define the vesting script that will be of type
-SpendingValidator (we can copy it from our _vesting.plutus_ file created
+SpendingValidator (we can copy it from our `vesting.plutus` file created
 in section <<Time-dependent and parameterized validators>>. Note
 that the code snippet shows only part of the serialized script, since it
 is very long. Then, we compute the vesting address from the script and
@@ -3565,9 +3571,9 @@ the signedCurrencySymbol function, we can also compute the currency
 symbol of the minting script given a concrete public key hash. The
 writeCodeToFile helper function can take arbitrary compiled code and
 serialize it to disk. The saveSignedCode function, which uses this
-helper function, writes the Plinth script to the _signed.plutus_ file
+helper function, writes the Plinth script to the `signed.plutus` file
 where the parameter, the public key hash, has not been applied yet. It
-saves it to the __signed.plutus __file. The helper functions, imported
+saves it to the `signed.plutus` file. The helper functions, imported
 from the `Utilities` module, can be found in the _code/Utilities_
 folder of the Plutus Pioneer program’s
 https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[4th
@@ -3659,7 +3665,7 @@ parameter. You can have more than multiple parameters in this list,
 which we will see in the case of NFTs. For this example, our list will
 contain only one parameter that is of type string, which represents the
 public key hash. To create our minting policy, we take the CBOR HEX from
-the _signed.plutus_ file and use the function applyParamsToScript to
+the `signed.plutus` file and use the function applyParamsToScript to
 apply our public key hash to this script. Next, we compute the policy ID
 and log it. We compute our asset class that we call Unit. It is computed
 from the concatenation of the policy ID and the name we give to our
@@ -3830,7 +3836,7 @@ nftCurrencySymbol oref tn = currencySymbol $ nftPolicy oref tn
 ----
 
 The saveNFTCode function writes the unparameterized Plinth script to
-file _nft.plutus_. This is useful because we get an unparameterized
+file `nft.plutus`. This is useful because we get an unparameterized
 script that can be used in a DApp by multiple users. The saveNFTPolicy
 function takes a transaction output reference and a token name and
 writes the parameterized minting policy to a Plutus script and saves it
@@ -3912,7 +3918,7 @@ console.log("tid: " + txHash);
 
 First, we define our token name, followed by the Params variable, which
 holds the data types for our parameters. Next, we define the actual
-minting policy. We use the CBOR hex from the _nft.plutus_ script and
+minting policy. We use the CBOR hex from the `nft.plutus` script and
 apply our three parameters to it. Then, we define the policy ID and log
 it. Additionally, we define the asset class, which we call Unit.
 
@@ -5196,8 +5202,8 @@ _payment2.addr_ file from the _private-testnet/addresses/_.
 addr_test1qzxkl9zxmyptd4ua8zw2gcwr5qyj9djdr7ucu97gs8sh5uwm9kpwsxt2ksuf5yqnxqjeq8k59nar9nacqgj793xgwa6q0j2rhv
 ----
 
-We start a REPL and serialize the stake validator to the__
-staking.plutus __file, where we provide the payment address from user
+We start a REPL and serialize the stake validator to the 
+`staking.plutus` file, where we provide the payment address from user
 two:
 
 [source,shell]
