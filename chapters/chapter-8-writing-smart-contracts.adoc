@@ -3031,7 +3031,7 @@ by spaces, as shown in the following example:
 export const secretSeed = "seed_word1 seed_word2 ... seed_wordN";
 ----
 
-Next, we initiate Lucid as a constant using the new method, which
+Next, we initiate Lucid as a constant using the [blue]#new# method, which
 requires a provider and a network. The provider enables fetching and
 submitting data to the blockchain. We specify the network (mainnet,
 pre-production, or preview) and use https://blockfrost.io/[Blockfrost]
@@ -3057,7 +3057,7 @@ addr_test1vr8ldcu7ckeulp93q7yhdjv8q6mnwaxjc4fr4ax64a79zzgm5xd7e
 
 The wallet address is then displayed in the terminal. If multiple
 accounts reside in the wallet, you can specify one by adding the
-accountIndex when selecting the address. Only one account can be
+[blue]#accountIndex# when selecting the address. Only one account can be
 selected at a time; however, you can select different accounts
 sequentially and store their addresses in different variables. The last
 selected account is the one that Lucid keeps track of. Below is an
@@ -3107,8 +3107,8 @@ const datum: VestingDatum = {
 ----
 
 First, we define the vesting script that will be of type
-SpendingValidator (we can copy it from our `vesting.plutus` file created
-in section <<Time-dependent and parameterized validators>>. Note
+[purple]#SpendingValidator# (we can copy the CBORHEX from our `vesting.plutus` file created
+in section <<Time-dependent and parameterized validators>>). Note
 that the code snippet shows only part of the serialized script, since it
 is very long. Then, we compute the vesting address from the script and
 define the vesting datum type. To play around with the types, we start a
@@ -3146,16 +3146,16 @@ async function vestFunds(amount: bigint): Promise<TxHash> {
 console.log(await vestFunds(100000000n));
 ----
 
-The classes used to manage a transaction are called Tx, TxComplete, and
-TxSigned. To construct a transaction, we use the newTx function, which
-returns a variable of type Tx. Then, we use the payToContract and
-complete functions of the Tx class. In the first function, we input the
+The classes used to manage a transaction are called [purple]#Tx#, [purple]#TxComplete#, and
+[purple]#TxSigned#. To construct a transaction, we use the [blue]#newTx# function, which
+returns a variable of type [purple]#Tx#. Then, we use the [blue]#payToContract# and
+[blue]#complete# functions of the [purple]#Tx# class. In the first function, we input the
 address to which we are sending the funds, the amount, and the inline
-datum. The second function returns a variable of type TxComplete. After
-that, we can use the functions sign and complete from the TxComplete
-class. The last one returns a variable of type TxSigned. We now use the
-function submit from the TxSigned class to submit the transaction, which
-returns a transaction hash that we return at the end of the vestFunds
+datum. The second function returns a variable of type [purple]#TxComplete#. After
+that, we can use the functions sign and complete from the [purple]#TxComplete#
+class. The last one returns a variable of type [purple]#TxSigned#. We now use the
+function [blue]#submit# from the [purple]#TxSigned# class to submit the transaction, which
+returns a transaction hash that we return at the end of the [blue]#vestFunds#
 function. Next we look at the function that claims the vested funds.
 
 [source,typescript]
@@ -3287,13 +3287,13 @@ Blockfrost API key on the preview network, and select our wallet. Then,
 we define the burn and vesting serialized scripts. Only part of the
 serialized script is shown in the code, as including the entire script
 would be too lengthy. Next, we define two helper functions to sign and
-submit a transaction. The deploy function deploys the vesting script to
-the previously computed burn address. In the payToContract function, we
+submit a transaction. The [blue]#deploy# function deploys the vesting script to
+the previously computed burn address. In the [blue]#payToContract# function, we
 inline a void datum and attach the vesting script. The field specifying
 how much ada to send is left empty, allowing Lucid to calculate the
 minimum required amount for the UTXO. Then, we sign and submit the
 transaction, save this code to the `deploy.ts` file, and run it with Deno.
-The submitCardanoTx function will print a transaction hash, which we
+The [blue]#submitCardanoTx# function will print a transaction hash, which we
 need to save for referencing the vesting script later.
 
 [source,shell]
@@ -3343,16 +3343,16 @@ async function claimVestedFunds(): Promise<TxHash> {
 }
 ----
 
-We added the function getReferenceUTxO that returns the UTXO to which we
+We added the function [blue]#getReferenceUTxO# that returns the UTXO to which we
 have attached our vesting script. We hard-coded the transaction hash
 that was printed by the `deploy.ts` script and fixed the output index to
 0. If you are not sure if the UTXO carrying the reference script was
 assigned output index 0 in the transaction where the script was
 deployed, you can print the reference UTXO to the console and verify
-that a reference script is attached. In the claimVestedFunds function,
+that a reference script is attached. In the [blue]#claimVestedFunds# function,
 we change the line where the vesting script is attached. Instead of
-using the attachSpendingValidator function from the previous code, we
-now use the readFrom function, which takes the previously defined
+using the [blue]#attachSpendingValidator# function from the previous code, we
+now use the [blue]#readFrom# function, which takes the previously defined
 reference UTXO as input. This makes the transaction smaller and reduces
 the cost in ada. Another option for using reference scripts is through
 the Cardano CLI tool, with a
@@ -3366,7 +3366,7 @@ tokens can be minted. Each UTXO has an address, a value, and potentially
 a datum. In previous examples, the value was always ada. To include
 native tokens in a UTXO, they must be explicitly created.
 
-Let’s look again at the Haskell definition of the Value type. This type
+Let’s look again at the Haskell definition of the [purple]#Value# type. This type
 is defined in the module `Plutus.V1.Ledger.Value`. Even if we are using
 Plutus V2 scripts, this module has not changed, and we can still use V1
 version for it.
@@ -3383,10 +3383,10 @@ newtype Value = Value
 
 The Value type is a map object that connects a currency symbol to
 another map, which uses token names as its keys. Both token names and
-currency symbols are wrappers for the type BuiltinByteString,
+currency symbols are wrappers for the type [purple]#BuiltinByteString#,
 representing a byte string. These two byte strings define a native token
 or coin, while the integer represents the token’s amount. Additionally,
-there is another type called AssetClass.
+there is another type called [purple]#AssetClass#.
 
 [source,haskell]
 ----
@@ -3412,11 +3412,11 @@ It combines the currency symbol and token name to define an asset class,
 which can represent a native token or ada. The currency symbol and token
 name for ada are simply wrappers around an empty byte string. Because
 the value type is a map, it can contain different tokens and amounts,
-including ada. To construct a value, we can use the function assetClass,
+including ada. To construct a value, we can use the function [blue]#assetClass#,
 which takes a currency symbol and token name, and returns a variable of
-type asset class. We can then use the function assetClassValue, which
+type asset class. We can then use the function [blue]#assetClassValue#, which
 takes an asset class and integer, and returns a variable of type value.
-With the assetClassValueOf function, we can check how many tokens of a
+With the [blue]#assetClassValueOf# function, we can check how many tokens of a
 specific asset class are contained in a value type variable. Below, you
 can see the type signatures of these functions.
 
@@ -3440,8 +3440,8 @@ Prelude Plutus.V1.Ledger.Value> myTokenValue = assetClassValue
 myAssetClass 77
 ----
 
-To construct an asset class for ada, we can use the adaSymbol and
-adaToken variables provided by the `Plutus.V1.Ledger.Value` module.
+To construct an asset class for ada, we can use the [blue]#adaSymbol# and
+[blue]#adaToken# variables provided by the `Plutus.V1.Ledger.Value` module.
 
 [source,shell]
 ----
@@ -3450,8 +3450,8 @@ Prelude Plutus.V1.Ledger.Value> adaValue = assetClassValue ada 100000000
 ----
 
 We can also combine different variables of type value with the semigroup
-operator <> as the value type has an instance of the semigroup type
-class. Using the assetClassValueOf function, we can get the quantity of
+operator `<>` as the value type has an instance of the semigroup type
+class. Using the [blue]#assetClassValueOf# function, we can get the quantity of
 a given asset class contained in a value.
 
 [source,shell]
@@ -3463,7 +3463,7 @@ Prelude Plutus.V1.Ledger.Value> assetClassValueOf combined myAssetClass
 ----
 
 We can also extract information from a value type variable as a list of
-triples using the flattenValue function, which takes a value type and
+triples using the [blue]#flattenValue# function, which takes a value type and
 returns a list of triples.
 
 [source,shell]
@@ -3474,10 +3474,10 @@ Prelude Plutus.V1.Ledger.Value> flattenValue combined
 {empty}[(,"",100000000),(a507ff33,"MyToken",77)]
 ----
 
-So far, we have focused on the spending constructor of the ScriptPurpose
-type variable within the ScriptContext data type, which takes a
-transaction reference as input. In the TxInfo data type, we can specify
-a value type for the txInfoMint variable. Minting policies are triggered
+So far, we have focused on the spending constructor of the [purple]#ScriptPurpose#
+type variable within the [purple]#ScriptContext# data type, which takes a
+transaction reference as input. In the [purple]#TxInfo# data type, we can specify
+a value type for the [blue]#txInfoMint# variable. Minting policies are triggered
 if this field contains a non-zero value. Each currency symbol defined in
 this value activates the corresponding minting policy, linking them
 through the policy’s hash.
@@ -3557,20 +3557,20 @@ signedCurrencySymbol :: PubKeyHash -> CurrencySymbol
 signedCurrencySymbol = currencySymbol . signedPolicy
 ----
 
-We define our minting policy with the mkSignedPolicy function that takes
+We define our minting policy with the [blue]#mkSignedPolicy# function that takes
 a public key hash as an additional parameter to the redeemer and script
 context. In this example, our parameter does not keep its type when
 compiled. In the compiled validator, we chose to change the additional
-parameter’s type to BuiltinData. To accomplish this, we first use the
-unsafeFromBuiltinData function that converts the BuiltinData to the
-actual type. Then, the signedPolicy function takes a parameter of type
-PubKeyHash, and we convert it to BuiltinData using the toBuiltinData
-function. The helper function saveSignedPolicy allows us to write the
+parameter’s type to [purple]#BuiltinData#. To accomplish this, we first use the
+[blue]#unsafeFromBuiltinData# function that converts the [purple]#BuiltinData# to the
+actual type. Then, the [blue]#signedPolicy# function takes a parameter of type
+[purple]#PubKeyHash#, and we convert it to [purple]#BuiltinData# using the [blue]#toBuiltinData#
+function. The helper function [blue]#saveSignedPolicy# allows us to write the
 minting policy to a Plinth script file for a given public key hash. With
-the signedCurrencySymbol function, we can also compute the currency
+the [blue]#signedCurrencySymbol# function, we can also compute the currency
 symbol of the minting script given a concrete public key hash. The
-writeCodeToFile helper function can take arbitrary compiled code and
-serialize it to disk. The saveSignedCode function, which uses this
+[blue]#writeCodeToFile# helper function can take arbitrary compiled code and
+serialize it to disk. The [blue]#saveSignedCode# function, which uses this
 helper function, writes the Plinth script to the `signed.plutus` file
 where the parameter, the public key hash, has not been applied yet. It
 saves it to the `signed.plutus` file. The helper functions, imported
@@ -3660,12 +3660,12 @@ const txHash = await signedTx.submit();
 console.log("tid: " + txHash);
 ----
 
-We first define our Params type, which is a tuple with one list
+We first define our [purple]#Params# type, which is a tuple with one list
 parameter. You can have more than multiple parameters in this list,
 which we will see in the case of NFTs. For this example, our list will
 contain only one parameter that is of type string, which represents the
 public key hash. To create our minting policy, we take the CBOR HEX from
-the `signed.plutus` file and use the function applyParamsToScript to
+the `signed.plutus` file and use the function [blue]#applyParamsToScript# to
 apply our public key hash to this script. Next, we compute the policy ID
 and log it. We compute our asset class that we call Unit. It is computed
 from the concatenation of the policy ID and the name we give to our
@@ -3673,7 +3673,7 @@ tokens that we want to mint. In principle, the token name can be an
 arbitrary byte string that is limited to 32 bytes. If a human-readable
 name is set, wallets also display it in that form. Then, we define a
 number of tokens we want to mint and construct a transaction using the
-mintAssets function that takes an asset class and the number of tokens
+[blue]#mintAssets# function that takes an asset class and the number of tokens
 we want to mint. It also takes a redeemer, which, in our case, is of
 type void. Then, we attach the minting policy and add the signature of
 our address that corresponds to our public key hash. Finally, we sign
@@ -3692,7 +3692,7 @@ negative, it signifies burning tokens, and in that case, the wallet must
 already contain the tokens to be burned. Although every transaction
 submitted in Lucid is signed with the signing key from the wallet, the
 signature must be explicitly added to the transaction using the
-addSignerKey function for the minting policy to accept it. This was an
+[blue]#addSignerKey# function for the minting policy to accept it. This was an
 example of minting fungible tokens.
 
 Plutus also allows the minting of non-fungible tokens (NFTs), which are
@@ -3762,12 +3762,12 @@ mkNFTPolicy oref tn () ctx = traceIfFalse "UTxO not consumed"   hasUTxO &&
 ----
 
 Our script will be parameterized by two inputs: the transaction output
-reference (TxOutRef) of the UTXO we are spending and the token name. The
+reference ([purple]#TxOutRef#) of the UTXO we are spending and the token name. The
 condition we check is that the minting transaction consumes the TxOutRef
-passed to the script. The any function is used, which takes a
+passed to the script. The [blue]#any# function is used, which takes a
 Boolean-returning function and applies it to a list, returning true if
 at least one element satisfies the condition. We also ensure that only
-one token with the specified name is minted by using the flattenValue
+one token with the specified name is minted by using the [blue]#flattenValue#
 function, which converts a value type into a list of triples. These
 checks ensure only one coin is minted with the currency symbol tied to a
 specific parameterized script. Finally, let us look at how to convert
@@ -3803,11 +3803,11 @@ nftPolicy oref tn = mkMintingPolicyScript $ nftCode
 
 There are now three input parameters for our script: the transaction
 hash (also called transaction ID), the transaction index, and the token
-name. These need to be converted from BuiltinData to their custom data
+name. These need to be converted from [purple]#BuiltinData# to their custom data
 types. After converting, we combine the transaction ID and index into a
 transaction output reference, which is then passed as an input to the
-mkNFTPolicy validator function. Next, we compile the wrapped validator
-function and define the nftPolicy function, which creates a minting
+[blue]#mkNFTPolicy# validator function. Next, we compile the wrapped validator
+function and define the [blue]#nftPolicy# function, which creates a minting
 policy using two specific input parameters. Finally, we explore a helper
 function that serializes the compiled minting policy to disk.
 
@@ -3835,13 +3835,13 @@ nftCurrencySymbol :: TxOutRef -> TokenName -> CurrencySymbol
 nftCurrencySymbol oref tn = currencySymbol $ nftPolicy oref tn
 ----
 
-The saveNFTCode function writes the unparameterized Plinth script to
+The [blue]#saveNFTCode# function writes the unparameterized Plinth script to
 file `nft.plutus`. This is useful because we get an unparameterized
-script that can be used in a DApp by multiple users. The saveNFTPolicy
+script that can be used in a DApp by multiple users. The [blue]#saveNFTPolicy#
 function takes a transaction output reference and a token name and
 writes the parameterized minting policy to a Plutus script and saves it
 to disk. This is useful if we want to create only one NFT and already
-know the UTXO that we will spend. The nftCurrencySymbol function
+know the UTXO that we will spend. The [blue]#nftCurrencySymbol# function
 computes the currency symbol of the script that is parameterized with
 two concrete parameters. Let’s look at the off-chain code:
 
@@ -3916,15 +3916,15 @@ const txHash = await signedTx.submit();
 console.log("tid: " + txHash);
 ----
 
-First, we define our token name, followed by the Params variable, which
+First, we define our token name, followed by the [purple]#Params# variable, which
 holds the data types for our parameters. Next, we define the actual
 minting policy. We use the CBOR hex from the `nft.plutus` script and
 apply our three parameters to it. Then, we define the policy ID and log
-it. Additionally, we define the asset class, which we call Unit.
+it. Additionally, we define the asset class, which we call [purple]#Unit#.
 
 After that, we construct the transaction, specifying the asset we want
 to mint – in this case, just one coin. We attach the minting policy,
-then use the collectFrom function to specify which UTXO we want to spend
+then use the [blue]#collectFrom# function to specify which UTXO we want to spend
 for the transaction fees. Finally, we sign and submit the transaction,
 logging the transaction hash.
 
@@ -3948,12 +3948,12 @@ This section outlines the different methods of testing smart contracts.
 We introduce the
 https://github.com/mlabs-haskell/plutus-simple-model[Plutus simple
 model] (PSM) library developed by https://mlabs.city/[MLabs] and the
-QuickCheck Haskell library used for property-based testing. We also
+https://hackage.haskell.org/package/QuickCheck[QuickCheck] 
+Haskell library used for property-based testing. We also
 showcase how to write unit and property tests using these libraries. In
-the future, the PSM library will be upgraded to the
+the future, the PSM library will be replaced by the
 https://github.com/IntersectMBO/cardano-node-emulator[Cardano node
-emulator] library that will include the upgrade for property testing
-PlutusV3 smart contracts.
+emulator] library that can be used to property test PlutusV3 smart contracts.
 
 First, let’s see how to use a state monad to represent a blockchain and
 keep track of transactions. The PSM library uses a state monad. Below is
@@ -3978,9 +3978,9 @@ initialMockS :: Mock
 initialMockS = Mock [ UTxO "Alice" 1000 ]
 ----
 
-The UTxO data type contains the owner of the UTXO and the value sitting
+The [purple]#UTxO# data type contains the owner of the UTXO and the value sitting
 at the UTXO, which, in our case, is just an integer number. We create
-the Mock blockchain type – a wrapper around a list of UTXOs. Thus, our
+the [purple]#Mock# blockchain type – a wrapper around a list of UTXOs. Thus, our
 mock chain consists solely of a list of UTXOs. Finally, we create an
 initial state of our blockchain, indicating that Alice has a 1,000 ada.
 
@@ -4020,7 +4020,7 @@ multipleTx = runState (do
 type Run a = State Mock a
 ----
 
-The sendValue function takes the following parameters in the specified
+The [blue]#sendValue# function takes the following parameters in the specified
 order:
 
 * The name of the user sending the funds
@@ -4038,9 +4038,9 @@ receiver will get, and the change amount that will go back to the
 sender. Next, we check if the sender has enough funds to create the
 transaction and if he does, we update the state of the blockchain with
 two newly created UTXOs. If he does not, we return the original state of
-the blockchain. In the multipleTx function, we create three transactions
+the blockchain. In the [blue]#multipleTx# function, we create three transactions
 and return final parameters of the state monad. We can now look in the
-REPL at the results that the multipleTx function returns:
+REPL at the results that the [blue]#multipleTx# function returns:
 
 [source,shell]
 ----
@@ -4051,8 +4051,8 @@ Mock \{utxos = [UTxO \{owner = "Rick", value = 200},UTxO \{owner =
 "Bob", value = 200},UTxO \{owner = "Alice", value = 600}]}
 ----
 
-The Mock type is also used in the PSM library. The source code of this
-library shows how Mock and Run types are defined:
+The [purple]#Mock# type is also used in the PSM library. The source code of this
+library shows how [purple]#Mock# and [purple]#Run# types are defined:
 
 [source,haskell]
 ----
@@ -4080,7 +4080,7 @@ newtype Run a = Run (State Mock a)
   deriving newtype (Functor, Applicative, Monad, MonadState Mock)
 ----
 
-The source code for the Mock data type can be found in the following
+The source code for the [purple]#Mock# data type can be found in the following
 https://github.com/mlabs-haskell/plutus-simple-model/blob/main/psm/src/Plutus/Model/Mock.hs[GitHub file]. 
 Below is an example that uses the PSM library. We will test two
 mock transactions, where one should succeed and one should fail due to
@@ -4113,12 +4113,12 @@ main = defaultMain $ do
         good = testNoErrors (adaValue 10_000_000) defaultBabbage
 ----
 
-We import the _Test.Tasty_ and the _Plutus.Model_ libraries, and then we
-define our tests in the main function. At the beginning of the main
+We import the `Test.Tasty` and the `Plutus.Model` libraries, and then we
+define our tests in the [blue]#main# function. At the beginning of the [blue]#main#
 function, which serves as the entry point of our code, there is some
-standard code that repeats in every test. We use the defaultMain
+standard code that repeats in every test. We use the [blue]#defaultMain#
 function, part of the `Tasty` module, to transform a tree of tests into
-the IO action that the main function needs to run. The testGroup
+the IO action that the main function needs to run. The [blue]#testGroup#
 function, also provided by the `Tasty` module, allows us to give a name to
 a list of tests. This is handy when you have multiple groups of tests,
 and you want to classify them. Finally, we have the list of tests, each
@@ -4127,8 +4127,8 @@ test, user one sends a transaction to user two, and everything should
 proceed as expected. In the _Not enough funds_ test, user one sends some
 funds to user two, but user one has not enough funds to cover the
 transaction, so this test should fail. The code shows that we run the
-tests using the good and bad functions. The good function is a partially
-applied testNoErrors function.
+tests using the [blue]#good# and [blue]#bad# functions. The [blue]#good# 
+function is a partially applied [blue]#testNoErrors# function.
 
 [source,shell]
 ----
@@ -4137,8 +4137,8 @@ testNoErrors :: Value -> MockConfig -> String -> Run a -> TestTree
 
 The first parameter is the value we provide to the admin user. As in the
 previous example, we will start with a single UTXO. We provide
-10.000.000 lovelace to the adaValue function that takes an integer and
-returns a variable of the Plinth type Value.
+10.000.000 lovelace to the [blue]#adaValue# function that takes an integer and
+returns a variable of the Plinth type [purple]#Value#.
 
 [source,shell]
 ----
@@ -4147,9 +4147,9 @@ adaValue :: Integer -> Value
 
 We also provide the default Babbage mock configuration, which configures
 our mock blockchain. The description of the test and the run action,
-which the testNoErrors function also accepts, are provided in the list
-of tests. In the end, it produces a variable of type TestTree. In the
-case of the bad function, we use the mustFail function, which logs an
+which the [blue]#testNoErrors# function also accepts, are provided in the list
+of tests. In the end, it produces a variable of type [purple#TestTree#. In the
+case of the [blue]#bad# function, we use the [blue]#mustFail# function, which logs an
 error if everything goes well and succeeds if an error occurs. In the
 first scenario, we expect the test to succeed, while in the second
 scenario, we anticipate a failure. Now, let’s examine the actual code
@@ -4164,19 +4164,19 @@ setupUsers = replicateM 3 $ newUser $ ada (Lovelace 1000)
 -- Function to test that a simple transaction works
 simpleSpend :: Run Bool
 simpleSpend = do
-	-- Create 3 users and assign each 1000 lovelaces
+	  -- Create 3 users and assign each 1000 lovelaces
     users <- setupUsers  
     -- Give names to individual users
     let [u1, u2, u3] = users  
     -- Send 100 lovelaces from user 1 to user 2
     sendValue u1 (adaValue 100) u2  
-	-- Send 100 lovelaces from user 2 to user 3
+	  -- Send 100 lovelaces from user 2 to user 3
     sendValue u2 (adaValue 100) u3 
-	-- Check that all TXs were accepted without errors
+	  -- Check that all TXs were accepted without errors
     isOk <- noErrors  
-	-- Read user values
+	  -- Read user values
     vals <- mapM valueAt users  
-	-- Check isOk and that all users have correct values
+	  -- Check isOk and that all users have correct values
     return $ isOk &&  
            (vals == fmap adaValue [900, 1000, 1100])
  
@@ -4193,35 +4193,35 @@ notEnoughFunds = do
   noErrors  
 ----
 
-First, we create the helper function setupUsers, which creates three new
-users. The newUser function creates a new user and transfers an input
+First, we create the helper function [blue]#setupUsers#, which creates three new
+users. The [blue]#newUser# function creates a new user and transfers an input
 amount of coins from the admin user to the new user. We transfer 1,000
 lovelace and replicate this function three times. The function returns
 the run monad, parameterized by a list of three public key hashes.
 
-The simpleSpend function is also a run monad parameterized by a Boolean,
+The [blue]#simpleSpend# function is also a run monad parameterized by a Boolean,
 which indicates whether the given transaction has passed or failed. All
 actions within this monad influence the blockchain state if they are
 successful. In the body of this state monad, we first create a list of
 public key hashes representing the three users and assign them names.
 
-The actual transaction is constructed using the sendValue function,
+The actual transaction is constructed using the [blue]#sendValue# function,
 which takes the public key hashes of both the sender and the recipient,
 along with the lovelace amount to transfer. The function returns the run
-monad parameterized by the unit type. For the sendValue function, the
+monad parameterized by the unit type. For the [blue]#sendValue# function, the
 success of a transaction is tracked as a part of the blockchain state.
 
-We then use the noErrors action to verify that all transactions were
+We then use the [blue]#noErrors# action to verify that all transactions were
 successful. Additionally, we check whether the final balances match our
-expectations. We retrieve the value of a specific user using the valueAt
+expectations. We retrieve the value of a specific user using the [blue]#valueAt#
 function, mapping over the list of public key hashes for our three
 users. Finally, we compare the list of actual balances against the
 expected ones, along with verifying that all transactions succeeded.
 
-In the notEnoughFunds function, we again create three users and attempt
+In the [blue]#notEnoughFunds# function, we again create three users and attempt
 to send 10.000 lovelace from user u1 to user u2. Since this exceeds the
 balance of u1, this transaction should fail. We return the result of the
-noErrors action. We can name our test in the cabal file PMS and run it
+[blue]#noErrors# action. We can name our test in the cabal file PMS and run it
 using the following cabal command to obtain the test results:
 
 [source,shell]
@@ -4300,7 +4300,7 @@ validator = PlutusV2.mkValidatorScript $$(PlutusTx.compile
 ----
 
 Let’s now look at the unit test for this contract that uses the PSM
-library. We can name the file for writing unit tests _UTNegativeRTimed_.
+library. We can name the file for writing unit tests `UTNegativeRTimed.hs`.
 
 [source,haskell]
 ----
@@ -4360,7 +4360,7 @@ main = defaultMain $ do
       good = testNoErrors (adaValue 10_000_000) defaultBabbage
 ----
 
-Our main function contains a list of tests with their descriptions. The
+Our [blue]#main# function contains a list of tests with their descriptions. The
 first two tests should pass, and the rest of the tests should fail. We
 use the same test in all six cases, but the parameters we pass to the
 test differ for each case. The first parameter we pass is the POSIX time
@@ -4394,8 +4394,7 @@ lockingTx dl usp val =
     , payToScript valScript (HashDatum (OnChain.MkCustomDatum dl)) val
     ]
   
--- Create transaction that spends "ref" to unlock "val" from the "valScript"
--- validator
+-- Create transaction that spends "ref" to unlock "val" from the "valScript" validator
 consumingTx :: POSIXTime -> Integer -> PubKeyHash -> TxOutRef -> Value -> Tx
 consumingTx dl redeemer usr ref val =
   mconcat
@@ -4407,18 +4406,18 @@ consumingTx dl redeemer usr ref val =
 First, we define the time to wait between the locking and consuming
 transactions. Then, we set up two users, giving each 1,000 lovelace.
 Next, we define the validator script using the actual validator from the
-`NegativeRTimed` module, which we imported and named OnChain. Finally,
+`NegativeRTimed` module, which we imported and named [purple]#OnChain#. Finally,
 we create two functions to produce helper transactions – one to create
 the UTXO at the script address and another to consume it.
 
 Transaction types implement the Monoid type class, allowing them to be
-combined using the mconcat operator. For the locking transaction, we
-first use the userSpend function to specify which user UTXOs to spend.
-In the second transaction, we use the payToScript function to send funds
+combined using the [blue]#mconcat# operator. For the locking transaction, we
+first use the [blue]#userSpend# function to specify which user UTXOs to spend.
+In the second transaction, we use the [blue]#payToScript# function to send funds
 to a specified script, providing the script address, datum or datum
-hash, and the amount. The lockingTx function produces the spending
+hash, and the amount. The [blue]#lockingTx# function produces the spending
 transaction. We follow a similar approach to build the consuming
-transaction. Let’s now check from the REPL which types the payToScript
+transaction. Let’s now check from the REPL which types the [blue]#payToScript#
 function accepts:
 
 [source,shell]
@@ -4435,16 +4434,16 @@ Prelude Plutus.Model> :i DatumMode
 data DatumMode a = InlineDatum a | HashDatum a
 ----
 
-The DatumMode type can be either an inline datum or a datum hash. The
-consumingTx function defines the consuming transaction. Because want to
+The [purple]#DatumMode# type can be either an inline datum or a datum hash. The
+[blue]#consumingTx# function defines the consuming transaction. Because want to
 consume a UTXO sitting at a script address, we need to provide the
 datum, the redeemer, and a reference to the UTXO. These parameters,
-along with the script, serve as inputs to the spendScript function,
+along with the script, serve as inputs to the [blue]#spendScript# function,
 which defines the conditions under which a script UTXO can be spent. We
-then combine the transaction produced by the spendScript function with
-the transaction created by the payToKey function, which specifies the
+then combine the transaction produced by the [blue]#spendScript# function with
+the transaction created by the [blue]#payToKey# function, which specifies the
 public key hash to which the funds will be sent. We now look at the
-spendScript function from the REPL:
+[blue]#spendScript# function from the REPL:
 
 [source,shell]
 ----
@@ -4459,7 +4458,7 @@ spendScript ::
 ----
 
 It takes a script, a transaction output reference, a redeemer and a
-datum. Let’s now look at the testScript function that defines our actual
+datum. Let’s now look at the [blue]#testScript# function that defines our actual
 test:
 
 [source,haskell]
@@ -4505,7 +4504,7 @@ it returns the updated blockchain in the run monad parameterized by the
 unit type. The first thing we do is set up two users. Then, we create a
 value of 100 lovelace. After that, we use the spend function that takes
 a public key hash and a value, and returns all the UTXOs owned by that
-user to pay for the value. The spend function has the following type
+user to pay for the value. The [blue]#spend# function has the following type
 signature:
 
 [source,shell]
@@ -4514,10 +4513,10 @@ Prelude Plutus.Model> :i spend
 spend :: PubKeyHash -> Value -> Run UserSpend
 ----
 
-We can now submit the locking transaction by passing the lockingTx
+We can now submit the locking transaction by passing the [blue]#lockingTx#
 function the spending value, which includes the UTXOs, along with the
 value we want to send and the attached datum. We then submit this
-transaction using the submitTx function, which also requires the public
+transaction using the [blue]#submitTx# function, which also requires the public
 key hash of the user submitting the transaction.
 
 [source,shell]
@@ -4536,7 +4535,7 @@ Prelude Plutus.Model> :i logError
 logError :: String -> Run ()
 ----
 
-The logError function takes a string and returns a run monad
+The [blue]#logError# function takes a string and returns a run monad
 parameterized by unit. We can name our test case in the cabal file
 _UTNegativeRTimed_:
 
@@ -4642,9 +4641,9 @@ main = defaultMain $ do
       ]
 ----
 
-We use the defaultMain and testGroup functions from the `Tasty` module. To
-generate a test tree, we now use the testProperty function, which is
-also contained in the tasty package.
+We use the [blue]#defaultMain# and [blue]#testGroup# functions from the  
+`Tasty` module. To generate a test tree, we now use the [blue]#testProperty# 
+function, which is also contained in the tasty package.
 
 [source,shell]
 ----
@@ -4653,7 +4652,7 @@ Prelude Test.Tasty.QuickCheck> :i testProperty
 testProperty :: Testable a => TestName -> a -> TestTree
 ----
 
-The final testing functions we provide to the testProperty function also
+The final testing functions we provide to the [blue]#testProperty# function also
 accept parameters, but we do not provide any, since the QuickCheck
 testing library does this for us. The first property we test tells us
 that any transaction submitted before the deadline always fails, no
@@ -4721,10 +4720,10 @@ created, this instance can be reused for other tests. Specifically, we
 initialize the blockchain with the Babbage default configuration and
 allocate 10,000,000 lovelace to the admin user. Then, we create an
 arbitrary instance. QuickCheck has many instances of this arbitrary type
-class for common types, but we have to create one for the POSIXTime
+class for common types, but we have to create one for the [purple]#POSIXTime#
 type. Because this type is simply a wrapper around an integer, we can
 randomly pick a number between 0 and 2,000 with the choose function and
-then return it as POSIXTime.
+then return it as [purple]#POSIXTime#.
 
 Let’s now look at how we define our property functions for testing:
 
@@ -4747,16 +4746,16 @@ prop_NegativeAfter_Succeeds d r = (r < 0 && d < 999) ==> runChecks True d r
 ----
 
 All the property functions take a POSIX time and an integer variable
-that represents the redeemer. They return a Property type variable.
-Also, all of these functions use the runChecks function together with
-the ==> implication for properties operator. The runChecks function
+that represents the redeemer. They return a [purple]#Property# type variable.
+Also, all of these functions use the [blue]#runChecks# function together with
+the `==>` implication for properties operator. The [blue]#runChecks# function
 takes a Boolean, which indicates if we expect this test to fail or
 succeed. It also takes a POSIX time and an integer, which are randomly
-generated, and returns a Property type variable. The operator ==> takes
+generated, and returns a [purple]#Property# type variable. The operator `==>` takes
 a Boolean that indicates which values are allowed to be passed to the
-runChecks function, which we will define later. It also takes a type
+[blue]#runChecks# function, which we will define later. It also takes a type
 variable that has an instance of the testable type class, which the
-Property type has, and the runChecks function returns. Below are the
+[purple]#Property# type has, and the [blue]#runChecks# function returns. Below are the
 type signatures of these functions.
 
 [source,shell]
@@ -4767,7 +4766,7 @@ runChecks :: Bool -> POSIXTime -> Integer -> Property
 ----
 
 For the first property test, we only allow deadlines larger than 1,001
-milliseconds to be passed to the runChecks function. Thus, this property
+milliseconds to be passed to the [blue]#runChecks# function. Thus, this property
 test should always fail since the time that we submit the transaction is
 1,000 milliseconds. The redeemer, in this case, can be an arbitrary
 integer number. For the second property test, the deadline should be
@@ -4828,10 +4827,10 @@ testValues shouldConsume datum redeemer = do
   return $ v1 == adaValue 900 && v2 == v2Expected 
 ----
 
-The collect function is used such that QuickCheck actually displays the
+The [blue]#collect# function is used such that QuickCheck actually displays the
 values that are being generated and tested against our properties. The
-monadic and the property functions are used to generate a Property type
-variable from our test that is contained in the check variable. You can
+[blue]#monadic# and the [blue]#property# functions are used to generate a [purple]#Property# type
+variable from our test that is contained in the [blue]#check# variable. You can
 see the type signature of all those three functions below:
 
 [source,shell]
@@ -4850,11 +4849,11 @@ class Testable prop where
   property :: prop -> Property
 ----
 
-The check variable is of type PropertyM m a, which is a property monad.
-Given that m has an instance of the monad type class, PropertyM also has
+The [blue]#check# variable is of type [purple]#PropertyM m a#, which is a property monad.
+Given that m has an instance of the monad type class, [purple]#PropertyM# also has
 a monad instance. The figure below depicts that the property monad has
-also an instance of the IO monad (MonadIO) and the Fail monad
-(MonadFail) given that m has an instance of both monads.
+also an instance of the IO monad ([purple]#MonadIO#) and the Fail monad
+([purple]#MonadFail#) given that m has an instance of both monads.
 
 [source,haskell]
 ----
@@ -4862,13 +4861,13 @@ newtype PropertyM m a =
   MkPropertyM { unPropertyM :: (a -> Gen (m Property)) -> Gen (m Property) }
 ----
 
-In the check variable, we first call our testValues function and use the
-run function to raise our run monad to a property monad, and then
+In the [blue]#check# variable, we first call our [blue]#testValues# function and use the
+[blue]#run# function to raise our run monad to a property monad, and then
 extract the return value of type Boolean. This Boolean indicates whether
-the test has passed or failed. After that, we use the assert function
+the test has passed or failed. After that, we use the [blue]#assert# function
 that takes our Boolean and returns a property monad parameterized by
 unit. If the Boolean is false, it raises an error. You can see the type
-signatures of the run and assert functions below:
+signatures of the [blue]#run# and [blue]#assert# functions below:
 
 [source,shell]
 ----
@@ -4881,11 +4880,11 @@ assert True  = return ()
 assert False = fail "Assertion failed"
 ----
 
-The testValues function is structured very similarly to the one in 
+The [blue]#testValues# function is structured very similarly to the one in 
 the previous example. The difference is that we compose the expected
-final balance of user two (v2Expected) depending on whether the test
+final balance of user two ([blue]#v2Expected#) depending on whether the test
 should fail or pass. Also, when we submit the claiming transaction, we
-combine it with the mustFail function if we expect the test to fail. In
+combine it with the [blue]#mustFail# function if we expect the test to fail. In
 the end, we compare the expected balances of user one and two with their
 actual balances. Below is an example output when running these property
 tests:
@@ -5009,9 +5008,9 @@ transaction containing a delegation certificate that specifies the pool
 we want to delegate to. Finally, we can unregister a stake address and
 receive the original deposit, paid during registration, back.
 
-In this section, we focus on the rewarding purpose. The TxInfo type,
+In this section, we focus on the rewarding purpose. The [purple]#TxInfo# type,
 discussed in previous sections, contains fields relevant to staking,
-specifically txInfoDCert and txInfoWdrl. The former holds a list of
+specifically [blue]#txInfoDCert# and [blue]#txInfoWdrl#. The former holds a list of
 certificates attached to the transaction, while the latter is a map from
 staking credentials to integers, indicating withdrawal amounts.
 
@@ -5117,7 +5116,7 @@ saveStakeValidator bech32 = do
                      stakeValidator addr
 ----
 
-We use a typed version for our validator. In the mkStakeValidator
+We use a typed version for our validator. In the [blue]#mkStakeValidator#
 function, the first argument, which is the address, is the script’s
 parameter. The next argument is the redeemer and since we do not need
 it, we can use unit for the redeemer type. Then follows the script
@@ -5127,12 +5126,12 @@ In the validation logic, we look at the script purpose. If it is
 certifying, we return true. However, if the purpose is rewarding, we
 check if at least half of the withdrawn rewards are allocated to the
 specified address, we used as an additional parameter to the validator
-script. We use the paidToAddress helper function, which will give us the
+script. We use the [blue]#paidToAddress# helper function, which will give us the
 amount of lovelace sent to that specified address. We also verify that
 twice the specified amount is greater than or equal to the withdrawn
 amount, which we calculate using the helper function _amount_, taking in
 the staking credentials. The amount helper function utilizes the
-txInfoWdrl field of the transaction information, which is a map from
+[blue]#txInfoWdrl# field of the transaction information, which is a map from
 staking credentials to integers.
 
 The staking credential is provided by the script purpose, defined by the
@@ -5142,7 +5141,7 @@ involve the currency symbol of the minting policy being defined.
 Similarly, here, we define the staking credentials, but they are
 supplied in the script purpose.
 
-We use the txInfoWdrl constructor to get a map of withdrawals and look
+We use the [blue]#txInfoWdrl# constructor to get a map of withdrawals and look
 up our credentials. If they are not in the map, we would throw an error;
 however, this situation cannot occur because the script will only
 execute if we reach the point of performing a withdrawal for this
@@ -5154,12 +5153,12 @@ we are withdrawing as rewards.
 Next, we need to figure out how much we are paying to the address that
 is a parameter to the script. We loop over all the outputs of the
 transaction and check whether each output goes to the address we are
-interested in. We use an accumulator variable in the helper function f
-(defined inside the paidToAddress function) since there could be several
+interested in. We use an accumulator variable in the helper function [blue]#f#
+(defined inside the [blue]#paidToAddress# function) since there could be several
 outputs to this address, and we are interested in the total amount – the
 sum. If the rewards do not go to the right address, the sum does not
 change; if they do, we extract value from the output using the function
-valueOf, which takes a currency symbol and a token name. We apply this
+[blue]#valueOf#, which takes a currency symbol and a token name. We apply this
 function to the ada symbol and token name to obtain the amount of
 lovelace allocated to this address in that output. This gives us the
 left-hand side of the in-equation in the validator script. Then, we
@@ -5171,16 +5170,16 @@ After we have defined our validator, we have to convert it into an
 untyped version. In the `Utilities` module, defined in the
 _code/Utilities_ folder of the Plutus Pioneer GitHub repository
 (https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[4th
-iteration]), we define the wrapStakeValidator helper function, which
+iteration]), we define the [blue]#wrapStakeValidator# helper function, which
 conducts this conversion for us. It is identical to the function we used
 for wrapping a minting policy, which also does not take in a datum. Once
 we have converted it to an untyped version, we use the usual template
 Haskell features to compile the stake validator and apply the address
 parameter. The exception is that, this time, we use the
-mkStakeValidatorScript function defined in the _Plutus.V2.Ledger.Api_
+[blue]#mkStakeValidatorScript# function defined in the _Plutus.V2.Ledger.Api_
 module. If we want to use this from the cardano-cli, we need a way to
 execute it and serialize the resulting stake validator to disk. We can
-use the function writeStakeValidatorToFile from the
+use the function [blue]#writeStakeValidatorToFile# from the
 https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration/code/Utilities[Utilities
 module] in the `Serialise.hs` file located in the 4th iteration branch
 of the Plutus Pioneer GitHub repository. To apply this, we need a Plutus
@@ -5190,7 +5189,7 @@ setup, we have user addresses in the form of such a string. It is not
 completely trivial to take such a script and convert it to a Plutus
 address. For this, we use the `Conversion` module, which is also defined
 as a part of the previously mentioned `Utilities` module, where the
-function tryReadAddress is defined.
+function [blue]#tryReadAddress# is defined.
 
 We can now use this code on the testnet. First, we need to decide which
 address we use as a parameter. From the three users that the testnet
@@ -5622,9 +5621,9 @@ data ScriptContext = ScriptContext
 
 To recap, when a transaction is spending multiple UTXOs at a script
 address, the spending script is run individually for every UTXO we are
-spending. In such a case the TxInfo that can be accessed by the script,
-is the same in every time the script runs, but the Redeemer and
-ScriptInfo are different and are assigned individually for every UTXO we
+spending. In such a case the [purple]#TxInfo# that can be accessed by the script,
+is the same in every time the script runs, but the [purple]#Redeemer# and
+[purple]#ScriptInfo# are different and are assigned individually for every UTXO we
 are spending at this script address. This holds also true if we want to
 mint different native assets that use the same minting policy (have the
 same currency symbol) but get different token names assigned or trigger
@@ -5837,7 +5836,7 @@ serializedVestingVal = serialiseCompiledCode compiledVestingVal
 
 The validator code is mostly the same as compared to the PlutusV2
 script, with the exception that we look up the datum in the
-scriptContextScriptInfo field of the script context. We also check that
+[blue]#scriptContextScriptInfo# field of the script context. We also check that
 the datum exist and has the correct shape. As in the previous code
 example with the helper functions, we again compile the validator and
 serialize it.
