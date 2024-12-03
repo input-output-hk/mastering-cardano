@@ -429,17 +429,28 @@ the various address structures below:
 [source,shell]
 ----
            TYPE  |     TAG     |   PAYMENT   |   DELEGATION   
-ADDRESS = %b0000 | NETWORK-TAG | KEY-HASH    | KEY-HASH       ; type 00, Base Shelley address
-        \ %b0001 | NETWORK-TAG | SCRIPT-HASH | KEY-HASH       ; type 01, Base Shelley address
-        \ %b0010 | NETWORK-TAG | KEY-HASH    | SCRIPT-HASH    ; type 02, Base Shelley address
-        \ %b0011 | NETWORK-TAG | SCRIPT-HASH | SCRIPT-HASH    ; type 03, Base Shelley address
-        \ %b0100 | NETWORK-TAG | KEY-HASH    | POINTER        ; type 04, Pointer Shelley address
-        \ %b0101 | NETWORK-TAG | SCRIPT-HASH | POINTER        ; type 05, Pointer Shelley address
-        \ %b0110 | NETWORK-TAG | KEY-HASH                     ; type 06, Enterprise Shelley address
-        \ %b0111 | NETWORK-TAG | SCRIPT-HASH                  ; type 07, Enterprise Shelley address
-        \ %b1000 | BYRON-PAYLOAD                              ; type 08, Byron / Bootstrap address
-        \ %b1110 | NETWORK-TAG | KEY-HASH                     ; type 14, Stake Shelley address
-        \ %b1111 | NETWORK-TAG | SCRIPT-HASH                  ; type 15, Stake Shelley address
+ADDRESS = %b0000 | NETWORK-TAG | KEY-HASH    | KEY-HASH       ; type 00, Base 
+                                                                Shelley address
+        \ %b0001 | NETWORK-TAG | SCRIPT-HASH | KEY-HASH       ; type 01, Base 
+                                                                Shelley address
+        \ %b0010 | NETWORK-TAG | KEY-HASH    | SCRIPT-HASH    ; type 02, Base 
+                                                                Shelley address
+        \ %b0011 | NETWORK-TAG | SCRIPT-HASH | SCRIPT-HASH    ; type 03, Base 
+                                                                Shelley address
+        \ %b0100 | NETWORK-TAG | KEY-HASH    | POINTER        ; type 04, Pointer 
+                                                                Shelley address
+        \ %b0101 | NETWORK-TAG | SCRIPT-HASH | POINTER        ; type 05, Pointer 
+                                                                Shelley address
+        \ %b0110 | NETWORK-TAG | KEY-HASH                     ; type 06, Enterprise 
+                                                                Shelley address
+        \ %b0111 | NETWORK-TAG | SCRIPT-HASH                  ; type 07, Enterprise 
+                                                                Shelley address
+        \ %b1000 | BYRON-PAYLOAD                              ; type 08, Byron / 
+                                                                Bootstrap address
+        \ %b1110 | NETWORK-TAG | KEY-HASH                     ; type 14, Stake 
+                                                                Shelley address
+        \ %b1111 | NETWORK-TAG | SCRIPT-HASH                  ; type 15, Stake 
+                                                                Shelley address
 
 NETWORK-TAG  = %b0000 ; Testnet
              \ %b0001 ; Mainnet
@@ -1745,9 +1756,9 @@ typed validation scripts.
 
 This book focuses on the data types defined for Plutus V2 scripts. The
 data type for the low-level validation script implementation is called
-_BuiltinData_. It contains two conversion functions, __builtinDataToData
-__and _dataToBuiltinData_, which can convert back and forth to the
-__Data __type. The __Data __type has its constructor exposed, as
+[purple]#BuiltinData#. It contains two conversion functions, [blue]#builtinDataToData#
+and [blue]#dataToBuiltinData#, which can convert back and forth to the
+[purple]#Data# type. The [purple]#Data# type has its constructor exposed, as
 illustrated in the image below:
 
 [source,haskell]
@@ -1983,8 +1994,8 @@ validator = PlutusV2.mkValidatorScript $$(PlutusTx.compile
                                           [|| mk42Validator ||])
 ----
 
-In the example above, we compare the redeemer to the [purple]#BuiltinData# type I
-42, created using the [blue]#Builtins.mkI# function. If the actual redeemer is
+In the example above, we compare the redeemer to the [purple]#BuiltinData# type 
+`I 42`, created using the [blue]#Builtins.mkI# function. If the actual redeemer is
 an integer number with value 42, the function returns unit, otherwise,
 it raises an error. Let’s examine the same example but written as a
 typed validator:
@@ -5989,8 +6000,8 @@ be of equivalent value. If the price of 1 ETH is 1,000 USD and a
 liquidity provider wants to add 1 ETH to the pool, he must also add
 1,000 USDT. Then, over time, the price of ETH rises to 3,000 USD, which
 is three times larger than the initial price. During this time,
-https://www.coindesk.com/learn/crypto-arbitrage-trading-how-to-make-low-risk-gains/#:~:text=In%20its%20simplest%20form%2C%20crypto,involves%20little%20or%20no%20risks.[arbitrage
-traders] add USDT to the pool and remove ETH from it to take advantage
+https://www.coindesk.com/learn/crypto-arbitrage-trading-how-to-make-low-risk-gains/#:~:text=In%20its%20simplest%20form%2C%20crypto,involves%20little%20or%20no%20risks[arbitrage traders] 
+add USDT to the pool and remove ETH from it to take advantage
 of small price differences across two different markets. The pool
 reserves change such that the initial amount of ETH gets divided by
 1.732, and the USDT amount gets multiplied by 1.732, which is the square
