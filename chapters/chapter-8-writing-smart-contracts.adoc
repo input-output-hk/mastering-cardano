@@ -2021,8 +2021,8 @@ validator = PlutusV2.mkValidatorScript $$(PlutusTx.compile
 ----
 
 We can use the unit type for the datum since the latter is not used. For
-the redeemer, we use the [pruple]#Integer# type. The script context has to be of
-type [pruple]#ScriptContext#. This setup allows for a direct comparison of the
+the redeemer, we use the [purple]#Integer# type. The script context has to be of
+type [purple]#ScriptContext#. This setup allows for a direct comparison of the
 redeemer to the number 42. We also use the [blue]#traceIfFalse# function that
 raises an error if the condition passed to it is false. Because the
 [blue]#PlutusTx.compile# function still expects a function that accepts three
@@ -4148,7 +4148,7 @@ adaValue :: Integer -> Value
 We also provide the default Babbage mock configuration, which configures
 our mock blockchain. The description of the test and the run action,
 which the [blue]#testNoErrors# function also accepts, are provided in the list
-of tests. In the end, it produces a variable of type [purple#TestTree#. In the
+of tests. In the end, it produces a variable of type [purple]#TestTree#. In the
 case of the [blue]#bad# function, we use the [blue]#mustFail# function, which logs an
 error if everything goes well and succeeds if an error occurs. In the
 first scenario, we expect the test to succeed, while in the second
