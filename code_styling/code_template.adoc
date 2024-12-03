@@ -1,5 +1,5 @@
 :source-highlighter: rouge
-:rouge-style: colorful
+:rouge-style: github
 
 == Some code template 
 

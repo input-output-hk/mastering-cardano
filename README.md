@@ -7,6 +7,8 @@ It has a custom theme to controls fonts and spacing.
 
 The project uses [`asciidoctor-epub`](https://docs.asciidoctor.org/epub3-converter/latest/) and [`asciidoctor-pdf`](https://asciidoctor.org/docs/asciidoctor-pdf/) to generate EPUB and PDF versions of the book.
 
+To make use of code styling while converting the asciidoc format to PDF look at the instructions in the `code_styling` forlder. 
+
 ## Getting started
 
 The project dependencies are Ruby libraries, and can be installed using Bundler:

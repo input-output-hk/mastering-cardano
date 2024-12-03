@@ -24,5 +24,4 @@ asciidoctor-pdf -a source-highlighter=rouge yourfile.adoc
 
 ## Code styling examples  
 
-You can find in the `examples/` folder code styling examples for the `code_template.adoc` file
-that is added to the `code_styling` folder. 
+You can find in the `examples/` folder code styling examples for the `code_template.adoc` file that is added to the `code_styling` folder. 
