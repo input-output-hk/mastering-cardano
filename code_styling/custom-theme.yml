@@ -1,0 +1,6 @@
+extends: default
+role:
+  blue:
+    font-color: #0000FF
+  purple:
+    font-color: #800080

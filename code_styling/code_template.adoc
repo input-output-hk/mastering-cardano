@@ -1,5 +1,6 @@
 :source-highlighter: rouge
-:rouge-style: github
+:rouge-style: gruvbox
+:pdf-theme: custom-theme.yml
 
 == Some code template 
 
@@ -137,6 +138,9 @@ validator = PlutusV2.mkValidatorScript $$(PlutusTx.compile
 saveVal :: IO ()
 saveVal = writeValidatorToFile "./gift.plutus" validator
 ----
+
+I'm refering to the [blue]#mkGiftValidator# function and the 
+[purple]#BuiltinData# data type. 
 
 Some typescript code. 
 [source,typescript]
