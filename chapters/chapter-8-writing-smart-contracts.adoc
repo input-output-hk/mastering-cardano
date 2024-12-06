@@ -1,5 +1,5 @@
 :source-highlighter: rouge
-:rouge-style: style
+:rouge-style: gruvbox
 :pdf-theme: custom-theme.yml
 
 = Writing smart contracts
