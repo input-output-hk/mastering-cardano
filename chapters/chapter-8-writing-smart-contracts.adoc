@@ -1,6 +1,12 @@
+= Writing smart contracts
+
+:url-repo: https://github.com/input-output-hk/mastering-cardano/chapters
+:imagesdir: images
+
 *Plutus Preface*
 
-Prof Philip Wadler, FRS <br>
+Prof Philip Wadler, FRS
+
 University of Edinburgh and IOG
 
 Smart contracts for the Cardano blockchain run in a language called
@@ -83,11 +89,6 @@ opportunity to collaborate with IOG. It's been an amazing
 experience - it's not often that you can suggest a practical
 application of a fifty-year old theory, and have people take you
 seriously!
-
-= Writing smart contracts
-
-:url-repo: https://github.com/input-output-hk/mastering-cardano/chapters
-:imagesdir: images
 
 == Smart contract programming languages
 
