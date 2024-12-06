@@ -46,4 +46,4 @@ asciidoctor-pdf -a source-highlighter=rouge -a pdf-theme=custom-theme.yml code_t
 
 ## Code styling examples  
 
-You can look at `code_template.pdf` to see an example of a converted PDF. In the `examples/` folder you can find PDF examples for the `code_template.adoc` file for all possible styles that the rouge-ruby project has to offer. 
+In the `examples/` folder you can find PDF examples for the `code_template.adoc` file for all possible styles that the rouge-ruby project has to offer. 
