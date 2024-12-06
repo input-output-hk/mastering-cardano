@@ -3,7 +3,7 @@
 :url-repo: https://github.com/input-output-hk/mastering-cardano/chapters
 :imagesdir: images
 
-*Plutus Preface*
+== Plutus Preface
 
 Prof Philip Wadler, FRS
 
