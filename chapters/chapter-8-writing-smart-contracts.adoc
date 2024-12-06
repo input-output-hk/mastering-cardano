@@ -1,3 +1,7 @@
+:source-highlighter: rouge
+:rouge-style: style
+:pdf-theme: custom-theme.yml
+
 = Writing smart contracts
 
 :url-repo: https://github.com/input-output-hk/mastering-cardano/chapters
