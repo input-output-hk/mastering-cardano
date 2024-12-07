@@ -111,7 +111,7 @@ The Shelley era introduced script addresses and simple scripts, also
 known as native scripts. They can be used for multi-signature addresses,
 requiring multiple keys to sign a transaction to spend funds. The
 Allegra era extended simple scripts by adding conditional time-based
-functionality. This allows the creation of addresses with ‘time locks’,
+functionality. This allows the creation of addresses with "time locks",
 where funds can only be withdrawn before or after a specified time. A
 script can also be written to allow one group of keys to spend funds
 before a certain time, and another group after. You can read more about
@@ -741,7 +741,7 @@ Runtime] is the application backend for managing Marlowe contracts on
 Cardano. It provides easy-to-use, higher-level APIs and complete backend
 services that enable developers to build and deploy enterprise and Web3
 DApp solutions using Marlowe. Users don’t need to assemble the
-‘plumbing’ that manually orchestrates a backend workflow for a
+"plumbing" that manually orchestrates a backend workflow for a
 Marlowe-based application. Runtime takes commands relevant to the
 Marlowe ledger and maps them to the Cardano ledger. It consists of a
 series of services that can be divided into frontend and backend
@@ -1242,7 +1242,7 @@ interacting with contracts. Additionally, a
 https://github.com/input-output-hk/marlowe-cardano/tree/main/marlowe-actus[Marlowe
 ACTUS implementation] is available for the ACTUS financial standard.
 
-Marlowe DApps can be discovered by searching the keyword ‘Marlowe’ in
+Marlowe DApps can be discovered by searching the keyword "Marlowe" in
 various https://projectcatalyst.io/search?q=marlowe[Project Catalyst] proposals.
 The Marlowe team at IO has also developed the following Marlowe DApps:
 
@@ -1582,7 +1582,7 @@ operation was originally included but was subsequently disabled).
 . The computational context available to a Bitcoin Script program is
 very constrained. For example, it cannot inspect a transaction that is
 currently being validated, but can access the hash of the transaction.
-. There is no ‘official’ high-level language compiling to Bitcoin
+. There is no "official" high-level language compiling to Bitcoin
 Script, although several proposals have been put forward by a variety of
 groups __(__eg, _Massimo Bartoletti and Roberto Zunino. 2018. BitML: A
 Calculus for Bitcoin Smart Contract)_.
@@ -5066,8 +5066,8 @@ _scripts/_ folder from the root directory of the GitHub project:
 ----
 
 This takes a couple of seconds. Once you have the private testnet up and
-running, you will see the message ‘_Congrats! Your network is ready for
-use!_’. Due to the fast pace of this testnet, you will need to generate
+running, you will see the message "_Congrats! Your network is ready for
+use!_". Due to the fast pace of this testnet, you will need to generate
 new KES keys approximately after one hour of operation. Alternatively,
 you can stop the testnet by pressing CTRL+C and restart it as needed.
 Sometimes, some Cardano nodes may continue running after the testnet has
@@ -6580,7 +6580,7 @@ Marlowe’s safety:
 * Timeouts must be numeric constants.
 * Only *Case* continuations may be merkleized. The Faustus programming
 language relaxes some of the limitations above, yet it compiles to safe
-Marlowe. Besides Faustus, you can ‘relax’ the above limitations if you
+Marlowe. Besides Faustus, you can "relax" the above limitations if you
 embed Marlowe into another language (JavaScript, for example). By using
 the TS-SDK, you can have JavaScript functions and loops that unfold a
 larger Marlowe contract.
@@ -6622,7 +6622,7 @@ number of different types of tokens that can be held in a single UTXO
 rule specified by the protocol parameter maxTxSize
 . If a Marlowe contract does too much computation or uses too much
 memory in a transaction, it may violate the rule that execution costs in
-Plutus are limited to specific usage of ‘memory’ and CPU ‘steps’.
+Plutus are limited to specific usage of "memory" and CPU "steps".
 
 You can look up the
 https://github.com/input-output-hk/marlowe-cardano/blob/main/marlowe/best-practices.md[Marlowe
@@ -6667,8 +6667,8 @@ scripts.
 The auditing company Tweag performed an audit of the Marlowe high-level
 language and the implementation of Marlowe on Cardano before Marlowe's
 deployment on mainnet. The audit discovered significant issues,
-including handling of negative deposits, prevention of ‘double
-satisfaction’, enforcement of state invariants, an implementation
+including handling of negative deposits, prevention of "double
+satisfaction", enforcement of state invariants, an implementation
 difference between formal specification versus the Plinth
 implementation, and the proof of money preservation theorem. The issues
 were addressed before deploying Marlowe on mainnet. The full

@@ -33,15 +33,18 @@ You can read more about themes in the [Create a theme](https://docs.asciidoctor.
 
 ## Convert to PDF 
 
-To convert a `adoc` file into a `pdf` file taking your code styling into account use:
+Before converting the `adoc` file into a `pdf` file make sure that the `custom-theme.yml`
+file is residing in the same folder as your `adoc` file. 
+
+To convert a `adoc` file into a `pdf` file use the systax:
 ```
-asciidoctor-pdf code_template.adoc
+asciidoctor-pdf <file_name>.adoc
 ```
 
 In case of issues you can also specify the source code highlighter and the custom 
 theme as options in the command: 
 ```
-asciidoctor-pdf -a source-highlighter=rouge -a pdf-theme=custom-theme.yml code_template.adoc
+asciidoctor-pdf -a source-highlighter=rouge -a pdf-theme=custom-theme.yml <file_name>.adoc
 ```
 
 ## Code styling examples  
