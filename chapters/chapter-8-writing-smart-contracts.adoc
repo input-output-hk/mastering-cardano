@@ -3011,8 +3011,10 @@ Currently, the platform is in maintenance mode and no longer under
 active development.
 
 Another way for constructing off-chain transactions is by using the
-https://github.com/input-output-hk/cardano-cli[Cardano CLI]. Examples
-of using the Cardano CLI are included in the Plutus Pioneer program’s
+https://github.com/input-output-hk/cardano-cli[Cardano CLI]. You can 
+read more about the Cardano CLI at the 
+https://developers.cardano.org/docs/get-started/cardano-cli/get-started/[Cardano developers] 
+webpage. Examples of using the Cardano CLI are also included in the Plutus Pioneer program’s
 https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[4th
 iteration] GitHub repository, specifically in the code examples and
 lectures from the third and fourth weeks. The bash scripts were tested
