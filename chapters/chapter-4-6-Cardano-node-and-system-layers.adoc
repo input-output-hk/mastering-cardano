@@ -197,7 +197,7 @@ being less distinct compared to the clear separation between the
 consensus and ledger layers. A simple diagram below represents these
 node layers:
 
-image:node_internals.png[image,width=624,height=340]
+image:node_internals.png[image,width=700,height=340]
 
 The Cardano node also contains an additional layer called the
 https://github.com/input-output-hk/cardano-shell[node shell], which
@@ -350,7 +350,7 @@ layer include:
 You can read more about these goals in the Cardano consensus and storage
 layer
 https://ouroboros-consensus.cardano.intersectmbo.org/pdfs/report.pdf[technical
-report] (work in progress), which targets more experienced developers.
+report], which targets more experienced developers.
 This report explains how the goals were achieved, identifies areas for
 improvement, and presents how the design of this layer can scale to meet
 future requirements.
@@ -381,7 +381,7 @@ UTXO accounting model. The scripting layer handles rules for smart
 contract logic, such as spending, minting, staking, and certification
 script logic. Transaction logic not involving smart contracts is managed
 by the settlement layer, which also provides
-https://github.com/input-output-hk/cardano-node-wiki/wiki/simple-scripts[simple
+https://developers.cardano.org/docs/get-started/cardano-cli/simple-scripts/[simple
 scripts] – a basic smart contract language that enables multi-signature
 addresses and time locks. An overview of Cardano smart contract
 languages is covered in chapter <<Smart contract programming languages>>, 
