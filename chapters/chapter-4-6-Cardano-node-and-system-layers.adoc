@@ -1,5 +1,8 @@
 == Cardano node and system layers
 
+:url-repo: https://github.com/input-output-hk/mastering-cardano/chapters
+:imagesdir: images
+
 === Introduction to the Cardano node
 
 The Cardano blockchain is powered by a network of interconnected nodes.
@@ -49,7 +52,7 @@ block is verified, nodes propagate (or share) this information across
 the network, ensuring consistency and synchronization among all nodes.
 
 A node in the Cardano blockchain is implemented by a software called
-https://github.com/IntersectMBO/cardano-node[_cardano-node_]. The
+https://github.com/IntersectMBO/cardano-node[cardano-node]. The
 cardano-node software is the backbone of the Cardano blockchain network.
 It is a crucial piece of software that runs on each node, enabling them
 to perform their essential functions. To fully understand the role of
@@ -95,7 +98,7 @@ stability, and efficiency of the Cardano blockchain.
 The cardano-node software undergoes constant development and updates, so
 the key features presented here provide an overview of its capabilities.
 For the latest information, please refer to the
-https://developers.cardano.org/[_Cardano developers' website_].
+https://developers.cardano.org/[Cardano developers' website].
 
 * *Blockchain synchronization.* Blockchain
 synchronization in Cardano uses the cardano-node software and involves a
@@ -137,9 +140,9 @@ includes metrics on block production, network connectivity, and resource
 usage.
 
 If you are interested in installing and running a node, please refer to
-the node documentation on the https://developers.cardano.org/[_Cardano
-developers’ website_]. All node configuration files can be found on the
-https://book.world.dev.cardano.org/[_Cardano operations book_] website.
+the node documentation on the https://developers.cardano.org/[Cardano
+developers’ website]. All node configuration files can be found on the
+https://book.world.dev.cardano.org/[Cardano operations book] website.
 
 *Cardano node design principles*
 
@@ -169,8 +172,8 @@ security features are consistent across both block-producing and
 non-producing nodes.
 
 You can find more information on the design principles and decisions in
-the https://www.youtube.com/watch?v=PKzkzqUB8e0[_Cardano architecture_]
-video lecture by Cardano’s chief technical architect.
+the https://www.youtube.com/watch?v=PKzkzqUB8e0[Cardano architecture]
+video lecture by Duncan Coutts Cardano’s chief technical architect.
 
 === Cardano node layers
 
@@ -194,10 +197,10 @@ being less distinct compared to the clear separation between the
 consensus and ledger layers. A simple diagram below represents these
 node layers:
 
-image:Pictures/100002010000046A00000208120F4DB762B3DE30.png[image,width=624,height=340]
+image:node_internals.png[image,width=624,height=340]
 
 The Cardano node also contains an additional layer called the
-https://github.com/input-output-hk/cardano-shell[_node shell_], which
+https://github.com/input-output-hk/cardano-shell[node shell], which
 manages various functions surrounding the node, namely:
 
 * logging
@@ -206,7 +209,7 @@ manages various functions surrounding the node, namely:
 * exception handling
 * node startup.
 
-*Network layer *
+*Network layer*
 
 The network layer maintains the connections between all the distributed
 nodes in the Cardano network. It handles communication protocol details
@@ -218,20 +221,20 @@ designed for proof-of-stake systems, the network layer includes a
 framework for writing typed protocols, supporting pipelining,
 multiplexing, and various protections against adversarial peers.
 
-The https://github.com/IntersectMBO/ouroboros-network[_Ouroboros
-network_] repository contains specifications of network protocols and
+The https://github.com/IntersectMBO/ouroboros-network[Ouroboros
+network] repository contains specifications of network protocols and
 implementations of the network components that run these protocols.
 These components support a family of Ouroboros consensus protocols. The
 official
-https://docs.cardano.org/about-cardano/explore-more/cardano-network/[_network
-documentation_] explains the data flow between and within Cardano nodes
+https://docs.cardano.org/about-cardano/explore-more/cardano-network/[network
+documentation] explains the data flow between and within Cardano nodes
 and the network constraints, such as congestion control and real-time
 coordination. It also lists types of mini-protocols that are used to
 communicate between multiple nodes participating in the Cardano network.
-You can read more about network protocols in chapter 4.1 _Cardano
-network protocols overview_.
+You can read more about network protocols in chapter 
+<<Overview of Cardano network protocols>>.
 
-*Consensus and storage layer *
+*Consensus and storage layer*
 
 The consensus and storage layer operates the Ouroboros blockchain
 consensus protocol. In a blockchain context, consensus ensures that all
@@ -258,8 +261,8 @@ competing chains
 *Block production* occurs within the consensus layer, and to produce
 blocks, this layer must also maintain a memory pool (mempool) of
 transactions to be inserted into those blocks. For more details about
-block production, read chapters 4.2 _Reaching consensus using proof of
-stake,_ and 4.3 _About the Ouroboros protocol_.
+block production, read chapters <<Reaching consensus using proof of stake>>, 
+and <<About the Ouroboros protocol>>.
 
 The problem of *chain selection* arises when two or more nodes extend
 the chain with different blocks. This can happen when nodes are unaware
@@ -301,8 +304,8 @@ versions of Plutus scripts remain supported by the node even when Plutus
 is upgraded. The HFC enables smooth protocol upgrades without disruption
 for users and also preserves the chain history of all operations. You
 can read more about it in the
-https://iohk.io/en/blog/posts/2020/05/07/combinator-makes-easy-work-of-shelley-hard-fork/[_hard
-fork combinator_] blog.
+https://iohk.io/en/blog/posts/2020/05/07/combinator-makes-easy-work-of-shelley-hard-fork/[hard
+fork combinator] blog.
 
 Generally, the term _hard fork_ describes a radical change from one
 protocol to another. In most blockchains, a hard fork indicates block
@@ -322,7 +325,7 @@ Cardano nodes – can upgrade gradually, eliminating the need for
 simultaneous upgrades. Nevertheless, a hard fork still needs to be
 triggered, and the mechanism to do this will change from the
 genesis-key-based mechanism to the one defined in
-https://cips.cardano.org/cip/CIP-1694[_CIP-1694_]. The genesis key
+https://cips.cardano.org/cip/CIP-1694[CIP-1694]. The genesis key
 mechanism requires that 70% of all SPOs first upgrade to the new node
 version, and then a consensus of five out of seven genesis keys needs to
 be reached to trigger the hard fork. The genesis keys were distributed
@@ -346,16 +349,16 @@ layer include:
 
 You can read more about these goals in the Cardano consensus and storage
 layer
-https://ouroboros-consensus.cardano.intersectmbo.org/pdfs/report.pdf[_technical
-report_] (work in progress), which targets more experienced developers.
+https://ouroboros-consensus.cardano.intersectmbo.org/pdfs/report.pdf[technical
+report] (work in progress), which targets more experienced developers.
 This report explains how the goals were achieved, identifies areas for
 improvement, and presents how the design of this layer can scale to meet
 future requirements.
-https://iohk.io/en/blog/posts/2020/05/28/the-abstract-nature-of-the-consensus-layer/[_The
-abstract nature of the Cardano consensus layer_] blog also elaborates on
+https://iohk.io/en/blog/posts/2020/05/28/the-abstract-nature-of-the-consensus-layer/[The
+abstract nature of the Cardano consensus layer] blog also elaborates on
 these goals and provides simple code examples.
 
-*Settlement and scripting layers *
+*Settlement and scripting layers*
 
 The settlement and scripting layers form the ledger layer that defines
 the rules governing blockchain data. These rules govern transaction
@@ -363,13 +366,13 @@ logic for ada and other Cardano native assets. The ledger layer has a
 multi-era ledger implementation derived from a set of formal
 specifications. These formal specifications define the core Cardano
 components of the ledger layer and the rules for their use. The
-https://github.com/IntersectMBO/cardano-ledger[_Cardano ledger_]
+https://github.com/IntersectMBO/cardano-ledger[Cardano ledger]
 repository lists all eras and provides the formal ledger specification
 for each. The
-https://github.com/IntersectMBO/formal-ledger-specifications[_Formal
-ledger specification_] repository will eventually replace it. Some
-practical ledger explanations can also be found in the Cardano ledger
-https://cardano-ledger.readthedocs.io/en/latest/[_documentation_].
+https://github.com/IntersectMBO/formal-ledger-specifications[Formal
+ledger specification] repository will eventually replace it. Some
+practical ledger explanations can also be found in the 
+https://cardano-ledger.readthedocs.io/en/latest/[Cardano ledger documentation].
 
 The ledger layer is stateless and consists exclusively of pure functions
 that define how the ledger is updated with each new block. These
@@ -378,11 +381,11 @@ UTXO accounting model. The scripting layer handles rules for smart
 contract logic, such as spending, minting, staking, and certification
 script logic. Transaction logic not involving smart contracts is managed
 by the settlement layer, which also provides
-https://github.com/input-output-hk/cardano-node-wiki/wiki/simple-scripts[_simple
-scripts_] – a basic smart contract language that enables multi-signature
+https://github.com/input-output-hk/cardano-node-wiki/wiki/simple-scripts[simple
+scripts] – a basic smart contract language that enables multi-signature
 addresses and time locks. An overview of Cardano smart contract
-languages is covered in chapter 8.1 __Smart contract programming
-language options, __which__ __presents various Cardano smart contract
+languages is covered in chapter <<Smart contract programming languages>>, 
+which presents various Cardano smart contract
 languages and explains the types in which they can be grouped.
 
 The scripting layer is defined by the Plutus Core scripting language,
@@ -391,9 +394,9 @@ smart-contract capabilities to Cardano and can be processed by Cardano
 nodes. Plutus is a typed Lambda-Calculus that acts as low-level
 interpreted assembly code. The compilation pipeline from the
 Haskell-based Plinth (formerly Plutus TX) smart contract language to
-Plutus is explained in chapter 8.6.2 _Plutus security_.
+Plutus is explained in chapter <<Plutus security>>.
 
-Chapter 8 _Writing smart contracts_, besides providing an overview of
+Chapter <<Writing smart contracts>>, besides providing an overview of
 smart contract language options and explaining Plutus, also showcases
 code examples, best practices, and learning resources for the Plinth and
 Marlowe smart contract languages.
