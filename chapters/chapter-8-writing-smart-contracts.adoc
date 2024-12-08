@@ -107,17 +107,15 @@ Cardano smart contract languages can be grouped into three categories:
 The Cardano node can only process native languages. Currently, there are
 two available: simple scripts and Plutus Core.
 
-The Shelley era introduced script addresses and simple scripts, also
+The Shelley era introduced script addresses and 
+https://developers.cardano.org/docs/get-started/cardano-cli/simple-scripts/[simple scripts], also
 known as native scripts. They can be used for multi-signature addresses,
 requiring multiple keys to sign a transaction to spend funds. The
 Allegra era extended simple scripts by adding conditional time-based
 functionality. This allows the creation of addresses with "time locks",
 where funds can only be withdrawn before or after a specified time. A
 script can also be written to allow one group of keys to spend funds
-before a certain time, and another group after. You can read more about
-simple scripts in the
-https://github.com/input-output-hk/cardano-node-wiki/wiki/simple-scripts[Cardano
-node wiki] GitHub repository.
+before a certain time, and another group after. 
 
 The Alonzo era introduced the Plutus Core scripting language, often
 referred to as Plutus. Since Plutus smart contracts validate
