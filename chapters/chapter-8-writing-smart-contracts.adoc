@@ -4053,9 +4053,9 @@ model] (PSM) library developed by https://mlabs.city/[MLabs] and the
 https://hackage.haskell.org/package/QuickCheck[QuickCheck] 
 Haskell library used for property-based testing. We also
 showcase how to write unit and property tests using these libraries. In
-the future, the PSM library will be replaced by the
+the future, the PSM library can be replaced by the
 https://github.com/IntersectMBO/cardano-node-emulator[Cardano node
-emulator] library that can be used to property test PlutusV3 smart contracts.
+emulator] library that will support testing PlutusV3 smart contracts.
 
 First, let’s see how to use a state monad to represent a blockchain and
 keep track of transactions. The PSM library uses a state monad. Below is
