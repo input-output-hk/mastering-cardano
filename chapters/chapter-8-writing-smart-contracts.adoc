@@ -39,7 +39,7 @@ Because this fifty-year old theory would now be executed directly on
 the Cardano blockchain carrying billions of dollars of value, there
 was a business case for formally validating that theory. IOG hired
 James Chapman to validate our variant of System F in the Agda proof
-assistant - James having written his dissertation on a related subject
+assistant -- James having written his dissertation on a related subject
 and being one of the foremost experts. The completed proof validated
 the theory. It also gave us an executable version of
 Plutus. Continuous Integration ensures the production Plutus
@@ -90,7 +90,7 @@ professor's memory I fear I would leave someone out. I am grateful for
 the opportunity I've had to work with them and with everyone at
 IOG. I'm particularly grateful to Charles Hoskinson for the
 opportunity to collaborate with IOG. It's been an amazing
-experience - it's not often that you can suggest a practical
+experience -- it's not often that you can suggest a practical
 application of a fifty-year old theory, and have people take you
 seriously!
 
