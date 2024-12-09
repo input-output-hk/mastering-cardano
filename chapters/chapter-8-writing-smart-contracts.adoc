@@ -7,11 +7,11 @@
 :url-repo: https://github.com/input-output-hk/mastering-cardano/chapters
 :imagesdir: images
 
-== Plutus Preface
+== Plutus preface
 
-Prof Philip Wadler, FRS
+_Prof Philip Wadler, FRS_
 
-University of Edinburgh and IOG
+_University of Edinburgh and IOG_
 
 Smart contracts for the Cardano blockchain run in a language called
 Plutus. Roughly speaking, Plutus plays the role for Cardano that the
@@ -35,63 +35,63 @@ requires a hard fork, and it is highly desirable to avoid these. How
 do you design a system that can last unchanged for the next fifty
 years? Base your design on a system that is fifty years old!
 
-Because this fifty-year old theory would now be executed directly on
-the Cardano blockchain carrying billions of dollars of value, there
+Because this fifty-year-old theory would now be executed directly on
+the Cardano blockchain, carrying billions of dollars of value, there
 was a business case for formally validating that theory. IOG hired
 James Chapman to validate our variant of System F in the Agda proof
-assistant -- James having written his dissertation on a related subject
-and being one of the foremost experts. The completed proof validated
+assistant -- James, having written his dissertation on a related subject,
+is one of the foremost experts in the field. The completed proof validated
 the theory. It also gave us an executable version of
 Plutus. Continuous Integration ensures the production Plutus
 implementation is regularly checked against the executable formal
 specification. Further, the formal specification serves as the
 foundation for a new effort to write a validator that issues checkable
-certificates to ensure phases of the compiler optimise code
-correctly. James is now head of Formal Methods for IOG.
+certificates to ensure phases of the compiler optimize code
+correctly. James is now head of formal methods for IOG.
 
 Everything should be made as simple as possible, but not simpler.
-Arguably our initial simple design is too simple. It requires
+Arguably, our initial simple design is too simple. It requires
 representing data types as higher-order functions, but we had reason
 to believe the extra cost was negligible. Always check your
 assumptions! Once the system was up and running, performance
 measurements showed the cost of implementing data structures as
-functions was greater than expected. So we modified the design to
+functions was greater than expected. So, we modified the design to
 support data structures directly, and the feature will appear in the
 next version of Plutus.
 
 The on-chain production evaluator for Plutus is written in Haskell,
-one of the most widely-used functional programming languages. Plutus
+one of the most widely used functional programming languages. Plutus
 is designed to represent the output of a compiler, and no one should
-write it directly. Haskell can also be used a source-language for
+write it directly. Haskell can also be used as a source language for
 creating Plutus scripts, using the Plinth language embedded into
 Haskell. On Ethereum, one must learn the special-purpose language
-Solidity to write smart-contracts that compile to the EVM. In contrast,
-on Cardano one can use the Haskell language that was designed by an
-expert team of researchers thirty years ago, and has a mature and
+Solidity to write smart contracts that compile to the EVM. In contrast,
+on Cardano, one can use the Haskell language that was designed by an
+expert team of researchers thirty years ago and has a mature and
 stable core even though it is still an actively growing research
 language. The brilliant idea to apply Haskell in this way is due
 to Manuel Chakravarty, a contributor to both the design and
 implementation of Haskell.
 
-In addition to Plinth (embedded in Haskell) there are a wide range of
-other languages that can also be used to generate smart-contracts in
+In addition to Plinth (embedded in Haskell), a wide range of
+other languages can also be used to generate smart-contracts in
 Plutus to run on Cardano. These include: Aiken (a stand-alone
 language), Plutarch (also embedded in Haskell), Plu-ts (embedded in
 TypeScript), OpShin (embedded in Python), Scalus (embedded in Scala),
 Helios (which runs on top of JavaScript and TypeScript), and Pluto
 (which closely resembles Plutus with added syntactic sugar for
-convenience). Marlowe, which is not a general purpose language but
+convenience). Marlowe, which is not a general-purpose language but
 aims to make it easy to write certain kinds of financial contracts, is
 also available.
 
 Many people have contributed to the designs of Plutus and Plinth. I
-won't attempt to name them all here, because with my absent-minded
+won't attempt to name them all here because with my absent-minded
 professor's memory I fear I would leave someone out. I am grateful for
 the opportunity I've had to work with them and with everyone at
 IOG. I'm particularly grateful to Charles Hoskinson for the
 opportunity to collaborate with IOG. It's been an amazing
 experience -- it's not often that you can suggest a practical
-application of a fifty-year old theory, and have people take you
+application of a fifty-year-old theory and have people take you
 seriously!
 
 == Smart contract programming languages
