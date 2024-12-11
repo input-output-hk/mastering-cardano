@@ -1625,7 +1625,8 @@ in the datum. Finally, the smart contract also sees a piece of arbitrary
 input data provided by the user submitting the transaction. This data is
 the redeemer. A Plutus smart contract can use all these three pieces of
 information to decide whether it is ok to consume an UTXO or not. It is
-also possible to use the wallet to check whether a transaction will be
+also possible to use a tool like the Cardano CLI or a wallet to check 
+whether a transaction will be
 validated before on-chain execution. If the transaction is valid, it
 will be processed on the network, provided that all UTXO inputs are
 present and the processing time falls within the transaction’s validity
@@ -1633,10 +1634,10 @@ interval. In case these conditions are not met, the transaction will
 fail without charging any fees to the user, unlike in Ethereum, where
 users must pay gas fees for transactions that can ultimately fail. If
 the inputs are present when the transaction is submitted, it will be
-validated and produce the expected outcome as predicted off-chain. Both
-Ethereum’s accounting model and Cardano’s EUTXO model are equally
-powerful in expressing smart contract logic.
+validated and produce the expected outcome as predicted off-chain. 
 
+Both Ethereum’s accounting model and Cardano’s EUTXO model are equally
+powerful in expressing smart contract logic.
 Further comparison between Cardano and Ethereum regarding security is
 outlined in section <<Cardano security>>. You can find research
 articles about the technical implementation of Plutus in the
