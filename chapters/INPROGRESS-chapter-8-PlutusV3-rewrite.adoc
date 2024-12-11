@@ -1700,15 +1700,15 @@ Plinth has a more expressive type system than Aiken. However, it cannot
 utilize the full range of Haskell’s type system features, such as type
 classes and
 https://blog.ocharles.org.uk/guest-posts/2014-12-18-rank-n-types.html[rank-N
-polymorphism]. This comes at a cost because Plinth compiles and encodes
-data types using a
+polymorphism]. Previously Plinth compiled and encoded data types using the
 https://en.wikipedia.org/wiki/Mogensen–Scott_encoding[Scott-Encoding]
-approach
-(https://well-typed.com/blog/2022/08/plutus-cores/#in-haskell.-scott-encoding[Haskell
-example]), which creates an upfront cost that causes the difference in
-execution costs between Haskell and other frameworks like Aiken. Aiken
+approach (https://well-typed.com/blog/2022/08/plutus-cores/#in-haskell.-scott-encoding[Haskell
+example]), which created an upfront cost that caused the difference in
+execution costs between Haskell and other frameworks like Aiken. With the 
+introduction of PlutusV3, sums of products allow for encoding data types 
+in a more compact and cost-effective way. Aiken 
 compiles all its custom data types into the builtin Plutus type _Data_.
-We will look at it in section <<Simple validation scripts>>. Both
+We will look at this data type in section <<Simple validation scripts>>. Both
 languages are purely functional, which makes it easier for an auditor to
 assess the behavior of such smart contracts. Plinth also works well with
 proof-assistant tools such as
@@ -1751,18 +1751,16 @@ options:
 * Run a Nix shell that contains all the dependencies
 * Install system dependencies manually.
 
-The __plinth-dev-env __GitHub repository provides instructions for
+The __plinth-dev-env__ GitHub repository provides instructions for
 setting up the development environment for the first three options. And
 up-to-date link to this repository is available in the _resources_
 folder of the
 https://github.com/input-output-hk/mastering-cardano[mastering-cardano]
 GitHub repository. It aims to provide up-to-date instructions for the
 latest stable Plinth development environment. The smart contract code
-presented throughout chapter <<Writing smart contracts>> uses features 
-introduced in the Vasil hard fork, which enabled Plutus V2. The development 
-environment you might use to run and test the code presented in section 
-<<Plutus smart contracts>> needs to support the Vasil features and Plutus V2
-scripts.
+presented throughout section <<Plutus smart contracts>> uses features 
+introduced in the Chang hard fork, which enabled PlutusV3. The development 
+environment you will use to run and test this code needs to support these features.
 
 The https://demeter.run/[Demeter.Run] online platform offers various
 tools and development environments for the Cardano ecosystem. One can
@@ -1786,7 +1784,11 @@ To query various Plutus types, one can use the official
 https://plutus.cardano.intersectmbo.org/haddock/latest/[Plutus haddock
 documentation], which presents types in Haskell syntax. Press CTRL + S
 to search for a keyword, such as a specific data type or function name.
-After locating the desired item, click the _Source_ icon next to its
+The search engine might provide more options for a single data type, function 
+or tpye class that you are queriying. This is because implementations 
+if types, functions and type clases can change with a new Plutus version 
+and the haddock documentation keeps track for all of them. 
+Once you have located the desired item, click the _Source_ icon next to its
 name to open the corresponding Haskell source code. The software
 packages for the libraries hosted on the Plutus haddock documentation
 are contained in the
