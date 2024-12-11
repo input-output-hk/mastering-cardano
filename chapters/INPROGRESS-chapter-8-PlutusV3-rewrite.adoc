@@ -1490,9 +1490,9 @@ developers with a richer smart contract creation toolkit, enhancing both
 developer and user experiences, and unlocking new possibilities for
 decentralized applications (DApps) on Cardano.
 
-Section <<PlutusV3 features>> shortly explains some of the PlutusV3
-features that are new in comparison to PlutusV2 and their advantages. 
-Cardano’s hard fork combinator 
+Section <<PlutusV3 features>> explains some of the PlutusV3
+features that are not coverd in the coding sections and presents 
+their advantages. Cardano’s hard fork combinator 
 technology, presented in section <<Cardano node layers>>, subsection
 *Consensus and storage layer*, allows the Cardano node to process
 PlutusV2 and PlutusV1 scripts also after the Chang hard fork made 
@@ -1515,9 +1515,10 @@ Section _Plutus smart contracts_ covers the following topics:
 Plinth code examples are taken from the
 https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[4th
 iteration of the Plutus Pioneer program] and are updated to accomodate PlutusV3
-changes. The 4th iteration presents PlutusV2 examples. The GitHub repository 
-contains also YouTube links for lectures that explain the code examples. 
-The IO education team also translated the Plinth code examples from the 4th 
+changes. The 4th iteration presents PlutusV2 code examples and in addition  
+contains a stablecoin example that is not covered in this book. The 4th iteration 
+GitHub repository also contains links to lectures that explain the code examples. 
+The IO education team translated the Plinth code examples from the 4th 
 iteration into Aiken code. Those code examples are published on the
 https://github.com/input-output-hk/plutus-pioneer-program/tree/aiken-fourth-iteration[aiken-fourth-iteration]
 branch. Further learning resources and smart contract examples in
@@ -1785,9 +1786,9 @@ https://plutus.cardano.intersectmbo.org/haddock/latest/[Plutus haddock
 documentation], which presents types in Haskell syntax. Press CTRL + S
 to search for a keyword, such as a specific data type or function name.
 The search engine might provide more options for a single data type, function 
-or tpye class that you are queriying. This is because implementations 
+or type class that you are queriying. This is because implementations 
 if types, functions and type clases can change with a new Plutus version 
-and the haddock documentation keeps track for all of them. 
+and the haddock documentation keeps track of all of them. 
 Once you have located the desired item, click the _Source_ icon next to its
 name to open the corresponding Haskell source code. The software
 packages for the libraries hosted on the Plutus haddock documentation
