@@ -1491,8 +1491,8 @@ developer and user experiences, and unlocking new possibilities for
 decentralized applications (DApps) on Cardano.
 
 Section <<PlutusV3 features>> explains some of the PlutusV3
-features that are not coverd in the coding sections and presents 
-their advantages. Cardano’s hard fork combinator 
+features that are not coverd in the coding sections and highlights 
+the advantages they bring. Cardano’s hard fork combinator 
 technology, presented in section <<Cardano node layers>>, subsection
 *Consensus and storage layer*, allows the Cardano node to process
 PlutusV2 and PlutusV1 scripts also after the Chang hard fork made 
@@ -1787,9 +1787,9 @@ documentation], which presents types in Haskell syntax. Press CTRL + S
 to search for a keyword, such as a specific data type or function name.
 The search engine might provide more options for a single data type, function 
 or type class that you are queriying. This is because implementations 
-if types, functions and type clases can change with a new Plutus version 
+of types, functions and type clases can change with a new Plutus version 
 and the haddock documentation keeps track of all of them. 
-Once you have located the desired item, click the _Source_ icon next to its
+After locating the desired item, click the _Source_ icon next to its
 name to open the corresponding Haskell source code. The software
 packages for the libraries hosted on the Plutus haddock documentation
 are contained in the
