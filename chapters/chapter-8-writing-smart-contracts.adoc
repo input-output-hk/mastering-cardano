@@ -1708,7 +1708,9 @@ https://en.wikipedia.org/wiki/Mogensen–Scott_encoding[Scott-Encoding]
 approach
 (https://well-typed.com/blog/2022/08/plutus-cores/#in-haskell.-scott-encoding[Haskell
 example]), which creates an upfront cost that causes the difference in
-execution costs between Haskell and other frameworks like Aiken. Aiken
+execution costs between Haskell and other frameworks like Aiken. 
+With the introduction of PlutusV3, sums of products allow for encoding 
+data types in a more compact and cost-effective way. Aiken
 compiles all its custom data types into the builtin Plutus type _Data_.
 We will look at it in section <<Simple validation scripts>>. Both
 languages are purely functional, which makes it easier for an auditor to
@@ -1788,6 +1790,10 @@ To query various Plutus types, one can use the official
 https://plutus.cardano.intersectmbo.org/haddock/latest/[Plutus haddock
 documentation], which presents types in Haskell syntax. Press CTRL + S
 to search for a keyword, such as a specific data type or function name.
+The search engine might provide more options for a single data type, function 
+or type class that you are queriying. This is because implementations 
+of types, functions and type clases can change with a new Plutus version 
+and the haddock documentation keeps track of all of them. 
 After locating the desired item, click the _Source_ icon next to its
 name to open the corresponding Haskell source code. The software
 packages for the libraries hosted on the Plutus haddock documentation
