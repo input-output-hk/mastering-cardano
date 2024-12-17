@@ -1750,9 +1750,9 @@ Aiken repository.
 For your development environment, you can use one of the following
 options:
 
+* Run a Nix shell that contains all the dependencies
 * Run a local Docker container inside VSCode
 * Use an online platform such as https://demeter.run/[Demeter.run]
-* Run a Nix shell that contains all the dependencies
 * Install system dependencies manually.
 
 The __plinth-dev-env __GitHub repository provides instructions for
