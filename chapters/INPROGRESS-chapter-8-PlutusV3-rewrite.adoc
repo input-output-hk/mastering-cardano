@@ -1280,7 +1280,7 @@ Marlowe and Plinth validators can interact as follows:
 
 * PlutusTx validators can run in the same transaction as Marlowe
 transactions
-* The transaction script context contains sufficient information for a
+* The script context contains sufficient information for a
 Plinth validator to inspect the Marlowe transaction’s redeemer,
 incoming, and outgoing datum
 * The Marlowe validator will allow the Plinth transaction to run, as
@@ -1614,16 +1614,17 @@ does not have a global view as a Solidity smart contract. Plutus scripts
 cannot see the whole state of the blockchain but can see the whole 
 transaction that is being validated.
 
-This means the Plutus contract can see the transaction context that
-carries transaction inputs and outputs. Every UTXO has an arbitrary
+This means the Plutus contract can see the script context that
+carries information about the transaction being validated including 
+its inputs and outputs. A UTXO can have an arbitrary
 piece of data attached to it – the datum, which defines a state of the
 UTXO. When a transaction intends to spend a UTXO sitting at a smart
 contract, the smart contract code can access the information contained
-in the datum that is included in the transaction context. Finally, the 
+in the datum that is potentially included in the script context. The 
 smart contract also sees a piece of arbitrary input data provided by the 
 user submitting the transaction. This data is the redeemer which is also 
-contained in the transaction context. A Plutus smart contract can use all 
-these three pieces of information to decide whether it is ok to consume an 
+contained in the script context. A Plutus smart contract can use all 
+these information to decide whether it is ok to consume an 
 UTXO or not. It is also possible to use a tool like the Cardano CLI or a 
 wallet to check whether a transaction will be
 validated before on-chain execution. If the transaction is valid, it
@@ -1747,9 +1748,9 @@ Aiken repository.
 For your development environment, you can use one of the following
 options:
 
+* Run a Nix shell that contains all the dependencies
 * Run a local Docker container inside VSCode
 * Use an online platform such as https://demeter.run/[Demeter.run]
-* Run a Nix shell that contains all the dependencies
 * Install system dependencies manually.
 
 The __plinth-dev-env__ GitHub repository provides instructions for
@@ -1816,28 +1817,27 @@ pipeline which will be in detail explained in section <<Plutus security>>.
 
 A validation script or validator is the smart contract program that
 checks whether funds at a script address are allowed to be spent by a
-given transaction. The script uses three parameters: the datum, the
-redeemer, and the transaction context:
+given transaction. The script uses a single parameter: the script  
+context. It contains following information: 
 
-* The datum is an arbitrary piece of data associated with a UTXO
-alongside the amount of ada and native tokens.
+* Potentially the datum which is an arbitrary piece of data associated with the UTXO
+we want to spend. A UTXO does not necessary have a datum associated with it. 
 * The redeemer is an arbitrary piece of data provided when creating a
 transaction, used to unlock funds at a UTXO, similar to a private key in
 the conventional UTXO model.
-* The transaction context provides information about the submitted
-transaction, including its inputs and outputs.
+* Information about the transaction being validated, including its inputs 
+and outputs. 
 
-In contrast to Ethereum, the script cannot see the entire state of the
-blockchain; instead, it can view the entire transaction being validated.
+In contrast to Ethereum, a script cannot see the entire state of the blockchain; 
+instead, it can view the entire transaction being validated. The information contained 
+in the script context will be in detail explained in section <<Script context explained>>. 
 
-Depending on the types of these three parameters, there are two possible
+Depending on the types of the script context, there are two possible
 implementations of Plinth validation scripts.
 
-* In the low-level implementation, these parameters are represented
-using the same data type.
-* In the high-level implementation, one can use custom Haskell data
-types for the datum and redeemer, while the transaction context uses a
-predefined type.
+* In the low-level implementation, the script context is represented
+using the [purple]#BuiltinData# type. 
+* In the high-level implementation, one uses a predefined Haskell type.
 
 Both implementations can be used in the smart contract code. The main
 difference lies in code performance, with the low-level implementation
@@ -3594,7 +3594,7 @@ is set to minting.
 
 A single transaction may trigger several different minting policies if
 multiple native tokens with distinct currency symbols are minted. Each
-policy receives its own redeemer and transaction context as input. All
+policy receives its own script context as input. All
 minting policies within a transaction must pass for the transaction to
 succeed; otherwise, it fails.
 
@@ -6030,9 +6030,9 @@ change between when a user submits a transaction and when it is
 processed, which means the transaction can fail even after the user pays
 the transaction fee. You can read more about this topic in the following 
 https://academy.geniusyield.co/articles/what-is-cardano[GeniusYield Academy blog]. 
-There is no global state in Cardano, and a smart contract only sees the datum 
-of the UTXO the transaction is consuming, the redeemer, and other data contained 
-in the transaction context that also provides access to all inputs and outputs. 
+There is no global state in Cardano, and a smart contract only sees data contained 
+in the script context that provides access to the datum if present, the 
+redeemer, all inputs and outputs and other transaction information. 
 Section <<Plutus smart contracts>> explains these concepts in detail.
 
 In theory, there can be multiple transactions processed simultaneously,
