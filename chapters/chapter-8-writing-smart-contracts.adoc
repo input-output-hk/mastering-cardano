@@ -1618,7 +1618,7 @@ transaction that is being validated.
 
 This means the Plutus contract can see the script context that
 carries information about the transaction being validated including 
-its inputs and outputs. Every UTXO has an arbitrary
+its inputs and outputs. A UTXO can have an arbitrary
 piece of data attached to it – the datum, which defines a state of the
 UTXO. When a transaction intends to spend a UTXO sitting at a smart
 contract, the smart contract code can access the information contained
