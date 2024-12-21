@@ -446,16 +446,16 @@ image::sc_cardano_address.png[width=400,height=200,title="Cardano address"]
 Both parts of a Cardano address are cryptographically derived from the
 private key, containing the same owner information. The payment part,
 which is always present, determines the conditions under which a UTXO at
-the address can be spent. It is either defined by the hash of a public
+the address can be spend. It is either defined by the hash of a public
 key or a Plutus script. If it contains a public key hash, UTXOs can only
-be spent if the transaction is signed with the corresponding private
+be spend if the transaction is signed with the corresponding private
 (signing) key. If it contains a script hash, the script executes during
-validation to decide whether UTXOs at the address can be spent.
+validation to decide whether UTXOs at the address can be spend.
 
 The optional staking part controls delegation and staking rewards. If
 defined with a public key hash, the corresponding private key owner can
 spend the rewards. If defined with a script hash, the script determines
-the conditions under which staking rewards can be spent.
+the conditions under which staking rewards can be spend.
 
 Cardano Shelley addresses can be divided into four categories:
 
@@ -1821,12 +1821,14 @@ pipeline which will be in detail explained in section <<Plutus security>>.
 === Simple validation scripts
 
 A validation script or validator is the smart contract program that
-checks whether funds at a script address are allowed to be spent by a
+checks whether funds at a script address are allowed to be spend by a
 given transaction. The script uses three parameters: the datum, the
 redeemer, and the script context:
 
 * The datum is an arbitrary piece of data associated with a UTXO
-alongside the amount of ada and native tokens.
+alongside the amount of ada and native tokens. If a datum is not 
+associated with a UTXO created a PlutusV2 script address it can not 
+be spend anymore. That is not the case for PlutusV3 scripts. 
 * The redeemer is an arbitrary piece of data provided when creating a
 transaction, used to unlock funds at a UTXO, similar to a private key in
 the conventional UTXO model.
@@ -4549,7 +4551,7 @@ The [purple]#DatumMode# type can be either an inline datum or a datum hash. The
 consume a UTXO sitting at a script address, we need to provide the
 datum, the redeemer, and a reference to the UTXO. These parameters,
 along with the script, serve as inputs to the [blue]#spendScript# function,
-which defines the conditions under which a script UTXO can be spent. We
+which defines the conditions under which a script UTXO can be spend. We
 then combine the transaction produced by the [blue]#spendScript# function with
 the transaction created by the [blue]#payToKey# function, which specifies the
 public key hash to which the funds will be sent. We now look at the
@@ -5484,7 +5486,7 @@ Estimated transaction fee: Lovelace 345564
 Transaction successfully submitted.
 ----
 
-We see the log messages and the spent UTXO. The newly created stake
+We see the log messages and the spend UTXO. The newly created stake
 address is now based on our script. We also created the payment address
 and submitted the transaction. Now, there should not be any funds left
 at the initial address, as all the funds have been moved to the new
