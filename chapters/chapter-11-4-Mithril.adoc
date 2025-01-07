@@ -7,7 +7,7 @@
 
 Mithril is a protocol and a network designed for proof-of-stake
 blockchains that aims to provide lightweight access to blockchain data
-with high security and decentralization (see the _Mithril security_
+with high security and decentralization (see the <<Mithril security>>
 section). While the Cardano blockchain offers robust security, starting
 a new node, syncing it with the network, or exchanging data can be slow
 and resource intensive – requiring 24GB of RAM, 150GB (and growing) of
@@ -89,7 +89,7 @@ The protocol’s security directly depends on the values of these
 parameters, which are carefully chosen to ensure a negligible chance of
 an adversary forging a valid multi-signature. Details on the
 relationship between these parameters and protocol security are provided
-in the _Mithril security_ section.
+in the <<Mithril security>> section.
 
 All network participants, including signers and aggregators, must
 operate using identical protocol parameters. This protocol establishment
@@ -116,7 +116,7 @@ achieved among a subset of signers representing sufficient stake in the
 protocol to ensure the quorum of signatures can be met.
 
 Each party then computes a condensed representation of the key
-registration process: the aggregate verification key (AVK). The AVK,
+registration process: the *aggregate verification key* (AVK). The AVK,
 derived as the root of a
 https://en.wikipedia.org/wiki/Merkle_tree[Merkle tree] created from
 the verification keys and stake of the registered signers, is used to
@@ -217,7 +217,7 @@ chain*.
 The *Mithril certificate chain* is the component that certifies the
 *Mithril stake distribution* used to create multi-signatures. Its
 primary purpose is to prevent adversaries from executing an
-https://academy.binance.com/en/articles/what-is-an-eclipse-attack[*eclipse attack*].
+https://academy.binance.com/en/articles/what-is-an-eclipse-attack[eclipse attack].
 
 Without the certificate chain, the stake distribution can't be trusted.
 A malicious actor could relatively easily create a fake stake
@@ -345,8 +345,8 @@ The *certificate chain* certifies the *stake distribution* used to
 create multi-signatures, embedding them in certificates that are chained
 together to establish trust. Its primary purpose is to prevent
 adversaries from executing an
-https://academy.binance.com/en/articles/what-is-an-eclipse-attack[*eclipse
-attack*]. The verification process is recursive, and a chain is
+https://academy.binance.com/en/articles/what-is-an-eclipse-attack[eclipse
+attack]. The verification process is recursive, and a chain is
 considered valid if, for each certificate in the chain (at least one
 certificate per epoch is required as the stake distribution changes at
 every epoch):
