@@ -199,7 +199,7 @@ with an address, eliminating the need to trust a third-party provider or
 run a full Cardano node. The verification can even occur in the browser.
 This also supports the implementation of ‘light clients’ for bridges,
 enabling to monitor transactions on layer 1 smart contracts without
-running a full Cardano node. This is also applicable to state channels
+running a full Cardano node. It is also applicable to state channels
 such as Hydra or rollups.
 * *Cardano stake distribution*: the Cardano stake distribution is
 certified at the transition to a new epoch. This enables the
@@ -374,13 +374,13 @@ representing nearly the entire Cardano stake.
 Mithril security is also tied to its implementation, which is currently
 available in the https://github.com/input-output-hk/mithril/[Mithril repository]. 
 The Mithril team has published a
-https://mithril.network/doc/mithril/advanced/threat-model[*threat
-model analysis*], which assesses the assets involved in the Mithril
+https://mithril.network/doc/mithril/advanced/threat-model[threat
+model analysis], which assesses the assets involved in the Mithril
 network, identifies potential threats to these assets, and outlines
 their mitigations to better understand the impact on the SPO
 infrastructure and the Cardano chain.
 
-*The present and future of Mithril*
+=== The present and future of Mithril 
 
 The full implementation of the Mithril protocol is a work in progress,
 with new capabilities and enhancements being progressively added. The
@@ -410,5 +410,5 @@ designed to work in any stake-based environment beyond Cardano.
 * https://mithril.network/doc/manual/operate/run-signer-node[*Run a Mithril signer node*]
 * https://mithril.network/doc/mithril/advanced/threat-model[*Threat model analysis*]
 * https://cips.cardano.org/cip/CIP-0137[*Decentralized message queue CIP*]
-* https://mithril.network/explorer[*Decentralized message queue CIP*].
+* https://mithril.network/explorer[*Mithril Explorer*].
 
