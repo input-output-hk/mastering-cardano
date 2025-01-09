@@ -22,3 +22,8 @@ font:
       bold: bitter-bold.ttf
       italic: bitter-italic.ttf
       bold-italic: bitter-bold-italic.ttf
+role:
+  blue:
+    font-color: #0000FF
+  purple:
+    font-color: #800080

@@ -32,7 +32,6 @@ Lars Brünjes <lars.bruenjes@iohk.io>; Joshua Ellul <joshua.ellul@um.edu.mt>;
 :source-highlighter: rouge
 :rouge-style: github
 :tabsize: 4
-:pdf-theme: custom-theme.yml
 
 // -- Book content includes --
 
