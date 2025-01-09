@@ -32,6 +32,7 @@ Lars Brünjes <lars.bruenjes@iohk.io>; Joshua Ellul <joshua.ellul@um.edu.mt>;
 :source-highlighter: rouge
 :rouge-style: github
 :tabsize: 4
+:pdf-theme: custom-theme.yml
 
 // -- Book content includes --
 
@@ -48,3 +49,7 @@ include::chapters/chapter-introduction.adoc[]
 include::chapters/chapter-cryptography.adoc[]
 include::chapters/chapter-incentives.adoc[]
 include::chapters/chapter-utxo.adoc[]
+include::chapter-4-6-Cardano-node-and-system-layers.adoc[]
+include::chapter-8-writing-smart-contracts.adoc[]
+include::chapter-11-4-Mithril.adoc[]
+
