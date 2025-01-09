@@ -1,8 +1,7 @@
 # Instructions for code styling and text colorization
 
-In order to use the code styling features the following packages need to be installed: 
-* asciidoctor-pdf
-* [rouge](https://docs.asciidoctor.org/asciidoctor/latest/syntax-highlighting/rouge/#install-rouge)
+For testing purposes one can convert his `.adoc` file to PDF with `asciidoctor-pdf` and apply the styling directly in the file. In order to use the code styling features the 
+[rouge](https://docs.asciidoctor.org/asciidoctor/latest/syntax-highlighting/rouge/#install-rouge) package needs to be installed. 
 
 ## Styling your code 
 

@@ -7,7 +7,7 @@ It has a custom theme to controls fonts and spacing.
 
 The project uses [`asciidoctor-epub`](https://docs.asciidoctor.org/epub3-converter/latest/) and [`asciidoctor-pdf`](https://asciidoctor.org/docs/asciidoctor-pdf/) to generate EPUB and PDF versions of the book.
 
-Examples of code styling and text colorization can be found in the [code_styling](https://github.com/input-output-hk/mastering-cardano/tree/main/code_styling) forlder. 
+Examples of code styling and text colorization can be found in the [code_styling](https://github.com/input-output-hk/mastering-cardano/tree/main/code_styling) folder. 
 
 ## Getting started
 
