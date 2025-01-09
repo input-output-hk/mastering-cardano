@@ -1,11 +1,8 @@
-:source-highlighter: rouge
-:rouge-style: gruvbox
-:pdf-theme: custom-theme.yml
-
-= Writing smart contracts
 
 :url-repo: https://github.com/input-output-hk/mastering-cardano/chapters
 :imagesdir: images
+
+= Writing smart contracts
 
 == Plutus preface
 

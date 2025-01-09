@@ -1,7 +1,8 @@
-== Cardano node and system layers
 
 :url-repo: https://github.com/input-output-hk/mastering-cardano/chapters
 :imagesdir: images
+
+== Cardano node and system layers
 
 === Introduction to the Cardano node
 

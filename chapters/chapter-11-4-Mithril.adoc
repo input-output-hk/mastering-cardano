@@ -1,7 +1,8 @@
-== Mithril
 
 :url-repo: https://github.com/input-output-hk/mastering-cardano/chapters
 :imagesdir: images
+
+== Mithril
 
 === Mithril in a nutshell
 
