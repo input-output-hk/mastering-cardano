@@ -1540,7 +1540,7 @@ interactive map]. One can explore projects in other groups and view
 their GitHub repositories.
 
 Aiken specific learning resources are presented at the end of section
-8.5.3 _Plinth in comparison to Aiken_. Commercial training for
+<<Plinth in comparison to Aiken>>. Commercial training for
 developers interested in building on Cardano is offered by
 https://education.emurgo.io/about-us/[Emurgo Academy]. At the time of writing,
 the offered courses include:
