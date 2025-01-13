@@ -1516,9 +1516,9 @@ Plinth code examples are taken from the
 https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[4th
 iteration of the Plutus Pioneer program] and are updated to accomodate PlutusV3
 changes. The 4th iteration presents PlutusV2 code examples and in addition  
-contains a stablecoin example that is not covered in this book. The 4th iteration 
-GitHub repository also contains links to lectures that explain the code examples. 
-The IO education team translated the Plinth code examples from the 4th 
+contains a stablecoin example that is not covered in this book. The introduction page 
+of the 4th iteration Plutus pioneer program also contains links to lectures that explain 
+the code examples. The IO education team translated the Plinth code examples from the 4th 
 iteration into Aiken code. Those code examples are published on the
 https://github.com/input-output-hk/plutus-pioneer-program/tree/aiken-fourth-iteration[aiken-fourth-iteration]
 branch. Further learning resources and smart contract examples in
@@ -1538,7 +1538,7 @@ interactive map]. One can explore projects in other groups and view
 their GitHub repositories.
 
 Aiken specific learning resources are presented at the end of section
-8.5.3 _Plinth in comparison to Aiken_. Commercial training for
+<<Plinth in comparison to Aiken>>. Commercial training for
 developers interested in building on Cardano is offered by
 https://education.emurgo.io/about-us/[Emurgo Academy]. At the time of writing,
 the offered courses include:
@@ -1843,7 +1843,7 @@ offering better performance. Low-level validation scripts are referred
 to as untyped validation scripts, while high-level scripts are known as
 typed validation scripts.
 
-This book focuses on the data types defined for Plutus V2 scripts. The
+This chapter focuses on the data types defined for Plutus V3 scripts. The
 data type for the low-level validation script implementation is called
 [purple]#BuiltinData#. It contains two conversion functions, [blue]#builtinDataToData#
 and [blue]#dataToBuiltinData#, which can convert back and forth to the
