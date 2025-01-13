@@ -190,14 +190,18 @@ programming languages behind Cardano on-chain code].
 
 Languages that compile to Plutus generate scripts that have the same
 logic, but might be optimized differently for factors like size or
-performance. Existing community guidelines and tools can help optimize
+performance. This data is presented in the 
+https://mlabs-haskell.github.io/uplc-benchmark/comparison.html[UPLC benchmark] 
+comparison. Existing community guidelines and tools can help optimize
 Plutus scripts for size, CPU, and memory consumption, reducing
 transaction fees. These tools can also help analyze the fees users will
 encounter while interacting with a Plutus script. The official
 documentation provides more information on the
 https://docs.cardano.org/about-cardano/explore-more/fee-structure/[Cardano
 fee structure]. Links to Cardano developer tools are provided at the
-end of this section. Some examples of projects that can be built using
+end of this section. 
+
+Some examples of projects that can be built using
 Plinth or other compiled Cardano smart contract languages include:
 
 * NFT marketplaces and platforms (https://www.nmkr.io/[NMKR],
