@@ -1771,9 +1771,7 @@ security, and version upgrades. Depending on development needs, the
 platform provides various starter kits, including example code
 repositories from the community for learning or project initiation. Its
 pricing model is based on service usage, with users also able to access
-some free working time. Other platforms, such as
-https://www.gomaestro.org/[GoMaestro], offer additional development
-opportunities for Cardano. Explore _Developer Tools_ and
+some free working time. Explore _Developer Tools_ and
 _Infrastructure_ sections on the
 https://www.cardanocube.com/cardano-ecosystem-interactive-map[Cardano
 developer map] for more options.
