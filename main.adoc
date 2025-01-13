@@ -38,8 +38,6 @@ Lars Brünjes <lars.bruenjes@iohk.io>; Joshua Ellul <joshua.ellul@um.edu.mt>;
 // Include the non-numbered sections (preface, introduction, etc).
 include::chapters/preface.adoc[]
 
-include::chapters/introduction.adoc[]
-
 // Enable chapter numbering.
 :sectnums:
 

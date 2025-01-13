@@ -238,7 +238,7 @@ To discourage this, transactions requiring phase 2 validation, such as those att
 
 However, in practice, this scenario is unlikely to happen because invalid transactions typically fail earlier, preventing unnecessary validation if users follow the standard processes.
 
-### Determinism and time
+===== Determinism and time
 
 As mentioned earlier, _determinism_ is a key feature of transactions in the EUTXO model: the outcome of a transaction is determined solely by the transaction itself, its inputs, and its outputs.
 
@@ -303,7 +303,7 @@ So instead of creating one payment output to Alice for each NFT he buys from her
 
 His transaction (Tx 2) will validate correctly: as explained above, the scripts guarding the NFTs will be executed sequentially:
 
-- The script for NFT B will check whether the transaction contains a payment output to Alice worth 200 ada, find it, and validate the transaction. 
+- The script for NFT B will check whether the transaction contains a payment output to Alice worth 200 ada, find it, and validate the transaction.
 - The script for NFT C will do the same, verifying _the same_ payment output to Alice and also validating the transaction.
 
 This issue arises from how validation works during phase 2 – all validator scripts run sequentially and independently, lacking a mechanism to share information between them. Consequently, the first script cannot ‘mark’ the payment output it finds or ‘claim it for itself.’
@@ -316,7 +316,7 @@ Why does this not cause problems in ‘real life’? Because Alice will likely i
 
 Bob cannot cheat because he must include the invoice number with his payment, but he cannot include both invoices. Therefore, he cannot get away with making only one payment.
 
-Fortunately, we can apply the same principle to fix the atomic-swap contract and secure it against the double satisfaction problem.footnote:[The solution to the double satisfaction problem presented here is not the only option. For example, one could modify the atomic-swap script to allow only one input from the corresponding script address. However, this would hinder composability.] 
+Fortunately, we can apply the same principle to fix the atomic-swap contract and secure it against the double satisfaction problem.footnote:[The solution to the double satisfaction problem presented here is not the only option. For example, one could modify the atomic-swap script to allow only one input from the corresponding script address. However, this would hinder composability.]
 
 Instead of merely searching for a payment output to Alice with the correct price, the script can look for such an output that also includes the _UTXO reference_ footnote:[On Cardano, the UTXO reference is represented by a pair consisting of the hash of the transaction that created the output and the index of that output in the list of all outputs of that transaction. The first output has index #0, the second output has index #1, and so on.] of the NFT output in its datum.
 Remember that any output can carry a datum, not just script outputs.
