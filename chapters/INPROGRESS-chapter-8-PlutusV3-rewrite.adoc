@@ -1818,7 +1818,7 @@ checks whether funds at a script address are allowed to be spend by a
 given transaction. The script uses a single parameter: the script  
 context. It contains following information: 
 
-* Potentially the datum which is an arbitrary piece of data associated with the UTXO
+* The datum which is an arbitrary piece of data associated with the UTXO
 we want to spend. A UTXO does not necessary have a datum associated with it. 
 * The redeemer is an arbitrary piece of data provided when creating a
 transaction, used to unlock funds at a UTXO, similar to a private key in
@@ -1843,12 +1843,12 @@ offering better performance. Low-level validation scripts are referred
 to as untyped validation scripts, while high-level scripts are known as
 typed validation scripts.
 
-This chapter focuses on the data types defined for Plutus V3 scripts. The
-data type for the low-level validation script implementation is called
-[purple]#BuiltinData#. It contains two conversion functions, [blue]#builtinDataToData#
-and [blue]#dataToBuiltinData#, which can convert back and forth to the
-[purple]#Data# type. The [purple]#Data# type has its constructor exposed, as
-illustrated in the image below:
+The data type for the low-level validation script implementation is called
+[purple]#BuiltinData#. It doesn't have its constructors exposed but it contains 
+two conversion functions, [blue]#builtinDataToData# and [blue]#dataToBuiltinData#, 
+which can convert back and forth to the [purple]#Data# type. Those functions only 
+work in off-chain code but not in on-chain code. The [purple]#Data# type has its 
+constructor exposed, as illustrated in the code below:
 
 [source,haskell]
 ----
@@ -1869,218 +1869,224 @@ succeeds:
 
 [source,haskell]
 ----
-{-# LANGUAGE DataKinds           #-}
-{-# LANGUAGE ImportQualifiedPost #-}
-{-# LANGUAGE NoImplicitPrelude   #-}
-{-# LANGUAGE TemplateHaskell     #-}
- 
-module Gift where
- 
-import qualified Plutus.V2.Ledger.Api as PlutusV2
-import           PlutusTx             (BuiltinData, compile)
-import           Prelude              (IO)
-import           Utilities            (writeValidatorToFile)
- 
-------------------------------------------------------------------------------
---------------------------- ON-CHAIN CODE / VALIDATOR ------------------------
- 
--- This validator always succeeds
---                    Datum         Redeemer     ScriptContext
-mkGiftValidator :: BuiltinData -> BuiltinData -> BuiltinData -> ()
-mkGiftValidator _ _ _ = ()
-{-# INLINABLE mkGiftValidator #-}
- 
-validator :: PlutusV2.Validator
-validator = PlutusV2.mkValidatorScript $$(PlutusTx.compile
-                                      	[|| mkGiftValidator ||])
+{-# LANGUAGE DataKinds                  #-}
+{-# LANGUAGE DeriveAnyClass             #-}
+{-# LANGUAGE DeriveGeneric              #-}
+{-# LANGUAGE DerivingStrategies         #-}
+{-# LANGUAGE FlexibleInstances          #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE ImportQualifiedPost        #-}
+{-# LANGUAGE MultiParamTypeClasses      #-}
+{-# LANGUAGE OverloadedStrings          #-}
+{-# LANGUAGE PatternSynonyms            #-}
+{-# LANGUAGE ScopedTypeVariables        #-}
+{-# LANGUAGE Strict                     #-}
+{-# LANGUAGE TemplateHaskell            #-}
+{-# LANGUAGE TypeApplications           #-}
+{-# LANGUAGE UndecidableInstances       #-}
+{-# LANGUAGE ViewPatterns               #-}
+{-# LANGUAGE NoImplicitPrelude          #-}
+{-# OPTIONS_GHC -fno-full-laziness #-}
+{-# OPTIONS_GHC -fno-ignore-interface-pragmas #-}
+{-# OPTIONS_GHC -fno-omit-interface-pragmas #-}
+{-# OPTIONS_GHC -fno-spec-constr #-}
+{-# OPTIONS_GHC -fno-specialise #-}
+{-# OPTIONS_GHC -fno-strictness #-}
+{-# OPTIONS_GHC -fno-unbox-small-strict-fields #-}
+{-# OPTIONS_GHC -fno-unbox-strict-fields #-}
+{-# OPTIONS_GHC -fplugin-opt PlutusTx.Plugin:target-version=1.1.0 #-}
 
+module Week02.Validators where
 
-------------------------------------------------------------------------------
--------------------------------- HELPER FUNCTIONS ----------------------------
- 
-saveVal :: IO ()
-saveVal = writeValidatorToFile "./gift.plutus" validator
+import GHC.Generics                  (Generic)
+import PlutusLedgerApi.Common        (FromData (fromBuiltinData),
+                                      SerialisedScript,
+                                      serialiseCompiledCode)
+import PlutusLedgerApi.V3            (Redeemer (getRedeemer),
+                                      ScriptContext (..))
+import PlutusTx                      (BuiltinData, CompiledCode,
+                                      UnsafeFromData (unsafeFromBuiltinData),
+                                      compile, makeIsDataSchemaIndexed)
+import PlutusTx.Builtins             (unsafeDataAsI)
+import PlutusTx.Bool                 (Bool (..))
+import PlutusTx.Prelude              (BuiltinUnit, Eq (..), Integer,
+                                      Maybe (..), check, traceError,
+                                      traceIfFalse, ($), otherwise,
+                                      (.))
+import PlutusTx.Blueprint            (HasBlueprintDefinition)
+import PlutusTx.Blueprint.Definition (definitionRef)
+import qualified PlutusTx.Builtins.Internal as BI (
+                                      BuiltinList, BuiltinInteger, 
+                                      head, snd, tail, unitval,
+                                      unsafeDataAsConstr)
+
+{- ----------------------------------------------------------------------------------------- -}
+{- --------------------------------- Always True validator --------------------------------- -}
+
+{-# INLINEABLE mkGiftValidator #-}
+mkGiftValidator :: BuiltinData -> BuiltinUnit
+mkGiftValidator _ctx = check True
+
+compiledMkGiftValidator :: CompiledCode (BuiltinData -> BuiltinUnit)
+compiledMkGiftValidator = $$(compile [||mkGiftValidator||])
+
+serializedMkGiftValidator :: SerialisedScript
+serializedMkGiftValidator = serialiseCompiledCode compiledMkGiftValidator
 ----
 
-First, we add various language extensions required by the code. Notably,
-the [purple]#NoImplicitPrelude# extension prevents the standard `Prelude` module
+The long list of language pragmas and import statements is necessary to 
+cover the functionality for all validators presented in the <<Simple validation 
+scripts>> section. From the language pragmas we note that we add the 
+[purple]#NoImplicitPrelude# extension that prevents the standard `Prelude` module
 from being imported. The `PlutusTx` module defines a custom prelude where
 all functions use strict evaluation rather than the lazy one. This also
 applies to all other functions defined in any module used for Plinth
-coding. Then, we import the `Plutus` module that defines functions for
-working with Plutus V2 scripts and two functions from the PlutusTx
-module. Finally, we import the IO type from the standard `Prelude` module
-and a function from a user-defined `Utilities` module, which will be
-shown later. After that follows the on-chain code.
+coding. Then, we import several submodules from the `PlutusLedgerApi`and the 
+`PlutusTx` modules that define functions for working with Plutus V3 scripts. 
+After that follows the on-chain validator code.
 
-We name the validator function [blue]#mkGiftValidator#. It takes three
-arguments in the following order: the datum, the redeemer, and the
-script context. All of these arguments are [purple]#BuiltinData# types. It returns
-an empty tuple, called unit. This type has a single value and can be
-compared to the Void type used in other programming languages like Java
-or C++. In the body of the function, all input values are ignored, and
-the unit value is always returned. As mentioned earlier, the validator
-checks a given transaction, so it might be expected to return a Boolean
-value, which is true when using the high-level implementation. In the
-low-level implementation, the unit is returned when validation succeeds,
-and an error is raised if it fails. The next example will cover this
-case. It is now clear why this module is called `Gift` – anyone can
+We name the validator function [blue]#mkGiftValidator#. It is a untyped validator 
+that always succeeds. It takes in the script context as the only argument which is 
+of type [purple]#BuiltinData# and returns something of type [purple]#BuiltinUnit#. 
+In the body of the function, all input values are ignored, and we use the [blue]#check# 
+function which takes a bool and it returns a value of type [purple]#BuiltinUnit# 
+in case the input argument is true or raises an error if it is false. 
+
+[source,haskell]
+----
+check :: Bool -> BI.BuiltinUnit
+check b = if b then BI.unitval else traceError checkHasFailedError
+
+unitval :: BuiltinUnit
+unitval = BuiltinUnit ()
+
+data BuiltinUnit = BuiltinUnit ~() deriving stock Data
+----
+
+The [blue]#check# function returns the [blue]#unitval# variable that is a 
+wrapper around the unit (empty tuple) type. The unit type in Haskell can be 
+viewed as an analogy to the Void type used in other programming languages like 
+Java or C++. If an untyped validator returns the [purple]#BuiltinUnit# 
+type the validation logic passes and in case an error is raised the validation 
+logic fails. It is now clear why this module is called `Gift` – anyone can
 claim funds from this address, since the validation will always succeed.
 
-Next, we define the [blue]#validator# parameter, which is the [purple]#PlutusV2.Validator#
-type. To get it, we need to compile the validator function to Plutus
-script. The [blue]#PlutusTx.compile# function takes a syntax tree of a
-function as input, which we can get if we put the Oxford brackets 
-`[|| mkGiftValidator ||]` around the validator function. The [blue]#compile#
-function produces another syntax tree written in the Plutus language.
-Then the `$$` symbol, called splice, takes a syntax tree and splices it
-back to Haskell source code, which is needed to be added to the
-[blue]#mkValidatorScript# function. The splice operator and the Oxford
+Next, we compile the validator. We use the [blue]#PlutusTx.compile# function 
+that takes a syntax tree of a function as input, which we can get if we put the 
+Oxford brackets `[||mkGiftValidator||]` around the validator function. The 
+[blue]#compile# function produces another syntax tree written in the Plutus 
+language. Then the `$$` symbol, called splice, takes a syntax tree and splices 
+it back to Haskell source code. The splice operator and the Oxford
 brackets can be used because we added the [purple]#TemplateHaskell# language
-pragma, which enables this language extension.
+pragma, which enables this language extension. 
 
 It is important to note that normally in Oxford brackets, you cannot
 reference anything defined outside of them. This can become an issue
 when validator functions are long expressions, or when library functions
 are called within their body. A workaround is to make the function
-inlinable. By adding the [purple]#INLINABLE# pragma statement after the function
-definition, the GHC compiler replaces the function call in the Oxford
-brackets with the actual function body.
+inlinable. By adding the [purple]#INLINABLE# pragma statement before or 
+after the function definition, the GHC compiler replaces the function call 
+in the Oxford brackets with the actual function body.
 
-This completes the on-chain code. Next is a helper function that allows
-writing the validator variable to a file. For this, we use the
-[blue]#writeValidatorToFile# helper function defined in the `Utilities` 
-module. The code for this module is shown below:
-
-[source,haskell]
-----
-{-# LANGUAGE LambdaCase #-}
-
-module Utilities.Serialise
-  ( validatorToScript
-  , writeValidatorToFile
-  ) where
-
-import           Cardano.Api           (Error (displayError), PlutusScript,
-                                        PlutusScriptV2, writeFileTextEnvelope)
-import           Cardano.Api.Shelley   (PlutusScript (..))
-import           Codec.Serialise       (Serialise, serialise)
-import qualified Data.ByteString.Lazy  as BSL
-import qualified Data.ByteString.Short as BSS
-import qualified Plutus.V2.Ledger.Api  as PlutusV2
-
-serializableToScript :: Serialise a => a -> PlutusScript PlutusScriptV2
-serializableToScript = PlutusScriptSerialised . BSS.toShort . BSL.toStrict 
-                       . serialise 
-
--- Serialize validator
-validatorToScript :: PlutusV2.Validator -> PlutusScript PlutusScriptV2
-validatorToScript = serializableToScript
-
--- Create file with Plutus script
-writeScriptToFile :: FilePath -> PlutusScript PlutusScriptV2 -> IO ()
-writeScriptToFile filePath script =
-  writeFileTextEnvelope filePath Nothing script >>= \case
-    Left err -> print $ displayError err
-    Right () -> putStrLn $ "Serialized script to: " ++ filePath
-
--- Create file with compiled Plutus validator
-writeValidatorToFile :: FilePath -> PlutusV2.Validator -> IO ()
-writeValidatorToFile filePath = writeScriptToFile filePath . validatorToScript
-----
-
-If we execute the [blue]#writeValidatorToFile# function from the `Gift` module,
-the content is written to the `gift.plutus` file:
+This completes the on-chain code. Next we use the [blue]#serialiseCompiledCode# 
+helper function that returns something of [purple]#ShortByteString# type which 
+is a compact representation of a [purple]#Word8# vector. At the end of this section 
+we will present the code that lets us generate https://cips.cardano.org/cip/CIP-57[Plutus blueprints] 
+for all validator presented in this section. Plutus blueprints allow documenting 
+Plutus validators in `JSON` format and include the compiled validator code that is 
+represented as a `CBORHEX`. The https://en.wikipedia.org/wiki/CBOR[Concise Binary 
+Object Representation] (`CBOR`) is a binary data serialization format loosely based 
+on `JSON`. The `COBORHEX` is a hexadecimal representation of this data format. 
+For our [blue]#mkGiftValidator# the blueprint will show the following `CBORHEX`:
 
 [source,shell]
 ----
-{
-	"type": "PlutusScriptV2",
-	"description": "",
-	"cborHex": "49480100002221200101"
-}
+	"compiledCode": "450101002499"
 ----
 
-The output is a JSON representation containing validator information. It
-indicates that the smart contract is a Plutus version 2 script, and the
-serialized contract can be found in the cborHex field. Since our
-contract is simple, the cborHex value is short. For more complex
-contracts, this value would increase in length. This information can
-then be used in off-chain code when attaching the validator to a
-transaction. Let’s now explore an example where the validation logic
-always fails, regardless of the input. This module is called `Burn`, as
-no funds can be reclaimed from the contract once sent.
+Since our contract is simple, the `COBORHEX` value is short. For more complex
+contracts, this value would increase in length. This compiled code can then be 
+used in off-chain code when attaching the validator to a transaction. Let us now 
+explore an example where the validation logic always fails, regardless of the input. 
 
 [source,haskell]
 ----
-{-# LANGUAGE DataKinds         #-}
-{-# LANGUAGE NoImplicitPrelude #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE TemplateHaskell   #-}
- 
-module Burn where
- 
-import qualified Plutus.V2.Ledger.Api as PlutusV2
-import           PlutusTx             (BuiltinData, compile)
-import           PlutusTx.Prelude     (traceError)
- 
-------------------------------------------------------------------------------
------------------------------- ON-CHAIN / VALIDATOR --------------------------
+{- ------------------------------------------------------------------------------------------ -}
+{- --------------------------------- Always False validator --------------------------------- -}
 
+{-# INLINEABLE mkBurnValidator #-}
+mkBurnValidator :: BuiltinData -> BuiltinUnit
+mkBurnValidator _ctx = traceError "it burns!!!"
 
--- This validator always fails
---                    Datum         Redeemer     ScriptContext
-mkBurnValidator :: BuiltinData -> BuiltinData -> BuiltinData -> ()
-mkBurnValidator _ _ _ = traceError "it burns!!!"
-{-# INLINABLE mkBurnValidator #-}
- 
-validator :: PlutusV2.Validator
-validator = PlutusV2.mkValidatorScript $$(PlutusTx.compile
-                                      	[|| mkBurnValidator ||])
+compiledMkBurnValidator :: CompiledCode (BuiltinData -> BuiltinUnit)
+compiledMkBurnValidator = $$(compile [||mkBurnValidator||])
+
+serializedMkBurnValidator :: SerialisedScript
+serializedMkBurnValidator = serialiseCompiledCode compiledMkBurnValidator
 ----
 
-To implement the `Burn` module, we need one additional import compared to
-the `Gift` module: the [blue]#traceError# function from the `PlutusTx.Prelude` 
-module. This function accepts a [purple]#BuiltinString#, a wrapper around the [purple]#Text#
-type, so we also need to add the [purple]#OverloadedStrings# language extension.
-In the [blue]#mkBurnValidator# function, the datum, redeemer, and script
-context are ignored, and an error with a message is raised, ensuring the
-validation fails regardless of the inputs. Alternatively, we could use
-the [blue]#error# function, which raises an error without a message.
+We call the validator [blue]#mkBurnValidator#, as no funds can be reclaimed from 
+the contract once sent. The [blue]#traceError# function can be used to produce an 
+error and log a message that get displayed by the failed off-chain code transaction
+that tries to claim any funds from this script address. Also in this case we ignore 
+the entire script context. Then we compile the function and serialize it. We could 
+also use the [blue]#check# function with a `False` argument but in that case there 
+would be no error message logged. 
 
-Below is an example of the redeemer in the validation logic. The
-validation passes if the redeemer is an integer with the value 42;
-otherwise, it fails:
+Next let us look at an example where we make use of the redeemer in the validation 
+logic. Before we look into the validator code we show the script context data type. 
 
 [source,haskell]
 ----
-{-# LANGUAGE DataKinds           #-}
-{-# LANGUAGE ImportQualifiedPost #-}
-{-# LANGUAGE NoImplicitPrelude   #-}
-{-# LANGUAGE OverloadedStrings   #-}
-{-# LANGUAGE TemplateHaskell     #-}
- 
-module FortyTwo where
- 
-import qualified Plutus.V2.Ledger.Api as PlutusV2
-import           PlutusTx             (BuiltinData, compile)
-import           PlutusTx.Builtins    as Builtins (mkI)
-import           PlutusTx.Prelude     (otherwise, traceError, (==))
- 
-------------------------------------------------------------------------------
------------------------------- ON-CHAIN / VALIDATOR --------------------------
- 
--- This validator succeeds only if the redeemer is 42
---                  Datum         Redeemer     ScriptContext
-mk42Validator :: BuiltinData -> BuiltinData -> BuiltinData -> ()
-mk42Validator _ r _
-    | r == Builtins.mkI 42 = ()
-    | otherwise            = traceError "expected 42"
-{-# INLINABLE mk42Validator #-}
- 
-validator :: PlutusV2.Validator
-validator = PlutusV2.mkValidatorScript $$(PlutusTx.compile 
-                                          [|| mk42Validator ||])
+data ScriptContext = ScriptContext
+  { scriptContextTxInfo     :: TxInfo
+  , scriptContextRedeemer   :: V2.Redeemer
+  , scriptContextScriptInfo :: ScriptInfo
+  }
+  deriving stock (Generic, Haskell.Eq, Haskell.Show)
+  deriving anyclass (HasBlueprintDefinition)
+----
+
+In the <<Plutus smart contracts>> section we will focus focuses on data types defined 
+for Plutus V3 scripts. The script context contains the transaction information, the 
+redeemer and the script info data types. We will look into those data types in more 
+detail in section <<Script context explained>>. We show only here the redeemer data 
+type that is a wrapper around the [purple]#BuiltinData# data type. 
+
+[source,haskell]
+----
+newtype Redeemer = Redeemer {getRedeemer :: BuiltinData}
+  deriving stock (Generic, Haskell.Show, Typeable)
+  deriving newtype (Haskell.Eq, Haskell.Ord, Eq, ToData, FromData, UnsafeFromData, Pretty)
+  deriving anyclass (NFData, HasBlueprintDefinition)
+----
+
+The validation logic for our validator passes if the redeemer is an integer with 
+the value 42; otherwise, it fails: 
+
+[source,haskell]
+----
+{- ------------------------------------------------------------------------------------------ -}
+{- ----------------------------- 42 validator untyped large CBOR ---------------------------- -}
+
+{-# INLINEABLE mk42ValidatorLarge #-}
+mk42ValidatorLarge :: BuiltinData -> BuiltinUnit
+mk42ValidatorLarge ctx 
+    | r == 42   = BI.unitval
+    | otherwise = traceError "Expected 42 integer redeemer"
+ where
+  ctxTyped = case fromBuiltinData ctx of
+    Just @ScriptContext c -> c
+    Nothing -> traceError "ScriptContext could not be converted from BuiltinData" 
+  r = case fromBuiltinData $ getRedeemer (scriptContextRedeemer ctxTyped) of
+    Just @Integer n -> n
+    Nothing -> traceError "Redeemer is not a number"  
+
+compiledMk42ValidatorLarge :: CompiledCode (BuiltinData -> BuiltinUnit)
+compiledMk42ValidatorLarge = $$(compile [||mk42ValidatorLarge||])
+
+serializedMk42ValidatorLarge :: SerialisedScript
+serializedMk42ValidatorLarge = serialiseCompiledCode compiledMk42ValidatorLarge
 ----
 
 In the example above, we compare the redeemer to the [purple]#BuiltinData# type 
