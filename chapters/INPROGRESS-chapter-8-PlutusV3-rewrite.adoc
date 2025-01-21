@@ -2089,87 +2089,152 @@ serializedMk42ValidatorLarge :: SerialisedScript
 serializedMk42ValidatorLarge = serialiseCompiledCode compiledMk42ValidatorLarge
 ----
 
-In the example above, we compare the redeemer to the [purple]#BuiltinData# type 
-`I 42`, created using the [blue]#Builtins.mkI# function. If the actual redeemer is
-an integer number with value 42, the function returns unit, otherwise,
-it raises an error. Let’s examine the same example but written as a
-typed validator:
+In the example above, we first convert the untyped script context to its
+typed version with the use of the [blue]#fromBuiltinData# function. It takes in 
+a variable of type [purple]#BuiltinData# and returns a [purple]#Maybe# type parameterized 
+with type variable. If that type variable is a type that has an instance of the 
+[purple]#FromData# type class then the conversion will succeed. Else the function returns 
+[purple]#Nothing#. You can find class instances for various Plutus types in the Plutus 
+https://plutus.cardano.intersectmbo.org/haddock/latest/[haddock documentation]. 
+There also exists the [blue]#unsafeFromBuiltinData# function that is defined in the 
+[blue]#UnsafeFromData# type class. This function directly returns a type variable 
+instead of wrapping it in a [purple]#Maybe# type. In case the conversion fails 
+the function raises an error and also the validation logic fails.  
+
+Once we have the script context in typed form we can access the redeemer which 
+is a wrapper around the [purple]#BuiltinData# type. Then we again try to convert 
+that type, in this case to an [purple]#Integer#. Now that the redeemer is in the 
+correct form, we can simply check if it is equal to 42 and return the [blue]#unitval# 
+variable or raise an error and log a message. We could also use the [blue]#check#
+function as we did in our previous exaples. After that we compile and serialize 
+the validator. 
+
+The reason why we stated _"large CBOR"_ in the comment above the code is that 
+converting the script context to its typed form is a costly operation and produces 
+a large CBOR. Next let us look at the same validator in untyped form where we decode 
+the script by keeping it in form of the [purple]#BuiltinData# type. In the end of 
+this section we will make a comparison of `CBORHEX` lengths for the 42 validators. 
 
 [source,haskell]
 ----
-{-# LANGUAGE DataKinds           #-}
-{-# LANGUAGE ImportQualifiedPost #-}
-{-# LANGUAGE NoImplicitPrelude   #-}
-{-# LANGUAGE OverloadedStrings   #-}
-{-# LANGUAGE TemplateHaskell     #-}
- 
-module FortyTwoTyped where
- 
-import qualified Plutus.V2.Ledger.Api as PlutusV2
-import           PlutusTx             (compile)
-import           PlutusTx.Prelude     (Bool, Eq ((==)), Integer, traceIfFalse,
-                                       ($))
-import           Prelude              (IO)
-import           Utilities            (wrap)
- 
-------------------------------------------------------------------------------
------------------------------- ON-CHAIN / VALIDATOR --------------------------
- 
--- This validator succeeds only if the redeemer is 42
---              Datum  Redeemer        ScriptContext
-mk42Validator :: () -> Integer -> PlutusV2.ScriptContext -> Bool
-mk42Validator _ r _ = traceIfFalse "expected 42" $ r == 42
-{-# INLINABLE mk42Validator #-}
- 
-validator :: PlutusV2.Validator
-validator = PlutusV2.mkValidatorScript $$(PlutusTx.compile
-                                      	[|| wrap mk42Validator ||])
+{- ------------------------------------------------------------------------------------------ -}
+{- ----------------------------- 42 validator untyped small CBOR ---------------------------- -}
+
+{-# INLINEABLE mk42ValidatorSmall #-}
+mk42ValidatorSmall :: BuiltinData -> BuiltinUnit
+mk42ValidatorSmall ctx 
+    | redeemerInt == 42 = BI.unitval
+    | otherwise         = traceError "Expected 42 integer redeemer"
+ where
+    -- Lazily decode script context up to redeemer; 
+    -- is less expensive and results in much smaller tx size 
+    constrArgs :: BuiltinData -> BI.BuiltinList BuiltinData
+    constrArgs = BI.snd . BI.unsafeDataAsConstr
+
+    scriptInfoBL :: BI.BuiltinList BuiltinData
+    scriptInfoBL = constrArgs ctx
+
+    redeemerBD :: BuiltinData
+    redeemerBD = BI.head . BI.tail $ scriptInfoBL
+
+    redeemerInt :: BI.BuiltinInteger 
+    redeemerInt = unsafeDataAsI redeemerBD
+
+compiledMk42ValidatorSmall :: CompiledCode (BuiltinData -> BuiltinUnit)
+compiledMk42ValidatorSmall = $$(compile [||mk42ValidatorSmall||])
+
+serializedMk42ValidatorSmall :: SerialisedScript
+serializedMk42ValidatorSmall = serialiseCompiledCode compiledMk42ValidatorSmall
 ----
 
-We can use the unit type for the datum since the latter is not used. For
-the redeemer, we use the [purple]#Integer# type. The script context has to be of
-type [purple]#ScriptContext#. This setup allows for a direct comparison of the
-redeemer to the number 42. We also use the [blue]#traceIfFalse# function that
-raises an error if the condition passed to it is false. Because the
-[blue]#PlutusTx.compile# function still expects a function that accepts three
-parameters of type [purple]#BuiltinData# and returns unit, we need to apply the
-[blue]#wrap# function to the validator function before compiling it. Below
-you can see the function definition:
+First we define a function called [blue]#constrArgs# that helps us to 
+convert the [purple]#BuiltinData# to the [purple]#BuiltinList# type. We 
+recall that the script context is a algebraic produc type that combines 
+the transaction info, redeemer and script info types with a logical `AND`. 
+Once we have converted the script context to a builtin list we can use the 
+[blue]#tail# and [blue]#head# functions to extract the element we need. 
+In the case of the script context the redeemer is in the second place so
+we first apply the [blue]#tail# function and then the [blue]#head# function. 
+Once we have the redeemer in the form of [purple]#BuiltinData# we can use 
+the [blue]#unsafeDataAsI# that converts it to an integer. It is called 
+_unsafe_ because it raises an error if the conversion fails. Next we 
+compile and then serialize the validator. 
+
+We note that in the case the redeemer would be a more structured algebraic 
+data type we could further decode it with the [blue]#constrArgs#, [blue]#tail# 
+and [blue]#head# functions or we could use the [blue]#fromBuiltinData# function 
+to convert it to its typed form and then access the elements we need. 
+
+Let us look now at the same validator that is written in a typed form. 
 
 [source,haskell]
 ----
-{-# LANGUAGE NoImplicitPrelude #-}
-{-# LANGUAGE RankNTypes        #-}
- 
-module Utilities.PlutusTx
-  ( wrap
-  ) where
- 
-import           Plutus.V2.Ledger.Api (ScriptContext, UnsafeFromData,
-                                       unsafeFromBuiltinData)
-import           PlutusTx.Prelude     (Bool, BuiltinData, check, ($))
- 
-{-# INLINABLE wrap #-}
-wrap :: forall a b.
-        ( UnsafeFromData a
-        , UnsafeFromData b
-        )
-      => (a -> b -> ScriptContext -> Bool)
-      -> (BuiltinData -> BuiltinData -> BuiltinData -> ())
-wrap f a b ctx =
-  check $ f
-      (unsafeFromBuiltinData a)
-      (unsafeFromBuiltinData b)
-      (unsafeFromBuiltinData ctx)
+{- ------------------------------------------------------------------------------------------ -}
+{- ----------------------------------- 42 validator typed ----------------------------------- -}
+
+{-# INLINEABLE mk42TypedValidator #-}
+mk42TypedValidator :: ScriptContext -> Bool
+mk42TypedValidator ctx = traceIfFalse "Redeemer is a number different than 42" $ 42 == r
+ where
+  r = case fromBuiltinData $ getRedeemer (scriptContextRedeemer ctx) of
+    Just @Integer n -> n
+    Nothing -> traceError "Redeemer is not a number"
+
+compiledMk42TypedValidator :: CompiledCode (BuiltinData -> BuiltinUnit)
+compiledMk42TypedValidator = $$(compile [||wrappedVal||])
+ where
+  wrappedVal :: BuiltinData -> BuiltinUnit
+  wrappedVal ctxUntyped = check $ mk42TypedValidator (unsafeFromBuiltinData ctxUntyped)
+
+serializedMk42TypedValidator :: SerialisedScript
+serializedMk42TypedValidator = serialiseCompiledCode compiledMk42TypedValidator
 ----
 
-Here, the wrap function accepts the type signature of a typed validator
-function and returns the type signature of an untyped validator
-function. To convert a function that takes variables of custom types
-into one that accepts variables of the [purple]#BuiltinData# type, we use the
-conversion function [blue]#unsafeFromBuiltinData#. For this function to be
-applicable to the types a and b, both types need to have an instance of
-the [purple]#UnsafeFromData# type class.
+The type signature now changes to `:: ScriptContext -> Bool` which means 
+the validator succeeds if the logic returns `True` and fails if it returns 
+`False`. We can now access the redeemer directly from the the script context 
+in its typed form and then try to convert the data inside the redeemer from 
+[purple]#BuiltinData# to [purple]#Integer#. The issue we have now is that 
+before we can compile our validator is has to be in untyped form. So we wrapp 
+it such that we use the [blue]#unsafeFromBuiltinData# that converts the 
+script context from its untyped form to typed and then apply the 
+[blue]#mk42TypedValidator# and [blue]#check# functions. After that we can 
+compile the wrapped validator and serialze it.  
+
+At the end we can look at one final 42 validator example where we define 
+a custom redeemer type that is a wrapper around an [purple]#Integer# type. 
+
+[source,haskell]
+----
+{- ------------------------------------------------------------------------------------------ -}
+{- -------------------------------- 42 validator custom type -------------------------------- -}
+ 
+-- Custom data types for our redeemer 
+data MySillyRedeemer = MkMySillyRedeemer Integer 
+  deriving stock (Generic)
+  deriving anyclass (HasBlueprintDefinition)
+
+makeIsDataSchemaIndexed ''MySillyRedeemer [('MkMySillyRedeemer, 0)]
+
+{-# INLINEABLE mk42CustomValidator #-}
+mk42CustomValidator :: ScriptContext -> Bool
+mk42CustomValidator ctx = traceIfFalse "Redeemer is a number different than 42" $ 42 == r
+ where 
+   r = case fromBuiltinData @MySillyRedeemer . getRedeemer $ scriptContextRedeemer ctx of
+     Just (MkMySillyRedeemer rInt) -> rInt
+     Nothing -> traceError "Redeemer is not of MySillyRedeemer type."
+
+compiledMk42CustomValidator :: CompiledCode (BuiltinData -> BuiltinUnit)
+compiledMk42CustomValidator = $$(compile [||wrappedVal||])
+ where
+  wrappedVal :: BuiltinData -> BuiltinUnit
+  wrappedVal ctx = check $ mk42CustomValidator (unsafeFromBuiltinData ctx)
+
+serializedMk42CustomValidator :: SerialisedScript
+serializedMk42CustomValidator = serialiseCompiledCode compiledMk42CustomValidator
+----
+
+
 
 [source,shell]
 ----
