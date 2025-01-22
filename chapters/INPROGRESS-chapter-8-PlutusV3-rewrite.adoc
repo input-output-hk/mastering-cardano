@@ -1,9 +1,9 @@
 
 :imagesdir: images
 
-= Writing smart contracts
+== Writing smart contracts
 
-== Plutus preface
+=== Plutus preface
 
 _Prof Philip Wadler, FRS_
 
@@ -90,7 +90,7 @@ experience -- it's not often that you can suggest a practical
 application of a fifty-year-old theory and have people take you
 seriously!
 
-== Smart contract programming languages
+=== Smart contract programming languages
 
 Cardano smart contract languages can be grouped into three categories:
 
@@ -337,7 +337,7 @@ This chapter also presents the MeshJS tool and showcases how to write
 off-chain code for smart contracts in sections 
 <<Off-chain code with MeshJS>> and <<Minting policies>>.
 
-== Smart contract case studies
+=== Smart contract case studies
 
 *World Mobile Token smart contracts*
 
@@ -481,7 +481,7 @@ _script addresses_. The
 https://docs.cardano.org/learn/cardano-addresses/[Cardano addresses]
 documentation page provides more information about address categories.
 
-=== Binary format
+==== Binary format
 
 Under the hood, a Cardano address is a sequence of bytes that conforms
 to a particular format. Users will typically interact with addresses
@@ -554,9 +554,9 @@ https://cips.cardano.org/cips/cip19/#binaryformat[Cardano improvement
 proposal 19 (CIP-19)], which defines the technical details of Cardano
 addresses.
 
-== Marlowe smart contracts
+=== Marlowe smart contracts
 
-=== About Marlowe
+==== About Marlowe
 
 Marlowe is a domain-specific language (DSL) for building financial smart
 contracts. One can think of Marlowe as a robust, open-source technology
@@ -647,7 +647,7 @@ ecosystem as a community-based project. The Marlowe repositories will be
 transferred to the https://github.com/marlowe-lang[marlowe-lang]
 GitHub, and continued development will take place there.
 
-=== Developer tools and services
+==== Developer tools and services
 
 Marlowe provides a set of open-source tools that help create, test, and
 deploy secure smart contracts on Cardano. It offers intuitive solutions
@@ -846,7 +846,7 @@ documentation] provides extensive explanations, links to learning
 resources, and access to tutorials and community resources from the top
 bar.
 
-=== Marlowe Runtime architecture
+==== Marlowe Runtime architecture
 
 Below is the Marlowe Runtime architecture:
 
@@ -887,7 +887,7 @@ the
 https://docs.marlowe.iohk.io/docs/platform-and-architecture/architecture[Marlowe
 documentation] for the latest version.
 
-=== Contract examples
+==== Contract examples
 
 Marlowe is designed to create the following building blocks of financial
 contracts:
@@ -1256,7 +1256,7 @@ Swap Prototype] – a decentralized platform for users to list tokens for
 swap, specifying the desired return. Interested parties can accept
 offers, resulting in a token swap.
 
-=== Integrating with Plinth
+==== Integrating with Plinth
 
 Marlowe contracts can be integrated with Plinth smart contracts or other
 compiled languages, such as Aiken, for example. This section focuses on
@@ -1290,7 +1290,7 @@ Plinth script does not interfere with Marlowe validation
 * The Marlowe validators do not need to be modified to run alongside a
 Plinth script that holds the role token.
 
-=== Future of Marlowe
+==== Future of Marlowe
 
 The Marlowe foundation will continue supporting Marlowe by consolidating
 and extending it for Cardano DApp builders. This includes providing
@@ -1391,7 +1391,7 @@ conceptual track aimed at fundamental language modifications. This track
 will be organized through the creation of Marlowe improvement proposals
 (MIPs), in collaboration with the wider community.
 
-=== Impact of Marlowe
+==== Impact of Marlowe
 
 Marlowe has the potential to evolve into a smart contract technology
 complementary to Plinth and Aiken.
@@ -1445,9 +1445,9 @@ the Marlowe special interest group and existing forums, will help forge
 a vibrant and sustainable ecosystem, positioning Marlowe as a
 cornerstone of the Cardano economy.
 
-== Plutus smart contracts
+=== Plutus smart contracts
 
-=== Overview and learning resources
+==== Overview and learning resources
 
 Before reading section _Plutus smart contracts_, one should have a basic understanding of
 blockchain principles and Cardano’s extended UTXO (EUTXO) accounting
@@ -1554,7 +1554,7 @@ courses] page provides an up-to-date list, and the Cardano foundation
 also offers a free https://academy.cardanofoundation.org/[online
 course] on the basics of blockchain and Cardano.
 
-=== Plutus in comparison to Bitcoin Script and Solidity
+==== Plutus in comparison to Bitcoin Script and Solidity
 
 This section compares the basic characteristics of smart contracts in
 Bitcoin, Ethereum, and Cardano, highlighting the new concepts each
@@ -1651,7 +1651,7 @@ resources. The official https://github.com/IntersectMBO/plutus[Plutus]
 GitHub repository also provides links to specifications and design
 documents, academic papers and talks.
 
-=== Plinth in comparison to Aiken
+==== Plinth in comparison to Aiken
 
 Plinth enables developers to write and compile their on-chain code to
 Plutus for use in DApps, which Cardano nodes execute during user
@@ -1743,7 +1743,7 @@ lessons. One can also see https://piefayth.github.io/blog/pages/aiken1/[Aiken fo
 tutorial that is at the time of writing not included in the Awesome
 Aiken repository.
 
-=== Setting up a Plinth development environment
+==== Setting up a Plinth development environment
 
 For your development environment, you can use one of the following
 options:
@@ -1811,7 +1811,7 @@ Plinth types from a REPL is to build it with a Cabal file that imports
 those libraries. There are some intermediate steps in the compilation
 pipeline which will be in detail explained in section <<Plutus security>>.
 
-=== Simple validation scripts
+==== Simple validation scripts
 
 A validation script or validator is the smart contract program that
 checks whether funds at a script address are allowed to be spend by a
@@ -2333,7 +2333,7 @@ creates one or more UTXOs at a script address. We will see examples of
 how to construct producing and spending transactions in section 
 <<Off-chain code with MeshJS>>.
 
-=== Script context explained
+==== Script context explained
 
 In the previous example, the script context was not used in the
 validation logic. However, in most validator scripts, the [purple]#ScriptContext#
@@ -2779,7 +2779,7 @@ interactions with the Cardano treasury. Learn more about governance
 features, including the topics of voting and proposal submission in
 chapter <<Cardano governance>>.
 
-=== Time-dependent and parameterized validators
+==== Time-dependent and parameterized validators
 
 This section demonstrates a smart contract representing a vesting
 schema. In this scenario, a person sends a gift of ada to the smart
@@ -3061,7 +3061,7 @@ If there would be more than one parameter, we would need to use the
 [blue]#applyCode# function multiple times for each of the lifted parameters one
 after the other. An example is included in section <<Minting policies>>.
 
-=== Off-chain code with MeshJS
+==== Off-chain code with MeshJS
 
 The blockchain is passive – it only acts when a user interacts with it.
 The code that queries the blockchain, builds, and submits transactions
@@ -3532,7 +3532,7 @@ the Cardano CLI tool, with a
 https://github.com/perturbing/vasil-tests/blob/main/referencing-scripts-cip-33.md[tutorial
 available here].
 
-=== Minting policies
+==== Minting policies
 
 In Plutus, a minting policy defines the conditions under which native
 tokens can be minted. Each UTXO has an address, a value, and potentially
@@ -4115,7 +4115,7 @@ tokens] section on the Developer Portal
 * https://cardano-ledger.readthedocs.io/en/latest/explanations/index.html[Ledger
 explanations] page, which also covers native tokens.
 
-=== Testing Plinth scripts
+==== Testing Plinth scripts
 
 This section outlines the different methods of testing smart contracts.
 We introduce the
@@ -5095,7 +5095,7 @@ All 3 tests passed (1.58s)
 Test suite PTNegativeRTimed: PASS
 ----
 
-=== Staking and Plinth
+==== Staking and Plinth
 
 Section <<Script context explained>> discussed that the
 possible script purposes are minting, spending, rewarding, and
@@ -5704,7 +5704,7 @@ have defined in the Plinth script.
 --tx-out "$(cat /<path>/<to>/cardano-private-testnet-setup/private-testnet/addresses/payment2.addr)+$amt2 lovelace" \
 ----
 
-=== PlutusV3 features
+==== PlutusV3 features
 
 PlutusV3 focuses on performance throughput, smart contract size,
 platform capabilities, and interoperability with other blockchains.
@@ -6014,9 +6014,9 @@ the datum exist and has the correct shape. As in the previous code
 example with the helper functions, we again compile the validator and
 serialize it.
 
-== Smart contract security and best practices
+=== Smart contract security and best practices
 
-=== Cardano security
+==== Cardano security
 
 Best practices for the security of smart contracts is an important
 topic, since these programs can manage significant funds and include
@@ -6230,7 +6230,7 @@ ERC-20 tokens with Cardano native tokens.
 |Over-/under-flow vulnerabilities |YES |NO |Cardano's scripting languages don't have fixed-size integers
 |Unprotected functions |YES |NO |User code is called only in very specific cases to validate minting
 |Denial of service via gas price attacks |YES |NO |Denial of service attacks on the entire system are still possible 
-|=== 
+|===
 
 A comparison of various characteristics between Ethereum ERC-20 and
 Cardano native tokens can be found on
@@ -6265,7 +6265,7 @@ further discussed in the next four sections. Because those languages
 follow different best practices for developing smart contracts, we will
 explain the advantages and best practices for them separately.
 
-=== Plutus security
+==== Plutus security
 
 Blockchain programming platforms often depend on a custom smart contract
 language, such as Ethereum’s Solidity. Cardano offers Plinth (formerly
@@ -6578,11 +6578,11 @@ reports freely available to the public:
 * https://github.com/tweag/tweag-audit-reports[Tweag audit reports]
 * https://github.com/vacuumlabs/audits[Vacuum Labs audit reports].
 
-=== Plutus best practices
+==== Plutus best practices
 
 Will be written by Tsenguun.
 
-=== Marlowe security
+==== Marlowe security
 
 In the design process of the Marlowe smart contract language, trade-offs
 were made in regard to how powerful the language should be. In computer
@@ -6753,7 +6753,7 @@ https://iohk.io/en/blog/posts/2023/06/27/a-comprehensive-guide-to-marlowes-secur
 this blog post], which also talks about the security of Marlowe and
 Cardano.
 
-=== Marlowe best practices
+==== Marlowe best practices
 
 Marlowe contracts can be designed in many ways. Once you have designed
 your contract, it is good practice to simulate it on the Playground
