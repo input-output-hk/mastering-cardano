@@ -2099,7 +2099,18 @@ https://plutus.cardano.intersectmbo.org/haddock/latest/[haddock documentation].
 There also exists the [blue]#unsafeFromBuiltinData# function that is defined in the 
 [blue]#UnsafeFromData# type class. This function directly returns a type variable 
 instead of wrapping it in a [purple]#Maybe# type. In case the conversion fails 
-the function raises an error and also the validation logic fails.  
+the function raises an error and also the validation logic fails. That is also the 
+reason why we call it _unsafe_ because the conversion might fail. Below you can 
+see the [purple]#FromData# and [purple]#UnsafeFromData# type classes. 
+
+[source,haskell]
+----
+class FromData a where
+  fromBuiltinData :: BuiltinData -> Maybe a
+
+class UnsafeFromData a where
+  unsafeFromBuiltinData :: BuiltinData -> a
+----
 
 Once we have the script context in typed form we can access the redeemer which 
 is a wrapper around the [purple]#BuiltinData# type. Then we again try to convert 
@@ -2276,93 +2287,7 @@ and https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/other-opti
 guidelines. 
 
 
-
-[source,shell]
-----
-Prelude> import Plutus.V2.Ledger.Api
-Prelude Plutus.V2.Ledger.Api> :i UnsafeFromData
-type UnsafeFromData :: * -> Constraint  
-class UnsafeFromData a where
-  unsafeFromBuiltinData :: BuiltinData -> a
-...
-Instance UnsafeFromData ScriptContext 
-  -- Defined in `Plutus.V2.Ledger.Contexts`
-...
-----
-
-If we look at this type class, it has the single method called
-[blue]#unsafeFromBuiltinData# that we can use to convert the [purple]#BuiltinData#
-type to a custom Haskell type. It's unsafe because the [purple]#BuiltinData# type
-might fail to convert to the given custom Haskell type. The unit,
-integer, and script context data types have instances of the
-[purple]#UnsafeFromData# type class.
-
-As mentioned before, the untyped version has a performance advantage. If
-we compare the cborHex strings for the typed and untyped script
-versions, the string for the typed version is much longer.
-
-The final example shows how to use a custom defined type in the on-chain
-code. For specific business problems, code will have very specific data
-structures, often in the form of record types. Ideally, these can be
-used for the datum and the redeemer. One way to achieve this in
-validator functions is by writing an instance of the [purple]#UnsafeFromData# type
-class for these types. But because there is template Haskell support for
-doing this, you can choose another way. Below is an example where we
-define a custom data type for our redeemer:
-
-[source,haskell]
-----
-{-# LANGUAGE DataKinds           #-}
-{-# LANGUAGE ImportQualifiedPost #-}
-{-# LANGUAGE NoImplicitPrelude   #-}
-{-# LANGUAGE OverloadedStrings   #-}
-{-# LANGUAGE TemplateHaskell     #-}
- 
-module CustomTypes where
- 
-import qualified Plutus.V2.Ledger.Api as PlutusV2
-import           PlutusTx             (BuiltinData, compile, 
-                                       unstableMakeIsData)
-import           PlutusTx.Prelude     (Bool, Eq ((==)), Integer, traceIfFalse,
-                                       ($))
-import           Prelude              (IO)
-import           Utilities            (wrap) 
- 
-------------------------------------------------------------------------------
------------------------------- ON-CHAIN / VALIDATOR --------------------------
- 
--- We can create custom data types for our datum and redeemer like this:
-newtype MySillyRedeemer = MkMySillyRedeemer Integer
-PlutusTx.unstableMakeIsData ''MySillyRedeemer 
--- Use TH to create an instance for IsData.
- 
--- This validator succeeds only if the redeemer is `MkMySillyRedeemer 42`
---              Datum     Redeemer            ScriptContext
-mkCTValidator :: () -> MySillyRedeemer -> PlutusV2.ScriptContext -> Bool
-mkCTValidator _ (MkMySillyRedeemer r) _ = traceIfFalse "expected 42" $ r == 42
-{-# INLINABLE mkCTValidator #-}
- 
-wrappedMkVal :: BuiltinData -> BuiltinData -> BuiltinData -> ()
-wrappedMkVal = wrap mkCTValidator
-{-# INLINABLE wrappedMkVal #-}
- 
-validator :: PlutusV2.Validator
-validator = PlutusV2.mkValidatorScript $$(PlutusTx.compile 
-                                          [|| wrappedMkVal ||])
-----
-
-Here, we define a new type in the code called [purple]#MySillyRedeemer#, which is
-simply a wrapper for an integer. We use this type as the redeemer and
-validate that the integer it holds is equal to 42. We can use the
-[blue]#PlutusTx.unstableMakeIsData# function to define an [purple]#UnsafeFromData#
-instance for our type. There is also a stable version of this function,
-which gives more control over the deserialization process but requires
-additional details to be provided. In template Haskell, you need to add
-two single quotes in front of the type’s name to use it as an input
-variable. This line of code also creates [blue]#toData# and [blue]#fromData# instances.
-We can now pattern match our redeemer value in the [blue]#mkCTValidator# 
-validator function. Finally, in the separate [blue]#wrappedMkVal#
-function, we apply our [blue]#wrap# function before computing the validator.
+As mentioned before, the untyped version has a performance advantage.
 
 We note if a transaction tries to spend multiple UTXOs at a script
 address, the spending script is run for every UTXO individually. The
