@@ -2234,6 +2234,47 @@ serializedMk42CustomValidator :: SerialisedScript
 serializedMk42CustomValidator = serialiseCompiledCode compiledMk42CustomValidator
 ----
 
+At the begining we define the custom data type [purple]#MySillyRedeemer# 
+that is a wrapper around the [purple]#Integer# type. Then we use the 
+[blue]#makeIsDataSchemaIndexed# function that generates a [purple]#ToData#,
+[purple]#FromData#, [purple]#UnsafeFromData# and [purple]#HasBlueprintSchema# 
+instances for our custom type. We use template Haskell for that that 
+requires to add two single quotes in front of the type’s name to use it as 
+an input variable. After we have defined our redeemer type we write the 
+validator logic same way as in the previous example, just that we now 
+convert the redeemer from [purple]#BuiltinData# to the [purple]#MySillyRedeemer# 
+type. We compile and serialize the validator same way as in the previous example. 
+
+All together we have defined four different variant for the 42 validator. We 
+note that if we would import the [purple]#ScriptContext# data type from the 
+`PlutusLedgerApi.Data.V3` module instead of the `PlutusLedgerApi.V3` module 
+the `CBORHEX` lenghts would decrease for around 10%. The reason for that is 
+the `PlutusLedgerApi.Data.V3` module provides an alternative interface that 
+works directly with the [purple]#Data# type under the hood. 
+
+The table below shows `CBORHEX` lengts for the four validators and for the 
+two different Plutus ledger API modules we can use.  
+
+[cols="1,1,1,1", options="header"]
+|===
+|42 validator |PlutusLedgerApi.V3 |PlutusLedgerApi.Data.V3 |Difference (%) 
+|Untyped (converting ScriptContext) |13842 |12362 |10.7% 
+|Untyped (decoding ScriptContext) |64 |64 |0% 
+|Typed (Integer type redeemer)|5887 |5248 |10.8% 
+|Typed (custom type redeemer) |6066 |5428 |10.5% 
+|===
+
+Now that Plutus core provides a way to deal directly with the [purple]#Data# type 
+for all Plutus script version (V1, V2 and V3), developers can move away from sum of 
+producs or Scott encoding. The  
+https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/optimizing-scripts-with-asData[Plutus user guide] 
+provides instructions for how to optimize scripts with the `PlutusTx.asData` 
+module that contains template Haskell (TH) code for encoding algebraic data 
+types (ADTs) as `Data` objects in Plutus Core. Also one can look at the 
+https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/simplifying-before-compilation[Simplifying code before compilation]
+and https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/other-optimization-techniques[Other optimization techniques]
+guidelines. 
+
 
 
 [source,shell]
