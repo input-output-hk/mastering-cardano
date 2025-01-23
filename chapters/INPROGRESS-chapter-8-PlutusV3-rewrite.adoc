@@ -2202,7 +2202,7 @@ serializedMk42TypedValidator :: SerialisedScript
 serializedMk42TypedValidator = serialiseCompiledCode compiledMk42TypedValidator
 ----
 
-The type signature now changes to ``:: ScriptContext -> Bool`` which means 
+The type signature now changes to `ScriptContext -> Bool` which means 
 the validator succeeds if the logic returns `True` and fails if it returns 
 `False`. We can now access the redeemer directly from the the script context 
 in its typed form and then try to convert the data inside the redeemer from 
