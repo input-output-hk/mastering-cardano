@@ -1944,8 +1944,8 @@ all functions use strict evaluation rather than the lazy one. This also
 applies to all other functions defined in any module used for Plinth
 coding. Then, we import several submodules from the `PlutusLedgerApi` and the 
 `PlutusTx` modules that define functions for working with PlutusV3 scripts. 
-After that follows the on-chain validator code.
 
+After that follows the on-chain validator code.
 We name the validator function [blue]#mkGiftValidator#. It is a untyped validator 
 that always succeeds. It takes in the script context as the only argument which is 
 of type [purple]#BuiltinData# and returns something of type [purple]#BuiltinUnit#. 
@@ -2608,8 +2608,8 @@ In the `cabal.project` file we define the
 https://github.com/IntersectMBO/cardano-haskell-packages[CHAP repository]
 that contains all Haskell packages used by Cardano that are not hosted on 
 https://hackage.haskell.org/[Hackage] the Haskell community's central package 
-archive. the `cabal` tool can then access those packages if they are defined 
-in the `.cabal` file. 
+archive. The `cabal` tool can then download the Plutus packages that are defined 
+in the `.cabal` file when compiling the project. 
 
 [source,haskell]
 ----
@@ -2654,12 +2654,12 @@ executable gen-blueprint
     , scripts
 ----
 
-In the `.cabal` we define our compiler options, the library that defines our 
-module with the validators and the build depends that list the Plutus packages 
-which contain the Plutus modules we use in our code. At the end we define the 
-executable which contains the instructions to generate Plutus blueprints and 
-list also here the build depends. We name the file with the code for generating 
-blueprints `GenBlueprint.hs`. Our project should be structured the following way:
+In the `.cabal` we define our compiler options, the library where our validator
+code resides and its build depends that lists Plutus packages needed by our validator 
+code. At the end we define the executable project which tells cabal which file is the 
+entry point for compiling the project and we list also here the build depends. We name 
+the file with the code for generating blueprints `GenBlueprint.hs`. Our project should 
+be structured the following way:
 
 [source,shell]
 ----
