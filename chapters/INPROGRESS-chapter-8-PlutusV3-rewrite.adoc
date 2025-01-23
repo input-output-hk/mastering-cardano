@@ -2683,6 +2683,12 @@ cabal update
 cabal run 
 ----
 
+At the end we note that the `.cabal` file shown here lists all plutus libraries 
+needed to compile any plutus code presented in the <<Plutus smart contracts>>
+section. So it can be reused when compiling code from other sections that we 
+will present next. One only needs to add the module names under the `exposed-modules:`
+section and also update the `GenBlueprint.hs` file with additional blueprint definitions. 
+
 ==== Script context explained
 
 We note if a transaction tries to spend multiple UTXOs at a script
