@@ -2271,7 +2271,7 @@ two different `PlutusLedgerApi` modules we can use.
 |===
 |42 validator |PlutusLedgerApi.V3 |PlutusLedgerApi.Data.V3 |Difference (%) 
 |Untyped (converting ScriptContext) |13842 |12362 |10.7
-|Untyped (decoding ScriptContext) |64 |64 |0
+|Untyped (decoding ScriptContext\n         as BuiltinData) |64 |64 |0
 |Typed (Integer type redeemer)|5887 |5248 |10.8
 |Typed (custom type redeemer) |6066 |5428 |10.5
 |===
