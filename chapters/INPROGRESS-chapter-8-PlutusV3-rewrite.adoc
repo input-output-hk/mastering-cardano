@@ -2269,11 +2269,32 @@ two different `PlutusLedgerApi` modules we can use.
 
 [cols="1,1,1,1", options="header"]
 |===
-|42 validator |PlutusLedgerApi.V3 |PlutusLedgerApi.Data.V3 |Difference (%) 
-|Untyped (converting ScriptContext) |13842 |12362 |10.7
-|Untyped (decoding ScriptContext\n         as BuiltinData) |64 |64 |0
-|Typed (Integer type redeemer)|5887 |5248 |10.8
-|Typed (custom type redeemer) |6066 |5428 |10.5
+|42 validator 
+|PlutusLedgerApi.V3 
+|PlutusLedgerApi.Data.V3 
+|Difference (%) 
+
+|Untyped (converting ScriptContext +
+to typed form) 
+|13842 
+|12362 
+|10.7
+
+|Untyped (decoding ScriptContext +
+as BuiltinData) 
+|64 
+|64 
+|0
+
+|Typed (Integer type redeemer)
+|5887 
+|5248 
+|10.8
+
+|Typed (custom type redeemer) 
+|6066 
+|5428 
+|10.5
 |===
 
 We see that we get by far the most compact compiled code if we decoded the 
