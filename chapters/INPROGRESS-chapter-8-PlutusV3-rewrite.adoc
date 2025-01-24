@@ -2262,7 +2262,11 @@ note that if we would import the [purple]#ScriptContext# data type from the
 `PlutusLedgerApi.Data.V3` module instead of the `PlutusLedgerApi.V3` module 
 the `CBORHEX` lenghts would decrease for around 10%. The reason for that is 
 the `PlutusLedgerApi.Data.V3` module provides an alternative interface that 
-works directly with the [purple]#Data# type under the hood. 
+works directly with the [purple]#Data# type under the hood. Now data types can 
+be thin wrappers over the [purple]#BuiltinData# type which allows to retain the 
+user friendliness of the datatype version while also avoiding the upfront cost 
+of decoding the [purple]#BuiltinData# into sums of products. We call a data type 
+_data-backed_ if it is representationally equivalent to [purple]#BuiltinData#. 
 
 The table below shows `CBORHEX` lengts for the four validators and for the 
 two different `PlutusLedgerApi` modules we can use.  
@@ -2296,14 +2300,20 @@ two different `PlutusLedgerApi` modules we can use.
 |===
 
 We see that we get by far the most compact compiled code if we decoded the 
-[purple]#ScriptContext# in its untyped form which also brings an on-chain code 
-performance advantage. Now that Plutus core provides a way to deal directly with 
+[purple]#ScriptContext# in its untyped form and then convert the part we need 
+to typed form. We call that a lazy-decoding. This also brings an on-chain code 
+performance advantage. 
+
+Now that Plutus core provides a way to deal directly with 
 the [purple]#Data# type for all Plutus script version (V1, V2 and V3), developers 
 can move away from sum of producs or Scott encoding. The  
 https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/optimizing-scripts-with-asData[Plutus user guide] 
 provides instructions for how to optimize scripts with the `PlutusTx.asData` 
 module that contains template Haskell (TH) code for encoding algebraic data 
-types (ADTs) as `Data` objects in Plutus Core. Also one can look at the 
+types (ADTs) as `Data` objects in Plutus Core such that they become _data-backed_ 
+types. The `PlutusLedgerApi.Data.V3` module already contains the [purple]#ScriptContext#
+and other Plutus datatypes contained in the [purple]#ScriptContext# in form 
+of _data-backed_ types. Also one can look at the 
 https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/simplifying-before-compilation[Simplifying code before compilation]
 and https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/other-optimization-techniques[Other optimization techniques]
 guidelines. 
