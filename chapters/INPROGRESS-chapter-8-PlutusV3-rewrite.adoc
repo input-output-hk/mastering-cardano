@@ -2357,11 +2357,7 @@ blueprint =
     , contractValidators =
         Set.fromList
           [ mkGiftVal
-          , mkBurnVal
-          , mk42ValLarge
           , mk42ValSmall
-          , mk42TypedVal
-          , mk42CustomVal
           ]
     , contractDefinitions =
         deriveDefinitions
@@ -2385,10 +2381,12 @@ We firt define all language pragmas and import necessary modules including the
 `Week02.Validators` module where we have defined our validators from this section. 
 In the [blue]#main# function we write the blueprint to a `JSON` file and after 
 that comes the blueprint definition. It contains the contract ID, the preamble 
-that defines some general information, the contract validators and definitions. 
-The definitions include a list of types that we have used in the validator code 
-beside the types of the validator type signature. After that we see the [blue]#preamble# 
-definition. Next we show the validator blueprint definitions. 
+that defines some general information, the contract validators, which we will 
+define next and the contract definitions. The definitions include a list of types 
+that we have used in the validator code beside the types of the validator type 
+signature. After that we see the [blue]#preamble# definition. Next we show the 
+validator blueprint definitions. We show only definitions for two validators 
+instead of the six we have defined in this section to shorten the output. 
 
 [source,haskell]
 ----
@@ -2413,42 +2411,6 @@ mkGiftVal =
         Just . Short.fromShort $ Week02.serializedMkGiftValidator
     }
 
-mkBurnVal :: ValidatorBlueprint referencedTypes
-mkBurnVal =
-  MkValidatorBlueprint
-    { validatorTitle = "Always False Validator"
-    , validatorDescription = Just "Validator that always returns False (always fails)"
-    , validatorParameters = []
-    , validatorRedeemer =
-        MkArgumentBlueprint
-          { argumentTitle = Just "Redeemer"
-          , argumentDescription = Just "Redeemer for the always false validator"
-          , argumentPurpose = Set.fromList [Spend, Mint, Withdraw, Publish]
-          , argumentSchema = definitionRef @()
-          }
-    , validatorDatum = Nothing
-    , validatorCompiledCode =
-        Just . Short.fromShort $ Week02.serializedMkBurnValidator
-    }
-
-mk42ValLarge :: ValidatorBlueprint referencedTypes
-mk42ValLarge =
-  MkValidatorBlueprint
-    { validatorTitle = "42 Validator untyped - large CBOR"
-    , validatorDescription = Just "Validator that returns true only if the redeemer is 42"
-    , validatorParameters = []
-    , validatorRedeemer =
-        MkArgumentBlueprint
-          { argumentTitle = Just "Redeemer"
-          , argumentDescription = Just "Redeemer for the 42 validator"
-          , argumentPurpose = Set.fromList [Spend, Mint, Withdraw, Publish]
-          , argumentSchema = definitionRef @Integer
-          }
-    , validatorDatum = Nothing
-    , validatorCompiledCode =
-        Just . Short.fromShort $ Week02.serializedMk42ValidatorLarge
-    }
-
 mk42ValSmall :: ValidatorBlueprint referencedTypes
 mk42ValSmall =
   MkValidatorBlueprint
@@ -2466,51 +2428,14 @@ mk42ValSmall =
     , validatorCompiledCode =
         Just . Short.fromShort $ Week02.serializedMk42ValidatorSmall
     }
-
-mk42TypedVal :: ValidatorBlueprint referencedTypes
-mk42TypedVal =
-  MkValidatorBlueprint
-    { validatorTitle = "42 Validator typed"
-    , validatorDescription = Just "Validator that returns true only if the redeemer is 42"
-    , validatorParameters = []
-    , validatorRedeemer =
-        MkArgumentBlueprint
-          { argumentTitle = Just "Redeemer"
-          , argumentDescription = Just "Redeemer for the 42 typed validator"
-          , argumentPurpose = Set.fromList [Spend, Mint, Withdraw, Publish]
-          , argumentSchema = definitionRef @Integer
-          }
-    , validatorDatum = Nothing
-    , validatorCompiledCode =
-        Just . Short.fromShort $ Week02.serializedMk42TypedValidator
-    }
-
-mk42CustomVal :: ValidatorBlueprint referencedTypes
-mk42CustomVal =
-  MkValidatorBlueprint
-    { validatorTitle = "42 Validator custom redeemer"
-    , validatorDescription = Just "Validator that returns true only if the redeemer is correctly wrapped number 42."
-    , validatorParameters = []
-    , validatorRedeemer =
-        MkArgumentBlueprint
-          { argumentTitle = Just "Redeemer"
-          , argumentDescription = Just "Redeemer for the 42 typed validator"
-          , argumentPurpose = Set.fromList [Spend, Mint, Withdraw, Publish]
-          , argumentSchema = definitionRef @Integer
-          }
-    , validatorDatum = Nothing
-    , validatorCompiledCode =
-        Just . Short.fromShort $ Week02.serializedMk42CustomValidator
-    }
 ----
 
 For every validator we can use the boilerplate code to define a blueprint. 
 The blueprint defines the validator title, description, redeemer information, 
 datum information and the compiled code which we reference from the `Week02` 
-module that we have imported. We show now a generated blueprint where we 
-keep only the blueprints three untyped validators to shorten the output. 
-The actual blueprint that you generate will contain the data and compiled 
-code for all six validators we have defined in this section. 
+module that we have imported. Below is an example blueprint for the above 
+code. The extend the blueprint code such that it generates the data and 
+compiled code for all six validators we have defined in this section. 
 
 [source,json]
 ----
@@ -2551,27 +2476,6 @@ code for all six validators we have defined in this section.
       },
       "compiledCode": "450101002499",
       "hash": "acec2df7c07075dc7618ffc17c4d86aa786509e646057bd2bdab4cfc"
-    },
-    {
-      "title": "Always False Validator",
-      "description": "Validator that always returns False (always fails)",
-      "redeemer": {
-        "title": "Redeemer",
-        "description": "Redeemer for the always false validator",
-        "purpose": {
-          "oneOf": [
-            "spend",
-            "mint",
-            "withdraw",
-            "publish"
-          ]
-        },
-        "schema": {
-          "$ref": "#/definitions/Unit"
-        }
-      },
-      "compiledCode": "450101002601",
-      "hash": "1913f3213804d6e0b8b1a7c07a8b32bcb7e9f07f8dc13be557750b7b"
     },
     {
       "title": "42 Validator untyped - small CBOR",
