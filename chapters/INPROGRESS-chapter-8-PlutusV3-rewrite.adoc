@@ -2267,34 +2267,32 @@ works directly with the [purple]#Data# type under the hood.
 The table below shows `CBORHEX` lengts for the four validators and for the 
 two different `PlutusLedgerApi` modules we can use.  
 
-[cols="1,1,1,1", options="header"]
+[cols="30,^25,^30,^15", options="header"]
 |===
-|42 validator 
-|PlutusLedgerApi.V3 
-|PlutusLedgerApi.Data.V3 
-|Difference (%) 
+|42 validator
+|PlutusLedgerApi.V3
+|PlutusLedgerApi.Data.V3
+|Difference
 
-|Untyped (converting ScriptContext +
-to typed form) 
-|13842 
-|12362 
-|10.7
+|Untyped (converting ScriptContext to typed form)
+|13842
+|12362
+|10.7%
 
-|Untyped (decoding ScriptContext +
-as BuiltinData) 
-|64 
-|64 
-|0
+|Untyped (decoding ScriptContext as BuiltinData)
+|64
+|64
+|0%
 
 |Typed (Integer type redeemer)
-|5887 
-|5248 
-|10.8
+|5887
+|5248
+|10.8%
 
-|Typed (custom type redeemer) 
-|6066 
-|5428 
-|10.5
+|Typed (custom type redeemer)
+|6066
+|5428
+|10.5%
 |===
 
 We see that we get by far the most compact compiled code if we decoded the 
@@ -6610,13 +6608,32 @@ fixed-size integers, and the ledger itself tracks the movement of
 tokens. The table below compares the security features of Ethereum
 ERC-20 tokens with Cardano native tokens.
 
-[cols="1,1,1,1", options="header"]
+[cols="25,^15,^15,45", options="header"]
 |===
-| |ERC20 |Native tokens |Comment 
-|User errors in copying standard code |YES |NO |All shared functionality is provided by the ledger 
-|Over-/under-flow vulnerabilities |YES |NO |Cardano's scripting languages don't have fixed-size integers
-|Unprotected functions |YES |NO |User code is called only in very specific cases to validate minting
-|Denial of service via gas price attacks |YES |NO |Denial of service attacks on the entire system are still possible 
+|
+|ERC20
+|Native tokens
+|Comment
+
+|User errors in copying standard code
+|YES
+|NO
+|All shared functionality is provided by the ledger
+
+|Over-/under-flow vulnerabilities
+|YES
+|NO
+|Cardano's scripting languages don't have fixed-size integers
+
+|Unprotected functions
+|YES
+|NO
+|User code is called only in very specific cases to validate minting
+
+|Denial of service via gas price attacks
+|YES
+|NO
+|Denial of service attacks on the entire system are still possible
 |===
 
 A comparison of various characteristics between Ethereum ERC-20 and
