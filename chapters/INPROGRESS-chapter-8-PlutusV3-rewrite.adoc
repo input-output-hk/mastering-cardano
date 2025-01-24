@@ -2313,8 +2313,7 @@ provides instructions for how to optimize scripts with the `PlutusTx.asData`
 module that contains template Haskell (TH) code for encoding algebraic data 
 types (ADTs) as `Data` objects in Plutus Core such that they become _data-backed_ 
 types. The `PlutusLedgerApi.Data.V3` module already contains the [purple]#ScriptContext#
-and other Plutus datatypes contained in the [purple]#ScriptContext# in form 
-of _data-backed_ types. Also one can look at the 
+in form of a _data-backed_ type. Also one can look at the 
 https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/simplifying-before-compilation[Simplifying code before compilation]
 and https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/other-optimization-techniques[Other optimization techniques]
 guidelines. 
