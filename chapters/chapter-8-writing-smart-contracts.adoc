@@ -2265,7 +2265,7 @@ We note if a transaction tries to spend multiple UTXOs at a script
 address, the spending script is run for every UTXO individually. The
 redeemer and the datum are also individually assigned for every UTXO in
 that transaction. The redeemer is defined when we construct the spending
-the transaction that consumes one or more UTXOs at a script address, and
+transaction that consumes one or more UTXOs at a script address, and
 the datum is defined when we construct the producing transaction that
 creates one or more UTXOs at a script address. We will see examples of
 how to construct producing and spending transactions in section 
