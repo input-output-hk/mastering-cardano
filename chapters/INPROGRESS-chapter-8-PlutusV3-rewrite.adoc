@@ -2624,75 +2624,189 @@ section and also update the `GenBlueprint.hs` file with additional blueprint def
 
 ==== Script context explained
 
-We note if a transaction tries to spend multiple UTXOs at a script
-address, the spending script is run for every UTXO individually. The
-redeemer and the datum are also individually assigned for every UTXO in
-that transaction. The redeemer is defined when we construct the spending
-the transaction that consumes one or more UTXOs at a script address, and
-the datum is defined when we construct the producing transaction that
-creates one or more UTXOs at a script address. We will see examples of
-how to construct producing and spending transactions in section 
+We look again at the PlutusV3 [purple]#ScriptContext# data type: 
+
+[source,haskell]
+----
+data ScriptContext = ScriptContext
+  { scriptContextTxInfo     :: TxInfo
+  , scriptContextRedeemer   :: V2.Redeemer
+  , scriptContextScriptInfo :: ScriptInfo
+  }
+  deriving stock (Generic, Haskell.Eq, Haskell.Show)
+  deriving anyclass (HasBlueprintDefinition)
+----
+
+It contains transaction information, the redeemer and script information. 
+If a transaction tries to spend multiple UTXOs at a script address, the 
+spending script is run for every UTXO individually. The redeemer and the 
+script information are individually assigned for every UTXO in that transaction. 
+The transaction information is only one and is accessible to to every script 
+that is being triggered by a single transaction. 
+
+In the previous code examples, the transaction information and script information 
+were not used in the validation logic. However, in most validator scripts, they are 
+used. First we look at the [purple]#ScriptInfo# data type. 
+
+[source,haskell]
+----
+data ScriptInfo
+  = MintingScript V2.CurrencySymbol
+  | SpendingScript V3.TxOutRef (Haskell.Maybe V2.Datum)
+  | RewardingScript V2.Credential
+  | CertifyingScript
+      Haskell.Integer
+      TxCert
+  | VotingScript Voter
+  | ProposingScript
+      Haskell.Integer
+      ProposalProcedure
+  deriving stock (Generic, Haskell.Show, Haskell.Eq)
+  deriving anyclass (HasBlueprintDefinition)
+  deriving (Pretty) via (PrettyShow ScriptInfo)
+----
+
+The script information contains information about the script purpose. 
+If a transaction tries to mint a native asset the then the script info 
+contains the [purple]#MintingScript# data constructor that carries the 
+[purple]#CurrencySymbol# data type. 
+
+[source,haskell]
+----
+newtype CurrencySymbol = CurrencySymbol {unCurrencySymbol :: PlutusTx.BuiltinByteString}
+  deriving stock (Generic, Data)
+  deriving anyclass (NFData, HasBlueprintDefinition)
+  deriving newtype (Haskell.Eq, Haskell.Ord, Eq, Ord, 
+                    PlutusTx.ToData, PlutusTx.FromData, 
+                    PlutusTx.UnsafeFromData)
+  deriving (Haskell.Show, Pretty)
+    via LedgerBytes
+----
+
+The currency symbol data type is a wrapped around a [purple]#BuiltinByteString#
+that represents the hash of the minting policy that gets triggered when minting 
+a native asset. We will talk more about native assets and minting in section 
+<<Minting policies>>. 
+
+If a transaction tries to spend a UTXO at a script address then the script 
+info contains the [purple]#SpendingScript# data constructor that carries 
+a transaction output reference [purple]#TxOutRef# and a [purple]#Maybe V2.Datum#.  
+
+[source,haskell]
+----
+data TxOutRef = TxOutRef
+  { txOutRefId  :: TxId
+  , txOutRefIdx :: Integer
+  }
+  deriving stock (Show, Eq, Ord, Generic)
+  deriving anyclass (NFData, HasBlueprintDefinition)
+----
+
+The transaction output reference contains the transaction ID which is an SHA-256 
+hash of the transaction and the transaction index which is an integer number. 
+Each UTXO a transaction creates gets a transaction index assigned starting with 
+0 and increasing by 1. Because transaction hashes (IDs) are unique, a UTXO defined 
+by the transaction hash and the output index is also unique and can exist only once. 
+The reason transaction hashes are unique is because a new transaction hash includes 
+the hash of the transaction that created the UTXO being consumed. Every transaction is
+consuming at least one UTXO as it needs to pay some fees. By a simple induction 
+argument, it follows that two identical transaction hashes can never exist. 
+We also realy on the fact that the probability of a hash collision is negligible. 
+
+The [purple]#TxId# data type that represents an SHA-256 hash of the transaction 
+is a wrapper around a [purple]#BuiltinByteString#. 
+
+[source,haskell]
+----
+newtype TxId = TxId {getTxId :: PlutusTx.BuiltinByteString}
+  deriving stock (Eq, Ord, Generic)
+  deriving anyclass (NFData, HasBlueprintDefinition)
+  deriving newtype (PlutusTx.Eq, PlutusTx.Ord, ToData, FromData, UnsafeFromData)
+  deriving (IsString, Show, Pretty)
+    via LedgerBytes
+----
+
+For PlutusV3 scripts a datum is no longer neccessary to be attached to a UTXO 
+when creating it at a script address as it was the case for PlutusV2 scripts. 
+For this reason the script info for a spending script contains a maybe datum. 
+
+[source,haskell]
+----
+newtype Datum = Datum {getDatum :: BuiltinData}
+  deriving stock (Generic, Typeable, Haskell.Show)
+  deriving newtype (Haskell.Eq, Haskell.Ord, Eq, ToData, FromData, UnsafeFromData, Pretty)
+  deriving anyclass (NFData, HasBlueprintDefinition)
+----
+
+The [purple]#Datum# type is same as the [purple]#Redeemer# tpye a wrapper 
+around the [purple]#BuiltinData# type. The datum allows information being 
+attached to a UTXO that can then be accessed withing the validation script 
+logic. We note that the redeemer is defined when we construct a spending 
+transaction that consumes one or more UTXOs at a script address, and the 
+datum is defined when we construct a producing transaction that creates 
+one or more UTXOs at a script address. We will see examples of how to 
+construct producing and spending transactions in section 
 <<Off-chain code with MeshJS>>.
 
-In the previous example, the script context was not used in the
-validation logic. However, in most validator scripts, the [purple]#ScriptContext#
-data type is necessary. Since we are working with PlutusV2 scripts the 
-<<Plutus smart contracts>> section, we will focus on data types used in 
-PlutusV2 scripts and highlight differences to PlutusV3 data types. 
-Below is the PlutusV2 [purple]#ScriptContext# data type:
+The third option for a script purspose is rewarding that is used for 
+withdrawing staking rewards. The rewarding data constructor carries 
+the [purple]#Credential# data type. 
 
 [source,haskell]
 ----
-data ScriptContext = ScriptContext
-    { scriptContextTxInfo  :: TxInfo 
-    , scriptContextPurpose :: ScriptPurpose 
-    }
-    deriving stock (Generic, Haskell.Show)
+data Credential =
+    PubKeyCredential PubKeyHash
+  | ScriptCredential ScriptHash
+    deriving stock (Eq, Ord, Show, Generic, Typeable)
+    deriving anyclass (NFData, HasBlueprintDefinition)
 ----
 
-As previously mentioned, in Plinth, the validation script has access to
-the datum, redeemer, and the transaction (script) context, which
-provides information about the inputs and outputs of the transaction
-being validated. The image above shows the Haskell implementation of
-this data type.
+This data type either contains a public key hash or a script hash. In 
+the case of a public key hash the owner of the private key corresponding
+to the public key needs to sign the transaction to be able to spend the 
+staking rewards. In the case of a script hash the transaction must include 
+or reference the validation script that will be used to decided whether 
+the staking rewards can be withdrawn by the transaction. 
 
-[purple]#ScriptContext# is a record syntax type with two fields: one containing
-transaction information and the other representing the script’s purpose.
-The script purpose is assigned individually for every action in a
-transaction. This means if a transaction tries to mint a native asset
-and spend two UTXOs at a script address, there are three script purposes
-that this transaction carries: one for minting and two for spending. The
-transaction info is only one for a single transaction, and all scripts
-and policies that are triggered by this transaction can access it. In
-the PlutusV3 script context, the datum and redeemer are moved inside the
-script context. The redeemer can be accessed directly from the script
-context type, and the datum of a UTXO that we want to spend can be
-accessed from the [purple]#ScriptInfo# field.
+Both the [purple]#PubKeyHash# and [purple]#ScriptHash# data types are 
+both wrappers around the [purple]#BuiltinByteString# data type. 
 
-[source,haskell]
-----
-data ScriptContext = ScriptContext
-    { scriptContextTxInfo     :: TxInfo
-    , scriptContextRedeemer   :: V2.Redeemer
-    , scriptContextScriptInfo :: ScriptInfo
-    }
-    deriving stock (Generic, Haskell.Eq, Haskell.Show)
-    deriving anyclass (HasBlueprintDefinition)
-----
+Other possibilities for the [purple]#ScriptInfo# data type cover the 
+following script purposes: 
 
-The [purple]#ScriptPurpose# data type for PlutusV2 indicates the purpose of the
-Plinth script, and there are four possible values for this data type.
+* Certifying - is for issuing certificates. 
+* Voting and proposing - are used when government actions are invloved. 
+
+In the <<Plutus smart contracts>> section we will focus on the spending, 
+minting and rewarding script purposes. After we have explained the 
+[purple]#ScriptInfo# data type let us look at the [purple]#TxInfo# data type. 
 
 [source,haskell]
 ----
-data ScriptPurpose
-    = Minting CurrencySymbol
-    | Spending TxOutRef
-    | Rewarding StakingCredential
-    | Certifying DCert
-    deriving stock (Generic, Haskell.Show, Haskell.Eq)
-    deriving Pretty via (PrettyShow ScriptPurpose)
+data TxInfo = TxInfo
+  { txInfoInputs                :: [TxInInfo]
+  , txInfoReferenceInputs       :: [TxInInfo]
+  , txInfoOutputs               :: [V2.TxOut]
+  , txInfoFee                   :: V2.Lovelace
+  , txInfoMint                  :: V3.MintValue
+  , txInfoTxCerts               :: [TxCert]
+  , txInfoWdrl                  :: Map V2.Credential V2.Lovelace
+  , txInfoValidRange            :: V2.POSIXTimeRange
+  , txInfoSignatories           :: [V2.PubKeyHash]
+  , txInfoRedeemers             :: Map ScriptPurpose V2.Redeemer
+  , txInfoData                  :: Map V2.DatumHash V2.Datum
+  , txInfoId                    :: V3.TxId
+  , txInfoVotes                 :: Map Voter (Map GovernanceActionId Vote)
+  , txInfoProposalProcedures    :: [ProposalProcedure]
+  , txInfoCurrentTreasuryAmount :: Haskell.Maybe V2.Lovelace
+  , txInfoTreasuryDonation      :: Haskell.Maybe V2.Lovelace
+  }
+  deriving stock (Generic, Haskell.Show, Haskell.Eq)
+  deriving anyclass (HasBlueprintDefinition)
 ----
+
+-----------------------------------------------------------------------
+
 
 Minting is used when minting (creating) or burning (destroying) native
 tokens. Spending is used to spend funds sitting at a script address.
