@@ -2778,8 +2778,8 @@ following script purposes:
 * Voting and proposing - are used when government actions are invloved. 
 
 In the <<Plutus smart contracts>> section we will focus on the spending, 
-minting and rewarding script purposes. After we have explained the 
-[purple]#ScriptInfo# data type let us look at the [purple]#TxInfo# data type. 
+minting and rewarding script purposes. Let us look now at the at the 
+[purple]#TxInfo# data type. 
 
 [source,haskell]
 ----
@@ -2805,8 +2805,64 @@ data TxInfo = TxInfo
   deriving anyclass (HasBlueprintDefinition)
 ----
 
------------------------------------------------------------------------
+It contains several fields that carry information about the transaction
+being validated. The first field are transaction input informations.  
 
+[source,haskell]
+----
+data TxInInfo = TxInInfo
+  { txInInfoOutRef   :: V3.TxOutRef
+  , txInInfoResolved :: V2.TxOut
+  }
+  deriving stock (Generic, Haskell.Show, Haskell.Eq)
+  deriving anyclass (HasBlueprintDefinition)
+----
+
+A transaction input information contains a transaction output reference 
+that we have previously exaplained. It defines the input UTXO. Then it also 
+contains the transaction output [purple]#TxOut#. 
+
+[source,haskell]
+----
+  { txOutAddress         :: Address
+  , txOutValue           :: Value
+  , txOutDatum           :: OutputDatum
+  , txOutReferenceScript :: Maybe ScriptHash
+  }
+  deriving stock (Show, Eq, Generic)
+  deriving anyclass (NFData, HasBlueprintDefinition)
+----
+
+A transaction output of a UTXO contains the adress this UTXO is residing, 
+the value it carries, the datum and maybe a script hash. We look first at 
+the [purple]#Address# type. 
+
+[source,haskell]
+----
+data Address = Address
+  { addressCredential        :: Credential
+  , addressStakingCredential :: Maybe StakingCredential
+  }
+  deriving stock (Eq, Ord, Show, Generic, Typeable)
+  deriving anyclass (NFData, HasBlueprintDefinition)
+----
+
+As explained in the <<Cardano addresses>> section a Cardano address 
+contains a payment part and an options staking part. The payment part 
+is defined with the [purple]#Credential# data type. 
+
+[source,haskell]
+----
+data Credential =
+    PubKeyCredential PubKeyHash
+  | ScriptCredential ScriptHash
+    deriving stock (Eq, Ord, Show, Generic, Typeable)
+    deriving anyclass (NFData, HasBlueprintDefinition)
+----
+
+
+
+______________________________________________________________________
 
 Minting is used when minting (creating) or burning (destroying) native
 tokens. Spending is used to spend funds sitting at a script address.
