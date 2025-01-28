@@ -2624,7 +2624,7 @@ section and also update the `GenBlueprint.hs` file with additional blueprint def
 
 ==== Script context explained
 
-We look again at the PlutusV3 [purple]#ScriptContext# data type: 
+We look again at the PlutusV3 [purple]#ScriptContext# data type. 
 
 [source,haskell]
 ----
@@ -2749,8 +2749,8 @@ construct producing and spending transactions in section
 <<Off-chain code with MeshJS>>.
 
 The third option for a script purspose is rewarding that is used for 
-withdrawing staking rewards. The rewarding data constructor carries 
-the [purple]#Credential# data type. 
+withdrawing staking rewards. The rewarding constructor carries the 
+[purple]#Credential# data type. 
 
 [source,haskell]
 ----
@@ -2778,8 +2778,8 @@ following script purposes:
 * Voting and proposing - are used when government actions are invloved. 
 
 In the <<Plutus smart contracts>> section we will focus on the spending, 
-minting and rewarding script purposes. Let us look now at the at the 
-[purple]#TxInfo# data type. 
+minting and rewarding script purposes. Let us look now at the at the transaction 
+information [purple]#TxInfo# data type. 
 
 [source,haskell]
 ----
@@ -2805,8 +2805,24 @@ data TxInfo = TxInfo
   deriving anyclass (HasBlueprintDefinition)
 ----
 
-It contains several fields that carry information about the transaction
-being validated. The first field are transaction input informations.  
+It contains several fields that carry information about the transaction 
+being validated. In the beginning, it contains a list of transaction inputs 
+and reference inputs. Reference inputs are inputs accessible by the script 
+context but not consumed by the transaction. They are only referenced, hence 
+the name. A transaction may need access to a UTXO without consuming it
+because the UTXO can contain important information in the datum that
+scripts can access. This information can be arbitrary data contained in
+the datum or an attached reference script, which is a serialized smart
+contract compiled to Plutus. The advantage of reference scripts is that
+instead of appending a script to a transaction that wants to spend funds
+at the script address, we simply reference this script from the UTXO
+that carries it. This lowers the transaction size and reduces the
+transaction cost. A code example of this is presented in section 
+<<Off-chain code with MeshJS>>. Another advantage of reference inputs is
+that several transactions in the same block can use the same UTXO as a
+reference input, since it is not being consumed by any of those transactions. 
+Transaction inputs and reference inputs are lists of type transaction input 
+info [purple]#TxInInfo# that defines the input of a pending transaction.
 
 [source,haskell]
 ----
@@ -2819,8 +2835,9 @@ data TxInInfo = TxInInfo
 ----
 
 A transaction input information contains a transaction output reference 
-that we have previously exaplained. It defines the input UTXO. Then it also 
-contains the transaction output [purple]#TxOut#. 
+that we have previously exaplained. It defines the input UTXO. And it also 
+contains resolved transaction input information in form of the transaction 
+output [purple]#TxOut# data type.  
 
 [source,haskell]
 ----
@@ -2834,8 +2851,8 @@ contains the transaction output [purple]#TxOut#.
 ----
 
 A transaction output of a UTXO contains the adress this UTXO is residing, 
-the value it carries, the datum and maybe a script hash. We look first at 
-the [purple]#Address# type. 
+the value it contains, the output datum and possibly a script hash. We look 
+first at the [purple]#Address# type. 
 
 [source,haskell]
 ----
@@ -2847,18 +2864,169 @@ data Address = Address
   deriving anyclass (NFData, HasBlueprintDefinition)
 ----
 
-As explained in the <<Cardano addresses>> section a Cardano address 
-contains a payment part and an options staking part. The payment part 
-is defined with the [purple]#Credential# data type. 
+As explained in section <<Cardano addresses>>, an address is composed of 
+two parts: the payment part and the optional staking part. The payment part, 
+defined with the [purple]#Credential# data type, contains either a public 
+key hash or a script hash as we have explained when talking about rewarding. 
+
+The optional staking part is defined with the [purple]#StakingCredential# 
+data type that can be either a staking hash or a staking pointer. 
 
 [source,haskell]
 ----
-data Credential =
-    PubKeyCredential PubKeyHash
-  | ScriptCredential ScriptHash
+data StakingCredential = 
+      StakingHash Credential
+    | StakingPtr
+        Integer -- ^ the slot number
+        Integer -- ^ the transaction index (within the block)
+        Integer -- ^ the certificate index (within the transaction)
     deriving stock (Eq, Ord, Show, Generic, Typeable)
     deriving anyclass (NFData, HasBlueprintDefinition)
 ----
+
+The second information contained in a transaction output is the 
+[purple]#Value# type that defines an amount of ada and/or native tokens. 
+
+[source,haskell]
+----
+newtype Value = Value { getValue :: Map CurrencySymbol (Map TokenName Integer) }
+    deriving stock (Generic, Data, Typeable, Haskell.Show)
+    deriving anyclass (NFData)
+    deriving newtype (PlutusTx.ToData, PlutusTx.FromData, PlutusTx.UnsafeFromData)
+    deriving Pretty via (PrettyShow Value)
+----
+
+Every native token is defined with a currency symbol and a token name. They are 
+both wrappers around a [purple]#BuiltinByteString#. The currency symbol is computed
+as the hash of the minting policy, and the token name can be an arbitrary string 
+(but should not be longer than 32 bytes). The `ada` token is defined by an empty 
+byte string both for currency symbol and token name, which means one cannot mint ada. 
+
+The third part of a a transaction output is the [purple]#OutputDatum# data type. 
+
+[source,haskell]
+----
+data OutputDatum 
+    = NoOutputDatum 
+    | OutputDatumHash DatumHash 
+    | OutputDatum Datum
+  deriving stock (Show, Eq, Generic)
+  deriving anyclass (NFData, HasBlueprintDefinition)
+----
+
+A UTXO can either contain no datum, a datum hash or a datum. A datum hash
+contains a string of type [purple]#BuiltinByteString# and the datum type is a
+wrapper around the [purple]#BuiltinData# type same as the [purple]#Redeemer# type. 
+
+The last data for the [purple]#TxOut# data type defines a [purple]#Maybe ScriptHash#. 
+A script hash is also a wrapper around a [purple]#BuiltinByteString#. 
+
+Next in the [purple]#TxInfo# data type are the transaction outputs which the 
+transaction aims to create. A transaction output is defined with the [purple]#TxOut# 
+data type that we have already shown. After that comes the data for fees and 
+minting. Fees are defined with the [purple]#Lovelace# data type that is a 
+wrapper around an [purple]#Integer# type. 
+
+[source,haskell]
+----
+newtype Lovelace = Lovelace { getLovelace :: Integer }
+  deriving stock (Generic, Typeable)
+  deriving (Pretty) via (PrettyShow Lovelace)
+  deriving anyclass (HasBlueprintDefinition)
+  deriving newtype (Haskell.Eq, Haskell.Ord, Haskell.Show, Haskell.Num, 
+                    Haskell.Real, Haskell.Enum, PlutusTx.Eq, PlutusTx.Ord, 
+                    PlutusTx.ToData, PlutusTx.FromData, PlutusTx.UnsafeFromData, 
+                    PlutusTx.AdditiveSemigroup, PlutusTx.AdditiveMonoid, 
+                    PlutusTx.AdditiveGroup, PlutusTx.Show)
+----
+
+Minting is defined with the [purple]#MintValue# type that is structured same 
+as the [purple]#Value# type. 
+
+[source,haskell]
+----
+newtype MintValue = UnsafeMintValue (Map CurrencySymbol (Map TokenName Integer))
+  deriving stock (Generic, Data, Typeable, Haskell.Show)
+  deriving anyclass (NFData)
+  deriving newtype (ToData, FromData, UnsafeFromData)
+  deriving (Pretty) via (PrettyShow MintValue)
+----
+
+After fees and minting comes the data that handles certificates, which is defined 
+by a list of the [purple]#TxCert# data type. 
+
+[source,haskell]
+----
+data TxCert =
+    TxCertRegStaking V2.Credential (Haskell.Maybe V2.Lovelace)
+  | TxCertUnRegStaking V2.Credential (Haskell.Maybe V2.Lovelace)
+  | TxCertDelegStaking V2.Credential Delegatee
+  | TxCertRegDeleg V2.Credential Delegatee V2.Lovelace
+  | TxCertRegDRep DRepCredential V2.Lovelace
+  | TxCertUpdateDRep DRepCredential
+  | TxCertUnRegDRep DRepCredential V2.Lovelace
+  | TxCertPoolRegister
+      -- | poolId
+      V2.PubKeyHash
+      -- | pool VFR
+      V2.PubKeyHash
+  | TxCertPoolRetire V2.PubKeyHash Haskell.Integer
+  | TxCertAuthHotCommittee ColdCommitteeCredential HotCommitteeCredential
+  | TxCertResignColdCommittee ColdCommitteeCredential
+  deriving stock (Generic, Haskell.Show, Haskell.Eq, Haskell.Ord)
+  deriving anyclass (HasBlueprintDefinition)
+  deriving (Pretty) via (PrettyShow TxCert)
+----
+
+The [purple]#TxCert# data type has eleven constructors representing the 
+following certificates: 
+
+[arabic]
+. Registering staking credential with an optional deposit amount
+. Un-Register staking credential with an optional refund amount 
+. Delegate staking credential to a Delegatee
+. Register and delegate staking credential to a Delegatee in one certificate 
+  (deposit is mandatory) 
+. Register a DRep with a deposit value 
+. Update a DRep 
+. UnRegister a DRep with mandatory refund value
+. A digest of the PoolParams 
+. The retirement certificate and the Epoch in which the retirement will take place
+. Authorize a Hot credential for a specific Committee member's cold credential
+. Resign committee member's cold credential
+
+After certificates comes the data that manages withdrawals of staking rewards. 
+The data is contained in a [purple]#Map# of credentials and lovelace. We will 
+talk more about this in section <<Staking and Plinth>>. 
+
+After that follows the transaction validity range, which is defined with the 
+[purple]#POSIXTimeRange# data type. 
+
+[source,haskell]
+----
+type POSIXTimeRange = Interval POSIXTime
+
+data Interval a = Interval { ivFrom :: LowerBound a, ivTo :: UpperBound a }
+    deriving stock (Haskell.Show, Generic)
+    deriving anyclass (NFData)
+----
+
+The [purple]#POSIXTimeRange# data type contains an [purple]#Interval# type, 
+parameterized with the [purple]#POSIXTime# type. 
+
+[source,haskell]
+----
+newtype POSIXTime = POSIXTime {getPOSIXTime :: Integer}
+  deriving stock (Haskell.Eq, Haskell.Ord, Haskell.Show, Generic, Typeable)
+  deriving anyclass (NFData, HasBlueprintDefinition)
+  deriving newtype (AdditiveSemigroup, AdditiveMonoid, AdditiveGroup, Eq, 
+                    Ord, Enum, PlutusTx.ToData, PlutusTx.FromData, 
+                    PlutusTx.UnsafeFromData, Haskell.Num, Haskell.Enum, 
+                    Haskell.Real, Haskell.Integral)
+----
+
+[purple]#POSIXTime# is a wrapper for an integer, representing the number of 
+milliseconds that have passed since January 1, 1970, at 00:00. 
 
 
 
@@ -2897,7 +3065,7 @@ data ScriptInfo
 
 In this section, we will focus on the spending purpose, so we look at
 the transaction output reference [purple]#TxOutRef# data type that is contained in
-the spending constructor:
+the spending constructor. 
 
 [source,haskell]
 ----
@@ -2924,7 +3092,7 @@ never exist.
 
 Let’s now look at the transaction information – [purple]#TxInfo# – data type that
 constitutes the second half of information contained in the script
-context:
+context. 
 
 [source,haskell]
 ----
@@ -3003,21 +3171,10 @@ data Address = Address
 
 As explained in section <<Cardano addresses>>, an address is composed
 of two parts: the payment part and the optional staking part. The
-payment part, defined with the [purple]#Credential# data type, contains either a
-public key hash or a script hash:
-
-[source,haskell]
-----
-data Credential
-    = PubKeyCredential PubKeyHash
-    | ScriptCredential ScriptHash
-      deriving stock (Eq, Ord, Show, Generic, Typeable)
-      deriving anyclass (NFData, HasBlueprintDefinition)
-----
-
-The hashes are both of type [purple]#BuiltinByteString#. The staking part is
-defined with the [purple]#StakingCredential# data type that can be either a
-staking hash or a staking pointer.
+payment part, defined with the [purple]#Credential# data type, contains 
+either a public key hash or a script hash, which we have already shown. 
+The staking part is defined with the [purple]#StakingCredential# data 
+type that can be either a staking hash or a staking pointer. 
 
 [source,haskell]
 ----
@@ -3031,8 +3188,8 @@ data StakingCredential
     deriving anyclass (NFData, HasBlueprintDefinition)
 ----
 
-Next is the [purple]#Value# type that defines an amount of ada and/or native
-tokens:
+Next is the [purple]#Value# type that defines an amount of ada and/or 
+native tokens. 
 
 [source,haskell]
 ----
@@ -3048,7 +3205,7 @@ as the hash of the minting policy, and the token name can be an
 arbitrary string (but should not be longer than 32 bytes). The ada token
 is defined by an empty byte string both for currency symbol and token
 name, which means you cannot mint ada. Next, we examine the [purple]#OutputDatum#
-data type:
+data type. 
 
 [source,haskell]
 ----
