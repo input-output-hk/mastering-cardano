@@ -1764,9 +1764,9 @@ https://github.com/input-output-hk/mastering-cardano[mastering-cardano]
 GitHub repository. It aims to provide up-to-date instructions for the
 latest stable Plinth development environment. The smart contract code
 presented throughout chapter <<Writing smart contracts>> uses features 
-introduced in the Vasil hard fork, which enabled Plutus V2. The development 
+introduced in the Vasil hard fork, which enabled PlutusV2. The development 
 environment you might use to run and test the code presented in section 
-<<Plutus smart contracts>> needs to support the Vasil features and Plutus V2
+<<Plutus smart contracts>> needs to support the Vasil features and PlutusV2
 scripts.
 
 The https://demeter.run/[Demeter.Run] online platform offers various
@@ -1851,7 +1851,7 @@ offering better performance. Low-level validation scripts are referred
 to as untyped validation scripts, while high-level scripts are known as
 typed validation scripts.
 
-This chapter focuses on the data types defined for Plutus V2 scripts. The
+This chapter focuses on the data types defined for PlutusV2 scripts. The
 data type for the low-level validation script implementation is called
 [purple]#BuiltinData#. It contains two conversion functions, [blue]#builtinDataToData#
 and [blue]#dataToBuiltinData#, which can convert back and forth to the
@@ -1917,7 +1917,7 @@ from being imported. The `PlutusTx` module defines a custom prelude where
 all functions use strict evaluation rather than the lazy one. This also
 applies to all other functions defined in any module used for Plinth
 coding. Then, we import the `Plutus` module that defines functions for
-working with Plutus V2 scripts and two functions from the PlutusTx
+working with PlutusV2 scripts and two functions from the PlutusTx
 module. Finally, we import the IO type from the standard `Prelude` module
 and a function from a user-defined `Utilities` module, which will be
 shown later. After that follows the on-chain code.
@@ -2365,7 +2365,7 @@ data ScriptInfo
 ----
 
 In this section, we will focus on the spending purpose, so we look at
-the transaction output reference [purple]#TxOutRef# data type that is contained in
+the transaction output reference [purple]#TxOutRef# data type that follows  
 the spending constructor:
 
 [source,haskell]
@@ -2531,11 +2531,11 @@ data OutputDatum
 
 UTXO can either contain no datum, a datum hash or a datum. A datum hash
 contains a string of type [purple]#BuiltinByteString# and the datum type is a
-wrapper around the [purple]#BuiltinData# type. The last constructor for the [purple]#TxOut#
+wrapper around the [purple]#BuiltinData# type. The last information in the [purple]#TxOut#
 data type contains a [purple]#Maybe ScriptHash#, which is also a wrapper around a
-[purple]#BuiltinByteString#. If we return to the [purple]#TxInfo# data type, the next
-components are the constructors for fees and minting, both of which are
-of type [purple]#Value#. Then follows the constructor that handles certificates,
+[purple]#BuiltinByteString#. If we return to the [purple]#TxInfo# data type, the 
+data that follows transaction outputs deals with fees and minting, both of which are
+of type [purple]#Value#. Then follows the data that handles certificates,
 which is defined by a list of the [purple]#DCert# data type:
 
 [source,haskell]
@@ -2576,8 +2576,8 @@ treasury.
 
 In PlutusV3, the names and structures change. The constructor becomes
 [blue]#txInfoTxCerts#, and the type becomes [purple]#TxCert#. The constructors and
-structure of [purple]#TxCert# also differ in comparison to Plutus V2. After
-certificates comes the constructor that manages withdrawals of staking
+structure of [purple]#TxCert# also differ in comparison to PlutusV2. After
+certificates comes the data that manages withdrawals of staking
 rewards. This is covered in section <<Staking and Plinth>>. Next
 follows the transaction validity range, which is defined with the data
 type [purple]#POSIXTimeRange#:
@@ -2684,8 +2684,8 @@ can be accessed through this field
 . Transaction hash: the unique identifier for the transaction itself.
 
 All of this information in the [purple]#TxInfo# data type is accessible by a
-validation script. In Plutus V3 the transaction information type in
-addition to the changed certification part, four additional constructors
+validation script. In PlutusV3 the transaction information type in
+addition to the changed certification part, four additional pieces of data
 are added. The PlutusV3 [purple]#TxInfo# data type is illustrated below.
 
 [source,haskell]
@@ -2712,7 +2712,7 @@ data TxInfo = TxInfo
   deriving anyclass (HasBlueprintDefinition)
 ----
 
-The four additional constructors focus on voting, proposals, and
+The four additional data parts focus on voting, proposals, and
 interactions with the Cardano treasury. Learn more about governance
 features, including the topics of voting and proposal submission in
 chapter <<Cardano governance>>.
@@ -3479,7 +3479,7 @@ native tokens in a UTXO, they must be explicitly created.
 
 Let’s look again at the Haskell definition of the [purple]#Value# type. This type
 is defined in the module `Plutus.V1.Ledger.Value`. Even if we are using
-Plutus V2 scripts, this module has not changed, and we can still use V1
+PlutusV2 scripts, this module has not changed, and we can still use V1
 version for it.
 
 [source,haskell]
@@ -5062,7 +5062,7 @@ funds to the users. For this to work, a Cardano node must be installed
 and running. All instructions are provided on the Woofpool GitHub page.
 The bash scripts, presented in this section, were tested with version
 1.35.5 for the Cardano node and CLI. The Docker container that support a
-Plutus V2 development environment presented in section 
+PlutusV2 development environment presented in section 
 <<Setting up a Plinth development environment>>, provides the Cardano 
 node and CLI version 1.35.5.
 
@@ -5252,7 +5252,7 @@ involve the currency symbol of the minting policy being defined.
 Similarly, here, we define the staking credentials, but they are
 supplied in the script purpose.
 
-We use the [blue]#txInfoWdrl# constructor to get a map of withdrawals and look
+We use the [blue]#txInfoWdrl# helper function to get a map of withdrawals and look
 up our credentials. If they are not in the map, we would throw an error;
 however, this situation cannot occur because the script will only
 execute if we reach the point of performing a withdrawal for this
