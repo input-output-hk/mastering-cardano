@@ -5,8 +5,7 @@
 
 === Plutus preface
 
-_Prof Philip Wadler, FRS_
-
+_Prof Philip Wadler, FRS_ +
 _University of Edinburgh and IOG_
 
 Smart contracts for the Cardano blockchain run in a language called
@@ -89,6 +88,95 @@ opportunity to collaborate with IOG. It's been an amazing
 experience -- it's not often that you can suggest a practical
 application of a fifty-year-old theory and have people take you
 seriously!
+
+=== Marlowe preface  
+
+_Prof Simon Thompson_ + 
+_University of Kent_ + 
+_Eötvös Loránd University_ + 
+simon.thompson@marlowe-lang.org
+
+Marlowe is a high-level smart contract language designed to describe
+asset flows on the blockchain. Marlowe embodies a local, account-based
+model and runs equally well on UTXO and account-based chains like
+Ethereum. Marlowe describes fully distributed interactions between
+contract participants, mediated by the underlying blockchain.
+
+Contracts written in Marlowe automatically provide safety guarantees,
+ensuring that no assets remain locked in a script indefinitely and that
+no scripts run forever. Marlowe contracts can also be fully analyzed for
+contract faults before execution. The Marlowe on-chain validators have
+been audited, and Marlowe supports contracts on both the Cardano mainnet
+and pre-production testing environment.
+
+Decentralized application (DApp) developers, small and medium-sized
+enterprises, and other entities can use the Marlowe platform to develop
+Cardano-based DApps. The platform provides everything needed to build
+and run complete DApps on Cardano, leveraging the guarantees of Marlowe
+smart contracts and integrating with Web3 workflows through a TypeScript
+SDK. The platform includes:
+
+* *The Marlowe Runtime*, which supports all the necessary on- and
+off-chain contract actions, including the tedious work of transaction
+construction and tracking contract activity by other participants.
+
+* *The Marlowe TypeScript SDK* fully integrates Marlowe as a component
+within a complete DApp, including contract creation and initialization,
+as well as execution.
+
+* *The Marlowe Playground* provides the environment for learning Marlowe
+through its Blockly representation, as well as simulation and analysis
+of contracts as they are developed.
+
+* *End-to-end DApp examples*, developed in collaboration with Gimbalabs
+with Catalyst Fund12 support, designed to make access to the Marlowe
+Platform as straightforward as possible.
+
+* *Other components* supporting free-standing execution of Marlowe smart
+contracts, including the Marlowe Runner and the Marlowe CLI.
+
+The platform simplifies development for the developer community and
+provides key components, such as oracles, used in many DApps. Individual
+end users can also execute Marlowe contracts directly on the Cardano
+blockchain, using facilities provided by the Marlowe Runner and the CLI.
+This directly supports decentralized finance (DeFi) interactions,
+including peer-to-peer loans and escrow facilities.
+
+The Marlowe platform offers a complementary route to DApp development
+alongside Aiken or Plinth as long as the DApp’s core functionality can
+be expressed through Marlowe contracts. Each Marlowe contract has a
+predetermined, finite set of roles and behavior that is guaranteed to
+terminate. However, it is crucial to realize that a Marlowe DApp can
+dynamically create and execute multiple Marlowe contracts for particular
+use cases. For example, an escrow service DApp can generate a new
+Marlowe contract for each particular use of the service, and that
+contract will provide a guarantee of termination and no asset retention
+for each such use. Using the TypeScript SDK for Marlowe, developers can
+build complete DApps using familiar technology.
+
+Marlowe originated as a research project funded by IOHK at the
+University of Kent in 2017 and became part of IOG in 2019. As of autumn
+2024, Marlowe is an independent open-source project owned and managed by
+Marlowe Language Community Interest Company (CIC), a non-profit
+organization (UK company number 16010921). This CIC supports Marlowe
+users and developers by overseeingp development, maintenance, education,
+and training. It also hosts Marlowe open-source software repositories
+and maintains the ecosystem’s online presence.
+
+With Tomasz Rybarczyk, I have been funded under Catalyst Fund13, 
+https://projectcatalyst.io/funds/13/f13-cardano-use-cases-concept/marlowe-2025-oracle-protocol-design-and-implementation[project 1300131], 
+to formalize, develop, and implement the Marlowe Oracle protocol
+based on a novel pull-based model, where oracles respond dynamically to
+on-chain data requests, ensuring better adaptability and data coverage
+for a wider array of contracts. The project will also provide validator
+and runtime adaptations to support the protocol and integrate it with
+the Marlowe TypeScript SDK, Aiken, and the Marlowe DApp starter kit.
+
+This is just the first step in Marlowe's new development phase, with
+plans to enhance the developer experience on the Marlowe platform and
+refine the core language evolution to better support its aim of
+providing a high-level, chain-agnostic language for blockchain financial
+smart contracts. Please join us on this journey!
 
 === Smart contract programming languages
 

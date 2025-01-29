@@ -5,8 +5,7 @@
 
 === Plutus preface
 
-_Prof Philip Wadler, FRS_
-
+_Prof Philip Wadler, FRS_ +
 _University of Edinburgh and IOG_
 
 Smart contracts for the Cardano blockchain run in a language called
@@ -89,6 +88,95 @@ opportunity to collaborate with IOG. It's been an amazing
 experience -- it's not often that you can suggest a practical
 application of a fifty-year-old theory and have people take you
 seriously!
+
+=== Marlowe preface  
+
+_Prof Simon Thompson_ + 
+_University of Kent_ + 
+_Eötvös Loránd University_ + 
+simon.thompson@marlowe-lang.org
+
+Marlowe is a high-level smart contract language designed to describe
+asset flows on the blockchain. Marlowe embodies a local, account-based
+model and runs equally well on UTXO and account-based chains like
+Ethereum. Marlowe describes fully distributed interactions between
+contract participants, mediated by the underlying blockchain.
+
+Contracts written in Marlowe automatically provide safety guarantees,
+ensuring that no assets remain locked in a script indefinitely and that
+no scripts run forever. Marlowe contracts can also be fully analyzed for
+contract faults before execution. The Marlowe on-chain validators have
+been audited, and Marlowe supports contracts on both the Cardano mainnet
+and pre-production testing environment.
+
+Decentralized application (DApp) developers, small and medium-sized
+enterprises, and other entities can use the Marlowe platform to develop
+Cardano-based DApps. The platform provides everything needed to build
+and run complete DApps on Cardano, leveraging the guarantees of Marlowe
+smart contracts and integrating with Web3 workflows through a TypeScript
+SDK. The platform includes:
+
+* *The Marlowe Runtime*, which supports all the necessary on- and
+off-chain contract actions, including the tedious work of transaction
+construction and tracking contract activity by other participants.
+
+* *The Marlowe TypeScript SDK* fully integrates Marlowe as a component
+within a complete DApp, including contract creation and initialization,
+as well as execution.
+
+* *The Marlowe Playground* provides the environment for learning Marlowe
+through its Blockly representation, as well as simulation and analysis
+of contracts as they are developed.
+
+* *End-to-end DApp examples*, developed in collaboration with Gimbalabs
+with Catalyst Fund12 support, designed to make access to the Marlowe
+Platform as straightforward as possible.
+
+* *Other components* supporting free-standing execution of Marlowe smart
+contracts, including the Marlowe Runner and the Marlowe CLI.
+
+The platform simplifies development for the developer community and
+provides key components, such as oracles, used in many DApps. Individual
+end users can also execute Marlowe contracts directly on the Cardano
+blockchain, using facilities provided by the Marlowe Runner and the CLI.
+This directly supports decentralized finance (DeFi) interactions,
+including peer-to-peer loans and escrow facilities.
+
+The Marlowe platform offers a complementary route to DApp development
+alongside Aiken or Plinth as long as the DApp’s core functionality can
+be expressed through Marlowe contracts. Each Marlowe contract has a
+predetermined, finite set of roles and behavior that is guaranteed to
+terminate. However, it is crucial to realize that a Marlowe DApp can
+dynamically create and execute multiple Marlowe contracts for particular
+use cases. For example, an escrow service DApp can generate a new
+Marlowe contract for each particular use of the service, and that
+contract will provide a guarantee of termination and no asset retention
+for each such use. Using the TypeScript SDK for Marlowe, developers can
+build complete DApps using familiar technology.
+
+Marlowe originated as a research project funded by IOHK at the
+University of Kent in 2017 and became part of IOG in 2019. As of autumn
+2024, Marlowe is an independent open-source project owned and managed by
+Marlowe Language Community Interest Company (CIC), a non-profit
+organization (UK company number 16010921). This CIC supports Marlowe
+users and developers by overseeingp development, maintenance, education,
+and training. It also hosts Marlowe open-source software repositories
+and maintains the ecosystem’s online presence.
+
+With Tomasz Rybarczyk, I have been funded under Catalyst Fund13, 
+https://projectcatalyst.io/funds/13/f13-cardano-use-cases-concept/marlowe-2025-oracle-protocol-design-and-implementation[project 1300131], 
+to formalize, develop, and implement the Marlowe Oracle protocol
+based on a novel pull-based model, where oracles respond dynamically to
+on-chain data requests, ensuring better adaptability and data coverage
+for a wider array of contracts. The project will also provide validator
+and runtime adaptations to support the protocol and integrate it with
+the Marlowe TypeScript SDK, Aiken, and the Marlowe DApp starter kit.
+
+This is just the first step in Marlowe's new development phase, with
+plans to enhance the developer experience on the Marlowe platform and
+refine the core language evolution to better support its aim of
+providing a high-level, chain-agnostic language for blockchain financial
+smart contracts. Please join us on this journey!
 
 === Smart contract programming languages
 
@@ -2049,7 +2137,7 @@ data ScriptContext = ScriptContext
 ----
 
 In the <<Plutus smart contracts>> section we will focus focuses on data types defined 
-for Plutus V3 scripts. The script context contains the transaction information, the 
+for PlutusV3 scripts. The script context contains the transaction information, the 
 redeemer and the script info data types. We will look into those data types in more 
 detail in section <<Script context explained>>. We only show here the redeemer data 
 type that is a wrapper around the [purple]#BuiltinData# data type. 
@@ -3012,7 +3100,23 @@ data Interval a = Interval { ivFrom :: LowerBound a, ivTo :: UpperBound a }
 ----
 
 The [purple]#POSIXTimeRange# data type contains an [purple]#Interval# type, 
-parameterized with the [purple]#POSIXTime# type. 
+parameterized with the [purple]#POSIXTime# type. The [purple]#Interval# type 
+holds data about the lower and upper bounds of the validity interval for the 
+specified transaction. The lower and upper bound types are structured in the 
+same way. They hold the [purple]#Extended# and [purple]#Closure# types. 
+
+[source,haskell]
+----
+data LowerBound a = LowerBound (Extended a) Closure
+    deriving stock (Haskell.Show, Generic)
+    deriving anyclass (NFData)
+----
+
+The [purple]#Closure# type is just a wrapper for a Boolean which indicates 
+whether the boundary is included in the interval or not. The extended type 
+has three possible constructor values, which represent negative infinity,
+positive infinity, or a finite bound parameterized, in our case, by a
+[purple]#POSIXTime# type. 
 
 [source,haskell]
 ----
@@ -3028,308 +3132,8 @@ newtype POSIXTime = POSIXTime {getPOSIXTime :: Integer}
 [purple]#POSIXTime# is a wrapper for an integer, representing the number of 
 milliseconds that have passed since January 1, 1970, at 00:00. 
 
-
-
-______________________________________________________________________
-
-Minting is used when minting (creating) or burning (destroying) native
-tokens. Spending is used to spend funds sitting at a script address.
-Rewarding is used for withdrawing staking rewards. Certifying is for
-issuing certificates. The PlutusV3 script purpose is called [purple]#ScriptInfo#
-and is illustrated below. Compared to the PlutusV2 script purpose, it
-contains in addition constructors for a voting script and a proposing
-script. Also for spending it contains a maybe datum which is present in
-we attached a datum or its hash to the UTXO. In PlutusV3, you are
-allowed to spend a UTXO sitting at a script address in case it does not
-contain a datum. In PlutusV2 this is not possible and an empty datum
-needs to be attached to the UTXO if the datum is not being used by the
-smart contract code.
-
-[source,haskell]
-----
-data ScriptInfo
-    = MintingScript V2.CurrencySymbol
-    | SpendingScript V3.TxOutRef (Haskell.Maybe V2.Datum)
-    | RewardingScript V2.Credential
-    | CertifyingScript
-        Haskell.Integer
-        TxCert
-    | VotingScript Voter
-    | ProposingScript
-        Haskell.Integer
-        ProposalProcedure
-    deriving stock (Generic, Haskell.Show, Haskell.Eq)
-    deriving anyclass (HasBlueprintDefinition)
-    deriving (Pretty) via (PrettyShow ScriptInfo)
-----
-
-In this section, we will focus on the spending purpose, so we look at
-the transaction output reference [purple]#TxOutRef# data type that is contained in
-the spending constructor. 
-
-[source,haskell]
-----
-data TxOutRef = TxOutRef {
-    txOutRefId  :: TxId, 
-    txOutRefIdx :: Integer 
-    }
-    deriving stock (Show, Eq, Ord, Generic)
-    deriving anyclass (NFData)
-----
-
-It defines a UTXO reference that is composed of the transaction ID,
-which is an SHA-256 hash, and the transaction index, which is an integer
-number. The [purple]#TxId# data type is a wrapper around the type
-[purple]#BuiltinByteString#. Each UTXO a transaction creates gets a transaction
-index assigned starting with 0 and increasing by 1. Because transaction
-IDs are unique, a UTXO defined by the transaction ID and the output
-index is also unique and can exist only once. Transaction hashes are
-unique because a new transaction hash includes the hash of the
-transaction that created the UTXO being consumed. Every transaction is
-consuming at least one UTXO as it needs to pay some fees. By a simple
-induction argument, it follows that two identical transaction hashes can
-never exist.
-
-Let’s now look at the transaction information – [purple]#TxInfo# – data type that
-constitutes the second half of information contained in the script
-context. 
-
-[source,haskell]
-----
-data TxInfo = TxInfo
-    { txInfoInputs          :: [TxInInfo] 
-    , txInfoReferenceInputs :: [TxInInfo] 
-    , txInfoOutputs         :: [TxOut] 
-    , txInfoFee             :: Value 
-    , txInfoMint            :: Value 
-    , txInfoDCert           :: [DCert] 
-    , txInfoWdrl            :: Map StakingCredential Integer 
-    , txInfoValidRange      :: POSIXTimeRange 
-    , txInfoSignatories     :: [PubKeyHash] 
-    , txInfoRedeemers       :: Map ScriptPurpose Redeemer 
-    , txInfoData            :: Map DatumHash Datum 
-    , txInfoId              :: TxId  
-    } deriving stock (Generic, Haskell.Show)
-----
-
-In the beginning, it contains a list of transaction inputs and reference
-inputs. Reference inputs are inputs accessible by the script context but
-not consumed by the transaction. They are only referenced, hence the
-name. A transaction may need access to a UTXO without consuming it
-because the UTXO can contain important information in the datum that
-scripts can access. This information can be arbitrary data contained in
-the datum or an attached reference script, which is a serialized smart
-contract compiled to Plutus. The advantage of reference scripts is that
-instead of appending a script to a transaction that wants to spend funds
-at the script address, we simply reference this script from the UTXO
-that carries it. This lowers the transaction size and reduces the
-transaction cost. A code example of this is presented in section 
-<<Off-chain code with MeshJS>>. Another advantage of reference inputs is
-that several transactions in the same block can use the same UTXO as a
-reference input, since it is not being consumed by any of those
-transactions. Transaction inputs and reference inputs are lists of type
-transaction input info [purple]#TxInInfo# that defines the input of a pending
-transaction.
-
-[source,haskell]
-----
-data TxInInfo = TxInInfo
-    { txInInfoOutRef   :: TxOutRef
-    , txInInfoResolved :: TxOut
-    } deriving stock (Generic, Haskell.Show, Haskell.Eq)
-----
-
-It is defined by a transaction output reference and resolved transaction
-input information, which is defined by the transaction output [purple]#TxOut# data
-type.
-
-[source,haskell]
-----
-data TxOut = TxOut {
-    txOutAddress         :: Address,
-    txOutValue           :: Value,
-    txOutDatum           :: OutputDatum,
-    txOutReferenceScript :: Maybe ScriptHash
-    }
-    deriving stock (Show, Eq, Generic)
-----
-
-The resolved input information defines the address where the UTXO
-resides, the value it contains, the output datum attached to the UTXO,
-and a possible script hash also associated with the UTXO. Below is the
-address data type:
-
-[source,haskell]
-----
-data Address = Address
-    { addressCredential        :: Credential
-    , addressStakingCredential :: Maybe StakingCredential
-    }
-    deriving stock (Eq, Ord, Show, Generic, Typeable)
-    deriving anyclass (NFData, HasBlueprintDefinition)
-----
-
-As explained in section <<Cardano addresses>>, an address is composed
-of two parts: the payment part and the optional staking part. The
-payment part, defined with the [purple]#Credential# data type, contains 
-either a public key hash or a script hash, which we have already shown. 
-The staking part is defined with the [purple]#StakingCredential# data 
-type that can be either a staking hash or a staking pointer. 
-
-[source,haskell]
-----
-data StakingCredential
-    = StakingHash Credential
-    | StakingPtr
-        Integer -- ^ the slot number
-        Integer -- ^ the transaction index (within the block)
-        Integer -- ^ the certificate index (within the transaction)
-    deriving stock (Eq, Ord, Show, Generic, Typeable)
-    deriving anyclass (NFData, HasBlueprintDefinition)
-----
-
-Next is the [purple]#Value# type that defines an amount of ada and/or 
-native tokens. 
-
-[source,haskell]
-----
-newtype Value = Value { getValue :: Map.Map CurrencySymbol (Map.Map TokenName Integer) }
-    deriving stock (Generic, Typeable, Haskell.Show)
-    deriving newtype (PlutusTx.ToData, PlutusTx.FromData, PlutusTx.UnsafeFromData)
-    deriving Pretty via (PrettyShow Value)
-----
-
-Every native token is defined with a currency symbol and a token name.
-They are both of type [purple]#BuiltinByteString#. The currency symbol is computed
-as the hash of the minting policy, and the token name can be an
-arbitrary string (but should not be longer than 32 bytes). The ada token
-is defined by an empty byte string both for currency symbol and token
-name, which means you cannot mint ada. Next, we examine the [purple]#OutputDatum#
-data type. 
-
-[source,haskell]
-----
-data OutputDatum 
-    = NoOutputDatum 
-    | OutputDatumHash DatumHash 
-    | OutputDatum Datum
-    deriving stock (Show, Eq, Generic)
-    deriving anyclass (NFData)
-----
-
-UTXO can either contain no datum, a datum hash or a datum. A datum hash
-contains a string of type [purple]#BuiltinByteString# and the datum type is a
-wrapper around the [purple]#BuiltinData# type. The last constructor for the [purple]#TxOut#
-data type contains a [purple]#Maybe ScriptHash#, which is also a wrapper around a
-[purple]#BuiltinByteString#. If we return to the [purple]#TxInfo# data type, the next
-components are the constructors for fees and minting, both of which are
-of type [purple]#Value#. Then follows the constructor that handles certificates,
-which is defined by a list of the [purple]#DCert# data type:
-
-[source,haskell]
-----
-data DCert
-    = DCertDelegRegKey StakingCredential
-    | DCertDelegDeRegKey StakingCredential
-    | DCertDelegDelegate
-        StakingCredential -- delegator
-        PubKeyHash        -- delegatee
-    | -- A digest of the PoolParams
-      DCertPoolRegister
-        PubKeyHash        -- poolId
-        PubKeyHash        -- pool VFR
-    | -- The retirement certificate and the Epoch in which the retirement will take place
-      DCertPoolRetire PubKeyHash Integer 
-    | -- A really terse Digest
-      DCertGenesis
-    | -- Another really terse Digest
-      DCertMir
-      deriving stock (Eq, Ord, Show, Generic, Typeable)
-      deriving anyclass (NFData, HasBlueprintDefinition)
-      deriving Pretty via (PrettyShow DCert)
-----
-
-The [purple]#DCert# data type has seven constructors representing the following
-certificates:
-
-[arabic]
-. Registering a staking credential
-. Deregistering a staking credential
-. Delegating to a stake pool
-. Registering a stake pool
-. Retiring a stake pool
-. Genesis key delegation certificate
-. Paying https://projectcatalyst.io/[Catalyst] winners from the
-treasury.
-
-In PlutusV3, the names and structures change. The constructor becomes
-[blue]#txInfoTxCerts#, and the type becomes [purple]#TxCert#. The constructors and
-structure of [purple]#TxCert# also differ in comparison to Plutus V2. After
-certificates comes the constructor that manages withdrawals of staking
-rewards. This is covered in section <<Staking and Plinth>>. Next
-follows the transaction validity range, which is defined with the data
-type [purple]#POSIXTimeRange#:
-
-[source,haskell]
-----
-type POSIXTimeRange = Interval POSIXTime
-----
-
-The [purple]#POSIXTimeRange# data type contains an [purple]#Interval# type, parameterized with
-the [purple]#POSIXTime# type. [purple]#POSIXTime# is a wrapper for an integer, representing
-the number of milliseconds that have passed since January 1, 1970, at 00:00. 
-
-[source,haskell]
-----
-newtype POSIXTime = POSIXTime {getPOSIXTime :: Integer}
-    deriving stock (Haskell.Eq, Haskell.Ord, Haskell.Show, Generic, Typeable)
-    deriving anyclass (NFData, HasBlueprintDefinition)
-    deriving newtype
-      ( AdditiveSemigroup
-      , AdditiveMonoid
-      , AdditiveGroup
-      , Eq
-      , Ord
-      , Enum
-      , PlutusTx.ToData
-      , PlutusTx.FromData
-      , PlutusTx.UnsafeFromData
-      , Haskell.Num
-      , Haskell.Enum
-      , Haskell.Real
-      , Haskell.Integral
-      )
-----
-
-The [purple]#Interval# type holds data about the lower and upper bounds of
-the validity interval for the specified transaction.
-
-[source,haskell]
-----
-data Interval a = Interval 
-    { ivFrom :: LowerBound a, 
-      ivTo :: UpperBound a 
-    }  
-    deriving stock (Haskell.Show, Generic)
-    deriving anyclass (NFData)
-----
-
-The lower and upper bound types are structured in the same way. They
-hold the [purple]#Extended# and [purple]#Closure# types:
-
-[source,haskell]
-----
-data LowerBound a = LowerBound (Extended a) Closure
-    deriving stock (Haskell.Show, Generic)
-    deriving anyclass (NFData)
-----
-
-The [purple]#Closure# type is just a wrapper for a Boolean which indicates whether
-the boundary is included in the interval or not. The extended type has
-three possible constructor values, which represent negative infinity,
-positive infinity, or a finite bound parameterized, in our case, by a
-[purple]#POSIXTime# type. The module `Plutus.V2.Ledger.Interval` defines the
-following helper functions that work with time intervals:
+The module `PlutusLedgerApi.V1.Interval` defines the following helper functions 
+that work with time intervals: 
 
 * [blue]#member#: checks whether a value is in an interval
 * [blue]#interval#: takes two parameters as input and constructs an interval
@@ -3356,6 +3160,14 @@ returns a Boolean
 * [blue]#after#: checks whether a given time is after the given interval and
 returns a Boolean.
 
+After the validity range in the [purple]#TxInfo# data type comes the list 
+of public key hashes that represent transaction signatories. We state again 
+that the [purple]#PubKeyHash# data type is a wrapper around the 
+[purple]#BuiltinByteString# data type. 
+
+ ------------------------------------------------------------------------
+
+
 After the validity range in the [purple]#TxInfo# data type, the transaction
 information continues with the following elements:
 
@@ -3372,7 +3184,7 @@ can be accessed through this field
 . Transaction hash: the unique identifier for the transaction itself.
 
 All of this information in the [purple]#TxInfo# data type is accessible by a
-validation script. In Plutus V3 the transaction information type in
+validation script. In PlutusV3 the transaction information type in
 addition to the changed certification part, four additional constructors
 are added. The PlutusV3 [purple]#TxInfo# data type is illustrated below.
 
@@ -4167,7 +3979,7 @@ native tokens in a UTXO, they must be explicitly created.
 
 Let’s look again at the Haskell definition of the [purple]#Value# type. This type
 is defined in the module `Plutus.V1.Ledger.Value`. Even if we are using
-Plutus V2 scripts, this module has not changed, and we can still use V1
+PlutusV2 scripts, this module has not changed, and we can still use V1
 version for it.
 
 [source,haskell]
@@ -5750,7 +5562,7 @@ funds to the users. For this to work, a Cardano node must be installed
 and running. All instructions are provided on the Woofpool GitHub page.
 The bash scripts, presented in this section, were tested with version
 1.35.5 for the Cardano node and CLI. The Docker container that support a
-Plutus V2 development environment presented in section 
+PlutusV2 development environment presented in section 
 <<Setting up a Plinth development environment>>, provides the Cardano 
 node and CLI version 1.35.5.
 
