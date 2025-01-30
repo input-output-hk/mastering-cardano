@@ -2231,11 +2231,11 @@ mk42ValidatorSmall ctx
     constrArgs :: BuiltinData -> BI.BuiltinList BuiltinData
     constrArgs = BI.snd . BI.unsafeDataAsConstr
 
-    scriptInfoBL :: BI.BuiltinList BuiltinData
-    scriptInfoBL = constrArgs ctx
+    scriptContextBL :: BI.BuiltinList BuiltinData
+    scriptContextBL = constrArgs ctx
 
     redeemerBD :: BuiltinData
-    redeemerBD = BI.head . BI.tail $ scriptInfoBL
+    redeemerBD = BI.head . BI.tail $ scriptContextBL
 
     redeemerInt :: BI.BuiltinInteger 
     redeemerInt = unsafeDataAsI redeemerBD
@@ -2732,9 +2732,11 @@ script information are individually assigned for every UTXO in that transaction.
 The transaction information is only one and is accessible to to every script 
 that is being triggered by a single transaction. 
 
+*Script information* 
+
 In the previous code examples, the transaction information and script information 
 were not used in the validation logic. However, in most validator scripts, they are 
-used. First we look at the [purple]#ScriptInfo# data type. 
+used. Let us look at the [purple]#ScriptInfo# data type. 
 
 [source,haskell]
 ----
@@ -2866,8 +2868,75 @@ following script purposes:
 * Voting and proposing - are used when government actions are invloved. 
 
 In the <<Plutus smart contracts>> section we will focus on the spending, 
-minting and rewarding script purposes. Let us look now at the at the transaction 
-information [purple]#TxInfo# data type. 
+minting and rewarding script purposes. 
+
+*Decoding ScriptInfo in untyped form*
+
+Before we move on explaining the transaction information data type we look 
+at another validator example that shows how to decode the [purple]#ScriptInfo# 
+data type in untyped form. Our validator follows the same logic as the 42 
+validator in the previous section, except that we now match the number 42 
+to the datum instead of the redeemer. 
+
+[source,haskell]
+----
+{- ------------------------------------------------------------------------------------------ -}
+{- ------------------------------- Datum 42 validator untyped ------------------------------- -}           
+
+{-# INLINEABLE datum42Validator #-}
+datum42Validator :: BuiltinData -> BuiltinUnit
+datum42Validator ctx 
+    | datumInt == 42 = BI.unitval
+    | otherwise      = traceError "Datum is a number different than 42" 
+ where
+    -- Lazily decode script context up to datum  
+    constrArgs :: BuiltinData -> BI.BuiltinList BuiltinData
+    constrArgs = BI.snd . BI.unsafeDataAsConstr
+
+    scriptInfoBD :: BuiltinData
+    scriptInfoBD = BI.head . BI.tail . BI.tail $ constrArgs ctx
+
+    maybeDatumBD :: BuiltinData
+    maybeDatumBD = BI.head . BI.tail $ constrArgs scriptInfoBD 
+
+    datumBD :: BuiltinData
+    datumBD = BI.head $ constrArgs maybeDatumBD
+
+    datumInt :: BI.BuiltinInteger 
+    datumInt = unsafeDataAsI datumBD 
+
+compiledDatum42Validator :: CompiledCode (BuiltinData -> BuiltinUnit)
+compiledDatum42Validator = $$(compile [||datum42Validator||])
+
+serializedDatum42Validator :: SerialisedScript
+serializedDatum42Validator = serialiseCompiledCode compiledDatum42Validator
+----
+
+As we have already explained in the previous section we need to define the 
+[blue]#constrArgs# helper function that helps us to convert the [purple]#BuiltinData# 
+to the [purple]#BuiltinList# type. The script information is contained on the 
+third place in the script context so we use two time the [blue]#tail# function 
+and one time the [blue]#head# function to extract it. 
+
+Since we are working with a spending script the script info contains the spending 
+constructor followed by the transaction output reference and a maybe datum. We use 
+once the [blue]#tail# function and the [blue]#head# function to extract it. Because 
+we now have something of type [purple]#Maybe V2.Datum# we can not directly convert 
+it to an integer. We again use the [blue]#constrArgs# function and then only once 
+the [blue]#head# function since there should be only one element in the list which 
+is the datum. After that we have the datum in untyped form and we can apply the 
+[blue]#unsafeDataAsI# function to convert it to a integer number. 
+
+In case the datum was not attached to the UTXO or the datum has a different format 
+this validator will fail without a used defined error message. If we do manage to 
+extract an integer the validator will pass if it is 42 or fail with a user-defined 
+message. We note also in this example in case the datum would be a more structured 
+data type we could use the [blue]#fromBuiltinData# function that would convert it 
+to typed form where extracting any information can be done in a simpler way. 
+
+*Transaction information* 
+
+Let us look at the at the transaction information [purple]#TxInfo# data type. 
 
 [source,haskell]
 ----
@@ -3161,61 +3230,53 @@ returns a Boolean
 returns a Boolean.
 
 After the validity range in the [purple]#TxInfo# data type comes the list 
-of public key hashes that represent transaction signatories. We state again 
+of public key hashes that represent transaction signatories. We note again 
 that the [purple]#PubKeyHash# data type is a wrapper around the 
 [purple]#BuiltinByteString# data type. 
 
- ------------------------------------------------------------------------
-
-
-After the validity range in the [purple]#TxInfo# data type, the transaction
-information continues with the following elements:
-
-[arabic]
-. List of public key hashes: these represent the public keys that signed
-the transaction
-. Map of redeemers: mapped to different script purposes, this object
-holds the redeemers associated with the various actions in the
-transaction
-. Map of datums: this object maps datum hashes to their corresponding
-actual datum values; if a UTXO at a script address has only a datum
-hash, the actual datum must be attached to the spending transaction and
-can be accessed through this field
-. Transaction hash: the unique identifier for the transaction itself.
-
-All of this information in the [purple]#TxInfo# data type is accessible by a
-validation script. In PlutusV3 the transaction information type in
-addition to the changed certification part, four additional constructors
-are added. The PlutusV3 [purple]#TxInfo# data type is illustrated below.
+Then come the redeemers and datums. As stated before a transaction can spend
+multiple UTXOs that get individual redeemers assigned. In case any of these 
+UTXOs have only a datum hash attached, the transaction also needs to contain 
+the datums that belong to those hashes. Both data for redeemers and datums is 
+packaged inside a [purple]#Map# object. The keys for the redeemer data are 
+of type [purple]#ScriptPurpose#. 
 
 [source,haskell]
 ----
-data TxInfo = TxInfo
-  { txInfoInputs                :: [TxInInfo]
-  , txInfoReferenceInputs       :: [TxInInfo]
-  , txInfoOutputs               :: [V2.TxOut]
-  , txInfoFee                   :: V2.Lovelace
-  , txInfoMint                  :: V2.Value
-  , txInfoTxCerts               :: [TxCert]
-  , txInfoWdrl                  :: Map V2.Credential V2.Lovelace
-  , txInfoValidRange            :: V2.POSIXTimeRange
-  , txInfoSignatories           :: [V2.PubKeyHash]
-  , txInfoRedeemers             :: Map ScriptPurpose V2.Redeemer
-  , txInfoData                  :: Map V2.DatumHash V2.Datum
-  , txInfoId                    :: V3.TxId
-  , txInfoVotes                 :: Map Voter (Map GovernanceActionId Vote)
-  , txInfoProposalProcedures    :: [ProposalProcedure]
-  , txInfoCurrentTreasuryAmount :: Haskell.Maybe V2.Lovelace
-  , txInfoTreasuryDonation      :: Haskell.Maybe V2.Lovelace
-  }
-  deriving stock (Generic, Haskell.Show, Haskell.Eq)
+data ScriptPurpose
+  = Minting V2.CurrencySymbol
+  | Spending V3.TxOutRef
+  | Rewarding V2.Credential
+  | Certifying
+      Haskell.Integer
+      TxCert
+  | Voting Voter
+  | Proposing
+      Haskell.Integer
+      ProposalProcedure
+  deriving stock (Generic, Haskell.Show, Haskell.Eq, Haskell.Ord)
   deriving anyclass (HasBlueprintDefinition)
+  deriving (Pretty) via (PrettyShow ScriptPurpose)
 ----
 
-The four additional constructors focus on voting, proposals, and
-interactions with the Cardano treasury. Learn more about governance
-features, including the topics of voting and proposal submission in
-chapter <<Cardano governance>>.
+It is structured same way as the [purple]#ScriptInfo# data type except that 
+the constructor names are different and the Spending constructor holds only 
+a transaction output reference without a maybe datum. Which is the case in 
+the [purple]#ScriptInfo# data type. The keys for the datums are datum hashes 
+that map to actual datums. 
+
+Next comes the transaction ID of type [purple]#TxId# which represents the 
+hash of the transaction being validated. As already stated this type is a 
+wrapper around the [purple]#BuiltinByteString# data type. 
+
+After that come the votes and proposal procedures that are both used when 
+dealing with government actions. The last two pieces of data contained in 
+the transaction information are the current treasury amount and treasury 
+donation. Both are of type [purple]#Maybe V2.Lovelace#. Learn more about 
+governance features, including the topics of voting and proposal submission 
+in chapter <<Cardano governance>>.  
+
+ ------------------------------------------------------------------------
 
 ==== Time-dependent and parameterized validators
 
