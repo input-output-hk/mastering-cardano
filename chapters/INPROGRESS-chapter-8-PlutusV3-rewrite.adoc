@@ -2009,8 +2009,8 @@ import qualified PlutusTx.Builtins.Internal as BI (
                                       head, snd, tail, unitval,
                                       unsafeDataAsConstr)
 
-{- ----------------------------------------------------------------------------------------- -}
-{- --------------------------------- Always True validator --------------------------------- -}
+{- ----------------------------------------------------------------------------- -}
+{- --------------------------- Always True validator --------------------------- -}
 
 {-# INLINEABLE mkGiftValidator #-}
 mkGiftValidator :: BuiltinData -> BuiltinUnit
