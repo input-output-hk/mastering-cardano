@@ -2100,8 +2100,8 @@ explore an example where the validation logic always fails, regardless of the in
 
 [source,haskell]
 ----
-{- ------------------------------------------------------------------------------------------ -}
-{- --------------------------------- Always False validator --------------------------------- -}
+{- ------------------------------------------------------------------------------ -}
+{- --------------------------- Always False validator --------------------------- -}
 
 {-# INLINEABLE mkBurnValidator #-}
 mkBurnValidator :: BuiltinData -> BuiltinUnit
@@ -2155,8 +2155,8 @@ the value 42; otherwise, it fails:
 
 [source,haskell]
 ----
-{- ------------------------------------------------------------------------------------------ -}
-{- ----------------------------- 42 validator untyped large CBOR ---------------------------- -}
+{- ------------------------------------------------------------------------------ -}
+{- ----------------------- 42 validator untyped large CBOR ---------------------- -}
 
 {-# INLINEABLE mk42ValidatorLarge #-}
 mk42ValidatorLarge :: BuiltinData -> BuiltinUnit
@@ -2217,8 +2217,8 @@ this section we will make a comparison of `CBORHEX` lengths for the 42 validator
 
 [source,haskell]
 ----
-{- ------------------------------------------------------------------------------------------ -}
-{- ----------------------------- 42 validator untyped small CBOR ---------------------------- -}
+{- ------------------------------------------------------------------------------ -}
+{- ----------------------- 42 validator untyped small CBOR ---------------------- -}
 
 {-# INLINEABLE mk42ValidatorSmall #-}
 mk42ValidatorSmall :: BuiltinData -> BuiltinUnit
@@ -2269,8 +2269,8 @@ Let us look now at the same validator that is written in a typed form.
 
 [source,haskell]
 ----
-{- ------------------------------------------------------------------------------------------ -}
-{- ----------------------------------- 42 validator typed ----------------------------------- -}
+{- ------------------------------------------------------------------------------ -}
+{- ----------------------------- 42 validator typed ----------------------------- -}
 
 {-# INLINEABLE mk42TypedValidator #-}
 mk42TypedValidator :: ScriptContext -> Bool
@@ -2306,9 +2306,9 @@ a custom redeemer type that is a wrapper around an [purple]#Integer# type.
 
 [source,haskell]
 ----
-{- ------------------------------------------------------------------------------------------ -}
-{- -------------------------------- 42 validator custom type -------------------------------- -}
- 
+{- ------------------------------------------------------------------------------ -}
+{- -------------------------- 42 validator custom type -------------------------- -}
+
 -- Custom data types for our redeemer 
 data MySillyRedeemer = MkMySillyRedeemer Integer 
   deriving stock (Generic)
@@ -2428,14 +2428,14 @@ import qualified Data.Set                    as Set
 import           PlutusTx.Blueprint
 import qualified Week02.Validators           as Week02
 
-{- -------------------------------------------------------------------------------------------- -}
-{- ---------------------------------------- ENTRY POINT --------------------------------------- -}
+{- ------------------------------------------------------------------------------ -}
+{- --------------------------------- ENTRY POINT -------------------------------- -}
 
 main :: IO ()
 main = writeBlueprint "blueprint.json" blueprint
 
-{- -------------------------------------------------------------------------------------------- -}
-{- -------------------------------------------- SHARED ---------------------------------------- -}
+{- ------------------------------------------------------------------------------ -}
+{- ------------------------------------- SHARED --------------------------------- -}
 
 blueprint :: ContractBlueprint
 blueprint =
@@ -2478,8 +2478,8 @@ instead of the six we have defined in this section to shorten the output.
 
 [source,haskell]
 ----
-{- -------------------------------------------------------------------------------------------- -}
-{- ------------------------------------ VALIDATORS - WEEK02 ----------------------------------- -}
+{- ------------------------------------------------------------------------------ -}
+{- ----------------------------- VALIDATORS - WEEK02 ---------------------------- -}
 
 mkGiftVal :: ValidatorBlueprint referencedTypes
 mkGiftVal =
@@ -2880,8 +2880,8 @@ to the datum instead of the redeemer.
 
 [source,haskell]
 ----
-{- ------------------------------------------------------------------------------------------ -}
-{- ------------------------------- Datum 42 validator untyped ------------------------------- -}           
+{- ------------------------------------------------------------------------------ -}
+{- ------------------------- Datum 42 validator untyped ------------------------- -}
 
 {-# INLINEABLE datum42Validator #-}
 datum42Validator :: BuiltinData -> BuiltinUnit
