@@ -2728,7 +2728,7 @@ The [purple]#Closure# type is just a wrapper for a Boolean which indicates wheth
 the boundary is included in the interval or not. The extended type has
 three possible constructor values, which represent negative infinity,
 positive infinity, or a finite bound parameterized, in our case, by a
-[purple]#POSIXTime# type. The module `Plutus.V2.Ledger.Interval` defines the
+[purple]#POSIXTime# type. The module `PlutusLedgerApi.V1.Interval` defines the
 following helper functions that work with time intervals:
 
 * [blue]#member#: checks whether a value is in an interval
