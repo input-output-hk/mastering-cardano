@@ -2336,9 +2336,9 @@ serializedMk42CustomValidator = serialiseCompiledCode compiledMk42CustomValidato
 
 At the begining we define the custom data type [purple]#MySillyRedeemer# 
 that is a wrapper around the [purple]#Integer# type. Then we use the 
-[blue]#makeIsDataSchemaIndexed# function that generates a [purple]#ToData#,
+[blue]#makeIsDataSchemaIndexed# function that generates the [purple]#ToData#,
 [purple]#FromData#, [purple]#UnsafeFromData# and [purple]#HasBlueprintSchema# 
-instances for our custom type. We use template Haskell for that that 
+instances for our custom type. We use template Haskell, that 
 requires to add two single quotes in front of the type’s name to use it as 
 an input variable. After we have defined our redeemer type we write the 
 validator logic same way as in the previous example, just that we now 
@@ -2998,6 +2998,7 @@ output [purple]#TxOut# data type.
 
 [source,haskell]
 ----
+data TxOut = TxOut
   { txOutAddress         :: Address
   , txOutValue           :: Value
   , txOutDatum           :: OutputDatum
@@ -3276,132 +3277,161 @@ donation. Both are of type [purple]#Maybe V2.Lovelace#. Learn more about
 governance features, including the topics of voting and proposal submission 
 in chapter <<Cardano governance>>.  
 
- ------------------------------------------------------------------------
-
 ==== Time-dependent and parameterized validators
 
 This section demonstrates a smart contract representing a vesting
 schema. In this scenario, a person sends a gift of ada to the smart
 contract, and the beneficiary can reclaim this gift after a set deadline
-has passed. Here is a code example:
+has passed. Such a contract can take two aproaches, depending on how the 
+validator accesses the beneficiary and deadline information: 
+
+* From the datum that is attached to the UTXO we are creating at this script address
+* From a parameter that is added as a input variable to the validator script. 
+
+First we present the aproach when the validator uses the datum of the UTXO. 
 
 [source,haskell]
 ----
-{-# LANGUAGE DataKinds         #-}
-{-# LANGUAGE NoImplicitPrelude #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE TemplateHaskell   #-}
- 
-module Vesting where
- 
-import           Data.Maybe                (fromJust)
-import           Plutus.V1.Ledger.Interval (contains)
-import           Plutus.V2.Ledger.Api      (BuiltinData, POSIXTime, 
-                                            PubKeyHash,
-                                            ScriptContext 
-                                            (scriptContextTxInfo),
-                                            TxInfo (txInfoValidRange),
-                                            Validator, from, 
-                                            mkValidatorScript)
-import           Plutus.V2.Ledger.Contexts (txSignedBy)
-import           PlutusTx                  (compile, unstableMakeIsData)
-import           PlutusTx.Prelude          (Bool, traceIfFalse, ($), (&&))
-import           Prelude                   (IO, String)
-import           Utilities                 (Network, posixTimeFromIso8601,
-                                            printDataToJSON,
-                                            validatorAddressBech32, wrap,
-                                            writeValidatorToFile)
- 
-------------------------------------------------------------------------------
------------------------------- ON-CHAIN / VALIDATOR --------------------------
- 
+{-# LANGUAGE DataKinds                  #-}
+{-# LANGUAGE DeriveAnyClass             #-}
+{-# LANGUAGE DeriveGeneric              #-}
+{-# LANGUAGE DerivingStrategies         #-}
+{-# LANGUAGE FlexibleInstances          #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE ImportQualifiedPost        #-}
+{-# LANGUAGE MultiParamTypeClasses      #-}
+{-# LANGUAGE NoImplicitPrelude          #-}
+{-# LANGUAGE OverloadedStrings          #-}
+{-# LANGUAGE PatternSynonyms            #-}
+{-# LANGUAGE ScopedTypeVariables        #-}
+{-# LANGUAGE Strict                     #-}
+{-# LANGUAGE TemplateHaskell            #-}
+{-# LANGUAGE TypeApplications           #-}
+{-# LANGUAGE UndecidableInstances       #-}
+{-# LANGUAGE ViewPatterns               #-}
+{-# OPTIONS_GHC -fno-full-laziness #-}
+{-# OPTIONS_GHC -fno-ignore-interface-pragmas #-}
+{-# OPTIONS_GHC -fno-omit-interface-pragmas #-}
+{-# OPTIONS_GHC -fno-spec-constr #-}
+{-# OPTIONS_GHC -fno-specialise #-}
+{-# OPTIONS_GHC -fno-strictness #-}
+{-# OPTIONS_GHC -fno-unbox-small-strict-fields #-}
+{-# OPTIONS_GHC -fno-unbox-strict-fields #-}
+{-# OPTIONS_GHC -fplugin-opt PlutusTx.Plugin:target-version=1.1.0 #-}
+
+module Week03.Vesting where
+
+import           GHC.Generics                  (Generic)
+import           PlutusLedgerApi.Common        (FromData (fromBuiltinData),
+                                                SerialisedScript,
+                                                serialiseCompiledCode)
+import           PlutusLedgerApi.Data.V3       (POSIXTime, PubKeyHash)
+import           PlutusLedgerApi.V1.Interval   (contains, from)
+import           PlutusLedgerApi.V3            (ScriptContext (..),
+                                                ScriptInfo (..),
+                                                TxInfo (txInfoValidRange),
+                                                getDatum)
+import           PlutusLedgerApi.V3.Contexts   (txSignedBy)
+import           PlutusTx                      (BuiltinData, CompiledCode,
+                                                UnsafeFromData (unsafeFromBuiltinData),
+                                                compile,
+                                                makeIsDataSchemaIndexed,
+                                                makeLift)
+import           PlutusTx.Blueprint            (HasBlueprintDefinition)
+import           PlutusTx.Blueprint.Definition (definitionRef)
+import           PlutusTx.Bool                 (Bool (..), (&&))
+import           PlutusTx.Prelude              (BuiltinUnit, Maybe (..), check,
+                                                traceError, traceIfFalse, ($),
+                                                (.))
+
+{- ------------------------------------------------------------------------------------------ -}
+{- ----------------------------------------- TYPES ------------------------------------------ -}
+
 data VestingDatum = VestingDatum
-    { beneficiary :: PubKeyHash
-    , deadline    :: POSIXTime
-    }
- 
-unstableMakeIsData ''VestingDatum
- 
-{-# INLINABLE mkVestingValidator #-}
-mkVestingValidator :: VestingDatum -> () -> ScriptContext -> Bool
-mkVestingValidator dat () ctx = traceIfFalse "beneficiary's signature missing" 
-                                             signedByBeneficiary &&
-                                traceIfFalse "deadline not reached" 
-                                             deadlineReached
-  where
-    info :: TxInfo
-    info = scriptContextTxInfo ctx
- 
-    signedByBeneficiary :: Bool
-    signedByBeneficiary = txSignedBy info $ beneficiary dat
- 
-    deadlineReached :: Bool
-    deadlineReached = contains (from $ deadline dat) $ txInfoValidRange info
- 
-{-# INLINABLE  mkWrappedVestingValidator #-}
-mkWrappedVestingValidator :: BuiltinData -> BuiltinData -> BuiltinData -> ()
-mkWrappedVestingValidator = wrap mkVestingValidator
- 
-validator :: Validator
-validator = mkValidatorScript $$(compile [|| mkWrappedVestingValidator ||])
- 
-------------------------------------------------------------------------------
--------------------------------- HELPER FUNCTIONS ----------------------------
- 
-saveVal :: IO ()
-saveVal = writeValidatorToFile "./assets/vesting.plutus" validator
- 
-printVestingDatumJSON :: PubKeyHash -> String -> IO ()
-printVestingDatumJSON pkh time = printDataToJSON $ VestingDatum
-    { beneficiary = pkh
-    , deadline    = fromJust $ posixTimeFromIso8601 time
-    }
+  { beneficiary :: PubKeyHash
+  , deadline    :: POSIXTime
+  }
+  deriving stock (Generic)
+  deriving anyclass (HasBlueprintDefinition)
+
+makeIsDataSchemaIndexed ''VestingDatum [('VestingDatum, 0)]
+
+{- ------------------------------------------------------------------------------------------ -}
+{- --------------------------------------- VALIDATOR ---------------------------------------- -}
+
+{-# INLINEABLE vestingVal #-}
+vestingVal :: ScriptContext -> Bool
+vestingVal ctx =
+  traceIfFalse "Is not the beneficiary" checkBeneficiary
+    && traceIfFalse "Deadline not reached" checkDeadline
+ where
+  checkBeneficiary :: Bool
+  checkBeneficiary = txSignedBy info (beneficiary vestingDatum)
+
+  checkDeadline :: Bool
+  checkDeadline = from (deadline vestingDatum) `contains` txInfoValidRange info
+
+  vestingDatum :: VestingDatum
+  vestingDatum = case scriptContextScriptInfo ctx of
+    SpendingScript _txRef (Just datum) -> case (fromBuiltinData @VestingDatum . getDatum) datum of
+      Just d  -> d
+      Nothing -> traceError "Expected correctly shaped datum"
+    _ -> traceError "Expected SpendingScript with datum"
+
+  info :: TxInfo
+  info = scriptContextTxInfo ctx
+
+{- ------------------------------------------------------------------------------------------ -}
+{- ---------------------------------------- HELPERS ----------------------------------------- -}
+
+compiledVestingVal :: CompiledCode (BuiltinData -> BuiltinUnit)
+compiledVestingVal = $$(compile [||wrappedVal||])
+ where
+  wrappedVal :: BuiltinData -> BuiltinUnit
+  wrappedVal ctx = check $ vestingVal (unsafeFromBuiltinData ctx)
+
+serializedVestingVal :: SerialisedScript
+serializedVestingVal = serialiseCompiledCode compiledVestingVal
 ----
 
-The validator uses a typed version with a custom data type for the
-datum, called [purple]#VestingDatum#. It includes two fields: [blue]#beneficiary#, of type
-[purple]#PubKeyHash#, and [blue]#deadline#, of type [purple]#POSIXTime#. The validation logic
-indicates that the funds can be unlocked only when the deadline has been
-reached and the transaction is signed by the beneficiary. The validation
-code includes helper variables [blue]#signedByBeneficiary# and [blue]#deadlineReached#,
-which are of type [purple]#Bool#. In the first variable, we use the helper
+In the begining we add all neccessary language pragmas and import 
+statements. The functions, types and type classes we import are neccessary
+to cover the functionality for both validators presented presented in this 
+section. We name the module `Week03.Vesting` since the idea for the vesting 
+contract comes from the _Week03_ examples from the Plutus pioneer program. 
+
+Then we define our [purple]#VestingDatum# datum type. It contains the 
+beneficiaries public key hash and the deadline in form of [purple]#POSIXTime#
+after which the funds can be claimed. Because we are defining a custom data 
+type we need to use the [purple]#makeIsDataSchemaIndexed# function that generates 
+the [purple]#ToData#, [purple]#FromData#, [purple]#UnsafeFromData# and 
+[purple]#HasBlueprintSchema# instances for our custom type. As stated in 
+a previous section we use template Haskell, that requires to add two single 
+quotes in front of the type’s name to use it as an input variable. 
+
+Next comes the code for the validator. The validation logic says 
+that the funds can be unlocked only when the deadline has been
+reached and the transaction is signed by the beneficiary. The helper 
+variables [blue]#checkBeneficiary# and [blue]#checkDeadline#,
+are of type [purple]#Bool#. In the first variable, we use the helper
 function [blue]#txSignedBy# that takes a transaction info and a public key
-hash and checks whether this transaction has been signed with this
-public key hash. In the second variable, we access the transaction
+hash and checks whether this transaction has been signed with the correct key 
+that belongs to the hash. In the second variable, we access the transaction
 validity range and check whether it is contained inside the interval
-starting with the deadline and going to infinity. Then, we wrap the
-validator function and compile it to a [purple]#Validator# type. In the helper
-functions section, we have the [blue]#saveVal# function that writes the
-validator to a `.plutus` file. There is also a [blue]#printVestingDatumJSON#
-function that takes a public key hash and a string, which contains the
-time in ISO 8601 format and prints the datum in JSON format to the
-terminal. If we run this function and input a date and time together
-with a public key hash, we get the following example output:
+starting with the deadline and going to infinity. As a side note we state 
+when the validity range for a transaction is being defined, that we construct 
+either with off-chain code libraries or with the use of the Cardano CLI, 
+the transaction gets processed by the node only if the time of processing 
+this transaction falls into the validity range of the transaction. 
 
-[source,shell]
-----
-Prelude> import Vesting
-Prelude Vesting> :set -XOverloadedStrings
-Prelude Vesting> import Plutus.V2.Ledger.Api
-Prelude Vesting Plutus.V1.Ledger.Api> 
-pkh1 = "cff6e39ec5b3cf84b1078976c98706b73774d2c5523af4daaf7c5109"
-Prelude Vesting Plutus.V1.Ledger.Api>
-printVestingDatumJSON pkh1 "2023-03-11T13:12:11.123Z"
-{
-	"constructor": 0,
-	"fields": [
-    		{
-        	      "bytes": "cff6e39ec5b3cf84b1078976c98706b73774d2c5523af4daaf7c5109"
-    		},
-    		{
-        	      "int": 1678540331123
-    		}
-	]
-}
-----
+In the validator code the datum gets extracted from the script context and 
+converted to typed form. In case the script purpose is incorrect, the datum 
+is not attached or has an incorrect form we raise an error and log a message.  
+At the end we wrap the validator function, compile and serialize it. 
 
-This datum can then be stored in a JSON file and later used in off-chain
-code. In the examples we have seen so far, we had one specific validator
+ ------------------------------------------------------------------------
+
+In the examples we have seen so far, we had one specific validator
 that was a Haskell value of type [purple]#Validator#. If there is any variability
 in the contract, we model that by using the datum as in the vesting
 example, where the datum contained the beneficiary and the deadline. An
