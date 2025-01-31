@@ -2900,7 +2900,7 @@ starting with the deadline and going to infinity. As a side note we state
 when the validity range for a transaction is being defined, that we construct 
 either with off-chain code libraries or with the use of the Cardano CLI, 
 the transaction gets processed by the node only if the time of processing 
-this transaction falls into the validity range of the transaction. 
+for this transaction falls into the validity range of the transaction. 
 
 Then, we wrap the validator function and compile it to a [purple]#Validator# type. 
 In the helper functions section, we have the [blue]#saveVal# function that writes the
