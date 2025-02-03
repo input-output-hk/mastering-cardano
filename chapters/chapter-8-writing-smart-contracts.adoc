@@ -2339,12 +2339,11 @@ validator = PlutusV2.mkValidatorScript $$(PlutusTx.compile
 Here, we define a new type in the code called [purple]#MySillyRedeemer#, which is
 simply a wrapper for an integer. We use this type as the redeemer and
 validate that the integer it holds is equal to 42. We can use the
-[blue]#PlutusTx.unstableMakeIsData# function to define an [purple]#UnsafeFromData#
-instance for our type. There is also a stable version of this function,
-which gives more control over the deserialization process but requires
-additional details to be provided. In template Haskell, you need to add
-two single quotes in front of the type’s name to use it as an input
-variable. This line of code also creates [blue]#toData# and [blue]#fromData# instances.
+[blue]#PlutusTx.unstableMakeIsData# function that generates [blue]#toData# and 
+[blue]#fromData# instances for our type. There is also a stable version of this 
+function, which gives more control over the deserialization process but requires
+additional details to be provided. We use template Haskell, that requires to 
+add two single quotes in front of the type that return the type’s name. 
 We can now pattern match our redeemer value in the [blue]#mkCTValidator# 
 validator function. Finally, in the separate [blue]#wrappedMkVal#
 function, we apply our [blue]#wrap# function before computing the validator.
