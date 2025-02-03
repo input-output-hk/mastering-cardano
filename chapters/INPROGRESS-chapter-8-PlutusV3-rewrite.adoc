@@ -2338,9 +2338,10 @@ At the begining we define the custom data type [purple]#MySillyRedeemer#
 that is a wrapper around the [purple]#Integer# type. Then we use the 
 [blue]#makeIsDataSchemaIndexed# function that generates the [purple]#ToData#,
 [purple]#FromData#, [purple]#UnsafeFromData# and [purple]#HasBlueprintSchema# 
-instances for our custom type. We use template Haskell, that 
-requires to add two single quotes in front of the type’s name to use it as 
-an input variable. After we have defined our redeemer type we write the 
+instances for our custom type which contain functions for converting our custom 
+data type to the [purple]#Data# type back and forth. We use template Haskell, 
+that requires to add two single quotes in front of the type that return the 
+type’s name. After we have defined our redeemer type we write the 
 validator logic same way as in the previous example, just that we now 
 convert the redeemer from [purple]#BuiltinData# to the [purple]#MySillyRedeemer# 
 type. We compile and serialize the validator same way as in the previous example. 
@@ -3344,8 +3345,8 @@ import           PlutusTx.Prelude              (BuiltinUnit, Maybe (..), check,
                                                 traceError, traceIfFalse, ($),
                                                 (.))
 
-{- ------------------------------------------------------------------------------------------ -}
-{- ----------------------------------------- TYPES ------------------------------------------ -}
+{- ------------------------------------------------------------------------------ -}
+{- ----------------------------------- TYPES ------------------------------------ -}
 
 data VestingDatum = VestingDatum
   { beneficiary :: PubKeyHash
@@ -3356,8 +3357,8 @@ data VestingDatum = VestingDatum
 
 makeIsDataSchemaIndexed ''VestingDatum [('VestingDatum, 0)]
 
-{- ------------------------------------------------------------------------------------------ -}
-{- --------------------------------------- VALIDATOR ---------------------------------------- -}
+{- ------------------------------------------------------------------------------ -}
+{- --------------------------------- VALIDATOR ---------------------------------- -}
 
 {-# INLINEABLE vestingVal #-}
 vestingVal :: ScriptContext -> Bool
@@ -3373,16 +3374,17 @@ vestingVal ctx =
 
   vestingDatum :: VestingDatum
   vestingDatum = case scriptContextScriptInfo ctx of
-    SpendingScript _txRef (Just datum) -> case (fromBuiltinData @VestingDatum . getDatum) datum of
-      Just d  -> d
-      Nothing -> traceError "Expected correctly shaped datum"
+    SpendingScript _txRef (Just datum) -> 
+      case (fromBuiltinData @VestingDatum . getDatum) datum of
+        Just d  -> d
+        Nothing -> traceError "Expected correctly shaped datum"
     _ -> traceError "Expected SpendingScript with datum"
 
   info :: TxInfo
   info = scriptContextTxInfo ctx
 
-{- ------------------------------------------------------------------------------------------ -}
-{- ---------------------------------------- HELPERS ----------------------------------------- -}
+{- ------------------------------------------------------------------------------ -}
+{- ---------------------------------- HELPERS ----------------------------------- -}
 
 compiledVestingVal :: CompiledCode (BuiltinData -> BuiltinUnit)
 compiledVestingVal = $$(compile [||wrappedVal||])
@@ -3407,7 +3409,7 @@ type we need to use the [purple]#makeIsDataSchemaIndexed# function that generate
 the [purple]#ToData#, [purple]#FromData#, [purple]#UnsafeFromData# and 
 [purple]#HasBlueprintSchema# instances for our custom type. As stated in 
 a previous section we use template Haskell, that requires to add two single 
-quotes in front of the type’s name to use it as an input variable. 
+quotes in front of the type to return the type’s name. 
 
 Next comes the code for the validator. The validation logic says 
 that the funds can be unlocked only when the deadline has been
@@ -3421,7 +3423,7 @@ validity range and check whether it is contained inside the interval
 starting with the deadline and going to infinity. As a side note we state 
 when the validity range for a transaction is being defined, that we construct 
 either with off-chain code libraries or with the use of the Cardano CLI, 
-the transaction gets processed by the node only if the time of processing 
+the transaction gets processed by the node only if the time of submission 
 for this transaction falls into the validity range of the transaction. 
 
 In the validator code the datum gets extracted from the script context and 
@@ -3429,122 +3431,71 @@ converted to typed form. In case the script purpose is incorrect, the datum
 is not attached or has an incorrect form we raise an error and log a message.  
 At the end we wrap the validator function, compile and serialize it. 
 
- ------------------------------------------------------------------------
-
-In the examples we have seen so far, we had one specific validator
-that was a Haskell value of type [purple]#Validator#. If there is any variability
-in the contract, we model that by using the datum as in the vesting
-example, where the datum contained the beneficiary and the deadline. An
-alternative approach is parameterized contracts, where variability is
-integrated into the contract by adding a parameter variable to the
-validator function. The code below shows this, containing a modified
-version of the previous code example:
+In the examples we have seen so far, the validators took in a single parameter, 
+the script context and returned a bool or a builtin unit. If there is any variability 
+in the contract, we model that by using the datum as in the vesting example, that 
+contained the beneficiary and the deadline. An alternative approach are parameterized 
+contracts, where variability is integrated into the contract by adding a parameter 
+variable to the validator function. The code below shows this, containing a modified 
+version of the previous vesting code example. 
 
 [source,haskell]
 ----
-{-# LANGUAGE DataKinds             #-}
-{-# LANGUAGE MultiParamTypeClasses #-}
-{-# LANGUAGE NoImplicitPrelude     #-}
-{-# LANGUAGE OverloadedStrings     #-}
-{-# LANGUAGE ScopedTypeVariables   #-}
-{-# LANGUAGE TemplateHaskell       #-}
- 
-module ParameterizedVesting where
- 
-import           Plutus.V1.Ledger.Interval (contains)
-import           Plutus.V2.Ledger.Api      (BuiltinData, POSIXTime, 
-                                            PubKeyHash,
-                                            ScriptContext 
-                                            (scriptContextTxInfo),
-                                            TxInfo (txInfoValidRange),
-                                            Validator, from, 
-                                            mkValidatorScript)
-import           Plutus.V2.Ledger.Contexts (txSignedBy)
-import           PlutusTx                  (applyCode, compile, liftCode,
-                                            makeLift)
-import           PlutusTx.Prelude          (Bool, traceIfFalse, ($), (&&), 
-                                            (.))
-import           Prelude                   (IO)
-import           Utilities                 (wrapValidator, 
-                                            writeValidatorToFile)
- 
-------------------------------------------------------------------------------
----------------------------- ON-CHAIN / VALIDATOR ----------------------------
- 
+{- ------------------------------------------------------------------------------ -}
+{- ---------------------------- PARAMETERIZED TYPES ----------------------------- -}
+
 data VestingParams = VestingParams
-    { beneficiary :: PubKeyHash
-    , deadline    :: POSIXTime
-    }
+  { beneficiaryParam :: PubKeyHash
+  , deadlineParam    :: POSIXTime
+  }
+  deriving stock (Generic)
+  deriving anyclass (HasBlueprintDefinition)
+
 makeLift ''VestingParams
- 
-{-# INLINABLE mkParameterizedVestingValidator #-}
-mkParameterizedVestingValidator :: VestingParams -> () -> () -> 
-                                   ScriptContext -> Bool
-mkParameterizedVestingValidator params () () ctx =
-    traceIfFalse "beneficiary's signature missing" signedByBeneficiary &&
-    traceIfFalse "deadline not reached" deadlineReached
-  where
-    info :: TxInfo
-    info = scriptContextTxInfo ctx
- 
-    signedByBeneficiary :: Bool
-    signedByBeneficiary = txSignedBy info $ beneficiary params
- 
-    deadlineReached :: Bool
-    deadlineReached = contains (from $ deadline params) $ 
-                               txInfoValidRange info
- 
-{-# INLINABLE  mkWrappedParameterizedVestingValidator #-}
-mkWrappedParameterizedVestingValidator :: VestingParams -> BuiltinData -> 
-                                          BuiltinData -> BuiltinData -> ()
-mkWrappedParameterizedVestingValidator = wrapValidator . 
-                                         mkParameterizedVestingValidator
- 
-validator :: VestingParams -> Validator
-validator params = mkValidatorScript ($$(compile [||
-                                  	  mkWrappedParameterizedVestingValidator    
-                                      ||]) `applyCode` liftCode params)  
- 
-------------------------------------------------------------------------------
------------------------------ HELPER FUNCTIONS -------------------------------
- 
-saveVal :: VestingParams -> IO ()
-saveVal = writeValidatorToFile "./assets/parameterized-vesting.plutus" .
-                      	       validator
+makeIsDataSchemaIndexed ''VestingParams [('VestingParams, 0)]
+
+{- ------------------------------------------------------------------------------ -}
+{- -------------------------- PARAMETERIZED VALIDATOR --------------------------- -}
+
+{-# INLINEABLE paramVestingVal #-}
+paramVestingVal :: VestingParams -> ScriptContext -> Bool
+paramVestingVal vp ctx =
+  traceIfFalse "Is not the beneficiary" checkBeneficiary
+    && traceIfFalse "Deadline not reached" checkDeadline
+ where
+  checkBeneficiary :: Bool
+  checkBeneficiary = txSignedBy info (beneficiaryParam vp)
+
+  checkDeadline :: Bool
+  checkDeadline = from (deadlineParam vp) `contains` txInfoValidRange info
+
+  info :: TxInfo
+  info = scriptContextTxInfo ctx
+
+{- ------------------------------------------------------------------------------ -}
+{- ---------------------------------- HELPERS ----------------------------------- -}
+
+compiledParamVestingVal :: CompiledCode (BuiltinData -> BuiltinData -> BuiltinUnit)
+compiledParamVestingVal = $$(compile [||wrappedVal||])
+ where
+  wrappedVal :: BuiltinData -> BuiltinData -> PlutusTx.Prelude.BuiltinUnit
+  wrappedVal params ctx = check $ paramVestingVal (unsafeFromBuiltinData params) 
+                                                  (unsafeFromBuiltinData ctx)
+
+serializedParamVestingVal :: SerialisedScript
+serializedParamVestingVal = serialiseCompiledCode compiledParamVestingVal
 ----
 
 First, we create the [purple]#VestingParams# type, which was previously called
 [purple]#VestingDatum#. It holds the beneficiary’s public key hash and the
-deadline after which the beneficiary can claim the funds. We do not need
-the [blue]#unstableMakeIsData# instance. The type signature of the validator
-function changes such that it takes the additional vesting parameter.
-Additionally, the datums type changes to unit. We note that a validator
-function can take any number of parameters. Our example uses only one
-parameter. Then, for the input arguments of the validator function, we
-add the parameter [blue]#params# and change the [blue]#dat# parameter to unit. We
-also need to update the type signature of the
-[blue]#mkWrappedParameterizedVestingValidator# function. We then write the
-body of the function with point free style using only the dot `.` operator
-that we have to import. For the [blue]#validator#, we expect a function
-instead of a single value, so we update its type signature accordingly,
-which now represents a family of validators. Now, in the body of the
-validator, we cannot simply pass the input parameter to the
-[blue]#mkWrappedParameterizedVestingValidator# function. Because we are using
-template Haskell, all the data that template Haskell splices must be
-known at compile time because this step runs before our program is even
-compiled. However, the parameter we are passing to the validator
-function is only known at runtime. So, template Haskell does not know
-what code to generate and splice into the source code. What we can do is
-apply the compiled validator function to the compiled input parameter
-because the compiled validator function in Plinth script is still a
-function. We do this with the help of the [blue]#applyCode# function, which
-allows us to pass a parameter to a script function. But we still need to
-know the value of the input parameter at compile time, which is not
-possible. Note that the input parameter is not some arbitrary Haskell
-function, it is static data, which you can pass at runtime to a script
-function if you create an instance of the type class [purple]#Lift#. Then, we only
-need to apply the function [blue]#liftCode# to the data to compile the input
-parameter at runtime. Let us take a look at the [purple]#Lift# class:
+deadline after which the beneficiary can claim the funds. Then we again use 
+Template Haskell and generate the neccessary instances for our custom type. 
+We also use the [blue]#makeLift# function that generates for our custom data 
+type an instance of the [purple]#Lift# type class. This line only compiles if 
+the [purple]#MultiParamTypeClasses# and [purple]#ScopedTypeVariables# language 
+extensions are enabled. An instance of the [purple]#Lift# type class is needed 
+in order that a validator containing a parameter can be compiled even though the 
+parameter is not know at the time of compilation. 
 
 [source,haskell]
 ----
@@ -3554,41 +3505,30 @@ class Lift uni a where
 ----
 
 It contains only the [blue]#lift# method, but we will not use that directly.
-There are a lot of instances for this type class for all possible data
-types such as [purple]#BuiltinData#, [purple]#Data#, [purple]#Integer# and 
+There are a lot of instances for existing Plutus type in this type class such as 
+[purple]#BuiltinData#, [purple]#BuiltinString#, [purple]#BuiltinInteger# and 
 [purple]#Bool#. However, this is not used for functions, as they cannot be 
-used to compile Haskell to Plutus validators. The `PlutusTx` module defines 
-this type class, and the [blue]#liftCode# function:
+used to compile Haskell to Plutus validators. 
 
-[source,haskell]
-----
-liftCode
-    :: ( Lift.Lift uni a, PLC.GEq uni, ThrowableBuiltins uni fun, PLC.Typecheckable uni fun
-       , Default (PLC.CostingPart uni fun)
-       , Default (PIR.BuiltinsInfo uni fun)
-       , Default (PIR.RewriteRules uni fun)
-       , Hashable fun
-       )
-    => PLC.Version -> a -> CompiledCodeIn uni fun a
-----
+The reason why it is possible to compile a parameterized validator in Plutus is 
+because the input parameter is not some arbitrary Haskell function, it is static 
+data, which you can pass at runtime to a script function if you create an instance 
+of the [purple]#Lift# type class. 
 
-The input variable of type a must-have an instance of the [purple]#Lift# type
-class. Because we are using a custom defined type in our on-chain code,
-we can use a template Haskell mechanism to define an instance for our
-type. We do this with the following code:
+Next comes the validator code. The type signature of the validator function 
+changes such that it takes the additional vesting parameter. We note that a 
+validator function can take any number of parameters. Our example uses only one
+parameter. In the body of the validator function we now read the deadline and 
+the beneficiaries public key hash from the verstin parameter. Apart from that 
+the logic of the validator stays the same. Then the validator gets compiled and 
+serialized. When compiling the validator another type parameter needs to be 
+added to the type signatures and we also need to apply the [blue]#unsafeFromBuiltinData# 
+function to the vesting parameter in order to wrap the validator before compiling it. 
 
-[source,shell]
-----
-makeLift ''VestingParams
-----
+This concludes the procedure of writing a parameterized contract. An example of 
+applying more then one parameter is included in section <<Minting policies>>. 
 
-This line only compiles if the [purple]#MultiParamTypeClasses# and
-[purple]#ScopedTypeVariables# language extensions are enabled.
-
-We have now presented the procedure on writing parameterized contracts.
-If there would be more than one parameter, we would need to use the
-[blue]#applyCode# function multiple times for each of the lifted parameters one
-after the other. An example is included in section <<Minting policies>>.
+ ------------------------------------------------------------------------ 
 
 ==== Off-chain code with MeshJS
 
