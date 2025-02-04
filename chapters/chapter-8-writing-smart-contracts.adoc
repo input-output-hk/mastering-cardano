@@ -1941,11 +1941,12 @@ typed validation scripts.
 
 This chapter focuses on the data types defined for PlutusV2 scripts. The
 data type for the low-level validation script implementation is called
-[purple]#BuiltinData#. It contains two conversion functions, [blue]#builtinDataToData#
-and [blue]#dataToBuiltinData#, which can convert back and forth to the
-[purple]#Data# type. Those functions only work in off-chain code but not 
-in on-chain code. The [purple]#Data# type has its constructor exposed, as
-illustrated in the image below:
+[purple]#BuiltinData#. It doesn't have its constructors exposed, but the module 
+that defines [purple]#BuiltinData# also contains two conversion functions, 
+[blue]#builtinDataToData# and [blue]#dataToBuiltinData#, which can convert 
+[purple]#BuiltinData# back and forth to the [purple]#Data# type. Those functions 
+only work in off-chain code but not in on-chain code. The [purple]#Data# type has 
+its constructor exposed, as illustrated in the image below:
 
 [source,haskell]
 ----
