@@ -1873,7 +1873,7 @@ https://plutus.cardano.intersectmbo.org/haddock/latest/[Plutus haddock
 documentation], which presents types in Haskell syntax. Press CTRL + S
 to search for a keyword, such as a specific data type or function name.
 The search engine might provide more options for a single data type, function 
-or type class that you are queriying. This is because implementations 
+or type class that you are querying. This is because implementations 
 of types, functions and type clases can change with a new Plutus version 
 and the haddock documentation keeps track of all of them. 
 After locating the desired item, click the _Source_ icon next to its
@@ -1902,11 +1902,11 @@ pipeline which will be in detail explained in section <<Plutus security>>.
 ==== Simple validation scripts
 
 A validation script or validator is the smart contract program that
-checks whether funds at a script address are allowed to be spend by a
+checks whether funds at a script address are allowed to be spent by a
 given transaction. The script uses a single parameter: the script  
-context. It contains following information: 
+context. It contains the following information: 
 
-* The datum which is an arbitrary piece of data associated with the UTXO
+* The datum, which is an arbitrary piece of data associated with the UTXO
 we want to spend. A UTXO does not necessary have a datum associated with it. 
 * The redeemer is an arbitrary piece of data provided when creating a
 transaction, used to unlock funds at a UTXO, similar to a private key in
@@ -1933,11 +1933,12 @@ to as untyped validation scripts, while high-level scripts are known as
 typed validation scripts.
 
 The data type for the low-level validation script implementation is called
-[purple]#BuiltinData#. It doesn't have its constructors exposed but it contains 
-two conversion functions, [blue]#builtinDataToData# and [blue]#dataToBuiltinData#, 
-which can convert back and forth to the [purple]#Data# type. Those functions only 
-work in off-chain code but not in on-chain code. The [purple]#Data# type has its 
-constructor exposed, as illustrated in the code below:
+[purple]#BuiltinData#. It doesn't have its constructors exposed, but the module 
+that defines [purple]#BuiltinData# also contains two conversion functions, 
+[blue]#builtinDataToData# and [blue]#dataToBuiltinData#, which can convert 
+[purple]#BuiltinData# back and forth to the [purple]#Data# type. Those functions 
+only work in off-chain code but not in on-chain code. The [purple]#Data# 
+type has its constructor exposed, as illustrated in the code below:
 
 [source,haskell]
 ----
@@ -2034,12 +2035,12 @@ coding. Then, we import several submodules from the `PlutusLedgerApi` and the
 `PlutusTx` modules that define functions for working with PlutusV3 scripts. 
 
 After that follows the on-chain validator code.
-We name the validator function [blue]#mkGiftValidator#. It is a untyped validator 
+We name the validator function [blue]#mkGiftValidator#. It is an untyped validator 
 that always succeeds. It takes in the script context as the only argument which is 
 of type [purple]#BuiltinData# and returns something of type [purple]#BuiltinUnit#. 
 In the body of the function, all input values are ignored, and we use the [blue]#check# 
-function which takes a bool and it returns a value of type [purple]#BuiltinUnit# 
-in case the input argument is true or raises an error if it is false. 
+function which takes a value of type [purple]#Bool#, and it returns a value of type 
+[purple]#BuiltinUnit# in case the input argument is true or raises an error if it is false. 
 
 [source,haskell]
 ----
@@ -2136,7 +2137,7 @@ data ScriptContext = ScriptContext
   deriving anyclass (HasBlueprintDefinition)
 ----
 
-In the <<Plutus smart contracts>> section we will focus focuses on data types defined 
+The <<Plutus smart contracts>> section focuses on data types defined 
 for PlutusV3 scripts. The script context contains the transaction information, the 
 redeemer and the script info data types. We will look into those data types in more 
 detail in section <<Script context explained>>. We only show here the redeemer data 
@@ -2206,7 +2207,7 @@ is a wrapper around the [purple]#BuiltinData# type. Then we again try to convert
 that type, in this case to an [purple]#Integer#. Now that the redeemer is in the 
 correct form, we can simply check if it is equal to 42 and return the [blue]#unitval# 
 variable or raise an error and log a message. We could also use the [blue]#check#
-function as we did in our previous exaples. After that we compile and serialize 
+function as we did in our previous examples. After that we compile and serialize 
 the validator. 
 
 The reason why we stated _"large CBOR"_ in the comment above the code is that 
@@ -2249,7 +2250,7 @@ serializedMk42ValidatorSmall = serialiseCompiledCode compiledMk42ValidatorSmall
 
 First we define a function called [blue]#constrArgs# that helps us to 
 convert the [purple]#BuiltinData# to the [purple]#BuiltinList# type. We 
-recall that the script context is a algebraic produc type that combines 
+recall that the script context is an algebraic product type that combines 
 the transaction info, redeemer and script info types with a logical `AND`. 
 Once we have converted the script context to a builtin list we can use the 
 [blue]#tail# and [blue]#head# functions to extract the element we need. 
@@ -2262,7 +2263,7 @@ compile and then serialize the validator.
 
 We note that in the case the redeemer would be a more structured algebraic 
 data type we could further decode it with the [blue]#constrArgs#, [blue]#tail# 
-and [blue]#head# functions or we could use the [blue]#fromBuiltinData# function 
+and [blue]#head# functions, or we could use the [blue]#fromBuiltinData# function 
 to convert it to its typed form and then access the elements we need. 
 
 Let us look now at the same validator that is written in a typed form. 
@@ -2292,14 +2293,14 @@ serializedMk42TypedValidator = serialiseCompiledCode compiledMk42TypedValidator
 
 The type signature now changes to `ScriptContext -> Bool` which means 
 the validator succeeds if the logic returns `True` and fails if it returns 
-`False`. We can now access the redeemer directly from the the script context 
+`False`. We can now access the redeemer directly from the script context 
 in its typed form and then try to convert the data inside the redeemer from 
 [purple]#BuiltinData# to [purple]#Integer#. The issue we have now is that 
-we can no longer compile our validator because it is in typed form. So we wrapp 
+we can no longer compile our validator because it is in typed form. So we wrap 
 it such that we use the [blue]#unsafeFromBuiltinData# that converts the 
 script context from its untyped form to typed and then apply the 
 [blue]#mk42TypedValidator# and [blue]#check# functions. After that we can 
-compile the wrapped validator and serialze it.  
+compile the wrapped validator and serialize it.  
 
 At the end we can look at one final 42 validator example where we define 
 a custom redeemer type that is a wrapper around an [purple]#Integer# type. 
@@ -2334,7 +2335,7 @@ serializedMk42CustomValidator :: SerialisedScript
 serializedMk42CustomValidator = serialiseCompiledCode compiledMk42CustomValidator
 ----
 
-At the begining we define the custom data type [purple]#MySillyRedeemer# 
+At the beginning we define the custom data type [purple]#MySillyRedeemer# 
 that is a wrapper around the [purple]#Integer# type. Then we use the 
 [blue]#makeIsDataSchemaIndexed# function that generates the [purple]#ToData#,
 [purple]#FromData#, [purple]#UnsafeFromData# and [purple]#HasBlueprintSchema# 
@@ -2466,14 +2467,14 @@ preamble =
     }
 ----
 
-We firt define all language pragmas and import necessary modules including the 
+We first define all language pragmas and import necessary modules including the 
 `Week02.Validators` module where we have defined our validators from this section. 
 In the [blue]#main# function we write the blueprint to a `JSON` file and after 
 that comes the blueprint definition. It contains the contract ID, the preamble 
 that defines some general information, the contract validators, which we will 
-define next and the contract definitions. The definitions include a list of types 
-that we have used in the validator code beside the types of the validator type 
-signature. After that we see the [blue]#preamble# definition. Next we show the 
+define next, and the contract definitions. The definitions include a list of types 
+that we have used in the validator code, beside the types of the validator type 
+signature. After that, we see the [blue]#preamble# definition. Next we show the 
 validator blueprint definitions. We show only definitions for two validators 
 instead of the six we have defined in this section to shorten the output. 
 
@@ -2519,12 +2520,12 @@ mk42ValSmall =
     }
 ----
 
-For every validator we can use the boilerplate code to define a blueprint. 
+For every validator we can use boilerplate code to define a blueprint. 
 The blueprint defines the validator title, description, redeemer information, 
 datum information and the compiled code which we reference from the `Week02` 
-module that we have imported. Below is an example blueprint for the above 
-code. The extend the blueprint code such that it generates the data and 
-compiled code for all six validators we have defined in this section. 
+module that we have imported. One can simply extend the blueprint code such that 
+it generates the data and compiled code for all six validators we have defined 
+in this section. Below is an example blueprint for the above code. 
 
 [source,json]
 ----
@@ -2677,9 +2678,9 @@ executable gen-blueprint
 ----
 
 In the `.cabal` we define our compiler options, the library where our validator
-code resides and its build depends that lists Plutus packages needed by our validator 
+code resides and the build depends that lists Plutus packages needed by our validator 
 code. At the end we define the executable project which tells cabal which file is the 
-entry point for compiling the project and we list also here the build depends. We name 
+entry point for compiling the project, and we list also here the build depends. We name 
 the file with the code for generating blueprints `GenBlueprint.hs`. Our project should 
 be structured the following way:
 
@@ -2705,8 +2706,8 @@ cabal update
 cabal run 
 ----
 
-At the end we note that the `.cabal` file shown here lists all plutus libraries 
-needed to compile any plutus code presented in the <<Plutus smart contracts>>
+At the end we note that the `.cabal` file shown here lists all Plutus libraries 
+needed to compile any Plutus code presented in the <<Plutus smart contracts>>
 section. So it can be reused when compiling code from other sections that we 
 will present next. One only needs to add the module names under the `exposed-modules:`
 section and also update the `GenBlueprint.hs` file with additional blueprint definitions. 
@@ -2730,7 +2731,7 @@ It contains transaction information, the redeemer and script information.
 If a transaction tries to spend multiple UTXOs at a script address, the 
 spending script is run for every UTXO individually. The redeemer and the 
 script information are individually assigned for every UTXO in that transaction. 
-The transaction information is only one and is accessible to to every script 
+The transaction information is only one and is accessible to every script 
 that is being triggered by a single transaction. 
 
 *Script information* 
@@ -2802,7 +2803,7 @@ The reason transaction hashes are unique is because a new transaction hash inclu
 the hash of the transaction that created the UTXO being consumed. Every transaction is
 consuming at least one UTXO as it needs to pay some fees. By a simple induction 
 argument, it follows that two identical transaction hashes can never exist. 
-We also realy on the fact that the probability of a hash collision is negligible. 
+We also rely on the fact that the probability of a hash collision is negligible. 
 
 The [purple]#TxId# data type that represents an SHA-256 hash of the transaction 
 is a wrapper around a [purple]#BuiltinByteString#. 
@@ -2817,7 +2818,7 @@ newtype TxId = TxId {getTxId :: PlutusTx.BuiltinByteString}
     via LedgerBytes
 ----
 
-For PlutusV3 scripts a datum is no longer neccessary to be attached to a UTXO 
+For PlutusV3 scripts a datum is no longer necessary to be attached to a UTXO 
 when creating it at a script address as it was the case for PlutusV2 scripts. 
 For this reason the script info for a spending script contains a maybe datum. 
 
@@ -2829,9 +2830,9 @@ newtype Datum = Datum {getDatum :: BuiltinData}
   deriving anyclass (NFData, HasBlueprintDefinition)
 ----
 
-The [purple]#Datum# type is same as the [purple]#Redeemer# tpye a wrapper 
+The [purple]#Datum# type is same as the [purple]#Redeemer# type a wrapper 
 around the [purple]#BuiltinData# type. The datum allows information being 
-attached to a UTXO that can then be accessed withing the validation script 
+attached to a UTXO that can then be accessed within the validation script 
 logic. We note that the redeemer is defined when we construct a spending 
 transaction that consumes one or more UTXOs at a script address, and the 
 datum is defined when we construct a producing transaction that creates 
@@ -2839,7 +2840,7 @@ one or more UTXOs at a script address. We will see examples of how to
 construct producing and spending transactions in section 
 <<Off-chain code with MeshJS>>.
 
-The third option for a script purspose is rewarding that is used for 
+The third option for a script purpose is rewarding that is used for 
 withdrawing staking rewards. The rewarding constructor carries the 
 [purple]#Credential# data type. 
 
@@ -2866,7 +2867,7 @@ Other possibilities for the [purple]#ScriptInfo# data type cover the
 following script purposes: 
 
 * Certifying - is for issuing certificates. 
-* Voting and proposing - are used when government actions are invloved. 
+* Voting and proposing - are used when government actions are involved. 
 
 In the <<Plutus smart contracts>> section we will focus on the spending, 
 minting and rewarding script purposes. 
@@ -2925,8 +2926,8 @@ once the [blue]#tail# function and the [blue]#head# function to extract it. Beca
 we now have something of type [purple]#Maybe V2.Datum# we can not directly convert 
 it to an integer. We again use the [blue]#constrArgs# function and then only once 
 the [blue]#head# function since there should be only one element in the list which 
-is the datum. After that we have the datum in untyped form and we can apply the 
-[blue]#unsafeDataAsI# function to convert it to a integer number. 
+is the datum. After that we have the datum in untyped form, and we can apply the 
+[blue]#unsafeDataAsI# function to convert it to an integer number. 
 
 In case the datum was not attached to the UTXO or the datum has a different format 
 this validator will fail without a used defined error message. If we do manage to 
@@ -2937,7 +2938,7 @@ to typed form where extracting any information can be done in a simpler way.
 
 *Transaction information* 
 
-Let us look at the at the transaction information [purple]#TxInfo# data type. 
+Let us look at the transaction information [purple]#TxInfo# data type. 
 
 [source,haskell]
 ----
@@ -2993,7 +2994,7 @@ data TxInInfo = TxInInfo
 ----
 
 A transaction input information contains a transaction output reference 
-that we have previously exaplained. It defines the input UTXO. And it also 
+that we have previously explained. It defines the input UTXO. And it also 
 contains resolved transaction input information in form of the transaction 
 output [purple]#TxOut# data type.  
 
@@ -3009,7 +3010,7 @@ data TxOut = TxOut
   deriving anyclass (NFData, HasBlueprintDefinition)
 ----
 
-A transaction output of a UTXO contains the adress this UTXO is residing, 
+A transaction output of a UTXO contains the address this UTXO is residing, 
 the value it contains, the output datum and possibly a script hash. We look 
 first at the [purple]#Address# type. 
 
@@ -3061,7 +3062,7 @@ as the hash of the minting policy, and the token name can be an arbitrary string
 (but should not be longer than 32 bytes). The `ada` token is defined by an empty 
 byte string both for currency symbol and token name, which means one cannot mint ada. 
 
-The third part of a a transaction output is the [purple]#OutputDatum# data type. 
+The third part of a transaction output is the [purple]#OutputDatum# data type. 
 
 [source,haskell]
 ----
@@ -3142,13 +3143,13 @@ following certificates:
 
 [arabic]
 . Registering staking credential with an optional deposit amount
-. Un-Register staking credential with an optional refund amount 
+. Unregister staking credential with an optional refund amount 
 . Delegate staking credential to a Delegatee
 . Register and delegate staking credential to a Delegatee in one certificate 
   (deposit is mandatory) 
 . Register a DRep with a deposit value 
 . Update a DRep 
-. UnRegister a DRep with mandatory refund value
+. Unregister a DRep with mandatory refund value
 . A digest of the PoolParams 
 . The retirement certificate and the Epoch in which the retirement will take place
 . Authorize a Hot credential for a specific Committee member's cold credential
@@ -3262,7 +3263,7 @@ data ScriptPurpose
 ----
 
 It is structured same way as the [purple]#ScriptInfo# data type except that 
-the constructor names are different and the Spending constructor holds only 
+the constructor names are different, and the _Spending_ constructor holds only 
 a transaction output reference without a maybe datum. Which is the case in 
 the [purple]#ScriptInfo# data type. The keys for the datums are datum hashes 
 that map to actual datums. 
@@ -3283,13 +3284,13 @@ in chapter <<Cardano governance>>.
 This section demonstrates a smart contract representing a vesting
 schema. In this scenario, a person sends a gift of ada to the smart
 contract, and the beneficiary can reclaim this gift after a set deadline
-has passed. Such a contract can take two aproaches, depending on how the 
+has passed. Such a contract can take two approaches, depending on how the 
 validator accesses the beneficiary and deadline information: 
 
 * From the datum that is attached to the UTXO we are creating at this script address
-* From a parameter that is added as a input variable to the validator script. 
+* From a parameter that is added as an input variable to the validator script. 
 
-First we present the aproach when the validator uses the datum of the UTXO. 
+First we present the approach when the validator uses the datum of the UTXO. 
 
 [source,haskell]
 ----
@@ -3396,11 +3397,11 @@ serializedVestingVal :: SerialisedScript
 serializedVestingVal = serialiseCompiledCode compiledVestingVal
 ----
 
-In the begining we add all neccessary language pragmas and import 
-statements. The functions, types and type classes we import are neccessary
-to cover the functionality for both validators presented presented in this 
-section. We name the module `Week03.Vesting` since the idea for the vesting 
-contract comes from the _Week03_ examples from the Plutus pioneer program. 
+In the beginning we add all necessary language pragmas and import 
+statements. The functions, types and type classes we import are necessary 
+to cover the functionality for both validators presented in this section. 
+We name the module `Week03.Vesting` since the idea for the vesting contract 
+comes from the _Week03_ examples from the Plutus pioneer program. 
 
 Then we define our [purple]#VestingDatum# datum type. It contains the 
 beneficiaries public key hash and the deadline in form of [purple]#POSIXTime#
@@ -3432,12 +3433,12 @@ is not attached or has an incorrect form we raise an error and log a message.
 At the end we wrap the validator function, compile and serialize it. 
 
 In the examples we have seen so far, the validators took in a single parameter, 
-the script context and returned a bool or a builtin unit. If there is any variability 
-in the contract, we model that by using the datum as in the vesting example, that 
-contained the beneficiary and the deadline. An alternative approach are parameterized 
-contracts, where variability is integrated into the contract by adding a parameter 
-variable to the validator function. The code below shows this, containing a modified 
-version of the previous vesting code example. 
+the script context and returned a [purple]#Bool# or a [purple]#BuiltinUnit#. If 
+there is any variability in the contract, we model that by using the datum as in 
+the vesting example, that contained the beneficiary and the deadline. An alternative 
+approach are parameterized contracts, where variability is integrated into the contract 
+by adding a parameter variable to the validator function. The code below shows this, 
+containing a modified version of the previous vesting code example. 
 
 [source,haskell]
 ----
@@ -3489,13 +3490,13 @@ serializedParamVestingVal = serialiseCompiledCode compiledParamVestingVal
 First, we create the [purple]#VestingParams# type, which was previously called
 [purple]#VestingDatum#. It holds the beneficiary’s public key hash and the
 deadline after which the beneficiary can claim the funds. Then we again use 
-Template Haskell and generate the neccessary instances for our custom type. 
+Template Haskell and generate the necessary instances for our custom type. 
 We also use the [blue]#makeLift# function that generates for our custom data 
 type an instance of the [purple]#Lift# type class. This line only compiles if 
 the [purple]#MultiParamTypeClasses# and [purple]#ScopedTypeVariables# language 
 extensions are enabled. An instance of the [purple]#Lift# type class is needed 
 in order that a validator containing a parameter can be compiled even though the 
-parameter is not know at the time of compilation. 
+parameter is not known at the time of compilation. 
 
 [source,haskell]
 ----
@@ -3518,15 +3519,15 @@ of the [purple]#Lift# type class.
 Next comes the validator code. The type signature of the validator function 
 changes such that it takes the additional vesting parameter. We note that a 
 validator function can take any number of parameters. Our example uses only one
-parameter. In the body of the validator function we now read the deadline and 
-the beneficiaries public key hash from the verstin parameter. Apart from that 
+parameter. In the body of the validator function, we now read the deadline and 
+the beneficiaries public key hash from the vesting parameter. Apart from that, 
 the logic of the validator stays the same. Then the validator gets compiled and 
-serialized. When compiling the validator another type parameter needs to be 
-added to the type signatures and we also need to apply the [blue]#unsafeFromBuiltinData# 
+serialized. When compiling the validator, another type parameter needs to be 
+added to the type signatures, and we also need to apply the [blue]#unsafeFromBuiltinData# 
 function to the vesting parameter in order to wrap the validator before compiling it. 
 
 This concludes the procedure of writing a parameterized contract. An example of 
-applying more then one parameter is included in section <<Minting policies>>. 
+applying more than one parameter is included in section <<Minting policies>>. 
 
  ------------------------------------------------------------------------ 
 
