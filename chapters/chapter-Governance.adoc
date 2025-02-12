@@ -1,5 +1,8 @@
 ____
-As governance is unfolding on a daily/weekly basis, i'm working on this via google docs, as easier to share with proof readers.
+TO DO:
+- Update chapter up to Plomin hard fork
+- move from googledoc to here
+- Asciidoc format = https://gist.github.com/powerman/d56b2675dfed38deb298
 
 
 A draft is in the doc linked below, shared with SMEs for review:
