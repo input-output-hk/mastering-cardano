@@ -1,4 +1,5 @@
 = TO DO:
+
 - Update chapter up to Plomin hard fork
 - move from googledoc to here
 - Asciidoc format = https://gist.github.com/powerman/d56b2675dfed38deb298
