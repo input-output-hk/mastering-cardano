@@ -7,7 +7,7 @@
 
 A draft is in the doc linked below, shared with SMEs for review:
 https://docs.google.com/document/d/1KygJtqqvUmdnHp5_6-JRy7EheBTsaphq/edit
-_______________________________________________________________________
+
 
 = Chapter 5: Cardano governance 
 
