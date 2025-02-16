@@ -7,7 +7,7 @@
 
 A draft is in the doc linked below, shared with SMEs for review:
 https://docs.google.com/document/d/1KygJtqqvUmdnHp5_6-JRy7EheBTsaphq/edit
-____
+_______________________________________________________________________
 
 = Chapter 5: Cardano governance 
 
@@ -40,7 +40,8 @@ The concept is developed as a written proposal and submitted as a pull request t
 Figure 5.1. CIP workflow from CIP-0001
 
 CIPs are processed in a semi-formal manner. Editors of CIP proposals meet regularly to discuss and evaluate ideas. Meeting minutes are publicly available, and meetings are held every two weeks. Authors are encouraged to contribute and provide comments, and discussions often take place simultaneously in the Cardano forum’s CIPs section and/or in GitHub pull requests. 
-Project Catalyst: democratizing innovation in Cardano 
+
+== Project Catalyst: democratizing innovation in Cardano 
 
 Project Catalyst, one of the world’s largest decentralized innovation funds, is a key component of the Cardano ecosystem. It aims to drive Cardano's evolution through community-driven funding and development initiatives to address real-world challenges. Catalyst empowers the Cardano community to propose, vote on, and fund proposals to foster innovation and growth within the ecosystem.
 
@@ -158,7 +159,8 @@ Importance. It ensures that Project Catalyst can continue to function effectivel
 Example. Implementing and effectively utilizing new tools and processes to manage more proposals and votes without compromising quality or security.
 
 By carefully monitoring these success metrics, Project Catalyst can ensure it meets its goals of fostering innovation, supporting valuable projects, and effectively engaging the community. Continuous assessment and refinement based on these metrics will help Project Catalyst remain a dynamic and impactful component of the Cardano ecosystem. To dig deeper into the stats and trends, it’s best to visit the Reports section of projectcatalyst.io for the latest data.
-The age of Voltaire
+
+== The age of Voltaire
 
 As Catalyst took a ‘tactical pause’ break after Fund9, there was a timely Systemization of Knowledge (SoK) research paper published just around this same time, reflecting on the state of governance in ten blockchains, including Bitcoin, Ethereum, and Cardano.
 
@@ -240,7 +242,9 @@ Governance on Cardano hit a milestone on Friday, June 30, 2023, when the CIP-169
 As almost everything in Cardano takes the form of a transaction, getting the metadata standard correct is critical. Metadata allows developers to embed information specific to the context of the transaction. For example, the NFT standard (see CIP-25, CIP-68, CIP-60) on Cardano has evolved with new capabilities, unlocking with each roadmap release. Pi Lanningham authored CIP-0100 to clear up what metadata standards need to be introduced to enable the on-chain governance mechanisms proposed in CIP-1694.  
 CIP-95 is a crucial CIP, which extends CIP-30 and describes the interface between webpage/web-based stacks and Cardano wallets. More specifically, it is a specification that defines the API of the JavaScript object that is injected into web applications. The CIP enables voting capabilities for governance tools. At the Edinburgh hackathon, decisions were made around open questions, and the base design was approved. 
 As governance can be subjective, it's best you read CIP-1694 yourself, especially the Rationale and Changelog sections, which add context. If 2023 was the year we discussed governance, 2024 was all about implementation with Intersect as the main driving force. 
-Intersect: shaping Cardano's future
+
+== Intersect: shaping Cardano's future
+
 Intersect is a members-based organization for the Cardano ecosystem, founded in 2023. It serves as an aggregation point for the entire Cardano community, placing the community at the heart of Cardano’s future development and harnessing the untapped potential of collective wisdom and economic energy. Intersect brings together companies, developers, individuals, institutions, and other ecosystem participants to shape and drive the future development of Cardano. It acts as a steward of the underlying blueprints and technology for the community, beginning with the Cardano node, core technology libraries, and components required to operate the protocol, along with all of its accompanying documentation, knowledge, and contributors.
 
 This governance structure is designed to enhance decentralized growth within the Cardano ecosystem. It enables community-driven decision-making through democratic voting, defines clear roles and responsibilities, and ensures accountability. The MBO manages funds for ecosystem projects, aligns efforts with long-term strategic goals, and fosters inclusive community participation. It also improves coordination, increases accountability, and supports sustainable growth by providing a structured yet decentralized framework. Implementation involves community consensus, framework development, regulatory compliance, securing funding, and ongoing management. This model empowers the Cardano community and aligns with its vision of decentralization and transparency.
@@ -288,7 +292,9 @@ Intersect handles all aspects of supplier contracts for DevTrust. This includes 
 Delivery assurance
 Delivery assurance ensures that projects are completed on time and according to specifications. This involves managing risks, tracking progress, and taking action to ensure successful completion. The approach varies based on the project's size, complexity, and potential risks.
 Led by the technical steering committee (TSC), Intersect's delivery assurance team plays a vital role. This team works on behalf of the Cardano community to guarantee that Cardano's development plan stays on track.
-Intersect committees
+
+== Intersect committees
+
 Intersect operates on the principle of community leadership for Cardano's development. This is achieved through standing committees formed by and led by its members.
 Standing committees are permanent committees covering various functions critical to guiding Cardano's ‘continuity’ (ongoing maintenance and development), shaping Cardano's constitution, and supporting internal membership needs. While changes can be made as the committees and their goals evolve, they are intended to be long-lasting. The governing board will provide support and review any proposed adjustments.
 Working groups are temporary and typically support a standing committee's broader objectives. They may also be formed to tap into expertise outside of Intersect's membership. Flexible and less formal than committees, working groups can address diverse topics relevant to Cardano's development. For example, the marketing working group was formed by creatives and marketers who felt it was an area Cardano could improve upon. The group meets weekly and is active on Discord.
@@ -389,7 +395,9 @@ All Cardano ecosystem participants are welcome to join Intersect as members. Int
 
 Intersect members can apply for grants to support specific projects and initiatives related to the continuity and development of Cardano. With CIP-1694, the initial focus of these grants will be on enhancing governance in the age of Voltaire for the Cardano ecosystem.
 Given the many moving parts within Intersect and the rapid pace of updates, members can stay informed following the weekly development updates. 
-Cardano's evolving governance: a three-part approach
+
+== Cardano's evolving governance: a three-part approach
+
 Cardano's future governance leans on three key pillars:
 On-chain decisions: this system (detailed in CIP-1694) allows ada holders to directly influence Cardano's development through proposed governance actions voted on-chain
 Cardano constitution: this evolving document outlines core rules to guide Cardano's growth during its transitional governance phase. A fully-fledged constitution will be drafted with community input throughout the year, culminating in a final version ratified by both delegates and ada holders. CIP-0120 (constitution specification) proposes a standardized technical format to make the document accessible for tools to read, render, and write. 
@@ -425,7 +433,8 @@ Shaping the future: they can review and vote on proposed governance actions.
 The constitutional committee (CC)
 Unlike other Cardano governance bodies, the CC operates independently and entirely outside of Intersect. It is one of three key groups (alongside SPOs and DReps) that vote on proposals to change Cardano's core systems through governance actions. The CC's primary function is to review proposed changes with a limited focus: ensuring that they align with the principles outlined in Cardano's constitution.
 
-Cardano governance flow
+== Cardano governance flow
+
 CIP-1694 outlines Cardano's on-chain governance process, but it's also important to consider the supporting off-chain activities. 
 Off-chain proposal discussions
 Before proposals are submitted to the blockchain for official votes, there is a crucial off-chain stage for discussion and refinement. Off-chain debate allows for:
@@ -437,7 +446,8 @@ Without a strong off-chain process, governance could falter, as ideas may not un
 Intersect recognizes the importance of off-chain discussions and has issued a grant to establish a dedicated proposal discussion forum. More information about the grant can be found in Intersect's GitBook.
 Submitting on-chain governance actions
 Once a proposal has been thoroughly discussed and refined off-chain, it is ready for the official vote on the blockchain. This is known as on-chain governance action submission. Proposals can be submitted on-chain through the Cardano command-line interface (CLI) or via GovTool’s user-friendly interface. The specific content required for an on-chain proposal depends on the type of governance action being submitted. Proposers can optionally add metadata to provide additional context and information alongside the proposal. 
-Registering as a DRep on-chain
+
+== Registering as a DRep on-chain
 
 DRep registration occurs on the blockchain and can be done through the Cardano CLI or GovTool. During registration, DReps can optionally add details about themselves (metadata) to help ada holders decide who to delegate their votes to.
 Intersect recognizes the importance of a strong DRep system and has issued a grant to establish a DRep campaign platform. 
@@ -459,7 +469,8 @@ Cardano's governance process emphasizes open communication. This includes not ju
 A complete governance cycle starts with off-chain discussions and should end with the community being informed of the outcome. Sharing results, especially for ratified (approved) proposals that will be implemented, helps close the loop and keeps everyone informed.
 Ideally, the outcome should be communicated through the same off-chain channels where the original proposal was discussed. This fosters transparency and a sense of connection throughout the entire governance process.
 
-SanchoNet: testing ground for Cardano's future
+== SanchoNet: testing ground for Cardano's future
+
 SanchoNet was named after the character Sancho Panza, Don Quixote’s companion in Miguel de Cervantes’ literary classic. SanchoNet is ultimately about transforming an aspirational digital Barataria into an on-chain governance reality on Cardano mainnet. Note that SanchoNet is not another incentivized testnet (ITN), but a testnet where test ada is used to stress test experimental features. SanchoNet was rolled out in six phases, with each Cardano node (cardano-cli) release enabling new governance capabilities. 
 
 Figure 5.5: SanchoNet roadmap
@@ -478,7 +489,8 @@ SanchoNet has proven itself robust to adversarial behavior. Mike Hornan of Able 
 
 SanchoNet has allowed users to experiment with upcoming features. For example, SanchoNet users were the first to test PlutusV3 in Conway-era transactions. PlutusV3 opens up a world of possibilities with a new voting script purpose for writing voting scripts, access to governance actions in the ScriptContext, and new cryptographic Plutus primitives. Olga Hryniuk explained more in this IOG blog post.
 
-Governance tools
+== Governance tools
+
 Cardano's vision is a truly decentralized blockchain fueled by collaborative decision-making.
 Effective governance requires more than just principles and processes. It needs the right tools to empower the community and enable consensus across the Cardano ecosystem.
 The development of Cardano's on-chain governance prioritizes building these tools. This will create a smoother experience and open new avenues for community involvement in shaping Cardano's future.
@@ -488,13 +500,17 @@ Maintaining and improving existing features
 Creating entirely new functionalities or tools
 Working independently or collaborating with Intersect's grant and award programs.
 These tools will equip the Cardano community to actively participate in on-chain governance actions. Intersect has already issued grants to develop key components of this toolset. Find out more about these grants here. The governance tools working group has begun decentralizing ownership and maintaining the GovTool and constitutional committee portal.
-GovTool
+
+== GovTool
+
 The GovTool is a central hub for interacting with Cardano's on-chain governance system, and testing upcoming features. It enables users to connect their wallets to mainnet to participate in governance. They can also connect to SanchoNet, the testnet environment where CIP-1694's ideas are tested.
 The GovTool empowers the Cardano community to:
 Register as a DRep, delegate voting power to a DRep, vote, and much more. There are extensive guides available.
 Shape the future by providing feedback on their experiences, enabling the community to help refine Cardano’s governance framework for future implementation.
 GovTool is not the only governance tool. Cardano ballot is another innovative voting system designed for Cardano's governance process. It combines the strengths of both on-chain and off-chain mechanisms, developed by the Cardano Foundation and IOG. It is open source, and contributions are welcome on GitHub.
-Governance actions (proposals for change)
+
+== Governance actions (proposals for change)
+
 What are governance actions? Imagine them as proposals submitted on the Cardano blockchain for voting. These proposals trigger events on the blockchain through transactions and have a set timeframe for voting before they expire and can't be enacted. Any ada holder can submit a governance action for on-chain voting. Once a proposal is submitted and recorded on the ledger, voters can vote through separate voting transactions.
 CIP-1694 defines seven categories of governance actions:
 Motion of no-confidence: creates a state of no-confidence in the current constitutional committee
@@ -505,8 +521,8 @@ Protocol parameter changes: proposes a change to one or more updatable protocol 
 Treasury withdrawals: proposals for how to spend funds from the Cardano treasury
 Info: simply provide information and don't require enactment.
 
+== The Chang upgrade explained
 
-The Chang upgrade explained
 The next series of Cardano upgrades are named after Phillip Chang, who passed away in 2022, in honor of his contribution to the early design and concepts described in CIP-1694. The Chang upgrade marks a significant moment for Cardano, representing the culmination of years of dedicated development and community involvement. Extensive testing on SanchoNet and valuable feedback from community workshops have paved the way for this critical step.
 From Basho to Voltaire: a self-sustaining future
 With the Chang upgrade, Cardano transitioned from the Basho development phase to Voltaire. This upgrade series unlocked minimum viable on-chain governance as outlined in CIP-1694, empowering the community through a self-sustaining blockchain model that sets a new standard for the industry.
@@ -523,7 +539,9 @@ Technical stability: no critical issues were identified within core components (
 Performance optimization: benchmarking and analysis ensured acceptable performance and cost implications
 Community readiness: sufficient communication and preparation time was provided to SPOs, DApp developers, and the broader Cardano community.
 This measured approach, explained in more detail in the documentation, ensured a smooth transition for all stakeholders as Cardano embraces its future of decentralized governance.
-Journey to Ratification 
+
+== Journey to Ratification 
+
 The interim Constitution was drafted early in 2024, and along with the technical guardrails, was made available for the community to read on the Constitution Committee Portal. 
 The first interim Constitutional Committee (ICC), the body that upholds the interim Constitution and votes on the first on-chain governance actions, was formed. The community voted for three representatives to sit alongside pioneer entities IOG, EMURGO, and the Cardano Foundation, and Intersect. The Cardano Atlantic Council, Cardano Japan, and Eastern Cardano Council were duly elected to this responsible position. 
 
@@ -536,7 +554,8 @@ The second and final stage of the Chang upgrade, the Plomin hard fork, is curren
 
 Figure 5.7: Chair of Proceedings in Buenos Aires, Lloyd Duhon, marking the historic moment with a group selfie at the Buenos Aires, Argentina event  - documenting this historic moment
 
-Intersect's role in ongoing development
+== Intersect's role in ongoing development
+
 Intersect plays a vital role in ensuring Cardano's smooth progress. One of their key functions is facilitating Cardano's continuity. This means providing the technical expertise and resources needed to maintain and improve the Cardano blockchain, both for existing and future features.
 In the first quarter of 2024, Intersect awarded contracts to seven of its members. These contracts focus on continued development efforts, ensuring Cardano can deliver the exciting new features the community awaits. Here's a breakdown of what work is ongoing:
 Input Output Global’s (IOG) infrastructure team continues to develop and test the Cardano governance node in readiness for CIP-1694 implementation on-chain. 
@@ -552,13 +571,14 @@ As grants are continuously offered over different cohorts, it’s best to check 
 Cardano's operation requires ongoing costs to cover maintenance, upgrades, and technical advancements. This ensures Cardano remains a leading and up-to-date blockchain platform. IOG and EMURGO generously funded Cardano's continuity in 2024. This allowed a team of experts to continue providing essential technical services for core operations. The 2025 Cardano budget will be defined through a community-driven process. With on-chain approval from the community, funding will come from the Cardano treasury. Intersect will continue to manage and oversee the technical delivery of these continuity services.
 Intersect's delivery assurance and technical operations teams created the first-ever Cardano continuity milestone report in Q1, 2024. Inspired by Project Catalyst, these recurring quarterly reports will provide clear progress updates from funded projects, fostering trust and transparency. Additionally, they are developing a backlog and budget proposal, which will form the foundation for Cardano's first official budget.
 Intersect closed the year by holding elections for its various committees and boards. Details of the various roles, voting processes and candidate profiles are outlined on the knowledge base. 
-Pragma
-From the outset of the Voltaire development phase, it was always expected, and some feel necessary, to have multiple MBOs. PRAGMA was announced on the eve of the inaugural BuidlFest meetup in Toulouse, France. PRAGMA is a member-based, not-for-profit, open-source association for blockchain software projects. Initially, it will be made up of familiar faces to the Cardano developer ecosystem: Blink Labs, Cardano Foundation, dcSpark, SundaeLabs, and TxPipe, but will expand to incorporate more projects and members in 2025. 
 
+== Pragma
+
+From the outset of the Voltaire development phase, it was always expected, and some feel necessary, to have multiple MBOs. PRAGMA was announced on the eve of the inaugural BuidlFest meetup in Toulouse, France. PRAGMA is a member-based, not-for-profit, open-source association for blockchain software projects. Initially, it will be made up of familiar faces to the Cardano developer ecosystem: Blink Labs, Cardano Foundation, dcSpark, SundaeLabs, and TxPipe, but will expand to incorporate more projects and members in 2025. 
 
 PRAGMA will not compete with Intersect, but run as a complementary effort. While the mission of Intersect is broader, PRAGMA is focused solely on open-source software development with two key projects for now: Aiken, the popular programming language for on-chain smart contracts on Cardano, and Amaru, a Rust node client for Cardano. For Cardano to thrive, PRAGMA and Intersect need to work together to deliver what is best for the ecosystem.
 
-Staying updated 
+== Staying updated 
 Cardano governance continues to evolve, and it can be tricky to keep up with so much going on. Here are some resources that may be helpful:
 
 Intersect Knowledge Base: frequently updated, it provides granular detail on Intersect’s internal governance structure, committees and working groups, and funding opportunities, among many other items
@@ -566,9 +586,4 @@ Cardano Forum governance section
 GovTool and Cardano ballot: enable anyone interested to test governance actions and processes
 Discord/Telegram: interact with committees, working groups, and other Intersect members.
 Given the many moving parts within Intersect and the rapid pace of developments, members can stay informed following the weekly development updates. 
-
-
-
-
-
 
