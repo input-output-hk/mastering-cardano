@@ -133,37 +133,37 @@ Measuring the success of Project Catalyst is essential to ensure that the initia
   ii) Importance. It shows the proportion of ideas deemed valuable and viable by the community. It helps assess the effectiveness of the selection and funding processes in identifying high-potential projects.
   iii) Example. If 20 out of 100 proposals are funded in a given round, it reflects the competitive nature and high standards the community sets.
 
-3. Community participation in voting
+3. *Community participation in voting*
   i) Description. This metric measures the number of ada holders participating in voting.
   ii) Importance. High voter participation indicates robust community engagement and the legitimacy of the funding decisions. It ensures that the funded projects have broad support from the community.
   iii) Example. If 10,000 ada holders voted in Fund3 compared to 5,000 in Fund2, it indicates growing community involvement and trust in the voting process.
 
-4. Diversity of funded projects
+4. *Diversity of funded projects*
   i) Description. This metric examines the variety of projects funded across different categories, such as DeFi, community tools, educational resources, and more.
   ii) Importance. A diverse portfolio of funded projects indicates a balanced approach to ecosystem development, addressing various needs and opportunities within the    Cardano network. It prevents over-concentration on a single type of project, fostering a more resilient and versatile ecosystem.
   iii) Example. Funding five DeFi projects, three educational initiatives, and two community tools in one round may show a well-rounded investment in different areas.
 
-5. Impact of funded projects
+5. *Impact of funded projects*
    i) Description. This metric evaluates the real-world impact and outcomes of funded projects, including their contributions to the Cardano ecosystem and broader blockchain space.
    ii) Importance. It assesses whether the projects deliver on their promises and generate value for the community. It helps identify successful initiatives that could serve as models for future projects.
    iii) Example. A funded DeFi project that significantly increases transaction volume and user engagement on Cardano would be considered a high-impact success.
 
-6. Budget utilization and efficiency
+6. *Budget utilization and efficiency*
    i) Description. This metric analyzes how effectively the funded projects utilize the allocated funds.
    ii) Importance. It ensures that funds are used as intended, projects adhere to their proposed budgets, and any issues of mismanagement or inefficiency are identified and mitigated.
    iii) Example. A project that delivers its milestones within the allocated budget demonstrates effective use of funds, whereas overspending might indicate potential issues.
 
-7. Community feedback and satisfaction
+7. *Community feedback and satisfaction*
    i) Description. This metric gathers feedback from the community regarding their satisfaction with the funded projects and the overall Project Catalyst process.
    ii) Importance. High satisfaction levels indicate the community's needs and expectations are being met. It provides insights for continuous improvement of the Project Catalyst process.
    iii) Example. Positive feedback on the transparency and impact of the voting process would highlight the community's approval, whereas constructive criticism could guide future enhancements.
 
-8. Growth in Project Catalyst participation
+8. *Growth in Project Catalyst participation*
    i) Description. This metric tracks the growth in the number of participants in Project Catalyst, including proposers, reviewers, and voters.
    ii) Importance. It reflects Project Catalyst's expanding reach and inclusiveness. It also indicates the initiative’s ability to attract and engage a broad spectrum of participants over time.
    iii) Example. An increase in active users on the IdeaScale platform and the voting application from one funding round to the next indicates growing engagement.
 
-9. Long-term sustainability and scalability
+9. *Long-term sustainability and scalability*
    i) Description. This metric assesses Project Catalyst's long-term sustainability and scalability, including its capacity to manage growing numbers of proposals and participants.
    ii) Importance. It ensures that Project Catalyst can continue to function effectively as it grows. Also, it addresses any potential bottlenecks or challenges related to scaling the initiative.
    iii) Example. Implementing and effectively utilizing new tools and processes to manage more proposals and votes without compromising quality or security.
