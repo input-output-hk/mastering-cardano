@@ -39,8 +39,6 @@ The concept is developed as a written proposal and submitted as a pull request t
 
 image::../images/5.1_cip_workflow.png[]
 
-image::hydra_blockchaintrilemma.png[]
-
 *Figure 5.1:* CIP workflow from CIP-0001
 
 CIPs are processed in a semi-formal manner. Editors of CIP proposals meet regularly to discuss and evaluate ideas. Meeting minutes are publicly available, and meetings are held every two weeks. Authors are encouraged to contribute and provide comments, and discussions often take place simultaneously in the Cardano forum’s CIPs section and/or in GitHub pull requests. 
@@ -179,7 +177,7 @@ Pareto efficiency: how effectively can decision-makers' intentions be turned int
 Liveness: how quickly can a blockchain’s governance mechanism produce outputs efficiently?
 
 
-image::5.2_governance_properties.png[]
+image::../images/5.2_governance_properties.png[]
 *Figure 5.2:* The partition map of governance properties from the ‘SoK: Blockchain Governance’ paper
 
 The paper concludes that while each blockchain displays some of the properties, no blockchain meets all the requirements for effective governance. It was food for thought just before the dawn of the age of Voltaire. 
@@ -207,7 +205,7 @@ What is an MBO?
 
 The MBO is a central hub that unites different groups, including thousands of stake pool operators, Cardano ambassadors, open-source projects running on Cardano, IOG, CF, Emurgo, and all ada holders. Members will own and run the MBO, staffing the steering committees. 
 
-image::5.3_gov_concepts.png[]
+image::../images/5.3_gov_concepts.png[]
 *Figure 5.3:* Governance concepts defined, based on the slide from ScotFest 2022
 
 The MBO, later christened Intersect, is Voltaire's anchor institution, but it is not the only one. IOG has been steadily building out its presence in universities all over the globe, as well as opening the Hoskinson Center for Formal Mathematics, the Zero-Knowledge Lab not forgetting the Edinburgh Decentralization Index (EDI).  Other institutions and MBOs will follow with different focuses and priorities.  
@@ -367,7 +365,7 @@ The community will vote on the budget proposal at the annual members meeting (AM
 Upon approval, funds will be allocated from the Cardano treasury through on-chain voting.
 The initial Cardano budget will be presented before the AMM for community review and voting. On-chain ratification will follow after the AMM vote.
 
-image::5.4_provisional_budget_process.png[]
+image::../images/5.4_provisional_budget_process.png[]
 *Figure 5.4:* Provisional Budget process timeline 
 
 
@@ -478,7 +476,7 @@ On-chain voting is where the three voting groups (DReps, SPOs, and the CC) cast 
 For a proposed governance action to be approved and implemented, it needs to meet specific voting thresholds set by Cardano. These thresholds may vary depending on the type of governance action being voted on. In simpler terms, some proposals might require approval from all three voting groups, while others might only need a certain percentage from a specific group.
 
 
-image::5.5_gov_actions.png[]
+image::../images/5.5_gov_actions.png[]
 *Figure 5.5:* Voting on governance actions (table from Intersect’s documentation)
 
 Following the on-chain voting process, a governance action is considered approved (or ratified) if it meets the specific voting thresholds set for its type. These thresholds determine the level of consensus needed from the different voting bodies.
@@ -492,7 +490,7 @@ Ideally, the outcome should be communicated through the same off-chain channels 
 
 SanchoNet was named after the character Sancho Panza, Don Quixote’s companion in Miguel de Cervantes’ literary classic. SanchoNet is ultimately about transforming an aspirational digital Barataria into an on-chain governance reality on Cardano mainnet. Note that SanchoNet is not another incentivized testnet (ITN), but a testnet where test ada is used to stress test experimental features. SanchoNet was rolled out in six phases, with each Cardano node (cardano-cli) release enabling new governance capabilities. 
 
-image::5.6_sanchonet_roadmap.png[]
+image::../images/5.6_sanchonet_roadmap.png[]
 *Figure 5.6:* SanchoNet roadmap
 
 
@@ -566,7 +564,7 @@ This measured approach, explained in more detail in the documentation, ensured a
 The interim Constitution was drafted early in 2024, and along with the technical guardrails, was made available for the community to read on the Constitution Committee Portal. 
 The first interim Constitutional Committee (ICC), the body that upholds the interim Constitution and votes on the first on-chain governance actions, was formed. The community voted for three representatives to sit alongside pioneer entities IOG, EMURGO, and the Cardano Foundation, and Intersect. The Cardano Atlantic Council, Cardano Japan, and Eastern Cardano Council were duly elected to this responsible position. 
 
-image::5.7_intersect_roadmap.png[]
+image::../images/5.7_intersect_roadmap.png[]
 *Figure 5.7:* SanchoNet roadmap
 
 The constitution can only claim legitimacy with feedback from the community, and so the first of 63 Constitutional workshops across 50 countries was hosted by Nicolas Cerny, Governance Lead for the Cardano Foundation, in Berlin in July 2024. 
@@ -576,7 +574,7 @@ After two days of debate and speeches, the constitution was approved by 95% of d
 
 The second and final stage of the Chang upgrade, the Plomin hard fork, occurred on the 29th January 2025. Cardano’s move to the Voltaire development phase is now complete and Cardano will be fully governed by the community.
 
-image::5.8_lloyd_selfie.png[]
+image::../images/5.8_lloyd_selfie.png[]
 *Figure 5.8:* Chair of Proceedings in Buenos Aires, Lloyd Duhon, marking the historic moment with a group selfie at the Buenos Aires, Argentina event  - documenting this historic moment
 
 == Intersect's role in ongoing development
