@@ -164,7 +164,7 @@ By carefully monitoring these success metrics, Project Catalyst can ensure it me
 
 == The age of Voltaire
 
-As Catalyst took a ‘tactical pause’ break after Fund9, there was a timely Systemization of Knowledge (SoK) research paper published just around this same time, reflecting on the state of governance in ten blockchains, including Bitcoin, Ethereum, and Cardano.
+As Catalyst took a ‘tactical pause’ break after Fund9, there was a timely Systemization of Knowledge (SoK) research paper publishedfootnote:[Kiayias, Lazos (2022), 'SoK: Blockchain Governance', arxiv.org/pdf/2201.07188.pdf] just around this same time, reflecting on the state of governance in ten blockchains, including Bitcoin, Ethereum, and Cardano.
 
 The paper lists seven properties to assess different requirements for effective blockchain governance: 
 
