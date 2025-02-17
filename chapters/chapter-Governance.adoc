@@ -124,12 +124,12 @@ Project Catalyst places a strong emphasis on transparency and accountability thr
 Measuring the success of Project Catalyst is essential to ensure that the initiative effectively fosters innovation and contributes to the growth of the Cardano ecosystem. The following metrics provide a comprehensive evaluation of its impact and effectiveness:
 
 1. *Number of proposals submitted* 
-  a. Description. This metric tracks the total number of proposals submitted in each funding round, reflecting the level of community engagement and interest in participating in Project Catalyst.
-  b. Importance. A higher number of submitted proposals indicates a vibrant, active community eager to contribute to the ecosystem's development. It reflects the diversity of ideas and innovations being brought forward.
-  c. Example. If Fund1 received 50 proposals and Fund2 received 150, it demonstrates a growing interest and increased participation over time.
+  a) Description. This metric tracks the total number of proposals submitted in each funding round, reflecting the level of community engagement and interest in participating in Project Catalyst.
+  b) Importance. A higher number of submitted proposals indicates a vibrant, active community eager to contribute to the ecosystem's development. It reflects the diversity of ideas and innovations being brought forward.
+  c) Example. If Fund1 received 50 proposals and Fund2 received 150, it demonstrates a growing interest and increased participation over time.
 
 2. *Number of proposals funded* 
-Description. This metric counts the number of proposals that successfully receive funding after the voting process.
+  i) Description. This metric counts the number of proposals that successfully receive funding after the voting process.
 Importance. It shows the proportion of ideas deemed valuable and viable by the community. It helps assess the effectiveness of the selection and funding processes in identifying high-potential projects.
 Example. If 20 out of 100 proposals are funded in a given round, it reflects the competitive nature and high standards the community sets.
 Community participation in voting
