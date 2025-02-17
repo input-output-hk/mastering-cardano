@@ -189,7 +189,7 @@ CIP-1694 was named after Voltaire’s year of birth. It is arguably the most imp
 
 When Cardano was formed, there was a tripartite structure with Emurgo, the Cardano Foundation (CF), and IOG with remits for ecosystem growth, governance, and engineering, respectively. The intention was always to move to a members-based organization (MBO) that would manage the protocol governance. 
 
-CIP-1694 is the fruit of years of research. IOG has been working on a decentralized update system for some time. For example, they wrote a paper Updateable Blockchains with the European Union, with a Horizon 2020 grant, to explore ways to implement this vision. 
+CIP-1694 is the fruit of years of research. IOG has been working on a decentralized update system for some time. For example, they wrote a paper *_Updateable Blockchains_*footnote:[Ciampi, Karayannidis, Kiayias and Zindros (2020), 'Updatable Blockchains', iohk.io/en/research/library/papers/updatable-blockchains/] with the European Union, with a Horizon 2020 grant, to explore ways to implement this vision. 
 
 Early in 2022, IOG and the CF held workshops to hammer out a way forward for the Voltaire development phase. The first question was ‘What is good governance?’. Charles Hoskinson explained in his ScotFest keynote that the answer was based on three different categories:
 
