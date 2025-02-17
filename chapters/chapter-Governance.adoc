@@ -17,13 +17,13 @@ Formal methods, machine-comprehensible specifications, and integrating a treasur
 
 == Cardano Improvement Proposals (CIPs)
 
-CIP stands for 'Cardano Improvement Proposals'. Similar concepts exist for other blockchains, such as the Bitcoin Improvement Proposals (BIPs) or the Ethereum Improvement Proposals (EIPs). While these share similarities, each works quite differently. In November 2020, CIP-0001  was drafted to explain what a CIP is. A CIP is a formal, structured document proposing a solution to a common problem, highlighting various solutions and their trade-offs. 
+CIP stands for 'Cardano Improvement Proposals'. Similar concepts exist for other blockchains, such as the Bitcoin Improvement Proposals (BIPs) or the Ethereum Improvement Proposals (EIPs). While these share similarities, each works quite differently. In November 2020, http://github.com/cardano-foundation/CIPs/tree/master/CIP-0001[CIP-0001]  was drafted to explain what a CIP is. A CIP is a formal, structured document proposing a solution to a common problem, highlighting various solutions and their trade-offs. 
 
 Anyone with ideas for enhancing Cardano can present them as CIPs. While CIPs are not a formal component of Cardano governance, they help steer the protocol and tooling in the right direction, benefiting the entire ecosystem. 
 
-Technically, the first CIP was created in October 2019, which subsequently became CIP-1852. It extends BIP44 and documents how Cardano wallets manage keys and addresses. This document predates the formal CIP process. It was named CIP-1852 by Sebastien Guillemot after the year Ada Lovelace passed away, with her birth year, 1815, used in the cointype field. 
+Technically, the first CIP was created in October 2019, which subsequently became https://cips.cardano.org/cip/CIP-1852[CIP-1852]. It extends http://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki[BIP44] and documents how Cardano wallets manage keys and addresses. This document predates the formal CIP process. It was named CIP-1852 by Sebastien Guillemot after the year Ada Lovelace passed away, with her birth year, 1815, used in the cointype field. 
 
-A CIP follows a standard format with a templated proposal structure that facilitates debate and evaluation. This structure allows community members to provide feedback on improvement recommendations or issues within a proposal. CIPs are stored as text files in a versioned GitHub repository, where their revision history provides the proposal's historical record. For those not on GitHub, the auto-generated sister site, cips.cardano.org, serves as a user-friendly resource maintained by the Cardano Foundation.
+A CIP follows a standard format with a templated proposal structure that facilitates debate and evaluation. This structure allows community members to provide feedback on improvement recommendations or issues within a proposal. CIPs are stored as text files in a versioned http://github.com/cardano-foundation/CIPs[GitHub repository], where their revision history provides the proposal's historical record. For those not on GitHub, the auto-generated sister site, cips.cardano.org, serves as a user-friendly resource maintained by the Cardano Foundation.
 
 Every CIP has the following format: 
 
@@ -41,7 +41,7 @@ image::../images/5.1_cip_workflow.png[]
 
 *Figure 5.1:* CIP workflow from CIP-0001
 
-CIPs are processed in a semi-formal manner. Editors of CIP proposals meet regularly to discuss and evaluate ideas. Meeting minutes are publicly available, and meetings are held every two weeks. Authors are encouraged to contribute and provide comments, and discussions often take place simultaneously in the Cardano forum’s CIPs section and/or in GitHub pull requests. 
+CIPs are processed in a semi-formal manner. Editors of CIP proposals meet regularly to discuss and evaluate ideas. Meeting http://github.com/cardano-foundation/CIPs/tree/master/BiweeklyMeetings[minutes] are publicly available, and meetings are held every two weeks. Authors are encouraged to contribute and provide comments, and discussions often take place simultaneously in the Cardano forum’s CIPs section and/or in GitHub pull requests. 
 
 == Project Catalyst: democratizing innovation in Cardano 
 
