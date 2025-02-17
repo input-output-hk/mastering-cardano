@@ -130,61 +130,68 @@ Measuring the success of Project Catalyst is essential to ensure that the initia
 
 2. *Number of proposals funded* 
   i) Description. This metric counts the number of proposals that successfully receive funding after the voting process.
-Importance. It shows the proportion of ideas deemed valuable and viable by the community. It helps assess the effectiveness of the selection and funding processes in identifying high-potential projects.
-Example. If 20 out of 100 proposals are funded in a given round, it reflects the competitive nature and high standards the community sets.
-Community participation in voting
-Description. This metric measures the number of ada holders participating in voting.
-Importance. High voter participation indicates robust community engagement and the legitimacy of the funding decisions. It ensures that the funded projects have broad support from the community.
-Example. If 10,000 ada holders voted in Fund3 compared to 5,000 in Fund2, it indicates growing community involvement and trust in the voting process.
-Diversity of funded projects
-Description. This metric examines the variety of projects funded across different categories, such as DeFi, community tools, educational resources, and more.
-Importance. A diverse portfolio of funded projects indicates a balanced approach to ecosystem development, addressing various needs and opportunities within the Cardano network. It prevents over-concentration on a single type of project, fostering a more resilient and versatile ecosystem.
-Example. Funding five DeFi projects, three educational initiatives, and two community tools in one round may show a well-rounded investment in different areas.
-Impact of funded projects
-Description. This metric evaluates the real-world impact and outcomes of funded projects, including their contributions to the Cardano ecosystem and broader blockchain space.
-Importance. It assesses whether the projects deliver on their promises and generate value for the community. It helps identify successful initiatives that could serve as models for future projects.
-Example. A funded DeFi project that significantly increases transaction volume and user engagement on Cardano would be considered a high-impact success.
-Budget utilization and efficiency
-Description. This metric analyzes how effectively the funded projects utilize the allocated funds.
-Importance. It ensures that funds are used as intended, projects adhere to their proposed budgets, and any issues of mismanagement or inefficiency are identified and mitigated.
-Example. A project that delivers its milestones within the allocated budget demonstrates effective use of funds, whereas overspending might indicate potential issues.
-Community feedback and satisfaction
-Description. This metric gathers feedback from the community regarding their satisfaction with the funded projects and the overall Project Catalyst process.
-Importance. High satisfaction levels indicate the community's needs and expectations are being met. It provides insights for continuous improvement of the Project Catalyst process.
-Example. Positive feedback on the transparency and impact of the voting process would highlight the community's approval, whereas constructive criticism could guide future enhancements.
-Growth in Project Catalyst participation
-Description. This metric tracks the growth in the number of participants in Project Catalyst, including proposers, reviewers, and voters.
-Importance. It reflects Project Catalyst's expanding reach and inclusiveness. It also indicates the initiative’s ability to attract and engage a broad spectrum of participants over time.
-Example. An increase in active users on the IdeaScale platform and the voting application from one funding round to the next indicates growing engagement.
-Long-term sustainability and scalability
-Description. This metric assesses Project Catalyst's long-term sustainability and scalability, including its capacity to manage growing numbers of proposals and participants.
-Importance. It ensures that Project Catalyst can continue to function effectively as it grows. Also, it addresses any potential bottlenecks or challenges related to scaling the initiative.
-Example. Implementing and effectively utilizing new tools and processes to manage more proposals and votes without compromising quality or security.
+  ii) Importance. It shows the proportion of ideas deemed valuable and viable by the community. It helps assess the effectiveness of the selection and funding processes in identifying high-potential projects.
+  iii) Example. If 20 out of 100 proposals are funded in a given round, it reflects the competitive nature and high standards the community sets.
 
-By carefully monitoring these success metrics, Project Catalyst can ensure it meets its goals of fostering innovation, supporting valuable projects, and effectively engaging the community. Continuous assessment and refinement based on these metrics will help Project Catalyst remain a dynamic and impactful component of the Cardano ecosystem. The Catalyst team released their http://projectcatalyst.io/reports/horizons.pdf[Catalyst Horizons report] documenting various milestones. To dig deeper into the stats and trends, visit the https://projectcatalyst.io/reports[Reports] section of projectcatalyst.io for the latest data.
+3. Community participation in voting
+  i) Description. This metric measures the number of ada holders participating in voting.
+  ii) Importance. High voter participation indicates robust community engagement and the legitimacy of the funding decisions. It ensures that the funded projects have broad support from the community.
+  iii) Example. If 10,000 ada holders voted in Fund3 compared to 5,000 in Fund2, it indicates growing community involvement and trust in the voting process.
+
+4. Diversity of funded projects
+  i) Description. This metric examines the variety of projects funded across different categories, such as DeFi, community tools, educational resources, and more.
+  ii) Importance. A diverse portfolio of funded projects indicates a balanced approach to ecosystem development, addressing various needs and opportunities within the    Cardano network. It prevents over-concentration on a single type of project, fostering a more resilient and versatile ecosystem.
+  iii) Example. Funding five DeFi projects, three educational initiatives, and two community tools in one round may show a well-rounded investment in different areas.
+
+5. Impact of funded projects
+   i) Description. This metric evaluates the real-world impact and outcomes of funded projects, including their contributions to the Cardano ecosystem and broader blockchain space.
+   ii) Importance. It assesses whether the projects deliver on their promises and generate value for the community. It helps identify successful initiatives that could serve as models for future projects.
+   iii) Example. A funded DeFi project that significantly increases transaction volume and user engagement on Cardano would be considered a high-impact success.
+
+6. Budget utilization and efficiency
+   i) Description. This metric analyzes how effectively the funded projects utilize the allocated funds.
+   ii) Importance. It ensures that funds are used as intended, projects adhere to their proposed budgets, and any issues of mismanagement or inefficiency are identified and mitigated.
+   iii) Example. A project that delivers its milestones within the allocated budget demonstrates effective use of funds, whereas overspending might indicate potential issues.
+
+7. Community feedback and satisfaction
+   i) Description. This metric gathers feedback from the community regarding their satisfaction with the funded projects and the overall Project Catalyst process.
+   ii) Importance. High satisfaction levels indicate the community's needs and expectations are being met. It provides insights for continuous improvement of the Project Catalyst process.
+   iii) Example. Positive feedback on the transparency and impact of the voting process would highlight the community's approval, whereas constructive criticism could guide future enhancements.
+
+8. Growth in Project Catalyst participation
+   i) Description. This metric tracks the growth in the number of participants in Project Catalyst, including proposers, reviewers, and voters.
+   ii) Importance. It reflects Project Catalyst's expanding reach and inclusiveness. It also indicates the initiative’s ability to attract and engage a broad spectrum of participants over time.
+   iii) Example. An increase in active users on the IdeaScale platform and the voting application from one funding round to the next indicates growing engagement.
+
+9. Long-term sustainability and scalability
+   i) Description. This metric assesses Project Catalyst's long-term sustainability and scalability, including its capacity to manage growing numbers of proposals and participants.
+   ii) Importance. It ensures that Project Catalyst can continue to function effectively as it grows. Also, it addresses any potential bottlenecks or challenges related to scaling the initiative.
+   iii) Example. Implementing and effectively utilizing new tools and processes to manage more proposals and votes without compromising quality or security.
+
+By carefully monitoring these success metrics, Project Catalyst can ensure it meets its goals of fostering innovation, supporting valuable projects, and effectively engaging the community. Continuous assessment and refinement based on these metrics will help Project Catalyst remain a dynamic and impactful component of the Cardano ecosystem. The *Catalyst* team released their http://projectcatalyst.io/reports/horizons.pdf[Catalyst Horizons report] documenting various milestones. To dig deeper into the stats and trends, visit the https://projectcatalyst.io/reports[Reports] section of projectcatalyst.io for the latest data.
 
 == The age of Voltaire
 
 As Catalyst took a ‘tactical pause’ break after Fund9, there was a timely Systemization of Knowledge (SoK) research paperfootnote:[Kiayias, Lazos (2022), 'SoK: Blockchain Governance', arxiv.org/pdf/2201.07188.pdf] published just around this same time, reflecting on the state of governance in ten blockchains, including Bitcoin, Ethereum, and Cardano.
 
-The paper lists seven properties to assess different requirements for effective blockchain governance: 
+The paper lists *seven properties* to assess different requirements for effective blockchain governance: 
 
-Suffrage: this property deals with participation eligibility. How inclusive is the governance mechanism? 
-Confidentiality: are decision-makers’ inputs protected from ‘external influences’? 
-Verifiability: can decision-makers confirm their input has been considered in the output?
-Accountability: are decision-makers held accountable for their input?
-Sustainability: are decision-makers suitably incentivized?
-Pareto efficiency: how effectively can decision-makers' intentions be turned into actions?
-Liveness: how quickly can a blockchain’s governance mechanism produce outputs efficiently?
+1. *Suffrage*: this property deals with participation eligibility. How inclusive is the governance mechanism? 
+2. *Confidentiality*: are decision-makers’ inputs protected from ‘external influences’? 
+3. *Verifiability*: can decision-makers confirm their input has been considered in the output?
+4. *Accountability*: are decision-makers held accountable for their input?
+5. *Sustainability*: are decision-makers suitably incentivized?
+6. *Pareto efficiency*: how effectively can decision-makers' intentions be turned into actions?
+7. *Liveness*: how quickly can a blockchain’s governance mechanism produce outputs efficiently?
 
 
 image::../images/5.2_governance_properties.png[]
 *Figure 5.2:* The partition map of governance properties from the ‘SoK: Blockchain Governance’ paper
 
-The paper concludes that while each blockchain displays some of the properties, no blockchain meets all the requirements for effective governance. It was food for thought just before the dawn of the age of Voltaire. 
+The paper concludes that while each blockchain displays some of the properties, no blockchain meets all the requirements for effective governance. It was food for thought just before the dawn of the _age of Voltaire_. 
 
 
-CIP-1694
+*CIP-1694*
 
 https://cips.cardano.org/cip/CIP-1694[CIP-1694] was named after Voltaire’s year of birth. It is arguably the most important CIP to date as it is a proposal to bootstrap the age of Voltaire. Co-authored by Charles Hoskinson, it is the first CIP he has gotten directly involved with. It’s clear a lot of thought went into it, and it’s intentionally written as a transitional, living document.
 
@@ -194,15 +201,13 @@ CIP-1694 is the fruit of years of research. IOG has been working on a decentrali
 
 Early in 2022, IOG and the CF held workshops to hammer out a way forward for the Voltaire development phase. The first question was ‘What is good governance?’. Charles Hoskinson explained in his ScotFest keynote that the answer was based on three different categories:
 
-The concept of representation involves consent regarding decision-making authority. There are two types: direct representation, where individuals vote personally, and delegated authority, where individuals hand their vote to someone else. In CIP-1694, this role is called a delegate representative (DRep). This concept was already introduced in a similar form in Project Catalyst. 
+1. The *concept of representation* involves consent regarding decision-making authority. There are two types: *direct representation*, where individuals vote personally, and *delegated authority*, where individuals hand their vote to someone else. In CIP-1694, this role is called a delegate representative (DRep). This concept was already introduced in a similar form in Project Catalyst. 
 
-Governance requires a set of rules, often called a constitution, which serves as guardrails to provide stability. In a blockchain context, a constitution can be machine-readable. Formal specifications can act as blueprints for Cardano, enabling integration with an update system. Once a voting system is established, the constitution can be ratified, hashed, and embedded in a transaction. This allows users to sign a type of ‘end user agreement’ by signing the transaction.
+2. Governance requires a set of rules, often called a constitution, which serves as guardrails to provide stability. In a blockchain context, a constitution can be machine-readable. Formal specifications can act as blueprints for Cardano, enabling integration with an update system. Once a voting system is established, the constitution can be ratified, hashed, and embedded in a transaction. This allows users to sign a type of ‘end user agreement’ by signing the transaction.
 
+3. *Institutions* are often seen as targets for decentralization. If the goal is to ‘kill the middleman’, why do institutions matter? At their best, institutions set standards and provide a review process conducted by domain experts. Institutions are essential for good governance as they are the custodians of knowledge and best practices. People can be biased, so objective, neutral bodies are sometimes necessary for guidance. After careful consideration, it was determined that the most important ‘anchor’ institution would be a *members-based organization* (MBO) which should operate similarly to other open-source initiatives like the Linux Foundation, or the Cloud Native Computing Foundation (CNCF).
 
-Institutions are often seen as targets for decentralization. If the goal is to ‘kill the middleman’, why do institutions matter? At their best, institutions set standards and provide a review process conducted by domain experts. Institutions are essential for good governance as they are the custodians of knowledge and best practices. People can be biased, so objective, neutral bodies are sometimes necessary for guidance. After careful consideration, it was determined that the most important ‘anchor’ institution would be a members-based organization (MBO) which should operate similarly to other open-source initiatives like the Linux Foundation, or the Cloud Native Computing Foundation (CNCF).
-
-
-What is an MBO?
+*What is an MBO?*
 
 The MBO is a central hub that unites different groups, including thousands of stake pool operators, Cardano ambassadors, open-source projects running on Cardano, IOG, CF, Emurgo, and all ada holders. Members will own and run the MBO, staffing the steering committees. 
 
