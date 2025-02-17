@@ -38,6 +38,9 @@ Copyright.
 The concept is developed as a written proposal and submitted as a pull request to the CIP repository after initial discussion and feedback. The updated draft CIP is then publicly processed as follows:
 
 image::5.1_cip_workflow.png[]
+
+image::hydra_blockchaintrilemma.png[]
+
 *Figure 5.1:* CIP workflow from CIP-0001
 
 CIPs are processed in a semi-formal manner. Editors of CIP proposals meet regularly to discuss and evaluate ideas. Meeting minutes are publicly available, and meetings are held every two weeks. Authors are encouraged to contribute and provide comments, and discussions often take place simultaneously in the Cardano forum’s CIPs section and/or in GitHub pull requests. 
