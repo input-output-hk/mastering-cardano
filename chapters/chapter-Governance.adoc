@@ -210,7 +210,7 @@ image::../images/5.3_gov_concepts.png[]
 
 The MBO, later christened Intersect, is Voltaire's anchor institution, but it is not the only one. IOG has been steadily building out its presence in universities all over the globe, as well as opening the Hoskinson Center for Formal Mathematics, the Zero-Knowledge Lab not forgetting the Edinburgh Decentralization Index (EDI).  Other institutions and MBOs will follow with different focuses and priorities.  
 
-‘Institutions… their only job is to take complexity and turn it into simplicity’ – Charles Hoskinson
+‘Institutions… their only job is to take complexity and turn it into simplicity’ – Charles Hoskinsonfootnote:[Charles Hoskinson: Crypto regulations & policy, Importance of stablecoins & the future of Cardano, youtu.be/uEV8tQ6z87k?si=iVazdagl5JWZez3q&t=1983]
 
 CIP-1694 could fill a book on its own and, like all CIPs, is a living document that evolves with feedback. It aims to bootstrap the Voltaire development phase, integrating on-chain and off-chain components for ecosystem self-governance. The ultimate aim is a fully end-to-end, on-chain governance layer for Cardano.
 
@@ -231,7 +231,7 @@ rewire the ledger rules involving governance as outlined in CIP-1694.
 
 For CIP-1694 to succeed, it is essential to realize the vision presented in the Road to a Polyglot Ecosystem for Cardano whiteboard video. The new governance mechanisms will support multiple clients, enabling different development teams to employ different approaches, programming languages, and commercial unique selling propositions (USPs). 
 
-Charles Hoskinson’s keynote at ScotFest 2022:
+Charles Hoskinson’s keynote at ScotFest 2022:footnote:[ IO ScotFest Keynote with Charles Hoskinson, youtu.be/tbtkClr3Y3I]
 
 ‘So that's Voltaire …it’s deeply philosophical, it's the hardest thing I've ever done in my life, it's the hardest thing you're ever going to do in your life, and we're going to get it done, because it needs to get done and I'm damn tired of our industry failing, and it's about time we can point to something and say ‘you know what, we did it the right way’. We have to tend to our own gardens first. That was a lesson of Candide. So we have to fix Cardano's governance before we have the right to complain about any other person's governance.’ 
 
