@@ -45,7 +45,7 @@ CIPs are processed in a semi-formal manner. Editors of CIP proposals meet regula
 
 == Project Catalyst: democratizing innovation in Cardano 
 
-Project Catalyst, one of the world’s largest decentralized innovation funds, is a key component of the Cardano ecosystem. It aims to drive Cardano's evolution through community-driven funding and development initiatives to address real-world challenges. Catalyst empowers the Cardano community to propose, vote on, and fund proposals to foster innovation and growth within the ecosystem.
+https://projectcatalyst.io/[Project Catalyst], one of the world’s largest decentralized innovation funds, is a key component of the Cardano ecosystem. It aims to drive Cardano's evolution through community-driven funding and development initiatives to address real-world challenges. Catalyst empowers the Cardano community to propose, vote on, and fund proposals to foster innovation and growth within the ecosystem.
 
 Launched in 2020, Project Catalyst represents a significant milestone in the Cardano roadmap. It reflects the project's commitment to decentralized governance and community empowerment and marks the transition from a research-driven initiative to a community-led innovation hub.
 
@@ -69,12 +69,12 @@ Structure of funding rounds
 
 Each funding round, or fund, operates cyclically, typically lasting several weeks to a few months. Each fund is identified numerically (eg, Fund1, Fund2) and has a defined budget. The structure of a funding round generally includes the following phases:
 
-Proposal submission: innovators submit their project proposals on the IdeaScale platform. Each proposal must align with the thematic goals set for that particular fund.
+Proposal submission: innovators submit their project proposals on the https://cardano.ideascale.com/[IdeaScale platform]. Each proposal must align with the thematic goals set for that particular fund.
 Community review: during this phase, the community reviews and provides feedback on the submitted proposals. This feedback helps proposers refine their ideas and improve their chances of success.
-Voting: any ada holder can vote on proposals using the Catalyst voting application. Voting power is proportional to the amount of ada held, incentivizing ada holders to participate actively in the governance process.
+Voting: any ada holder can vote on proposals using the https://cardano.ideascale.com/[Catalyst voting application]. Voting power is proportional to the amount of ada held, incentivizing ada holders to participate actively in the governance process.
 Funding allocation: based on the voting results, funds are allocated to the awarded proposals. Proposals with the highest votes receive funding until the budget for that fund is exhausted.
 
-For more information about how Project Catalyst works, read the ‘How it works’ section on Project Catalyst’s website.
+For more information about how Project Catalyst works, read the https://projectcatalyst.io/how-it-works[‘How it works’ section] on Project Catalyst’s website.
 
 Thematic goals and challenges for funding
 
@@ -95,16 +95,16 @@ Detailed solution: a comprehensive explanation of the proposed solution, includi
 Team information: details about the team members, their backgrounds, and their roles in the project
 Budget breakdown: a transparent and itemized budget that outlines how the funds will be used.
 
-You can review the latest proposals sent to Project Catalyst on the ‘Home’ section of the IdeaScale website.
+You can review the latest proposals sent to Project Catalyst on the https://cardano.ideascale.com/c/home[‘Home’ section] of the IdeaScale website.
 
 Voting process
 
 Voting is a critical component of Project Catalyst, as it empowers the Cardano community to have a direct say in which proposals receive funding. This process ensures that decisions are decentralized and reflective of the community's collective priorities. Here’s an in-depth look at how the voting process works:
 
-Registration. To participate in voting, ada holders must first register their wallets. The registration process involves taking a snapshot of their ada holdings at a specific point in time. This snapshot determines the voting power of each participant. You can find the latest list of supported wallets on this page of the Project Catalyst knowledge base.
-Getting a voting application. Participants must use a dedicated voting application, such as the Catalyst Voting App, available on mobile devices. This application is designed to facilitate secure and user-friendly voting.
+Registration. To participate in voting, ada holders must first register their wallets. The registration process involves taking a snapshot of their ada holdings at a specific point in time. This snapshot determines the voting power of each participant. You can find the latest list of supported wallets on https://docs.projectcatalyst.io/current-fund-basics/how-to-register-as-a-voter/wallet-registration-guide/supported-wallets[this page] of the Project Catalyst knowledge base.
+Getting a voting application. Participants must use a dedicated voting application, such as the https://projectcatalyst.io/get-involved/become-a-voter[Catalyst Voting App], available on mobile devices. This application is designed to facilitate secure and user-friendly voting.
 Voting power calculation. Voting power is directly proportional to the amount of ada held by a participant at the time of the snapshot. For example, an individual with 5,000 ada will have more voting power than someone with 500 ada. This system ensures that those with a larger stake in the network have a greater influence on funding decisions. Wallets with at least 500 ada, excluding rewards, are eligible to vote.
-Reviewing proposals. All proposals are publicly accessible on the IdeaScale platform and the voting application. Participants can review detailed information about each proposal, including the problem statement, proposed solution, team details, and budget. Before voting, participants are encouraged to engage in discussions and provide feedback on the proposals. This collaborative approach helps refine the proposals and ensures that only well-vetted ideas move forward. To become a community reviewer, please refer to this page on the Project Catalyst knowledge base.
+Reviewing proposals. All proposals are publicly accessible on the IdeaScale platform and the voting application. Participants can review detailed information about each proposal, including the problem statement, proposed solution, team details, and budget. Before voting, participants are encouraged to engage in discussions and provide feedback on the proposals. This collaborative approach helps refine the proposals and ensures that only well-vetted ideas move forward. To become a community reviewer, please https://docs.projectcatalyst.io/current-fund-basics/community-review-guidelines-fund12/how-to-become-a-community-reviewer[refer to this page] on the Project Catalyst knowledge base.
 Voting begins. For each proposal, voters typically have multiple options to express their support or opposition. Common voting options include YES (strongly supporting the proposal) or ABSTAIN (choose not to vote). Only voting YES determines the outcome of proposals. Voting ABSTAIN is a signal only and serves to preserve privacy properties from cryptographic properties to counterbalance your YES votes. Your goal as a voter is to cast ABSTAIN in each category and mix up your voting profile to help improve voting privacy. Otherwise, not voting or choosing ABSTAIN are the same. However, ABSTAIN registers action on the chain. Not voting doesn't. Once you've cast a vote on blockchain, you cannot change it anymore.
 Counting votes. After the voting period ends, votes are tallied. The proposals with the most votes are selected for funding until the budget for that funding round is exhausted.
 Announcing results. The results are announced publicly, detailing which proposals have been selected for funding. This transparency helps build trust within the community.
@@ -160,7 +160,7 @@ Description. This metric assesses Project Catalyst's long-term sustainability an
 Importance. It ensures that Project Catalyst can continue to function effectively as it grows. Also, it addresses any potential bottlenecks or challenges related to scaling the initiative.
 Example. Implementing and effectively utilizing new tools and processes to manage more proposals and votes without compromising quality or security.
 
-By carefully monitoring these success metrics, Project Catalyst can ensure it meets its goals of fostering innovation, supporting valuable projects, and effectively engaging the community. Continuous assessment and refinement based on these metrics will help Project Catalyst remain a dynamic and impactful component of the Cardano ecosystem. The Catalyst team released their Catalyst Horizons report documenting various milestones. To dig deeper into the stats and trends, visit the Reports section of projectcatalyst.io for the latest data.
+By carefully monitoring these success metrics, Project Catalyst can ensure it meets its goals of fostering innovation, supporting valuable projects, and effectively engaging the community. Continuous assessment and refinement based on these metrics will help Project Catalyst remain a dynamic and impactful component of the Cardano ecosystem. The Catalyst team released their http://projectcatalyst.io/reports/horizons.pdf[Catalyst Horizons report] documenting various milestones. To dig deeper into the stats and trends, visit the https://projectcatalyst.io/reports[Reports] section of projectcatalyst.io for the latest data.
 
 == The age of Voltaire
 
