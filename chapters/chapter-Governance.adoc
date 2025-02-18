@@ -659,7 +659,7 @@ The Intersect governance parameters working group shared their https://docs.goog
 
 To ensure adherence to the constitution, a smart contract acts as the technical guardrail. This contract translates key constitutional provisions into code, wherever possible. For example, it might define acceptable ranges for parameters or treasury withdrawals so the blockchain will automatically reject any governance actions that violate these guardrails, preventing actions deemed unconstitutional. This adds an extra layer of security and stability to Cardano's governance process.
 
-  _I see the constitution as a living document, evolving with the Cardano community. Cardano shines as a model of strong blockchain governance_ – https://x.com/F_Gregaard/status/1780924566971326951[Frederik Gregaard, the Cardano Foundation CEO]
+_I see the constitution as a living document, evolving with the Cardano community. Cardano shines as a model of strong blockchain governance_ – https://x.com/F_Gregaard/status/1780924566971326951[Frederik Gregaard, the Cardano Foundation CEO]
 
 The Chang upgrade followed a similar deployment strategy to the Vasil upgrade. The final decision to initiate the upgrade was based on three key factors:
 
