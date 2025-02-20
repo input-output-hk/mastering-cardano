@@ -1,0 +1,356 @@
+
+=== The importance of program correctness for cryptocurrency ledgers
+
+Guaranteeing correct behavior of cryptocurrency ledgers implemented on
+blockchain technology comes with a unique set of challenges. An
+important one stems from the fact that such programs are distributed,
+meaning that the users running the code participating in implementing
+its behavior may have conflicting incentives, and the network across
+which they are communicating may be unpredictable. Testing blockchain
+applications at scale presents a serious challenge. If issues are
+discovered post-release, the process of fixing these issues in such
+software can be very slow and difficult, as it may be impossible to
+deprecate existing code. It is particularly tricky to deal with past
+exploits of existing vulnerabilities, which may have resulted in assets
+being stolen, or even downtime of the entire system. Another reason for
+paying special attention to correctness, is, of course, that users’
+assets are at stake.
+
+High-assurance guarantees about the behavior of the Cardano platform
+must be built in from the start, and persist throughout its lifetime.
+Formal methods (FM) are mathematically rigorous techniques for ensuring
+program correctness that can provide such guarantees. This section will
+summarize the impact of using FM on the software development process,
+specifying when it is appropriate to apply FM. Specific FM techniques,
+with a focus on FM in Cardano are also covered.
+
+==== What are formal methods?
+
+The formal methods approach provides guarantees of program behavior
+correctness. It involves the application of symbolic logic to construct
+behavior specifications, define their properties, then verify, prove, or
+property-test those properties. There are many different FM techniques,
+and a variety of tools.
+
+A formal specification is a description of what a given program (or a
+programming language) does, ie its semantics, written in symbolic logic
+and mathematical notation. It may consist of a definition of how the
+program state (eg a ledger or smart contract state) is updated in the
+presence of some input. In the case of blockchain, such input can be
+clock ticks, incoming messages, blocks, or transactions. To consider a
+non-blockchain example, a _counter_ program may have a state that is a
+natural number, and to apply an incoming increment request, the counter
+is incremented.
+
+A property is a statement about program behavior, for example, 'when two
+increment requests arrive, the counter must be incremented twice'. A
+proof is indisputable logical evidence of the truth of a given property,
+regardless of all external circumstances. Whenever these symbolic logic
+formalisms (specifications, properties, proofs, etc) are programmed and
+checked using software, they are _mechanized_.
+
+==== What do formal methods give us?
+
+The use of FM does not guarantee some abstract notion of 'perfect
+program correctness' of the resulting implementation. Rather, applying
+formal methods means answering the following questions for a specific
+piece of software being developed, which help get closer to an
+implementation that has high-assurance guarantees with respect to
+certain behavior properties:
+
+[arabic]
+. What is the scope of the specification?
+. What is the specification?
+. How to be sure that our formal specification is really what we want?
+. How to show that the implementation also satisfies this specification?
+
+(1). A formal specification rarely models the entire piece of software
+that will be implementing it. Multiple specifications may be required
+for a given piece of software. For example, the Cardano platform has
+separate specifications for networking, consensus, ledger, and smart
+contract layers. The scope may be further limited by omitting certain
+functionality. For example, the ledger specification may leave the
+details of the signing algorithm abstract, giving only an API, or leave
+out the specifics of transaction serialization entirely. It is essential
+to be clear about the scope of what is being specified. A reasonable
+scope is one where there are no unpredictable external side-effects,
+constraints, or inputs that are not accounted for in the specification.
+
+(2). An FM engineer builds a formal specification by thinking really
+hard about what they want the program to be doing, sometimes starting by
+analyzing an informal specification or a requirements list. For example,
+when a transaction is applied to the ledger, its validity is checked.
+The definition of transaction validity must be given using a formal
+specification. This includes details such as ‘does the validity interval
+[a, b] of a transaction include the endpoints a or b?’, or ‘does a
+transaction need to specify the exact set of keys that must sign for it
+to be valid?. There is not necessarily a 'correct' way to fill in these
+details - decisions must be made by the engineers or stakeholders in a
+way that is consistent and suitable for the relevant use cases.
+
+(3). Desirable properties of a program are defined to specify how the
+program is expected to behave in specific situations. These properties
+are not an obvious outcome of the specification. They are the result of
+FM engineers thinking 'what do we want to guarantee about this program’s
+behavior?'. For example, ‘the cost and outcome of smart contract
+execution is predictable locally’ is a unique and cherished property of
+Cardano smart contract execution, and is not necessarily shared by other
+blockchains. Upon formulating the desired properties of the program,
+they need to be either proved or demonstrated with a high degree of
+assurance, if possible. If it turns out that the specification does not,
+in fact, satisfy the property, changes to the specification may be
+required.
+
+Despite the fact that it is not possible to prove – or even list – every
+single desirable property of the behavior of a given program, this
+approach results in many important guarantees, as well as helps
+engineers find bugs in the process – usually way before deployment.
+
+(4). A specification is commonly written using either no software, or a
+different programming language from the one in which the implementation
+is written. Whenever a specification is written as a text document, a
+human must manually check that the specification and implementation
+match. When a specification is mechanized, it may be possible to
+establish conformance testing between the two. This automates the
+comparison between the outputs of the specification and implementation
+programs for a given set of states and inputs, making conformance
+testing very useful for keeping the two codebases synced.
+
+==== FM techniques used in building the Cardano platform
+
+To answer each of the questions posed above, different techniques are
+applied in Cardano, tuning the level of formal rigorto the particular
+use case. The most prevalent FM technique within Cardano is the use
+of _type systems_. A type system is a set of rules that assigns a
+symbolic property of _type_ to each term, eg 5 is an [purple]#Integer#, [1 ; 2] is
+a [purple]#List Integer#, True is a [purple]#Boolean#, etc. A type system can provide such
+guarantees as 'all items in this list are integers', or 'it is not
+possible to add an integer and an error'. A strong type system can
+provide strong formal guarantees, so, to quote Simon Peyton Jones, type
+systems are 'the most successful formal method'.
+
+Strong type systems are famously helpful in refactoring code. This
+is because changing the type of a variable or a function’s input or
+output often results in compilation errors that will prompt the
+developer to 'follow the types', ie to refactor all relevant parts of
+the program until the type system accepts it. This often coincides with
+completion of the required refactoring. For example, if a developer
+changes the output of some function to allow it to output an error, all
+functions that call this one will have to also be refactored to account
+for this additional possibility.
+
+_Functional programming_, while not itself a kind of FM technique, is a
+programming paradigm that facilitates writing programs that are highly
+amenable to formal specification and verification, and is widely used in
+core Cardano technology. The name functional is chosen because all such
+programs consist of functions, in the mathematical or logical sense, ie
+
+[source,shell]
+----
+    f : A -> B
+    f (a) = …
+----
+
+where the input type is _A_, the output type is _B_, and _f_ associates to
+each term _a_ of type _A_ a term _b_ of type _B_. For example, if `A = B`, we can
+define `f(a) = a`, the identity function. In _pure_ functional programs,
+there is no extra underlying state or input, such as user IO, or
+variable bindings, available to f within the computation. This
+significantly simplifies reasoning about the outputs of the function
+given a certain input (or set of inputs).
+
+Haskell is the programming language of choice for building the core
+Cardano node technology, including networking, consensus, and ledger
+components. It is functional, has a strong typing system, and has been
+around for several decades, boasting a dedicated user and maintainer
+base. In fact, prior to using proof assistants for specification,
+Haskell was the language for writing both the specification and the
+implementation, with the difference between the two being the level of
+optimization.
+
+_Semi-formal_, or non-machine-checked, techniques are also in use for
+building Cardano, including specification and proofs in the form of text
+documents. For example, for a given UTXO state and transaction, symbolic
+logic can express: 
+
+* How the UTXO state will be updated by this transaction, and
+* What properties a valid transaction has.
+
+While doing FM manually is not as reliable as machine-checked
+techniques, this more lightweight approach is still extremely useful.
+The Shelley and 'Shelley with multi-assets' Cardano eras had ledger
+specifications written in this format. Refactoring such specifications
+to match changes in the implementation is very difficult, as it relies
+on extremely careful manual analysis rather than 'following the types'.
+
+_Proof assistants_ are software tools that assist with the development
+of formal proofs and specifications. A proof assistant is made up of an
+integrated development environment (IDE) and a programming language. For
+a number of proof assistants, the supported programming language is
+dependently typed, functional, and treats propositions and logical
+reasoning as first class citizens. They support constructing and proving
+propositions, sometimes also supporting some degree of automation for
+this purpose. They can be used to provide stronger guarantees about the
+behavior of a given program as compared to type systems that do not
+support proof construction. Lean, Agda, Coq, and Isabelle are all proof
+assistants used for different purposes within Cardano. The choice of
+assistant depends on a number of factors, such as available expertise
+across engineers, interoperability with other system components, and
+support for automation.
+
+For example, compare a simple data structure implemented in both Haskell
+and Agda. *Set* is a data structure that contains a collection of
+elements of the same type, and each element is unique in this
+collection. In Haskell, uniqueness of elements is ensured by defining an
+insertion procedure of an element _e_ into a set _S_ that does nothing
+whenever _e_ is already contained in _S_, guaranteeing that duplicates
+do not exist in the collection. Developers then might either rely on the
+fact that it is easy enough to define insertion correctly or add some
+test cases. A set – as it is defined in Agda – is a pair of (i) a
+collection of elements, and (ii) a proof that there are no duplicates in
+that collection. This makes it impossible to define a bad insertion
+procedure that allows accidental element duplication, which is a
+stronger guarantee than provided by the Haskell implementation.
+
+The use of proof assistants in building Cardano has a good track record
+for squashing potential bugs before they cause problems in production.
+For example, in the process of encoding the preservation of value
+calculation into a proof assistant, an engineer was not able to complete
+the proof construction. The engineer then realized that it was due to an
+incorrect assumption made about certain functions, and they were able to
+fix the specification and the implementation accordingly.
+
+Guarantees obtained via testing alone are not as strong as those of
+formal verification, such as proofs. Specialized kinds of testing are,
+nevertheless, integral to the impactful application of FM. The behavior
+of a specification is defined by constructing _properties_. If we have
+defined the specification correctly, these properties will be true for
+any execution of the program. The approach of using a proof assistant
+might be too heavy-handed for certain applications, ie too difficult or
+time consuming. Instead, special software called _generators_ is used
+for generating extremely large numbers of random valid execution traces,
+and the desired property is then checked to hold for the generated
+traces. Generators are tuned to provide better, more realistic coverage.
+This approach is called _property testing_.
+
+_Conformance testing_ is a specific type of property testing. It
+provides high-assurance guarantees that the behavior of the
+implementation for an arbitrary state and input matches the behavior of
+the specification for the same state and input. Formally proving
+equivalence between specification and implementation, especially when
+the implementation is optimized and written in a different language, is
+quite unrealistic. Conformance testing is useful in formalizing certain
+aspects of behavioral equivalence, and providing highly reliable (if not
+indisputable) evidence to support these claims.
+
+Finally, _specialized formal models_, such as DELTA-Q Systems
+Development, have been developed to simulate reasoning about real
+systems before they are implemented and tested. DELTA-Q enables up-front
+performance modeling. Analysis using this tool can be carried out before
+creating a prototype to rule out infeasibility early on, and to give
+realistic performance constraints. For example, it has been used for
+excluding models that presume the existence of transatlantic network
+connections that are faster than the speed of light.
+
+Overall, developing new tools, such as the one described above, as well
+as improving existing ones, is an important component of formal methods
+application in Cardano, and in industrial contexts in general. Other
+examples of tool development work done as part of the Cardano
+engineering include contributions to both Haskell and Agda
+implementations.
+
+==== Tuning the level of formality
+
+Not all techniques listed above are suitable for all Cardano components.
+The idea is to tune the approach to each component and apply heavier
+techniques with a greater emphasis on verification to the more tractable
+inner components, and apply a more lightweight approach (type-safety, at
+minimum) with a greater emphasis on testing the impure outer components.
+
+The strongest formal guarantees can be specified and proved about the
+_ledger_ and _smart contracts_ executed on it. This is because both of
+these components are programmed in a pure way. Moreover, these
+components are written in a way that allows users to locally compute (ie
+before submission of a block or transaction) changes that a transaction
+will make, or the output of a contract. Like the ledger component, the
+consensus layer comes with certain formally proved properties about its
+specification. However, like the networking component, it must also deal
+with concurrent computation and some unpredictability, so formal
+verification is not always suitable here.
+
+The networking layer is a component for which it is more difficult to
+prove properties, since it has to deal with the complexity of unreliable
+communication. For this reason, it is instead subject to intensive
+property-based testing. However, because it is leaning heavily on
+concurrency for efficient operations, even testing proved challenging.
+Dedicated packages, including a special concurrency control mechanism,
+were developed to provide an additional layer of abstraction on top of
+parts of the Haskell runtime system (RTS). The same code can then be
+executed either by the Haskell RTS, or via a pure and fast
+implementation that deterministically simulates it, enabling excellent
+testing.
+
+Additional off-chain components are developed alongside Cardano, which
+have sufficiently robust formal, statistical, and incentives-based
+guarantees for the system to rely on them in its operation.
+
+==== Formal methods process and its impact
+
+Formal methods establish a robust connection between research and
+implementation. Research papers, together with the associated
+proof-of-concept implementations, are often difficult to transform into
+realistic and efficient implementations. FM facilitates this process by
+specifying exactly what the resulting implementation has to do, while
+maintaining the same level of scientific rigor as in the original
+research work. There are also some downsides to the use of FM, so let us
+list the pros and cons of formal methods:
+
+PROS: 
+
+* Provide very strong guarantees about program behavior, such as the
+absence (or a very low probability) of certain kinds of errors in all
+program executions
+* Multiple implementations built in accordance with a single formal model
+are guaranteed to have the same functionality. 
+
+CONS: 
+
+* Requires a lot of time, resources, effort, and expertise
+* May be difficult for non-experts to understand
+* Tools are not always easy to use or production-ready
+* Usually requires traditional testing to be done alongside proofs
+* Difficult to adjust when software updates occur (and may be an
+afterthought).
+
+There is a common theme here – using formal methods is significantly
+more difficult compared to traditional QA. However, the resource
+investment (of time, funds, effort, etc) in FM has been worth it for
+Cardano, which has been running with zero downtime since 2017, at least
+up to the time of publication of this book. Moreover, the core Cardano
+technology has not endured any major hacks resulting in the theft of
+assets due to buggy implementation, and rigorous formal specification
+and verification certainly deserves credit for this.
+
+The Cardano node FM strategy has been a great help in achieving the
+peace of mind that comes with strong guarantees about program behavior.
+Additionally, it helped establish a common language for communication
+between researchers and practitioners, provides a principled way of
+adding new features, and serves as valuable reference material for
+future development.
+
+A lot of FM research and even application is done in an academic
+setting. Making such work possible in an industry setting presents some
+challenges, as mentioned in the CONS list above. To achieve optimal FM
+usage in Cardano, FM work has been (i) mechanized, eg including Agda
+specifications and conformance testing, (ii) democratized, ie made more
+accessible to a broader audience, including the Cardano community and
+internal engineers, (iii) industrialized, ie has industry-like
+development practices and standards, and (iv) modified to include a
+broader scope of application of formal methods, eg cryptography.
+
+However, more work remains to be done in all of these areas. Further
+verification of cryptographic protocols would be extremely valuable.
+Work is ongoing on the application of formal methods in additional areas
+of Cardano development, including compilation certification, running
+verified code on-chain, and additional performance and security
+modeling. Further work is also being done on tool improvement.
