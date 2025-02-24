@@ -13,7 +13,7 @@ software can be very slow and difficult, as it may be impossible to
 deprecate existing code. It is particularly tricky to deal with past
 exploits of existing vulnerabilities, which may have resulted in assets
 being stolen, or even downtime of the entire system. Another reason for
-paying special attention to correctness, is, of course, that users’
+paying special attention to correctness, is, of course, that users'
 assets are at stake.
 
 High-assurance guarantees about the behavior of the Cardano platform
@@ -81,8 +81,8 @@ hard about what they want the program to be doing, sometimes starting by
 analyzing an informal specification or a requirements list. For example,
 when a transaction is applied to the ledger, its validity is checked.
 The definition of transaction validity must be given using a formal
-specification. This includes details such as ‘does the validity interval
-[a, b] of a transaction include the endpoints a or b?’, or ‘does a
+specification. This includes details such as 'does the validity interval
+`[a, b]` of a transaction include the endpoints `a` or `b`?', or ‘does a
 transaction need to specify the exact set of keys that must sign for it
 to be valid?. There is not necessarily a 'correct' way to fill in these
 details - decisions must be made by the engineers or stakeholders in a
@@ -91,9 +91,9 @@ way that is consistent and suitable for the relevant use cases.
 (3). Desirable properties of a program are defined to specify how the
 program is expected to behave in specific situations. These properties
 are not an obvious outcome of the specification. They are the result of
-FM engineers thinking 'what do we want to guarantee about this program’s
-behavior?'. For example, ‘the cost and outcome of smart contract
-execution is predictable locally’ is a unique and cherished property of
+FM engineers thinking 'what do we want to guarantee about this program's
+behavior?'. For example, 'the cost and outcome of smart contract
+execution is predictable locally' is a unique and cherished property of
 Cardano smart contract execution, and is not necessarily shared by other
 blockchains. Upon formulating the desired properties of the program,
 they need to be either proved or demonstrated with a high degree of
@@ -122,15 +122,15 @@ To answer each of the questions posed above, different techniques are
 applied in Cardano, tuning the level of formal rigorto the particular
 use case. The most prevalent FM technique within Cardano is the use
 of _type systems_. A type system is a set of rules that assigns a
-symbolic property of _type_ to each term, eg 5 is an [purple]#Integer#, [1 ; 2] is
-a [purple]#List Integer#, True is a [purple]#Boolean#, etc. A type system can provide such
+symbolic property of _type_ to each term, eg `5` is an `Integer`, `[1 ; 2]` is
+a `List Integer`, `True` is a `Boolean`, etc. A type system can provide such
 guarantees as 'all items in this list are integers', or 'it is not
 possible to add an integer and an error'. A strong type system can
 provide strong formal guarantees, so, to quote Simon Peyton Jones, type
 systems are 'the most successful formal method'.
 
 Strong type systems are famously helpful in refactoring code. This
-is because changing the type of a variable or a function’s input or
+is because changing the type of a variable or a function's input or
 output often results in compilation errors that will prompt the
 developer to 'follow the types', ie to refactor all relevant parts of
 the program until the type system accepts it. This often coincides with
@@ -151,11 +151,11 @@ programs consist of functions, in the mathematical or logical sense, ie
     f (a) = …
 ----
 
-where the input type is _A_, the output type is _B_, and _f_ associates to
-each term _a_ of type _A_ a term _b_ of type _B_. For example, if `A = B`, we can
+where the input type is `A`, the output type is `B`, and `f` associates to
+each term `a` of type `A` a term `b` of type `B`. For example, if `A = B`, we can
 define `f(a) = a`, the identity function. In _pure_ functional programs,
 there is no extra underlying state or input, such as user IO, or
-variable bindings, available to f within the computation. This
+variable bindings, available to `f` within the computation. This
 significantly simplifies reasoning about the outputs of the function
 given a certain input (or set of inputs).
 
@@ -202,8 +202,8 @@ For example, compare a simple data structure implemented in both Haskell
 and Agda. *Set* is a data structure that contains a collection of
 elements of the same type, and each element is unique in this
 collection. In Haskell, uniqueness of elements is ensured by defining an
-insertion procedure of an element _e_ into a set _S_ that does nothing
-whenever _e_ is already contained in _S_, guaranteeing that duplicates
+insertion procedure of an element `e` into a set `S` that does nothing
+whenever `e` is already contained in `S`, guaranteeing that duplicates
 do not exist in the collection. Developers then might either rely on the
 fact that it is easy enough to define insertion correctly or add some
 test cases. A set – as it is defined in Agda – is a pair of (i) a
@@ -325,7 +325,7 @@ afterthought).
 There is a common theme here – using formal methods is significantly
 more difficult compared to traditional QA. However, the resource
 investment (of time, funds, effort, etc) in FM has been worth it for
-Cardano, which has been running with zero downtime since 2017, at least
+Cardano, which has been running with zero downtime since its beginning in 2017, at least
 up to the time of publication of this book. Moreover, the core Cardano
 technology has not endured any major hacks resulting in the theft of
 assets due to buggy implementation, and rigorous formal specification
