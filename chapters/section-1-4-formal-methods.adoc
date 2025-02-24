@@ -325,7 +325,7 @@ afterthought).
 There is a common theme here – using formal methods is significantly
 more difficult compared to traditional QA. However, the resource
 investment (of time, funds, effort, etc) in FM has been worth it for
-Cardano, which has been running with zero downtime since its beginning in 2017, at least
+Cardano, which has been running with zero downtime since its launch in 2017, at least
 up to the time of publication of this book. Moreover, the core Cardano
 technology has not endured any major hacks resulting in the theft of
 assets due to buggy implementation, and rigorous formal specification
