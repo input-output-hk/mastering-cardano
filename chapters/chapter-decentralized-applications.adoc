@@ -262,6 +262,10 @@ image::dapp-connect-to-lace.png[]
 Now that we have connected the client-side code to the wallet, let’s write some code that will interact with an underlying smart contract.
 
 
+#Discuss decentralising web servers, the trade-offs and options.
+Close-off with challenges and UI issues, and what the future may hold.#
+
+
 
 #Continue with a note on on-chain/off-chain SCs parts?#
 
