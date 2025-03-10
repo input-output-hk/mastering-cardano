@@ -3,7 +3,9 @@
 
 == Writing smart contracts
 
-=== Plutus preface
+=== Prefaces 
+
+==== Plutus preface
 
 _Prof Philip Wadler, FRS_ +
 _University of Edinburgh and IOG_
@@ -89,7 +91,7 @@ experience -- it's not often that you can suggest a practical
 application of a fifty-year-old theory and have people take you
 seriously!
 
-=== Marlowe preface  
+==== Marlowe preface  
 
 _Prof Simon Thompson_ + 
 _University of Kent_ + 
@@ -233,10 +235,6 @@ purely functional programming language. It is a general-purpose smart
 contract language that focuses on security. The basics of coding smart
 contracts in Plinth are explained in section <<Plutus smart contracts>>.
 
-The logic in other compiled Cardano smart contract languages follows the
-same rules defined by Plutus. Learning one compiled language also helps
-understand other compiled languages with different syntaxes from Plinth.
-
 There are also other compiled smart contract languages developed by
 companies within the Cardano ecosystem. They are all domain-specific
 languages
@@ -259,6 +257,10 @@ eDSL in Haskell for writing efficient Plutus validators
 * https://scalus.org/[Scalus]: a typed eDSL in Scala.
 * https://github.com/Plutonomicon/pluto[Pluto]: a DSL resembling UPLC
 with some syntactic sugar, written in a Haskell-like syntax
+
+The logic in other compiled Cardano smart contract languages follows the
+same rules defined by Plutus. Learning one compiled language also helps
+understand other compiled languages with different syntaxes from Plinth.
 
 You can refer to the
 https://cardano-foundation.github.io/state-of-the-developer-ecosystem/2024/#what-do-you-use-or-plan-to-use-for-writing-plutus-script-validators-smart-contracts[State
@@ -397,7 +399,7 @@ Swift.
 providing numerous tools to easily build DApps on Cardano. It also
 integrates the popular https://react.dev/[React] library.
 * https://lucid.spacebudz.io/[Lucid]: a popular JavaScript/Typescript
-library for off-chain code, which will be further maintained by the
+library for off-chain code, which is further maintained by the
 https://anastasia-labs.github.io/lucid-evolution/[Lucid Evolution]
 project funded by
 https://projectcatalyst.io/funds/11/cardano-open-developers/anastasia-labs-lucid-evolution-redefining-off-chain-transactions-in-cardano[Catalyst
@@ -421,7 +423,7 @@ You can also look at the State of the Cardano Developer Ecosystem report
 https://cardano-foundation.github.io/state-of-the-developer-ecosystem/2024/#which-libraries-do-you-use-in-your-projects[Cardano
 libraries].
 
-This chapter also presents the MeshJS tool and showcases how to write
+This chapter presents the MeshJS tool and showcases how to write
 off-chain code for smart contracts in sections 
 <<Off-chain code with MeshJS>> and <<Minting policies>>.
 
@@ -767,11 +769,10 @@ projects without installing any software
 integrated into the updated Marlowe website.
 
 *IMPORTANT:*
-In the transition phase of Marlowe, where GitHub repositories of the
-above-mentioned tools are not actively maintained by IO and the Marlowe
-foundation has not received any funding from Catalyst or other sources,
-some of these tools might have issues when using them with the latest
-test or main network due to updates of Cardano’s ledger layer.
+In the transition phase of Marlowe, where some GitHub repositories 
+of the above-mentioned tools may not be actively maintained by the 
+Marlowe foundation, some of these tools might have issues when using 
+them with the latest test or main network due to Cardano updates. 
 
 The
 https://docs.marlowe.iohk.io/docs/platform-and-architecture/marlowe-language-guide[Marlowe
@@ -1544,8 +1545,8 @@ you are already familiar with blockchain technology, refer to the
 Cardano-specific content in those chapters. The EUTXO model is presented
 in section <<The EUTXO model>>. One should also be familiar with
 the types of smart contract languages offered by Cardano, covered in
-section <<Smart contract programming languages>>, which lists each type and provides resources for DApp
-development tools. Additionally, understanding Cardano addresses and
+section <<Smart contract programming languages>>, which lists each type and provides 
+resources for development tools. Additionally, understanding Cardano addresses and
 their binary format, as explained in section <<Cardano addresses>>, is important.
 
 Section _Plutus smart contracts_ presents the rules for the Plutus language by showcasing how
@@ -1555,7 +1556,7 @@ to other compiled languages like Aiken, Plu-Ts or OpShin, learning the
 basics of Plinth helps developers read and write code in other Cardano
 smart contract languages that compile to Plutus.
 
-Plinth is embedded in the Haskell programming language. For mere details
+Plinth is embedded in the Haskell programming language. For more details
 on Haskell, refer to section <<Features and benefits of Haskell>>. IO
 offers a free self-paced beginner-friendly
 https://github.com/input-output-hk/haskell-course/[Haskell course]
@@ -1622,7 +1623,7 @@ More resources are available on their
 https://www.youtube.com/@gimbalabs/playlists[YouTube channel].
 * Project pages listed in the education sections of
 https://www.cardanocube.com/cardano-ecosystem-interactive-map[Cardano’s
-interactive map]. One can explore projects in other groups and view
+interactive map]. One can also explore projects in other groups and view
 their GitHub repositories.
 
 Aiken specific learning resources are presented at the end of section
@@ -1638,9 +1639,9 @@ the offered courses include:
 * Blockchain business consultant.
 
 The Emurgo https://education.emurgo.io/cardano-courses/[Cardano
-courses] page provides an up-to-date list, and the Cardano foundation
+courses] page provides an up-to-date list. The Cardano foundation
 also offers a free https://academy.cardanofoundation.org/[online
-course] on the basics of blockchain and Cardano.
+course] on the basics of blockchain and Cardano. 
 
 ==== Plutus in comparison to Bitcoin Script and Solidity
 
@@ -1685,26 +1686,27 @@ has very little context. This enables Ethereum smart contracts to be
 more powerful, but it can also make it difficult to predict their
 behavior, leading to potential security issues. During the interval
 between a user constructing a transaction and its incorporation into the
-blockchain, concurrent events may also occur. Ethereum employs an
-account-based model, where each user has an account with a balance. When
-funds are transferred between accounts, the balances are updated
-accordingly. In Ethereum, it is possible that a user has to pay gas fees
-for a transaction that interacts with a smart contract, although it can
-eventually fail with an error.
+blockchain, concurrent events may also occur. In Ethereum, it is possible 
+that a user has to pay gas fees for a transaction that interacts with a 
+smart contract, although it can eventually fail with an error. Ethereum 
+employs an account-based model, where each user has an account with a 
+balance. When funds are transferred between accounts, the balances are 
+updated accordingly. 
 
-Cardano uses the EUTXO model and Plutus Core as its native smart
+Cardano uses the EUTXO model and Plutus as its native smart
 contract language. Developers can write smart contracts in Plinth or in
-other high level languages that compile to Plutus Core (see section
+other high level languages that compile to Plutus (see section
 <<Smart contract programming languages>>). Section <<Plutus security>> 
-covers the security aspect of both languages in more detail. A Plutus 
-smart contract provides a more flexible view than a Bitcoin Script but 
-does not have a global view as a Solidity smart contract. Plutus scripts 
-cannot see the whole state of the blockchain but can see the whole 
-transaction that is being validated.
+covers the security aspect of both Plutus and Plinth languages in more detail. 
+A Plutus smart contract, also called a Plutus script, provides a more flexible 
+view than a Bitcoin script but does not have a global view as a Solidity smart 
+contract. Plutus scripts cannot see the whole state of the blockchain but can 
+see the whole transaction that is being validated.
 
-This means the Plutus contract can see the script context that
+This means the Plutus script can see the script context that
 carries information about the transaction being validated including 
-its inputs and outputs. A UTXO can have an arbitrary
+its inputs and outputs and other things that will be presented in detail 
+in section <<Script context explained>>. A UTXO can also have an arbitrary
 piece of data attached to it – the datum, which defines a state of the
 UTXO. When a transaction intends to spend a UTXO sitting at a smart
 contract, the smart contract code can access the information contained
@@ -1742,10 +1744,10 @@ documents, academic papers and talks.
 ==== Plinth in comparison to Aiken
 
 Plinth enables developers to write and compile their on-chain code to
-Plutus for use in DApps, which Cardano nodes execute during user
-interactions. Plinth provides a compiler plugin for GHC (the Glasgow
-Haskell Compiler) that compiles to Plutus. More details about the
-Plinth-to-Plutus compilation pipeline are outlined in section <<Plutus security>>.
+Plutus, or more preceisly to UPLC which the Cardano nodes execute. Plinth 
+provides a compiler plugin for GHC (the Glasgow Haskell Compiler) that compiles 
+to Plutus. More details about the Plinth-to-Plutus compilation pipeline are 
+outlined in section <<Plutus security>>. 
 
 Plinth lets developers build secure applications, forge new assets, and
 create smart contracts in a predictable, deterministic environment with
@@ -1761,15 +1763,14 @@ generated using Haddock, for all public Plutus code libraries. The
 official https://plutus.cardano.intersectmbo.org/docs/[Plutus user
 guide] provides developer-related information on Plutus and Plinth.
 
-https://aiken-lang.org/[Aiken] is another popular Cardano smart
-contract language that complines to Plutus Core. Written in Rust, it
-compiles directly to UPLC, which Cardano nodes execute. This process is
-illustrated on the diagram below:
+https://aiken-lang.org/[Aiken] is another popular Cardano smart contract 
+language that is written in Rust and directly compiles to UPLC. This process is
+illustrated on the diagram below: 
 
 image::sc_aiken_compilation.png[width=590,height=390,title="Aiken code transformation, source: https://cardanofoundation.org/blog/aiken-the-future-of-smart-contracts[CF blog]"]
 
-Aiken was developed by the https://txpipe.io/[TxPipe] company with
-help of the https://cardanofoundation.org/[Cardano Foundation], taking
+Aiken was developed by the company https://txpipe.io/[TxPipe] with
+help of the https://cardanofoundation.org/[Cardano Foundation]. It takes
 inspiration from many modern languages such as Gleam, Rust, and Elm,
 which are known for friendly error messages and an overall excellent
 developer experience. It is a purely functional language with strong
@@ -1796,12 +1797,15 @@ approach (https://well-typed.com/blog/2022/08/plutus-cores/#in-haskell.-scott-en
 example]), which created an upfront cost that caused the difference in
 execution costs between Haskell and other frameworks like Aiken. With the 
 introduction of PlutusV3, sums of products allow for encoding data types 
-in a more compact and cost-effective way. Aiken 
-compiles all its custom data types into the builtin Plutus type _Data_.
-We will look at this data type in section <<Simple validation scripts>>. Both
-languages are purely functional, which makes it easier for an auditor to
-assess the behavior of such smart contracts. Plinth also works well with
-proof-assistant tools such as
+in a more compact and cost-effective way. Also Plutus now provides 
+a way to deal directly with the [purple]#Data# type for all Plutus script 
+versions (V1, V2 and V3) that allows for better code optimization. 
+Aiken compiles all its custom data types into the builtin Plutus type [purple]#Data#.
+We will look at this data type in section <<Simple validation scripts>>. 
+
+Both languages are purely functional, which makes it easier for an auditor 
+to assess the behavior of such smart contracts. Because Plinth is embeded in 
+Haskell, it also works well with proof-assistant tools such as
 https://wiki.portal.chalmers.se/agda/pmwiki.php[Agda], making it a
 good choice for projects that require a high level of security. Since
 Agda isn’t Haskell specific, it could also be used with Aiken. However,
@@ -1809,13 +1813,13 @@ the gap to bridge between Aiken and Agda is larger than that between
 Plinth and Agda. Because both languages compile to Plutus, the logic of
 writing smart contracts is the same, but the workflow and syntax are
 different. Learning one language will help a developer understand any
-other Cardano smart contract language that compiles to Plutus.
+other Cardano smart contract language that compiles to Plutus. 
 
 To learn the Aiken smart contract language, one can check out the
 https://aiken-lang.org/language-tour/primitive-types[Language tour] on
-the official documentation, which also provides a walkthrough of
-creating a https://aiken-lang.org/example--hello-world/basics[Hello World
-project], covering the following topics:
+the official documentation, which also provides a walkthrough of creating a 
+link:++https://aiken-lang.org/example--hello-world/basics++[Hello World project], 
+covering the following topics:
 
 * pre-requisites
 * scaffolding
@@ -1841,16 +1845,17 @@ options:
 * Use an online platform such as https://demeter.run/[Demeter.run]
 * Install system dependencies manually.
 
-The __plinth-dev-env__ GitHub repository provides instructions for
-setting up the development environment for the first three options. And
-up-to-date link to this repository is available in the _resources_
-folder of the
+The _plinth-dev-env_ GitHub repository provides instructions for
+setting up the development environment for the first three options. An
+up-to-date link to this repository is available in the _resources_ folder of the
 https://github.com/input-output-hk/mastering-cardano[mastering-cardano]
 GitHub repository. It aims to provide up-to-date instructions for the
 latest stable Plinth development environment. The smart contract code
 presented throughout section <<Plutus smart contracts>> uses features 
 introduced in the Chang hard fork, which enabled PlutusV3. The development 
-environment you will use to run and test this code needs to support these features.
+environment you will use to run and test this code needs to support these 
+features. The code from this section was tested with a Nix shell that was 
+set up with instructions provided in the _plinth-dev-env_ repository. 
 
 The https://demeter.run/[Demeter.Run] online platform offers various
 tools and development environments for the Cardano ecosystem. One can
@@ -3526,8 +3531,8 @@ serialized. When compiling the validator, another type parameter needs to be
 added to the type signatures, and we also need to apply the [blue]#unsafeFromBuiltinData# 
 function to the vesting parameter in order to wrap the validator before compiling it. 
 
-This concludes the procedure of writing a parameterized contract. An example of 
-applying more than one parameter is included in section <<Minting policies>>. 
+This concludes the procedure of writing a parameterized contract. Next we look at 
+off-chain code that interacts with the validators presented in this section.  
 
  ------------------------------------------------------------------------ 
 
