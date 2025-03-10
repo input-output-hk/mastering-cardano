@@ -1854,8 +1854,9 @@ latest stable Plinth development environment. The smart contract code
 presented throughout section <<Plutus smart contracts>> uses features 
 introduced in the Chang hard fork, which enabled PlutusV3. The development 
 environment you will use to run and test this code needs to support these 
-features. The code from this section was tested with a Nix shell that was 
-set up with instructions provided in the _plinth-dev-env_ repository. 
+features. The smart contract code presented in this section was compiled 
+with a Nix shell that was set up with instructions provided in the 
+_plinth-dev-env_ repository. 
 
 The https://demeter.run/[Demeter.Run] online platform offers various
 tools and development environments for the Cardano ecosystem. One can
@@ -2036,7 +2037,9 @@ section. From the language pragmas we note that we add the
 from being imported. The `PlutusTx` module defines a custom prelude where
 all functions use strict evaluation rather than the lazy one. This also
 applies to all other functions defined in any module used for Plinth
-coding. Then, we import several submodules from the `PlutusLedgerApi` and the 
+coding. We name the module `Week02.Validators` because the code comes 
+from the _Week02_ examples of the fourth Plutus pioneer program. 
+Then, we import several submodules from the `PlutusLedgerApi` and the 
 `PlutusTx` modules that define functions for working with PlutusV3 scripts. 
 
 After that follows the on-chain validator code.
@@ -2530,7 +2533,8 @@ The blueprint defines the validator title, description, redeemer information,
 datum information and the compiled code which we reference from the `Week02` 
 module that we have imported. One can simply extend the blueprint code such that 
 it generates the data and compiled code for all six validators we have defined 
-in this section. Below is an example blueprint for the above code. 
+in this section. Below is an example blueprint for the above code. The compiled 
+validator code is contained in the `"compiledCode"` fields. 
 
 [source,json]
 ----
@@ -3429,7 +3433,7 @@ validity range and check whether it is contained inside the interval
 starting with the deadline and going to infinity. As a side note we state 
 when the validity range for a transaction is being defined, that we construct 
 either with off-chain code libraries or with the use of the Cardano CLI, 
-the transaction gets processed by the node only if the time of submission 
+the transaction gets submitted by a node only if the time of submission 
 for this transaction falls into the validity range of the transaction. 
 
 In the validator code the datum gets extracted from the script context and 
