@@ -3536,9 +3536,7 @@ added to the type signatures, and we also need to apply the [blue]#unsafeFromBui
 function to the vesting parameter in order to wrap the validator before compiling it. 
 
 This concludes the procedure of writing a parameterized contract. Next we look at 
-off-chain code that interacts with the validators presented in this section.  
-
- ------------------------------------------------------------------------ 
+off-chain code that interacts with the validators presented in this section.   
 
 ==== Off-chain code with MeshJS
 
@@ -3549,7 +3547,7 @@ performance and security standards as on-chain code. Further comparison
 between on-chain and off-chain code will be made in section 
 <<Onchain vs off chain Code>>. In this section, we will showcase how to
 write off-chain code for the on-chain code example presented in the
-previous section.
+previous section. 
 
 After the Alonzo era, when smart contracts became available on Cardano,
 the https://github.com/IntersectMBO/plutus-apps[Plutus application platform] 
@@ -3558,205 +3556,191 @@ Developed by IO and implemented as a set of Haskell libraries, it
 allowed users to write and submit transactions using the Contract monad.
 A single Haskell file could contain on-chain and off-chain code.
 Currently, the platform is in maintenance mode and no longer under
-active development.
+active development. 
 
 Another way for constructing off-chain transactions is by using the
 https://github.com/input-output-hk/cardano-cli[Cardano CLI]. You can 
-read more about the Cardano CLI at the 
+find examples and read more about the Cardano CLI at the 
 https://developers.cardano.org/docs/get-started/cardano-cli/get-started/[Cardano developers] 
-webpage. Examples of using the Cardano CLI are also included in the Plutus Pioneer program’s
-https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[4th
-iteration] GitHub repository, specifically in the code examples and
-lectures from the third and fourth weeks. The bash scripts were tested
-with version 1.35.5 of the Cardano node and Cardano CLI.
+webpage. 
 
 There are several community-built tools for writing off-chain code in
 various programming languages. Some of them are listed at the end of
 section <<Smart contract programming languages>>, where
 off-chain code is briefly covered. For those using Plinth and interested
-in writing off-chain code in Haskell, the https://atlas-app.io/[Atlas]
-application backend, developed by GeniusYield, provides a solution. It
+in writing off-chain code in Haskell, the https://atlas-app.io/[Atlas application backend], 
+developed by https://www.geniusyield.co/[GeniusYield], provides a solution. It
 allows code-sharing between the on-chain and off-chain components while
 enabling the creation of a backend for decentralized applications.
 
-This section explores the https://lucid.spacebudz.io/[Lucid] tool,
-developed by Spacebuzd. It can be used as a NodeJS package to construct
-and submit transactions interacting with a smart contract using
-JavaScript or TypeScript. We make an important distinction between
-off-chain and on-chain code at this point. Because Cardano uses the hard fork
-combinator technology, all Plutus script versions are supported by the
-blockchain (read more in section <<Cardano node layers>>). Once you have writen on-chain
-code that works, it will work indefinitely. That is not the case for
-off-chain code. 
-
-Some of the off-chain code example presented in this section may
-not work in the Conway era because Lucid version 0.9.1, used in this
-section, does not correctly calculate the minimum ada for instance when attaching a
-reference script to a transaction. Off-chain code built for a specific
-Cardano era and a Lucid library version, or any other off-chain library, may not
-work in future eras if blockchain parameters change. As the time of writing,
-Lucid version 0.10.7 also lacks a fix, but the main branch of the
-https://github.com/spacebudz/lucid[Lucid repository] does 
-https://github.com/spacebudz/lucid/pull/254[include one]. You can 
-check the Lucid page at https://deno.land/x/lucid[Deno land] if there 
-is a newer version published at the time of reading. In case it is not, 
-you can clone the repository locally and reference the `mod.ts` file 
-directly in the code.
-
-[source,typescript]
-----
-import {
-    Data,
-    Lucid,
-    Blockfrost,
-    getAddressDetails,
-    SpendingValidator,
-    TxHash,
-    Datum,
-    UTxO,
-    Address,
-    AddressDetails,
-} from "./<path>/<to>/<local>/lucid/mod.ts"
-----
-
-If you use the latest Lucid updates, you should also use an up-to-date
-Deno version. The Deno version in the Docker container for the Plinth
-development environment (discussed in section <<Setting up a Plinth development environment>>) will not compile
-code with the latest Lucid updates. It’s important to note that the Lucid 
-project is not very actively maintained, and further development is
-occurring under the https://github.com/Anastasia-Labs/lucid-evolution[Lucid Evolution] 
-project by AnastasiaLabs, funded in
-https://projectcatalyst.io/funds/11/cardano-open-developers/anastasia-labs-lucid-evolution-redefining-off-chain-transactions-in-cardano[Catalyst
-Fund11]. Once Lucid Evolution is available and actively maintained,
-developers will simply need to upgrade to the latest version and re-test
-their DApp’s off-chain code.
-
-For our example, we will write off-chain code with Lucid 0.9.1 that interacts 
-with the vesting smart contract presented in section 
-<<Time-dependent and parameterized validators>>. Our code will reside in 
-TypeScript files to leverage some of the type system’s features. We will run 
-our code using https://deno.com/[Deno], which is a runtime for JavaScript and
-TypeScript. To use Deno, you can find definitions and short code
-examples for Lucid name spaces, classes, variables, functions,
-interfaces and type aliases https://deno.land/x/lucid@0.9.1/mod.ts[on
-this page]. We will use Lucid version 0.9.1 and call the code file
-`lucid-vesting.ts`.
-
-[source,typescript]
-----
-import {
-    Data,
-    Lucid,
-    Blockfrost,
-    getAddressDetails,
-    SpendingValidator,
-    TxHash,
-    Datum,
-    UTxO,
-    Address,
-    AddressDetails,
-} from "https://deno.land/x/lucid@0.9.1/mod.ts"
-// create a seed.ts file with your seed
-import { secretSeed } from "./seed.ts"
- 
-// set blockfrost endpoint
-const lucid = await Lucid.new(
-  new Blockfrost(
-    "https://cardano-preview.blockfrost.io/api/v0",
-    "insert your own api key here"
-  ),
-  "Preview"
-);
- 
-// load local stored seed as a wallet into lucid
-lucid.selectWalletFromSeed(secretSeed);
-const addr: Address = await lucid.wallet.address();
-console.log(addr);
-----
-
-First, we import the necessary components. The `seed.ts` file should
-contain the seed for your Cardano wallet, with all the words separated
-by spaces, as shown in the following example:
+This section explores the https://meshjs.dev/[MeshJS] tool, developed by 
+the https://meshjs.dev/about[Mesh team]. It can be used as a NodeJS package 
+to construct and submit transactions interacting with a smart contract by 
+writing JavaScript or TypeScript code. To run the off-chain code in this and 
+other sections you can use https://deno.com/[Deno] that is a runtime for 
+JavaScript and TypeScript. All off-chain code presented in this and other 
+sections was tested with Deno version 2.1.9 and MeshSDK version 1.9.0. 
+To install the MeshSDK libraries that are needed by the off-chain code 
+first install the `npm` package manager for JavaScript and then run: 
 
 [source,shell]
 ----
-export const secretSeed = "seed_word1 seed_word2 ... seed_wordN";
+npm install @meshsdk/core
 ----
 
-Next, we initiate Lucid as a constant using the [blue]#new# method, which
-requires a provider and a network. The provider enables fetching and
-submitting data to the blockchain. We specify the network (mainnet,
-pre-production, or preview) and use https://blockfrost.io/[Blockfrost]
-as the provider to run a full node for us. Users can get an API key from
-the Blockfrost web page for free. Lucid can then request data from the
-blockchain in various formats. You can also connect Lucid to a provider
-that you host yourself. In the above code example, we chose the preview
-network. If you want to test the code from this section, your wallet
-needs to have some test ada on the preview network. If a different
-network is selected, update the URL and the last string in the code
-block that initiates Lucid. Next, we tell Lucid how to connect to a
-wallet, which can be done in multiple ways as outlined in the
-documentation. We select the wallet via a seed phrase imported earlier
-and log the address of our wallet. To get the address, run the following
-command from the VSCode terminal, which you can set up using
-instructions from section <<Setting up a Plinth development environment>>:
-
-[source,shell]
-----
-/<path>/<to>/<file># deno run -A lucid-vesting.ts
-addr_test1vr8ldcu7ckeulp93q7yhdjv8q6mnwaxjc4fr4ax64a79zzgm5xd7e
-----
-
-The wallet address is then displayed in the terminal. If multiple
-accounts reside in the wallet, you can specify one by adding the
-[blue]#accountIndex# when selecting the address. Only one account can be
-selected at a time; however, you can select different accounts
-sequentially and store their addresses in different variables. The last
-selected account is the one that Lucid keeps track of. Below is an
-example code:
+Let us look now at off-chain code that interacts with the vesting smart 
+contract `vestingVal` that we have defined in the previous section. Our code 
+will reside in a TypeScript file to leverage some of the type system’s features. 
 
 [source,typescript]
 ----
-lucid.selectWalletFromSeed(secretSeed, { accountIndex: 0 });
-const addr0: Address = await lucid.wallet.address();
-console.log("Address for account 0: " + addr0);
-lucid.selectWalletFromSeed(secretSeed, { accountIndex: 1 });
-const addr1: Address = await lucid.wallet.address();
-console.log("Address for account 1: " + addr1);
-----
+import { 
+    BlockfrostProvider, 
+    MeshWallet, 
+    Transaction, 
+    PlutusScript,
+    resolvePlutusScriptAddress,
+    applyCborEncoding,
+    deserializeAddress,
+    resolveSlotNo,
+    mConStr0,
+    Action
+  } from "@meshsdk/core";
+import { UTxO } from "@meshsdk/common";
+import { secretSeed } from "./seed.ts";
+/* seed.ts has to be in form of: 
+    export const secretSeed = ["seed1", "seed2", ... ] */
 
-Next, let’s look at some variables we define in our TypeScript code: 
-
-[source,typescript]
-----
-// Define the vesting Plutus script
-const vestingScript: SpendingValidator = {
-    type: "PlutusV2",
-    script: "590b30590b2d01000032323233223232332…",
-};
-const vestingAddress: Address = lucid.utils.validatorToAddress(vestingScript);
- 
-// Create the vesting datum type
-const VestingDatum = Data.Object({
-    beneficiary: Data.String,
-    deadline: Data.BigInt,
+// Define blockchain provider and wallet 
+const provider: BlockfrostProvider = new BlockfrostProvider("<blockfrost-key>");
+const wallet: MeshWallet = new MeshWallet({
+    networkId: 0, //0=testnet, 1=mainnet
+    fetcher: provider,
+    submitter: provider,
+    key: {
+        type: "mnemonic",
+        words: secretSeed
+    }
 });
-type VestingDatum = Data.Static<typeof VestingDatum>;
- 
-// Set the vesting deadline
-const deadlineDate: Date = new Date("2023-03-19T00:00:00Z")
-const deadlinePosIx = BigInt(deadlineDate.getTime());
- 
-// Set the vesting beneficiary to our own key.
-const details: AddressDetails = getAddressDetails(addr);
-const beneficiaryPKH: string = details.paymentCredential.hash
- 
-// Creating a datum with a beneficiary and deadline
-const datum: VestingDatum = {
-    beneficiary: beneficiaryPKH,
-    deadline: deadlinePosIx,
-};
 ----
+
+First, we import the necessary components from the `@meshsdk/core` and 
+the `@meshsdk/common` libraries. Then we import the seed phrase of our 
+Cardano wallet. The `seed.ts` file should be in the following form: 
+
+[source,shell]
+----
+export const secretSeed = ["seed1", "seed2", ... ] ;
+----
+
+Next, we define a provider which helps us to query the blockchain and 
+submit transactions. We use https://blockfrost.io/[BlockFrost]. For the 
+code to work one has to provide his blockfrost key, which users can get 
+for free at the official webpage. The key is tied to a specific network 
+(mainnet, preprod, preview or SanchoNet). The off-chain code we will 
+present in this and other sections was tested on the preview network. 
+There is a daily limit of how many request a user can make with a free 
+account. Currently it is set to 50.000. 
+
+After we have defined our provider we initiate a Mesh wallet where we 
+input the provider and our secreet seed. We also define on which network 
+we will work (0 stands for testnet which is both preview or preprod). 
+Mesh also allows to provide the key in other forms. One can define the  
+type of the key as `"root"` and then provide the root key in `bech32` 
+format. Or define the type of key as `"cli"` and then provide the 
+payment and staking keys. To see all options you can look at the 
+source code in the official mesh GitHub repository that defines the 
+https://github.com/MeshJS/mesh/blob/main/packages/mesh-wallet/src/mesh/index.ts[MeshWallet] 
+class. Next we read out some wallet information and define our vesting script. 
+
+[source,typescript]
+----
+// Define address and public key hash of it  
+const walletAddress: string = await wallet.getChangeAddress();
+const signerHash: string = deserializeAddress(walletAddress).pubKeyHash;
+
+// Set the vesting deadline
+const deadlineDate: Date = new Date("2025-03-05T12:30:10Z")
+const deadlinePOSIX: bigint = BigInt(deadlineDate.getTime());
+
+// Defining our vesting script 
+const vestingScript: PlutusScript = {
+    code: applyCborEncoding("590ed20101003232323232323232323232323232259..."),
+    version: "V3"
+};
+const vestingAddr: string = resolvePlutusScriptAddress(vestingScript, 0);
+----
+
+First we define the wallet adress and the public key hash that 
+bellongs to that address. Then we define the deadline, which sets 
+the time after which the funds can be claimed from the script address. 
+We convert it to `POSIX` time in milliseconds. After we have define 
+our data that we will attach in the datum we can define our vesting 
+script and compute the address of this script. The compiled code 
+is shortened in our code snippet. When running this code the actual 
+`CBORHEX` of the validator has to be provided that can be found in the 
+`blueprint.json` file at the 
+https://github.com/input-output-hk/plutus-pioneer-program/tree/4th-iteration-plutusV3[4th-iteration-PlutusV3] 
+branch of the Plutus pioneer program repository. Now we can send some 
+funds to the vesting script. 
+
+[source,typescript]
+----
+// Function for creating UTXO at vesting script 
+async function sendFunds(amount: string): Promise<string> {
+    const tx = new Transaction({ initiator: wallet })
+        .setNetwork("preview")
+        .sendLovelace(
+        { address: vestingAddr, 
+          datum: {value: mConStr0([signerHash, deadlinePOSIX]), inline: true }}, 
+        amount)
+        .setChangeAddress(walletAddress);
+
+    const txUnsigned = await tx.build();
+    const txSigned = await wallet.signTx(txUnsigned);
+    const txHash = await wallet.submitTx(txSigned);
+    return txHash
+}
+----
+
+The [blue]#sendFunds# takes an amount of lovelace provded as a string, 
+and creates a transaction that sends the specified amount to the vesting 
+script address. When creating a transaction we use the [purple]#Transaction#
+class where we provide our wallet as initiator. Then we set the network. 
+Mesh source code states that setting the network is mainly used to know the 
+cost models to be used to calculate script integrity hash. After that we 
+use the [blue]#sendLovelace# function, where we specify our script address, 
+the datum that we want to attach, if we want to inline it and in the end 
+the amount we want to send. We create the datum with the [blue]#mConStr0#
+function that helps us to create a Mesh Data index 0 constructor object, 
+representing the following custom data type we use in our validator code:
+
+
+
+After that we set the change address to our 
+address which means that the lovelace change amout of the UTXOs we will 
+spend will go back to our wallet. 
+
+ -----------------------------------------------
+
+We make an important distinction between off-chain and on-chain code at the 
+end. Because Cardano uses the hard fork combinator technology, all Plutus script 
+versions are supported by the blockchain (read more in section <<Cardano node 
+layers>>). Once you have writen on-chain code that works, it will work indefinitely. 
+That is not the case for off-chain code. 
+
+Because the ledger rules can be updated, it can happen that conditions which 
+a transaction needs to fullfill may change. An example is the required ada fee 
+when attaching a reference script to a transaction. Some off-chain code libraries 
+may calculate this fee automatically. This calculation then holds true for a 
+specific Cardano era and may not work in future eras if blockchain parameters change. 
+For this reason it is good practice to upgrade the off-chain code library versions 
+your code is using and test the code when upgrades to the Cardano ledger happen. 
+
+ -----------------------------------------------
+
+
+
 
 First, we define the vesting script that will be of type
 [purple]#SpendingValidator# (we can copy the CBORHEX from our `vesting.plutus` file created
