@@ -3675,13 +3675,17 @@ First we define the wallet adress and the public key hash that
 bellongs to that address. We will set the beneficiary to our own 
 public key hash so we can claim the funds back ourself. Then we define 
 the deadline, which sets the time after which the funds can be claimed 
-from the script address. We convert it to `POSIX` time in milliseconds. 
+from the script address. We set the time in ISO UTC format and then 
+convert it to `POSIX` time in milliseconds. 
+
 After we have define our data that we will attach in the datum we can 
-define our vesting script and compute the address of this script. The 
-compiled code is shortened in our code snippet. When running this code 
-the actual `CBORHEX` of the validator has to be provided that can be 
-found in the `blueprint.json` file at the 
-https://github.com/input-output-hk/plutus-pioneer-program/tree/4th-iteration-plutusV3[4th-iteration-PlutusV3] 
+define our vesting script and compute the address of this script. We 
+note that we have to apply the function [blue]#applyCborEncoding# that 
+takes the raw script `CBORHEX` from the blueprint and formats it in 
+the correct way. The compiled code in our code snippet is shortened. 
+When running this off-chain code the full compiled code of the validator 
+has to be provided that can be found in the `blueprint.json` file at the 
+https://github.com/input-output-hk/plutus-pioneer-program/tree/4th-iteration-plutusV3[4th-iteration-plutusV3] 
 branch of the Plutus pioneer program repository. Now we can send some 
 funds to the vesting script. 
 
@@ -3830,14 +3834,14 @@ const redeemer = { data: BigInt(42) };
 
 The number is of course code specific. You can find off-chain code for 
 the 42 validator example we have presented in a previous section at the 
-https://github.com/input-output-hk/plutus-pioneer-program/tree/4th-iteration-plutusV3[4th-iteration-PlutusV3] 
+https://github.com/input-output-hk/plutus-pioneer-program/tree/4th-iteration-plutusV3[4th-iteration-plutusV3] 
 branch.  
 
 After we have defined the redeemer we define the start slot for 
 the transaction. We use the [blue]#resolveSlotNo# that takes in the 
 network we work on and a timestamp in milliseconds. We use the 
-current time and substract 40 seconds. Then we define our transaction. 
-We first set the network and then use the [blue]#redeemValue# 
+current time and substract 40.000 milliseconds. Then we define our 
+transaction. We first set the network and then use the [blue]#redeemValue# 
 function to redeem our vested UTXO. It takes in the UTXO we want to 
 redeem, the script at which the UTXO is residing and the redeemer. 
 The redeemer is optional and could also be skipped. Same goes for 
@@ -3871,6 +3875,10 @@ with the command below.
 ----
 deno run -A vesting.ts 
 ----
+
+After completing the transactions, the transaction hashes output to the
+console can be used to check transaction details on the
+http://preview.cardanoscan.io/[preview.cardanoscan.io] webpage. 
 
 Now that we have seen the off-chain code for the vesting validator, 
 we can also look at the off-chain code that works with the parameterized vesting 
@@ -3947,10 +3955,10 @@ Similar as before we define our wallet address, public key hash and
 the deadline in POSIX milliseconds time. Then we define the script parameter 
 that we will apply to the parameterized script and that contains our own 
 public key hash and the deadline we have defined. Next we define our 
-parameterized vesting script. We shorten again the `CBORHEX` compiled 
-code. The full code can be found in the `blueprint.json` file that 
-gets created when we compile our Plinth validation code to Plutus. 
-We use now the function [blue]#applyParamsToScript# and add the 
+parameterized vesting script. We again shorten the `CBORHEX` compiled 
+code. The full compiled code can be found in the `blueprint.json` file that resides at the 
+https://github.com/input-output-hk/plutus-pioneer-program/tree/4th-iteration-plutusV3[4th-iteration-plutusV3] 
+branch. We use now the function [blue]#applyParamsToScript# and add the 
 script parameter we have previously defined. If there would be more 
 then one parameter, we would enter all of them in the list in the 
 correct order. Then we compute the script address. We also define 
@@ -3958,16 +3966,153 @@ the burn script, from which no funds can be retrieved. The reason for
 this is that we will later show in the code how to deploy our vesting 
 script to a UTXO that we create at the burn script. And we will then 
 reference the script from that UTXO when we will claim our vested funds. 
+Next we can send some funds to the parameterized vesting script. 
 
+[source,typescript]
+----
+// Function for creating UTXO at vesting script 
+async function sendFunds(amount: string): Promise<string> {
+    const tx = new Transaction({ initiator: wallet })
+        .setNetwork("preview")
+        .sendLovelace({ address: vestingParamAddr }, amount)
+        .setChangeAddress(walletAddress);
 
+    const txUnsigned = await tx.build();
+    const txSigned = await wallet.signTx(txUnsigned);
+    const txHash = await wallet.submitTx(txSigned);
+    return txHash
+}
+----
 
- -----------------------------------------------
+We define the [blue]#sendFunds# in a similar way as in the previous 
+vesting example. The difference is that this time we don't specify a 
+datum in the [blue]#sendLovelace# function. This means we will create 
+a UTXO without a datum. After that we can deploy our parameterized 
+vesting script to a UTXO. 
 
-We make an important distinction between off-chain and on-chain code at the 
-end. Because Cardano uses the hard fork combinator technology, all Plutus script 
-versions are supported by the blockchain (read more in section <<Cardano node 
-layers>>). Once you have writen on-chain code that works, it will work indefinitely. 
-That is not the case for off-chain code. 
+[source,typescript]
+----
+// Deploy a reference script 
+async function deployRefScript(lovelaceAmount: string): Promise<string> {
+    const utxos = await wallet.getUtxos();
+    const txBuilder = new MeshTxBuilder({
+      fetcher: provider 
+    });
+    
+    const unsignedTx = await txBuilder
+      .txOut(burnAddr, [{ unit: "lovelace", quantity: lovelaceAmount }])
+      .txOutReferenceScript(vestingParamScript.code, vestingParamScript.version)
+      .changeAddress(walletAddress)
+      .selectUtxosFrom(utxos)
+      .complete();
+    
+    const signedTx = await wallet.signTx(unsignedTx);
+    const txHash = await wallet.submitTx(signedTx);
+    return txHash
+}
+----
+
+The [blue]#deployRefScript# takes in a lovelace amount in form or a 
+string which will be used to deploy the reference script. First we look 
+up the UTXO at our wallt. Then we define a transaction builder that we 
+will use to build the transaction. After that we define our transaction. 
+We first specify that we want to deploy our vesting script at the burn 
+address and the amount of lovelace we will spend. Then we specify the 
+parameterized script we want to deploy and its Plutus version. After 
+that we define our change address and from which UTXOs we want to 
+select our funds. We complete the transaction, singed and submit it 
+and return the transaction hash. Next we can define our functions 
+for claiming the vested funds. 
+
+[source,typescript]
+----
+// Retunrs a UTXO at a given address that contians the given transaction hash 
+async function getUtxo(scriptAddress: string, txHash: string): Promise<UTxO> {
+    const utxos = await provider.fetchAddressUTxOs(scriptAddress);
+    if (utxos.length == 0) {
+        throw 'No listing found.';
+    }
+    let filteredUtxo = utxos.find((utxo: any) => {
+        return utxo.input.txHash == txHash;
+    })!;
+    return filteredUtxo
+}
+
+// Function for claiming funds 
+async function claimFunds(txHashVestedUTXO: string, txHashRefUTXO: string): Promise<string> {
+    const assetUtxo: UTxO = await getUtxo(vestingParamAddr, txHashVestedUTXO);
+    const refScriptUtxo: UTxO = await getUtxo(burnAddr, txHashRefUTXO);
+    const redeemer: Pick<Action, "data"> = { data: { alternative: 0, fields: [] } };
+    const slot: string = resolveSlotNo("preview", Date.now() - 40000);
+
+    const tx = new Transaction({ initiator: wallet, fetcher: provider })
+        .setNetwork("preview")
+        .redeemValue({ value: assetUtxo, 
+                       script: refScriptUtxo,
+                       redeemer: redeemer})
+        .setTimeToStart(slot)
+        .sendValue(walletAddress, assetUtxo)
+        .setRequiredSigners([walletAddress]);
+
+    const txUnsigned = await tx.build();
+    const txSigned = await wallet.signTx(txUnsigned);
+    const txHash = await wallet.submitTx(txSigned);
+    return txHash
+}
+
+// Function calls 
+//console.log(await sendFunds("3000000"));
+//console.log(await deployRefScript("20000000"));
+//console.log(await claimFunds("<tx-hash>", "<tx-hash>"));
+----
+
+The [blue]#getUtxo# is defined the same way as in our previous off-chain 
+code example. The [blue]#claimFunds# function is defined in a similar way 
+as in the previous code. It takes again in the transaction hash of our 
+UTXO we have vested at the script. And it also takes in the transaction 
+hash of the UTXO that contains our deployed vesting script. In the body 
+of the function we first define our UTXO that we want to claim. Then 
+we define the UTXO that contains our script. After that we again define 
+the redeemer and slot same as in the previous off-chain code. 
+
+The transaction to claim the funds is structured also in a similar way 
+as in the previous example. The only difference is that now the [blue]#redeemValue#
+function takes in the reference UTXO that contains the parameterized vesting 
+script instead of the actual script. We again set the validity interval
+and the required signature to the transaction. After that we build, sing 
+and submit the transaction and return the transaction hash. 
+
+In the end we define the function calls by logging their return values. 
+We send 3 ada to the parameterized vesting script. Then we deploy the 
+script to the burn address and use 20 ada for that. The amount can not 
+be too low and it depends on the script size we are deploying. In the 
+end we claim the funds. There we have to input the transaction hashes 
+that the previous two function calls returned. As in our previous off-chain 
+code example we have to uncomment only one line at a time and execute the 
+code. If we name our file `vesting-param.ts` we can again execute it with Deno: 
+
+[source,shell]
+----
+deno run -A vesting-param.ts 
+----
+
+We can again check the transaction details by inputing the hashes at the 
+http://preview.cardanoscan.io/[preview.cardanoscan.io] webpage. 
+
+We note that the reason why it would make sense to deploy a script to 
+a unredeemable UTXO is that referencing a script from a UTXO is cheaper 
+then attaching it to the transaction. Of course the upfront cost is 
+larger because we need to pay fees for deploying the script. So this 
+use case pays off if we need to reference this script many times, which 
+could be the case for a DApp. Also if the UTXO is created at a script 
+address where funds are burned, it becomes unspendable and permanently 
+accessible.  
+
+In the end we also make an important distinction between off-chain and 
+on-chain code. Because Cardano uses the hard fork combinator technology, 
+all Plutus script versions are supported by the blockchain (read more in 
+section <<Cardano node layers>>). Once you have writen on-chain code that 
+works, it will work indefinitely. That is not the case for off-chain code. 
 
 Because the ledger rules can be updated, it can happen that conditions which 
 a transaction needs to fullfill may change. An example is the required ada fee 
@@ -3977,271 +4122,10 @@ specific Cardano era and may not work in future eras if blockchain parameters ch
 For this reason it is good practice to upgrade the off-chain code library versions 
 your code is using and test the code when upgrades to the Cardano ledger happen. 
 
-In the next section we will show how to write a minting policy and 
-off-chain code that interacts with the policy.
+In the next section we show how to write a minting policy and off-chain code 
+that interacts with the policy. 
 
  -----------------------------------------------
-
- If a reader wants to know more about MeshJS one can look at the official: 
-
- * https://meshjs.dev/guides[MeshJS guides] 
- * [documentation] 
-
- -----------------------------------------------
-
-
-First, we define the vesting script that will be of type
-[purple]#SpendingValidator# (we can copy the CBORHEX from our `vesting.plutus` file created
-in section <<Time-dependent and parameterized validators>>). Note
-that the code snippet shows only part of the serialized script, since it
-is very long. Then, we compute the vesting address from the script and
-define the vesting datum type. To play around with the types, we start a
-Deno REPL:
-
-[source,shell]
-----
-# deno repl
-> import * as L from "https://deno.land/x/lucid@0.9.1/mod.ts"
-> L.data
-----
-
-The last command provides a list of possible types for constructing the
-datum. Next, we define the datum type and compute the deadline variable,
-using a date that has already passed. We convert the ISO UTC time to
-POSIX time, compute the address details, and define the beneficiary’s
-payment public key hash. Finally, we specify the datum for the contract
-and attempt to construct and sign the transaction.
-
-[source,typescript]
-----
-// An asynchronous function that sends an amount of Lovelace to the script 
-// with the above datum.
-async function vestFunds(amount: bigint): Promise<TxHash> {
-    const dtm: Datum = Data.to<VestingDatum>(datum,VestingDatum);
-    const tx = await lucid
-      .newTx()
-      .payToContract(vestingAddress, { inline: dtm }, { lovelace: amount })
-      .complete();
-    const signedTx = await tx.sign().complete();
-    const txHash = await signedTx.submit();
-    return txHash
-}
- 
-console.log(await vestFunds(100000000n));
-----
-
-The classes used to manage a transaction are called [purple]#Tx#, [purple]#TxComplete#, and
-[purple]#TxSigned#. To construct a transaction, we use the [blue]#newTx# function, which
-returns a variable of type [purple]#Tx#. Then, we use the [blue]#payToContract# and
-[blue]#complete# functions of the [purple]#Tx# class. In the first function, we input the
-address to which we are sending the funds, the amount, and the inline
-datum. The second function returns a variable of type [purple]#TxComplete#. After
-that, we can use the functions sign and complete from the [purple]#TxComplete#
-class. The last one returns a variable of type [purple]#TxSigned#. We now use the
-function [blue]#submit# from the [purple]#TxSigned# class to submit the transaction, which
-returns a transaction hash that we return at the end of the [blue]#vestFunds#
-function. Next we look at the function that claims the vested funds.
-
-[source,typescript]
-----
-async function claimVestedFunds(): Promise<TxHash> {
-    const dtm: Datum = Data.to<VestingDatum>(datum,VestingDatum);
-    const utxoAtScript: UTxO[] = await lucid.utxosAt(vestingAddress);
-    const ourUTxO: UTxO[] = utxoAtScript.filter((utxo) => utxo.datum == dtm);
-   
-    if (ourUTxO && ourUTxO.length > 0) {
-        const tx = await lucid
-            .newTx()
-            .collectFrom(ourUTxO, Data.void())
-            .addSignerKey(beneficiaryPKH)
-            .attachSpendingValidator(vestingScript)
-            .validFrom(Date.now()-100000)
-            .complete();
- 
-        const signedTx = await tx.sign().complete();
-        const txHash = await signedTx.submit();
-        return txHash
-    }
-    else return "No UTxO's found that can be claimed"
-}
- 
-console.log(await claimVestedFunds());
-----
-
-First, we define the datum. Then, we look up which UTXOs reside at our
-script address using https://blockfrost.io/[Blockfrost] as initialized
-in Lucid. After that, we filter out the UTXOs that contain our datum.
-Then, we check that the filtered UTXOs exist and are not empty. If they
-do, we construct the transaction by specifying which UTXOs to spend and
-adding an empty redeemer. Then, we add the public key hash of the
-beneficiary to sign the transaction. After that, we attach the validator
-script and define the validity interval. To ensure the transaction is
-valid, the submission time must fall within the specified validity
-interval. We set this interval to 100,000 milliseconds before the
-current time and extend it until infinity. Finally, we sign and submit
-the transaction. The function returns the transaction hash if a UTXO
-with our datum is found, or a message indicating that no UTXO with the
-specified datum could be claimed at the vesting address. We can run the
-entire code from our `lucid-vesting.ts` file in the VSCode terminal.
-
-[source,shell]
-----
-/<path>/<to>/<file># deno run -A lucid-vesting.ts
-----
-
-After completing the transactions, the transaction hashes output to the
-console can be used to check transaction details on the
-http://cardanoscan.io/[cardanoscan.io] webpage. In the next
-section, which covers minting policies, there will also be an example of
-off-chain code demonstrating the use of a parameterized validator,
-including how parameters are applied to it.
-
-Validation scripts can also be added to a spending transaction via a
-reference UTXO. To construct a transaction that uses a reference script,
-the script must first be deployed. Deploying a UTXO with an attached
-script may incur an additional cost, but this step is only needed once.
-Afterward, the UTXO can be referenced repeatedly until it no longer
-exists. If the UTXO is created at a script address where funds are
-burned, it becomes unspendable and permanently accessible. Let’s look at
-an example where we create such a UTXO and attach the vesting script
-from the previous example.
-
-[source,typescript]
-----
-import {
-    Data,
-    Lucid,
-    Blockfrost,
-} from "https://deno.land/x/lucid@0.9.1/mod.ts"
-// create a seed.ts file with your seed
-import { secretSeed } from "./seed.ts"
-
-// set blockfrost endpoint and select wallet
-const lucid = await Lucid.new(
-  new Blockfrost(
-    "https://cardano-preview.blockfrost.io/api/v0",
-    "insert your own api key here"
-  ),
-  "Preview"
-);
-lucid.selectWalletFromSeed(secretSeed);
-
-// define burn and vesting script  
-const burnScript = {
-    type: "PlutusV2",
-    script: "581f581d01000022232632498cd5ce24810b6974206275726e732121210…"
-};
-const burnAddress = lucid.utils.validatorToAddress(burnScript);
-const vestingScript = {
-    type: "PlutusV2",
-    script: "590b30590b2d01000032323233223232332232323232323232332232332…",
-};
-
-// functions for signing and submitting a transaction
-async function submitCardanoTx(signedTx) {
-    const tid = await signedTx.submit();
-    console.log("Cardano tx submitted: " + tid);
-}
-async function signAndSubmitCardanoTx(tx) {
-    try {
-        const signedTx = await tx.sign().complete();
-        await submitCardanoTx(signedTx);
-    } catch (err) {
-        alert(`Cardano transaction:\ninfo: ${err.info}\nmessage: 
-            ${err.message}`);
-        throw (err);
-    }
-}
-
-// function for deploying a refernce script
-async function deploy() {
-    const tx = await lucid
-        .newTx()
-        .payToContract(burnAddress, { inline: Data.void(), 
-                       scriptRef: vestingScript }, {})
-        .complete();
-    signAndSubmitCardanoTx(tx);
-}
-
-await onDeploy(); 
-----
-
-We import the necessary libraries, initialize Lucid with our own
-Blockfrost API key on the preview network, and select our wallet. Then,
-we define the burn and vesting serialized scripts. Only part of the
-serialized script is shown in the code, as including the entire script
-would be too lengthy. Next, we define two helper functions to sign and
-submit a transaction. The [blue]#deploy# function deploys the vesting script to
-the previously computed burn address. In the [blue]#payToContract# function, we
-inline a void datum and attach the vesting script. The field specifying
-how much ada to send is left empty, allowing Lucid to calculate the
-minimum required amount for the UTXO. Then, we sign and submit the
-transaction, save this code to the `deploy.ts` file, and run it with Deno.
-The [blue]#submitCardanoTx# function will print a transaction hash, which we
-need to save for referencing the vesting script later.
-
-[source,shell]
-----
-/<path>/<to>/file# deno run -A deploy.ts
-ecddb39e726a0b4d718de3190e3e7e02ac7901ee4eb1ff8c2e77bc6d38864909
-----
-
-After deploying the script, we can modify the previous off-chain code
-located in the `lucid-vesting.ts` file. Below is the modified part of the
-code:
-
-[source,typescript]
-----
-async function getReferenceUTxO() {
-  const utxos = await lucid.utxosByOutRef([{
-      txHash:
-        "ecddb39e726a0b4d718de3190e3e7e02ac7901ee4eb1ff8c2e77bc6d38864909",
-      outputIndex: 0
-  }]);
-  return utxos[0];
-}
-const referenceUTxO = await getReferenceUTxO();
-
-
-async function claimVestedFunds(): Promise<TxHash> {
-  const dtm: Datum = Data.to<VestingDatum>(datum,VestingDatum);
-  const utxoAtScript: UTxO[] = await lucid.utxosAt(vestingAddress);
-  const ourUTxO: UTxO[] = utxoAtScript.filter((utxo) => utxo.datum == dtm);
-
-
-  if (ourUTxO && ourUTxO.length > 0) {
-    const tx = await lucid
-      .newTx()
-      .collectFrom(ourUTxO, Data.void())
-      .addSignerKey(beneficiaryPKH)
-      .readFrom([referenceUTxO])
-      .validFrom(Date.now()-100000)
-      .complete();
-
-
-    const signedTx = await tx.sign().complete();
-    const txHash = await signedTx.submit();
-    return txHash
-  }
-  else return "No UTxO's found that can be claimed"
-}
-----
-
-We added the function [blue]#getReferenceUTxO# that returns the UTXO to which we
-have attached our vesting script. We hard-coded the transaction hash
-that was printed by the `deploy.ts` script and fixed the output index to
-0. If you are not sure if the UTXO carrying the reference script was
-assigned output index 0 in the transaction where the script was
-deployed, you can print the reference UTXO to the console and verify
-that a reference script is attached. In the [blue]#claimVestedFunds# function,
-we change the line where the vesting script is attached. Instead of
-using the [blue]#attachSpendingValidator# function from the previous code, we
-now use the [blue]#readFrom# function, which takes the previously defined
-reference UTXO as input. This makes the transaction smaller and reduces
-the cost in ada. Another option for using reference scripts is through
-the Cardano CLI tool, with a
-https://github.com/perturbing/vasil-tests/blob/main/referencing-scripts-cip-33.md[tutorial
-available here].
 
 ==== Minting policies
 
@@ -4249,6 +4133,19 @@ In Plutus, a minting policy defines the conditions under which native
 tokens can be minted. Each UTXO has an address, a value, and potentially
 a datum. In previous examples, the value was always ada. To include
 native tokens in a UTXO, they must be explicitly created.
+
+
+
+ -----------------------------------------------
+
+If a reader wants to know more about MeshJS one can look at the official: 
+
+* https://meshjs.dev/guides[MeshJS guides] 
+* https://docs.meshjs.dev/[documentation] 
+* https://github.com/MeshJS/examples/tree/main
+* https://pbl.meshjs.dev/course/mesh
+ -----------------------------------------------
+
 
 Let’s look again at the Haskell definition of the [purple]#Value# type. This type
 is defined in the module `Plutus.V1.Ledger.Value`. Even if we are using
