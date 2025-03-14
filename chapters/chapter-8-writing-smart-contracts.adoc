@@ -3,7 +3,9 @@
 
 == Writing smart contracts
 
-=== Plutus preface
+=== Prefaces 
+
+==== Plutus preface
 
 _Prof Philip Wadler, FRS_ +
 _University of Edinburgh and IOG_
@@ -89,7 +91,7 @@ experience -- it's not often that you can suggest a practical
 application of a fifty-year-old theory and have people take you
 seriously!
 
-=== Marlowe preface  
+==== Marlowe preface  
 
 _Prof Simon Thompson_ + 
 _University of Kent_ + 
@@ -3694,9 +3696,9 @@ is set to minting.
 
 A single transaction may trigger several different minting policies if
 multiple native tokens with distinct currency symbols are minted. Each
-policy receives its own redeemer and script context as input. All
+policy receives its own redeemer and script purpose as input. All
 minting policies within a transaction must pass for the transaction to
-succeed; otherwise, it fails.
+succeed; otherwise, it fails. 
 
 Now, let’s examine an example of a minting policy where only the owner
 of a specific public key, who signs the transaction, is permitted to
