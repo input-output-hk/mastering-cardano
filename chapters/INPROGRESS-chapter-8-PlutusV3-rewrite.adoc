@@ -4125,8 +4125,6 @@ your code is using and test the code when upgrades to the Cardano ledger happen.
 In the next section we show how to write a minting policy and off-chain code 
 that interacts with the policy. 
 
- -----------------------------------------------
-
 ==== Minting policies
 
 In Plutus, a minting policy defines the conditions under which native
@@ -4134,30 +4132,15 @@ tokens can be minted. Each UTXO has an address, a value, and potentially
 a datum. In previous examples, the value was always ada. To include
 native tokens in a UTXO, they must be explicitly created.
 
-
-
- -----------------------------------------------
-
-If a reader wants to know more about MeshJS one can look at the official: 
-
-* https://meshjs.dev/guides[MeshJS guides] 
-* https://docs.meshjs.dev/[documentation] 
-* https://github.com/MeshJS/examples/tree/main
-* https://pbl.meshjs.dev/course/mesh
- -----------------------------------------------
-
-
-Let’s look again at the Haskell definition of the [purple]#Value# type. This type
-is defined in the module `Plutus.V1.Ledger.Value`. Even if we are using
-PlutusV2 scripts, this module has not changed, and we can still use V1
-version for it.
+Let’s look again at the Haskell definition of the [purple]#Value# type. 
+This type is defined in the module `PlutusLedgerApi.V1.Value` and defines 
+an amount of ada and/or native tokens. 
 
 [source,haskell]
 ----
-newtype Value = Value 
-    { getValue :: Map.Map CurrencySymbol (Map.Map TokenName Integer) 
-    }
-    deriving stock (Generic, Typeable, Haskell.Show)
+newtype Value = Value { getValue :: Map CurrencySymbol (Map TokenName Integer) }
+    deriving stock (Generic, Data, Typeable, Haskell.Show)
+    deriving anyclass (NFData)
     deriving newtype (PlutusTx.ToData, PlutusTx.FromData, PlutusTx.UnsafeFromData)
     deriving Pretty via (PrettyShow Value)
 ----
@@ -4165,9 +4148,12 @@ newtype Value = Value
 The Value type is a map object that connects a currency symbol to
 another map, which uses token names as its keys. Both token names and
 currency symbols are wrappers for the type [purple]#BuiltinByteString#,
-representing a byte string. These two byte strings define a native token
+representing a byte string. As said before the currency symbol represents 
+the hash of the minting policy and the `ada` token is defined by an empty 
+byte string both for currency symbol and token name, which means one 
+cannot mint ada. These two byte strings define a native token 
 or coin, while the integer represents the token’s amount. Additionally,
-there is another type called [purple]#AssetClass#.
+there is another type called [purple]#AssetClass#.  
 
 [source,haskell]
 ----
@@ -4190,18 +4176,16 @@ newtype AssetClass = AssetClass
 ----
 
 It combines the currency symbol and token name to define an asset class,
-which can represent a native token or ada. The currency symbol and token
-name for ada are simply wrappers around an empty byte string. Because
-the value type is a map, it can contain different tokens and amounts,
-including ada. To construct a value, we can use the function [blue]#assetClass#,
-which takes a currency symbol and token name, and returns a variable of
-type asset class. We can then use the function [blue]#assetClassValue#, which
-takes an asset class and integer, and returns a variable of type value.
-With the [blue]#assetClassValueOf# function, we can check how many tokens of a
-specific asset class are contained in a value type variable. Below, you
-can see the type signatures of these functions.
+which can represent a native token or ada. Because the value type is a map, 
+it can contain different tokens and amounts, including ada. To construct a 
+value, we can use the function [blue]#assetClass#, which takes a currency 
+symbol and token name, and returns a variable of type asset class. We can 
+then use the function [blue]#assetClassValue#, which takes an asset class 
+and integer, and returns a variable of type value. With the [blue]#assetClassValueOf# 
+function, we can check how many tokens of a specific asset class are contained 
+in a value type variable. Below, you can see the type signatures of these functions.
 
-[source,shell]
+[source,haskell]
 ----
 assetClass :: CurrencySymbol -> TokenName -> AssetClass
 assetClassValue :: AssetClass -> Integer -> Value
@@ -4209,25 +4193,24 @@ assetClassValueOf :: Value -> AssetClass -> Integer
 ----
 
 To construct a value variable and check the amount of tokens in it for a
-specific asset class, we can do so as follows from Prelude:
+specific asset class, we can do so as follows from Prelude that we have 
+build with the required Plutus libraries. 
 
 [source,shell]
 ----
-Prelude> import Plutus.V1.Ledger.Value
-Prelude Plutus.V1.Ledger.Value> :set -XOverloadedStrings
-Prelude Plutus.V1.Ledger.Value> myAssetClass = assetClass "a507ff33"
-"MyToken"
-Prelude Plutus.V1.Ledger.Value> myTokenValue = assetClassValue
-myAssetClass 77
+Prelude> import PlutusLedgerApi.V1.Value 
+Prelude PlutusLedgerApi.V1.Value> :set -XOverloadedStrings
+Prelude PlutusLedgerApi.V1.Value> myAssetClass = assetClass "a507ff33" "MyToken"
+Prelude PlutusLedgerApi.V1.Value> myTokenValue = assetClassValue myAssetClass 77
 ----
 
 To construct an asset class for ada, we can use the [blue]#adaSymbol# and
-[blue]#adaToken# variables provided by the `Plutus.V1.Ledger.Value` module.
+[blue]#adaToken# variables provided by the `PlutusLedgerApi.V1.Value` module.
 
 [source,shell]
 ----
-Prelude Plutus.V1.Ledger.Value> ada = assetClass adaSymbol adaToken
-Prelude Plutus.V1.Ledger.Value> adaValue = assetClassValue ada 100000000
+Prelude PlutusLedgerApi.V1.Value> ada = assetClass adaSymbol adaToken
+Prelude PlutusLedgerApi.V1.Value> adaValue = assetClassValue ada 100000000
 ----
 
 We can also combine different variables of type value with the semigroup
@@ -4237,9 +4220,9 @@ a given asset class contained in a value.
 
 [source,shell]
 ----
-Prelude Plutus.V1.Ledger.Value> combined = myTokenValue <> adaValue
+Prelude PlutusLedgerApi.V1.Value> combined = myTokenValue <> adaValue
 Value (Map [(,Map [("",100000000)]),(a507ff33,Map [("MyToken",77)])])
-Prelude Plutus.V1.Ledger.Value> assetClassValueOf combined myAssetClass
+Prelude PlutusLedgerApi.V1.Value> assetClassValueOf combined myAssetClass 
 77
 ----
 
@@ -4249,233 +4232,233 @@ returns a list of triples.
 
 [source,shell]
 ----
-Prelude Plutus.V1.Ledger.Value> :t flattenValue
+Prelude PlutusLedgerApi.V1.Value> :t flattenValue
 flattenValue :: Value -> [(CurrencySymbol, TokenName, Integer)]
-Prelude Plutus.V1.Ledger.Value> flattenValue combined
+Prelude PlutusLedgerApi.V1.Value> flattenValue combined
 {empty}[(,"",100000000),(a507ff33,"MyToken",77)]
 ----
 
-So far, we have focused on the spending constructor of the [purple]#ScriptPurpose#
-type variable within the [purple]#ScriptContext# data type, which takes a
-transaction reference as input. In the [purple]#TxInfo# data type, we can specify
-a value type for the [blue]#txInfoMint# variable. Minting policies are triggered
-if this field contains a non-zero value. Each currency symbol defined in
-this value activates the corresponding minting policy, linking them
-through the policy’s hash.
+So far, we have focused on the spending constructor of the 
+[purple]#ScriptInfo# type variable, that defines the purpose of the 
+currently-executing script. The [purple]#TxInfo# data type, contains the 
+[purple]#MintValue# type that is structured same way as the [purple]#Value# 
+type. Minting policies are triggered if this field contains a non-zero 
+value. Each currency symbol defined in this variable activates the 
+corresponding minting policy, linking them through the policy’s hash. 
 
-A minting policy requires only two inputs: the redeemer and the script
-context. This is because datums exist at existing UTXOs usually residing
-at script addresses, and minting scripts do not consume these UTXOs;
-they only produce new ones. In a minting transaction, the script purpose
-is set to minting.
+A minting policy requires similar as a spending validation script only 
+one input: the script context. If for the currently-executing script the 
+[purple]#ScriptInfo# data type defines the minting constructor that is 
+parameterized with a currency symbol, then the coresponding minting policy 
+gets triggered. The minting constructor does not contain a maybe datum as 
+the spending constructor does, because datums can exist at UTXOs sitting 
+at script addresses, and minting scripts do not consume these UTXOs; they 
+only produce new ones. 
 
 A single transaction may trigger several different minting policies if
-multiple native tokens with distinct currency symbols are minted. Each
-policy receives its own script context as input. All
-minting policies within a transaction must pass for the transaction to
-succeed; otherwise, it fails.
+multiple native tokens with distinct currency symbols are minted. Each policy 
+receives its own script info and redeemer as input and they share the same 
+transaction information data type. All minting policies within a transaction 
+must pass for the transaction to succeed; otherwise, it fails. 
 
 Now, let’s examine an example of a minting policy where only the owner
 of a specific public key, who signs the transaction, is permitted to
 mint or burn tokens. This key could represent a project or company
 acting like a central bank in traditional finance, responsible for
 minting and burning fiat currencies. Our minting policy will be
-parameterized, accepting an additional public key hash as a parameter.
+parameterized, accepting an additional public key hash as a parameter. 
 
 [source,haskell]
 ----
-{-# LANGUAGE DataKinds         #-}
-{-# LANGUAGE NoImplicitPrelude #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE TemplateHaskell   #-}
- 
-module Signed where
- 
-import           Plutus.V2.Ledger.Api      (BuiltinData, CurrencySymbol,
-                                            MintingPolicy, PubKeyHash,
-                                            ScriptContext 
-                                              (scriptContextTxInfo),
-                                            mkMintingPolicyScript)
-import           Plutus.V2.Ledger.Contexts (txSignedBy)
-import qualified PlutusTx
-import           PlutusTx.Prelude          (Bool, traceIfFalse, ($), (.))
-import           Prelude                   (IO, Show (show))
-import           Text.Printf               (printf)
-import           Utilities                 (currencySymbol, wrapPolicy,
-                                            writeCodeToFile, 
-                                            writePolicyToFile)
- 
-{-# INLINABLE mkSignedPolicy #-}
-mkSignedPolicy :: PubKeyHash -> () -> ScriptContext -> Bool
-mkSignedPolicy pkh () ctx = traceIfFalse "missing signature" $
-                            txSignedBy (scriptContextTxInfo ctx) pkh
- 
-{-# INLINABLE mkWrappedSignedPolicy #-}
-mkWrappedSignedPolicy :: BuiltinData -> BuiltinData -> BuiltinData -> ()
-mkWrappedSignedPolicy pkh = wrapPolicy (mkSignedPolicy $
-                                        PlutusTx.unsafeFromBuiltinData pkh)
- 
-signedCode :: PlutusTx.CompiledCode (BuiltinData -> BuiltinData ->
-                                 	 BuiltinData -> ())
-signedCode = $$(PlutusTx.compile [|| mkWrappedSignedPolicy ||])
- 
-signedPolicy :: PubKeyHash -> MintingPolicy
-signedPolicy pkh = mkMintingPolicyScript $ signedCode
-                   `PlutusTx.applyCode` PlutusTx.liftCode
-                   (PlutusTx.toBuiltinData pkh)
- 
-------------------------------------------------------------------------------
-–------------------------------ HELPER FUNCTIONS -----------------------------
- 
-saveSignedCode :: IO ()
-saveSignedCode = writeCodeToFile "assets/signed.plutus" signedCode
- 
-saveSignedPolicy :: PubKeyHash -> IO ()
-saveSignedPolicy pkh = writePolicyToFile (printf "assets/signed-%s.plutus" $
-                                      	show pkh) $ signedPolicy pkh
- 
-signedCurrencySymbol :: PubKeyHash -> CurrencySymbol
-signedCurrencySymbol = currencySymbol . signedPolicy
+{-# LANGUAGE DataKinds                  #-}
+{-# LANGUAGE DeriveAnyClass             #-}
+{-# LANGUAGE DeriveGeneric              #-}
+{-# LANGUAGE DerivingStrategies         #-}
+{-# LANGUAGE FlexibleInstances          #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE ImportQualifiedPost        #-}
+{-# LANGUAGE MultiParamTypeClasses      #-}
+{-# LANGUAGE NoImplicitPrelude          #-}
+{-# LANGUAGE OverloadedStrings          #-}
+{-# LANGUAGE PatternSynonyms            #-}
+{-# LANGUAGE ScopedTypeVariables        #-}
+{-# LANGUAGE Strict                     #-}
+{-# LANGUAGE TemplateHaskell            #-}
+{-# LANGUAGE TypeApplications           #-}
+{-# LANGUAGE UndecidableInstances       #-}
+{-# LANGUAGE ViewPatterns               #-}
+{-# OPTIONS_GHC -fno-full-laziness #-}
+{-# OPTIONS_GHC -fno-ignore-interface-pragmas #-}
+{-# OPTIONS_GHC -fno-omit-interface-pragmas #-}
+{-# OPTIONS_GHC -fno-spec-constr #-}
+{-# OPTIONS_GHC -fno-specialise #-}
+{-# OPTIONS_GHC -fno-strictness #-}
+{-# OPTIONS_GHC -fno-unbox-small-strict-fields #-}
+{-# OPTIONS_GHC -fno-unbox-strict-fields #-}
+{-# OPTIONS_GHC -fplugin-opt PlutusTx.Plugin:target-version=1.1.0 #-}
+
+module Week05.Minting where
+
+import           PlutusLedgerApi.Common      (SerialisedScript,
+                                              serialiseCompiledCode)
+import           PlutusLedgerApi.V1.Value    (flattenValue)
+import           PlutusLedgerApi.V3          (ScriptContext (..), TokenName,
+                                              TxInInfo (txInInfoOutRef),
+                                              TxInfo (txInfoInputs, txInfoMint),
+                                              TxOutRef (TxOutRef), TxId (TxId),
+                                              PubKeyHash)
+import           PlutusTx                    (BuiltinData, CompiledCode,
+                                              UnsafeFromData (unsafeFromBuiltinData),
+                                              compile)
+import           PlutusLedgerApi.V3.Contexts (txSignedBy)
+import           PlutusTx.Bool               (Bool (..), (&&))
+import           PlutusTx.Prelude            (BuiltinUnit, Eq ((==)), any, check,
+                                              traceIfFalse, ($))
+
+{- ------------------------------------------------------------------------------ -}
+{- --------------------------------- VALIDATOR ---------------------------------- -}
+
+{-# INLINABLE signedVal #-}
+signedVal :: PubKeyHash -> ScriptContext -> Bool
+signedVal pkh ctx = traceIfFalse "missing signature" $ 
+                                 txSignedBy (scriptContextTxInfo ctx) pkh
+
+{- ------------------------------------------------------------------------------ -}
+{- ---------------------------------- HELPERS ----------------------------------- -}
+
+compiledSignedVal :: CompiledCode (BuiltinData -> BuiltinData -> BuiltinUnit)
+compiledSignedVal = $$(compile [||wrappedVal||])
+ where
+  wrappedVal :: BuiltinData -> BuiltinData -> BuiltinUnit
+  wrappedVal pkh ctx = check $ signedVal 
+                                 (unsafeFromBuiltinData pkh)
+                                 (unsafeFromBuiltinData ctx)
+
+serializedSignedVal :: SerialisedScript
+serializedSignedVal = serialiseCompiledCode compiledSignedVal
 ----
 
-We define our minting policy with the [blue]#mkSignedPolicy# function that takes
-a public key hash as an additional parameter to the redeemer and script
-context. In this example, our parameter does not keep its type when
-compiled. In the compiled validator, we chose to change the additional
-parameter’s type to [purple]#BuiltinData#. To accomplish this, we first use the
-[blue]#unsafeFromBuiltinData# function that converts the [purple]#BuiltinData# to the
-actual type. Then, the [blue]#signedPolicy# function takes a parameter of type
-[purple]#PubKeyHash#, and we convert it to [purple]#BuiltinData# using the [blue]#toBuiltinData#
-function. The helper function [blue]#saveSignedPolicy# allows us to write the
-minting policy to a Plinth script file for a given public key hash. With
-the [blue]#signedCurrencySymbol# function, we can also compute the currency
-symbol of the minting script given a concrete public key hash. The
-[blue]#writeCodeToFile# helper function can take arbitrary compiled code and
-serialize it to disk. The [blue]#saveSignedCode# function, which uses this
-helper function, writes the Plinth script to the `signed.plutus` file
-where the parameter, the public key hash, has not been applied yet. It
-saves it to the `signed.plutus` file. The helper functions, imported
-from the `Utilities` module, can be found in the _code/Utilities_
-folder of the Plutus Pioneer program’s
-https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[4th
-iteration] GitHub repository. Now we showcase how to use off-chain code
-with Lucid to apply the public key hash parameter:
-
-[source,typescript]
-----
-import {
-    Lucid,
-    Blockfrost,
-    Address,
-    MintingPolicy,
-    PolicyId,
-    Unit,
-    fromText,
-    Data,
-    getAddressDetails,
-    applyParamsToScript
-} from "https://deno.land/x/lucid@0.9.1/mod.ts"
-import { blockfrostKey, secretSeed } from "./secret.ts"
- 
-function readAmount(): bigint {
-    const input = prompt("amount: ");
-    return input ? BigInt(Number.parseInt(input)) : 1000000n;
-}
- 
-// set blockfrost endpoint
-const lucid = await Lucid.new(
-    new Blockfrost(
-        "https://cardano-preview.blockfrost.io/api/v0",
-        blockfrostKey
-    ),
-    "Preview"
-);
- 
-// load local stored seed as a wallet into lucid
-lucid.selectWalletFromSeed(secretSeed);
-const addr: Address = await lucid.wallet.address();
-console.log("own address: " + addr);
- 
-const pkh: string = getAddressDetails(addr).paymentCredential?.hash || "";
-console.log("own pubkey hash: " + pkh); 
-----
-
-First, we import all necessary Lucid classes, functions, types, our
-Blockfrost API key, and the secret seed of our wallet. Then, we define
-the function that reads an integer amount from the user. If no input is
-provided, it defaults the amount to 1,000,000. After that, we initialize
-Lucid with Blockfrost using the pre-production network. Next, we select
-a wallet, retrieve the address from it, and log it. Finally, we compute
-the public key hash and also log it. This script will enable the owner
-of the secret seed to mint and burn tokens. Then comes the code for
-constructing the minting transaction with the parameterized script:
+First we add all the neccessary language pragmas. We then name the 
+module `Week05.Minting` since the idea for the code examples is taken 
+from the 5th week of the latest Plutus pioneer program. After that we 
+import all neccessary modules. Next we define our minting policy. It 
+is parameterized with a public key hash and the validation checkes if 
+the correct signature is present. We do not check if the currently 
+executing script has a minting purpose specified. In that sense this 
+validation logic could also be used as a spending script. Then we 
+compile the minting policy as in the examples before and we serialize 
+it. Now that we have our minting policy we can look at the off-chain 
+code that interacts with it. 
 
 [source,typescript]
 ----
-const Params = Data.Tuple([Data.String]);
-type Params = Data.Static<typeof Params>;
- 
-const signedPolicy: MintingPolicy = {
-    type: "PlutusV2",
-    script: applyParamsToScript<Params>(
-        "59081a590817010000323232332232323232323232323233223233223232323232…",
-        [pkh],
-        Params)
+import { 
+    BlockfrostProvider, 
+    MeshWallet, 
+    Transaction, 
+    PlutusScript,
+    applyCborEncoding,
+    deserializeAddress,
+    Mint,
+    Action
+  } from "@meshsdk/core";
+import { applyParamsToScript } from "@meshsdk/core-cst";
+import { secretSeed } from "./seed.ts";
+
+// Define blockchain provider and wallet 
+const provider: BlockfrostProvider = new BlockfrostProvider("<blockfrost-key>");
+const wallet: MeshWallet = new MeshWallet({
+    networkId: 0, //0=testnet, 1=mainnet
+    fetcher: provider,
+    submitter: provider,
+    key: {
+        type: "mnemonic",
+        words: secretSeed
+    }
+});
+
+// Define address and public key hash of it  
+const walletAddress: string = await wallet.getChangeAddress();
+const signerHash: string = deserializeAddress(walletAddress).pubKeyHash;
+
+// Defining our minting policy 
+const mintingPolicy: PlutusScript = {
+    code: applyParamsToScript(
+            applyCborEncoding("590b490101003232323232323232323232322259..."),
+            [signerHash]),
+    version: "V3"
 };
- 
-const policyId: PolicyId = lucid.utils.mintingPolicyToId(signedPolicy);
-console.log("minting policy: " + policyId);
- 
-const unit: Unit = policyId + fromText("PPP Signed");
-const amount: bigint = readAmount();
- 
-const tx = await lucid
-    .newTx()
-    .mintAssets({[unit]: amount}, Data.void())
-    .attachMintingPolicy(signedPolicy)
-    .addSignerKey(pkh)
-    .complete();
- 
-const signedTx = await tx.sign().complete();
-const txHash = await signedTx.submit();
-console.log("tid: " + txHash);
 ----
 
-We first define our [purple]#Params# type, which is a tuple with one list
-parameter. You can have more than multiple parameters in this list,
-which we will see in the case of NFTs. For this example, our list will
-contain only one parameter that is of type string, which represents the
-public key hash. To create our minting policy, we take the CBOR HEX from
-the `signed.plutus` file and use the function [blue]#applyParamsToScript# to
-apply our public key hash to this script. Next, we compute the policy ID
-and log it. We compute our asset class that we call Unit. It is computed
-from the concatenation of the policy ID and the name we give to our
-tokens that we want to mint. In principle, the token name can be an
-arbitrary byte string that is limited to 32 bytes. If a human-readable
-name is set, wallets also display it in that form. Then, we define a
-number of tokens we want to mint and construct a transaction using the
-[blue]#mintAssets# function that takes an asset class and the number of tokens
-we want to mint. It also takes a redeemer, which, in our case, is of
-type void. Then, we attach the minting policy and add the signature of
-our address that corresponds to our public key hash. Finally, we sign
-and submit the transaction and log the transaction hash. We can now mint
-our tokens by running this code, which we saved to the `lucid-signed.ts`
-file with the following command:
+First we import all neccessary MeshJS classes and functions, then 
+we define our blockchain provider and wallet same as before. Next we 
+read out our wallet address and the public key hash. And then we 
+define our minting policy, where we apply the public key hash as 
+a parameter. Then follows the code for minting tokens. 
+
+[source,typescript]
+----
+// Defining our token 
+const token: Mint = {
+    assetName: 'MyTokens',
+    assetQuantity: '2',
+    recipient: { address: walletAddress }
+  }
+
+// Minting our tokens 
+async function mintTokens(): Promise<string> {
+    const redeemer: Pick<Action, "data"> = { data: { alternative: 0, fields: [] } }
+
+    const tx = new Transaction({ initiator: wallet, fetcher: provider })
+        .setNetwork("preview")
+        .mintAsset(mintingPolicy, token, redeemer)
+        .setRequiredSigners([walletAddress]);
+
+    const txUnsigned = await tx.build();
+    const txSigned = await wallet.signTx(txUnsigned);
+    const txHash = await wallet.submitTx(txSigned);
+    return txHash
+}
+
+// Function calls 
+console.log(await mintTokens());
+----
+
+We first define the tokens we want to mint where we specify the token 
+name, amount of tokens and the address where the tokens should be created. 
+If the number would be negative, this would mean we are burning tokens. 
+In that case, the wallet must already contain the tokens to be burned. 
+We also note that in Plutus a token name can be an arbitrary byte string 
+which is limited to 32 bytes. If a human-readable name is set, wallets also 
+display it in that form. After setting the tokens we want to mint we define 
+our minting function. In it we first define an empty redeemer. Next we create 
+our transaction. In the transaction we set the network, say which tokens 
+we want to mint with which minting policy, add the redeemer and sing the 
+transaction with our wallet key. At the end we build, sign and submit the 
+transaction and return the transaction hash. Now we can make our function 
+call and mint the tokens. If we name our file `signed-minting.ts` we can 
+mint our tokens as follows. 
 
 [source,shell]
 ----
-deno run -A lucid-signed.ts
+deno run -A signed-minting.ts 
 ----
 
-Next, we input the number of tokens to mint. After a short period, the
-tokens named PPP Signed will appear in the wallet. If the number is
-negative, it signifies burning tokens, and in that case, the wallet must
-already contain the tokens to be burned. Although every transaction
-submitted in Lucid is signed with the signing key from the wallet, the
-signature must be explicitly added to the transaction using the
-[blue]#addSignerKey# function for the minting policy to accept it. This was an
-example of minting fungible tokens.
+We can then check again the transaction details on the 
+http://preview.cardanoscan.io/[preview.cardanoscan.io] webpage.  
 
+ -----------------------------------------------
+
+If a reader wants to know more about MeshJS one can look at the official: 
+
+* https://meshjs.dev/guides[MeshJS guides] 
+* https://docs.meshjs.dev/[documentation] 
+* https://github.com/MeshJS/examples/tree/main
+* https://pbl.meshjs.dev/course/mesh
+
+ -----------------------------------------------
+
+This was an example of minting fungible tokens.
 Plutus also allows the minting of non-fungible tokens (NFTs), which are
 unique tokens that can only be minted once. The key to writing such a
 policy script is referencing something unique on the Cardano blockchain,
