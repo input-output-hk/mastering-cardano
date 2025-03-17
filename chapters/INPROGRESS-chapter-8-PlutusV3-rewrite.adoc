@@ -4127,10 +4127,11 @@ that interacts with the policy.
 
 ==== Minting policies
 
-In Plutus, a minting policy defines the conditions under which native
-tokens can be minted. Each UTXO has an address, a value, and potentially
-a datum. In previous examples, the value was always ada. To include
-native tokens in a UTXO, they must be explicitly created.
+In Plutus, a minting policy or also called a minting script defines the 
+conditions under which native tokens can be minted. Each UTXO has an 
+address, a value, and potentially a datum. In previous examples, the 
+value was always ada. To include native tokens in a UTXO, they must be 
+explicitly created. 
 
 Let’s look again at the Haskell definition of the [purple]#Value# type. 
 This type is defined in the module `PlutusLedgerApi.V1.Value` and defines 
@@ -4446,6 +4447,97 @@ deno run -A signed-minting.ts
 
 We can then check again the transaction details on the 
 http://preview.cardanoscan.io/[preview.cardanoscan.io] webpage.  
+This was an example of minting fungible tokens. Fungibility means 
+that one token is interchangeable with another token of the same type, 
+meaning each unit has the same value as any other unit. 
+
+Plutus also allows the minting of non-fungible tokens (NFTs), which are
+unique tokens that can only be minted once. The key to writing such a
+minting policy is referencing something unique on the Cardano blockchain,
+and for that, we use UTXOs. UTXOs can exist only once, and once consumed
+as input to a transaction, they can never exist again. UTXOs are defined
+by transaction hashes, which are unique and output indices. The reason
+why every transaction has a unique hash was explained in section 
+<<Script context explained>>. 
+
+When minting an NFT, the idea is to include a specific parameter in the
+minting policy – namely, a UTXO transaction hash and ID – and have the policy 
+check that the transaction performing the minting consumes that specific UTXO. 
+Let’s look at an example of such minting policy. 
+
+[source,haskell]
+----
+{- ------------------------------------------------------------------------------ -}
+{- ------------------------------- NFT VALIDATOR -------------------------------- -}
+
+{-# INLINEABLE nftVal #-}
+nftVal :: TxOutRef -> TokenName -> ScriptContext -> Bool
+nftVal oref tn ctx =
+  traceIfFalse "UTxO not consumed" checkHasUTxO && 
+  traceIfFalse "You can only mint one!" checkMintedAmount
+ where
+  checkHasUTxO :: Bool
+  checkHasUTxO = any (\i -> txInInfoOutRef i == oref) $ txInfoInputs info
+
+  checkMintedAmount :: Bool
+  checkMintedAmount = case flattenValue (txInfoMint info) of
+    [(_, tn', amt)] -> tn' == tn && amt == 1
+    _               -> False
+
+  info :: TxInfo
+  info = scriptContextTxInfo ctx
+
+{- ------------------------------------------------------------------------------ -}
+{- ---------------------------------- HELPERS ----------------------------------- -}
+
+compiledNftVal :: CompiledCode (BuiltinData -> BuiltinData -> BuiltinData -> 
+                                BuiltinData -> BuiltinUnit) 
+compiledNftVal = $$(compile [||wrappedVal||])
+ where
+  wrappedVal :: BuiltinData -> BuiltinData -> BuiltinData -> 
+                BuiltinData -> BuiltinUnit
+  wrappedVal tid idx tn ctx =
+    let oref :: TxOutRef
+        oref = TxOutRef
+          (TxId $ unsafeFromBuiltinData tid)
+          (unsafeFromBuiltinData idx)
+    in check $ nftVal
+                 oref
+                 (unsafeFromBuiltinData tn)
+                 (unsafeFromBuiltinData ctx)
+
+serializedNFTVal :: SerialisedScript
+serializedNFTVal = serialiseCompiledCode compiledNftVal
+----
+
+The language pragmas and import of modules from the previous minting 
+policy example cover also the functionality needed in this minting policy. 
+Our script will be parameterized by two inputs: the transaction output
+reference - [purple]#TxOutRef# - of the UTXO we are spending and the token 
+name. The condition we check is that the minting transaction consumes the 
+specified transaction reference passed to the script. The [blue]#any# function 
+is used to check this, which takes a Boolean-returning function and applies 
+it to a list, returning true if at least one element satisfies the condition. 
+We also ensure that only one token with the specified name is minted by using 
+the [blue]#flattenValue# function, which converts a value type into a list 
+of triples. These checks ensure only one coin is minted with the currency 
+symbol tied to a specific parameterized script. 
+
+After we have defined our minting policy we compile it. The transaction 
+output reference is composed out of two types which are the transaction hash 
+and output index. Before we compile our script in untyped form we can change 
+it such that it takes in the transaction hash and output index as two seperate 
+parameters. We do that in the [blue]#wrappedVal# helper function. It takes 
+in four parameters that are all of type [purple]#BuiltinData# and converts them 
+to their custom data types before applying them to our typed minting policy. 
+After we compile our untyped minting policy, we serialize it. In principle 
+we coule also leave our policy such that it takes in the transaction output 
+reference as a whole and then model that in our off-chain code. In our code 
+we wanted to show that how to split up such a variable and correctly apply 
+the [blue]#unsafeFromBuiltinData# to individual parts. Next we show the 
+off-chain code that interacts with our NFT minting policy. 
+
+
 
  -----------------------------------------------
 
@@ -4457,157 +4549,6 @@ If a reader wants to know more about MeshJS one can look at the official:
 * https://pbl.meshjs.dev/course/mesh
 
  -----------------------------------------------
-
-This was an example of minting fungible tokens.
-Plutus also allows the minting of non-fungible tokens (NFTs), which are
-unique tokens that can only be minted once. The key to writing such a
-policy script is referencing something unique on the Cardano blockchain,
-and for that, we use UTXOs. UTXOs can exist only once, and once consumed
-as input to a transaction, they can never exist again. UTXOs are defined
-by transaction hashes and output indices, which are unique. The reason
-why every transaction has a unique hash was explained in section 
-<<Script context explained>>.
-
-When minting an NFT, the idea is to include a specific parameter in the
-minting policy – namely, the UTXO transaction hash and ID – and have the
-policy check that the transaction performing the minting consumes that
-specific UTXO. Let’s look at an example of such a minting script.
-
-[source,haskell]
-----
-{-# LANGUAGE DataKinds         #-}
-{-# LANGUAGE NoImplicitPrelude #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE TemplateHaskell   #-}
- 
-module NFT where
- 
-import qualified Data.ByteString.Char8      as BS8
-import           Plutus.V1.Ledger.Value     (flattenValue)
-import           Plutus.V2.Ledger.Api       (BuiltinData, CurrencySymbol,
-                                             MintingPolicy,
-                                             ScriptContext 
-                                               (scriptContextTxInfo),
-                                             TokenName (unTokenName),
-                                             TxId (TxId, getTxId),
-                                             TxInInfo (txInInfoOutRef),
-                                             TxInfo (txInfoInputs, 
-                                                     txInfoMint),
-                                             TxOutRef (TxOutRef, txOutRefId,
-                                                       txOutRefIdx),
-                                             mkMintingPolicyScript)
-import qualified PlutusTx
-import           PlutusTx.Builtins.Internal (BuiltinByteString
-                                         	  (BuiltinByteString))
-import           PlutusTx.Prelude           (Bool (False), Eq ((==)), any,
-                                             traceIfFalse, ($), (&&))
-import           Prelude                    (IO, Show (show), String)
-import           Text.Printf                (printf)
-import           Utilities                  (bytesToHex, currencySymbol,
-                                             wrapPolicy, writeCodeToFile,
-                                             writePolicyToFile)
- 
-{-# INLINABLE mkNFTPolicy #-}
-mkNFTPolicy :: TxOutRef -> TokenName -> () -> ScriptContext -> Bool
-mkNFTPolicy oref tn () ctx = traceIfFalse "UTxO not consumed"   hasUTxO &&
-                             traceIfFalse "wrong amount minted" 
-                                          checkMintedAmount
-  where
-    info :: TxInfo
-    info = scriptContextTxInfo ctx
- 
-    hasUTxO :: Bool
-    hasUTxO = any (\i -> txInInfoOutRef i == oref) $ txInfoInputs info
- 
-    checkMintedAmount :: Bool
-    checkMintedAmount = case flattenValue (txInfoMint info) of
-        [(_, tn'', amt)] -> tn'' == tn && amt == 1
-        _                -> False
-----
-
-Our script will be parameterized by two inputs: the transaction output
-reference ([purple]#TxOutRef#) of the UTXO we are spending and the token name. The
-condition we check is that the minting transaction consumes the TxOutRef
-passed to the script. The [blue]#any# function is used, which takes a
-Boolean-returning function and applies it to a list, returning true if
-at least one element satisfies the condition. We also ensure that only
-one token with the specified name is minted by using the [blue]#flattenValue#
-function, which converts a value type into a list of triples. These
-checks ensure only one coin is minted with the currency symbol tied to a
-specific parameterized script. Finally, let us look at how to convert
-the validator function to an untyped version and compile it.
-
-[source,haskell]
-----
-{-# INLINABLE mkWrappedNFTPolicy #-}
-mkWrappedNFTPolicy :: BuiltinData -> BuiltinData -> BuiltinData ->
-                      BuiltinData -> BuiltinData -> ()
-mkWrappedNFTPolicy tid ix tn' = wrapPolicy $ mkNFTPolicy oref tn
-  where
-    oref :: TxOutRef
-    oref = TxOutRef
-        (TxId $ PlutusTx.unsafeFromBuiltinData tid)
-        (PlutusTx.unsafeFromBuiltinData ix)
- 
-    tn :: TokenName
-    tn = PlutusTx.unsafeFromBuiltinData tn'
- 
-nftCode :: PlutusTx.CompiledCode (BuiltinData -> BuiltinData -> BuiltinData ->
-                                  BuiltinData -> BuiltinData -> ())
-nftCode = $$(PlutusTx.compile [|| mkWrappedNFTPolicy ||])
- 
-nftPolicy :: TxOutRef -> TokenName -> MintingPolicy
-nftPolicy oref tn = mkMintingPolicyScript $ nftCode
-        `PlutusTx.applyCode` PlutusTx.liftCode (PlutusTx.toBuiltinData $
-                                                getTxId $ txOutRefId oref)
-        `PlutusTx.applyCode` PlutusTx.liftCode (PlutusTx.toBuiltinData $
-                                      	      txOutRefIdx oref)
-        `PlutusTx.applyCode` PlutusTx.liftCode (PlutusTx.toBuiltinData tn)
-----
-
-There are now three input parameters for our script: the transaction
-hash (also called transaction ID), the transaction index, and the token
-name. These need to be converted from [purple]#BuiltinData# to their custom data
-types. After converting, we combine the transaction ID and index into a
-transaction output reference, which is then passed as an input to the
-[blue]#mkNFTPolicy# validator function. Next, we compile the wrapped validator
-function and define the [blue]#nftPolicy# function, which creates a minting
-policy using two specific input parameters. Finally, we explore a helper
-function that serializes the compiled minting policy to disk.
-
-[source,haskell]
-----
-------------------------------------------------------------------------------
--------------------------------- HELPER FUNCTIONS ----------------------------
- 
-saveNFTCode :: IO ()
-saveNFTCode = writeCodeToFile "assets/nft.plutus" nftCode
- 
-saveNFTPolicy :: TxOutRef -> TokenName -> IO ()
-saveNFTPolicy oref tn = writePolicyToFile
-    (printf "assets/nft-%s#%d-%s.plutus"
-        (show $ txOutRefId oref)
-        (txOutRefIdx oref) $
-        tn') $
-    nftPolicy oref tn
-  where
-    tn' :: String
-    tn' = case unTokenName tn of
-        (BuiltinByteString bs) -> BS8.unpack $ bytesToHex bs
- 
-nftCurrencySymbol :: TxOutRef -> TokenName -> CurrencySymbol
-nftCurrencySymbol oref tn = currencySymbol $ nftPolicy oref tn
-----
-
-The [blue]#saveNFTCode# function writes the unparameterized Plinth script to
-file `nft.plutus`. This is useful because we get an unparameterized
-script that can be used in a DApp by multiple users. The [blue]#saveNFTPolicy#
-function takes a transaction output reference and a token name and
-writes the parameterized minting policy to a Plutus script and saves it
-to disk. This is useful if we want to create only one NFT and already
-know the UTXO that we will spend. The [blue]#nftCurrencySymbol# function
-computes the currency symbol of the script that is parameterized with
-two concrete parameters. Let’s look at the off-chain code:
 
 [source,typescript]
 ----
