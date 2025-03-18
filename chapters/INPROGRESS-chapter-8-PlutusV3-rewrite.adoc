@@ -4122,6 +4122,13 @@ specific Cardano era and may not work in future eras if blockchain parameters ch
 For this reason it is good practice to upgrade the off-chain code library versions 
 your code is using and test the code when upgrades to the Cardano ledger happen. 
 
+If a reader wants to know more about MeshJS one can look at: 
+
+* https://meshjs.dev/guides[MeshJS guides] 
+* https://docs.meshjs.dev/[MeshJS documentation] 
+* https://github.com/MeshJS/examples/tree/main[MeshJS examples repository]
+* https://pbl.meshjs.dev/course/mesh[Mesh project based learning page]
+
 In the next section we show how to write a minting policy and off-chain code 
 that interacts with the policy. 
 
@@ -4537,108 +4544,108 @@ we wanted to show that how to split up such a variable and correctly apply
 the [blue]#unsafeFromBuiltinData# to individual parts. Next we show the 
 off-chain code that interacts with our NFT minting policy. 
 
-
-
- -----------------------------------------------
-
-If a reader wants to know more about MeshJS one can look at the official: 
-
-* https://meshjs.dev/guides[MeshJS guides] 
-* https://docs.meshjs.dev/[documentation] 
-* https://github.com/MeshJS/examples/tree/main
-* https://pbl.meshjs.dev/course/mesh
-
- -----------------------------------------------
-
 [source,typescript]
 ----
-import {
-    Lucid,
-    Blockfrost,
-    Address,
-    MintingPolicy,
-    PolicyId,
-    Unit,
-    fromText,
-    Data,
-    applyParamsToScript
-} from "https://deno.land/x/lucid@0.9.1/mod.ts"
-import { blockfrostKey, secretSeed } from "./secret.ts"
- 
-// set blockfrost endpoint
-const lucid = await Lucid.new(
-    new Blockfrost(
-        "https://cardano-preview.blockfrost.io/api/v0",
-        blockfrostKey
-    ),
-    "Preview"
-);
- 
-// load local stored seed as a wallet into lucid
-lucid.selectWalletFromSeed(secretSeed);
-const addr: Address = await lucid.wallet.address();
-console.log("own address: " + addr);
- 
-const utxos = await lucid.utxosAt(addr);
-const utxo = utxos[0];
-console.log("utxo: " + utxo.txHash + "#" + utxo.outputIndex);
-----
+import { 
+    BlockfrostProvider, 
+    MeshWallet, 
+    Transaction, 
+    PlutusScript,
+    applyCborEncoding,
+    UTxO,
+    Action,
+    Mint
+  } from "@meshsdk/core";
+import { applyParamsToScript } from "@meshsdk/core-cst";
+import { secretSeed } from "./seed.ts";
 
-We import the necessary Lucid functions, classes and types, our API key
-and the secret seed. Then, we initialize Lucid with our API key and
-connect to the pre-production network. Next, we compute and log our
-address, along with information about the first UTXO we get when
-querying it at our address. Next, comes the code that handles the
-minting:
+// Define blockchain provider and wallet 
+const provider: BlockfrostProvider = new BlockfrostProvider("<blockfrost-key>");
+const wallet: MeshWallet = new MeshWallet({
+    networkId: 0, //0=testnet, 1=mainnet
+    fetcher: provider,
+    submitter: provider,
+    key: {
+        type: "mnemonic",
+        words: secretSeed
+    }
+});
 
-[source,typescript]
-----
-const tn = fromText("PPP NFT");
-const Params = Data.Tuple([Data.String, Data.BigInt, Data.String]);
-type Params = Data.Static<typeof Params>;
-const nftPolicy: MintingPolicy = {
-    type: "PlutusV2",
-    script: applyParamsToScript<Params>(
-        "590906590903010000323322332232323232323232323232323232323232323232…",
-        [utxo.txHash, BigInt(utxo.outputIndex), tn],
-        Params)
+// Define address and public key hash of it  
+const walletAddress: string = await wallet.getChangeAddress();
+
+// Defining the UTXO we want to spend 
+const utxos: UTxO[] = await wallet.getUtxos();
+const utxo: UTxO = utxos[0];
+
+// Defining our NFT policy 
+const nftPolicy: PlutusScript = {
+    code: applyParamsToScript(
+            applyCborEncoding("590bf50101003232323232323232323232323232222259..."),
+            [utxo.input.txHash, BigInt(utxo.input.outputIndex), "My NFT"]),
+    version: "V3"
 };
- 
-const policyId: PolicyId = lucid.utils.mintingPolicyToId(nftPolicy);
-console.log("minting policy: " + policyId);
-const unit: Unit = policyId + tn; 
-
-
-const tx = await lucid
-    .newTx()
-    .mintAssets({[unit]: 1n}, Data.void())
-    .attachMintingPolicy(nftPolicy)
-    .collectFrom([utxo])
-    .complete();
- 
-const signedTx = await tx.sign().complete();
-const txHash = await signedTx.submit();
-console.log("tid: " + txHash);
 ----
 
-First, we define our token name, followed by the [purple]#Params# variable, which
-holds the data types for our parameters. Next, we define the actual
-minting policy. We use the CBOR hex from the `nft.plutus` script and
-apply our three parameters to it. Then, we define the policy ID and log
-it. Additionally, we define the asset class, which we call [purple]#Unit#.
+First we again import all neccessary MeshJS classes and functions 
+and define our provider and wallet. After that we set our wallet 
+address and read out the first UTXO sitting at our wallet address. 
+We will use this UTXO to parameterize our minting policy and also 
+spend it when creating the minting transaction. Next we define our 
+NFT minting policy. We again shorted the compiled code and parameterize 
+the code with the transaction hash and output index of the UTXO we 
+selected. We also provide the name of our NFT we want to mint. Now 
+we can look at the function that mints the NFT. 
 
-After that, we construct the transaction, specifying the asset we want
-to mint – in this case, just one coin. We attach the minting policy,
-then use the [blue]#collectFrom# function to specify which UTXO we want to spend
-for the transaction fees. Finally, we sign and submit the transaction,
-logging the transaction hash.
+[source,typescript]
+----
+// Defining our NFT token 
+const nftToken: Mint = {
+    assetName: 'My NFT',
+    assetQuantity: '1',
+    recipient: { address: walletAddress }
+  }
 
-If we run this code multiple times, we would generate tokens with the
-same name but different currency symbols. This difference in currency
-symbols ensures that each token is truly an NFT, as the asset class is
-defined by both the token name and its unique currency symbol.
+// Minting our NFT  
+async function mintNFT(): Promise<string> {
+    const redeemer: Pick<Action, "data"> = { data: { alternative: 0, fields: [] } }
 
-For more information about native tokens, see:
+    const tx = new Transaction({ initiator: wallet, fetcher: provider })
+        .setNetwork("preview")
+        .setTxInputs([utxo])
+        .mintAsset(nftPolicy, nftToken, redeemer);
+
+    const txUnsigned = await tx.build();
+    const txSigned = await wallet.signTx(txUnsigned);
+    const txHash = await wallet.submitTx(txSigned);
+    return txHash
+}
+
+// Function calls 
+console.log(await mintNFT());
+----
+
+We define our token that we want to mint and provide the 
+token name, token quantity which should be one and set the 
+recipient address to our own address. Then we define our minting 
+function. We set an empty redeemer and create the transaction 
+similar as in the previous minting policy. The difference is 
+that in this example we specify the UTXO we want to spend 
+and we do not need to add the required signature linked to 
+our wallet as we did in the previous minting example. At the 
+end we build, sign and submit the transaction and return 
+the transaction hash. When we call the minting function 
+we again log the hash such that it can be used at the 
+http://preview.cardanoscan.io/[preview.cardanoscan.io] webpage 
+to inspect our transaction that minted the NFT. 
+
+If we run this code multiple times, we would generate tokens with 
+the same name but different currency symbols because we would parameterize 
+the minting script each time with a different UTXO. This difference in 
+currency symbols ensures that each token is truly an NFT, as the asset 
+class is defined by both the token name and its unique currency symbol. 
+
+To learn more about native tokens, see: 
 
 * https://docs.cardano.org/developer-resources/native-tokens/[Native
 tokens] overview on Cardano Docs
@@ -4646,6 +4653,8 @@ tokens] overview on Cardano Docs
 tokens] section on the Developer Portal
 * https://cardano-ledger.readthedocs.io/en/latest/explanations/index.html[Ledger
 explanations] page, which also covers native tokens.
+
+ -----------------------------------------------
 
 ==== Testing Plinth scripts
 
