@@ -4157,7 +4157,7 @@ newtype Value = Value { getValue :: Map CurrencySymbol (Map TokenName Integer) }
 The Value type is a map object that connects a currency symbol to
 another map, which uses token names as its keys. Both token names and
 currency symbols are wrappers for the type [purple]#BuiltinByteString#,
-representing a byte string. As said before the currency symbol represents 
+representing a byte string. As said before, the currency symbol represents 
 the hash of the minting policy and the `ada` token is defined by an empty 
 byte string both for currency symbol and token name, which means one 
 cannot mint ada. These two byte strings define a native token 
@@ -4250,15 +4250,15 @@ Prelude PlutusLedgerApi.V1.Value> flattenValue combined
 So far, we have focused on the spending constructor of the 
 [purple]#ScriptInfo# type variable, that defines the purpose of the 
 currently-executing script. The [purple]#TxInfo# data type, contains the 
-[purple]#MintValue# type that is structured same way as the [purple]#Value# 
+[purple]#MintValue# type that is structured the same way as the [purple]#Value# 
 type. Minting policies are triggered if this field contains a non-zero 
 value. Each currency symbol defined in this variable activates the 
 corresponding minting policy, linking them through the policy’s hash. 
 
-A minting policy requires similar as a spending validation script only 
+A minting policy requires like a spending validation script only 
 one input: the script context. If for the currently-executing script the 
 [purple]#ScriptInfo# data type defines the minting constructor that is 
-parameterized with a currency symbol, then the coresponding minting policy 
+parameterized with a currency symbol, then the corresponding minting policy 
 gets triggered. The minting constructor does not contain a maybe datum as 
 the spending constructor does, because datums can exist at UTXOs sitting 
 at script addresses, and minting scripts do not consume these UTXOs; they 
@@ -4266,7 +4266,7 @@ only produce new ones.
 
 A single transaction may trigger several different minting policies if
 multiple native tokens with distinct currency symbols are minted. Each policy 
-receives its own script info and redeemer as input and they share the same 
+receives its own script info and redeemer as input, and they share the same 
 transaction information data type. All minting policies within a transaction 
 must pass for the transaction to succeed; otherwise, it fails. 
 
@@ -4347,16 +4347,16 @@ serializedSignedVal :: SerialisedScript
 serializedSignedVal = serialiseCompiledCode compiledSignedVal
 ----
 
-First we add all the neccessary language pragmas. We then name the 
+First, we add all the necessary language pragmas. We then name the 
 module `Week05.Minting` since the idea for the code examples is taken 
-from the 5th week of the latest Plutus pioneer program. After that we 
-import all neccessary modules. Next we define our minting policy. It 
+from the 5th week of the latest Plutus pioneer program. After that, we 
+import the modules we need. Next we define our minting policy. It 
 is parameterized with a public key hash and the validation checkes if 
 the correct signature is present. We do not check if the currently 
-executing script has a minting purpose specified. In that sense this 
+executing script has a minting purpose specified. In that sense, this 
 validation logic could also be used as a spending script. Then we 
-compile the minting policy as in the examples before and we serialize 
-it. Now that we have our minting policy we can look at the off-chain 
+compile the minting policy as in the examples before, and serialize 
+it. Now that we have our minting policy, we can look at the off-chain 
 code that interacts with it. 
 
 [source,typescript]
@@ -4399,8 +4399,8 @@ const mintingPolicy: PlutusScript = {
 };
 ----
 
-First we import all neccessary MeshJS classes and functions, then 
-we define our blockchain provider and wallet same as before. Next we 
+First we import all necessary MeshJS classes and functions, then 
+we define our blockchain provider and wallet, same as before. Next we 
 read out our wallet address and the public key hash. And then we 
 define our minting policy, where we apply the public key hash as 
 a parameter. Then follows the code for minting tokens. 
@@ -4435,17 +4435,17 @@ console.log(await mintTokens());
 
 We first define the tokens we want to mint where we specify the token 
 name, amount of tokens and the address where the tokens should be created. 
-If the number would be negative, this would mean we are burning tokens. 
+If the number was negative, this would mean we are burning tokens. 
 In that case, the wallet must already contain the tokens to be burned. 
 We also note that in Plutus a token name can be an arbitrary byte string 
 which is limited to 32 bytes. If a human-readable name is set, wallets also 
-display it in that form. After setting the tokens we want to mint we define 
-our minting function. In it we first define an empty redeemer. Next we create 
+display it in that form. After setting the tokens we want to mint, we define 
+our minting function. In it, we first define an empty redeemer. Next, we create 
 our transaction. In the transaction we set the network, say which tokens 
 we want to mint with which minting policy, add the redeemer and sing the 
 transaction with our wallet key. At the end we build, sign and submit the 
 transaction and return the transaction hash. Now we can make our function 
-call and mint the tokens. If we name our file `signed-minting.ts` we can 
+call and mint the tokens. If we name our file `signed-minting.ts`, we can 
 mint our tokens as follows. 
 
 [source,shell]
@@ -4531,18 +4531,18 @@ the [blue]#flattenValue# function, which converts a value type into a list
 of triples. These checks ensure only one coin is minted with the currency 
 symbol tied to a specific parameterized script. 
 
-After we have defined our minting policy we compile it. The transaction 
-output reference is composed out of two types which are the transaction hash 
-and output index. Before we compile our script in untyped form we can change 
-it such that it takes in the transaction hash and output index as two seperate 
+After we have defined our minting policy, we compile it. The transaction 
+output reference is composed out of two types, which are the transaction hash 
+and output index. Before we compile our script in untyped form, we can change 
+it such that it takes in the transaction hash and output index as two separate 
 parameters. We do that in the [blue]#wrappedVal# helper function. It takes 
-in four parameters that are all of type [purple]#BuiltinData# and converts them 
+in four parameters that are all of the type [purple]#BuiltinData# and converts them 
 to their custom data types before applying them to our typed minting policy. 
-After we compile our untyped minting policy, we serialize it. In principle 
-we coule also leave our policy such that it takes in the transaction output 
-reference as a whole and then model that in our off-chain code. In our code 
+After we compile our untyped minting policy, we serialize it. In principle, 
+we could also leave our policy such that it takes in the transaction output 
+reference as a whole and then model that in our off-chain code. In our code, 
 we wanted to show that how to split up such a variable and correctly apply 
-the [blue]#unsafeFromBuiltinData# to individual parts. Next we show the 
+the [blue]#unsafeFromBuiltinData# to individual parts. Next, we show the 
 off-chain code that interacts with our NFT minting policy. 
 
 [source,typescript]
@@ -4588,7 +4588,7 @@ const nftPolicy: PlutusScript = {
 };
 ----
 
-First we again import all neccessary MeshJS classes and functions 
+First, we again import all necessary MeshJS classes and functions 
 and define our provider and wallet. After that we set our wallet 
 address and read out the first UTXO sitting at our wallet address. 
 We will use this UTXO to parameterize our minting policy and also 
@@ -4629,13 +4629,13 @@ console.log(await mintNFT());
 We define our token that we want to mint and provide the 
 token name, token quantity which should be one and set the 
 recipient address to our own address. Then we define our minting 
-function. We set an empty redeemer and create the transaction 
+function. We set an empty redeemer and create the transaction, 
 similar as in the previous minting policy. The difference is 
-that in this example we specify the UTXO we want to spend 
+that in this example we specify the UTXO we want to spend, 
 and we do not need to add the required signature linked to 
 our wallet as we did in the previous minting example. At the 
 end we build, sign and submit the transaction and return 
-the transaction hash. When we call the minting function 
+the transaction hash. When we call the minting function, 
 we again log the hash such that it can be used at the 
 http://preview.cardanoscan.io/[preview.cardanoscan.io] webpage 
 to inspect our transaction that minted the NFT. 
