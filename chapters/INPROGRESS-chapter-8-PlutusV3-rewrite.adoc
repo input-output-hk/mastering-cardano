@@ -1655,8 +1655,9 @@ Forth-like non Turing-complete language and is essentially linear, which
 means it can branch, but the language does not offer looping constructs
 or recursion. All Bitcoin scripts terminate, and it is possible to give
 an accurate estimate of the time taken to execute a script. Bitcoin
-scripts have the following developer limitations (taken from _Functional
-Blockchain Contracts_, _Chakravarty et al. 2019_):
+scripts have the following developer limitations (taken from 
+https://iohk.io/en/research/library/papers/functional-blockchain-contracts/[_Functional 
+Blockchain Contracts_], _Chakravarty et al. 2019_):
 
 [arabic]
 . The Bitcoin Script language constraints programs to be of a limited
@@ -1788,13 +1789,13 @@ smart contract execution, ensuring that memory consumption and contract
 behavior during testing are identical to those on the main network.
 
 Plinth has a more expressive type system than Aiken. However, it cannot
-utilize the full range of Haskell’s type system features, such as type
-classes and
-https://blog.ocharles.org.uk/guest-posts/2014-12-18-rank-n-types.html[rank-N
-polymorphism]. Previously Plinth compiled and encoded data types using the
-https://en.wikipedia.org/wiki/Mogensen–Scott_encoding[Scott-Encoding]
-approach (https://well-typed.com/blog/2022/08/plutus-cores/#in-haskell.-scott-encoding[Haskell
-example]), which created an upfront cost that caused the difference in
+utilize the full range of Haskell’s type system features, such as type classes and
+https://blog.ocharles.org.uk/guest-posts/2014-12-18-rank-n-types.html[rank-N polymorphism]. 
+Previously Plinth compiled and encoded data types using the
+https://en.wikipedia.org/wiki/Mogensen–Scott_encoding[Scott-Encoding] approach 
+(https://well-typed.com/blog/2022/08/plutus-cores[Haskell example], see 
+section _In Haskell. Scott encoding_), 
+which created an upfront cost that caused the difference in
 execution costs between Haskell and other frameworks like Aiken. With the 
 introduction of PlutusV3, sums of products allow for encoding data types 
 in a more compact and cost-effective way. Also Plutus now provides 
@@ -2071,9 +2072,9 @@ claim funds from this address, since the validation will always succeed.
 
 Next, we compile the validator. We use the [blue]#PlutusTx.compile# function 
 that takes a syntax tree of a function as input, which we can get if we put the 
-Oxford brackets `[||mkGiftValidator||]` around the validator function. The 
+Oxford brackets [blue]#[||mkGiftValidator||]# around the validator function. The 
 [blue]#compile# function produces another syntax tree written in the Plutus 
-language. Then the `$$` symbol, called splice, takes a syntax tree and splices 
+language. Then the [blue]#$$# symbol, called splice, takes a syntax tree and splices 
 it back to Haskell source code. The splice operator and the Oxford
 brackets can be used because we added the [purple]#TemplateHaskell# language
 pragma, which enables this language extension. 
@@ -2082,7 +2083,7 @@ It is important to note that normally in Oxford brackets, you cannot
 reference anything defined outside of them. This can become an issue
 when validator functions are long expressions, or when library functions
 are called within their body. A workaround is to make the function
-inlinable. By adding the `INLINABLE` pragma statement before or 
+inlinable. By adding the [pruple]#INLINABLE# pragma statement before or 
 after the function definition, the GHC compiler replaces the function call 
 in the Oxford brackets with the actual function body.
 
@@ -2513,7 +2514,8 @@ mk42ValSmall :: ValidatorBlueprint referencedTypes
 mk42ValSmall =
   MkValidatorBlueprint
     { validatorTitle = "42 Validator untyped - small CBOR"
-    , validatorDescription = Just "Validator that returns true only if the redeemer is 42"
+    , validatorDescription = Just "Validator that returns true only 
+                                   if the redeemer is 42"
     , validatorParameters = []
     , validatorRedeemer =
         MkArgumentBlueprint
@@ -3344,7 +3346,8 @@ import           PlutusLedgerApi.V3            (ScriptContext (..),
                                                 getDatum)
 import           PlutusLedgerApi.V3.Contexts   (txSignedBy)
 import           PlutusTx                      (BuiltinData, CompiledCode,
-                                                UnsafeFromData (unsafeFromBuiltinData),
+                                                UnsafeFromData 
+                                                 (unsafeFromBuiltinData),
                                                 compile,
                                                 makeIsDataSchemaIndexed,
                                                 makeLift)
@@ -3415,7 +3418,7 @@ comes from the _Week03_ examples from the Plutus pioneer program.
 Then we define our [purple]#VestingDatum# datum type. It contains the 
 beneficiaries public key hash and the deadline in form of [purple]#POSIXTime#
 after which the funds can be claimed. Because we are defining a custom data 
-type we need to use the [purple]#makeIsDataSchemaIndexed# function that generates 
+type we need to use the [blue]#makeIsDataSchemaIndexed# function that generates 
 the [purple]#ToData#, [purple]#FromData#, [purple]#UnsafeFromData# and 
 [purple]#HasBlueprintSchema# instances for our custom type. As stated in 
 a previous section we use template Haskell, that requires to add two single 
@@ -3608,8 +3611,6 @@ import {
   } from "@meshsdk/core";
 import { UTxO } from "@meshsdk/common";
 import { secretSeed } from "./seed.ts";
-/* seed.ts has to be in form of: 
-    export const secretSeed = ["seed1", "seed2", ... ] */
 
 // Define blockchain provider and wallet 
 const provider: BlockfrostProvider = new BlockfrostProvider("<blockfrost-key>");
@@ -3647,9 +3648,10 @@ input the provider and our secret seed. We also define on which network
 we will work (0 stands for testnet which is both preview or preprod). 
 Mesh also allows providing the key in other forms. One can define the  
 type of the key as `"root"` and then provide the root key in `bech32` 
-format. Or define the type of key as `"cli"` and then provide the 
-payment and staking keys. To see all options you can look at the 
-source code in the official mesh GitHub repository that defines the 
+format. Another option is also to define the type of key as `"cli"` 
+and then provide the payment and staking keys. To see all options 
+you can look at the source code in the official mesh GitHub repository 
+that defines the 
 https://github.com/MeshJS/mesh/blob/main/packages/mesh-wallet/src/mesh/index.ts[MeshWallet] 
 class. Next we read out some wallet information and define our vesting script. 
 
@@ -4039,7 +4041,8 @@ async function getUtxo(scriptAddress: string, txHash: string): Promise<UTxO> {
 }
 
 // Function for claiming funds 
-async function claimFunds(txHashVestedUTXO: string, txHashRefUTXO: string): Promise<string> {
+async function claimFunds(txHashVestedUTXO: string, 
+                          txHashRefUTXO: string): Promise<string> {
     const assetUtxo: UTxO = await getUtxo(vestingParamAddr, txHashVestedUTXO);
     const refScriptUtxo: UTxO = await getUtxo(burnAddr, txHashRefUTXO);
     const redeemer: Pick<Action, "data"> = { data: { alternative: 0, fields: [] } };
@@ -4223,7 +4226,7 @@ Prelude PlutusLedgerApi.V1.Value> adaValue = assetClassValue ada 100000000
 ----
 
 We can also combine different variables of type value with the semigroup
-operator `<>` as the value type has an instance of the semigroup type
+operator [blue]#<># as the value type has an instance of the semigroup type
 class. Using the [blue]#assetClassValueOf# function, we can get the quantity of
 a given asset class contained in a value.
 
