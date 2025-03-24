@@ -3581,17 +3581,25 @@ This section explores the https://meshjs.dev/[MeshJS] tool, developed by
 the https://meshjs.dev/about[Mesh team]. It can be used as a NodeJS package 
 to construct and submit transactions interacting with a smart contract by 
 writing JavaScript or TypeScript code. To run the off-chain code in this and 
-other sections you can use https://deno.com/[Deno] that is a runtime for 
-JavaScript and TypeScript. All off-chain code presented in this and other 
-sections was tested with Deno version 2.1.9 and MeshSDK version 1.9.0. 
-To install the MeshSDK libraries that are needed by the off-chain code 
-first install the `npm` package manager for JavaScript and then run: 
+other sections you can use https://deno.com/[Deno] that is a runtime 
+environment for JavaScript and TypeScript. All off-chain code presented in 
+this and other sections was tested with Deno version 2.1.9 and various 
+MeshSDK packages all of version 1.9.0. To install the MeshSDK packages 
+that are needed by the off-chain code one can use the `npm` package manager 
+for JavaScript. The package that installs all other needed packages as 
+dependencies is `@meshsdk/core`. The official 
+https://www.npmjs.com/package/@meshsdk/core[npm page] for this package 
+lists all packages that will get installed. To install these packages 
+locally `cd` to the root location of your project and run: 
 
 [source,shell]
 ----
 npm install @meshsdk/core
 ----
 
+For more information on how to install npm packages locally or globally one can read the 
+https://docs.npmjs.com/packages-and-modules/getting-packages-from-the-registry[Getting 
+packages from the registry] online npm documentation. 
 Let us look now at off-chain code that interacts with the vesting smart 
 contract `vestingVal` that we have defined in the previous section. Our code 
 will reside in a TypeScript file to leverage some of the type system’s features. 
