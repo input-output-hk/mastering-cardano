@@ -3650,7 +3650,10 @@ for free at the official webpage. The key is tied to a specific network
 (mainnet, preprod, preview or SanchoNet). The off-chain code we will 
 present in this and other sections was tested on the preview network. 
 There is a daily limit of how many request a user can make with a free 
-account. Currently, it is set to 50.000. 
+BlockFrost account. Currently, it is set to 50.000. One can also pick 
+another provider. MeshJS can connect to various providers. Examples 
+can be found at the MeshJS https://meshjs.dev/providers[Providers] 
+documentation page. 
 
 After we have defined our provider, we initiate a Mesh wallet where we 
 input the provider and our secret seed. We also define on which network 
@@ -4490,18 +4493,16 @@ console.log(await mintTokens());
 
 We first define the tokens we want to mint where we specify the token 
 name, amount of tokens and the address where the tokens should be created. 
-If the number was negative, this would mean we are burning tokens. 
-In that case, the wallet must already contain the tokens to be burned. 
-We also note that in Plutus a token name can be an arbitrary byte string 
-which is limited to 32 bytes. If a human-readable name is set, wallets also 
-display it in that form. After setting the tokens we want to mint, we define 
-our minting function. In it, we first define an empty redeemer. Next, we create 
-our transaction. In the transaction we set the network, say which tokens 
-we want to mint with which minting policy, add the redeemer and sing the 
-transaction with our wallet key. At the end we build, sign and submit the 
-transaction and return the transaction hash. Now we can make our function 
-call and mint the tokens. If we name our file `signed-minting.ts`, we can 
-mint our tokens as follows. 
+In Plutus a token name can be an arbitrary byte string which is limited 
+to 32 bytes. If a human-readable name is set, wallets also display it in 
+that form. The number of tokens has to be a positive integer. After setting 
+the tokens we want to mint, we define our minting function. In it, we first 
+define an empty redeemer. Next, we create our transaction. In the transaction 
+we set the network, say which tokens we want to mint with which minting 
+policy, add the redeemer and sing the transaction with our wallet key. 
+At the end we build, sign and submit the transaction and return the 
+transaction hash. Now we can make our function call and mint the tokens. 
+If we name our file `signed-minting.ts`, we can mint our tokens as:  
 
 [source,shell]
 ----
