@@ -2031,15 +2031,15 @@ serializedMkGiftValidator :: SerialisedScript
 serializedMkGiftValidator = serialiseCompiledCode compiledMkGiftValidator
 ----
 
-The long list of language pragmas and import statements is necessary to 
-cover the functionality for all validators presented in the <<Simple validation scripts>> 
-section. From the language pragmas we note that we add the 
-[purple]#NoImplicitPrelude# extension that prevents the standard `Prelude` module
-from being imported. The `PlutusTx` module defines a custom prelude where
-all functions use strict evaluation rather than the lazy one. This also
-applies to all other functions defined in any module used for Plinth
-coding. We name the module `Week02.Validators` because the code comes 
-from the _Week02_ examples of the fourth Plutus pioneer program. 
+The long list of language pragmas, GHC compiler options and import statements 
+is necessary to cover the functionality for all validators presented in the 
+<<Simple validation scripts>> section. From the language pragmas we note that 
+we add the [purple]#NoImplicitPrelude# extension that prevents the standard 
+`Prelude` module from being imported. The `PlutusTx` module defines a custom 
+prelude where all functions use strict evaluation rather than the lazy one. 
+This also applies to all other functions defined in any module used for 
+Plinth coding. We name the module `Week02.Validators` because the code 
+comes from the _Week02_ examples of the fourth Plutus pioneer program. 
 Then, we import several submodules from the `PlutusLedgerApi` and the 
 `PlutusTx` modules that define functions for working with PlutusV3 scripts. 
 
@@ -3589,7 +3589,7 @@ that are needed by the off-chain code one can use the `npm` package manager
 for JavaScript. The package that installs all other needed packages as 
 dependencies is `@meshsdk/core`. The official 
 https://www.npmjs.com/package/@meshsdk/core[npm page] for this package 
-lists all packages that will get installed. To install these packages 
+lists the MeshSDK packages that will get installed. To install them 
 locally `cd` to the root location of your project and run: 
 
 [source,shell]
@@ -3599,7 +3599,7 @@ npm install @meshsdk/core
 
 For more information on how to install npm packages locally or globally one can read the 
 https://docs.npmjs.com/packages-and-modules/getting-packages-from-the-registry[Getting 
-packages from the registry] online npm documentation. 
+packages from the registry] npm documentation page.  
 Let us look now at off-chain code that interacts with the vesting smart 
 contract `vestingVal` that we have defined in the previous section. Our code 
 will reside in a TypeScript file to leverage some of the type system’s features. 
