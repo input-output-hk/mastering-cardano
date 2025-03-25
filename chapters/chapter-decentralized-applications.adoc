@@ -238,9 +238,10 @@ First, we’ll create an HTML button and JavaScript that will connect the client
   async function connectWallet() {
     if (window.cardano && window.cardano.lace) {
       try {
-        await window.cardano.lace.enable();
-        const wallet = await window.cardano.lace.getUsedAddresses();
-        console.log("Connected to Lace Wallet:", walletAddress);
+        let lace = await window.cardano.lace.enable();
+        const walletAddressUsed = await lace.getUsedAddresses();
+        console.log("Connected to Lace Wallet.");
+        console.log("Addresses Used:", walletAddressUsed);
       } catch (error) {
         console.error("Error connecting to Lace Wallet:", error);
       }
@@ -251,7 +252,7 @@ First, we’ll create an HTML button and JavaScript that will connect the client
 </script>
 ----
 
-After reloading the webpage (i.e. refreshing the url, localhost:3000), you should see the button on screen. If the code is correct, once you press the button, the Lace wallet should pop-up requesting the user to allow for the underlying client-side code to be able to connect to the Lace wallet as depicted in <<dapp-connect-to-lace>>. Upon confirming that the DApp can connect to the wallet, we will not see any changes in the page, since we did not provide any code to do so.
+After reloading the webpage (i.e. refreshing the url, localhost:3000), you should see the button on screen. If the code is correct, once you press the button, the Lace wallet should pop-up requesting the user to allow for the underlying client-side code to be able to connect to the Lace wallet as depicted in <<dapp-connect-to-lace>>. Upon confirming that the DApp can connect to the wallet, we will not see any changes in the page, since we did not provide any code to do so. However, if you check the developer console in the browser you should see the output messages stating that the we successfully managed to connect the wallet to the client-side JavaScript and also the addresses used.
 
 [[dapp-connect-to-lace]]
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
@@ -259,12 +260,118 @@ After reloading the webpage (i.e. refreshing the url, localhost:3000), you shoul
 [#dapp-connect-to-lace]
 image::dapp-connect-to-lace.png[]
 
-Now that we have connected the client-side code to the wallet, let’s write some code that will interact with an underlying smart contract.
+Now that we have connected the client-side code to the wallet, we'll write some code that will interact with an underlying smart contract. Just before we do this though, we'll now package some libraries that we need to use in the client-side JavaScript.
+
+_Packaging Libraries for use in Client-Side JavaScript_
+
+In the client-side JavaScript code, we'll use Mesh - a library that will provide an easier-to-use interface to interact with the smart contracts deployed on the blockchain. To do so, we'll package the Mesh library using webpack and serve it to the client-side JavaScript code. Indeed, you can use a different method to package and serve the library. The code we provide here may require changes (especially when considering different versions of sdks used, e.g. NodeJS). If the code does not work out-of-the-box you may need to investigate how to package and deploy libraries and/or fix this code as required for your environment. We will not delve into the intricacies of this code but you may want to read up on how to package and serve libraries for client-side JavaScript code.
+
+To export the Mesh library follow these steps:
+
+. Install webpack and webpack-cli by running:
+[source]
+----
+npm install --save-dev webpack webpack-cli
+----
+
+[start=2] 
+. Install @meshsdk/core, path-browserify, stream-browserify, crypto-browserify, buffer, and process by running:
+[source]
+----
+npm install @meshsdk/core path-browserify stream-browserify crypto-browserify buffer process
+----
+
+[start=3] 
+. In the NodeJS application, create the file ./mesh-entry.js with the following code:
+
+[source,javascript]
+----
+import * as Mesh from '@meshsdk/core';
+export default Mesh;
+----
+
+[start=4] 
+. Create the ./webpack.config.js file with the following code:
+
+[source,javascript]
+----
+const path = require('path');
+const webpack = require('webpack');
+
+module.exports = {
+  entry: './mesh-entry.js',
+  mode: 'production',
+  output: {
+    filename: 'mesh.bundle.js',
+    path: path.resolve(__dirname, 'public/js'),
+    library: 'Mesh',
+    libraryTarget: 'window',
+  },
+  experiments: {
+    topLevelAwait: true,
+  },
+  resolve: {
+    fallback: {
+      fs: false,
+      path: require.resolve('path-browserify'),
+      stream: require.resolve('stream-browserify'),
+      crypto: require.resolve('crypto-browserify'),
+      buffer: require.resolve('buffer/'),
+      process: require.resolve('process'),
+    },
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      Buffer: ['buffer', 'Buffer'],
+      process: 'process',
+    }),
+  ],  
+};
+----
+
+[start=5] 
+. Run webpack to generate the bundles Mesh library:
+[source]
+----
+npx webpack
+----
+
+[start=6] 
+. If successful, the bundled client-side JavaScript code will be generated at the following path: ./public/js/mesh.bundle.js
+
+. The NodeJS ./index.js application should be updated to allow for the bundled Mesh library to clients by adding the following line:
+
+[source,javascript]
+----
+app.use(express.static(__dirname + '/public'));
+----
+
+. The full updated ./index.js code follows:
+
+[source,javascript]
+----
+const express = require('express');
+
+const app = express();
+const port = 3000;
+
+app.use(express.static(__dirname + '/public'));
+
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+});
+
+app.listen(port, () => {
+    console.log(`Server is running at http://localhost:${port}`);
+});
+----
+
+
+_Using the Bundled Mesh Library in the Client-Side JavaScript_
 
 
 #Discuss decentralising web servers, the trade-offs and options.
 Close-off with challenges and UI issues, and what the future may hold.#
-
 
 
 #Continue with a note on on-chain/off-chain SCs parts?#
