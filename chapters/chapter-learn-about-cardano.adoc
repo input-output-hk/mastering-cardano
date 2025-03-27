@@ -5,28 +5,23 @@ Cardano is an *open-source*, *proof of stake* blockchain platform. As a third-ge
 
 Cardano aims to address the shortcomings of existing blockchain platforms by focusing on security, scalability, and interoperability. As a fully https://informatics.ed.ac.uk/blockchain/edi[decentralized] blockchain, it can support a wide range of applications, from financial services to supply chain management and beyond. With the recent implementations of the https://iohk.io/en/blog/posts/2024/08/30/chang-upgrade-a-big-step-in-changing-the-world-with-cardano/[Chang] and https://www.intersectmbo.org/news/plomin-hard-fork-ratified[Plomin] hard forks, Cardano has become the most decentralized blockchain network in operation. 
 
-Cardano has a https://cardanoupdates.com/[thriving ecosystem] of builders, developers, content creators, and educators, as well as tools and explorers. There is a wide range of active projects and developer tools available to help you build on Cardano. If you would like to learn more about the vibrant Cardano ecosystem, see the https://www.cardanocube.com/cardano-ecosystem-interactive-map[ecosystem map], Essential Cardano website[Essential Cardano website], and the https://github.com/IntersectMBO/essential-cardano[Essential Cardano list]. 
+Cardano has a https://cardanoupdates.com/[thriving ecosystem] of builders, developers, content creators, and educators, as well as tools and explorers. There is a wide range of active projects and developer tools available to help you build on Cardano. If you would like to learn more about the vibrant Cardano ecosystem, see the https://www.cardanocube.com/cardano-ecosystem-interactive-map[ecosystem map], https://www.essentialcardano.io/[Essential Cardano website], and the https://github.com/IntersectMBO/essential-cardano[Essential Cardano list]. 
    
 === Who built Cardano? 
-The Cardano project began in 2015 and is based on *peer-reviewed research* and developed through *evidence-based methods*. It has been built by leading scientists, expert developers, and the extended team at https://iohk.io/[Input | Output (IO)], led by https://iohk.io/en/leadership/charles-hoskinson[Charles Hoskinson]. 
+The Cardano project began in 2015 and is based on *peer-reviewed research* and developed through *evidence-based methods*. It has been built by leading scientists, expert developers, and the extended team at https://iohk.io/[Input | Output (IO)] (initially IOHK), led by https://iohk.io/en/leadership/charles-hoskinson[Charles Hoskinson]. Input | Output is a pre-eminent blockchain infrastructure research and engineering company with over 600 employees globally. This extends to a focused innovation ecosystem.
 
-IOG (initially, IOHK) is a pre-eminent blockchain infrastructure research and engineering company with over 600 employees globally. This extends to a focused innovation ecosystem.
+The Cardano project is pioneered by https://iohk.io/[IO], the https://www.cardanofoundation.org/[Cardano Foundation], https://www.emurgo.io/[Emurgo], and other third parties. It is named after https://www.britannica.com/biography/Girolamo-Cardano[Girolamo Cardano], the 16th century Italian physician and mathematician and Cardano’s native cryptocurrency ada, is inspired by https://www.britannica.com/biography/Ada-Lovelace[Ada Lovelace], the 19th century English mathematician and the first person ever to publish a computer program.
 
-The Cardano project is pioneered by IOG, the https://www.cardanofoundation.org/[Cardano Foundation], https://www.emurgo.io/[Emurgo], and other third parties. It is named after https://www.britannica.com/biography/Girolamo-Cardano[Girolamo Cardano], the 16th century Italian physician and mathematician and Cardano’s native cryptocurrency ada, is inspired by https://www.britannica.com/biography/Ada-Lovelace[Ada Lovelace], the 19th century English mathematician and the first person ever to publish a computer program.
+Cardano follows an evidence-based engineering approach by applying formal logic to the software development cycle. This ensures that thoroughly researched and rigorous designs are turned into efficient implementations, guaranteeing correctness, safety, and code reliability. This process begins with published research papers which are later converted into formal specifications that evolve into reference implementations and products. 
 
-Cardano follows an evidence-based engineering approach by applying formal logic to the software development cycle. This ensures that thoroughly researched and rigorous designs are turned into efficient implementations, guaranteeing correctness, safety, and reliability for the code. This process begins with research papers, which are published and later converted into formal specifications that evolve into reference implementations and products. 
-
-Prof Aggelos Kiayias, chief scientist at IOG says:
-‘When you go about designing a system, you have to present the system in the context of the research domain in which it belongs, why the system has the benefits it claims to have, and what exactly is the problem that the system is solving. There are a lot of benefits in taking such a first principles approach.’
+Prof Aggelos Kiayias, chief scientist at IO says:
+_‘When you go about designing a system, you have to present the system in the context of the research domain in which it belongs, why the system has the benefits it claims to have, and what exactly is the problem that the system is solving. There are a lot of benefits in taking such a first principles approach.’_
  
 === Mission of Cardano
 The core mission of Cardano, as a fully decentralized platform, is to improve the world’s systems to enable economic inclusion and empowerment for all. 
 
 Charles Hoskinson said in 2020:
-‘Cardano is an open platform that seeks to provide economic identity to the billions who lack it by providing decentralized applications to manage identity, value, and governance.’  
-
-Charles Hoskinson said in 2020:
-‘Cardano is an open platform that seeks to provide economic identity to the billions who lack it by providing decentralized applications to manage identity, value, and governance.’  
+_‘Cardano is an open platform that seeks to provide economic identity to the billions who lack it by providing decentralized applications to manage identity, value, and governance.’_  
 
 === Open source ethos
 Cardano is a thriving *open-source project* with a *healthy*, *vibrant ecosystem* of active developers and builders. Open-source principles are integral to Cardano’s identity as a decentralized blockchain platform. Collaboration and transparency with the Cardano community result in a robust and inclusive ecosystem that empowers users and developers alike. 
@@ -36,7 +31,7 @@ All https://iohk.io/en/research/library/[research papers] and technical specific
 === Decentralization
 Cardano is maintained by over 3,000 community-operated stake pools, ensuring full decentralization. Over 1.3 million wallets delegate to these stake pools,  representing approximately 64% of the total active ada supply. Network participants validate all blocks and transactions without any reliance on a centralized authority. Decisions and ownership of information are shared amongst all users. 
 
-Every ada holder also holds a stake in the Cardano network. Ada stored in a wallet can be delegated to a stake pool to earn rewards and participate in the network’s successful operation. Stake pool operators can also pledge some ada to their stake pool to increase its likelihood of receiving rewards. 
+Every ada holder also holds a stake in the Cardano network, ada stored in a wallet can be delegated to a stake pool to earn rewards and participate in the network’s successful operation. Stake pool operators can also pledge some ada to their stake pool to increase its likelihood of receiving rewards. 
 
 === Reaching consensus using proof of stake 
 Cardano uses proof of stake to reach a consensus. Fundamentally, Cardano has been built as a resilient and sustainable blockchain with a proof-of-stake consensus protocol called https://iohk.io/en/blog/posts/2020/06/23/the-ouroboros-path-to-decentralization/[Ouroboros], which has been proven to have the same security guarantees as proof-of-work protocols and is undoubtedly more https://www.essentialcardano.io/article/comparison-of-energy-consumption-of-cardano-and-bitcoin[energy efficient]. To learn more about Ouroboros, read the <x ref to Ouroboros chapter>.
@@ -49,6 +44,7 @@ One of the features of Cardano is seamless upgrades. Traditionally, blockchains 
 As a third-generation blockchain, Cardano combines the properties of previous generations like Bitcoin and Ethereum. It has been built as a resilient and sustainable platform using the core principles of security, scalability, and interoperability.
 
 Let’s learn more about these core pillars of Cardano.
+
 ==== Security
 Cardano has been built using formal methods, which guarantees the functional correctness of its core components. These methods include producing mathematical specifications and proofs, which provide the highest level of assurance for software systems and give confidence to users managing their digital funds. 
 
@@ -69,7 +65,7 @@ Work is ongoing to support cross-chain transfers, multiple token types, and comm
 Governance is central to the design of Cardano to ensure system sustainability and adaptability. A well-developed governance strategy enables effective, democratic funding for Cardano’s long-term development, promoting sustainability and organic growth in a decentralized manner. Decentralized governance and decision making are vital for providing everyone a voice and control over the protocol’s future development.
 
 Charles Hoskinson says:
-‘Governance is not optional. No matter who you are, what you do, when you create something that other people use, the first question is how do we upgrade, maintain, and change it to meet our needs?’
+_‘Governance is not optional. No matter who you are, what you do, when you create something that other people use, the first question is how do we upgrade, maintain, and change it to meet our needs?’_
 
 The community is central to Cardano's identity, and Cardano’s governance model reflects this by implementing liquid and representative democracy. Through individual participation and immutable vote recording, ada holders can decide on the distribution of treasury funds and the platform's future development. So, as a community, how can we work together to outline policies and guidelines for the future development of Cardano and ensure that everyone has a voice? 
 
@@ -85,4 +81,4 @@ Launched in 2023, https://www.intersectmbo.org/[Intersect] is a member-based org
 
 === Suggested Reading
 - https://docs.cardano.org/introduction/[Cardano Docs]
-- https://iohk.io/en/blog/posts/page-1/[IOG Blog]
+- https://iohk.io/en/blog/posts/page-1/[IO Blog]
