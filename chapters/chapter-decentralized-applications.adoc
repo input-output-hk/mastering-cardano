@@ -223,8 +223,7 @@ app.listen(port, () => {
 [#node-hello-world]
 image::node-hello-world.png[pdfwidth=45%]
 
-
-_Creating the Client-Side Code_
+[[para-csc, Creating Client-Side Code]]_Creating the Client-Side Code to Connect to the Wallet_
 
 Now that we have a server able to send HTML/JavaScript to end-users, let’s write the client-side code to connect to a user’s wallet and interact with the underlying smart contracts. We’ll only provide the bare minimal code that is needed. Indeed, you may want to look into implementing a full HTML page (including html, head and body tags), but we’ll only provide the necessities for the sake of simplicity.
 
@@ -287,7 +286,12 @@ npm install @meshsdk/core path-browserify stream-browserify crypto-browserify bu
 [source,javascript]
 ----
 import * as Mesh from '@meshsdk/core';
-export default Mesh;
+export {
+    BrowserWallet,
+    Transaction,
+    resolvePlutusScriptAddress,
+    applyCborEncoding
+} from '@meshsdk/core';
 ----
 
 [start=4] 
@@ -339,14 +343,14 @@ npx webpack
 [start=6] 
 . If successful, the bundled client-side JavaScript code will be generated at the following path: ./public/js/mesh.bundle.js
 
-. The NodeJS ./index.js application should be updated to allow for the bundled Mesh library to clients by adding the following line:
+. The NodeJS ./index.js application should be updated to allow for the bundled Mesh library to be served to clients by adding the following line:
 
 [source,javascript]
 ----
 app.use(express.static(__dirname + '/public'));
 ----
 
-. The full updated ./index.js code follows:
+The full updated ./index.js code follows:
 
 [source,javascript]
 ----
@@ -368,6 +372,170 @@ app.listen(port, () => {
 
 
 _Using the Bundled Mesh Library in the Client-Side JavaScript_
+
+Now, we'll use the bundled mesh library in the client-side JavaScript to communicate with smart contracts.
+
+We'll expand on the HTML file described above (in the section covering <<para-csc>>). Again, for simplicity sake we'll encode all HTML and JavaScript into a single file (which we called index.html). We'll start by adding the boilerplate functionality to use the bundled library:
+
+. Import the bundled library:
+
+[source,javascript]
+----
+<script src="js/mesh.bundle.js"></script>
+----
+
+[start=2] 
+. In the script tag, we'll get references to the objects and functions needed:
+
+[source,javascript]
+----
+<script>
+const { BrowserWallet, 
+    Transaction, 
+    resolvePlutusScriptAddress, 
+    applyCborEncoding 
+} = window.Mesh;
+----
+
+[start=3] 
+. The full updated index.html should look like this:
+
+[source,javascript]
+----
+<button id="connectWallet" onclick="connectWallet()">Connect Wallet</button>
+
+<script src="js/mesh.bundle.js"></script>
+
+<script>
+const { BrowserWallet, 
+    Transaction, 
+    resolvePlutusScriptAddress, 
+    applyCborEncoding 
+} = window.Mesh;
+
+async function connectWallet() {
+  if (window.cardano && window.cardano.lace) {
+    try {
+      let lace = await window.cardano.lace.enable();
+      const walletAddress = await lace.getUsedAddresses();
+      console.log("Connected to Lace Wallet:", walletAddress);
+    } catch (error) {
+      console.error("Error connecting to Lace Wallet:", error);
+    }
+  } else {
+    console.error("Lace Wallet not found");
+  }
+}
+</script>
+----
+
+[start=4] 
+. To test this code, the Node server will need to be started (potentially restarted), and the page loaded by opening the url localhost:3000 in a browser. Then check to make sure that loading of the library and loading of the Mesh library objects and functions do not raise any errors (though you might see an error relating to not being able to load favicon.ico). 
+
+
+==== Interacting with the Redeemer 42 Smart Contract
+
+To demonstrate DApp interaction, we'll start by writing client-side JavaScript code to interact with the Redeemer 42 smart contract. #Add details on how to read more on the Redeemer 42 smart contract.# We'll start by sending funds to the smart contract and then #XXXX#.
+
+_Sending Funds to the Redeemer 42 Smart Contract_
+
+To add functionality that sends funds to the Redeemer 42 smart contract follow these steps:
+
+. Add into the client-side JavaScript code the following to get a reference to the deployed Redeemer 42 smart contract:
+
+[source,javascript]
+----
+const redeemer42Script = {
+  code: applyCborEncoding("581e010100255333573466e1d2054375a6ae84d5d11aab9e3754002229308b01"),
+  version: "V3"
+};
+const redeemer42Addr = resolvePlutusScriptAddress(redeemer42Script, 0);
+----
+
+[start=2] 
+. Then to actually send funds we'll use the following code (that is explained in the section below the code):
+
+[source,javascript,linenums]
+----
+async function sendFunds(amount) {
+    const wallet = await BrowserWallet.enable('lace');
+    const walletAddress = await wallet.getChangeAddress();
+    const tx = new Transaction({ initiator: wallet })
+        .setNetwork("preview")
+        .sendLovelace({ address: redeemer42Addr }, amount)
+        .setChangeAddress(walletAddress);
+    
+    const txUnsigned = await tx.build();
+    const txSigned = await wallet.signTx(txUnsigned);
+    const txHash = await wallet.submitTx(txSigned);
+    return txHash;
+}
+----
+
+Line number 2 connects to the wallet (if it has not already been connected to, e.g. using the connect button we already created).
+
+Line number 3 gets the change address, #discussed in Chapter XXX#, that will be passed set for the transaction being constructed.
+
+Line numbers 4-7 set the required parameters for the transaction including: passing in a reference to the wallet we're using to send funds, the network (i.e. #preprod#), the smart contract address (computed in the 1st step) and the amount of 'Lovelace' to send #add description#, and the change address.
+
+In line number 9, 10 and 11, we build the transaction, sign it and submit the transaction respectively.
+
+[start=3] 
+. We also add a 'Send Funds' button to call the added functionality to send 3,000,000 Lovelace (i.e. #XXX Ada#) to the smart contract.
+
+For reference, the full updated index.html file follows:
+
+[source,javascript]
+----
+<button id="connectWallet" onclick="connectWallet()">Connect Wallet</button>
+<button id="sendFunds" onclick="sendFunds('3000000')">Send Funds</button>
+
+<script src="js/mesh.bundle.js"></script>
+
+<script>
+const { BrowserWallet, 
+    Transaction, 
+    resolvePlutusScriptAddress, 
+    applyCborEncoding 
+} = window.Mesh;
+
+const redeemer42Script = {
+  code: applyCborEncoding("581e010100255333573466e1d2054375a6ae84d5d11aab9e3754002229308b01"),
+  version: "V3"
+};
+const redeemer42Addr = resolvePlutusScriptAddress(redeemer42Script, 0);
+
+async function sendFunds(amount) {
+    const wallet = await BrowserWallet.enable('lace');
+    const walletAddress = await wallet.getChangeAddress();
+    const tx = new Transaction({ initiator: wallet })
+        .setNetwork("preview")
+        .sendLovelace({ address: redeemer42Addr }, amount)
+        .setChangeAddress(walletAddress);
+    
+    const txUnsigned = await tx.build();
+    const txSigned = await wallet.signTx(txUnsigned);
+    const txHash = await wallet.submitTx(txSigned);
+    return txHash;
+}
+
+async function connectWallet() {
+    if (window.cardano && window.cardano.lace) {
+        try {
+            let lace = await window.cardano.lace.enable();
+            const walletAddress = await lace.getUsedAddresses();
+            console.log("Connected to Lace Wallet:", walletAddress);
+        } catch (error) {
+            console.error("Error connecting to Lace Wallet:", error);
+        }
+    } else {
+        console.error("Lace Wallet not found");
+    }
+}
+</script>
+----
+
+
 
 
 #Discuss decentralising web servers, the trade-offs and options.
