@@ -110,6 +110,32 @@ The design rationale of Cardano focuses on the following core concepts:
 
 - Functional environment for business use cases – Cardano is establishing a foundation for global, decentralized finance to develop a range of DApps that can run using functional and domain-specific smart contracts, providing multi-asset tokens for any needs.
 
+=== 3.3 Cardano community and growth of the ecosystem
+Cardano benefits from a vibrant and thriving ecosystem that promotes active engagement with builders, developers, content creators, and users.The Cardano ecosystem is a dynamic and rapidly-growing collection of projects, organizations, creators, and builders who are working together to improve and develop the platform even further. 
+
+As a community-driven ecosystem, there is a strong focus on innovation, collaboration, and cooperation between innovators, smart contract developers, content creators, and distributed application (DApp) developers that build on Cardano. The aim is to grow the contributor ecosystem even more each year.
+
+==== About the Cardano ecosystem
+The Cardano ecosystem spans the globe with creators and builders dotted around the world. With many years of collaboration, innovation, and progress behind it, Cardano continues to grow and develop into a vast and self-governing ecosystem.
+
+You can take a closer look at the vibrant landscape of Cardano’s ecosystem and explore the wide range of current projects using the Cardano Cube interactive map. 
+
+Another important resource is our community platform resource Essential Cardano. Here you can learn more about the growing Cardano ecosystem and keep up to date with regular development updates, blogs on various topics, and learning resources.
+
+There are a number of builder tools and various community channels available within the ecosystem to help you navigate the environment, for example:
+- https://developers.cardano.org/tools/[Builder Tools]
+- https://www.essentialcardano.io/community[Cardano community channels]
+
+==== Cardano improvement proposals
+The https://cips.cardano.org/[Cardano improvement proposal] (CIP) process is a structured process that enables ideas for change and improvement within the ecosystem. It is a community-led mechanism that  provides transparency and encourages collaboration among stakeholders, thereby enabling the community to shape the future of the Cardano ecosystem together. 
+
+Anyone can write and submit a CIP, which typically covers both technical and non-technical suggestions and changes to Cardano. These CIPs must adhere to a set of guidelines and include a description of the issue, how it can be solved, and a plan on how to implement the changes. The next stage in the process is a review by CIP editors who ensure that it adheres to the set of guidelines, before they open it up for community discussion on whether or not it should be implemented. During this feedback cycle, the proposal is often refined and further improved, before it is moved to the implementation stage. In some cases, where there is a proposed protocol change, further governance is required by the founding entities. 
+
+Once a CIP is approved, it is implemented on-chain by the relevant developers and stake pool operators. In some cases, a network upgrade is needed which requires further collaboration between the various stakeholders. All CIPs are documented and maintained in the CIP repository, forming an audit trail of historical changes to Cardano. 
+
+==== Cardano Ambassador program
+The https://cardano.org/ambassadors/[Cardano Ambassador program] promotes awareness, fosters relationships, and works to nurture and expand the wider community by increasing adoption. It includes a wide range of committed and hard working individuals from all around the globe with a wide variety of age and social profiles. These ambassadors work diligently as content creators, translators, moderators, and educators to strengthen relationships, educate, and bring more people into the growing Cardano community. 
+
 === Suggested Reading
 - https://docs.cardano.org/introduction/[Cardano Docs]
 - https://iohk.io/en/blog/posts/page-1/[IO Blog]
