@@ -290,7 +290,9 @@ export {
     BrowserWallet,
     Transaction,
     resolvePlutusScriptAddress,
-    applyCborEncoding
+    applyCborEncoding,
+    MeshTxBuilder,
+    KoiosProvider,
 } from '@meshsdk/core';
 ----
 
@@ -453,7 +455,7 @@ const redeemer42Addr = resolvePlutusScriptAddress(redeemer42Script, 0);
 ----
 
 [start=2] 
-. Then to actually send funds we'll use the following code (that is explained in the section below the code):
+. Then to actually send funds we'll use the following code (that is explained in below the code):
 
 [source,javascript,linenums]
 ----
@@ -524,6 +526,175 @@ async function connectWallet() {
         try {
             let lace = await window.cardano.lace.enable();
             const walletAddress = await lace.getUsedAddresses();
+            console.log("Connected to Lace Wallet:", walletAddress);
+        } catch (error) {
+            console.error("Error connecting to Lace Wallet:", error);
+        }
+    } else {
+        console.error("Lace Wallet not found");
+    }
+}
+</script>
+----
+
+After running the NodeJS server and refreshing the page (i.e. refreshing localhost:3000), you should see the added button 'Send Funds':
+
+[[fig-sendFunds]]
+[caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
+.Added 'Send Funds' button. 
+[#fig-sendFunds]
+image::redeemer42-sendFunds.png[pdfwidth=50%]
+
+Upon clicking 'Send Funds' the wallet should pop-up asking that you confirm sending 3 Ada to the smart contract.
+
+_Deploying a reference script for the Redeemer 42 Smart Contract_
+
+To add functionality that deploys a reference script for the Redeemer 42 smart contract follow these steps:
+
+. First, we'll import the MeshTxBuilder and KoiosProvider objects from the mesh sdk bundle we created before. The added lines are denoted by the 'added now' comments:
+
+[source,javascript]
+----
+const { BrowserWallet, 
+    Transaction, 
+    resolvePlutusScriptAddress, 
+    applyCborEncoding,
+    MeshTxBuilder, //added now
+    KoiosProvider //added now
+} = window.Mesh;
+----
+
+[start=2] 
+. We will make use of an RPC provider, which allows for querying of parameters for the blockchain. We'll make use of KoiosProvider provided by mesh SDK, but you could also look into using other providers:
+
+[source,javascript]
+----
+const provider = new KoiosProvider('preview');
+----
+
+[start=3] 
+. Then we compute the burn address where we'll deploy the reference script to:
+
+[source,javascript]
+----
+const burnScript = {
+  code: applyCborEncoding("450101002601"),
+  version: "V3"
+};
+const burnAddr = resolvePlutusScriptAddress(burnScript, 0);
+----
+
+[start=4] 
+. A function that will handle deploying the reference script follows:
+
+[source,javascript,linenums]
+----
+async function deployRefScript(amount) {
+    const wallet = await BrowserWallet.enable('lace');    
+    const walletAddress = await wallet.getChangeAddress();
+
+    const utxos = await wallet.getUtxos();
+    const txBuilder = new MeshTxBuilder({
+        fetcher: provider 
+    });
+    
+    const unsignedTx = await txBuilder
+        .txOut(burnAddr, [{ unit: "lovelace", quantity: amount }])
+        .txOutReferenceScript(redeemer42Script.code, redeemer42Script.version)
+        .changeAddress(walletAddress)
+        .selectUtxosFrom(utxos)
+        .complete();
+    
+    const signedTx = await wallet.signTx(unsignedTx);
+    const txHash = await wallet.submitTx(signedTx);
+    return txHash;
+}
+----
+
+Lines 2 and 3 were already discussed above. Line 5 gets the wallet's UTXOs (unspent transactions) that could be used (for the transaction that will be submitted). Lines 6-8 defines a transaction builder that will help us build the transaction (to deploy the reference script). We pass in the provider that will be used to help the MeshTxBuilder request parameters and interact with the blockchain. Lines 10-15 build the transaction to deploy the reference script, and then the transaction is signed and submitted (on lines 17 and 18).
+
+[start=5] 
+. Finally, we'll add a button to test out the deploy reference script functionality:
+
+[source,javascript]
+----
+<button id="deployRefScript" onclick="deployRefScript('3000000')">Deploy Reference Script</button>
+----
+
+
+The whole code should now look something like this:
+
+[source,javascript,linenums]
+----
+<button id="connectWallet" onclick="connectWallet()">Connect Wallet</button>
+<button id="sendFunds" onclick="sendFunds('3000000')">Send Funds</button>
+<button id="deployRefScript" onclick="deployRefScript('3000000')">Deploy Reference Script</button>
+
+<script src="js/mesh.bundle.js"></script>
+
+<script>
+const { BrowserWallet, 
+    Transaction, 
+    resolvePlutusScriptAddress, 
+    applyCborEncoding,
+    MeshTxBuilder, 
+    KoiosProvider,
+} = window.Mesh;
+
+const redeemer42Script = {
+  code: applyCborEncoding("581e010100255333573466e1d2054375a6ae84d5d11aab9e3754002229308b01"),
+  version: "V3"
+};
+const redeemer42Addr = resolvePlutusScriptAddress(redeemer42Script, 0);
+
+const provider = new KoiosProvider('preview'); 
+
+const burnScript = {
+  code: applyCborEncoding("450101002601"),
+  version: "V3"
+};
+const burnAddr = resolvePlutusScriptAddress(burnScript, 0); 
+
+async function deployRefScript(amount) {
+    const wallet = await BrowserWallet.enable('lace');    
+    const walletAddress = await wallet.getChangeAddress();
+
+    const utxos = await wallet.getUtxos();
+    const txBuilder = new MeshTxBuilder({
+        fetcher: provider 
+    });
+    
+    const unsignedTx = await txBuilder
+        .txOut(burnAddr, [{ unit: "lovelace", quantity: amount }])
+        .txOutReferenceScript(redeemer42Script.code, redeemer42Script.version)
+        .changeAddress(walletAddress)
+        .selectUtxosFrom(utxos)
+        .complete();
+    
+    const signedTx = await wallet.signTx(unsignedTx);
+    const txHash = await wallet.submitTx(signedTx);
+    return txHash;
+}
+
+async function sendFunds(amount) {
+    const wallet = await BrowserWallet.enable('lace');
+    const walletAddress = await wallet.getChangeAddress();
+    const tx = new Transaction({ initiator: wallet })
+        .setNetwork("preview")
+        .sendLovelace({ address: redeemer42Addr }, amount)
+        .setChangeAddress(walletAddress);
+    
+    const txUnsigned = await tx.build();
+    const txSigned = await wallet.signTx(txUnsigned);
+    const txHash = await wallet.submitTx(txSigned);
+    return txHash;
+}
+
+async function connectWallet() {
+    if (window.cardano && window.cardano.lace) {
+        try {
+            let lace = await window.cardano.lace.enable();
+            const walletAddress = lace.getUsedAddresses();
             console.log("Connected to Lace Wallet:", walletAddress);
         } catch (error) {
             console.error("Error connecting to Lace Wallet:", error);
