@@ -136,6 +136,61 @@ Once a CIP is approved, it is implemented on-chain by the relevant developers an
 ==== Cardano Ambassador program
 The https://cardano.org/ambassadors/[Cardano Ambassador program] promotes awareness, fosters relationships, and works to nurture and expand the wider community by increasing adoption. It includes a wide range of committed and hard working individuals from all around the globe with a wide variety of age and social profiles. These ambassadors work diligently as content creators, translators, moderators, and educators to strengthen relationships, educate, and bring more people into the growing Cardano community. 
 
+=== 3.4 Educating the world about Cardano
+Education is a gateway for adoption and has always been an integral part of the strategy of Cardano’s pioneering members: https://iohk.io/[Input | Output], the https://cardanofoundation.org/[Cardano Foundation], and https://www.emurgo.io/[Emurgo]. It plays a transformative role in fostering a knowledgeable and engaged global community by equipping them with the expertise, skills, confidence, and opportunities to deepen their understanding and successfully build on Cardano and thrive in the ecosystem.
+
+Education is a gift that empowers and enhances Cardano community members through access to knowledge and experience so that they can overcome the complexity of blockchain technology. Pioneering worldwide education on blockchain offers the opportunity to shape the field for generations and leave a lasting legacy.
+
+Whether you're a developer, an academic, or a business professional, Cardano’s educational offerings are designed to equip you with all the skills and knowledge you need.
+
+You can read more about the education programs run by IO in the next section.
+
+==== Input | Output education
+The education team at IO brings together extensive experience in: 
+ 
+- Curriculum design and planning
+- Project management and delivery
+- Technical aspects related to blockchain
+- Haskell and Cardano expertise
+- Smart contract languages and development (including Plutus, Aiken, and Marlowe)
+
+This collective expertise ensures that educational programs are both comprehensive and practical, tailored to meet the needs of diverse learners. The education team aims to enhance understanding of Cardano technologies using a variety of learning and training assets targeted at a wide range of audiences. The team aims to provide knowledge and information to enterprise decision-makers so they know what business problems the technologies can solve. It strives to create a supportive learning environment for all participants, and continuously shares what its team members have learned from working directly with our community members.
+
+IOG is committed to improving the developer experience and smart contract adoption through education to further enhance the flourishing smart contract landscape on Cardano.
+Partnerships
+IO collaborates with esteemed universities and educational institutions worldwide to deliver high-quality education and is partnered with various universities and educational institutions, including:
+University of Edinburgh, where there is a blockchain laboratory run by IOG’s chief scientist Prof Aggelos Kiayias and his research team
+University of Athens
+University of West Indies
+University of Wyoming
+Carnegie Mellon University
+European Business University of Luxembourg
+University of Malta
+University of Wyoming
+University of Cantabria
+
+Additionally, IO worked with Yeovil College in the UK and Consilium Academy in South Africa on curriculum design for their blockchain programs.
+Mission-based education
+This education stream covers the Haskell training courses conducted over the years and aligns with the mission to provide free education to the Cardano community. 
+
+Haskell Course: aimed at those looking to master the functional programming language Haskell, which is integral to Cardano's development.
+Cardano Days events: interactive events that provide a deep dive into the Cardano platform, covering its unique features and applications.
+Blockchain workshops: in-person or virtual workshops and lectures on the fundamentals of blockchain and Cardano.
+Essential Cardano: the Essential Cardano List repository was created in 2021 as a central canonical guide to the Cardano ecosystem. It serves as a resource for understanding Cardano,  identifying its partners, learning about its mission and roadmap, and getting started with building on Cardano. A new Essential Cardano website was launched in 2022 and has since become a thriving community resource.
+
+As part of this stream, IO offers comprehensive in-person courses in Haskell that run for 10-12 weeks (depending on the curriculum). Dr. Lars Brünjes and his team have delivered several of these Haskell courses, including:
+
+Haskell and cryptocurrency course 2017, which ran for eight weeks at the National Technical University of Athens.
+Haskell and cryptocurrency course 2018, which ran for eight weeks at the University of West Indies, in Barbados.
+Haskell course 2019 Ethiopia: this three-month course was delivered in Addis Ababa, Ethiopia, in conjunction with the Ethiopian Ministry of Innovation and Technology. It was delivered to an all-female audience of Ethiopian and Ugandan students. 
+
+Dr. Lars Brünjes says:
+
+ ‘Education is a cornerstone of our approach at Cardano. By equipping individuals with the knowledge and skills to navigate and innovate within the blockchain ecosystem, we empower them to build a more decentralized and inclusive future. My greatest fulfillment came from teaching the all-female Haskell course in Ethiopia, witnessing firsthand the transformative power of education. That experience reaffirmed my belief in the potential of education to create substantive, lasting change.’
+
+
 === Suggested Reading
 - https://docs.cardano.org/introduction/[Cardano Docs]
 - https://iohk.io/en/blog/posts/page-1/[IO Blog]
+- https://academy.cardanofoundation.org/[Cardano Academy]
+- https://cardanofoundation.org/developer-portal[Cardano Developer Portal]
