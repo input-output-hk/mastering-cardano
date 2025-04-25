@@ -4749,8 +4749,7 @@ developed by https://www.geniusyield.co/[GeniusYield]
 
 A developer can use Atlas to write off-chain code that interacts with 
 a validator and then use the CLB emulator to test if the off-chain and 
-on-chain code behave as expected instead of testing the off-chain code 
-on the real test or main netwroks. From 
+on-chain code behave as expected. From 
 https://atlas-app.io/getting-started/testing#overview-of-unified-testing-in-atlas[Atlas docs] 
 we get the following description of the CLB emulator: 
 
@@ -4764,12 +4763,23 @@ emulator, and some notions, eg blocks and time is not represented enough
 in the emulator to carry out all tests. The upside is that one can switch 
 easily between the emulator and private network ledger backends. 
 
-We call our testing approach _unified testing_ if one can reause the on-chain, 
-off-chain and testing code accross different ledger backends. Before we show 
-how to unit and property test a Plinth validator with the above mentioned tools, 
-for a better understanding we demonstrate how to model and test a simple mock 
-blockchain in Haskell using a State monad. First we look at how to represent 
-a blockchain and keep track of transactions. 
+We call our testing approach _unified testing_ if one can reuse the on-chain, 
+off-chain and testing code accross different ledger backends. The atlas docs 
+provide a walkthrough of a betting code example where they showcase unified 
+testing. The betting example docs provide explanations for the: 
+
+* https://atlas-app.io/getting-started/smart-contract-intro[on-chain code] 
+* https://atlas-app.io/getting-started/operations[off-chain code] 
+* https://atlas-app.io/getting-started/testing[testing code] and more.  
+
+The code of the betting examples can be found in the 
+https://github.com/geniusyield/atlas-examples/tree/main/bet-ref[atlas-examples] repository. 
+
+In this section we present a simpler example compared to the one from the official 
+docs. Before we show how to unit and property test a Plinth validator with the Atlas, 
+CLB and QuickCheck tools, for a better understanding we first demonstrate how to model 
+and test a simple mock blockchain in Haskell using a State monad. Let us look at how 
+to represent a blockchain and keep track of transactions. 
 
 [source,haskell]
 ----
@@ -4867,20 +4877,49 @@ Now let us look at a simple Plinth validator for which we will write
 our unit and property tests. Our validator checks: 
 
 * that the redeemer is a integer number smaller or equal to zero 
-* that the deadline contained in the datum, which is a custom data 
-type, has passed.
+* that the deadline contained in the datum has passed. 
 
-Below, we can see the smart contract code, where we name our module
-`Week06.NegativeRTime`:
+The validator together with the off-chain and testing code that we 
+will present in this section resides in `src/Week06` folder of the 
+https://github.com/input-output-hk/plutus-pioneer-program/tree/4th-iteration-plutusV3[4th-iteration-plutusV3]
+branch of the Plutus pioneer program repository. The folder contains 
+its own `.cabal` and `cabal.project` file that reference the needed  
+libraries needed to build and test code written with Atlas. The code 
+was tested with the nix shell build from Atlas version `v0.13.0`. 
+
+To build the required nix shell you will need `nix` installed and 
+cofigured. Instructions can be found in the `plinth-dev-env` GitHub. 
+An up-to-date link to it, is available in the resources folder of the 
+https://github.com/input-output-hk/mastering-cardano[mastering-cardano] 
+GitHub repository. After you have installed `nix` and configured it 
+you can clone the https://github.com/geniusyield/atlas[atalas repo], 
+checkout the the previous mentioned version and run inside the repo: 
+
+[source,shell]
+----
+nix flake update
+nix develop 
+----
+
+The atlas shell does not provide a visual change of the standard prompt. 
+One can check if the shell was successfully build with the `echo $IN_NIX_SHELL`
+command. If it returns `impure` then the nix shell is available. To run 
+the code from this section `cd` from your nix shell into the `src/Week06` 
+folder and run: 
+
+[source,shell]
+----
+cabal update 
+cabal run 
+----
+
+Now let us look at the testing code. We start with the smart contract code. 
+We name our module `NegativeRTimed.OnChain.NegativeRTimed`:
 
 [source,haskell]
 ----
 {-# LANGUAGE DataKinds                  #-}
-{-# LANGUAGE DeriveAnyClass             #-}
-{-# LANGUAGE DeriveGeneric              #-}
-{-# LANGUAGE DerivingStrategies         #-}
 {-# LANGUAGE FlexibleInstances          #-}
-{-# LANGUAGE GeneralizedNewtypeDeriving #-}
 {-# LANGUAGE ImportQualifiedPost        #-}
 {-# LANGUAGE MultiParamTypeClasses      #-}
 {-# LANGUAGE NoImplicitPrelude          #-}
@@ -4892,54 +4931,38 @@ Below, we can see the smart contract code, where we name our module
 {-# LANGUAGE TypeApplications           #-}
 {-# LANGUAGE UndecidableInstances       #-}
 {-# LANGUAGE ViewPatterns               #-}
-{-# OPTIONS_GHC -fno-full-laziness #-}
-{-# OPTIONS_GHC -fno-ignore-interface-pragmas #-}
-{-# OPTIONS_GHC -fno-omit-interface-pragmas #-}
-{-# OPTIONS_GHC -fno-spec-constr #-}
-{-# OPTIONS_GHC -fno-specialise #-}
-{-# OPTIONS_GHC -fno-strictness #-}
-{-# OPTIONS_GHC -fno-unbox-small-strict-fields #-}
-{-# OPTIONS_GHC -fno-unbox-strict-fields #-}
-{-# OPTIONS_GHC -fplugin-opt PlutusTx.Plugin:target-version=1.1.0 #-}
+{-# LANGUAGE DeriveAnyClass             #-}
+{-# LANGUAGE DeriveGeneric              #-}
+{-# LANGUAGE DerivingStrategies         #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
 
-module Week06.NegativeRTimed where
+module NegativeRTimed.OnChain.NegativeRTimed (
+  mkNegativeRTimedValidator,
+) where
 
-import           GHC.Generics                  (Generic)
-import           PlutusLedgerApi.Common        (SerialisedScript,
-                                                serialiseCompiledCode)
-import           PlutusLedgerApi.Data.V3       (FromData (..), POSIXTime, from)
 import           PlutusLedgerApi.V1.Interval   (contains)
-import           PlutusLedgerApi.V3            (Datum (..), ScriptContext (..),
+import           PlutusLedgerApi.V3            (FromData (..), POSIXTime, from, 
+                                                Datum (..), ScriptContext (..),
                                                 ScriptInfo (..),
                                                 TxInfo (txInfoValidRange),
                                                 getRedeemer)
-import           PlutusTx                      (BuiltinData, CompiledCode,
-                                                UnsafeFromData (unsafeFromBuiltinData),
-                                                compile,
-                                                makeIsDataSchemaIndexed)
-import           PlutusTx.Blueprint            (HasBlueprintDefinition)
-import           PlutusTx.Blueprint.Definition (definitionRef)
+import           PlutusTx                      (BuiltinData, 
+                                                UnsafeFromData 
+                                                  (unsafeFromBuiltinData))
+import           PlutusTx.Builtins             (error)
 import           PlutusTx.Bool                 (Bool (..), (&&))
-import           PlutusTx.Prelude              (BuiltinUnit, Integer,
-                                                Maybe (..), Ord ((<=)), check,
+import           PlutusTx.Prelude              (Integer,
+                                                Maybe (..), Ord ((<=)), 
                                                 traceError, traceIfFalse, ($),
-                                                (.))
+                                                (.), otherwise)
+                                                -- BuiltinUnit, check 
 
-{- ------------------------------------------------------------------------------------------ -}
-{- ----------------------------------------- TYPES ------------------------------------------ -}
+{- ------------------------------------------------------------------------------ -}
+{- --------------------------------- VALIDATOR ---------------------------------- -}
 
-newtype CustomDatum = MkCustomDatum {deadline :: POSIXTime}
-  deriving stock (Generic)
-  deriving newtype (HasBlueprintDefinition)
-
-makeIsDataSchemaIndexed ''CustomDatum [('MkCustomDatum, 0)]
-
-{- ------------------------------------------------------------------------------------------ -}
-{- --------------------------------------- VALIDATOR ---------------------------------------- -}
-
-{-# INLINEABLE negativeRTimedVal #-}
-negativeRTimedVal :: ScriptContext -> Bool
-negativeRTimedVal ctx =
+{-# INLINEABLE mkNegativeRTimedValidator' #-}
+mkNegativeRTimedValidator' :: ScriptContext -> Bool
+mkNegativeRTimedValidator' ctx =
   traceIfFalse "expected a negative redeemer" (red <= 0)
     && traceIfFalse "deadline not reached" deadlineReached
  where
@@ -4947,29 +4970,54 @@ negativeRTimedVal ctx =
   info = scriptContextTxInfo ctx
 
   deadlineReached :: Bool
-  deadlineReached = contains (from (deadline dat)) $ txInfoValidRange info
+  deadlineReached = contains (from dat) $ txInfoValidRange info
 
-  dat :: CustomDatum
+  dat :: POSIXTime
   dat = case scriptContextScriptInfo ctx of
-    SpendingScript _txRef (Just datum) -> case (fromBuiltinData @CustomDatum . getDatum) datum of
-      Just d  -> d
-      Nothing -> traceError "Expected correctly shaped datum"
+    SpendingScript _txRef (Just datum) -> 
+      case (fromBuiltinData @POSIXTime . getDatum) datum of
+        Just d  -> d
+        Nothing -> traceError "Expected POSIXTime for datum"
     _ -> traceError "Expected SpendingScript with datum"
 
   red :: Integer
-  red = case (fromBuiltinData @Integer . getRedeemer . scriptContextRedeemer) ctx of
-    Just r  -> r
-    Nothing -> traceError "Expected redeemer"
+  red = case (fromBuiltinData @Integer 
+              . getRedeemer 
+              . scriptContextRedeemer) ctx of
+          Just r  -> r
+          Nothing -> traceError "Expected redeemer"
 
-{- ------------------------------------------------------------------------------------------ -}
-{- ---------------------------------------- HELPERS ----------------------------------------- -}
+{- ------------------------------------------------------------------------------ -}
+{- ---------------------------------- HELPERS ----------------------------------- -}
 
-compiledVal :: CompiledCode (BuiltinData -> BuiltinUnit)
-compiledVal = $$(compile [||wrappedVal||])
- where
-  wrappedVal :: BuiltinData -> PlutusTx.Prelude.BuiltinUnit
-  wrappedVal ctx = PlutusTx.Prelude.check PlutusTx.Prelude.$ negativeRTimedVal (unsafeFromBuiltinData ctx)
+mkNegativeRTimedValidator :: BuiltinData -> ()
+mkNegativeRTimedValidator ctx'
+  | mkNegativeRTimedValidator' (unsafeFromBuiltinData ctx') = ()
+  | otherwise = error ()
 ----
+
+We then compile the code in a separate module similar as the betting 
+examples is structured in the _atlas-examples_ repository.  
+
+[source,haskell]
+----
+{-# LANGUAGE DataKinds         #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE TemplateHaskell   #-}
+
+module NegativeRTimed.OnChain.NegativeRTimed.Compiled
+    ( negativeRTimedValidator
+    ) where
+
+import PlutusTx qualified 
+import NegativeRTimed.OnChain.NegativeRTimed (mkNegativeRTimedValidator)
+
+-- Generates validator 
+negativeRTimedValidator :: PlutusTx.CompiledCode (PlutusTx.BuiltinData -> ())
+negativeRTimedValidator = $$(PlutusTx.compile [|| mkNegativeRTimedValidator||]) 
+----
+
+
 
  ----------------------------------------------------------------
 
