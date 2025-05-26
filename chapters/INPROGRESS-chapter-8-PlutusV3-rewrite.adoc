@@ -6430,10 +6430,22 @@ with invalid transactions to congest it, and the fees make such an
 attack very expensive. Cardano’s determinism means that users always
 know how much a transaction will cost before submitting it. The reason
 for this is that protocol parameters, rather than network traffic,
-govern pricing on Cardano. Also, a side effect of EUTXO and determinism
-is that bad actors cannot rearrange transactions. This can happen in
-account-based models, posing a risk for applications built on these
-chains.
+govern pricing on Cardano. 
+
+Also, a side effect of EUTXO is that bad actors which would try to 
+rearrange transactions do not pose any risk for users in Cardano in 
+terms of and determinism. The Cardano node is designed such that it 
+processes transactions in the same order as they arrived into the 
+mempol independent of the transaction fees assiciated with them. This 
+is not the case in all blockchains where a node might favor transactions 
+that carry higher fees. Even if a bad actor would manage to modify the 
+order of transactions in the mempool the effect of a transaction is 
+still predictable since all transaction inputs and outputs are signed 
+and predetermined. So rearranging transactions in Cardano that use 
+independent UTXOs inputs is inconsequential since it results in the 
+same final ledger state at the end. And it cannot be done for dependent 
+transactions because transaction 2 inputs won't exist unles transaction 1 
+outputs are generated first. 
 
 https://iohk.io/en/blog/posts/2021/09/06/no-surprises-transaction-validation-on-cardano/[This
 blog post] explains in more detail the determinism of transaction and
@@ -6456,12 +6468,15 @@ altered by an adversary in a way that causes scripts to fail
 . Applying a transaction in the EUTXO ledger model is deterministic.
 
 Determinism of fees and transactions can also be advantageous in Web3
-applications, such as decentralized exchanges (DEXs). Liquidity
-providers face the issue of impermanent loss on DEXs that use the
-https://www.coindesk.com/learn/what-is-an-automated-market-maker/[Automated
+applications, such as decentralized exchanges (DEXs). On DEXs users trade 
+with the help smart contracts that eliminate the need of a central entity 
+which is in centralized exchanges holding custody of traders tokens. 
+Liquidity providers that provide token pairs to DEXs such that normal 
+users can trade those tokens, face the issue of impermanent loss on DEXs 
+that use the https://www.coindesk.com/learn/what-is-an-automated-market-maker/[Automated
 market maker] (AMM) design model. In an AMM-style DEX, smart contracts
-enable automated trading of cryptocurrency pairs, which are often a
-fungible token (native or non-native) and a stablecoin.
+enable automated trading of cryptocurrency pairs, which are often a 
+fungible token or a native cryptocurrency and a stablecoin. 
 
 Let us consider an example of an AMM DEX where the deposited token pair
 is ETH and USDT (Tether), a stablecoin pegged to USD, and they need to
@@ -6481,8 +6496,9 @@ of ETH adds to around 3,464 USD. But if the trader had held on to the
 initial funds of one ETH and 1,000 USDT, they would now have 4,000 USD,
 meaning his impermanent loss was around 536 USD. The reason why it pays
 off to be a DEX liquidity provider is because they get a percentage of
-the trading fees. Arbitrage traders pay for every transaction they make,
-and those fees can often be larger than the amount of impermanent loss.
+the trading fees. Arbitrage and normal traders that both use the pool 
+pay for every transaction they make. The percentage of trading fees that 
+liquidity providers get is often larger than the amount of impermanent loss.
 https://iohk.io/en/blog/posts/2022/05/27/everything-you-always-wanted-to-know-about-impermanent-loss-and-were-afraid-to-ask/[This
 blog post] states that the EUTXO accounting model is a suitable
 environment for DEXs using the order book model. An order book model
@@ -6494,17 +6510,32 @@ environment for liquidity providers. The blog post explains in more
 detail how impermanent loss affects DEXs built on the account-based
 accounting models compared to EUTXO.
 
-Cardano smart contracts are also atomic and cannot make calls to each
-other. In Ethereum and other blockchains where this is possible, a smart
-contract function could, in the short term, give up control of a
-transaction when it calls another contract. This other contract could
-make recursive withdrawal calls to the first contract and drain its
-funds before the first contract updates its state. This is known as a
-reentrance attack, and it’s what happened to the DAO smart contract
-https://www.coindesk.com/learn/understanding-the-dao-attack/[hacked in
+Because Cardano transactions are deterministic, their interaction with 
+smart contracts is also deterministic, meaning the outcome of the validation 
+logic is predictable. In Ethereum, a smart contract function could, in 
+the short term, give up control of a transaction when it calls another 
+contract. This other contract could then make recursive withdrawal calls 
+to the first contract and drain its funds before the first contract 
+updates its state. This is known as a reentrance attack. Because this 
+is possible in Ethereum it sometimes makes the effect of a transaction 
+on the ledger hard to predict. Such an attack happened to the DAO smart 
+contract https://www.coindesk.com/learn/understanding-the-dao-attack/[hacked in
 2016]. On that occasion, 3.6m ETH (worth around 50m USD at the time)
 was affected. Such attacks are not possible in Cardano due to the design
-of the EUTXO accounting model.
+of the EUTXO accounting model. EUTXO's determinism doesn't allow the 
+outputs to be different than what the user signed. Even if a validator 
+is dependent on the decision of another validator, that is predetermined 
+and known in advanced before submitting a transaction. Such a case is 
+possible for istance if we want to make sure that a transaction runs 
+a minting policy in tandem with a spending script. We can check in the 
+spending script that tokens from that policy are being minted. And in 
+the minting policy we can check that a UTXO from that spending address 
+is being consumed in the transaction. Those validators are not _calling_ 
+each other, but we know they have to be both triggered by a single 
+transaction, since we enforce this condition inside those validators.  
+When we build a transaction we have to specify all the validators that 
+run and all their inputs and outputs, so there's no way that an _untrusted_ 
+validator can take over that transaction, since it's not part of it. 
 
 The EUTXO model also treats its tokens as native, meaning they are
 treated the same way as ada. For this reason, they get the same security
