@@ -1812,7 +1812,7 @@ good choice for projects that require a high level of security. Since
 Agda isn’t Haskell specific, it could also be used with Aiken. However,
 the gap to bridge between Aiken and Agda is larger than that between
 Plinth and Agda. Because both languages compile to Plutus, the logic of
-writing smart contracts is the same, but the workflow and syntax are
+writing smart contracts is very similar, even though the syntax is 
 different. Learning one language will help a developer understand any
 other Cardano smart contract language that compiles to Plutus. 
 
@@ -4718,7 +4718,7 @@ we again log the hash such that it can be used at the
 http://preview.cardanoscan.io/[preview.cardanoscan.io] webpage 
 to inspect our transaction that minted the NFT. 
 
-If we run this code multiple times, we would generate tokens with 
+If we run this code multiple times, we would create tokens with 
 the same name but different currency symbols because we would parameterize 
 the minting script each time with a different UTXO. This difference in 
 currency symbols ensures that each token is truly an NFT, as the asset 
@@ -6394,58 +6394,56 @@ https://www.314pool.com/post/cardano-post-mortem-1[this] and
 https://cardanospot.io/news/cardano-node-outage-what-we-know-0[this]
 post-mortem.
 
-Cardano is also well-designed to support
-https://www.essentialcardano.io/article/concurrency-and-all-that-cardano-smart-contracts-and-the-eutxo-model[concurrency]
-and parallelism. Concurrency is the ability for multiple parties to
-progress on a task without interfering with each other, and parallelism
-is the ability to have multiple transactions happen simultaneously.
-While Ethereum has concurrency, it is not well suited for parallelism
-because its account-based model has a global state that transactions
-update and smart contracts can access. This means that the state can
-change between when a user submits a transaction and when it is
-processed, which means the transaction can fail even after the user pays
-the transaction fee. You can read more about this topic in the following 
-https://academy.geniusyield.co/articles/what-is-cardano[GeniusYield Academy blog]. 
-There is no global state in Cardano, and a smart contract only sees data contained 
+In EUTXO transactions can be validated _before_ they are submitted to the
+blockchain. Given that the inputs are present at the time of submission and 
+that the validity interval contains the time of processing the transaction 
+a valid transaction will _always_ succeed with a predictable outcome. 
+There is no global state and a smart contract only sees data contained 
 in the script context that provides access to the datum if present, the 
 redeemer, all inputs and outputs and other transaction information. 
 Section <<Plutus smart contracts>> explains these concepts in detail.
-
-In theory, there can be multiple transactions processed simultaneously,
-given that they consume different input UTXOs. This is because
-transactions can be validated _before_ they are submitted to the
-blockchain. Given that the inputs are present at the time of submission,
-a valid transaction will _always_ succeed with a predictable outcome. In
-other words, transactions are deterministic because their outcome is
+Because of this transactions are deterministic since their outcome is 
 predictable. If the inputs to a valid transaction are not present at the
 time of submission, the submitted transaction will not be processed, and
-the user will not be charged any fees.
-https://iohk.io/en/blog/posts/2022/04/13/boosting-cardano-s-throughput-with-script-referencing/[Reference
+the user will not be charged any fees. Since transactions are deterministic 
+in EUTXO, multiple transactions that target the same validator inside a block 
+can be processed. That works only if the transactions consume different 
+inputs. In Ethereum this could be done in theory while in pratice a 
+transaction targeting the same validator as another transaction inside 
+a block could alter the global state such that second transaction would fail 
+after the first one succeeds. This means that the state can change between 
+when a user submits a transaction and when it is processed, which means the 
+transaction can fail even after the user pays the transaction fee. 
+One can read more on the topics of parallelism and concurrency in Cardano 
+in the following 
+https://www.essentialcardano.io/article/concurrency-and-all-that-cardano-smart-contracts-and-the-eutxo-model[IOG blog]
+and https://academy.geniusyield.co/articles/what-is-cardano[GeniusYield Academy blog]. 
+
+Beside this also 
+https://iohk.io/en/blog/posts/2022/04/13/boosting-cardano-s-throughput-with-script-referencing/[reference
 inputs] enable multiple transactions referencing the same UTXO, which
 is possible because none of those transactions consumes this particular
-UTXO. In Cardano, it is possible that a user forces an invalid
+UTXO. We also note that in Cardano, it is possible that a user forces an invalid
 transaction to be processed, which will fail. In such a case, the user
 will be charged fees because an attacker could try to flood the network
 with invalid transactions to congest it, and the fees make such an
-attack very expensive. Cardano’s determinism means that users always
+attack very expensive. EUTXO’s determinism also means that users always
 know how much a transaction will cost before submitting it. The reason
 for this is that protocol parameters, rather than network traffic,
 govern pricing on Cardano. 
 
-Also, a side effect of EUTXO is that bad actors which would try to 
+A side effect of EUTXO is that bad actors which would try to 
 rearrange transactions do not pose any risk for users in Cardano in 
 terms of and determinism. The Cardano node is designed such that it 
 processes transactions in the same order as they arrived into the 
-mempol independent of the transaction fees assiciated with them. This 
-is not the case in all blockchains where a node might favor transactions 
+mempol independent of the transaction fees associated with them. This 
+is not the case for all blockchains where a node might favor transactions 
 that carry higher fees. Even if a bad actor would manage to modify the 
 order of transactions in the mempool the effect of a transaction is 
 still predictable since all transaction inputs and outputs are signed 
 and predetermined. So rearranging transactions in Cardano that use 
 independent UTXOs inputs is inconsequential since it results in the 
-same final ledger state at the end. And it cannot be done for dependent 
-transactions because transaction 2 inputs won't exist unles transaction 1 
-outputs are generated first. 
+same final ledger state at the end. 
 
 https://iohk.io/en/blog/posts/2021/09/06/no-surprises-transaction-validation-on-cardano/[This
 blog post] explains in more detail the determinism of transaction and
@@ -6539,10 +6537,10 @@ validator can take over that transaction, since it's not part of it.
 
 The EUTXO model also treats its tokens as native, meaning they are
 treated the same way as ada. For this reason, they get the same security
-and transfer logic as ada does. Many other blockchains use smart
-contracts to generate tokens, as Ethereum does with
-https://en.wikipedia.org/wiki/Ethereum#ERC20[ERC-20 tokens]. Buying or
-selling these tokens requires interaction with a smart contract, which
+and transfer logic as ada does. Some other blockchains use smart
+contracts to manage tokens and set the allowed transaction logic, 
+as Ethereum does with https://en.wikipedia.org/wiki/Ethereum#ERC20[ERC-20 tokens]. 
+Buying or selling these tokens requires interaction with a smart contract, which
 incurs higher transaction costs. Such tokens also carry a higher risk
 because the security of the token is based on the smart contract’s
 correctness and security.
@@ -6624,18 +6622,23 @@ explain the advantages and best practices for them separately.
 
 ==== Plutus security
 
-Blockchain programming platforms often depend on a custom smart contract
-language, such as Ethereum’s Solidity. Cardano offers Plinth (formerly
-known as PlutusTx), which is a Turing-complete (see <<Glossary>>) 
+Cardano offers Plinth, previously called PlutusTx, which is a Turing-complete 
 smart contract language realized on top of Haskell, a high-assurance,
 pure functional programming language with a strong type system. You can
 read more about the characteristics and advantages of the Haskell
 programming language in section <<Features and benefits of Haskell>>.
 The Glasgow Haskell Compiler (GHC) is the most well-established Haskell
 compiler used to compile Plinth code. On-chain code is compiled into
-Plutus Core (known simply as _Plutus_), which is the scripting language
-used by Cardano to implement the EUTXO model. Cardano nodes execute the
-compiled Plutus scripts during transaction validation.
+untyped Plutus Core (known simply as _Plutus_), which is the scripting 
+language used by Cardano to implement the EUTXO model. Cardano nodes execute 
+the compiled Plutus scripts during transaction validation with the help 
+of the Plutus virtual machine (VM). A VM is a virtual environment that 
+executes code securely inside a node, when talking about blockchain. 
+When a Cardano node executes validator code compiled to untyped Plutus 
+core this code does not access the computer’s resources directly as a 
+normal computer programs would do. This is because of security reasons,
+since VMs offer a safe execution environment. Every Cardano node has a 
+built-in Plutus virtual machine that is currently written in Haskell. 
 
 Plutus is a simple, functional language similar to Haskell, and a large
 subset of Haskell can be used to write Plutus scripts. Its simple and
@@ -6697,14 +6700,14 @@ https://iohk.io/en/blog/posts/2021/02/02/plutus-tx-compiling-haskell-into-plutus
 blog post].
 
 You can also use a different high-level language if you have a compiler
-that compiles to untyped Plutus. Some community members are doing
-exactly this by replacing parts -or all- of the compilation pipeline.
-Validators can be coded in pre-existing languages like Typescript
-(https://github.com/HarmonicLabs/plu-ts[Plu-ts]) or Python
-(https://opshin.dev/[OpShin]), or they can be coded in completely new
-languages like https://aiken-lang.org/[Aiken]. A comparison of Aiken
-and Plinth (the most used smart contract languages on Cardano as of
-2023) is presented in section <<Plinth in comparison to Aiken>>.
+that compiles to untyped Plutus core. Some projects are doing this by 
+replacing parts -or all- of the compilation pipeline. Validators can be 
+coded in pre-existing languages like Typescript
+(https://github.com/HarmonicLabs/plu-ts[Plu-ts]) and Python
+(https://opshin.dev/[OpShin]), or they can be coded in new 
+languages like https://aiken-lang.org/[Aiken]. A comparison of Aiken which 
+is the most used smart contract languages on Cardano as of 2023, and Plinth 
+is presented in section <<Plinth in comparison to Aiken>>. 
 
 The choice of Haskell enabled the research and engineering teams that
 work on Cardano to reuse the existing Haskell infrastructure, libraries,
