@@ -1538,27 +1538,40 @@ cornerstone of the Cardano economy.
 
 ==== Overview and learning resources
 
-Before reading section _Plutus smart contracts_, one should have a basic understanding of
-blockchain principles and Cardano’s extended UTXO (EUTXO) accounting
-model. You can learn this in the first four chapters of this book. If
-you are already familiar with blockchain technology, refer to the
-Cardano-specific content in those chapters. The EUTXO model is presented
-in section <<The EUTXO model>>. One should also be familiar with
-the types of smart contract languages offered by Cardano, covered in
-section <<Smart contract programming languages>>, which lists each type and provides 
-resources for development tools. Additionally, understanding Cardano addresses and
-their binary format, as explained in section <<Cardano addresses>>, is important.
+Section _Plutus smart contracts_ presents the rules for the Plutus 
+language by showcasing how to write, interact with, and test Plinth smart 
+contracts (formerly called PlutusTx) that is a compiled language. Because 
+Plutus rules apply to other compiled languages like Aiken, Plu-Ts or OpShin, 
+learning the basics of Plinth helps developers read and write code in other 
+Cardano smart contract languages that compile to Plutus. 
 
-Section _Plutus smart contracts_ presents the rules for the Plutus language by showcasing how
-to write, interact with, and test Plinth smart contracts (formerly
-called PlutusTx) that is a compiled language. Because Plutus rules apply
-to other compiled languages like Aiken, Plu-Ts or OpShin, learning the
-basics of Plinth helps developers read and write code in other Cardano
-smart contract languages that compile to Plutus.
+The https://cardano-foundation.github.io/state-of-the-developer-ecosystem/2024/#what-do-you-use-or-plan-to-use-for-writing-plutus-script-validators-smart-contracts[2024 
+Cardano ecosystem report] shows that Aiken is by far the most used smart contract language 
+in Cardano. It is a user friendly standalone language with great documentation. 
+The reason why the _Plutus smart contracts_ section focuses on Plinth is 
+there are already many great learning resources for Aiken. Plinth as 
+a high assurance language offers easier integration with proof assistan tools 
+as Agda that can be used for formal verification of smart contract code. 
+A more detailed comparisson of Aiken and Plinth can be found in the <<Plinth 
+in comparison to Aiken>> section. For developers that quickly want to learn 
+how to code smart contracts in Cardano and would want to avoid learning 
+Haskell, Aiken can be a better choice. Aiken specific learning resources 
+are presented at the end of section <<Plinth in comparison to Aiken>>. 
+
+Before reading section _Plutus smart contracts_, one should have a basic 
+understanding of blockchain principles and Cardano’s extended UTXO (EUTXO) 
+accounting model. You can learn this in the first four chapters of this book. 
+If you are already familiar with blockchain technology, refer to the 
+Cardano-specific content in those chapters. The EUTXO model is presented
+in section <<The EUTXO model>>. One should also be familiar with the types 
+of smart contract languages offered by Cardano, covered in section <<Smart 
+contract programming languages>>, which lists each type and provides resources 
+for development tools. Additionally, understanding Cardano addresses and their 
+binary format, as explained in section <<Cardano addresses>>, is important. 
 
 Plinth is embedded in the Haskell programming language. For more details
-on Haskell, refer to section <<Features and benefits of Haskell>>. IO
-offers a free self-paced beginner-friendly
+on Haskell, refer to section <<Features and benefits of Haskell>>. IO offers 
+a free self-paced beginner-friendly
 https://github.com/input-output-hk/haskell-course/[Haskell course]
 hosted on GitHub that teaches the necessary skills for programmers to
 read and write Plinth scripts. The official
@@ -1606,20 +1619,6 @@ https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[
 iteration of the Plutus Pioneer program] and are updated to accomodate PlutusV3
 changes. The 4th iteration presents PlutusV2 code examples and in addition  
 contains a stablecoin example that is not covered in this book. 
-
-The https://cardano-foundation.github.io/state-of-the-developer-ecosystem/2024/#what-do-you-use-or-plan-to-use-for-writing-plutus-script-validators-smart-contracts[2024 
-Cardano ecosystem report] shows that Aiken is by far the most used smart contract language 
-in Cardano. It is a user friendly standalone language with great documentation. 
-The reason why the _Plutus smart contracts_ section focuses on Plinth is 
-there are already many great learning resources for Aiken. Plinth as 
-a high assurance language offers easier integration with proof assistan tools 
-as Agda that can be used for formal verification of smart contract code
-and will be for this reason presented throughout this sections. A more detailed 
-comparisson of Aiken and Plinth can be found in the <<Plinth in comparison to Aiken>>
-section. For Cardano projects that do not require a high level of security 
-and for developers that quickly want to learn how to code smart contracts 
-in Cardano Aiken can be a better choice. Aiken specific learning resources are 
-presented at the end of section <<Plinth in comparison to Aiken>>. 
 Further learning resources and smart contract examples in Plinth, Aiken 
 and other smart contract languages can be found at: 
 
@@ -1647,9 +1646,10 @@ time of writing, the offered courses include:
 * Blockchain business consultant.
 
 The Emurgo https://education.emurgo.io/cardano-courses/[Cardano
-courses] page provides an up-to-date list. The Cardano foundation
-also offers a free https://academy.cardanofoundation.org/[online
-course] on the basics of blockchain and Cardano. 
+courses] page provides an up-to-date list. The Cardano foundation also 
+offers a free online course called the 
+https://academy.cardanofoundation.org/[Cardano academy] that teaches  
+the basics of blockchain and Cardano. 
 
 ==== Plutus in comparison to Bitcoin Script and Solidity
 
