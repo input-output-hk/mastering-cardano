@@ -1587,7 +1587,7 @@ technology, presented in section <<Cardano node layers>>, subsection
 PlutusV2 and PlutusV1 scripts also after the Chang hard fork made 
 PlutusV3 scripts available. 
 
-Section _Plutus smart contracts_ covers the following topics:
+The section _Plutus smart contracts_ covers the following topics:
 
 * Plutus in comparison to Bitcoin Script and Solidity
 * Plinth in comparison to Aiken
@@ -1605,13 +1605,23 @@ Plinth code examples are taken from the
 https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[4th
 iteration of the Plutus Pioneer program] and are updated to accomodate PlutusV3
 changes. The 4th iteration presents PlutusV2 code examples and in addition  
-contains a stablecoin example that is not covered in this book. The introduction page 
-of the 4th iteration Plutus pioneer program also contains links to lectures that explain 
-the code examples. The IO education team translated the Plinth code examples from the 4th 
-iteration into Aiken code. Those code examples are published on the
-https://github.com/input-output-hk/plutus-pioneer-program/tree/aiken-fourth-iteration[aiken-fourth-iteration]
-branch. Further learning resources and smart contract examples in
-Plinth, Aiken and other smart contract languages can be found at:
+contains a stablecoin example that is not covered in this book. 
+
+The https://cardano-foundation.github.io/state-of-the-developer-ecosystem/2024/#what-do-you-use-or-plan-to-use-for-writing-plutus-script-validators-smart-contracts[2024 
+Cardano ecosystem report] shows that Aiken is by far the most used smart contract language 
+in Cardano. It is a user friendly standalone language with great documentation. 
+The reason why the _Plutus smart contracts_ section focuses on Plinth is 
+there are already many great learning resources for Aiken. Plinth as 
+a high assurance language offers easier integration with proof assistan tools 
+as Agda that can be used for formal verification of smart contract code
+and will be for this reason presented throughout this sections. A more detailed 
+comparisson of Aiken and Plinth can be found in the <<Plinth in comparison to Aiken>>
+section. For Cardano projects that do not require a high level of security 
+and for developers that quickly want to learn how to code smart contracts 
+in Cardano Aiken can be a better choice. Aiken specific learning resources are 
+presented at the end of section <<Plinth in comparison to Aiken>>. 
+Further learning resources and smart contract examples in Plinth, Aiken 
+and other smart contract languages can be found at: 
 
 * https://www.gomaestro.org/smart-contracts[Cardano’s
 smart contract marketplace] – hosted by Maestro. This DApp platform
@@ -1626,11 +1636,9 @@ https://www.cardanocube.com/cardano-ecosystem-interactive-map[Cardano’s
 interactive map]. One can also explore projects in other groups and view
 their GitHub repositories.
 
-Aiken specific learning resources are presented at the end of section
-<<Plinth in comparison to Aiken>>. Commercial training for
-developers interested in building on Cardano is offered by
-https://education.emurgo.io/about-us/[Emurgo Academy]. At the time of writing,
-the offered courses include:
+Commercial training for developers interested in building on Cardano is 
+offered by https://education.emurgo.io/about-us/[Emurgo Academy]. At the 
+time of writing, the offered courses include: 
 
 * Cardano solutions architect
 * Cardano developer professional
@@ -1834,7 +1842,9 @@ The https://github.com/aiken-lang/awesome-aiken[Awesome Aiken] repository
 provides many links to Aiken libraries, DApps, tutorials and video
 lessons. One can also see https://piefayth.github.io/blog/pages/aiken1/[Aiken for amateurs]
 tutorial that is at the time of writing not included in the Awesome
-Aiken repository.
+Aiken repository. For those wich prefer to learn by a book the 
+https://book.io/book/i-can-aiken/[I can Aiken] book, written by John 
+Green provides a lot of information and learning examples on Aiken. 
 
 ==== Setting up a Plinth development environment
 
@@ -6408,7 +6418,7 @@ time of submission, the submitted transaction will not be processed, and
 the user will not be charged any fees. Since transactions are deterministic 
 in EUTXO, multiple transactions within a block that target the same validator 
 can be processed. That works only if the transactions consume different 
-inputs. In Ethereum this could be done in theory while in pratice a 
+inputs. In Ethereum this could be done in theory, while in practice a 
 transaction targeting the same validator as another transaction inside 
 a block could alter the global state such that second transaction would fail 
 after the first one succeeds. This means that the state can change between 
@@ -6531,10 +6541,10 @@ contract https://www.coindesk.com/learn/understanding-the-dao-attack/[hacked in
 2016]. On that occasion, 3.6m ETH (worth around 50 million USD at the time)
 was affected. Such attacks are not possible in Cardano due to the design
 of the EUTXO accounting model. EUTXO's determinism doesn't allow the 
-outputs to be different than what the user signed. Even if a validator 
+outputs to be different from what the user signed. Even if a validator 
 is dependent on the decision of another validator, that is predetermined 
 and known in advanced before submitting a transaction. Such a case is 
-possible for istance if we want to make sure that a transaction runs 
+possible for instance if we want to make sure that a transaction runs 
 a minting policy in tandem with a spending script. We can check in the 
 spending script that tokens from that policy are being minted. And in 
 the minting policy we can check that a UTXO from that spending address 
