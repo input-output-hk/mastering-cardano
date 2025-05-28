@@ -6432,19 +6432,6 @@ know how much a transaction will cost before submitting it. The reason
 for this is that protocol parameters, rather than network traffic,
 govern pricing on Cardano. 
 
-A side effect of EUTXO is that bad actors which would try to 
-rearrange transactions do not pose any risk for users in Cardano in 
-terms of and determinism. The Cardano node is designed such that it 
-processes transactions in the same order as they arrived into the 
-mempol independent of the transaction fees associated with them. This 
-is not the case for all blockchains where a node might favor transactions 
-that carry higher fees. Even if a bad actor would manage to modify the 
-order of transactions in the mempool the effect of a transaction is 
-still predictable since all transaction inputs and outputs are signed 
-and predetermined. So rearranging transactions in Cardano that use 
-independent UTXOs inputs is inconsequential since it results in the 
-same final ledger state at the end. 
-
 https://iohk.io/en/blog/posts/2021/09/06/no-surprises-transaction-validation-on-cardano/[This
 blog post] explains in more detail the determinism of transaction and
 script validation in Cardano. According to this article, in-determinism
@@ -6507,6 +6494,29 @@ minimizes the effects of impermanent loss, creating a more stable
 environment for liquidity providers. The blog post explains in more
 detail how impermanent loss affects DEXs built on the account-based
 accounting models compared to EUTXO.
+
+Cardano's design makes also front-running invasion attacks harder to 
+carry out that could target transactions on a decentralized exchange. 
+The Cardano node is designed such that it processes transactions in the 
+same order as they arrive into the mempol independent of the transaction 
+fees associated with them. This is not the case for all blockchains where 
+a node might favor transactions that carry higher fees. It is still 
+possible for an adversary that operates a stake pool inspect transactions 
+that arrive in the mempool since they are not encrypted. He could then create his own 
+transaction with similar parameters and insert it in front of the transaction
+that he received in his pool. In reality this is hard to achieve since 
+it is not known in advance which node will be elected to mint the next 
+block. Also if the network has a high number of block producing nodes 
+this helps to prevent front-running attacks. At the time of writing 
+Cardano has around 3000 stake pools that operate on mainnet and because 
+of Cardano's design none of them controls a significant amount of staked ada. 
+You can read more about this topic in chapter <<Stake pools and stake 
+pool operations>>. We also note that for transactions that interact with 
+the same validator and spend different UTXOs, rearranging them is 
+inconsequential because there is no global state that would affect both 
+of the transaction. You can read more about the mempool and front-running 
+invasion attacks on Cardano in the following 
+https://cexplorer.io/article/understanding-the-cardano-mem-pool[Cexplorer blog]. 
 
 Because Cardano transactions are deterministic, their interaction with 
 smart contracts is also deterministic, meaning the outcome of the validation 
