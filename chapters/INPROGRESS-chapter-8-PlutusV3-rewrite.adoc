@@ -1540,7 +1540,8 @@ cornerstone of the Cardano economy.
 
 Section _Plutus smart contracts_ presents the rules for the Plutus 
 language by showcasing how to write, interact with, and test Plinth smart 
-contracts (formerly called PlutusTx) that is a compiled language. Because 
+contracts (formerly called PlutusTx) that is a high-level smart contract 
+language embeded in Haskell which compiles to untyped Plutus core. Because 
 Plutus rules apply to other compiled languages like Aiken, Plu-Ts or OpShin, 
 learning the basics of Plinth helps developers read and write code in other 
 Cardano smart contract languages that compile to Plutus. 
@@ -1549,13 +1550,13 @@ The https://cardano-foundation.github.io/state-of-the-developer-ecosystem/2024/#
 Cardano ecosystem report] shows that Aiken is by far the most used smart contract language 
 in Cardano. It is a user friendly standalone language with great documentation. 
 The reason why the _Plutus smart contracts_ section focuses on Plinth is 
-there are already many great learning resources for Aiken. Plinth as 
-a high assurance language offers easier integration with proof assistan tools 
-as Agda that can be used for formal verification of smart contract code. 
-A more detailed comparisson of Aiken and Plinth can be found in the <<Plinth 
-in comparison to Aiken>> section. For developers that quickly want to learn 
+there are already many great learning resources for Aiken. Plinth as a high 
+assurance language works better with with proof assistans as Agda, that compiles 
+to Haskell and can be used for formal verification of smart contract code. 
+A more detailed comparisson of Aiken and Plinth can be found in the 
+<<Plinth in comparison to Aiken>> section. For developers that quickly want to learn 
 how to code smart contracts in Cardano and would want to avoid learning 
-Haskell, Aiken can be a better choice. Aiken specific learning resources 
+Haskell, Aiken is a good choice. Aiken specific learning resources 
 are presented at the end of section <<Plinth in comparison to Aiken>>. 
 
 Before reading section _Plutus smart contracts_, one should have a basic 
@@ -1564,14 +1565,14 @@ accounting model. You can learn this in the first four chapters of this book.
 If you are already familiar with blockchain technology, refer to the 
 Cardano-specific content in those chapters. The EUTXO model is presented
 in section <<The EUTXO model>>. One should also be familiar with the types 
-of smart contract languages offered by Cardano, covered in section <<Smart 
-contract programming languages>>, which lists each type and provides resources 
+of smart contract languages offered by Cardano, covered in section 
+<<Smart contract programming languages>>, which lists each type and provides resources 
 for development tools. Additionally, understanding Cardano addresses and their 
 binary format, as explained in section <<Cardano addresses>>, is important. 
 
-Plinth is embedded in the Haskell programming language. For more details
-on Haskell, refer to section <<Features and benefits of Haskell>>. IO offers 
-a free self-paced beginner-friendly
+As stated in the begning Plinth is embedded in the Haskell programming language. 
+For more details on Haskell, refer to section <<Features and benefits of Haskell>>. 
+IO offers a free self-paced beginner-friendly
 https://github.com/input-output-hk/haskell-course/[Haskell course]
 hosted on GitHub that teaches the necessary skills for programmers to
 read and write Plinth scripts. The official
@@ -1594,13 +1595,8 @@ decentralized applications (DApps) on Cardano.
 
 Section <<PlutusV3 features>> explains some of the PlutusV3
 features that are not coverd in the coding sections and highlights 
-the advantages they bring. Cardano’s hard fork combinator 
-technology, presented in section <<Cardano node layers>>, subsection
-*Consensus and storage layer*, allows the Cardano node to process
-PlutusV2 and PlutusV1 scripts also after the Chang hard fork made 
-PlutusV3 scripts available. 
-
-The section _Plutus smart contracts_ covers the following topics:
+the advantages they bring. _Plutus smart contracts_ section covers 
+all together the following topics:
 
 * Plutus in comparison to Bitcoin Script and Solidity
 * Plinth in comparison to Aiken
@@ -1646,10 +1642,23 @@ time of writing, the offered courses include:
 * Blockchain business consultant.
 
 The Emurgo https://education.emurgo.io/cardano-courses/[Cardano
-courses] page provides an up-to-date list. The Cardano foundation also 
-offers a free online course called the 
-https://academy.cardanofoundation.org/[Cardano academy] that teaches  
-the basics of blockchain and Cardano. 
+courses] page provides an up-to-date list. The 
+https://github.com/johnnygreeney/cardanoforthemasses[Cardano for the Masses]
+online book written by John Green is also available under a open-source license. 
+Beside that the Cardano foundation also offers a free online course called the 
+https://academy.cardanofoundation.org/[Cardano academy] that teaches the basics 
+of blockchain and Cardano. 
+
+We also note that Cardano’s hard fork combinator technology, presented in section 
+<<Cardano node layers>>, subsection *Consensus and storage layer*, allows the 
+Cardano node to process older Plutus version scripts also after a hard fork makes 
+a new Plutus script version available. If you encouter Plinth code examples written 
+in PlutusV1 or PlutusV2 you can checkout videos and learning examples of the previous 
+Plutus pioneer program iterations: 
+* https://github.com/input-output-hk/plutus-pioneer-program/tree/first-iteration[first-itaration]
+* https://github.com/input-output-hk/plutus-pioneer-program/tree/second-iteration[second-itaration]
+* https://github.com/input-output-hk/plutus-pioneer-program/tree/third-iteration[third-iteration]
+* https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[fourth-iteration]
 
 ==== Plutus in comparison to Bitcoin Script and Solidity
 
@@ -6520,11 +6529,11 @@ block. Also if the network has a high number of block producing nodes
 this helps to prevent front-running attacks. At the time of writing 
 Cardano has around 3000 stake pools that operate on mainnet and because 
 of Cardano's design none of them controls a significant amount of staked ada. 
-You can read more about this topic in chapter <<Stake pools and stake 
-pool operations>>. We also note that for transactions that interact with 
-the same validator and spend different UTXOs, rearranging them is 
-inconsequential because there is no global state that would affect both 
-of the transaction. You can read more about the mempool and front-running 
+You can read more about this topic in chapter 
+<<Stake pools and stake pool operations>>. We also note that for transactions 
+that interact with the same validator and spend different UTXOs, rearranging 
+them is inconsequential because there is no global state that would affect 
+both of the transaction. You can read more about the mempool and front-running 
 invasion attacks on Cardano in the following 
 https://cexplorer.io/article/understanding-the-cardano-mem-pool[Cexplorer blog]. 
 
