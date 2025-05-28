@@ -6326,17 +6326,17 @@ hard fork] that enables PlutusV3.
 ==== Cardano security
 
 Best practices for the security of smart contracts is an important
-topic, since these programs can manage significant funds and include
-sensitive information. Estimates for the loss of funds due to various
+topic, since these programs can manage significant amounts of funds. 
+Estimates for the loss of funds due to various 
 attacks and hacks, including scams, say that the total loss of funds was
 over $3.2bn in 2021 and over $3.7bn in 2022 (source:
 https://www.coindesk.com/tech/2023/05/24/attackers-left-empty-handed-as-crypto-hacks-drop-70-in-q1-2023/[CoinDesk]).
-Hacks to blockchain smart contracts and bridges until October 2023 alone
+Hacks to blockchain smart contracts and bridges up to October 2023 alone
 totaled $4.28bn (source:
 https://www.emurgo.io/press-news/why-your-web3-dapp-needs-a-smart-contract-audit/[Emurgo]).
 The graph below displays the cumulative amount of lost funds in audited
 and unaudited codebases for Web3 projects in a three-year period (data
-taken from the https://rekt.news/leaderboard/[Rekt leaderboard]), Out
+taken from the https://rekt.news/leaderboard/[Rekt leaderboard]). Out
 of 137 compromised projects, 58 were audited, and 79 were not, meaning
 that unaudited Web3 projects account for a substantially larger
 cumulative loss of funds, even though their number is not much higher
@@ -6344,10 +6344,10 @@ than the number of audited projects.
 
 image::sc_loss_of_funds.png[width=635,height=421,title="Loss of funds, source: https://www.cyfrin.io/blog/competitive-vs-private-audits-comparison[Cyfrin blog]"]
 
-Nevertheless, a $1.3bn loss in audited projects is still high. This
+Nevertheless, a $1.1bn loss in audited projects is still high. This
 implies that an audit by itself may not always ensure a project’s
 safety. Other factors, such as the auditing methodology and the security
-features of the underlying blockchain, can also play a safety role.
+features of the underlying blockchain also influence the safety of a project. 
 
 A software audit is a type of software review where one or more auditors
 (usually third parties) conduct an examination of a software product to
@@ -6367,7 +6367,7 @@ combination of both is also possible.
 Cardano was designed with security in mind from the beginning. Input |
 Output (IO) has invested much effort into academic research, and its
 research team has written and collaborated on
-https://iohk.io/en/research/library/[over 200 scientific papers] as of
+https://iohk.io/en/research/library/[250 scientific papers] as of
 the time of writing. Some of the important research areas that IO
 targets are cryptography, software engineering, distributed systems,
 networks, formal verification, and programming languages. Ouroboros,
@@ -6396,7 +6396,7 @@ post-mortem.
 
 In EUTXO transactions can be validated _before_ they are submitted to the
 blockchain. Given that the inputs are present at the time of submission and 
-that the validity interval contains the time of processing the transaction 
+that the validity interval contains the time of transaction processing, 
 a valid transaction will _always_ succeed with a predictable outcome. 
 There is no global state and a smart contract only sees data contained 
 in the script context that provides access to the datum if present, the 
@@ -6406,7 +6406,7 @@ Because of this transactions are deterministic since their outcome is
 predictable. If the inputs to a valid transaction are not present at the
 time of submission, the submitted transaction will not be processed, and
 the user will not be charged any fees. Since transactions are deterministic 
-in EUTXO, multiple transactions that target the same validator inside a block 
+in EUTXO, multiple transactions within a block that target the same validator 
 can be processed. That works only if the transactions consume different 
 inputs. In Ethereum this could be done in theory while in pratice a 
 transaction targeting the same validator as another transaction inside 
@@ -6434,7 +6434,7 @@ govern pricing on Cardano.
 
 https://iohk.io/en/blog/posts/2021/09/06/no-surprises-transaction-validation-on-cardano/[This
 blog post] explains in more detail the determinism of transaction and
-script validation in Cardano. According to this article, in-determinism
+script validation in Cardano. According to this blog, in-determinism
 means that the effect of a transaction on the ledger cannot be predicted
 before execution, and it further explains the key points that make the
 outcomes of script and transaction validation predictable on Cardano.
@@ -6461,7 +6461,7 @@ users can trade those tokens, face the issue of impermanent loss on DEXs
 that use the https://www.coindesk.com/learn/what-is-an-automated-market-maker/[Automated
 market maker] (AMM) design model. In an AMM-style DEX, smart contracts
 enable automated trading of cryptocurrency pairs, which are often a 
-fungible token or a native cryptocurrency and a stablecoin. 
+fungible token or a native cryptocurrency together with a stablecoin. 
 
 Let us consider an example of an AMM DEX where the deposited token pair
 is ETH and USDT (Tether), a stablecoin pegged to USD, and they need to
@@ -6489,7 +6489,7 @@ blog post] states that the EUTXO accounting model is a suitable
 environment for DEXs using the order book model. An order book model
 simply lists the buy/sell orders, and if there is supply and demand, the
 asset can be traded. An advantage of this design is concentrated
-liquidity (liquidity allocated within a custom price range.) This
+liquidity (liquidity allocated within a custom price range). This
 minimizes the effects of impermanent loss, creating a more stable
 environment for liquidity providers. The blog post explains in more
 detail how impermanent loss affects DEXs built on the account-based
@@ -6528,7 +6528,7 @@ updates its state. This is known as a reentrance attack. Because this
 is possible in Ethereum it sometimes makes the effect of a transaction 
 on the ledger hard to predict. Such an attack happened to the DAO smart 
 contract https://www.coindesk.com/learn/understanding-the-dao-attack/[hacked in
-2016]. On that occasion, 3.6m ETH (worth around 50m USD at the time)
+2016]. On that occasion, 3.6m ETH (worth around 50 million USD at the time)
 was affected. Such attacks are not possible in Cardano due to the design
 of the EUTXO accounting model. EUTXO's determinism doesn't allow the 
 outputs to be different than what the user signed. Even if a validator 
@@ -6548,7 +6548,7 @@ validator can take over that transaction, since it's not part of it.
 The EUTXO model also treats its tokens as native, meaning they are
 treated the same way as ada. For this reason, they get the same security
 and transfer logic as ada does. Some other blockchains use smart
-contracts to manage tokens and set the allowed transaction logic, 
+contracts to manage tokens and to set the allowed transaction logic, 
 as Ethereum does with https://en.wikipedia.org/wiki/Ethereum#ERC20[ERC-20 tokens]. 
 Buying or selling these tokens requires interaction with a smart contract, which
 incurs higher transaction costs. Such tokens also carry a higher risk
@@ -6613,7 +6613,7 @@ language to a new major version, smart contracts using an older version
 of Plutus can still be processed. You can read more about the HFC in
 <<Cardano node layers>> section, subsection **Consensus and storage layer**.
 
-Cardano smart contracts see a predictable number of inputs and can only
+Cardano smart contracts see a predictable number of inputs and can only 
 produce a set number of outputs that are always the same given the same
 inputs. Because of that, they are also perfect for audits. The job of a
 smart contract auditor is also more straightforward because outcomes
@@ -6628,7 +6628,7 @@ These are some of Cardano's security features. The security features and
 best practices of the Plutus and Marlowe smart contract languages are
 further discussed in the next four sections. Because those languages
 follow different best practices for developing smart contracts, we will
-explain the advantages and best practices for them separately.
+explain the security advantages and best practices for them separately. 
 
 ==== Plutus security
 
@@ -6643,7 +6643,7 @@ untyped Plutus Core (known simply as _Plutus_), which is the scripting
 language used by Cardano to implement the EUTXO model. Cardano nodes execute 
 the compiled Plutus scripts during transaction validation with the help 
 of the Plutus virtual machine (VM). A VM is a virtual environment that 
-executes code securely inside a node, when talking about blockchain. 
+executes code securely inside a node, when talking in context of a blockchain. 
 When a Cardano node executes validator code compiled to untyped Plutus 
 core this code does not access the computer’s resources directly as a 
 normal computer programs would do. This is because of security reasons,
@@ -6716,9 +6716,13 @@ coded in pre-existing languages like Typescript
 (https://github.com/HarmonicLabs/plu-ts[Plu-ts]) and Python
 (https://opshin.dev/[OpShin]), or they can be coded in new 
 languages like https://aiken-lang.org/[Aiken]. A comparison of Aiken which 
-is the most used smart contract languages on Cardano as of 2023, and Plinth 
-is presented in section <<Plinth in comparison to Aiken>>. 
+is the most used smart contract languages in the Cardano ecosystem as of 2023, 
+and Plinth is presented in section <<Plinth in comparison to Aiken>>. 
 
+Haskell was also chosen as a programming language to implement the 
+Cardano node which contains the ledger, consensus and network layer
+protocols that define Cardano. You can read more about these protocols 
+in chapter <<How Cardano works>>. 
 The choice of Haskell enabled the research and engineering teams that
 work on Cardano to reuse the existing Haskell infrastructure, libraries,
 and tools that enable developers to build high-assurance software. To
@@ -6784,23 +6788,18 @@ catch all possible mistakes a programmer can make, so the code still
 needs to be tested. Details on how to write property-based tests for
 Plinth smart contracts can be found in the <<Testing Plinth scripts>> 
 section, where we showcase how to property test smart contracts
-using the https://github.com/mlabs-haskell/plutus-simple-model[Plutus
-Simple Model] library developed by MLabs and the QuickCheck library.
-Another library one can use for property testing Plinth smart contracts
+using the https://atlas-app.io/[Atlas] application backend, the 
+https://mlabs-haskell.github.io/clb-docs[Cardano ledger backend] 
+emulator developed by MLabs and the QuickCheck library. 
+Another tool one can use for property testing Plinth smart contracts
 is the https://github.com/tweag/cooked-validators[Cooked validators]
-library developed by Tweag. IO also developed the
-https://github.com/input-output-hk/quickcheck-contractmodel[Contract
-Model] QuickCheck extension, which uses the off-chain code and a
-specification of what should happen to test traces of transactions. It
-also comes with some common vulnerabilities already modeled. Double
-satisfaction, for example, means users don't have to implement them and
-can check them by simply adding one line to their tests.
+library developed by Tweag. 
 
-The test framework of the https://atlas-app.io/[Atlas] application
-backend also uses the Plutus Simple Model. Atlas is a popular open
-source library that covers all functionalities needed to work with
+The https://atlas-app.io/[Atlas] application backend is a open
+source tool that covers all functionalities needed to work with
 Plinth smart contracts and enables writing the complete server side code
-in Haskell. It was developed by the company
+in Haskell. It is the Haskell alternative to TypeScript off-chain tools 
+as MeshJS and Lucid evolution. It was developed by the company 
 https://www.geniusyield.co/[GeniusYield] in collaboration with other
 companies such as MLabs, Well-Typed, and Plank. It significantly
 abstracts away the complexity of building Cardano transactions and
@@ -6831,7 +6830,7 @@ the tests as part of their auditing process of DApp smart contracts and
 server-side code. Their auditing services may also include formal
 verification. For Cardano DApps, companies such as Tweag, MLabs, Runtime
 Verification, Hachi, Vacuumlabs, FYEO Inc., Anastasia Labs, TxPipe, and
-some others offer Cardano auditing services. IO is also working with
+some others, offer Cardano auditing services. IO is also working with
 some of these companies on a certification program for DApps running on
 Cardano. The program creates three levels of certification for DApps in
 a store.
@@ -6850,7 +6849,7 @@ types of issues or bugs and is characterized as low cost, low effort,
 and accessible to everyone while providing a substantial level of
 assurance. It can be applied repeatedly and automatically, so each time
 there is a release or a sub-release of an application, the application
-can be tested to confirm it still has the expected properties that.
+can be tested to confirm it still has the expected properties that we expect.
 * *In-depth audit* looks at the technology and processes that led to it
 being produced. It involves a manual audit and verification of smart
 contracts within the DApp itself. The testing is performed at a much
