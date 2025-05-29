@@ -1824,8 +1824,10 @@ introduction of PlutusV3, sums of products allow for encoding data types
 in a more compact and cost-effective way. Also Plutus now provides 
 a way to deal directly with the [purple]#Data# type for all Plutus script 
 versions (V1, V2 and V3) that allows for better code optimization. 
-Aiken compiles all its custom data types into the builtin Plutus type [purple]#Data#.
-We will look at this data type in section <<Simple validation scripts>>. 
+The https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/optimizing-scripts-with-asData[Plutus user guide] 
+provides instructions on that. Aiken compiles all its custom data types 
+into the builtin Plutus type [purple]#Data#. We will look at this data 
+type in section <<Simple validation scripts>>. 
 
 Both languages are purely functional, which makes it easier for an auditor 
 to assess the behavior of such smart contracts. Because Plinth is embedded 
@@ -6316,35 +6318,36 @@ Ethereum signature verification within Plutus scripts.
 
 These cryptographic primitives bring new possibilities, unlock better
 ways to achieve scalability, and allow for better interoperability with
-Ethereum and EVM-based blockchains.
+Ethereum and EVM-based blockchains. The https://www.youtube.com/watch?v=oFgJg_DulKw&t=69s[PlutusV3
+Overview] video demonstrates how to lock ada in a Plutus validator that
+can only be unlocked by the owner of an ETH wallet. The demonstration
+starts at 4:10. You can also read more about PlutusV3 and the features
+that it brings in the IO blog 
+https://iohk.io/en/blog/posts/2024/02/12/unlocking-more-opportunities-with-plutus-v3/[Unlocking
+more opportunities with PlutusV3]. The official documentation provides
+further information on the 
+https://docs.cardano.org/about-cardano/evolution/upgrades/chang/[Chang
+hard fork] that enables PlutusV3.
 
 The last feature PlutusV3 brings is sums of products. One common method
 for encoding data types in Plutus Core is the Scott approach. With the
 introduction of PlutusV3, sums of products allow for encoding data types
 more compactly and cost-effectively than Scott encoding, so the latter
-is no longer required.
-
-The sums of products method is designed to enhance script efficiency and
-optimize code generation for Plutus Core compilers. This involves
-implementing new term constructors for packing fields into constructor
-values and enabling efficient tag inspection for case branches. As a
-result, programs may experience a performance increase of up to 30%,
+is no longer required. The sums of products method is designed to enhance 
+script efficiency and optimize code generation for Plutus Core compilers. 
+This involves implementing new term constructors for packing fields into 
+constructor values and enabling efficient tag inspection for case branches. 
+As a result, programs may experience a performance increase of up to 30%,
 marking a significant optimization that streamlines operations and
 ensures faster execution of smart contracts. For further details, refer
 to https://cips.cardano.org/cip/CIP-0085[CIP-85]. Sums of products do
 not change built-in functions available in Plutus, but change the Plutus
-language itself.
-
-The https://www.youtube.com/watch?v=oFgJg_DulKw&t=69s[PlutusV3
-Overview] video demonstrates how to lock ada in a Plutus validator that
-can only be unlocked by the owner of an ETH wallet. The demonstration
-starts at 4:10. You can also read more about PlutusV3 and the features
-that it brings in the IO blog,
-https://iohk.io/en/blog/posts/2024/02/12/unlocking-more-opportunities-with-plutus-v3/[Unlocking
-more opportunities with PlutusV3]. The official documentation provides
-further information on the
-https://docs.cardano.org/about-cardano/evolution/upgrades/chang/[Chang
-hard fork] that enables PlutusV3.
+language itself. Also Plutus now provides a way to deal directly with the 
+[purple]#Data# type for all Plutus script versions (V1, V2 and V3) that 
+allows for better code optimization. This is discussed further in section 
+<<Simple validation scripts>>. The 
+https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/optimizing-scripts-with-asData[Plutus user guide] 
+provides further information on that. 
 
 === Smart contract security and best practices
 
