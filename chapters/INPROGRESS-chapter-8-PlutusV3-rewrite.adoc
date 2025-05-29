@@ -1884,7 +1884,9 @@ introduced in the Chang hard fork, which enabled PlutusV3. The development
 environment you will use to run and test this code needs to support these 
 features. The smart contract code presented in this section was compiled 
 with a Nix shell that was set up with instructions provided in the 
-_plinth-dev-env_ repository. 
+_plinth-dev-env_ repository. We used nix version `2.25.3` and a nix 
+shell provided by the https://github.com/IntersectMBO/plinth-template[plinth-template]
+repository, commit `4adea2ef260a99ec9d36de609579ae5208ac8c10`. 
 
 The https://demeter.run/[Demeter.Run] online platform offers various
 tools and development environments for the Cardano ecosystem. One can
@@ -6347,7 +6349,7 @@ language itself. Also Plutus now provides a way to deal directly with the
 allows for better code optimization. This is discussed further in section 
 <<Simple validation scripts>>. The 
 https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/optimizing-scripts-with-asData[Plutus user guide] 
-provides further information on that. 
+also provides information on that. 
 
 === Smart contract security and best practices
 
