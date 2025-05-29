@@ -246,7 +246,7 @@ because they are implemented as libraries in a general-purpose
 programming language. Some examples include:
 
 * https://aiken-lang.org/[Aiken]: a unique, typed, purely functional
-DSL; IO plans to support its development in the future
+DSL; IO supports its development 
 * https://github.com/HarmonicLabs/plu-ts[Plu-ts]: a typed eDSL in
 TypeScript
 * https://opshin.dev/[OpShin]: a typed eDSL in Python
@@ -254,13 +254,13 @@ TypeScript
 Javascript/Typescript SDK and typed DSL
 * https://github.com/plutonomicon/plutarch-plutus[Plutarch]: a typed
 eDSL in Haskell for writing efficient Plutus validators
-* https://scalus.org/[Scalus]: a typed eDSL in Scala.
+* https://scalus.org/[Scalus]: a typed eDSL in Scala
 * https://github.com/Plutonomicon/pluto[Pluto]: a DSL resembling UPLC
-with some syntactic sugar, written in a Haskell-like syntax
+with some syntactic sugar, written in a Haskell-like syntax. 
 
 The logic in other compiled Cardano smart contract languages follows the
-same rules defined by Plutus. Learning one compiled language also helps
-understand other compiled languages with different syntaxes from Plinth.
+same rules defined by Plutus. Learning one compiled language also helps a 
+developer to understand other compiled languages that use different syntax.
 
 You can refer to the
 https://cardano-foundation.github.io/state-of-the-developer-ecosystem/2024/#what-do-you-use-or-plan-to-use-for-writing-plutus-script-validators-smart-contracts[State
@@ -423,9 +423,10 @@ You can also look at the State of the Cardano Developer Ecosystem report
 https://cardano-foundation.github.io/state-of-the-developer-ecosystem/2024/#which-libraries-do-you-use-in-your-projects[Cardano
 libraries].
 
-This chapter presents the MeshJS tool and showcases how to write
-off-chain code for smart contracts in sections 
-<<Off-chain code with MeshJS>> and <<Minting policies>>.
+Section <<Plutus smart contracts>> presents the MeshJS tool and 
+showcases how to write off-chain code for smart contracts in subsections 
+<<Off-chain code with MeshJS>> and <<Minting policies>>. The subsection 
+<<Testing Plinth scripts>> showcases the Atlas tool. 
 
 === Smart contract case studies
 
@@ -1541,22 +1542,22 @@ cornerstone of the Cardano economy.
 Section _Plutus smart contracts_ presents the rules for the Plutus 
 language by showcasing how to write, interact with, and test Plinth smart 
 contracts (formerly called PlutusTx) that is a high-level smart contract 
-language embeded in Haskell which compiles to untyped Plutus core. Because 
+language embedded in Haskell which compiles to untyped Plutus core. Because 
 Plutus rules apply to other compiled languages like Aiken, Plu-Ts or OpShin, 
 learning the basics of Plinth helps developers read and write code in other 
 Cardano smart contract languages that compile to Plutus. 
 
 The https://cardano-foundation.github.io/state-of-the-developer-ecosystem/2024/#what-do-you-use-or-plan-to-use-for-writing-plutus-script-validators-smart-contracts[2024 
 Cardano ecosystem report] shows that Aiken is by far the most used smart 
-contract language in Cardano. It is a user friendly standalone language that 
+contract language in Cardano. It is a user-friendly standalone language that 
 has easy to follow and comprehensive documentation and provides a simple 
 setup of the development environment needed to write, test and compile  
 smart contracts for Cardano. The reason why the _Plutus smart contracts_ 
 section focuses on Plinth is there are already many great learning resources 
-for Aiken. Plinth as a high assurance language works better with with proof 
-assistans as https://wiki.portal.chalmers.se/agda/pmwiki.php[Agda], which 
+for Aiken. Plinth as a high assurance language works better with proof 
+assistants as https://wiki.portal.chalmers.se/agda/pmwiki.php[Agda], which 
 compiles to Haskell and can be used for formal verification of smart contract
-code. A more detailed comparisson of Aiken and Plinth can be found in the 
+code. A more detailed comparison of Aiken and Plinth can be found in the 
 <<Plinth in comparison to Aiken>> section. For developers that want to learn 
 how to quickly code smart contracts in Cardano and would want to avoid 
 learning Haskell, Aiken is the most recommended choice. Aiken learning 
@@ -1573,7 +1574,7 @@ of smart contract languages offered by Cardano, covered in section
 for development tools. Additionally, understanding Cardano addresses and their 
 binary format, as explained in section <<Cardano addresses>>, is important. 
 
-As stated in the begning Plinth is embedded in the Haskell programming language. 
+As stated in the beginning Plinth is embedded in the Haskell programming language. 
 For more details on Haskell, refer to section <<Features and benefits of Haskell>>. 
 IO offers a free self-paced beginner-friendly
 https://github.com/input-output-hk/haskell-course/[Haskell course]
@@ -1615,7 +1616,7 @@ all together the following topics:
 
 Plinth code examples are taken from the
 https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[4th
-iteration of the Plutus Pioneer program] and are updated to accomodate PlutusV3
+iteration of the Plutus Pioneer program] and are updated to accommodate PlutusV3
 changes. The 4th iteration presents PlutusV2 code examples and in addition  
 contains a stablecoin example that is not covered in this book. 
 Further learning resources and smart contract examples in Plinth, Aiken 
@@ -1653,8 +1654,8 @@ of blockchain and Cardano.
 We also note that Cardano’s hard fork combinator technology, presented in section 
 <<Cardano node layers>>, subsection *Consensus and storage layer*, allows the 
 Cardano node to process older Plutus version scripts also after a hard fork makes 
-a new Plutus script version available. If you encouter Plinth code examples written 
-in PlutusV1 or PlutusV2 you can checkout videos and learning examples of the previous 
+a new Plutus script version available. If you encounter Plinth code examples written 
+in PlutusV1 or PlutusV2 you can look at videos and learning examples of the previous 
 Plutus pioneer program iterations: 
 
 * https://github.com/input-output-hk/plutus-pioneer-program/tree/first-iteration[first-itaration]
@@ -1791,7 +1792,7 @@ image::sc_aiken_compilation.png[width=590,height=390,title="Aiken code transform
 
 Aiken was developed by Lucas Rosa and other developers with the 
 support of https://txpipe.io/[TxPipe] and the https://cardanofoundation.org/[Cardano Foundation]. 
-Currently IO is also supporting the development of the language. 
+Currently IO is also supporting the development of Aiken. 
 More information about maintenance and support can be found at the 
 https://aiken-lang.org/credits[offcial page]. Aiken takes inspiration 
 from many modern languages such as Gleam, Rust, and Elm, 
@@ -1827,15 +1828,15 @@ Aiken compiles all its custom data types into the builtin Plutus type [purple]#D
 We will look at this data type in section <<Simple validation scripts>>. 
 
 Both languages are purely functional, which makes it easier for an auditor 
-to assess the behavior of such smart contracts. Because Plinth is embeded in 
-Haskell, it also works well with proof-assistant tools such as
+to assess the behavior of such smart contracts. Because Plinth is embedded 
+in Haskell, it also works well with proof-assistant tools such as 
 https://wiki.portal.chalmers.se/agda/pmwiki.php[Agda], making it a
 good choice for projects that require a high level of security. Since
 Agda isn’t Haskell specific, it could also be used with Aiken. However,
 the gap to bridge between Aiken and Agda is larger than that between
-Plinth and Agda. Because both languages compile to Plutus, the logic of
-writing smart contracts is very similar, even though the syntax is 
-different. Learning one language will help a developer understand any
+Plinth and Agda. Both languages compile to Plutus, so the logic of
+writing smart contracts in them is very similar, even though the syntax 
+is different. Learning one language will help a developer understand any
 other Cardano smart contract language that compiles to Plutus. 
 
 To learn the Aiken smart contract language, one can check out the
@@ -1856,9 +1857,9 @@ The https://github.com/aiken-lang/awesome-aiken[Awesome Aiken] repository
 provides many links to Aiken libraries, DApps, tutorials and video
 lessons. One can also read the https://piefayth.github.io/blog/pages/aiken1/[Aiken for amateurs]
 tutorial that is at the time of writing not included in the Awesome
-Aiken repository. For those wich prefer to learn by a book the 
+Aiken repository. For those which prefer to learn by a book the 
 https://book.io/book/i-can-aiken/[I can Aiken] book, written by John 
-Green provides a lot of information and learning examples on Aiken. 
+Green provides comprehensive information and learning examples on Aiken. 
 
 ==== Setting up a Plinth development environment
 
@@ -1905,7 +1906,7 @@ documentation], which presents types in Haskell syntax. Press CTRL + S
 to search for a keyword, such as a specific data type or function name.
 The search engine might provide more options for a single data type, function 
 or type class that you are querying. This is because implementations 
-of types, functions and type clases can change with a new Plutus version 
+of types, functions and type classes can change with a new Plutus version 
 and the haddock documentation keeps track of all of them. 
 After locating the desired item, click the _Source_ icon next to its
 name to open the corresponding Haskell source code. The software
