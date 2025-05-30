@@ -258,6 +258,8 @@ eDSL in Haskell for writing efficient Plutus validators
 * https://github.com/Plutonomicon/pluto[Pluto]: a DSL resembling UPLC
 with some syntactic sugar, written in a Haskell-like syntax. 
 
+One can read more about languages that compile to UPLC at the official 
+https://plutus.cardano.intersectmbo.org/docs/delve-deeper/languages[Plinth docs]. 
 The logic in other compiled Cardano smart contract languages follows the
 same rules defined by Plutus. Learning one compiled language also helps a 
 developer to understand other compiled languages that use different syntax.
@@ -271,12 +273,12 @@ section <<Plinth in comparison to Aiken>>. A brief comparison of
 some of the listed languages can also be found in the following blog
 posts:
 
-* The Essential Cardano blog post about
-https://www.essentialcardano.io/article/programming-languages[programming
-languages]
 * The Emurgo blog post about
 https://www.emurgo.io/press-news/the-programming-languages-behind-cardano-on-chain-code/[the
-programming languages behind Cardano on-chain code].
+programming languages behind Cardano on-chain code]
+* The Essential Cardano blog post about
+https://www.essentialcardano.io/article/programming-languages[programming
+languages].
 
 Languages that compile to Plutus generate scripts that have the same
 logic, but might be optimized differently for factors like size or
@@ -1553,15 +1555,15 @@ contract language in Cardano. It is a user-friendly standalone language that
 has easy to follow and comprehensive documentation and provides a simple 
 setup of the development environment needed to write, test and compile  
 smart contracts for Cardano. The reason why the _Plutus smart contracts_ 
-section focuses on Plinth is there are already many great learning resources 
-for Aiken. Plinth as a high assurance language works better with proof 
-assistants as https://wiki.portal.chalmers.se/agda/pmwiki.php[Agda], which 
-compiles to Haskell and can be used for formal verification of smart contract
-code. A more detailed comparison of Aiken and Plinth can be found in the 
+section focuses on Plinth is because there are already many great learning resources 
+for Aiken. Plinth as a high assurance language embeded in Haskell works better 
+with the https://wiki.portal.chalmers.se/agda/pmwiki.php[Agda] proof assistants,
+that can be used for formal verification of smart contract code. A more 
+detailed comparison of Aiken and Plinth can be found in the 
 <<Plinth in comparison to Aiken>> section. For developers that want to learn 
-how to quickly code smart contracts in Cardano and would want to avoid 
-learning Haskell, Aiken is the most recommended choice. Aiken learning 
-resources are presented at the end of section <<Plinth in comparison to Aiken>>. 
+how to code smart contracts in Cardano with ease and want to avoid learning 
+Haskell, Aiken is the most recommended choice. Aiken learning resources are 
+presented at the end of section <<Plinth in comparison to Aiken>>. 
 
 Before reading section _Plutus smart contracts_, one should have a basic 
 understanding of blockchain principles and Cardano’s extended UTXO (EUTXO) 
@@ -1599,8 +1601,8 @@ decentralized applications (DApps) on Cardano.
 
 Section <<PlutusV3 features>> explains some of the PlutusV3
 features that are not coverd in the coding sections and highlights 
-the advantages they bring. _Plutus smart contracts_ section covers 
-all together the following topics:
+the advantages they bring. The _Plutus smart contracts_ section covers 
+the following topics: 
 
 * Plutus in comparison to Bitcoin Script and Solidity
 * Plinth in comparison to Aiken
@@ -1646,7 +1648,7 @@ offered courses include:
 * Blockchain business consultant.
 
 The https://github.com/johnnygreeney/cardanoforthemasses[Cardano for the Masses]
-online book written by John Green is also available under a open-source license. 
+online book written by John Green is also available under an open-source license. 
 Beside that the Cardano foundation also offers a free online course called the 
 https://academy.cardanofoundation.org/[Cardano academy] that teaches the basics 
 of blockchain and Cardano. 
@@ -1719,48 +1721,78 @@ contract language. Developers can write smart contracts in Plinth or in
 other high level languages that compile to Plutus (see section
 <<Smart contract programming languages>>). Section <<Plutus security>> 
 covers the security aspect of both Plutus and Plinth languages in more detail. 
-A Plutus smart contract, also called a Plutus script, provides a more flexible 
-view than a Bitcoin script but does not have a global view as a Solidity smart 
-contract. Plutus scripts cannot see the whole state of the blockchain but can 
-see the whole transaction that is being validated.
+A Plutus smart contract, also called a Plutus script or validator, provides 
+a more flexible view than a Bitcoin script but does not have a global view as 
+a Solidity smart contract. Plutus scripts cannot see the whole state of the 
+blockchain but can see the whole transaction that is being validated.
 
-This means the Plutus script can see the script context that
-carries information about the transaction being validated including 
-its inputs and outputs and other things that will be in detail presented  
-in section <<Script context explained>>. A UTXO can also have an arbitrary
-piece of data attached to it – the datum, which defines a state of the
-UTXO. When a transaction intends to spend a UTXO sitting at a smart
-contract, the smart contract code can access the information contained
-in the datum that is potentially included in the script context. The 
-smart contract also sees a piece of arbitrary input data provided by the 
-user submitting the transaction. This data is the redeemer which is also 
-contained in the script context. A Plutus smart contract can use all 
-these information to decide whether it is ok to consume an 
-UTXO or not. It is also possible to use a tool like the Cardano CLI or a 
-wallet to check whether a transaction will be
-validated before on-chain execution. If the transaction is valid, it
-will be processed on the network, provided that all UTXO inputs are
-present and the processing time falls within the transaction’s validity
-interval. In case these conditions are not met, the transaction will
-fail without charging any fees to the user, unlike in Ethereum, where
-users must pay gas fees for transactions that can ultimately fail. If
-the inputs are present when the transaction is submitted, it will be
-validated and produce the expected outcome as predicted off-chain. 
+This means a Plutus script can see the script context that carries 
+information about transaction being validated. This includes all transaction 
+inputs and outputs, all scripts that are being triggered by the transaction 
+and other transaction data. Part of this data is the datum and the redeemer. 
+A UTXO can have an arbitrary piece of data attached to it that we call the datum 
+and defines a state of the UTXO. When a transaction intends to spend a UTXO 
+sitting at a script address, the script code can access the information 
+contained in the datum that is potentially included in the script context. 
+Not every UTXO necessarily needs to contain a datum. The information in the 
+datum can be used for: 
+
+* Answering who/when/with watch can I consume a UTXO. 
+* Defining the current state of the UTXO. 
+* Defining metadata and/or configurations. 
+
+The script also sees a piece of arbitrary input data provided by the user 
+submitting the transaction. This data is the redeemer which is also contained 
+in the script context of a transaction. The information in the redeemer can 
+be used for: 
+
+* Defining the reason for interacting with a script as eg request for a loan, 
+making a bet, pay a fee, cancel a lone, etc. 
+* Provide information to the script known only by person X, which can 
+be used to unlock funds of a UTXO sitting at a script address. 
+* Define a value that will be used to modify the current datum data. 
+
+Section <<Script context explained>> covers in more detail the information 
+contained in the script context that a transaction interacting with a script 
+can access. A Plutus script can use all these information to decide whether it 
+is ok to consume an UTXO or not. It is also possible to use a tool like the 
+Cardano CLI or a wallet to check whether a transaction will be validated 
+before on-chain execution. If the transaction is valid, it will be processed 
+on the network, provided that all UTXO inputs are present and the processing 
+time falls within the transaction’s validity interval. In case these 
+conditions are not met, the transaction will fail without charging any fees 
+to the user, unlike in Ethereum, where users must pay gas fees for transactions 
+that can ultimately fail. If the inputs are present when the transaction is 
+submitted, it will be processed and produce the expected outcome as predicted 
+off-chain. We call this property determinism of transactions. It doesn't mean 
+we know for sure if a transaction will be processed because a UTXO input might 
+be consumed by a another transaction just before our transaction gets processed. 
+It means that if the transaction gets processed the effect of the transaction 
+on the ledger is deterministic and can be computed off-chain. 
 
 Both Ethereum’s accounting model and Cardano’s EUTXO model are equally
-powerful in expressing smart contract logic.
-Further comparison between Cardano and Ethereum regarding security is
-outlined in section <<Cardano security>>. You can find research
-articles about the technical implementation of Plutus in the
-https://iohk.io/en/research/library/[IO library]. A good entry point
-is the research paper
+powerful in expressing smart contract logic. Translating a smart contract 
+from Ethereum to Cardano is in principle possible but requires rethinking the 
+implementation design of the contract since state is tracked for every 
+UTXO individually instead of a global state that smart contracts access. 
+Translating the exact logic of an Ethereum smart contract to Cardano in not 
+necessarily good practice, because the end goal is not the smart contract
+itself, but the service/business it generates. A better approach is  
+to analyze the contract and produce a high-level specification of what it 
+does. Then a developer can create a new architecture based on that specification 
+to have the same intended properties as the original contract has. 
+
+Further comparison between Cardano and Ethereum is outlined in section 
+<<Cardano security>>. You can find research articles about the technical 
+implementation of Plutus in the https://iohk.io/en/research/library/[IO library]. 
+A good entry point is the research paper
 https://iohk.io/en/research/library/papers/functional-blockchain-contracts/[Functional
 Blockchain Contracts], 2019 by Chakravarty et al. The official
 https://docs.cardano.org/developer-resources/smart-contracts/plutus/[Plutus
 documentation] provides short explainers and various learning
-resources. The official https://github.com/IntersectMBO/plutus[Plutus]
-GitHub repository also provides links to specifications and design
-documents, academic papers and talks.
+resources. The https://github.com/IntersectMBO/plutus[Plutus]
+GitHub repository also provides links to specifications, design documents, 
+academic papers and talks. 
 
 ==== Plinth in comparison to Aiken
 
@@ -1944,9 +1976,17 @@ context. It contains the following information:
 
 * The datum, which is an arbitrary piece of data associated with the UTXO
 we want to spend. A UTXO does not necessary have a datum associated with it. 
+The datum can be used for: 
+  ** Answering who/when/with watch can I consume a UTXO . 
+  ** Defining the current state of the UTXO. 
+  ** Defining metadata and/or configurations. 
 * The redeemer is an arbitrary piece of data provided when creating a
-transaction, used to unlock funds at a UTXO, similar to a private key in
-the conventional UTXO model.
+transaction. The redeemer can be used for:  
+  ** Defining the reason for interacting with a script as eg request for a loan, 
+  making a bet, pay a fee, cancel a lone, etc. 
+  ** Provide information to the script known only by person X, which can 
+  be used to unlock funds of a UTXO sitting at a script address. 
+  ** Define a value that will be used to modify the current datum data. 
 * Information about the transaction being validated, including its inputs 
 and outputs. 
 * Information about the script purpose. 
