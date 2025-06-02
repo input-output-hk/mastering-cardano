@@ -260,7 +260,7 @@ with some syntactic sugar, written in a Haskell-like syntax.
 
 One can read more about languages that compile to UPLC at the official 
 https://plutus.cardano.intersectmbo.org/docs/delve-deeper/languages[Plinth docs]. 
-The logic in all compiled Cardano smart contract languages follow the
+The logic in all compiled Cardano smart contract languages follows the
 same rules defined by Plutus. Learning one compiled language also helps a 
 developer to understand other compiled languages that use different syntax.
 
@@ -1671,7 +1671,7 @@ This section compares the basic characteristics of smart contracts in
 Bitcoin, Ethereum, and Cardano, highlighting the new concepts each
 introduced in the cryptocurrency space.
 
-A Bitcoin Script is a simple stack-based smart contract language, whose
+A Bitcoin Script is a simple stack-based smart contract language, who's
 most complex control structure is a conditional. It is written in a
 Forth-like non Turing-complete language and is essentially linear, which
 means it can branch, but the language does not offer looping constructs
@@ -1735,7 +1735,7 @@ code can access the information contained in the datum that is potentially
 included in the script context. Not every UTXO necessarily needs to contain a 
 datum. The information in the datum can be used for: 
 
-* Answering who/when/with wath can I consume a UTXO. 
+* Answering who/when/with what can I consume a UTXO. 
 * Defining the current state of the UTXO. 
 * Defining metadata and/or configurations. 
 
@@ -1744,15 +1744,15 @@ submitting the transaction. This data is the redeemer which is also contained
 in the script context of a transaction. The information in the redeemer can 
 be used for: 
 
-* Defining the reason for interacting with a script as eg request for a loan, 
-making a bet, pay a fee, cancel a lone, etc. 
+* Defining the reason for interacting with a script as eg making a bet, 
+pay a fee, gather a reward, etc. 
 * Provide information to the script known only by person X, which can 
 be used to unlock funds of a UTXO sitting at a script address. 
 * Define a value that will be used to modify the current datum data. 
 
 Section <<Script context explained>> covers in more detail the information 
 contained in the script context that a transaction interacting with a script 
-can access. A Plutus script can use all these information to decide whether it 
+can access. A Plutus script can use all this information to decide whether it 
 is ok to consume an UTXO or not. It is also possible to use a tool like the 
 Cardano CLI or a wallet to check whether a transaction will be validated 
 before on-chain execution. If the transaction is valid, it will be processed 
@@ -1771,8 +1771,8 @@ on the ledger is deterministic and can be computed off-chain.
 Both Ethereum’s accounting model and Cardano’s EUTXO model are equally
 powerful in expressing smart contract logic. Translating a smart contract 
 from Ethereum to Cardano is in principle possible but requires rethinking the 
-implementation design of the contract since state is tracked for every 
-UTXO individually instead of a global state that smart contracts in Ethereum access. 
+implementation design of the contract since state is tracked for every UTXO 
+individually, instead of having a global state that smart contracts access. 
 Translating the exact logic of an Ethereum smart contract to Cardano in not 
 necessarily good practice, because the end goal is not the smart contract
 itself, but the service/business it generates. A better approach is  
@@ -1968,52 +1968,45 @@ pipeline which will be in detail explained in section <<Plutus security>>.
 
 ==== Simple validation scripts
 
-A validation script or validator is the smart contract program that
-checks whether funds at a script address are allowed to be spent by a
-given transaction. The script uses a single parameter: the script  
-context. It contains the following information: 
-
-* The datum, which is an arbitrary piece of data associated with the UTXO
-we want to spend. A UTXO does not necessary have a datum associated with it. 
-The datum can be used for: 
-  ** Answering who/when/with wath can I consume a UTXO. 
-  ** Defining the current state of the UTXO. 
-  ** Defining metadata and/or configurations. 
-* The redeemer is an arbitrary piece of data provided when creating a
-transaction. The redeemer can be used for:  
-  ** Defining the reason for interacting with a script as eg request for a loan, 
-  making a bet, pay a fee, cancel a lone, etc. 
-  ** Provide information to the script known only by person X, which can 
-  be used to unlock funds of a UTXO sitting at a script address. 
-  ** Define a value that will be used to modify the current datum data. 
-* Information about the transaction being validated, including its inputs 
-and outputs. 
-* Information about the script purpose. 
-
-In contrast to Ethereum, a script cannot see the entire state of the blockchain; 
-instead, it can view the entire transaction being validated. The information contained 
-in the script context will be in detail explained in section <<Script context explained>>. 
-
-Depending on the type of the script context, there are two possible
-implementations of a Plinth validation script.
+In this section, we will look at basic Plinth validation scripts. All 
+sections contained in the <<Plutus smart contracts>> section focus on 
+Plinth data types defined for PlutusV3 scripts. A validation script or 
+validator is the smart contract program that checks whether funds at a 
+script address are allowed to be spent by a given transaction. As stated 
+previously, a validation script in EUTXO cannot see the entire state of 
+the blockchain; instead, it can view the entire transaction being validated. 
+The script uses a single parameter: the script context. It returns a parameter 
+that indicates whether the validation logic has passed or not. Depending on 
+the type of the script context, there are two possible implementations of 
+a Plinth validation script: 
 
 * In the low-level implementation, the script context is represented
-using the [purple]#BuiltinData# type. 
-* In the high-level implementation, one uses a predefined Haskell type.
+using the [purple]#BuiltinData# type and the return parameter is of type 
+[purple]#BuiltinUnit#. 
+* In the high-level implementation, the script context is represented as 
+a predefined Haskell type and the return parameter is of type [purple]#Bool#.
+
+Below you can see two example validation script type signatures, one 
+low-level and one high-level: 
+
+[source,haskell]
+----
+validatorName :: BuiltinData -> BuiltinUnit
+validatorName :: ScriptContext -> Bool
+----
 
 Both implementations can be used in smart contract code. The main
 difference lies in code performance, with the low-level implementation
 offering better performance. Low-level validation scripts are referred
-to as untyped validation scripts, while high-level scripts are known as
-typed validation scripts.
+to as _untyped validation scripts_, while high-level scripts are known as
+_typed validation scripts_. 
 
-The data type for the low-level validation script implementation is called
-[purple]#BuiltinData#. It doesn't have its constructors exposed, but the module 
-that defines [purple]#BuiltinData# also contains two conversion functions, 
-[blue]#builtinDataToData# and [blue]#dataToBuiltinData#, which can convert 
-[purple]#BuiltinData# back and forth to the [purple]#Data# type. Those functions 
-only work in off-chain code but not in on-chain code. The [purple]#Data# 
-type has its constructor exposed, as illustrated in the code below:
+The [purple]#BuiltinData# doesn't have its constructors exposed. The module 
+that defines [purple]#BuiltinData# contains two conversion functions: 
+[blue]#builtinDataToData# and [blue]#dataToBuiltinData#. Those functions can 
+convert [purple]#BuiltinData# back and forth to the [purple]#Data# type. They 
+work in off-chain code, but not in on-chain code. The [purple]#Data# type has 
+its constructor exposed, as illustrated in the code below: 
 
 [source,haskell]
 ----
@@ -2027,10 +2020,31 @@ data Data
     deriving anyclass (Hashable, NFData, NoThunks)
 ----
 
-It is a recursive data type that contains integers and byte strings,
-which can be packed into common lists and maps associated with an
-integer. Let’s examine a simple untyped validator script that always
-succeeds:
+It is a recursive data type that contains integers and byte strings, which can 
+be packed into common lists and maps associated with an integer. Next, we show 
+the high-level implementation of the script context data type:  
+
+[source,haskell]
+----
+data ScriptContext = ScriptContext
+  { scriptContextTxInfo     :: TxInfo
+  , scriptContextRedeemer   :: V2.Redeemer
+  , scriptContextScriptInfo :: ScriptInfo
+  }
+  deriving stock (Generic, Haskell.Eq, Haskell.Show)
+  deriving anyclass (HasBlueprintDefinition)
+----
+
+The script context contains: 
+
+* transaction information (inputs, outputs, validity interval, etc)
+* redeemer (arbitrary data defined by the user) 
+* script info (defines the purpose of the script; if the purpose is 
+a spending script, it potentially contains a datum). 
+
+We will look into those data types in more detail in section 
+<<Script context explained>>. Let us now examine a simple untyped validator 
+script that always succeeds:
 
 [source,haskell]
 ----
@@ -2200,25 +2214,8 @@ the entire script context. Then we compile the validator and serialize it. We co
 also use the [blue]#check# function with a `False` argument but in that case there 
 would be no error message logged. 
 
-Next let us look at an example where we make use of the redeemer in the validation 
-logic. Before we look into the validator code we show the script context data type. 
-
-[source,haskell]
-----
-data ScriptContext = ScriptContext
-  { scriptContextTxInfo     :: TxInfo
-  , scriptContextRedeemer   :: V2.Redeemer
-  , scriptContextScriptInfo :: ScriptInfo
-  }
-  deriving stock (Generic, Haskell.Eq, Haskell.Show)
-  deriving anyclass (HasBlueprintDefinition)
-----
-
-The <<Plutus smart contracts>> section focuses on data types defined 
-for PlutusV3 scripts. The script context contains the transaction information, the 
-redeemer and the script info data types. We will look into those data types in more 
-detail in section <<Script context explained>>. We only show here the redeemer data 
-type that is a wrapper around the [purple]#BuiltinData# data type. 
+Next we show an example where we make use of the redeemer in the validation logic. 
+The redeemer type is defined as a wrapper around the [purple]#BuiltinData# data type: 
 
 [source,haskell]
 ----
@@ -2226,10 +2223,10 @@ newtype Redeemer = Redeemer {getRedeemer :: BuiltinData}
   deriving stock (Generic, Haskell.Show, Typeable)
   deriving newtype (Haskell.Eq, Haskell.Ord, Eq, ToData, FromData, UnsafeFromData, Pretty)
   deriving anyclass (NFData, HasBlueprintDefinition)
-----
+---- 
 
-The validation logic for our validator passes if the redeemer is an integer with 
-the value 42; otherwise, it fails: 
+We define an untyped validator that says the validation logic passes if the redeemer 
+is an integer with the value 42; otherwise, it fails: 
 
 [source,haskell]
 ----
