@@ -2021,7 +2021,7 @@ data Data
 ----
 
 It is a recursive data type that contains integers and byte strings, which can 
-be packed into common lists and maps. Next, we show the high-level implementation 
+be packed into common lists and maps. Next, we show the Haskell implementation 
 of the script context data type:  
 
 [source,haskell]
@@ -2797,8 +2797,8 @@ section and also update the `GenBlueprint.hs` file with additional blueprint def
 ==== Script context explained
 
 In this section we will look into more detail at the [purple]#ScriptContext# data type. 
-All data types contained in the script context will be presented as high-level Haskell data 
-types. Let us recall the implementation of the script context data type. 
+All data types contained in the script context will be presented as Haskell data types. 
+Let us recall the implementation of the script context data type. 
 
 [source,haskell]
 ----
