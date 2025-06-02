@@ -1969,8 +1969,8 @@ pipeline which will be in detail explained in section <<Plutus security>>.
 ==== Simple validation scripts
 
 In this section, we will look at basic Plinth validation scripts. All 
-sections contained in the <<Plutus smart contracts>> section focus on 
-Plinth data types defined for PlutusV3 scripts. A validation script or 
+validation scripts and data types presented in the <<Plutus smart contracts>> 
+section are PlutusV3 scripts and data types. A validation script or 
 validator is the smart contract program that checks whether funds at a 
 script address are allowed to be spent by a given transaction. As stated 
 previously, a validation script in EUTXO cannot see the entire state of 
@@ -2021,8 +2021,8 @@ data Data
 ----
 
 It is a recursive data type that contains integers and byte strings, which can 
-be packed into common lists and maps associated with an integer. Next, we show 
-the high-level implementation of the script context data type:  
+be packed into common lists and maps. Next, we show the high-level implementation 
+of the script context data type:  
 
 [source,haskell]
 ----
@@ -2043,8 +2043,13 @@ The script context contains:
 a spending script, it potentially contains a datum). 
 
 We will look into those data types in more detail in section 
-<<Script context explained>>. Let us now examine a simple untyped validator 
-script that always succeeds:
+<<Script context explained>>. If a transaction tries to spend multiple UTXOs 
+at a script address, the spending script is run for every UTXO individually. 
+The redeemer and the script information are individually assigned for every 
+UTXO in that transaction. The transaction information is only one and is 
+accessible to every script that is being triggered by a single transaction. 
+
+Let us now examine a simple untyped validator script that always succeeds:
 
 [source,haskell]
 ----
@@ -2679,6 +2684,7 @@ validator code is contained in the `"compiledCode"` fields.
 ----
 
 We also show the `cabal.project` and `.cabal` files we use to compile the code. 
+First we look at the `cabal.project` file. 
 
 [source,haskell]
 ----
@@ -2703,12 +2709,12 @@ packages:
   ./.
 ----
 
-In the `cabal.project` file we define the 
+In the file we define the 
 https://github.com/IntersectMBO/cardano-haskell-packages[CHAP repository]
 that contains all Haskell packages used by Cardano that are not hosted on 
 https://hackage.haskell.org/[Hackage] the Haskell community's central package 
 archive. The `cabal` tool can then download the Plutus packages that are defined 
-in the `.cabal` file when compiling the project. 
+in the `.cabal` file when compiling the project. Next we look at the `.cabal` file. 
 
 [source,haskell]
 ----
@@ -2790,7 +2796,9 @@ section and also update the `GenBlueprint.hs` file with additional blueprint def
 
 ==== Script context explained
 
-We look again at the PlutusV3 [purple]#ScriptContext# data type. 
+In this section we will look into more detail at the [purple]#ScriptContext# data type. 
+All data types contained in the script context will be presented as high-level Haskell data 
+types. Let us recall the implementation of the script context data type. 
 
 [source,haskell]
 ----
@@ -2804,17 +2812,19 @@ data ScriptContext = ScriptContext
 ----
 
 It contains transaction information, the redeemer and script information. 
-If a transaction tries to spend multiple UTXOs at a script address, the 
-spending script is run for every UTXO individually. The redeemer and the 
-script information are individually assigned for every UTXO in that transaction. 
-The transaction information is only one and is accessible to every script 
-that is being triggered by a single transaction. 
-
-*Script information* 
+We state again if a transaction tries to spend multiple UTXOs at a script address, 
+the spending script is run for every UTXO individually where the redeemer and the 
+script information are individually assigned for every UTXO in that transaction,
+in contrast to the transaction information, that is only one and can be accessed 
+by every script that is triggered by a single transaction. 
 
 In the previous code examples, the transaction information and script information 
 were not used in the validation logic. However, in most validator scripts, they are 
-used. Let us look at the [purple]#ScriptInfo# data type. 
+used. First we look at the script information data type. 
+
+*Script information* 
+
+The [purple]#ScriptInfo# data type is defined as:  
 
 [source,haskell]
 ----
