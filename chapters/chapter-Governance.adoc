@@ -1,7 +1,6 @@
 = TO DO:
 
-- Updated up to Plomin hard fork
-- move from googledoc to here
+- Updated up to Plomin hard fork, a lot has happened since.
 - Asciidoc format = https://gist.github.com/powerman/d56b2675dfed38deb298
 - set up a draft is in a gogle doc, share with SMEs for review:
 
