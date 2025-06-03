@@ -1,12 +1,10 @@
 = TO DO:
 
-- Update chapter up to Plomin hard fork
+- Updated up to Plomin hard fork
 - move from googledoc to here
 - Asciidoc format = https://gist.github.com/powerman/d56b2675dfed38deb298
+- set up a draft is in a gogle doc, share with SMEs for review:
 
-
-A draft is in the doc linked below, shared with SMEs for review:
-https://docs.google.com/document/d/1KygJtqqvUmdnHp5_6-JRy7EheBTsaphq/edit
 
 = Chapter 5: Cardano governance 
 
