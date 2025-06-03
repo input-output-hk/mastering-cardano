@@ -145,7 +145,7 @@ This directly supports decentralized finance (DeFi) interactions,
 including peer-to-peer loans and escrow facilities.
 
 The Marlowe platform offers a complementary route to DApp development
-alongside Aiken or Plinth as long as the DApp’s core functionality can
+alongside Aiken or Plinth as long as the DApp's core functionality can
 be expressed through Marlowe contracts. Each Marlowe contract has a
 predetermined, finite set of roles and behavior that is guaranteed to
 terminate. However, it is crucial to realize that a Marlowe DApp can
@@ -163,7 +163,7 @@ Marlowe Language Community Interest Company (CIC), a non-profit
 organization (UK company number 16010921). This CIC supports Marlowe
 users and developers by overseeingp development, maintenance, education,
 and training. It also hosts Marlowe open-source software repositories
-and maintains the ecosystem’s online presence.
+and maintains the ecosystem's online presence.
 
 With Tomasz Rybarczyk, I have been funded under Catalyst Fund13, 
 https://projectcatalyst.io/funds/13/f13-cardano-use-cases-concept/marlowe-2025-oracle-protocol-design-and-implementation[project 1300131], 
@@ -207,9 +207,9 @@ The Alonzo era introduced the Plutus Core scripting language, often
 referred to as Plutus. Since Plutus smart contracts validate
 transactions, they are also called validation scripts or validators.
 Plutus is a simple, functional language that enables general-purpose
-Turing-complete (see <<Glossary>>) smart contracts on Cardano. It implements Cardano’s extended UTXO
+Turing-complete (see <<Glossary>>) smart contracts on Cardano. It implements Cardano's extended UTXO
 (EUTXO) model, which is as powerful in expressing smart contract logic
-as Ethereum’s account-based model, allowing for arbitrary logic in smart
+as Ethereum's account-based model, allowing for arbitrary logic in smart
 contracts. The EUTXO model is explained in detail in section 
 <<The EUTXO model>>. A comparison of Plutus with Bitcoin Script and
 Solidity languages is presented in section 
@@ -218,7 +218,7 @@ Solidity languages is presented in section
 In practice, the Cardano node executes an untyped version called Untyped
 Plutus Core (UPLC). The compilation pipeline and other Plutus details
 are covered in section <<Plutus security>>. The security advantages
-of Cardano’s EUTXO model over Ethereum’s account-based model are
+of Cardano's EUTXO model over Ethereum's account-based model are
 discussed in section <<Cardano security>>.
 
 *Compiled languages*
@@ -270,13 +270,12 @@ of the Cardano Developer Ecosystem report] – 2024 to see how much these
 languages are used in practice. As of 2024, the most commonly used ones
 are Aiken and Plinth. A comparison of these languages is discussed in
 section <<Plinth in comparison to Aiken>>. A brief comparison of
-some of the listed languages can also be found in the following blog
-posts:
+some of the listed languages can also be found in the following blogs: 
 
-* The Emurgo blog post about
+* The Emurgo blog about
 https://www.emurgo.io/press-news/the-programming-languages-behind-cardano-on-chain-code/[the
 programming languages behind Cardano on-chain code]
-* The Essential Cardano blog post about
+* The Essential Cardano blog about
 https://www.essentialcardano.io/article/programming-languages[programming
 languages].
 
@@ -380,7 +379,7 @@ explore the security of Marlowe in more detail.
 Sometimes, smart contract code is referred to as on-chain code because
 it runs in the node during the inclusion of new transactions that aim to
 spend a UTXO at a script address. Off-chain code, in contrast, runs on
-the user’s or a service provider’s device and queries the blockchain, 
+the user's or a service provider's device and queries the blockchain, 
 builds, signs and submits transactions. A web application that
 connects with a wallet and interacts with one or more smart contracts is
 called a decentralized application (DApp). Chapter <<Decentralized applications>> 
@@ -401,7 +400,7 @@ Swift.
 providing numerous tools to easily build DApps on Cardano. It also
 integrates the popular https://react.dev/[React] library.
 * https://lucid.spacebudz.io/[Lucid]: a popular JavaScript/Typescript
-library for off-chain code, which is further maintained by the
+library for off-chain code, which is further developed by the
 https://anastasia-labs.github.io/lucid-evolution/[Lucid Evolution]
 project funded by
 https://projectcatalyst.io/funds/11/cardano-open-developers/anastasia-labs-lucid-evolution-redefining-off-chain-transactions-in-cardano[Catalyst
@@ -523,7 +522,7 @@ numerous advantages that align seamlessly with this distributed model:
 accessible to different stakeholders to make more informed decisions
 * *Privacy*: user information is stored using private/public encryption
 provided by Cardano
-* *Immutability*: Cardano’s EUTXO model ensures transaction immutability
+* *Immutability*: Cardano's EUTXO model ensures transaction immutability
 and restricts spending to only unspent transaction outputs, making the
 reward system more deterministic.
 
@@ -703,7 +702,7 @@ LexiFi, which provides contract software for the financial sector. In
 developing Marlowe, these languages have been adapted to work on
 blockchain. Although it is implemented on the Cardano blockchain,
 Marlowe could also be implemented on Ethereum or other blockchain
-platforms, making it a ’platform-agnostic’, similar to modern
+platforms, making it a 'platform-agnostic', similar to modern
 programming languages like Java and C++. Designed as an industry-scale
 solution, Marlowe embodies examples from the
 https://en.wikipedia.org/wiki/Algorithmic_Contract_Types_Unified_Standards[ACTUS]
@@ -727,10 +726,10 @@ In the future, Marlowe will be administered by an independent vehicle, a
 not-for-profit organization, which will ensure community representation
 and stewardship. This will allow the community to actively contribute to
 its roadmap and propose updates and enhancements. To further support
-Marlowe’s vision, a new
+Marlowe's vision, a new
 https://github.com/marlowe-foundation/org/blob/main/sig-charter.md[Special
 Interest Group] (SIG) has been established that is active on Discord,
-focusing on Marlowe’s continued innovation and enhancement, with
+focusing on Marlowe's continued innovation and enhancement, with
 builders at the heart.
 
 In summer 2024, IO transferred the intellectual property rights for
@@ -830,7 +829,7 @@ https://docs.marlowe.iohk.io/docs/developer-tools/runtime/marlowe-runtime[Marlow
 Runtime] is the application backend for managing Marlowe contracts on
 Cardano. It provides easy-to-use, higher-level APIs and complete backend
 services that enable developers to build and deploy enterprise and Web3
-DApp solutions using Marlowe. Users don’t need to assemble the
+DApp solutions using Marlowe. Users don't need to assemble the
 "plumbing" that manually orchestrates a backend workflow for a
 Marlowe-based application. Runtime takes commands relevant to the
 Marlowe ledger and maps them to the Cardano ledger. It consists of a
@@ -1000,7 +999,7 @@ accounts correspond to roles or external accounts, with internal
 accounts controlled by the smart contract. Typically, all participants
 should make a deposit, sending funds from their wallets to the Marlowe
 contract, which retains the funds and associates them with the relevant
-internal accounts. Depending on the contract’s terms, funds can be
+internal accounts. Depending on the contract's terms, funds can be
 transferred between these internal accounts and back to external
 accounts. No funds are permanently locked in a Marlowe contract; when
 the contract concludes, any remaining funds in internal accounts can be
@@ -1022,7 +1021,7 @@ funds in the contract as a remedial action. Marlowe contracts can branch
 based on alternatives and have a finite lifetime, after which any
 remaining funds are returned to the participants. This feature means
 that funds cannot be locked forever in a contract. Depending on the
-contract’s current state, it can choose between two alternative future
+contract's current state, it can choose between two alternative future
 courses of action, which are also contracts. When no further actions are
 required, the contract closes, and any remaining funds are refunded.
 Marlowe is embedded in Haskell and is modeled as a collection of
@@ -1064,12 +1063,12 @@ https://github.com/input-output-hk/marlowe-dependency-docs[marlowe-dependency-do
 GitHub repository contains instructions for setting up your own
 documentation server.
 
-Let’s now look at an example of a Marlowe contract involving three
+Let us now look at an example of a Marlowe contract involving three
 parties – Alice, Bob, and Charlie. In this contract, Alice and Bob
 deposit 10 lovelaces. Then, Charlie decides whether Alice or Bob
 receives the total amount. If any of the three parties fails to
 participate, the contract ensures that all deposited funds are
-reimbursed. You can see a demonstration of this contract’s design using
+reimbursed. You can see a demonstration of this contract's design using
 Blockly in the Marlowe Playground in the following
 https://youtu.be/fldaBHmYfqk[Plutus Pioneer program] video.
 
@@ -1165,7 +1164,7 @@ with the *Role* constructor followed by the role name, which, in our
 case, is Alice. Second, we specify who is depositing into the previously
 mentioned account. We can again use the *Role* constructor and Alice's
 name. We could also use the *Address* constructor, where we would have
-to input Alice’s Cardano address. Then, we have to specify what kind of
+to input Alice's Cardano address. Then, we have to specify what kind of
 currency we are depositing. For this, we use the *Token* constructor
 and add the currency symbol and the token name. For the ada currency, we
 can use two empty strings. At the end, we specify the amount of the
@@ -1175,7 +1174,7 @@ constructor followed by a number.
 After defining the first part of the case-statement, the next step is to
 outline the logic for when the condition is met. This begins with a new
 when-statement, in which Bob will deposit 10 ada, and a new timeout is
-set. The code for Bob’s deposit mirrors Alice’s, but the role name
+set. The code for Bob's deposit mirrors Alice's, but the role name
 changes from Alice to Bob. After that, we again define the logic that
 follows if Bob makes his deposit. We use a when-statement that says
 Charlie has to make a choice. We set a timeout for the statement in case
@@ -1185,7 +1184,7 @@ we apply the *Choice* constructor for that decision. This constructor
 takes two arguments. First, it takes the information about the choice
 name and the person making the choice. The *ChoiceId* constructor
 defines this, specifying the person with the role statement. The second
-argument is a list of integers that defines Charlie’s possible choices.
+argument is a list of integers that defines Charlie's possible choices.
 Since Charlie decides whether the funds go to Alice or Bob, the list
 contains only two numbers.
 
@@ -1199,7 +1198,7 @@ Charlie's choice by using the *ChoiceValue* constructor and input the
 compare it is 1, for which we again use the *Constant* constructor.
 The first case that follows the conditional statement is when the choice
 equals 1, which means that the funds from Bob will go to Alice. To
-transfer the funds from Bob’s internal account to Alice’s internal
+transfer the funds from Bob's internal account to Alice's internal
 account, we use the *Pay* constructor. We first specify the party that
 sends the money, for which we can use the role-statement. After that, we
 have to specify the account with the *Account* constructor, which can
@@ -1282,19 +1281,19 @@ The next image shows the contract implemented using the Blockly tool:
 
 image::sc_marlowe_contract_escrow.png[width=400,height=1130,title="Marlowe escrow contract"]
 
-First, the buyer must deposit the funds into the seller’s internal
+First, the buyer must deposit the funds into the seller's internal
 account, with the amount defined by the _Price_ parameter. The next
 when-statement presents two options. In the first case, the buyer
 confirms everything is fine, and the contract closes. This is handled
 using a choice-statement, where the buyer has only one option. In the
 second case, the buyer reports a problem, and the funds are returned to
-the buyer’s internal account. Two further possibilities arise: if the
-seller agrees with the problem, the contract closes, and the buyer’s
+the buyer's internal account. Two further possibilities arise: if the
+seller agrees with the problem, the contract closes, and the buyer's
 funds are transferred back to their external account. If the seller
 disputes the issue, and no action is taken by the timeout, the contract
 closes, and the buyer is refunded. If disputed, another when-statement
 allows the mediator to either dismiss the claim, transferring the funds
-to the seller’s internal account before closing the contract, or confirm
+to the seller's internal account before closing the contract, or confirm
 the issue, in which case the buyer is refunded, and the contract closes.
 If the mediator does not act by their deadline, the contract closes, and
 the buyer is refunded. All deadlines are set as time parameters before
@@ -1354,7 +1353,7 @@ Marlowe contracts can be integrated with Plinth smart contracts or other
 compiled languages, such as Aiken, for example. This section focuses on
 integration with Plinth. One example is the open roles Plinth smart
 contract, which enables interaction with a Marlowe contract where
-participants’ Cardano addresses are unknown at deployment. When using
+participants' Cardano addresses are unknown at deployment. When using
 open roles, the Marlowe contract sends role tokens to the
 https://github.com/input-output-hk/marlowe-plutus/blob/581e95bb9c93a16dc5c9a3181e90abed4639f728/marlowe-plutus/src/Language/Marlowe/Plutus/OpenRoles.hs[open
 roles] Plinth validator script that holds them until an address is
@@ -1373,7 +1372,7 @@ Marlowe and Plinth validators can interact as follows:
 * PlutusTx validators can run in the same transaction as Marlowe
 transactions
 * The script context contains sufficient information for a
-Plinth validator to inspect the Marlowe transaction’s redeemer,
+Plinth validator to inspect the Marlowe transaction's redeemer,
 incoming, and outgoing datum
 * The Marlowe validator will allow the Plinth transaction to run, as
 long as the Marlowe validator is not making a payment
@@ -1405,11 +1404,11 @@ and other sources.
 image::sc_marlowe_2025_plan.png[width=457,height=328,title="Marlowe 2025 plan"]
 
 The Marlowe 2025 application targets DApp developers and aims to further
-Marlowe’s development to help businesses leverage emerging market
+Marlowe's development to help businesses leverage emerging market
 opportunities, making advanced features more accessible and relevant to
 a broader audience. Marlowe can be particularly attractive to businesses
 looking to use Cardano because it reduces the risks and costs of initial
-blockchain onboarding. The application aims to unlock Marlowe’s
+blockchain onboarding. The application aims to unlock Marlowe's
 potential by implementing critical updates to its validator and tech
 stack, transforming the Marlowe Runtime, protocols, and contracts into
 competitive products. These updates will create new business
@@ -1524,7 +1523,7 @@ design to deployment – the DSK will streamline access to Marlowe. The
 inclusion of features like micropayments and oracles will also attract
 potential users in the decentralized finance (DeFi) space. The
 simplifications and end-to-end support provided by the DSK will help
-users quickly learn about Marlowe’s applications and facilitate smoother
+users quickly learn about Marlowe's applications and facilitate smoother
 onboarding.
 
 The proposal is designed to foster a positive feedback loop within the
@@ -1566,7 +1565,7 @@ Haskell, Aiken is a good choice. Aiken learning resources are
 presented at the end of section <<Plinth in comparison to Aiken>>. 
 
 Before reading section _Plutus smart contracts_, one should have a basic 
-understanding of blockchain principles and Cardano’s extended UTXO (EUTXO) 
+understanding of blockchain principles and Cardano's extended UTXO (EUTXO) 
 accounting model. You can learn this in the first four chapters of this book. 
 If you are already familiar with blockchain technology, refer to the 
 Cardano-specific content in those chapters. The EUTXO model is presented
@@ -1624,7 +1623,7 @@ contains a stablecoin example that is not covered in this book.
 Further learning resources and smart contract examples in Plinth, Aiken 
 and other smart contract languages can be found at: 
 
-* https://www.gomaestro.org/smart-contracts[Cardano’s
+* https://www.gomaestro.org/smart-contracts[Cardano's
 smart contract marketplace] – hosted by Maestro. This DApp platform
 provides powerful APIs and developer tools to build and scale DApps with
 ease.
@@ -1633,7 +1632,7 @@ provides _Course Repositories_ that redirect to Plutus example projects.
 More resources are available on their
 https://www.youtube.com/@gimbalabs/playlists[YouTube channel].
 * Project pages listed in the education sections of
-https://www.cardanocube.com/cardano-ecosystem-interactive-map[Cardano’s
+https://www.cardanocube.com/cardano-ecosystem-interactive-map[Cardano's
 interactive map]. One can also explore projects in other groups and view
 their GitHub repositories.
 
@@ -1653,7 +1652,7 @@ Beside that the Cardano foundation also offers a free online course called the
 https://academy.cardanofoundation.org/[Cardano academy] that teaches the basics 
 of blockchain and Cardano. 
 
-We also note that Cardano’s hard fork combinator technology, presented in section 
+We also note that Cardano's hard fork combinator technology, presented in section 
 <<Cardano node layers>>, subsection *Consensus and storage layer*, allows the 
 Cardano node to process older Plutus version scripts also after a hard fork makes 
 a new Plutus script version available. If you encounter Plinth code examples written 
@@ -1757,7 +1756,7 @@ is ok to consume an UTXO or not. It is also possible to use a tool like the
 Cardano CLI or a wallet to check whether a transaction will be validated 
 before on-chain execution. If the transaction is valid, it will be processed 
 on the network, provided that all UTXO inputs are present and the processing 
-time falls within the transaction’s validity interval. In case these 
+time falls within the transaction's validity interval. In case these 
 conditions are not met, the transaction will fail without charging any fees 
 to the user, unlike in Ethereum, where users must pay gas fees for transactions 
 that can ultimately fail. If the inputs are present when the transaction is 
@@ -1768,17 +1767,14 @@ be consumed by a another transaction just before our transaction gets processed.
 It means that if the transaction gets processed the effect of the transaction 
 on the ledger is deterministic and can be computed off-chain. 
 
-Both Ethereum’s accounting model and Cardano’s EUTXO model are equally
-powerful in expressing smart contract logic. Translating a smart contract 
-from Ethereum to Cardano is in principle possible but requires rethinking the 
-implementation design of the contract since state is tracked for every UTXO 
-individually, instead of having a global state that smart contracts access. 
-Translating the exact logic of an Ethereum smart contract to Cardano in not 
-necessarily good practice, because the end goal is not the smart contract
-itself, but the service/business it generates. A better approach is  
-to analyze the contract and produce a high-level specification of what it 
-does. Then a developer can create a new architecture based on that specification 
-to have the same intended properties as the original contract has. 
+Ethereum's accounting and Cardano's EUTXO models are equally powerful in 
+expressing smart contract logic. However, translating a smart contract from 
+Ethereum to Cardano requires rethinking both the design and implementation. 
+So, rewriting the exact logic of an Ethereum smart contract to Cardano will 
+likely generate an undesired result. A better approach is to analyze the 
+original contract and produce a high-level specification of what it does. 
+Then, create a new EUTXO-based architecture based on that specification 
+to have the same intended properties as the original contract. 
 
 Further comparison between Cardano and Ethereum is outlined in section 
 <<Cardano security>> that highlights some of the security advantages that 
@@ -1803,7 +1799,7 @@ are outlined in section <<Plutus security>>.
 
 Plinth lets developers build secure applications, forge new assets, and
 create smart contracts in a predictable, deterministic environment with
-the highest level of assurance. Furthermore, developers don’t have to
+the highest level of assurance. Furthermore, developers don't have to
 run a full Cardano node to test their work. Section <<Testing Plinth scripts>> 
 presents how to test a compiled Plinth script without having to run a node. The
 https://github.com/IntersectMBO/plutus[Plutus] repository includes the
@@ -1837,13 +1833,13 @@ development environment that has a package manager, helpful error
 diagnostics, a language-server protocol (LSP) with auto-formatting, and
 popular editor integration (VSCode, NeoVim, Emacs). The language is well
 documented and offers a built-in testing framework that ensures proper
-and robust smart contract execution with property-based testing. Aiken’s
+and robust smart contract execution with property-based testing. Aiken's
 testing framework uses the same underlying virtual machine as in real
 smart contract execution, ensuring that memory consumption and contract
 behavior during testing are identical to those on the main network.
 
 Plinth has a more expressive type system than Aiken. However, it cannot
-utilize the full range of Haskell’s type system features, such as type classes and
+utilize the full range of Haskell's type system features, such as type classes and
 https://blog.ocharles.org.uk/guest-posts/2014-12-18-rank-n-types.html[rank-N polymorphism]. 
 Previously Plinth compiled and encoded data types using the
 https://en.wikipedia.org/wiki/Mogensen–Scott_encoding[Scott-Encoding] approach 
@@ -1865,7 +1861,7 @@ to assess the behavior of such smart contracts. Because Plinth is embedded
 in Haskell, it also works well with proof-assistant tools such as 
 https://wiki.portal.chalmers.se/agda/pmwiki.php[Agda], making it a
 good choice for projects that require a high level of security. Since
-Agda isn’t Haskell specific, it could also be used with Aiken. However,
+Agda isn't Haskell specific, it could also be used with Aiken. However,
 the gap to bridge between Aiken and Agda is larger than that between
 Plinth and Agda. Both languages compile to Plutus, so the logic of
 writing smart contracts in them is very similar, even though the syntax 
@@ -2421,7 +2417,7 @@ that is a wrapper around the [purple]#Integer# type. Then we use the
 instances for our custom type which contain functions for converting our custom 
 data type to the [purple]#Data# type back and forth. We use template Haskell, 
 that requires to add two single quotes in front of the type that return the 
-type’s name. After we have defined our redeemer type we write the 
+type's name. After we have defined our redeemer type we write the 
 validator logic same way as in the previous example, just that we now 
 convert the redeemer from [purple]#BuiltinData# to the [purple]#MySillyRedeemer# 
 type. We compile and serialize the validator same way as in the previous example. 
@@ -3498,7 +3494,7 @@ type we need to use the [blue]#makeIsDataSchemaIndexed# function that generates
 the [purple]#ToData#, [purple]#FromData#, [purple]#UnsafeFromData# and 
 [purple]#HasBlueprintSchema# instances for our custom type. As stated in 
 a previous section we use template Haskell, that requires to add two single 
-quotes in front of the type to return the type’s name. 
+quotes in front of the type to return the type's name. 
 
 Next comes the code for the validator. The validation logic says 
 that the funds can be unlocked only when the deadline has been
@@ -3576,7 +3572,7 @@ serializedParamVestingVal = serialiseCompiledCode compiledParamVestingVal
 ----
 
 First, we create the [purple]#VestingParams# type, which was previously called
-[purple]#VestingDatum#. It holds the beneficiary’s public key hash and the
+[purple]#VestingDatum#. It holds the beneficiary's public key hash and the
 deadline after which the beneficiary can claim the funds. Then we again use 
 Template Haskell and generate the necessary instances for our custom type. 
 We also use the [blue]#makeLift# function that generates for our custom data 
@@ -3699,7 +3695,7 @@ a package.json file] npm documentation pages.
 
 Let us look now at off-chain code that interacts with the vesting smart 
 contract `vestingVal` that we have defined in the previous section. Our code 
-will reside in a TypeScript file to leverage some of the type system’s features. 
+will reside in a TypeScript file to leverage some of the type system's features. 
 
 [source,typescript]
 ----
@@ -4296,7 +4292,7 @@ address, a value, and potentially a datum. In previous examples, the
 value was always ada. To include native tokens in a UTXO, they must be 
 explicitly created. 
 
-Let’s look again at the Haskell definition of the [purple]#Value# type. 
+Let us look again at the Haskell definition of the [purple]#Value# type. 
 This type is defined in the module `PlutusLedgerApi.V1.Value` and defines 
 an amount of ada and/or native tokens. 
 
@@ -4316,7 +4312,7 @@ representing a byte string. As said before, the currency symbol represents
 the hash of the minting policy and the `ada` token is defined by an empty 
 byte string both for currency symbol and token name, which means one 
 cannot mint ada. These two byte strings define a native token 
-or coin, while the integer represents the token’s amount. Additionally,
+or coin, while the integer represents the token's amount. Additionally,
 there is another type called [purple]#AssetClass#.  
 
 [source,haskell]
@@ -4408,7 +4404,7 @@ currently-executing script. The [purple]#TxInfo# data type, contains the
 [purple]#MintValue# type that is structured the same way as the [purple]#Value# 
 type. Minting policies are triggered if this field contains a non-zero 
 value. Each currency symbol defined in this variable activates the 
-corresponding minting policy, linking them through the policy’s hash. 
+corresponding minting policy, linking them through the policy's hash. 
 
 A minting policy requires like a spending validation script only 
 one input: the script context. If for the currently-executing script the 
@@ -4425,7 +4421,7 @@ receives its own script info and redeemer as input, and they share the same
 transaction information data type. All minting policies within a transaction 
 must pass for the transaction to succeed; otherwise, it fails. 
 
-Now, let’s examine an example of a minting policy where only the owner
+Now, Let us examine an example of a minting policy where only the owner
 of a specific public key, who signs the transaction, is permitted to
 mint or burn tokens. This key could represent a project or company
 acting like a central bank in traditional finance, responsible for
@@ -4624,7 +4620,7 @@ why every transaction has a unique hash was explained in section
 When minting an NFT, the idea is to include a specific parameter in the
 minting policy – namely, a UTXO transaction hash and ID – and have the policy 
 check that the transaction performing the minting consumes that specific UTXO. 
-Let’s look at an example of such minting policy. 
+Let us look at an example of such minting policy. 
 
 [source,haskell]
 ----
@@ -4927,8 +4923,8 @@ It returns a state monad parameterized by the potentially new state of
 the mock blockchain and a boolean that indicates whether the transaction
 that tried to update the mock blockchain was successful or not. If the
 transaction fails, the state will remain unchanged. In the body of the
-function, we first compute all the sender’s UTXOs from the blockchain,
-and then all the UTXOs on the blockchain excluding the sender’s ones.
+function, we first compute all the sender's UTXOs from the blockchain,
+and then all the UTXOs on the blockchain excluding the sender's ones.
 Then, we compute the total value that the sender owns, the UTXO that 
 the receiver will get, and the change amount that will go back to the
 sender. Next, we check if the sender has enough funds to create the
@@ -5096,7 +5092,7 @@ negativeRTimedValidator = $$(PlutusTx.compile [|| mkNegativeRTimedValidator||])
 
  ----------------------------------------------------------------
 
-Let’s now look at the unit test for this contract that uses the PSM
+Let us now look at the unit test for this contract that uses the PSM
 library. We can name the file for writing unit tests `UTNegativeRTimed.hs`.
 
 [source,haskell]
@@ -5165,7 +5161,7 @@ for the deadline, and the second is the redeemer. A deadline of 50
 should work, since we hard-code the waiting time before submitting the
 consuming transaction to 1,000.
 
-Let’s now explore helper functions:
+Let us now explore helper functions:
 
 [source,haskell]
 ----
@@ -5214,7 +5210,7 @@ In the second transaction, we use the [blue]#payToScript# function to send funds
 to a specified script, providing the script address, datum or datum
 hash, and the amount. The [blue]#lockingTx# function produces the spending
 transaction. We follow a similar approach to build the consuming
-transaction. Let’s now check from the REPL which types the [blue]#payToScript#
+transaction. Let us now check from the REPL which types the [blue]#payToScript#
 function accepts:
 
 [source,shell]
@@ -5255,7 +5251,7 @@ spendScript ::
 ----
 
 It takes a script, a transaction output reference, a redeemer and a
-datum. Let’s now look at the [blue]#testScript# function that defines our actual
+datum. Let us now look at the [blue]#testScript# function that defines our actual
 test:
 
 [source,haskell]
@@ -5323,7 +5319,7 @@ submitTx :: PubKeyHash -> Tx -> Run ()
 ----
 
 Next, we indicate that user two submits the transaction. At the end of
-the test, we check if users’ balances are as expected, if not, we log an
+the test, we check if users' balances are as expected, if not, we log an
 error.
 
 [source,shell]
@@ -5381,7 +5377,7 @@ possible, which is challenging with unit testing. With property testing,
 we can specify a property and then let the QuickCheck testing library
 generate numerous random tests. This increases our confidence in the
 smart contract behavior. This library is a Haskell library, and you can
-use it to test any code, not just smart contracts. Let’s now look at our
+use it to test any code, not just smart contracts. Let us now look at our
 property tests. We name the file that contains them
 `PTNegativeRTimed.hs`:
 
@@ -5458,7 +5454,7 @@ transaction with a positive redeemer submitted after the deadline always
 fails. Additionally, we check that a transaction with a negative
 redeemer submitted after the deadline always succeeds.
 
-Let’s now look at the helper functions we will use in the testing
+Let us now look at the helper functions we will use in the testing
 function:
 
 [source,haskell]
@@ -5522,7 +5518,7 @@ type. Because this type is simply a wrapper around an integer, we can
 randomly pick a number between 0 and 2,000 with the choose function and
 then return it as [purple]#POSIXTime#.
 
-Let’s now look at how we define our property functions for testing:
+Let us now look at how we define our property functions for testing:
 
 [source,haskell]
 ----
@@ -5572,7 +5568,7 @@ so these tests should also fail. In the third property test, the values
 for the redeemer and the deadline should be in a valid range, so these
 tests should pass.
 
-Let’s now look at the testing functions:
+Let us now look at the testing functions:
 
 [source,haskell]
 ----
@@ -5728,7 +5724,7 @@ to use Plinth to influence the conditions under which staking rewards
 can be withdrawn.
 
 Governing staking reward withdrawals with a Plutus script became
-possible after the Alonzo hard fork, which brought Plutus to Cardano’s
+possible after the Alonzo hard fork, which brought Plutus to Cardano's
 mainnet and testnet environments. Staking on Cardano operates in cycles
 called epochs, each lasting five days. As a result, staking activity on
 the mainnet typically requires waiting for at least one full epoch, or
@@ -5819,7 +5815,7 @@ corresponding Plutus script. If the script runs without errors, the
 withdrawal is successful; if it produces an error, the transaction
 becomes invalid.
 
-Now, let’s examine an example Plinth script that defines a stake
+Now, Let us examine an example Plinth script that defines a stake
 validator controlling withdrawals of rewards, parameterized by an
 address. This script allows withdrawals from corresponding staking
 credentials given by the script, provided that at least half of the
@@ -5914,7 +5910,7 @@ saveStakeValidator bech32 = do
 ----
 
 We use a typed version for our validator. In the [blue]#mkStakeValidator#
-function, the first argument, which is the address, is the script’s
+function, the first argument, which is the address, is the script's
 parameter. The next argument is the redeemer and since we do not need
 it, we can use unit for the redeemer type. Then follows the script
 context, and in the end, we return a Boolean.
@@ -6015,7 +6011,7 @@ be the first example of a stake address that is not based on a key pair,
 but on the script that we have just defined. Then, we need to register
 this stake address and delegate it to a pool. We can use a cardano-cli
 bash script to accomplish this. Cardano CLI explanations and script
-examples can be found in the Plutus Pioneer program’s
+examples can be found in the Plutus Pioneer program's
 https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[4th
 iteration] GitHub repository in third and fourth week code examples and
 lectures. We call the script below, `register-and-delegate.sh`.
@@ -6115,12 +6111,12 @@ ID we want to delegate to. We use the script `query-stake-pools.sh` and
 select the first pool available. All scripts referenced in the above
 code can be found in the
 https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration/code/Week08/scripts[code/Week08/script/]
-folder of the 4th iteration of the Plutus Pioneer program’s GitHub
+folder of the 4th iteration of the Plutus Pioneer program's GitHub
 repository.
 
 After querying the protocol parameters, we build our transaction. For
 the change address, we use the newly created address, ensuring that it
-is funded. The funds will come from user one’s original address, which
+is funded. The funds will come from user one's original address, which
 was based on a key pair. In principle, all the funds, except for the
 transaction costs, will go to this new address, where user one retains
 spending power, but the stake component has been replaced by our script.
@@ -6136,7 +6132,7 @@ staking key. Now, this is replaced by providing the certificate.
 
 We input the redeemer JSON file representing a unit and add the protocol
 parameters file. After building our transaction, we need to sign it
-using only user one’s payment key. Finally, we submit the transaction.
+using only user one's payment key. Finally, we submit the transaction.
 To use that script, we look up the UTXO available for spending using the
 `query-utxo-user1.sh` script.
 
@@ -6261,7 +6257,7 @@ stake address, we query the accumulated rewards with the
 created. We extract the amount using the _jq_ tool.
 
 Next, we calculate a second amount, ensuring that at least half of the
-withdrawn rewards go to user two’s address. We use a Linux command to
+withdrawn rewards go to user two's address. We use a Linux command to
 compute this amount, adding one in case the result of dividing the first
 amount by two is an odd number, which would round down.
 
@@ -6291,7 +6287,7 @@ following command:
 
 If we submit the transaction with the line that pays half of the rewards
 to user two, the transaction passes successfully. We can then query user
-two’s funds – we see that he has the initial UTXO and also a second one
+two's funds – we see that he has the initial UTXO and also a second one
 with rewards.
 
 [source,shell]
@@ -6344,11 +6340,11 @@ many algorithms and data structures. There are numerous applications,
 ranging from efficient representation and manipulation of sets of
 integers to the implementation of cryptographic primitives and fast
 searches. In particular, PlutusV3 enables converting integers to byte
-strings, which allows, for example, to hash arbitrary data, which hasn’t
+strings, which allows, for example, to hash arbitrary data, which hasn't
 been possible in the past.
 
 Cryptographic primitives form the foundation of blockchain technology.
-The choice of primitives significantly influences blockchain’s
+The choice of primitives significantly influences blockchain's
 capabilities. Because other blockchains choose different primitives than
 Cardano, it is challenging to interoperate with them. An example of
 interoperability is checking Ethereum signatures in Plutus, which is
@@ -6421,7 +6417,7 @@ than the number of audited projects.
 image::sc_loss_of_funds.png[width=635,height=421,title="Loss of funds, source: https://www.cyfrin.io/blog/competitive-vs-private-audits-comparison[Cyfrin blog]"]
 
 Nevertheless, a $1.1bn loss in audited projects is still high. This
-implies that an audit by itself may not always ensure a project’s
+implies that an audit by itself may not always ensure a project's
 safety. Other factors, such as the auditing methodology and the security
 features of the underlying blockchain also influence the safety of a project. 
 
@@ -6447,7 +6443,7 @@ https://iohk.io/en/research/library/[250 scientific papers] as of
 the time of writing. Some of the important research areas that IO
 targets are cryptography, software engineering, distributed systems,
 networks, formal verification, and programming languages. Ouroboros,
-Cardano’s consensus protocol, is explained in detail in section 
+Cardano's consensus protocol, is explained in detail in section 
 <<About the Ouroboros protocol>>. Ouroboros represents the outcome of long
 research presented in multiple papers. It is the first blockchain
 consensus protocol developed through peer-reviewed research with
@@ -6492,30 +6488,29 @@ when a user submits a transaction and when it is processed, which means the
 transaction can fail even after the user pays the transaction fee. 
 One can read more on the topics of parallelism and concurrency in Cardano 
 in the following 
-https://www.essentialcardano.io/article/concurrency-and-all-that-cardano-smart-contracts-and-the-eutxo-model[IOG blog]
+https://www.essentialcardano.io/article/concurrency-and-all-that-cardano-smart-contracts-and-the-eutxo-model[IO blog]
 and https://academy.geniusyield.co/articles/what-is-cardano[GeniusYield Academy blog]. 
 
 Beside this also 
 https://iohk.io/en/blog/posts/2022/04/13/boosting-cardano-s-throughput-with-script-referencing/[reference
 inputs] enable multiple transactions referencing the same UTXO, which
-is possible because none of those transactions consumes this particular
+is possible because none of those transactions consumes the referenced 
 UTXO. We also note that in Cardano, it is possible that a user forces an invalid
 transaction to be processed, which will fail. In such a case, the user
 will be charged fees because an attacker could try to flood the network
 with invalid transactions to congest it, and the fees make such an
-attack very expensive. EUTXO’s determinism also means that users always
+attack very expensive. EUTXO's determinism also means that users always
 know how much a transaction will cost before submitting it. The reason
 for this is that protocol parameters, rather than network traffic,
 govern pricing on Cardano. 
 
-https://iohk.io/en/blog/posts/2021/09/06/no-surprises-transaction-validation-on-cardano/[This
-blog post] explains in more detail the determinism of transaction and
-script validation in Cardano. According to this blog, in-determinism
-means that the effect of a transaction on the ledger cannot be predicted
-before execution, and it further explains the key points that make the
-outcomes of script and transaction validation predictable on Cardano.
-
-These are:
+This https://iohk.io/en/blog/posts/2021/09/06/no-surprises-transaction-validation-on-cardano/[IO 
+blog] explains in more detail the determinism of transaction and script 
+validation in Cardano. The blog states that account-based blockchains, 
+like Ethereum are in-deterministic, which means that they cannot guarantee 
+the predictability of the transaction's effect on-chain. It further explains 
+the key points that make the outcomes of script and transaction validation 
+predictable on Cardano which are: 
 
 [arabic]
 . The script interpreter will always terminate and return the same
@@ -6539,35 +6534,36 @@ market maker] (AMM) design model. In an AMM-style DEX, smart contracts
 enable automated trading of cryptocurrency pairs, which are often a 
 fungible token or a native cryptocurrency together with a stablecoin. 
 
-Let us consider an example of an AMM DEX where the deposited token pair
-is ETH and USDT (Tether), a stablecoin pegged to USD, and they need to
-be of equivalent value. If the price of 1 ETH is 1,000 USD and a
-liquidity provider wants to add 1 ETH to the pool, he must also add
-1,000 USDT. Then, over time, the price of ETH rises to 3,000 USD, which
-is three times larger than the initial price. During this time,
+To explain how impermanent loss works let us consider an example of 
+an AMM DEX where the deposited token pair is ETH and USDT (Tether), 
+a stablecoin pegged to the value of the USD. If the price of 1 ETH is 
+1,000 USD and a liquidity provider wants to add 1 ETH to the pool, 
+he must also add 1,000 USDT. Then, over time, the price of ETH rises 
+to 3,000 USD, which is three times larger than the initial price. 
+During this time, 
 https://www.coindesk.com/learn/crypto-arbitrage-trading-how-to-make-low-risk-gains/#:~:text=In%20its%20simplest%20form%2C%20crypto,involves%20little%20or%20no%20risks[arbitrage traders] 
-add USDT to the pool and remove ETH from it to take advantage
-of small price differences across two different markets. The pool
-reserves change such that the initial amount of ETH gets divided by
-1.732, and the USDT amount gets multiplied by 1.732, which is the square
-root of three. This means that now every ETH in the pool is backed by
-3,000 USDT. When the same liquidity provider withdraws the funds, they
-get around 0.5774 ETH and 1,732 USDT, which at the current market price
+add USDT to the pool and remove ETH from it to take advantage of small 
+price differences across two different markets. The pool reserves change 
+such that the initial amount of ETH that the liquidity provider added, gets 
+divided by 1.732 (the square root of 3), and the USDT amount gets multiplied 
+by 1.732. That means that now every ETH in the pool is backed by 3,000 USDT. 
+If the liquidity provider now wants to withdraw his funds, he gets around 
+0.5774 ETH and 1,732 USDT, which at the current market price
 of ETH adds to around 3,464 USD. But if the trader had held on to the
-initial funds of one ETH and 1,000 USDT, they would now have 4,000 USD,
+initial funds of one ETH and 1,000 USDT, he would now have 4,000 USD,
 meaning his impermanent loss was around 536 USD. The reason why it pays
 off to be a DEX liquidity provider is because they get a percentage of
 the trading fees. Arbitrage and normal traders that both use the pool 
 pay for every transaction they make. The percentage of trading fees that 
-liquidity providers get is often larger than the amount of impermanent loss.
-https://iohk.io/en/blog/posts/2022/05/27/everything-you-always-wanted-to-know-about-impermanent-loss-and-were-afraid-to-ask/[This
-blog post] states that the EUTXO accounting model is a suitable
+liquidity providers can be larger than the amount of impermanent loss. This 
+https://iohk.io/en/blog/posts/2022/05/27/everything-you-always-wanted-to-know-about-impermanent-loss-and-were-afraid-to-ask/[IO 
+blog] states that the EUTXO accounting model is a suitable
 environment for DEXs using the order book model. An order book model
 simply lists the buy/sell orders, and if there is supply and demand, the
 asset can be traded. An advantage of this design is concentrated
 liquidity (liquidity allocated within a custom price range). This
 minimizes the effects of impermanent loss, creating a more stable
-environment for liquidity providers. The blog post explains in more
+environment for liquidity providers. The blog explains in more
 detail how impermanent loss affects DEXs built on the account-based
 accounting models compared to EUTXO.
 
@@ -6625,10 +6621,10 @@ contracts to manage tokens and to set the allowed transaction logic,
 as Ethereum does with https://en.wikipedia.org/wiki/Ethereum#ERC20[ERC-20 tokens]. 
 Buying or selling these tokens requires interaction with a smart contract, which
 incurs higher transaction costs. Such tokens also carry a higher risk
-because the security of the token is based on the smart contract’s
+because the security of the token is based on the smart contract's
 correctness and security.
-https://www.emurgo.io/press-news/why-crypto-projects-built-on-cardano-are-more-secure/[This
-Emurgo blog post] states that blockchains that use smart contracts to
+This https://www.emurgo.io/press-news/why-crypto-projects-built-on-cardano-are-more-secure/[Emurgo 
+blog] states that blockchains that use smart contracts to 
 manage native tokens can sometimes require smart contracts to have a
 hierarchy of permissions, as in a DEX, for example. If in such a DEX,
 the web of authority delegations has a complex structure, design
@@ -6637,7 +6633,7 @@ the system, potentially resulting in a user who wants to swap his tokens
 to lose their funds. So, a user who wants to use such a DEX must be sure
 that all the contracts are safe. Another security advantage of native
 tokens is that over- and under-flow vulnerabilities present in ERC-20
-tokens are eliminated, as Cardano’s scripting language does not have
+tokens are eliminated, as Cardano's scripting language does not have
 fixed-size integers, and the ledger itself tracks the movement of
 tokens. The table below compares the security features of Ethereum
 ERC-20 tokens with Cardano native tokens.
@@ -6697,11 +6693,20 @@ with a global state that might influence the final output. Besides
 auditing smart contracts, off-chain code and other parts of a DApp may
 also be audited to assess the security of the entire application.
 
-These are some of Cardano's security features. The security features and
-best practices of the Plutus and Marlowe smart contract languages are
-further discussed in the next four sections. Because those languages
-follow different best practices for developing smart contracts, we will
-explain the security advantages and best practices for them separately. 
+In addition to section <<The EUTXO model>> we list further learning 
+resources about the EUTXO model: 
+
+* https://ucarecdn.com/6d3813f2-6886-4c61-833f-e78ba5f887d7/EUTXOhandbook_for_EC.pdf[The EUTXO Handbook]
+* https://iohk.io/en/research/library/papers/the-extended-utxo-model/[The Extended UTXO Model scientific paper]
+* https://docs.cardano.org/about-cardano/learn/eutxo-explainer[EUTXO explained on Cardano Docs]
+* https://www.essentialcardano.io/infographic/eutxo-v-account-based-models[EUTXO vs account-based models infographic]
+
+In this section we presented some of Cardano's security features. The 
+security features and best practices of the Plutus and Marlowe smart 
+contract languages are further discussed in the remaining sections of 
+this chapter. Because those languages follow different best practices 
+for developing smart contracts, we will explain the security advantages 
+and best practices for them separately. 
 
 ==== Plutus security
 
@@ -6718,7 +6723,7 @@ the compiled Plutus scripts during transaction validation with the help
 of the Plutus virtual machine (VM). A VM is a virtual environment that 
 executes code securely inside a node, when talking in context of a blockchain. 
 When a Cardano node executes validator code compiled to untyped Plutus 
-core this code does not access the computer’s resources directly as a 
+core this code does not access the computer's resources directly as a 
 normal computer programs would do. This is because of security reasons,
 since VMs offer a safe execution environment. Every Cardano node has a 
 built-in Plutus virtual machine that is currently written in Haskell. 
@@ -6730,7 +6735,7 @@ Plutus is also a variant of
 https://en.wikipedia.org/wiki/Lambda_calculus[lambda calculus],
 specifically, https://en.wikipedia.org/wiki/System_F[System F]. Lambda
 calculus is a formal system in mathematical logic for expressing
-computation based on function abstraction. GHC’s internal language (GHC
+computation based on function abstraction. GHC's internal language (GHC
 Core) is also based on System F, but it does differ from Plutus in some
 ways. The Plutus language was designed with the following requirements
 in mind:
@@ -6778,9 +6783,9 @@ is usually stored in binary representation. It is wise to break down
 compilation pipelines by introducing intermediate languages to ensure no
 step is too large, and to test each step independently.
 
-For more information about the compilation process, refer to
-https://iohk.io/en/blog/posts/2021/02/02/plutus-tx-compiling-haskell-into-plutus-core/[this
-blog post].
+For more information about the compilation process, refer to this 
+https://iohk.io/en/blog/posts/2021/02/02/plutus-tx-compiling-haskell-into-plutus-core/[IO 
+blog]. 
 
 You can also use a different high-level language if you have a compiler
 that compiles to untyped Plutus core. Some projects are doing this by 
@@ -6841,14 +6846,14 @@ https://hackage.haskell.org/package/QuickCheck[QuickCheck] or
 https://hackage.haskell.org/package/hedgehog[Hedgehog], which allow
 developers to state properties that should always be in a program. Those
 libraries use sophisticated algorithms to generate test cases and search
-for minimal counterexamples that violate those properties.
-https://iohk.io/en/blog/posts/2020/04/09/merging-formal-methods-and-agile-to-build-cardano/[This
-blog post] further explains that for code interacting with the external
+for minimal counterexamples that violate those properties. This 
+https://iohk.io/en/blog/posts/2020/04/09/merging-formal-methods-and-agile-to-build-cardano/[IO blog] 
+further explains that for code interacting with the external
 world, particularly network applications such as the Cardano node, it
 can be hard to find minimal counterexamples. This is attributed to the
 fact that the execution order is not deterministic because it can change
 every time the software runs. In other words, the same code can be run
-hundreds of times and only fail once. The blog post explains that a way
+hundreds of times and only fail once. The blog explains that a way
 to get around this is by using simulations with deterministic execution
 order. Running tests in such a simulation allows to reliably find and
 fix a class of bugs in testing, which would otherwise only occur
@@ -6912,9 +6917,9 @@ a store.
 * Level 2: in-depth audit
 * Level 3: formal verification.
 
-The below descriptions were originally included in
-https://iohk.io/en/blog/posts/2021/10/25/new-certification-levels-for-smart-contracts-on-cardano/[this
-blog post]:
+The below descriptions were originally included in this 
+https://iohk.io/en/blog/posts/2021/10/25/new-certification-levels-for-smart-contracts-on-cardano/[IO 
+blog]:
 
 * *Automated tooling* will give continual assurance about a range of
 properties for smart contracts. It covers the discovery of different
@@ -6937,7 +6942,7 @@ requirements defined at the outset.
 When using formal verification for smart contracts, the general
 procedure is to first define the model that serves as an exact
 representation of the smart contract behavior. Then, the smart
-contract’s specifications are defined in a language that both the model
+contract's specifications are defined in a language that both the model
 and the verification tools can comprehend. After that, the process of
 verification can start, where mathematical tools and logic are used to
 prove the correctness of the defined assumptions. In the end, the
@@ -6974,16 +6979,16 @@ is provided in a more standardized way.
 
 Different companies may use different approaches to perform smart
 contract audits. Sometimes, auditing companies publicly disclose their
-methodology.
-https://www.tweag.io/blog/2023-05-11-audit-smart-contract/[This Tweag
-blog post] presents the auditing process in their company. Beside
+methodology. This 
+https://www.tweag.io/blog/2023-05-11-audit-smart-contract/[Tweag 
+blog] presents the auditing process in their company. Beside
 auditing smart contracts, other parts of a DApp can be audited. The
 off-chain code, the backend, and the frontend of the DApps webpage, for
 example. After the audit process, the vulnerabilities are usually
 identified and grouped into categories:
 
 * *Critical vulnerabilities* that pose a big risk for the DApp
-* *High vulnerabilities* that may affect a large portion of the DApp’s
+* *High vulnerabilities* that may affect a large portion of the DApp's
 security
 * *Medium vulnerabilities* are issues that affect the proper working
 of a DApp but are not security threats that would need immediate action
@@ -7052,7 +7057,7 @@ arbitrary logic in it. This gives the option to statically analyze how
 long a contract will run. All Marlowe contracts are guaranteed to have a
 finite lifetime. There are other things Marlowe contracts take care of,
 such as ensuring that no funds are forever locked in a contract. In
-Cardano’s implementation of Marlowe, there is an edge case where it is
+Cardano's implementation of Marlowe, there is an edge case where it is
 possible to lock funds by creating a contract that exceeds the
 limitations of the blockchain, for example, by making too many external
 payments in the same transaction. The chapter _Tools for Detecting
@@ -7062,7 +7067,7 @@ best practices] page explains how to prevent such a scenario. In the
 real world, you can enforce contracts by using the legal system or
 financial regulations. However, due to the decentralized nature of the
 blockchain, this may not be possible. When you use Marlowe to create a
-smart contract, you can’t force anyone to make a payment that fulfills a
+smart contract, you can't force anyone to make a payment that fulfills a
 contract. Marlowe considers that and implements a finite lifetime
 mechanism to wait for someone to make a payment. If the contract is
 waiting for an action, like a payment, and that action does not happen,
@@ -7085,7 +7090,7 @@ predetermined amount when the contract was designed;
 {empty}(2) existing Marlowe contract logic cannot be revised. To ensure
 the above-mentioned safety guarantees, the following programming
 language constructs are absent from the Marlowe language to ensure
-Marlowe’s safety:
+Marlowe's safety:
 
 * Recursion is not allowed.
 * Looping is not supported.
@@ -7186,14 +7191,13 @@ difference between formal specification versus the Plinth
 implementation, and the proof of money preservation theorem. The issues
 were addressed before deploying Marlowe on mainnet. The full
 https://github.com/tweag/tweag-audit-reports/blob/main/Marlowe-2023-03.pdf[audit
-report] can be found at Tweag’s GitHub page. IO also issued a report on
+report] can be found at Tweag's GitHub page. IO also issued a report on
 the
 https://github.com/input-output-hk/marlowe/blob/master/response-to-audit-report.md[Marlowe
 GitHub page] explaining the actions taken. You can read a short
-description of the issues and how they were addressed
-https://iohk.io/en/blog/posts/2023/06/27/a-comprehensive-guide-to-marlowes-security-audit-outcomes-built-in-functional-restrictions-and-ledger-security-features/[in
-this blog post], which also talks about the security of Marlowe and
-Cardano.
+description of the issues and how they were addressed in this 
+https://iohk.io/en/blog/posts/2023/06/27/a-comprehensive-guide-to-marlowes-security-audit-outcomes-built-in-functional-restrictions-and-ledger-security-features/[IO 
+blog], which also talks about the security of Marlowe and Cardano. 
 
 ==== Marlowe best practices
 
