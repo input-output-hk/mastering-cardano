@@ -1,8 +1,8 @@
 = TO DO:
 
-- Updated up to Plomin hard fork, a lot has happened since.
+- Updated up to Plomin hard fork, a lot has happened since... what is the deadline?
 - Asciidoc format = https://gist.github.com/powerman/d56b2675dfed38deb298
-- set up a draft is in a gogle doc, share with SMEs for review:
+- set up a draft is in a gogle doc, share with SMEs for review.
 
 
 = Chapter 5: Cardano governance 
