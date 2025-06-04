@@ -1792,7 +1792,7 @@ academic papers and talks.
 ==== Plinth in comparison to Aiken
 
 Plinth enables developers to write and compile their on-chain code to Plutus, 
-or more preceisly to untyped Plutus core (UPLC) which the Cardano nodes execute. 
+or more precisely to untyped Plutus core (UPLC) which the Cardano nodes execute. 
 Plinth provides a compiler plugin for GHC (the Glasgow Haskell Compiler) that 
 compiles to Plutus. More details about the Plinth-to-Plutus compilation pipeline 
 are outlined in section <<Plutus security>>. 
@@ -1817,9 +1817,9 @@ illustrated on the diagram below:
 
 image::sc_aiken_compilation.png[width=590,height=390,title="Aiken code transformation, source: https://cardanofoundation.org/blog/aiken-the-future-of-smart-contracts[CF blog]"]
 
-Aiken was developed by Lucas Rosa and other developers with the 
-support of https://txpipe.io/[TxPipe] and the https://cardanofoundation.org/[Cardano Foundation]. 
-Currently IO is also supporting the development of Aiken. 
+Aiken was developed with the support of https://txpipe.io/[TxPipe] 
+and the https://cardanofoundation.org/[Cardano Foundation]. 
+Currently, IO is also supporting the development of Aiken. 
 More information about maintenance and support can be found at the 
 https://aiken-lang.org/credits[offcial page]. Aiken takes inspiration 
 from many modern languages such as Gleam, Rust, and Elm, 
@@ -1838,9 +1838,13 @@ testing framework uses the same underlying virtual machine as in real
 smart contract execution, ensuring that memory consumption and contract
 behavior during testing are identical to those on the main network.
 
-Plinth has a more expressive type system than Aiken. However, it cannot
-utilize the full range of Haskell's type system features, such as type classes and
-https://blog.ocharles.org.uk/guest-posts/2014-12-18-rank-n-types.html[rank-N polymorphism]. 
+Plinth has a more expressive type system than Aiken. It supports basic 
+Haskell features such as regular algebraic data types, type classes, higher 
+order functions, parametric polymorphism, etc. However, it doesn’t support 
+many of Haskell’s more advanced features. For more information, see the 
+_Differences From Haskell_ section at the official 
+https://plutus.cardano.intersectmbo.org/docs/using-plinth/differences-from-haskell[Plinth 
+user guide]. 
 Previously Plinth compiled and encoded data types using the
 https://en.wikipedia.org/wiki/Mogensen–Scott_encoding[Scott-Encoding] approach 
 (https://well-typed.com/blog/2022/08/plutus-cores[Haskell example], see 
@@ -1848,10 +1852,10 @@ section _In Haskell. Scott encoding_),
 which created an upfront cost that caused the difference in
 execution costs between Haskell and other frameworks like Aiken. With the 
 introduction of PlutusV3, sums of products allow for encoding data types 
-in a more compact and cost-effective way. Also Plutus now provides 
+in a more compact and cost-effective way. Also, Plutus now provides 
 a way to deal directly with the [purple]#Data# type for all Plutus script 
 versions (V1, V2 and V3) that allows for better code optimization. 
-The https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/optimizing-scripts-with-asData[Plutus user guide] 
+The https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/optimizing-scripts-with-asData[Plinth user guide] 
 provides instructions on that. Aiken compiles all its custom data types 
 into the builtin Plutus type [purple]#Data#. We will look at this data 
 type in section <<Simple validation scripts>>. 
@@ -1860,19 +1864,23 @@ Both languages are purely functional, which makes it easier for an auditor
 to assess the behavior of such smart contracts. Because Plinth is embedded 
 in Haskell, it also works well with proof-assistant tools such as 
 https://wiki.portal.chalmers.se/agda/pmwiki.php[Agda], making it a
-good choice for projects that require a high level of security. Since
-Agda isn't Haskell specific, it could also be used with Aiken. However,
-the gap to bridge between Aiken and Agda is larger than that between
-Plinth and Agda. Both languages compile to Plutus, so the logic of
-writing smart contracts in them is very similar, even though the syntax 
-is different. Learning one language will help a developer understand any
-other Cardano smart contract language that compiles to Plutus. 
+good choice for projects that require a high level of security. You can read 
+more about the topic of formally verifying Haskell code with the Agda proof 
+assistant in the scientific paper 
+https://iohk.io/en/research/library/papers/reasonable-agda-is-correct-haskell-writing-verified-haskell-using-agda2hs/[Reasonable 
+Agda Is Correct Haskell: Writing Verified Haskell using agda2hs].
+Since Agda isn't Haskell specific, it could also be used with Aiken. However,
+the gap to bridge between Aiken and Agda is larger than that between Plinth 
+and Agda. Both Plinth and Aiken compile to Plutus, so the logic of writing 
+smart contracts in them is very similar, even though the syntax is different. 
+Learning one language will help a developer understand any other Cardano smart 
+contract language that compiles to Plutus. 
 
 To learn the Aiken smart contract language, one can check out the
 https://aiken-lang.org/language-tour/primitive-types[Language tour] on
 the official documentation, which also provides a walkthrough of creating a 
 link:++https://aiken-lang.org/example--hello-world/basics++[Hello World project], 
-covering the following topics:
+covering the following topics: 
 
 * pre-requisites
 * scaffolding
@@ -1886,7 +1894,7 @@ The https://github.com/aiken-lang/awesome-aiken[Awesome Aiken] repository
 provides many links to Aiken libraries, DApps, tutorials and video
 lessons. One can also read the https://piefayth.github.io/blog/pages/aiken1/[Aiken for amateurs]
 tutorial that is at the time of writing not included in the Awesome
-Aiken repository. For those which prefer to learn by a book the 
+Aiken repository. For those which prefer to learn by a book, the 
 https://book.io/book/i-can-aiken/[I can Aiken] book, written by John 
 Green provides comprehensive information and learning examples on Aiken. 
 
@@ -2473,7 +2481,7 @@ We call a data type _data-backed_ if it is representationally equivalent to [pur
 Since Plutus core now provides a way to deal directly with the [purple]#Data# type 
 for all Plutus script versions (V1, V2 and V3), developers can move away from Sums of 
 Products or Scott encoding. The  
-https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/optimizing-scripts-with-asData[Plutus user guide] 
+https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/optimizing-scripts-with-asData[Plinth user guide] 
 provides instructions on how to optimize scripts with the `PlutusTx.asData` 
 module that contains template Haskell (TH) code for encoding algebraic data 
 types (ADTs) as `Data` objects in Plutus Core such that they become _data-backed_ 
@@ -4802,7 +4810,9 @@ tokens] overview on Cardano Docs
 * https://developers.cardano.org/docs/native-tokens/[Discover native
 tokens] section on the Developer Portal
 * https://cardano-ledger.readthedocs.io/en/latest/explanations/index.html[Ledger
-explanations] page, which also covers native tokens.
+explanations] page, which also covers native tokens
+* The https://iohk.io/en/research/library/papers/native-custom-tokens-in-the-extended-utxo-model/[Native 
+Custom Tokens in the Extended UTXO Model] scientific paper. 
 
  -----------------------------------------------
 
@@ -6390,7 +6400,7 @@ language itself. Also Plutus now provides a way to deal directly with the
 [purple]#Data# type for all Plutus script versions (V1, V2 and V3) that 
 allows for better code optimization. This is discussed further in section 
 <<Simple validation scripts>>. The 
-https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/optimizing-scripts-with-asData[Plutus user guide] 
+https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/optimizing-scripts-with-asData[Plinth user guide] 
 also provides information on that. 
 
 === Smart contract security and best practices
@@ -6474,35 +6484,31 @@ There is no global state and a smart contract only sees data contained
 in the script context that provides access to the datum if present, the 
 redeemer, all inputs and outputs and other transaction information. 
 Section <<Plutus smart contracts>> explains these concepts in detail.
-Because of this transactions are deterministic since their outcome is 
+Because of this, transactions are deterministic since their outcome is 
 predictable. If the inputs to a valid transaction are not present at the
 time of submission, the submitted transaction will not be processed, and
 the user will not be charged any fees. Since transactions are deterministic 
 in EUTXO, multiple transactions within a block that target the same validator 
 can be processed. That works only if the transactions consume different 
-inputs. In Ethereum this could be done in theory, while in practice a 
-transaction targeting the same validator as another transaction inside 
-a block could alter the global state such that second transaction would fail 
-after the first one succeeds. This means that the state can change between 
-when a user submits a transaction and when it is processed, which means the 
-transaction can fail even after the user pays the transaction fee. 
-One can read more on the topics of parallelism and concurrency in Cardano 
-in the following 
-https://www.essentialcardano.io/article/concurrency-and-all-that-cardano-smart-contracts-and-the-eutxo-model[IO blog]
-and https://academy.geniusyield.co/articles/what-is-cardano[GeniusYield Academy blog]. 
-
-Beside this also 
+inputs. Beside this also 
 https://iohk.io/en/blog/posts/2022/04/13/boosting-cardano-s-throughput-with-script-referencing/[reference
 inputs] enable multiple transactions referencing the same UTXO, which
 is possible because none of those transactions consumes the referenced 
-UTXO. We also note that in Cardano, it is possible that a user forces an invalid
-transaction to be processed, which will fail. In such a case, the user
-will be charged fees because an attacker could try to flood the network
-with invalid transactions to congest it, and the fees make such an
-attack very expensive. EUTXO's determinism also means that users always
-know how much a transaction will cost before submitting it. The reason
-for this is that protocol parameters, rather than network traffic,
-govern pricing on Cardano. 
+UTXO. These things make Cardano suitable for parallelism and concurrency.
+One can read more about these topics in the following 
+https://www.essentialcardano.io/article/concurrency-and-all-that-cardano-smart-contracts-and-the-eutxo-model[IO blog]
+and https://academy.geniusyield.co/articles/what-is-cardano[GeniusYield Academy blog]. 
+
+In Ethereum, transactions that target the same validator can be processed 
+within the same block, but they both do not necessarily succeed, since the 
+first transaction could alter the state such that the second transaction fails. 
+Because the state can change between when a user submits a transaction and 
+when it is processed, this means an Ethereum transaction can fail after 
+the user pays the transaction fee. We note that in Cardano, it is possible 
+that a user forces an invalid transaction to be processed, which will fail. 
+In such a case, the user will be charged fees because an attacker could try 
+to flood the network with invalid transactions to congest it, and the fees 
+make such an attack very expensive. 
 
 This https://iohk.io/en/blog/posts/2021/09/06/no-surprises-transaction-validation-on-cardano/[IO 
 blog] explains in more detail the determinism of transaction and script 
@@ -6510,7 +6516,7 @@ validation in Cardano. The blog states that account-based blockchains,
 like Ethereum are in-deterministic, which means that they cannot guarantee 
 the predictability of the transaction's effect on-chain. It further explains 
 the key points that make the outcomes of script and transaction validation 
-predictable on Cardano which are: 
+predictable on Cardano, which are: 
 
 [arabic]
 . The script interpreter will always terminate and return the same
@@ -6523,9 +6529,12 @@ script validation
 altered by an adversary in a way that causes scripts to fail
 . Applying a transaction in the EUTXO ledger model is deterministic.
 
+Also, transaction fees are deterministic in Cardano. A user knows how much a 
+transaction will cost before he submits it. The reason for this is that protocol 
+parameters, rather than network traffic, govern pricing on Cardano. 
 Determinism of fees and transactions can also be advantageous in Web3
 applications, such as decentralized exchanges (DEXs). On DEXs users trade 
-with the help smart contracts that eliminate the need of a central entity 
+with the help of smart contracts that eliminate the need for a central entity 
 which is in centralized exchanges holding custody of traders tokens. 
 Liquidity providers that provide token pairs to DEXs such that normal 
 users can trade those tokens, face the issue of impermanent loss on DEXs 
@@ -6534,7 +6543,7 @@ market maker] (AMM) design model. In an AMM-style DEX, smart contracts
 enable automated trading of cryptocurrency pairs, which are often a 
 fungible token or a native cryptocurrency together with a stablecoin. 
 
-To explain how impermanent loss works let us consider an example of 
+To explain how impermanent loss works, let us consider an example of 
 an AMM DEX where the deposited token pair is ETH and USDT (Tether), 
 a stablecoin pegged to the value of the USD. If the price of 1 ETH is 
 1,000 USD and a liquidity provider wants to add 1 ETH to the pool, 
@@ -6551,11 +6560,11 @@ If the liquidity provider now wants to withdraw his funds, he gets around
 0.5774 ETH and 1,732 USDT, which at the current market price
 of ETH adds to around 3,464 USD. But if the trader had held on to the
 initial funds of one ETH and 1,000 USDT, he would now have 4,000 USD,
-meaning his impermanent loss was around 536 USD. The reason why it pays
+meaning, his impermanent loss was around 536 USD. The reason why it pays
 off to be a DEX liquidity provider is because they get a percentage of
 the trading fees. Arbitrage and normal traders that both use the pool 
 pay for every transaction they make. The percentage of trading fees that 
-liquidity providers can be larger than the amount of impermanent loss. This 
+liquidity providers get can be larger than the amount of impermanent loss. This 
 https://iohk.io/en/blog/posts/2022/05/27/everything-you-always-wanted-to-know-about-impermanent-loss-and-were-afraid-to-ask/[IO 
 blog] states that the EUTXO accounting model is a suitable
 environment for DEXs using the order book model. An order book model
@@ -6567,18 +6576,18 @@ environment for liquidity providers. The blog explains in more
 detail how impermanent loss affects DEXs built on the account-based
 accounting models compared to EUTXO.
 
-Cardano's design makes also front-running invasion attacks harder to 
+Cardano's design also makes front-running invasion attacks harder to 
 carry out that could target transactions on a decentralized exchange. 
 The Cardano node is designed such that it processes transactions in the 
 same order as they arrive into the mempol independent of the transaction 
 fees associated with them. This is not the case for all blockchains where 
 a node might favor transactions that carry higher fees. It is still 
-possible for an adversary that operates a stake pool inspect transactions 
+possible for an adversary that operates a stake pool to inspect transactions 
 that arrive in the mempool since they are not encrypted. He could then create his own 
 transaction with similar parameters and insert it in front of the transaction
-that he received in his pool. In reality this is hard to achieve because 
+that he received in his pool. In reality, this is hard to achieve because 
 Cardano's mainnet has a high number of block producing nodes (around 3000 
-at the time of writing) and also because of Cardano's design none of those 
+at the time of writing) and also because of Cardano's design, none of these 
 nodes controls a significant amount of staked ada. You can read more about 
 this topic in chapter <<Stake pools and stake pool operations>>. We also 
 note that for transactions that interact with the same validator and spend 
@@ -6594,8 +6603,8 @@ the short term, give up control of a transaction when it calls another
 contract. This other contract could then make recursive withdrawal calls 
 to the first contract and drain its funds before the first contract 
 updates its state. This is known as a reentrance attack. Because this 
-is possible in Ethereum it sometimes makes the effect of a transaction 
-on the ledger hard to predict. Such an attack happened to the DAO smart 
+is possible in Ethereum, it sometimes makes the effect of a transaction 
+on the ledger, hard to predict. Such an attack happened to the DAO smart 
 contract https://www.coindesk.com/learn/understanding-the-dao-attack/[hacked in
 2016]. On that occasion, 3.6m ETH (worth around 50 million USD at the time)
 was affected. Such attacks are not possible in Cardano due to the design
@@ -6606,11 +6615,11 @@ and known in advanced before submitting a transaction. Such a case is
 possible for instance if we want to make sure that a transaction runs 
 a minting policy in tandem with a spending script. We can check in the 
 spending script that tokens from that policy are being minted. And in 
-the minting policy we can check that a UTXO from that spending address 
+the minting policy, we can check that a UTXO from that spending address 
 is being consumed in the transaction. Those validators are not _calling_ 
 each other, but we know they have to be both triggered by a single 
 transaction, since we enforce this condition inside those validators.  
-When we build a transaction we have to specify all the validators that 
+When we build a transaction, we have to specify all the validators that 
 run and all their inputs and outputs, so there's no way that an _untrusted_ 
 validator can take over that transaction, since it's not part of it. 
 
@@ -6632,44 +6641,37 @@ mistakes can happen. This can cause an attacker to be able to exploit
 the system, potentially resulting in a user who wants to swap his tokens
 to lose their funds. So, a user who wants to use such a DEX must be sure
 that all the contracts are safe. Another security advantage of native
-tokens is that over- and under-flow vulnerabilities present in ERC-20
-tokens are eliminated, as Cardano's scripting language does not have
-fixed-size integers, and the ledger itself tracks the movement of
-tokens. The table below compares the security features of Ethereum
-ERC-20 tokens with Cardano native tokens.
+tokens is that over- and under-flow vulnerabilities are not present, 
+as Cardano's scripting language does not have fixed-size integers and 
+the ledger itself tracks the movement of tokens. The table below summarizes   
+some of the security features of Cardano native tokens. 
 
-[cols="25,^15,^15,45", options="header"]
+[cols="40,60", options="header"]
 |===
-|
-|ERC20
 |Native tokens
 |Comment
 
-|User errors in copying standard code
-|YES
-|NO
+|No user errors in copying standard code
 |All shared functionality is provided by the ledger
 
-|Over-/under-flow vulnerabilities
-|YES
-|NO
+|No over-/under-flow vulnerabilities
 |Cardano's scripting languages don't have fixed-size integers
 
-|Unprotected functions
-|YES
-|NO
+|No unprotected functions
 |User code is called only in very specific cases to validate minting
 
-|Denial of service via gas price attacks
-|YES
-|NO
-|Denial of service attacks on the entire system are still possible
+|No denial of service via gas price attacks
+|Denial of service attacks on the entire system are not possible
 |===
 
-A comparison of various characteristics between Ethereum ERC-20 and
-Cardano native tokens can be found on
-https://cardano-ledger.readthedocs.io/en/latest/explanations/features.html[this
-page].
+As in the <<Minting policies>> section we again state that further 
+information on Cardano native tokens can be found at: 
+
+* https://docs.cardano.org/developer-resources/native-tokens[Official Cardano docs]
+* https://developers.cardano.org/docs/native-tokens/[Cardano developers docs]
+* https://cardano-ledger.readthedocs.io/en/latest/explanations/[Cardano ledger docs]
+* The https://iohk.io/en/research/library/papers/native-custom-tokens-in-the-extended-utxo-model/[Native 
+Custom Tokens in the Extended UTXO Model] scientific paper. 
 
 Cardano also enables smooth upgrades to its protocol using a hard fork
 combinator (HFC). Hard forks introduce radical changes to the blockchain
@@ -6701,7 +6703,7 @@ resources about the EUTXO model:
 * https://docs.cardano.org/about-cardano/learn/eutxo-explainer[EUTXO explained on Cardano Docs]
 * https://www.essentialcardano.io/infographic/eutxo-v-account-based-models[EUTXO vs account-based models infographic]
 
-In this section we presented some of Cardano's security features. The 
+In this section, we presented some of Cardano's security features. The 
 security features and best practices of the Plutus and Marlowe smart 
 contract languages are further discussed in the remaining sections of 
 this chapter. Because those languages follow different best practices 
