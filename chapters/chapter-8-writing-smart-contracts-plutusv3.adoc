@@ -426,8 +426,8 @@ libraries].
 
 Section <<Plutus smart contracts>> presents the MeshJS tool and 
 showcases how to write off-chain code for smart contracts in subsections 
-<<Off-chain code with MeshJS>> and <<Minting policies>>. The subsection 
-<<Testing Plinth scripts>> showcases the Atlas tool. 
+<<Off-chain code with MeshJS>> and <<Minting policies and native tokens>>. 
+The subsection <<Testing Plinth scripts>> showcases the Atlas tool. 
 
 === Smart contract case studies
 
@@ -1908,8 +1908,9 @@ options:
 * Use an online platform such as https://demeter.run/[Demeter.run]
 * Install system dependencies manually.
 
-The _plinth-dev-env_ GitHub repository provides instructions for
-setting up the development environment for the first three options. An
+The https://github.com/iohkedu/plinth-dev-env/tree/main[plinth-dev-env] 
+GitHub repository provides instructions for setting up the development 
+environment for the first three options. An
 up-to-date link to this repository is available in the _resources_ folder of the
 https://github.com/input-output-hk/mastering-cardano[mastering-cardano]
 GitHub repository. It aims to provide up-to-date instructions for the
@@ -1919,7 +1920,8 @@ introduced in the Chang hard fork, which enabled PlutusV3. The development
 environment you will use to run and test this code needs to support these 
 features. The smart contract code presented in this section was compiled 
 with a Nix shell that was set up with instructions provided in the 
-_plinth-dev-env_ repository. We used nix version `2.25.3` and a nix 
+https://github.com/iohkedu/plinth-dev-env/blob/main/instructions/using-nix.md[plinth-dev-env] 
+repository. We used nix version `2.25.3` and a nix 
 shell provided by the https://github.com/IntersectMBO/plinth-template[plinth-template]
 repository, commit `4adea2ef260a99ec9d36de609579ae5208ac8c10`. 
 
@@ -2442,7 +2444,7 @@ modules we can use.
 |42 validator
 |PlutusLedgerApi.V3
 |PlutusLedgerApi.Data.V3
-|Difference
+|Reduction 
 
 |Untyped (converting ScriptContext to typed form)
 |13842
@@ -2491,7 +2493,18 @@ https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/simplifying-be
 and https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/other-optimization-techniques[Other optimization techniques]
 guidelines. 
 
-At the end we show now the code for generating Plutus blueprints. 
+We again state the various possibilities that a redeemer can be used for 
+in smart contracts: 
+
+* Defining the reason for interacting with a script as eg making a bet, 
+pay a fee, gather a reward, etc. 
+* Provide information to the script known only by person X, which can 
+be used to unlock funds of a UTXO sitting at a script address. 
+* Define a value that will be used to modify the current datum data. 
+
+At the end we show the code for generating Plutus blueprints for two of the 
+six validators we have defined in this section, to shorten the code. We choose 
+the gift validator and the untyped 42 validator that generates a small CBOR.  
 
 [source,haskell]
 ----
@@ -2558,8 +2571,7 @@ that defines some general information, the contract validators, which we will
 define next, and the contract definitions. The definitions include a list of types 
 that we have used in the validator code, beside the types of the validator type 
 signature. After that, we see the [blue]#preamble# definition. Next we show the 
-validator blueprint definitions. We show only definitions for two validators 
-instead of the six we have defined in this section to shorten the output. 
+validator blueprint definitions for two validators that we have choosen.  
 
 [source,haskell]
 ----
@@ -2868,7 +2880,7 @@ newtype CurrencySymbol = CurrencySymbol {unCurrencySymbol :: PlutusTx.BuiltinByt
 The currency symbol data type is a wrapped around a [purple]#BuiltinByteString#
 that represents the hash of the minting policy that gets triggered when minting 
 a native asset. We will talk more about native assets and minting in section 
-<<Minting policies>>. 
+<<Minting policies and native tokens>>. 
 
 If a transaction tries to spend a UTXO at a script address then the script 
 info contains the [purple]#SpendingScript# data constructor that carries 
@@ -2968,7 +2980,7 @@ Before we move on explaining the transaction information data type we look
 at another validator example that shows how to decode the [purple]#ScriptInfo# 
 data type in untyped form. Our validator follows the same logic as the 42 
 validator in the previous section, except that we now match the number 42 
-to the datum instead of the redeemer. 
+to the value of the datum instead of the redeemer. 
 
 [source,haskell]
 ----
@@ -3025,6 +3037,13 @@ extract an integer the validator will pass if it is 42 or fail with a user-defin
 message. We note also in this example in case the datum would be a more structured 
 data type we could use the [blue]#fromBuiltinData# function that would convert it 
 to typed form where extracting any information can be done in a simpler way. 
+
+We again state the various possibilities that a datum can be used for 
+in smart contracts: 
+
+* Answering who/when/with what can I consume a UTXO. 
+* Defining the current state of the UTXO. 
+* Defining metadata and/or configurations. 
 
 *Transaction information* 
 
@@ -4292,17 +4311,45 @@ If a reader wants to know more about MeshJS one can look at:
 In the next section we show how to write a minting policy and off-chain code 
 that interacts with the policy. 
 
-==== Minting policies
+==== Minting policies and native tokens 
 
 In Plutus, a minting policy or also called a minting script defines the 
 conditions under which native tokens can be minted. Each UTXO has an 
 address, a value, and potentially a datum. In previous examples, the 
 value was always ada. To include native tokens in a UTXO, they must be 
 explicitly created. 
+The https://iohk.io/en/blog/posts/2025/05/09/native-tokens-in-the-extended-utxo-model/[IO 
+blog on native tokens] states that many blockchains, creating custom tokens 
+traditionally requires writing and deploying smart contracts – code that 
+defines how the token behaves and how it can be transferred, created (minted), 
+or destroyed (burned). This approach makes these user-defined tokens 
+non-native, meaning the underlying blockchain’s fundamental structure 
+does not directly support them which can lead to inefficiencies, higher 
+costs, and increased complexity. In Cardano all tokens are native, which 
+means developers can create and manage their own tokens without relying 
+on complex smart contracts. These tokens are treated as first-class 
+citizens by the ledger, enabling secure and efficient handling of many 
+token types directly at the protocol level. The key advantages of native 
+tokens in Cardano over traditional smart contract-based approaches are:  
 
-Let us look again at the Haskell definition of the [purple]#Value# type. 
-This type is defined in the module `PlutusLedgerApi.V1.Value` and defines 
-an amount of ada and/or native tokens. 
+* Efficiency and lower costs. Because native tokens are supported at the 
+ledger level, their creation, transfer, and management require no custom 
+contract logic. This reduces transaction size, increases throughput, and 
+significantly lowers fees. Operations are faster and consume fewer resources 
+compared to tokens built with smart contracts.
+* Security and simplicity. Native tokens inherit the same security properties 
+as ada. There is no additional contract logic to audit or maintain, reducing 
+the risk of vulnerabilities and exploits. This makes native tokens simpler 
+and safer to use in DApps.
+* Developer experience and compatibility. Creating and managing native tokens 
+is more straightforward than writing and deploying custom contracts. Native 
+tokens integrate seamlessly with wallets, tools, and the wider ecosystem. 
+
+One can read more about the security advantages of native tokens on Cardano 
+in the <<Cardano security>> section. Before we look at an example of a mintin 
+policy let us look again at the Haskell definition of the [purple]#Value# type. 
+This type is defined in the module `PlutusLedgerApi.V1.Value` and defines an 
+amount of ada and/or native tokens. 
 
 [source,haskell]
 ----
@@ -4508,7 +4555,7 @@ serializedSignedVal = serialiseCompiledCode compiledSignedVal
 
 First, we add all the necessary language pragmas. We then name the 
 module `Week05.Minting` since the idea for the code examples is taken 
-from the 5th week of the latest Plutus pioneer program. After that, we 
+from the 5th week of the 4th Plutus pioneer program. After that, we 
 import the modules we need. Next we define our minting policy. It 
 is parameterized with a public key hash and the validation checkes if 
 the correct signature is present. We do not check if the currently 
@@ -4802,6 +4849,36 @@ the same name but different currency symbols because we would parameterize
 the minting script each time with a different UTXO. This difference in 
 currency symbols ensures that each token is truly an NFT, as the asset 
 class is defined by both the token name and its unique currency symbol. 
+
+At the end we note that the utility of a token can be determined by its use 
+case, the market, or the community that issues and adopts it. Tokens can be 
+used for varous purposes as issuing a new cryptocurrency, representing access 
+rights, or enabling in-app transactions. Native tokens enable a wide range of 
+applications by combining secure on-chain logic with the flexibility of custom 
+asset creation. From the 
+https://iohk.io/en/blog/posts/2025/05/09/native-tokens-in-the-extended-utxo-model/[IO 
+blog on native tokens] we get the following use cases for native tokens: 
+
+* Digital collectibles and credentials. NFTs can represent ownership of digital 
+art, in-game assets, event tickets, or even academic credentials – benefiting 
+from the security and transparency of the Cardano ledger.
+* Supply chain and asset tracking. Tokens can represent physical items and track 
+their journey across a supply chain. Because native tokens can be uniquely defined 
+and managed without smart contracts, this approach is more efficient and secure.
+* Algorithmic stablecoins. Native tokens can represent assets with values tied to 
+external references. Forging policy scripts define the rules that keep these tokens 
+stable, enabling automated monetary policies and more robust decentralized finance 
+(DeFi) primitives.
+* Tokenized roles and permissions. Roles within a decentralized system – such as 
+operator, validator, or participant – can also be represented by unique native tokens. 
+Holding a token grants permission to perform specific actions, allowing for modular 
+and transferable system designs.
+* Access control and licensing. A token could grant access to a service, event, 
+or dataset. For example, holding a specific token could unlock premium features 
+in a DApp or grant entry to a token-gated community.
+* Decentralized governance. Native tokens can represent voting rights or stake 
+in decision-making processes. This enables on-chain governance systems with 
+transparent and auditable participation. 
 
 To learn more about native tokens, see: 
 
@@ -6596,16 +6673,20 @@ global state that would affect both of the transaction. You can read more
 about the mempool and front-running invasion attacks on Cardano in the following 
 https://cexplorer.io/article/understanding-the-cardano-mem-pool[Cexplorer blog]. 
 
-Because Cardano transactions are deterministic, their interaction with 
+Since Cardano transactions are deterministic, their interaction with 
 smart contracts is also deterministic, meaning the outcome of the validation 
 logic is predictable. In Ethereum, a smart contract function could, in 
 the short term, give up control of a transaction when it calls another 
 contract. This other contract could then make recursive withdrawal calls 
 to the first contract and drain its funds before the first contract 
-updates its state. This is known as a reentrance attack. Because this 
-is possible in Ethereum, it sometimes makes the effect of a transaction 
-on the ledger, hard to predict. Such an attack happened to the DAO smart 
-contract https://www.coindesk.com/learn/understanding-the-dao-attack/[hacked in
+updates its state. This is known as a reentrancy attack. The following    
+https://www.geeksforgeeks.org/reentrancy-attack-in-smart-contracts/[geeksforgeeks post]
+provides more information on such types of attacks and lists also 
+examples of such attacks. 
+Because this kind of attacks are possible in Ethereum, it can make the effect 
+of a transaction on the ledger, hard to predict. Such an attack happened 
+to the https://en.wikipedia.org/wiki/The_DAO[DAO smart contract] that was 
+https://www.coindesk.com/learn/understanding-the-dao-attack/[hacked in
 2016]. On that occasion, 3.6m ETH (worth around 50 million USD at the time)
 was affected. Such attacks are not possible in Cardano due to the design
 of the EUTXO accounting model. EUTXO's determinism doesn't allow the 
@@ -6631,7 +6712,7 @@ as Ethereum does with https://en.wikipedia.org/wiki/Ethereum#ERC20[ERC-20 tokens
 Buying or selling these tokens requires interaction with a smart contract, which
 incurs higher transaction costs. Such tokens also carry a higher risk
 because the security of the token is based on the smart contract's
-correctness and security.
+correctness and security. 
 This https://www.emurgo.io/press-news/why-crypto-projects-built-on-cardano-are-more-secure/[Emurgo 
 blog] states that blockchains that use smart contracts to 
 manage native tokens can sometimes require smart contracts to have a
@@ -6648,7 +6729,7 @@ some of the security features of Cardano native tokens.
 
 [cols="40,60", options="header"]
 |===
-|Native tokens
+|Cardano native tokens
 |Comment
 
 |No user errors in copying standard code
@@ -6664,8 +6745,8 @@ some of the security features of Cardano native tokens.
 |Denial of service attacks on the entire system are not possible
 |===
 
-As in the <<Minting policies>> section we again state that further 
-information on Cardano native tokens can be found at: 
+As in the <<Minting policies and native tokens>> section we again state 
+that further information on Cardano native tokens can be found at: 
 
 * https://docs.cardano.org/developer-resources/native-tokens[Official Cardano docs]
 * https://developers.cardano.org/docs/native-tokens/[Cardano developers docs]
