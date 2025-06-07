@@ -4326,8 +4326,9 @@ costs, and increased complexity. In Cardano all tokens are native, which
 means developers can create and manage their own tokens without relying 
 on complex smart contracts. These tokens are treated as first-class 
 citizens by the ledger, enabling secure and efficient handling of many 
-token types directly at the protocol level. The key advantages of native 
-tokens in Cardano over traditional smart contract-based approaches are:  
+token types directly at the protocol level. The blog further states 
+that the key advantages of native tokens in Cardano over traditional 
+smart contract-based approaches are:  
 
 * Efficiency and lower costs. Because native tokens are supported at the 
 ledger level, their creation, transfer, and management require no custom 
@@ -4885,7 +4886,7 @@ tokens] overview on Cardano Docs
 tokens] section on the Developer Portal
 * https://cardano-ledger.readthedocs.io/en/latest/explanations/index.html[Ledger
 explanations] page, which also covers native tokens
-* The https://iohk.io/en/research/library/papers/native-custom-tokens-in-the-extended-utxo-model/[Native 
+* https://iohk.io/en/research/library/papers/native-custom-tokens-in-the-extended-utxo-model/[Native 
 Custom Tokens in the Extended UTXO Model] scientific paper. 
 
  -----------------------------------------------
@@ -6724,7 +6725,7 @@ some of the security features of Cardano native tokens.
 
 [cols="40,60", options="header"]
 |===
-|Native tokens security features  
+|Cardano native tokens 
 |Comment
 
 |No user errors in copying standard code
@@ -6768,8 +6769,8 @@ with a global state that might influence the final output. Besides
 auditing smart contracts, off-chain code and other parts of a DApp may
 also be audited to assess the security of the entire application.
 
-In addition to section <<The EUTXO model>> we list further learning 
-resources about the EUTXO model: 
+At the end of this section we list further learning resources about the 
+EUTXO model in addition to section <<The EUTXO model>>: 
 
 * https://ucarecdn.com/6d3813f2-6886-4c61-833f-e78ba5f887d7/EUTXOhandbook_for_EC.pdf[The EUTXO Handbook]
 * https://iohk.io/en/research/library/papers/the-extended-utxo-model/[The Extended UTXO Model scientific paper]
