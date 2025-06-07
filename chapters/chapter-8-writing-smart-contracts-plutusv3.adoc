@@ -217,9 +217,9 @@ Solidity languages is presented in section
 
 In practice, the Cardano node executes an untyped version called Untyped
 Plutus Core (UPLC). The compilation pipeline and other Plutus details
-are covered in section <<Plutus security>>. The security advantages
-of Cardano's EUTXO model over Ethereum's account-based model are
-discussed in section <<Cardano security>>.
+are covered in section <<Plutus security and best practices>>. The security 
+advantages of Cardano's EUTXO model over Ethereum's account-based model are
+discussed in section <<Cardano security>>. 
 
 *Compiled languages*
 
@@ -371,8 +371,8 @@ following domains:
 * Token swaps
 * Airdrops.
 
-Sections <<Marlowe security>> and <<Marlowe best practices>>
-explore the security of Marlowe in more detail.
+Section <<Marlowe security and best practices>> explores the security 
+and best practices of Marlowe in more detail. 
 
 *On-chain and off-chain code*
 
@@ -1714,7 +1714,7 @@ updated accordingly.
 Cardano uses the EUTXO model and Plutus as its native smart
 contract language. Developers can write smart contracts in Plinth or in
 other high level languages that compile to Plutus (see section
-<<Smart contract programming languages>>). Section <<Plutus security>> 
+<<Smart contract programming languages>>). Section <<Plutus security and best practices>> 
 covers the security aspect of both Plutus and Plinth languages in more detail. 
 A Plutus smart contract, also called a Plutus script or validator, provides 
 a more flexible view than a Bitcoin script but does not have a global view as 
@@ -1791,7 +1791,7 @@ Plinth enables developers to write and compile their on-chain code to Plutus,
 or more precisely to untyped Plutus core (UPLC) which the Cardano nodes execute. 
 Plinth provides a compiler plugin for GHC (the Glasgow Haskell Compiler) that 
 compiles to Plutus. More details about the Plinth-to-Plutus compilation pipeline 
-are outlined in section <<Plutus security>>. 
+are outlined in section <<Plutus security and best practices>>. 
 
 Plinth lets developers build secure applications, forge new assets, and
 create smart contracts in a predictable, deterministic environment with
@@ -1962,7 +1962,8 @@ that GHC is unaware of Plinth data types. Additionally, the Plinth
 libraries are not hosted on Hackage, which means the only way to query
 Plinth types from a REPL is to build it with a Cabal file that imports
 those libraries. There are some intermediate steps in the compilation
-pipeline which will be in detail explained in section <<Plutus security>>.
+pipeline which will be in detail explained in section 
+<<Plutus security and best practices>>. 
 
 ==== Simple validation scripts
 
@@ -5258,7 +5259,7 @@ this chapter. Because those languages follow different best practices
 for developing smart contracts, we will explain the security advantages 
 and best practices for them separately. 
 
-==== Plutus security
+==== Plutus security and best practices
 
 Cardano offers Plinth, previously called PlutusTx, which is a Turing-complete 
 smart contract language realized on top of Haskell, a high-assurance,
@@ -5547,8 +5548,8 @@ of a DApp but are not security threats that would need immediate action
 * *Low vulnerabilities* that may affect things such as performance
 but pose no risk to security.
 
-Examples of common security vulnerabilities in Plutus smart contracts
-are:
+A good practice in writing Plutus smart contracts is to avoid common 
+security vulnerabilities in Plutus smart contracts which are: 
 
 * other redeemer
 * other token name
@@ -5564,24 +5565,22 @@ are:
 
 This
 https://library.mlabs.city/common-plutus-security-vulnerabilities[MLabs
-guide] describes each vulnerability by a property statement, test,
-impact, and further explanation. Audit reports are often made publicly
+guide] describes each vulnerability by a property statement, test, impact, 
+and provides an explanation of it. Audit reports are often made publicly
 available for the community to read because they are a great tool for
-learning what mistakes not to make when developing a DApp. Also, the
-company that ordered the audit increases the transparency of their
-software. If it allows that, the audit report becomes publicly available
-for the community to read. Below are links to repositories from the
-auditing companies Tweag and Vacuumlabs that made some of their audit
-reports freely available to the public:
+learning what mistakes not to make when developing a DApp. A blockchain 
+company that ordered the audit also increases the transparency of their 
+software product if it makes the audit report publicly available for the 
+community to read. Below are links to repositories from the auditing 
+companies Tweag and Vacuumlabs that made some of their audit reports 
+freely available to the public:
 
 * https://github.com/tweag/tweag-audit-reports[Tweag audit reports]
 * https://github.com/vacuumlabs/audits[Vacuum Labs audit reports].
 
-==== Plutus best practices
+==== Marlowe security and best practices
 
-Will be written by Tsenguun.
-
-==== Marlowe security
+*Marlowe security*
 
 In the design process of the Marlowe smart contract language, trade-offs
 were made in regard to how powerful the language should be. In computer
@@ -5751,7 +5750,7 @@ description of the issues and how they were addressed in this
 https://iohk.io/en/blog/posts/2023/06/27/a-comprehensive-guide-to-marlowes-security-audit-outcomes-built-in-functional-restrictions-and-ledger-security-features/[IO 
 blog], which also talks about the security of Marlowe and Cardano. 
 
-==== Marlowe best practices
+*Marlowe best practices*
 
 Marlowe contracts can be designed in many ways. Once you have designed
 your contract, it is good practice to simulate it on the Playground
