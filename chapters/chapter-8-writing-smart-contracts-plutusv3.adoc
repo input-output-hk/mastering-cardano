@@ -1734,7 +1734,7 @@ code can access the information contained in the datum that is potentially
 included in the script context. Not every UTXO necessarily needs to contain a 
 datum. The information in the datum can be used for: 
 
-* Answering who/when/with what can I consume a UTXO. 
+* Answering who/when/with what data can a transaction consume a UTXO. 
 * Defining the current state of the UTXO. 
 * Defining metadata and/or configurations. 
 
@@ -1910,19 +1910,16 @@ options:
 
 The https://github.com/iohkedu/plinth-dev-env/tree/main[plinth-dev-env] 
 GitHub repository provides instructions for setting up the development 
-environment for the first three options. An
-up-to-date link to this repository is available in the _resources_ folder of the
-https://github.com/input-output-hk/mastering-cardano[mastering-cardano]
-GitHub repository. It aims to provide up-to-date instructions for the
-latest stable Plinth development environment. The smart contract code
-presented throughout section <<Plutus smart contracts>> uses features 
+environment for the first three options. It aims to provide up-to-date 
+instructions for the latest stable Plinth development environment. The smart 
+contract code presented throughout section <<Plutus smart contracts>> uses features 
 introduced in the Chang hard fork, which enabled PlutusV3. The development 
 environment you will use to run and test this code needs to support these 
 features. The smart contract code presented in this section was compiled 
 with a Nix shell that was set up with instructions provided in the 
 https://github.com/iohkedu/plinth-dev-env/blob/main/instructions/using-nix.md[plinth-dev-env] 
-repository. We used nix version `2.25.3` and a nix 
-shell provided by the https://github.com/IntersectMBO/plinth-template[plinth-template]
+repository. Nix version `2.25.3` was used and a nix shell provided by 
+the https://github.com/IntersectMBO/plinth-template[plinth-template]
 repository, commit `4adea2ef260a99ec9d36de609579ae5208ac8c10`. 
 
 The https://demeter.run/[Demeter.Run] online platform offers various
@@ -3041,7 +3038,7 @@ to typed form where extracting any information can be done in a simpler way.
 We again state the various possibilities that a datum can be used for 
 in smart contracts: 
 
-* Answering who/when/with what can I consume a UTXO. 
+* Answering who/when/with what data can a transaction consume a UTXO. 
 * Defining the current state of the UTXO. 
 * Defining metadata and/or configurations. 
 
@@ -4346,7 +4343,7 @@ is more straightforward than writing and deploying custom contracts. Native
 tokens integrate seamlessly with wallets, tools, and the wider ecosystem. 
 
 One can read more about the security advantages of native tokens on Cardano 
-in the <<Cardano security>> section. Before we look at an example of a mintin 
+in the <<Cardano security>> section. Before we look at an example of a minting 
 policy let us look again at the Haskell definition of the [purple]#Value# type. 
 This type is defined in the module `PlutusLedgerApi.V1.Value` and defines an 
 amount of ada and/or native tokens. 
@@ -4850,9 +4847,9 @@ the minting script each time with a different UTXO. This difference in
 currency symbols ensures that each token is truly an NFT, as the asset 
 class is defined by both the token name and its unique currency symbol. 
 
-At the end we note that the utility of a token can be determined by its use 
+At the end, we note that the utility of a token can be determined by its use 
 case, the market, or the community that issues and adopts it. Tokens can be 
-used for varous purposes as issuing a new cryptocurrency, representing access 
+used for various purposes as issuing a new cryptocurrency, representing access 
 rights, or enabling in-app transactions. Native tokens enable a wide range of 
 applications by combining secure on-chain logic with the flexibility of custom 
 asset creation. From the 
@@ -6490,8 +6487,8 @@ Estimates for the loss of funds due to various
 attacks and hacks, including scams, say that the total loss of funds was
 over $3.2bn in 2021 and over $3.7bn in 2022 (source:
 https://www.coindesk.com/tech/2023/05/24/attackers-left-empty-handed-as-crypto-hacks-drop-70-in-q1-2023/[CoinDesk]).
-Hacks to blockchain smart contracts and bridges up to October 2023 alone
-totaled $4.28bn (source:
+If we look at hacks to blockchain smart contracts and bridges only, up to 
+October 2023 they have totaled to $4.28bn (source:
 https://www.emurgo.io/press-news/why-your-web3-dapp-needs-a-smart-contract-audit/[Emurgo]).
 The graph below displays the cumulative amount of lost funds in audited
 and unaudited codebases for Web3 projects in a three-year period (data
@@ -6559,22 +6556,20 @@ that the validity interval contains the time of transaction processing,
 a valid transaction will _always_ succeed with a predictable outcome. 
 There is no global state and a smart contract only sees data contained 
 in the script context that provides access to the datum if present, the 
-redeemer, all inputs and outputs and other transaction information. 
-Section <<Plutus smart contracts>> explains these concepts in detail.
-Because of this, transactions are deterministic since their outcome is 
+redeemer, all inputs and outputs and other transaction information. Section 
+<<Plutus smart contracts>> explains these concepts in detail. We say that 
+transactions are deterministic in EUTXO since their effect on the ledger is 
 predictable. If the inputs to a valid transaction are not present at the
 time of submission, the submitted transaction will not be processed, and
-the user will not be charged any fees. Since transactions are deterministic 
-in EUTXO, multiple transactions within a block that target the same validator 
-can be processed. That works only if the transactions consume different 
-inputs. Beside this also 
+the user will not be charged any fees. Because of determinism in EUTXO, 
+multiple transactions that target the same validator can be processed inside 
+the same block if the transactions consume different inputs. Beside this also 
 https://iohk.io/en/blog/posts/2022/04/13/boosting-cardano-s-throughput-with-script-referencing/[reference
 inputs] enable multiple transactions referencing the same UTXO, which
 is possible because none of those transactions consumes the referenced 
 UTXO. These things make Cardano suitable for parallelism and concurrency.
-One can read more about these topics in the following 
-https://www.essentialcardano.io/article/concurrency-and-all-that-cardano-smart-contracts-and-the-eutxo-model[IO blog]
-and https://academy.geniusyield.co/articles/what-is-cardano[GeniusYield Academy blog]. 
+One can read more about these topics in this  
+https://iohk.io/en/blog/posts/2021/09/10/concurrency-and-all-that-cardano-smart-contracts-and-the-eutxo-model/[IO blog]. 
 
 In Ethereum, transactions that target the same validator can be processed 
 within the same block, but they both do not necessarily succeed, since the 
@@ -6682,10 +6677,10 @@ to the first contract and drain its funds before the first contract
 updates its state. This is known as a reentrancy attack. The following    
 https://www.geeksforgeeks.org/reentrancy-attack-in-smart-contracts/[geeksforgeeks post]
 provides more information on such types of attacks and lists also 
-examples of such attacks. 
-Because this kind of attacks are possible in Ethereum, it can make the effect 
-of a transaction on the ledger, hard to predict. Such an attack happened 
-to the https://en.wikipedia.org/wiki/The_DAO[DAO smart contract] that was 
+examples of such attacks. Because such attacks are possible in Ethereum, 
+the interaction of transactions with smart contracts is sometimes hard to 
+predict. A reentrancy attack happened to the 
+https://en.wikipedia.org/wiki/The_DAO[DAO smart contract] that was 
 https://www.coindesk.com/learn/understanding-the-dao-attack/[hacked in
 2016]. On that occasion, 3.6m ETH (worth around 50 million USD at the time)
 was affected. Such attacks are not possible in Cardano due to the design
@@ -6701,7 +6696,7 @@ is being consumed in the transaction. Those validators are not _calling_
 each other, but we know they have to be both triggered by a single 
 transaction, since we enforce this condition inside those validators.  
 When we build a transaction, we have to specify all the validators that 
-run and all their inputs and outputs, so there's no way that an _untrusted_ 
+run and all their inputs and outputs, so there's no way that an untrusted 
 validator can take over that transaction, since it's not part of it. 
 
 The EUTXO model also treats its tokens as native, meaning they are
@@ -6729,7 +6724,7 @@ some of the security features of Cardano native tokens.
 
 [cols="40,60", options="header"]
 |===
-|Cardano native tokens
+|Native tokens security features  
 |Comment
 
 |No user errors in copying standard code
@@ -6739,10 +6734,7 @@ some of the security features of Cardano native tokens.
 |Cardano's scripting languages don't have fixed-size integers
 
 |No unprotected functions
-|User code is called only in very specific cases to validate minting
-
-|No denial of service via gas price attacks
-|Denial of service attacks on the entire system are not possible
+|An untrusted validator can not take control over the transaction 
 |===
 
 As in the <<Minting policies and native tokens>> section we again state 
@@ -6783,6 +6775,7 @@ resources about the EUTXO model:
 * https://iohk.io/en/research/library/papers/the-extended-utxo-model/[The Extended UTXO Model scientific paper]
 * https://docs.cardano.org/about-cardano/learn/eutxo-explainer[EUTXO explained on Cardano Docs]
 * https://www.essentialcardano.io/infographic/eutxo-v-account-based-models[EUTXO vs account-based models infographic]
+* https://iohk.io/en/blog/posts/2025/01/08/six-reasons-why-eutxo-wins/[Six reasons why EUTXO wins] blog. 
 
 In this section, we presented some of Cardano's security features. The 
 security features and best practices of the Plutus and Marlowe smart 
