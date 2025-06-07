@@ -34,7 +34,7 @@ testing. The betting example docs provide explanations for the:
 
 * https://atlas-app.io/getting-started/smart-contract-intro[on-chain code] 
 * https://atlas-app.io/getting-started/operations[off-chain code] 
-* https://atlas-app.io/getting-started/testing[testing code] and more.  
+* https://atlas-app.io/getting-started/testing[testing code] and more. 
 
 The code of the betting examples can be found in the 
 https://github.com/geniusyield/atlas-examples/tree/main/bet-ref[atlas-examples] repository. 
@@ -152,9 +152,8 @@ libraries needed to build and test code written with Atlas. The code
 was tested with the nix shell build from Atlas version `v0.13.0`. 
 
 To build the required nix shell you will need `nix` installed and 
-cofigured. Instructions can be found in the `plinth-dev-env` GitHub. 
-An up-to-date link to it, is available in the resources folder of the 
-https://github.com/input-output-hk/mastering-cardano[mastering-cardano] 
+cofigured. Instructions can be found in the 
+https://github.com/iohkedu/plinth-dev-env/tree/main[plinth-dev-env] 
 GitHub repository. After you have installed `nix` and configured it 
 you can clone the https://github.com/geniusyield/atlas[atalas repo], 
 checkout the the previous mentioned version and run inside the repo: 
