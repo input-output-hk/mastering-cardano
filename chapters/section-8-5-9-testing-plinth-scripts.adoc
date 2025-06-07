@@ -1,0 +1,283 @@
+
+==== Testing Plinth scripts
+
+This section outlines different methods of testing smart contracts.
+We showcase how to write unit and property tests for a PlutusV3 Plinth 
+validator using the following tools: 
+
+* https://atlas-app.io/[Atlas] a Plutus application backend 
+developed by https://www.geniusyield.co/[GeniusYield]
+* https://mlabs-haskell.github.io/clb-docs[Cardano ledger backend] 
+(CLB) library developed by https://mlabs.city/[MLabs]
+* https://hackage.haskell.org/package/QuickCheck[QuickCheck] Haskell library. 
+
+A developer can use Atlas to write off-chain code that interacts with 
+a validator and then use the CLB emulator to test if the off-chain and 
+on-chain code behave as expected. From 
+https://atlas-app.io/getting-started/testing#overview-of-unified-testing-in-atlas[Atlas docs] 
+we get the following description of the CLB emulator: 
+
+The CLB emulator is built around the pure Cardano ledger without the use 
+of any network or consensus bits and offers incredibly high speed with a 
+tiny memory footprint, but with some functional limitations. You can easily 
+spin up a fresh emulator ledger for every test case, which makes running 
+tests in isolation a trivial task. The behavior of the CLB emulator and a 
+Cardano private network differ. Not all features are supported in the 
+emulator, and some notions, eg blocks and time is not represented enough 
+in the emulator to carry out all tests. The upside is that one can switch 
+easily between the emulator and private network ledger backends. 
+
+We call our testing approach _unified testing_ if one can reuse the on-chain, 
+off-chain and testing code accross different ledger backends. The atlas docs 
+provide a walkthrough of a betting code example where they showcase unified 
+testing. The betting example docs provide explanations for the: 
+
+* https://atlas-app.io/getting-started/smart-contract-intro[on-chain code] 
+* https://atlas-app.io/getting-started/operations[off-chain code] 
+* https://atlas-app.io/getting-started/testing[testing code] and more.  
+
+The code of the betting examples can be found in the 
+https://github.com/geniusyield/atlas-examples/tree/main/bet-ref[atlas-examples] repository. 
+
+In this section we present a simpler example compared to the one from the official 
+docs. Before we show how to unit and property test a Plinth validator with the Atlas, 
+CLB and QuickCheck tools, for a better understanding we first demonstrate how to model 
+and test a simple mock blockchain in Haskell using a State monad. Let us look at how 
+to represent a blockchain and keep track of transactions. 
+
+[source,haskell]
+----
+module State where
+
+import Control.Monad.State (State, get, put, runState)
+ 
+-- Mock UTxO type
+data UTxO = UTxO { owner :: String , value :: Integer }
+    deriving (Show, Eq)
+ 
+-- Mock blockchain type
+newtype Mock = Mock { utxos :: [UTxO] }
+    deriving (Show, Eq)
+ 
+-- Initial blockchain state
+initialMockS :: Mock
+initialMockS = Mock [ UTxO "Alice" 1000 ]
+----
+
+The [purple]#UTxO# data type contains the owner of the UTXO and the value 
+sitting at the UTXO, which, in our case, is just an integer number. We create
+the [purple]#Mock# blockchain type – a wrapper around a list of UTXOs. Thus, 
+our mock chain consists solely of a list of UTXOs. Finally, we create an
+initial state of our blockchain, indicating that Alice has a 1,000 ada.
+
+Next, using the state monad, we create a function that enables the transfer 
+of value from one user to another, which we will use in several transactions.
+
+[source,haskell]
+----
+-- Definition of the State type 
+-- newtype State s a = State { runState :: s -> (a, s) }
+
+sendValue :: String -> Integer -> String -> State Mock Bool
+sendValue from amount to = do
+    mockS <- get
+    let senderUtxos = filter ((== from) . owner) (utxos mockS)
+        blockchainWithoutSenderUtxos = filter ((/= from) . owner) 
+                                              (utxos mockS)
+        totalSenderFunds = sum (map value senderUtxos)
+        receiverUtxo = UTxO to amount
+        senderChange = UTxO from (totalSenderFunds - amount)
+    if totalSenderFunds >= amount
+        then do
+            put $ Mock $ [receiverUtxo] ++ [senderChange] ++
+                     	blockchainWithoutSenderUtxos
+            return True
+        else return False
+ 
+multipleTx :: (Bool, Mock)
+multipleTx = runState (do
+    isOk  <- sendValue "Alice" 100 "Bob"
+    isOk2 <- sendValue "Alice" 300 "Bob"
+    isOk3 <- sendValue "Bob"   200 "Rick"
+    return (isOk && isOk2 && isOk3))
+    initialMockS
+ 
+type Run a = State Mock a
+----
+
+The [blue]#sendValue# function takes the following parameters in the 
+specified order: 
+
+* The name of the user sending the funds
+* The amount of value we intend to send
+* The name of the user receiving the funds.
+
+It returns a state monad parameterized by the potentially new state of
+the mock blockchain and a boolean that indicates whether the transaction
+that tried to update the mock blockchain was successful or not. If the
+transaction fails, the state will remain unchanged. In the body of the
+function, we first compute all the sender's UTXOs from the blockchain,
+and then all the UTXOs on the blockchain excluding the sender's ones.
+Then, we compute the total value that the sender owns, the UTXO that 
+the receiver will get, and the change amount that will go back to the
+sender. Next, we check if the sender has enough funds to create the
+transaction and if he does, we update the state of the blockchain with
+two newly created UTXOs. If he does not, we return the original state 
+of the blockchain. In the [blue]#multipleTx# function, we create three 
+transactions and return final parameters of the state monad. We can 
+now look in the REPL at the results that the [blue]#multipleTx# 
+function returns: 
+
+[source,shell]
+----
+Prelude State> fst multipleTx
+True
+Prelude State> snd multipleTx
+Mock \{utxos = [UTxO \{owner = "Rick", value = 200},UTxO \{owner =
+"Bob", value = 200},UTxO \{owner = "Alice", value = 600}]}
+----
+
+Now let us look at a simple Plinth validator for which we will write 
+our unit and property tests. Our validator checks: 
+
+* that the redeemer is a integer number smaller or equal to zero 
+* that the deadline contained in the datum has passed. 
+
+The validator together with the off-chain and testing code that we 
+will present in this section resides in `src/Week06` folder of the 
+https://github.com/input-output-hk/plutus-pioneer-program/tree/4th-iteration-plutusV3[4th-iteration-plutusV3]
+branch of the Plutus pioneer program repository. The folder contains 
+its own `.cabal` and `cabal.project` file that reference the needed  
+libraries needed to build and test code written with Atlas. The code 
+was tested with the nix shell build from Atlas version `v0.13.0`. 
+
+To build the required nix shell you will need `nix` installed and 
+cofigured. Instructions can be found in the `plinth-dev-env` GitHub. 
+An up-to-date link to it, is available in the resources folder of the 
+https://github.com/input-output-hk/mastering-cardano[mastering-cardano] 
+GitHub repository. After you have installed `nix` and configured it 
+you can clone the https://github.com/geniusyield/atlas[atalas repo], 
+checkout the the previous mentioned version and run inside the repo: 
+
+[source,shell]
+----
+nix flake update
+nix develop 
+----
+
+The atlas shell does not provide a visual change of the standard prompt. 
+One can check if the shell was successfully build with the `echo $IN_NIX_SHELL`
+command. If it returns `impure` then the nix shell is available. To run 
+the code from this section `cd` from your nix shell into the `src/Week06` 
+folder and run: 
+
+[source,shell]
+----
+cabal update 
+cabal run 
+----
+
+Now let us look at the testing code. We start with the smart contract code. 
+We name our module `NegativeRTimed.OnChain.NegativeRTimed`:
+
+[source,haskell]
+----
+{-# LANGUAGE DataKinds                  #-}
+{-# LANGUAGE FlexibleInstances          #-}
+{-# LANGUAGE ImportQualifiedPost        #-}
+{-# LANGUAGE MultiParamTypeClasses      #-}
+{-# LANGUAGE NoImplicitPrelude          #-}
+{-# LANGUAGE OverloadedStrings          #-}
+{-# LANGUAGE PatternSynonyms            #-}
+{-# LANGUAGE ScopedTypeVariables        #-}
+{-# LANGUAGE Strict                     #-}
+{-# LANGUAGE TemplateHaskell            #-}
+{-# LANGUAGE TypeApplications           #-}
+{-# LANGUAGE UndecidableInstances       #-}
+{-# LANGUAGE ViewPatterns               #-}
+{-# LANGUAGE DeriveAnyClass             #-}
+{-# LANGUAGE DeriveGeneric              #-}
+{-# LANGUAGE DerivingStrategies         #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+
+module NegativeRTimed.OnChain.NegativeRTimed (
+  mkNegativeRTimedValidator,
+) where
+
+import           PlutusLedgerApi.V1.Interval   (contains)
+import           PlutusLedgerApi.V3            (FromData (..), POSIXTime, from, 
+                                                Datum (..), ScriptContext (..),
+                                                ScriptInfo (..),
+                                                TxInfo (txInfoValidRange),
+                                                getRedeemer)
+import           PlutusTx                      (BuiltinData, 
+                                                UnsafeFromData 
+                                                  (unsafeFromBuiltinData))
+import           PlutusTx.Builtins             (error)
+import           PlutusTx.Bool                 (Bool (..), (&&))
+import           PlutusTx.Prelude              (Integer,
+                                                Maybe (..), Ord ((<=)), 
+                                                traceError, traceIfFalse, ($),
+                                                (.), otherwise)
+                                                -- BuiltinUnit, check 
+
+{- ------------------------------------------------------------------------------ -}
+{- --------------------------------- VALIDATOR ---------------------------------- -}
+
+{-# INLINEABLE mkNegativeRTimedValidator' #-}
+mkNegativeRTimedValidator' :: ScriptContext -> Bool
+mkNegativeRTimedValidator' ctx =
+  traceIfFalse "expected a negative redeemer" (red <= 0)
+    && traceIfFalse "deadline not reached" deadlineReached
+ where
+  info :: TxInfo
+  info = scriptContextTxInfo ctx
+
+  deadlineReached :: Bool
+  deadlineReached = contains (from dat) $ txInfoValidRange info
+
+  dat :: POSIXTime
+  dat = case scriptContextScriptInfo ctx of
+    SpendingScript _txRef (Just datum) -> 
+      case (fromBuiltinData @POSIXTime . getDatum) datum of
+        Just d  -> d
+        Nothing -> traceError "Expected POSIXTime for datum"
+    _ -> traceError "Expected SpendingScript with datum"
+
+  red :: Integer
+  red = case (fromBuiltinData @Integer 
+              . getRedeemer 
+              . scriptContextRedeemer) ctx of
+          Just r  -> r
+          Nothing -> traceError "Expected redeemer"
+
+{- ------------------------------------------------------------------------------ -}
+{- ---------------------------------- HELPERS ----------------------------------- -}
+
+mkNegativeRTimedValidator :: BuiltinData -> ()
+mkNegativeRTimedValidator ctx'
+  | mkNegativeRTimedValidator' (unsafeFromBuiltinData ctx') = ()
+  | otherwise = error ()
+----
+
+We then compile the code in a separate module similar as the betting 
+examples is structured in the _atlas-examples_ repository.  
+
+[source,haskell]
+----
+{-# LANGUAGE DataKinds         #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE TemplateHaskell   #-}
+
+module NegativeRTimed.OnChain.NegativeRTimed.Compiled
+    ( negativeRTimedValidator
+    ) where
+
+import PlutusTx qualified 
+import NegativeRTimed.OnChain.NegativeRTimed (mkNegativeRTimedValidator)
+
+-- Generates validator 
+negativeRTimedValidator :: PlutusTx.CompiledCode (PlutusTx.BuiltinData -> ())
+negativeRTimedValidator = $$(PlutusTx.compile [|| mkNegativeRTimedValidator||]) 
+----
+
