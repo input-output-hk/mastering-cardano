@@ -46,7 +46,6 @@ include::chapters/chapter-introduction.adoc[]
 include::chapters/chapter-cryptography.adoc[]
 include::chapters/chapter-incentives.adoc[]
 include::chapters/chapter-utxo.adoc[]
-include::chapters/chapter-4-6-Cardano-node-and-system-layers.adoc[]
+include::chapters/chapter-8-writing-smart-contracts-plutusv3.adoc[]
 include::chapters/chapter-decentralized-applications.adoc[]
-include::chapters/chapter-11-4-Mithril.adoc[]
 
