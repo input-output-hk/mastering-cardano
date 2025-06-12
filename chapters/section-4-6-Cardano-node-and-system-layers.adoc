@@ -398,5 +398,5 @@ Plutus is explained in chapter <<Plutus security>>.
 
 Chapter <<Writing smart contracts>>, besides providing an overview of
 smart contract language options and explaining Plutus, also showcases
-code examples, best practices, and learning resources for the Plinth and
-Marlowe smart contract languages.
+code examples, security features, and learning resources for the Plinth and
+Marlowe smart contract languages. 
