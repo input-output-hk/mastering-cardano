@@ -1612,8 +1612,8 @@ the following topics:
 * Minting policies and native tokens
 * PlutusV3 features. 
 
-Plinth validator code and MeshJS off-chain code presented in the 
-<<Plutus smart contracts>> section can be found at the  
+Plinth validator code and https://meshjs.dev/[MeshJS] off-chain code 
+presented in the <<Plutus smart contracts>> section can be found at the  
 https://github.com/input-output-hk/plutus-pioneer-program/tree/plinth-plutusV3[plinth-plutusV3]
 branch, of the Plutus Pioneer program (PPP) GitHub repository. This 
 branch contains to PlutusV3 translated validator examples of the 
@@ -1621,9 +1621,9 @@ https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[
 PPP iteration] which showcases PlutusV2 code examples. In addition 
 to MeshJS off-chain code the 
 https://github.com/input-output-hk/plutus-pioneer-program/tree/plinth-plutusV3[plinth-plutusV3]
-branch, also contains Lucid Evolution code examples. Further learning 
-resources and smart contract examples in Plinth, Aiken and other smart 
-contract languages can be found at: 
+branch, also contains https://anastasia-labs.github.io/lucid-evolution/[Lucid Evolution] 
+code examples. Further learning resources and smart contract examples 
+in Plinth, Aiken and other smart contract languages can be found at: 
 
 * https://www.gomaestro.org/smart-contracts[Cardano's
 smart contract marketplace] – hosted by Maestro. This DApp platform
@@ -4955,15 +4955,14 @@ allows for better code optimization. This is discussed further in section
 https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/optimizing-scripts-with-asData[Plinth user guide] 
 also provides information on that. 
 
-=== Smart contract security and best practices
+=== Smart contract security
 
 ==== Cardano security
 
-Best practices for the security of smart contracts is an important
-topic, since these programs can manage significant amounts of funds. 
-Estimates for the loss of funds due to various 
-attacks and hacks, including scams, say that the total loss of funds was
-over $3.2bn in 2021 and over $3.7bn in 2022 (source:
+The security of smart contracts is an important topic, since these programs 
+can manage significant amounts of funds. Estimates for the loss of funds due 
+to various attacks and hacks, including scams, say that the total loss of 
+funds was over $3.2bn in 2021 and over $3.7bn in 2022 (source: 
 https://www.coindesk.com/tech/2023/05/24/attackers-left-empty-handed-as-crypto-hacks-drop-70-in-q1-2023/[CoinDesk]).
 If we look at hacks to blockchain smart contracts and bridges only, up to 
 October 2023 they have totaled to $4.28bn (source:
@@ -5257,7 +5256,8 @@ EUTXO model in addition to section <<The EUTXO model>>:
 
 In this section, we presented some of Cardano's security features. The 
 security features of the Plutus and Marlowe smart contract languages are 
-further discussed in the remaining sections of  this chapter. 
+further discussed in the remaining subsections of the <<Smart contract security>>
+section. 
 
 ==== Plutus security
 
