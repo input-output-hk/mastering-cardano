@@ -217,7 +217,7 @@ Solidity languages is presented in section
 
 In practice, the Cardano node executes an untyped version called Untyped
 Plutus Core (UPLC). The compilation pipeline and other Plutus details
-are covered in section <<Plutus security and best practices>>. The security 
+are covered in section <<Plutus security>>. The security 
 advantages of Cardano's EUTXO model over Ethereum's account-based model are
 discussed in section <<Cardano security>>. 
 
@@ -1612,12 +1612,18 @@ the following topics:
 * Minting policies and native tokens
 * PlutusV3 features. 
 
-Plinth code examples are taken from the
+Plinth validator code and MeshJS off-chain code presented in the 
+<<Plutus smart contracts>> section can be found at the  
+https://github.com/input-output-hk/plutus-pioneer-program/tree/plinth-plutusV3[plinth-plutusV3]
+branch, of the Plutus Pioneer program (PPP) GitHub repository. This 
+branch contains to PlutusV3 translated validator examples of the 
 https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[4th
-iteration of the Plutus Pioneer program] and are updated to accommodate PlutusV3
-changes. The 4th iteration presents PlutusV2 code examples. Further learning 
-resources and smart contract examples in Plinth, Aiken and other smart contract 
-languages can be found at: 
+PPP iteration] which showcases PlutusV2 code examples. In addition 
+to MeshJS off-chain code the 
+https://github.com/input-output-hk/plutus-pioneer-program/tree/plinth-plutusV3[plinth-plutusV3]
+branch, also contains Lucid Evolution code examples. Further learning 
+resources and smart contract examples in Plinth, Aiken and other smart 
+contract languages can be found at: 
 
 * https://www.gomaestro.org/smart-contracts[Cardano's
 smart contract marketplace] – hosted by Maestro. This DApp platform
@@ -1655,10 +1661,8 @@ a new Plutus script version available. If you encounter Plinth code examples wri
 in PlutusV1 or PlutusV2 you can look at videos and learning examples of the previous 
 Plutus pioneer program iterations: 
 
-* https://github.com/input-output-hk/plutus-pioneer-program/tree/first-iteration[first-itaration]
-* https://github.com/input-output-hk/plutus-pioneer-program/tree/second-iteration[second-itaration]
-* https://github.com/input-output-hk/plutus-pioneer-program/tree/third-iteration[third-iteration]
-* https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[fourth-iteration]
+* https://github.com/input-output-hk/plutus-pioneer-program/tree/third-iteration[third-iteration] - shows PlutusV1 examples 
+* https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[fourth-iteration] - shows PlutusV2 examples 
 
 ==== Plutus in comparison to Bitcoin Script and Solidity
 
@@ -1714,7 +1718,7 @@ updated accordingly.
 Cardano uses the EUTXO model and Plutus as its native smart
 contract language. Developers can write smart contracts in Plinth or in
 other high level languages that compile to Plutus (see section
-<<Smart contract programming languages>>). Section <<Plutus security and best practices>> 
+<<Smart contract programming languages>>). Section <<Plutus security>> 
 covers the security aspect of both Plutus and Plinth languages in more detail. 
 A Plutus smart contract, also called a Plutus script or validator, provides 
 a more flexible view than a Bitcoin script but does not have a global view as 
@@ -1791,7 +1795,7 @@ Plinth enables developers to write and compile their on-chain code to Plutus,
 or more precisely to untyped Plutus core (UPLC) which the Cardano nodes execute. 
 Plinth provides a compiler plugin for GHC (the Glasgow Haskell Compiler) that 
 compiles to Plutus. More details about the Plinth-to-Plutus compilation pipeline 
-are outlined in section <<Plutus security and best practices>>. 
+are outlined in section <<Plutus security>>. 
 
 Plinth lets developers build secure applications, forge new assets, and
 create smart contracts in a predictable, deterministic environment with
@@ -1962,8 +1966,7 @@ that GHC is unaware of Plinth data types. Additionally, the Plinth
 libraries are not hosted on Hackage, which means the only way to query
 Plinth types from a REPL is to build it with a Cabal file that imports
 those libraries. There are some intermediate steps in the compilation
-pipeline which will be in detail explained in section 
-<<Plutus security and best practices>>. 
+pipeline which will be in detail explained in section <<Plutus security>>. 
 
 ==== Simple validation scripts
 
@@ -3810,7 +3813,7 @@ takes the raw script `CBORHEX` from the blueprint and formats it in
 the correct way. The compiled code in our code snippet is shortened. 
 When running this off-chain code, the full compiled code of the validator 
 has to be provided that can be found in the `blueprint.json` file at the 
-https://github.com/input-output-hk/plutus-pioneer-program/tree/4th-iteration-plutusV3[4th-iteration-plutusV3] 
+https://github.com/input-output-hk/plutus-pioneer-program/tree/plinth-plutusV3[plinth-plutusV3] 
 branch of the Plutus pioneer program repository. Now we can send some 
 funds to the vesting script. 
 
@@ -4002,8 +4005,8 @@ const redeemer: Pick<Action, "data"> = { data: BigInt(42) };
 
 The number is of course code specific. You can find off-chain code for 
 the 42 validator example we have presented in a previous section at the 
-https://github.com/input-output-hk/plutus-pioneer-program/tree/4th-iteration-plutusV3[4th-iteration-plutusV3] 
-branch.  
+https://github.com/input-output-hk/plutus-pioneer-program/tree/plinth-plutusV3[plinth-plutusV3] 
+branch. 
 
 After we have defined the redeemer, we define the start slot for 
 the transaction. We use the [blue]#resolveSlotNo# that takes in the 
@@ -4125,7 +4128,7 @@ that we will apply to the parameterized script and that contains our own
 public key hash and the deadline we have defined. Next we define our 
 parameterized vesting script. We again shorten the `CBORHEX` compiled 
 code. The full compiled code can be found in the `blueprint.json` file that resides at the 
-https://github.com/input-output-hk/plutus-pioneer-program/tree/4th-iteration-plutusV3[4th-iteration-plutusV3] 
+https://github.com/input-output-hk/plutus-pioneer-program/tree/plinth-plutusV3[plinth-plutusV3] 
 branch. We use now the function [blue]#applyParamsToScript# and add the 
 script parameter we have previously defined. If there would be more 
 than one parameter, we would enter all of them in the list in the 
@@ -5253,13 +5256,10 @@ EUTXO model in addition to section <<The EUTXO model>>:
 * https://iohk.io/en/blog/posts/2025/01/08/six-reasons-why-eutxo-wins/[Six reasons why EUTXO wins] blog. 
 
 In this section, we presented some of Cardano's security features. The 
-security features and best practices of the Plutus and Marlowe smart 
-contract languages are further discussed in the remaining sections of 
-this chapter. Because those languages follow different best practices 
-for developing smart contracts, we will explain the security advantages 
-and best practices for them separately. 
+security features of the Plutus and Marlowe smart contract languages are 
+further discussed in the remaining sections of  this chapter. 
 
-==== Plutus security and best practices
+==== Plutus security
 
 Cardano offers Plinth, previously called PlutusTx, which is a Turing-complete 
 smart contract language realized on top of Haskell, a high-assurance,
