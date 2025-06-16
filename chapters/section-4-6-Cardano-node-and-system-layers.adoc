@@ -231,7 +231,7 @@ documentation] explains the data flow between and within Cardano nodes
 and the network constraints, such as congestion control and real-time
 coordination. It also lists types of mini-protocols that are used to
 communicate between multiple nodes participating in the Cardano network.
-You can read more about network protocols in chapter 
+You can read more about network protocols in section 
 <<Overview of Cardano network protocols>>.
 
 *Consensus and storage layer*
@@ -261,7 +261,7 @@ competing chains
 *Block production* occurs within the consensus layer, and to produce
 blocks, this layer must also maintain a memory pool (mempool) of
 transactions to be inserted into those blocks. For more details about
-block production, read chapters <<Reaching consensus using proof of stake>>, 
+block production, read sections <<Reaching consensus using proof of stake>>, 
 and <<About the Ouroboros protocol>>.
 
 The problem of *chain selection* arises when two or more nodes extend
@@ -280,7 +280,7 @@ of stake, time is divided into slots, and each slot has a number of
 designated slot leaders who can produce blocks in that slot. It is the
 responsibility of the consensus protocol to decide to assign slot
 leaders to slots. Further explanations can be found in the
-proof-of-stake and Ouroboros chapters.
+proof-of-stake and Ouroboros sections.
 
 The consensus layer also *orchestrates* between the network and ledger
 layers. The network layer primarily transmits blocks and block headers,
@@ -330,7 +330,7 @@ mechanism requires that 70% of all SPOs first upgrade to the new node
 version, and then a consensus of five out of seven genesis keys needs to
 be reached to trigger the hard fork. The genesis keys were distributed
 such that three belong to IO, two to Emurgo, and two to the Cardano
-Foundation. After the acceptance of CIP-1694, genesis keys won’t be used
+Foundation. After CIP-1694 will be fully implemented, genesis keys won’t be used
 anymore. SPOs will still play a crucial role in Cardano upgrades, and
 will always be free to decide whether they want to upgrade their nodes
 to a new version that would signal the acceptance of a proposed hard
@@ -353,10 +353,9 @@ https://ouroboros-consensus.cardano.intersectmbo.org/pdfs/report.pdf[technical
 report], which targets more experienced developers.
 This report explains how the goals were achieved, identifies areas for
 improvement, and presents how the design of this layer can scale to meet
-future requirements.
-https://iohk.io/en/blog/posts/2020/05/28/the-abstract-nature-of-the-consensus-layer/[The
-abstract nature of the Cardano consensus layer] blog also elaborates on
-these goals and provides simple code examples.
+future requirements. This 
+https://iohk.io/en/blog/posts/2020/05/28/the-abstract-nature-of-the-consensus-layer/[IO 
+blog] also elaborates on these goals and provides simple code examples.
 
 *Settlement and scripting layers*
 
@@ -372,7 +371,7 @@ for each. The
 https://github.com/IntersectMBO/formal-ledger-specifications[Formal
 ledger specification] repository will eventually replace it. Some
 practical ledger explanations can also be found in the 
-https://cardano-ledger.readthedocs.io/en/latest/[Cardano ledger documentation].
+https://cardano-ledger.readthedocs.io/en/latest/[Cardano ledger docs].
 
 The ledger layer is stateless and consists exclusively of pure functions
 that define how the ledger is updated with each new block. These
@@ -384,19 +383,20 @@ by the settlement layer, which also provides
 https://developers.cardano.org/docs/get-started/cardano-cli/simple-scripts/[simple
 scripts] – a basic smart contract language that enables multi-signature
 addresses and time locks. An overview of Cardano smart contract
-languages is covered in chapter <<Smart contract programming languages>>, 
+languages is covered in section <<Smart contract programming languages>>, 
 which presents various Cardano smart contract
 languages and explains the types in which they can be grouped.
 
-The scripting layer is defined by the Plutus Core scripting language,
-commonly referred to as Plutus, which provides Turing-complete
+The scripting layer is defined by the Plutus scripting language,
+sometimes also referred to as Plutus Core or Untyped Plutus Core (UPLC).
+It provides Turing-complete
 smart-contract capabilities to Cardano and can be processed by Cardano
-nodes. Plutus is a typed Lambda-Calculus that acts as low-level
+nodes. Plutus is based on untyped lambda calculus and acts as low-level
 interpreted assembly code. The compilation pipeline from the
 Haskell-based Plinth (formerly Plutus TX) smart contract language to
-Plutus is explained in chapter <<Plutus security>>.
+Plutus is explained in section <<Plutus security>>.
 
 Chapter <<Writing smart contracts>>, besides providing an overview of
-smart contract language options and explaining Plutus, also showcases
-code examples, security features, and learning resources for the Plinth and
-Marlowe smart contract languages. 
+smart contract language options, also showcases code examples, security 
+features, and learning resources for the Plinth and Marlowe smart 
+contract languages. 
