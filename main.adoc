@@ -36,16 +36,26 @@ Lars Brünjes <lars.bruenjes@iohk.io>; Joshua Ellul <joshua.ellul@um.edu.mt>;
 // -- Book content includes --
 
 // Include the non-numbered sections (preface, introduction, etc).
-include::chapters/preface.adoc[]
+include::chapters/chapter-00-preface.adoc[]
 
 // Enable chapter numbering.
 :sectnums:
 
 // Include the numbered chapters.
-include::chapters/chapter-introduction.adoc[]
-include::chapters/chapter-cryptography.adoc[]
-include::chapters/chapter-incentives.adoc[]
-include::chapters/chapter-utxo.adoc[]
-include::chapters/chapter-8-writing-smart-contracts-plutusv3.adoc[]
-include::chapters/chapter-decentralized-applications.adoc[]
+include::chapters/chapter-01-introduction.adoc[]
+include::chapters/chapter-02-cryptography.adoc[]
+include::chapters/chapter-03-learn-about-cardano.adoc[]
+include::chapters/chapter-04-how-cardano-works.adoc[]
+include::chapters/chapter-05-governance.adoc[]
+include::chapters/chapter-06-wallets-in-the-world-of-cardano.adoc[]
+include::chapters/chapter-07-stake-pools-and-stake-pool-operation.adoc[]
+include::chapters/chapter-08-writing-smart-contracts-plutusv3.adoc[]
+include::chapters/chapter-09-decentralized-applications.adoc[]
+include::chapters/chapter-10-advanced-cardano-topics.adoc[]
+include::chapters/chapter-11-looking-forward.adoc[]
 
+// Disable chapter numbering.
+:sectnums!:
+
+include::chapters/chapter-12-glossary.adoc[]
+include::chapters/chapter-13-index.adoc[]

@@ -1,4 +1,0 @@
-[preface]
-== Preface
-
-This is the preface.
