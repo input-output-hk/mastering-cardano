@@ -284,7 +284,7 @@ Languages that compile to Plutus generate scripts that have the same
 logic, but might be optimized differently for factors like size or
 performance. This data is presented in the 
 https://mlabs-haskell.github.io/uplc-benchmark/comparison.html[UPLC benchmark] 
-comparison. Existing community guidelines and tools can help optimize
+comparison. Community guidelines and tools can help optimize
 Plutus scripts for size, CPU, and memory consumption, reducing
 transaction fees. These tools can also help analyze the fees users will
 encounter while interacting with a Plutus script. The official
@@ -410,7 +410,7 @@ Fund11].
 application backend for writing off-chain code for Plutus smart
 contracts.
 
-Explore some Cardano tools that can be used for building DApps at:
+Explore Cardano tools that can be used for building DApps at:
 
 * The https://developers.cardano.org/tools/[Builder Tools] page on the
 Cardano Developer portal. You can filter the tools by
@@ -1545,7 +1545,7 @@ cornerstone of the Cardano economy.
 Section _Plutus smart contracts_ presents the rules for the Plutus 
 language by showcasing how to write and interact with Plinth smart 
 contracts (formerly called PlutusTx) that is a high-level smart contract 
-language embedded in Haskell which compiles to Untyped Plutus Core. Because 
+language embedded in Haskell which compiles to Untyped Plutus Core (UPLC). Because 
 Plutus rules apply to other compiled languages like Aiken, Plu-Ts or OpShin, 
 learning the basics of Plinth helps developers read and write code in other 
 Cardano smart contract languages that compile to Plutus. 
@@ -1644,9 +1644,9 @@ program iterations:
 * https://github.com/input-output-hk/plutus-pioneer-program/tree/third-iteration[third-iteration] - PlutusV1 examples 
 * https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[fourth-iteration] - PlutusV2 examples 
 
-We note that Cardano's hard fork combinator technology, presented in section 
-<<Cardano node layers>>, subsection *Consensus and storage layer*, allows the 
-Cardano node to process older Plutus version scripts also after a hard fork 
+We note that Cardano's hard fork combinator technology, that was briefly covered 
+in section <<Cardano node layers>>, subsection *Consensus and storage layer*, allows 
+the Cardano node to process older Plutus version scripts also after a hard fork 
 makes a new Plutus script version available. 
 
 ==== Plutus in comparison to Bitcoin Script and Solidity
@@ -1713,14 +1713,14 @@ This means a Plutus script can see the script context that carries information
 about transaction being validated. This includes all transaction inputs and 
 outputs and other transaction data. 
 
-A UTXO can have an arbitrary piece of data attached to it that we call the 
-datum which can define the state of the UTXO. When a transaction intends to spend 
+A UTXO can have an arbitrary piece of data attached to it, that we call the 
+datum, which can define the state of the UTXO. When a transaction intends to spend 
 a UTXO sitting at a script address, the script code can access the information 
 contained in the datum that is potentially present in the script context. Not 
 every UTXO necessarily needs to contain a datum. The information in the datum 
 can be used for: 
 
-* Answering who/when/with what data can a transaction consume a UTXO. 
+* Answering who/when/with what data can a UTXO be consumed. 
 * Defining the current state of the UTXO. 
 * Defining metadata and/or configurations. 
 
@@ -1745,9 +1745,8 @@ processed on the network, given that all UTXO inputs are present and the
 processing time falls within the transaction's validity interval. In case these 
 conditions are not met, the transaction will fail without charging any fees 
 to the user, unlike in Ethereum, where users must pay gas fees for transactions 
-that can ultimately fail. If the inputs are present when the transaction is 
-submitted, it will be processed and produce the expected outcome as predicted 
-off-chain. We call this property determinism of transactions. This does not mean 
+that can ultimately fail. We say that transactions on Cardano are deterministic. 
+This does not mean 
 we know for sure if a transaction will be processed because a UTXO input might 
 be consumed by a another transaction just before our transaction gets processed. 
 It means that if the transaction gets processed the effect of the transaction 
@@ -1846,12 +1845,12 @@ into the builtin Plutus type [purple]#Data#. We will look at this data
 type in section <<Simple validation scripts>>. 
 
 Both languages are purely functional, which makes it easier for an auditor 
-to assess the behavior of such smart contracts. Because Plinth is embedded 
-in Haskell, it also works well with proof-assistant tools such as 
-https://wiki.portal.chalmers.se/agda/pmwiki.php[Agda], making it a
-good choice for projects that require a high level of security. You can read 
-more about the topic of formally verifying Haskell code with the Agda proof 
-assistant in the scientific paper 
+to assess the behavior of smart contracts written in them. Because Plinth 
+is embedded in Haskell, it works well with the  
+https://wiki.portal.chalmers.se/agda/pmwiki.php[Agda] proof-assistant tools, 
+making it a good choice for projects that require a high level of security. 
+You can read more about the topic of formally verifying Haskell code with 
+the Agda proof assistant in the scientific paper 
 https://iohk.io/en/research/library/papers/reasonable-agda-is-correct-haskell-writing-verified-haskell-using-agda2hs/[Reasonable 
 Agda Is Correct Haskell: Writing Verified Haskell using agda2hs]. Since Agda 
 isn't Haskell specific, it could also be used with Aiken. However, the gap to 
@@ -1881,7 +1880,7 @@ lessons. One can also read the https://piefayth.github.io/blog/pages/aiken1/[Aik
 tutorial that is at the time of writing not included in the Awesome
 Aiken repository. For those which prefer to learn by a book, the 
 https://book.io/book/i-can-aiken/[I can Aiken] book, written by John 
-Greene provides comprehensive information and learning examples on Aiken. 
+Greene provides comprehensive information and learning examples. 
 
 ==== Setting up a Plinth development environment
 
@@ -2556,9 +2555,9 @@ In the [blue]#main# function we write the blueprint to a `JSON` file and after
 that comes the blueprint definition. It contains the contract ID, the preamble 
 that defines some general information, the contract validators, which we will 
 define next, and the contract definitions. The definitions include a list of types 
-that we have used in the validator code, beside the types of the validator type 
-signature. After that, we see the [blue]#preamble# definition. Next we show the 
-validator blueprint definitions for two validators that we have choosen.  
+that we have used in the validator code. After that, we see the [blue]#preamble# 
+definition. Next we show the validator blueprint definitions for two validators 
+that we have choosen.  
 
 [source,haskell]
 ----
@@ -2603,13 +2602,18 @@ mk42ValSmall =
     }
 ----
 
-For every validator we can use boilerplate code to define a blueprint. 
-The blueprint defines the validator title, description, redeemer information, 
-datum information and the compiled code which we reference from the `Week02` 
-module that we have imported. One can simply extend the blueprint code such that 
-it generates the data and compiled code for all six validators we have defined 
-in this section. Below is an example blueprint for the above code. The compiled 
-validator code is contained in the `"compiledCode"` fields. 
+For every validator we can use boilerplate code to define a blueprint. The 
+blueprint defines the validator title, description, parameters that are defined 
+if we have a parameterized validator, redeemer information, datum information 
+and the compiled code which we reference from the `Week02.Validators` module 
+that we have imported. One can extend the blueprint code such that it generates 
+the data and compiled code for all six validators we have defined in this section. 
+All validators presented in section <<Plutus smart contracts>> can be found at the 
+https://github.com/input-output-hk/plutus-pioneer-program/tree/plinth-plutusV3[plinth-plutusV3] 
+branch of the Plutus pioneer program, that also contains a `blueprint.json` file 
+with all compiled validator code. Below is an example blueprint for the blueprint 
+code we have defined in this section. The compiled validator code is contained in 
+the `"compiledCode"` fields. 
 
 [source,json]
 ----
@@ -2722,7 +2726,7 @@ in the `.cabal` file when compiling the project. Next we look at the `.cabal` fi
 [source,haskell]
 ----
 cabal-version:   3.0
-name:            plutus-tx-template
+name:            plinth-plutusV3
 version:         0.1.0.0
 license:
 build-type:      Simple
@@ -2796,10 +2800,10 @@ needed to compile any Plutus code presented in the <<Plutus smart contracts>>
 section. It can be reused when compiling code from other sections that we will 
 present next. One only needs to add the module names under the `exposed-modules:`
 section and also update the `GenBlueprint.hs` file with additional blueprint 
-definitions. All validators presented in this chapter can be found at the 
+definitions. As already mention all Plinth validator code presented in this 
+chapter including blueprint and cabal configuration files can be found at the 
 https://github.com/input-output-hk/plutus-pioneer-program/tree/plinth-plutusV3[plinth-plutusV3] 
-branch of the Plutus pioneer program, that also contains a `blueprint.json` file 
-with all compiled validator code. 
+branch of the Plutus pioneer program. 
 
 ==== Script context explained
 
@@ -2965,7 +2969,7 @@ following script purposes:
 In the <<Plutus smart contracts>> section we will focus on the spending, 
 minting and rewarding script purposes. 
 
-*Decoding ScriptInfo in untyped form*
+*Decoding the script information in untyped form*
 
 Before we move on explaining the transaction information data type we look 
 at another validator example that shows how to decode the [purple]#ScriptInfo# 
@@ -3032,7 +3036,7 @@ to typed form where extracting any information can be done in a simpler way.
 We again state the various possibilities that a datum can be used for 
 in smart contracts: 
 
-* Answering who/when/with what data can a transaction consume a UTXO. 
+* Answering who/when/with what data can a UTXO be consumed. 
 * Defining the current state of the UTXO. 
 * Defining metadata and/or configurations. 
 
@@ -4466,7 +4470,7 @@ receives its own script info and redeemer as input, and they share the same
 transaction information data type. All minting policies within a transaction 
 must pass for the transaction to succeed; otherwise, it fails. 
 
-Now, Let us examine an example of a minting policy where only the owner
+Now, let us examine an example of a minting policy where only the owner
 of a specific public key, who signs the transaction, is permitted to
 mint or burn tokens. This key could represent a project or company
 acting like a central bank in traditional finance, responsible for
@@ -4658,7 +4662,7 @@ unique tokens that can only be minted once. The key to writing such a
 minting policy is referencing something unique on the Cardano blockchain,
 and for that, we use UTXOs. UTXOs can exist only once, and once consumed
 as input to a transaction, they can never exist again. UTXOs are defined
-by transaction hashes, which are unique and output indices. The reason
+by transaction hashes, which are unique, and by output indices. The reason
 why every transaction has a unique hash was explained in section 
 <<Script context explained>>. 
 
@@ -4840,7 +4844,7 @@ the minting script each time with a different UTXO. This difference in
 currency symbols ensures that each token is truly an NFT, as the asset 
 class is defined by both the token name and its unique currency symbol. 
 
-At the end, we note that the utility of a token can be determined by its use 
+At the end of this section, we note that the utility of a token can be determined by its use 
 case, the market, or the community that issues and adopts it. Tokens can be 
 used for various purposes as issuing a new cryptocurrency, representing access 
 rights, or enabling in-app transactions. Native tokens enable a wide range of 
@@ -4967,8 +4971,8 @@ and unaudited codebases for Web3 projects in a three-year period (data
 taken from the https://rekt.news/leaderboard/[Rekt leaderboard]). Out
 of 137 compromised projects, 58 were audited, and 79 were not, meaning
 that unaudited Web3 projects account for a substantially larger
-cumulative loss of funds, even though their number is not much higher
-than the number of audited projects.
+cumulative loss of funds, even though their number is not significantly 
+higher than the number of audited projects. 
 
 image::sc_loss_of_funds.png[width=635,height=421,title="Loss of funds, source: https://www.cyfrin.io/blog/competitive-vs-private-audits-comparison[Cyfrin blog]"]
 
@@ -4990,7 +4994,8 @@ an audit can also prove compliance with industry standards and best
 practices and increase trust and credibility. Audits can be grouped into
 manual auditing, where each line of code is analyzed by the auditors,
 and automated auditing, where auditors use software auditing tools. A
-combination of both is also possible.
+combination of both is also possible. Auditing will be further 
+discussed in the <<Plutus security>> section. 
 
 Cardano was designed with security in mind from the beginning. Input |
 Output (IO) has invested much effort into academic research, and its
@@ -5261,8 +5266,8 @@ smart contract language realized on top of Haskell, a high-assurance,
 pure functional programming language with a strong type system. You can
 read more about the characteristics and advantages of the Haskell
 programming language in section <<Features and benefits of Haskell>>.
-The Glasgow Haskell Compiler (GHC) is the most well-established Haskell
-compiler used to compile Plinth code. On-chain code is compiled into
+The Glasgow Haskell Compiler (GHC), that is the most well-established Haskell
+compiler, is used to compile Plinth code. On-chain code is compiled into 
 Untyped Plutus Core (known simply as _Plutus_), which is the scripting 
 language used by Cardano to implement the EUTXO model. Cardano nodes execute 
 the compiled Plutus scripts during transaction validation with the help 
@@ -5313,7 +5318,7 @@ image::sc_plutus_compilation.png[width=624,height=53,title="Plutus compilation p
 
 We start with Plinth, a subset of Haskell representing the high-level
 language developers use to code the smart contract. Compiling this code
-goes through several steps.
+goes through several steps:
 
 * First, it transforms into the GHC core, part of the GHC compilation
 pipeline.
@@ -5416,6 +5421,8 @@ Plinth smart contracts using the following tools:
 * https://mlabs-haskell.github.io/clb-docs[Cardano ledger backend] (CLB) library developed by MLabs
 * https://hackage.haskell.org/package/QuickCheck[QuickCheck] Haskell library.
 
+This https://www.mlabs.city/blog/testing-dapps-on-cardano-with-clb-emulator[MLabs blog]
+shows how to use Atlas with the CLB to test plinth scripts. 
 The https://atlas-app.io/[Atlas] application backend is a open
 source tool that covers all functionalities needed to work with
 Plinth smart contracts and enables writing the complete server side code
@@ -5530,10 +5537,9 @@ contract audits. Sometimes, auditing companies publicly disclose their
 methodology. This 
 https://www.tweag.io/blog/2023-05-11-audit-smart-contract/[Tweag 
 blog] presents the auditing process in their company. Beside
-auditing smart contracts, other parts of a DApp can be audited. The
-off-chain code, the backend, and the frontend of the DApps webpage, for
-example. After the audit process, the vulnerabilities are usually
-identified and grouped into categories:
+auditing smart contracts, other parts of a DApp can be audited as
+the off-chain code. After the audit process, the vulnerabilities 
+are usually identified and grouped into categories:
 
 * *Critical vulnerabilities* that pose a big risk for the DApp
 * *High vulnerabilities* that may affect a large portion of the DApp's
@@ -5543,8 +5549,8 @@ of a DApp but are not security threats that would need immediate action
 * *Low vulnerabilities* that may affect things such as performance
 but pose no risk to security.
 
-A good practice in writing Plutus smart contracts is to avoid common 
-security vulnerabilities in Plutus smart contracts which are: 
+We state at the end of this section that good practice in writing Plutus 
+smart contracts is to avoid common security vulnerabilities which are: 
 
 * other redeemer
 * other token name
@@ -5558,20 +5564,19 @@ security vulnerabilities in Plutus smart contracts which are:
 * cheap spam
 * insufficient staking key control.
 
-This
-https://library.mlabs.city/common-plutus-security-vulnerabilities[MLabs
+This https://library.mlabs.city/common-plutus-security-vulnerabilities[MLabs
 guide] describes each vulnerability by a property statement, test, impact, 
 and provides an explanation of it. Audit reports are often made publicly
 available for the community to read because they are a great tool for
-learning what mistakes not to make when developing a DApp. A blockchain 
-company that ordered the audit also increases the transparency of their 
-software product if it makes the audit report publicly available for the 
-community to read. Below are links to repositories from the auditing 
-companies Tweag and Vacuumlabs that made some of their audit reports 
-freely available to the public:
+learning what mistakes not to make when developing a DApp. Below are links 
+to repositories from the auditing companies Tweag and Vacuumlabs that 
+made some of their audit reports freely available to the public:
 
 * https://github.com/tweag/tweag-audit-reports[Tweag audit reports]
 * https://github.com/vacuumlabs/audits[Vacuum Labs audit reports].
+
+Other auditing companies might not have their auditing reports grouped 
+into a single repository and are also worth looking into. 
 
 ==== Marlowe security and best practices
 
