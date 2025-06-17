@@ -2218,7 +2218,8 @@ The redeemer type is defined as a wrapper around the [purple]#BuiltinData# data 
 ----
 newtype Redeemer = Redeemer {getRedeemer :: BuiltinData}
   deriving stock (Generic, Haskell.Show, Typeable)
-  deriving newtype (Haskell.Eq, Haskell.Ord, Eq, ToData, FromData, UnsafeFromData, Pretty)
+  deriving newtype (Haskell.Eq, Haskell.Ord, Eq, ToData, FromData, 
+                    UnsafeFromData, Pretty)
   deriving anyclass (NFData, HasBlueprintDefinition)
 ----
 
@@ -2346,7 +2347,8 @@ Let us look now at the same validator that is written in a typed form.
 
 {-# INLINEABLE mk42TypedValidator #-}
 mk42TypedValidator :: ScriptContext -> Bool
-mk42TypedValidator ctx = traceIfFalse "Redeemer is a number different than 42" $ 42 == r
+mk42TypedValidator ctx = traceIfFalse "Redeemer is a number different than 42" 
+                                      $ 42 == r
  where
   r = case fromBuiltinData $ getRedeemer (scriptContextRedeemer ctx) of
     Just @Integer n -> n
@@ -2390,9 +2392,11 @@ makeIsDataSchemaIndexed ''MySillyRedeemer [('MkMySillyRedeemer, 0)]
 
 {-# INLINEABLE mk42CustomValidator #-}
 mk42CustomValidator :: ScriptContext -> Bool
-mk42CustomValidator ctx = traceIfFalse "Redeemer is a number different than 42" $ 42 == r
+mk42CustomValidator ctx = traceIfFalse "Redeemer is a number different than 42" 
+                                       $ 42 == r
  where
-   r = case fromBuiltinData @MySillyRedeemer . getRedeemer $ scriptContextRedeemer ctx of
+   r = case fromBuiltinData @MySillyRedeemer . getRedeemer $ 
+                            scriptContextRedeemer ctx of
      Just (MkMySillyRedeemer rInt) -> rInt
      Nothing -> traceError "Redeemer is not of MySillyRedeemer type."
 
@@ -2923,7 +2927,8 @@ For this reason the script info for a spending script contains a maybe datum.
 ----
 newtype Datum = Datum {getDatum :: BuiltinData}
   deriving stock (Generic, Typeable, Haskell.Show)
-  deriving newtype (Haskell.Eq, Haskell.Ord, Eq, ToData, FromData, UnsafeFromData, Pretty)
+  deriving newtype (Haskell.Eq, Haskell.Ord, Eq, ToData, FromData, 
+                    UnsafeFromData, Pretty)
   deriving anyclass (NFData, HasBlueprintDefinition)
 ----
 
@@ -5575,8 +5580,8 @@ made some of their audit reports freely available to the public:
 * https://github.com/tweag/tweag-audit-reports[Tweag audit reports]
 * https://github.com/vacuumlabs/audits[Vacuum Labs audit reports].
 
-Other auditing companies might not have their auditing reports grouped
-into a single repository and are also worth looking into.
+Other auditing companies that might not have their auditing reports grouped
+into a single repository, are also worth exploring.
 
 ==== Marlowe security and best practices
 
