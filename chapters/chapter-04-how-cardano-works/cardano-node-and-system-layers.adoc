@@ -329,7 +329,7 @@ mechanism requires that 70% of all SPOs first upgrade to the new node
 version, and then a consensus of five out of seven genesis keys needs to
 be reached to trigger the hard fork. The genesis keys were distributed
 such that three belong to IO, two to Emurgo, and two to the Cardano
-Foundation. After CIP-1694 will be fully implemented, genesis keys won’t be used
+Foundation. After CIP-1694 will be fully implemented, those genesis keys won’t be used
 anymore. SPOs will still play a crucial role in Cardano upgrades, and
 will always be free to decide whether they want to upgrade their nodes
 to a new version that would signal the acceptance of a proposed hard
