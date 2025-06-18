@@ -220,7 +220,7 @@ Both pool operators and delegators might be tempted to change their strategiesfo
 
 This is handled by careful _ranking_ of pools when they are displayed to users to decide where to delegate. Instead of basing that ranking on the rewards of the last epoch, the ranking is instead based on the expectation that in the long run, only the k most "attractive" pools (with the most favorable combination of cost, margin, pledge and performance) will become saturated. This for example means that a pool that has just started and has not yet attracted many delegators will still be ranked high if it has a good combination of pool parameters that make it attractive, even if rewards will be somewhat lower while the pool is still growing.
 
-==== Game Theory
+==== Game Theory (((game theory)))
 
 _Game theory_ is a branch of mathematics that studies strategic interactions between "rational" agents, i.e. agents that try to maximize some objective (like profit) rationally.
 
@@ -233,14 +233,14 @@ He has been called one of the most intelligent people in modern history.
 
 image::neumann.png[John von Neumann, 200]
 
-Another pioneer of game theory was John Nash, who won the Nobel prize in economics in 1994 for his work on the subject. His fascinating story, full of triumph and tragedy, has been made popular for millions of people by the 2001 movie _A Beautiful Mind_.
+Another pioneer of game theory was John Nash(((Nash, John))), who won the Nobel prize in economics in 1994 for his work on the subject. His fascinating story, full of triumph and tragedy, has been made popular for millions of people by the 2001 movie _A Beautiful Mind_.
 
-.John Forbes Nash Jr. (June 13, 1928 – May 23, 2015) was an American mathematician and economist. Serving as Senior Research Mathematician at Princeton University during the later part of his life, he shared the 1994 Nobel Memorial Prize in Economic Sciences with game theorists Reinhard Selten and John Harsanyi. By Peter Badge / Typos1 - submission by way of Jimmy Wales, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=6977799
+.John Forbes Nash Jr.(((Nash, John))) (June 13, 1928 – May 23, 2015) was an American mathematician and economist. Serving as Senior Research Mathematician at Princeton University during the later part of his life, he shared the 1994 Nobel Memorial Prize in Economic Sciences with game theorists Reinhard Selten and John Harsanyi. By Peter Badge / Typos1 - submission by way of Jimmy Wales, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=6977799
 
 image::nash.png[John Forbes Nash Jr., 200]
 
-In game theory, Nash's concept of a _Nash Equilibrium_ is of central importance.
-A Nash Equilibrium is a situation where no player can improve his payoff by unilaterally changing his strategy.
+In game theory, Nash's(((Nash, John))) concept of a _Nash Equilibrium_(((Nash, equilibrium))) is of central importance.
+A Nash Equilibrium(((Nash, equilibrium))) is a situation where no player can improve his payoff by unilaterally changing his strategy.
 So if all other players stick to their strategies, it would be irrational for any player to change his own strategy.
 
 [example]
@@ -262,24 +262,24 @@ A famous example of a _game_ in the sense of game theory is the so-called _Priso
 |Burglar A: 1 year, Burglar B: 1 year
 |===
 
-This game has exactly one Nash Equilibrium: Both burglars confess and spend five years in prison.
+This game has exactly one Nash Equilibrium(((Nash, equilibrium))): Both burglars confess and spend five years in prison.
 
-Let us convince ourselves that this is indeed a Nash Equilibrium!
+Let us convince ourselves that this is indeed a Nash Equilibrium(((Nash, equilibrium)))!
 
 If Burglar A unilaterally changes his strategy and stays silent, while Burglar B sticks to his strategy of confessing, then instead of going to prison for five years, Burglar A will have to go to prison for ten years. The same is true for Burglar B: If Burglar B switches his strategy from confessing to staying silent, then he will have to go to prison for ten years instead of five, provided Burglar A sticks to his strategy of confessing.
 
-On the other hand, none of the other three possible outcomes of the game are Nash Equilibria:
+On the other hand, none of the other three possible outcomes of the game are Nash Equilibria(((Nash, equilibrium))):
 
 If both stay silent and thus need to go to prison for one year, then each of them has an incentive to switch his strategy and confess instead, because then he will go free.
 
 If one of them stays silent and the other confesses, then the one staying silent can reduce his prison term from ten years to five years by confessing as well.
 
-(The one confessing has _no_ incentive to switch his strategy in this case, because then instead of going free, he would need to spend one year in prison. However, for an outcome to be a Nash Equilibrium, _none_ of the players must have an incentive to switch his strategy.)
+(The one confessing has _no_ incentive to switch his strategy in this case, because then instead of going free, he would need to spend one year in prison. However, for an outcome to be a Nash Equilibrium(((Nash, equilibrium))), _none_ of the players must have an incentive to switch his strategy.)
 
-Many people find this result surprising and somewhat depressing: "Clearly", if both simply stayed silent, they would be better off than if both confessed. And they maybe both _would_ stay silent if they had a chance to communicate and coordinate. But the Nash Equilibrium is that both confess, and that is the only outcome that is stable in the sense that no player has an incentive to unilaterally change his strategy.
+Many people find this result surprising and somewhat depressing: "Clearly", if both simply stayed silent, they would be better off than if both confessed. And they maybe both _would_ stay silent if they had a chance to communicate and coordinate. But the Nash Equilibrium(((Nash, equilibrium))) is that both confess, and that is the only outcome that is stable in the sense that no player has an incentive to unilaterally change his strategy.
 
 ======
 
-In a 2022 research paperfootnote:[_Reward Sharing Schemes for Stake Pools_, Lars Brünjes, Aggelos Kiayias, Elias Koutsoupias, Aikaterini-Panagiota Stouka, Euro S&P 2022], game theory was applied to the Cardano incentives mechanism. It was shown that if the reward distribution follows the rules explained above, then each Nash Equilibrium of the "staking game" will have k stake pools of the same size.
+In a 2022 research paperfootnote:[_Reward Sharing Schemes for Stake Pools_, Lars Brünjes, Aggelos Kiayias, Elias Koutsoupias, Aikaterini-Panagiota Stouka, Euro S&P 2022], game theory was applied to the Cardano incentives mechanism. It was shown that if the reward distribution follows the rules explained above, then each Nash Equilibrium(((Nash, equilibrium))) of the "staking game" will have k stake pools of the same size.
 
-As stated before, real people in the real world do not always behave rationally, and they have other objectives than just maximizing their profit. But the mathematical result that under some idealizing assumptions, all Nash Equilibria of the staking game leads to the desired outcome of k equally sized stake pools, is a strong argument that the Cardano incentives mechanism is well-designed and will indeed set the right incentives for pool operators and delegators, resulting in a secure and highly decentralized network for everyone to enjoy.
+As stated before, real people in the real world do not always behave rationally, and they have other objectives than just maximizing their profit. But the mathematical result that under some idealizing assumptions, all Nash Equilibria(((Nash, equilibrium))) of the staking game leads to the desired outcome of k equally sized stake pools, is a strong argument that the Cardano incentives mechanism is well-designed and will indeed set the right incentives for pool operators and delegators, resulting in a secure and highly decentralized network for everyone to enjoy.
