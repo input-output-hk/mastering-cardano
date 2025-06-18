@@ -35,7 +35,7 @@ Fundamentally, Cardano has been built as a resilient and sustainable blockchain 
 This section explores the concept of proof of stake (PoS) and discusses its importance for blockchain technology. It also compares and contrasts it to other consensus mechanisms.
 
 Introduction to proof of stake
-PoS is a type of https://docs.cardano.org/about-cardano/learn/consensus-explained[consensus mechanism] that uses the amount of stake (or value) held in the system to determine consensus among protocol participants. Essentially, a consensus protocol determines the rules and parameters governing the behavior of blockchains. Other examples of consensus mechanisms include proof of work (PoW), proof of useful work (PoUW), and proof of burn (PoB). A PoS consensus protocol ensures distributed consensus by determining whether transactions are legitimate. Transactions are the data elements generated within the blockchain, such as cryptocurrency, contracts, or records.    
+PoS is a type of https://docs.cardano.org/about-cardano/learn/consensus-explained[consensus mechanism] that uses the amount of stake (or value) held in the system to determine consensus among protocol participants. Essentially, a consensus protocol determines the rules and parameters governing the behavior of blockchains. Other examples of consensus mechanisms include proof of work (PoW), proof of useful work (PoUW), and proof of burn (PoB). A PoS consensus protocol ensures distributed consensus by determining whether transactions are legitimate. Transactions are the data elements generated within the blockchain, such as cryptocurrency, contracts, or records.
 
 Think of consensus as a ruleset that each network participant adheres to. Since blockchains operate without a central authority, a consensus protocol enables distributed network participants to agree on the history recorded on the blockchain. This agreement allows them to reach a consensus on what has happened and continue from a single source of truth.
 
@@ -49,7 +49,7 @@ Here’s how you might use a consensus algorithm:
 
 Similarly, a consensus algorithm ensures that all participants in a network agree on the same data, keeping the system accurate and reliable, even when many different people are involved.
 
-PoS works in a synchronous and partially asynchronous network topography. It ensures that during the generation of these transactions, a temporary authority is required to determine the data used and shared within the collection. This authority's job is to make and broadcast that call to the rest of the network. This is where the PoS protocol operates to determine authority for these transactions during the mining process. Proof refers to proving that the transactions are legitimate, while stake is the value held by the various addresses on individual nodes. The value refers to the amount of individual value elements, or coins, in operation within a slot ledger at any time. 
+PoS works in a synchronous and partially asynchronous network topography. It ensures that during the generation of these transactions, a temporary authority is required to determine the data used and shared within the collection. This authority's job is to make and broadcast that call to the rest of the network. This is where the PoS protocol operates to determine authority for these transactions during the mining process. Proof refers to proving that the transactions are legitimate, while stake is the value held by the various addresses on individual nodes. The value refers to the amount of individual value elements, or coins, in operation within a slot ledger at any time.
 
 We can illustrate how PoS works with the following example. Imagine a community garden where you and your neighbors decide what to plant each season. Instead of having everyone vote equally, the neighbors decide that the more time and effort someone has invested in the garden, the more their vote should count.
 
@@ -67,20 +67,20 @@ In terms of a blockchain network, PoS works as follows:
 - Responsibility. The selected pool validates transactions, ensuring they are legitimate, and adds them to the blockchain.
 - Rewards. In return for validating transactions and securing the network, the pool earns rewards.
 
-===== PoS features and advantages 
+==== PoS features and advantages
 
-One of the key features of proof of stake is that as a user's value increases, so does their opportunity to maintain the ledger and produce new blocks. The creator of a new block is chosen based on a combination of random selection and the user’s stake, or wealth. A type of leader election occurs within the chain, and the new block is timestamped. 
+One of the key features of proof of stake is that as a user's value increases, so does their opportunity to maintain the ledger and produce new blocks. The creator of a new block is chosen based on a combination of random selection and the user’s stake, or wealth. A type of leader election occurs within the chain, and the new block is timestamped.
 
-It is worth remembering that participants accumulate the transaction fees within a PoS protocol, thereby adding to their wealth as they go. This encourages steady and stable growth of the blockchain and reduces the instances of stalled transactions that can prevent chain growth. 
+It is worth remembering that participants accumulate the transaction fees within a PoS protocol, thereby adding to their wealth as they go. This encourages steady and stable growth of the blockchain and reduces the instances of stalled transactions that can prevent chain growth.
 
 Some of the primary advantages of proof of stake include:
 - Rigorous security protocols – are incorporated into a PoS protocol
 - Decentralization – the network is fully decentralized and not controlled by a single party or group
 - Energy efficiency – energy consumption is extremely efficient, as a smaller amount of electricity, as well as hardware resources, are needed to produce and secure the blockchain
-- Cost efficiencies – PoS currencies are far more cost-effective than those operating on PoW protocols. 
+- Cost efficiencies – PoS currencies are far more cost-effective than those operating on PoW protocols.
 
 All of these advantages point to how important proof of stake is within the context of the development of blockchain systems. In addition, a key factor in this evolving space is that validator addresses are known identities, sometimes actual addresses. This is an important fraud prevention feature.
- 
+
 In contrast, proof of work is a synchronous protocol that encourages miners to compete to be the first who can solve any problems within the block. A rewards system is used to incentivize this problem solving. However, this approach comes at a cost, with increased electricity usage and longer time spans to solve problems within the chain. These factors can slow the network down significantly and be costly to maintain.
 
 === Components of Cardano
