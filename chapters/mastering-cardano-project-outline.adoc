@@ -73,18 +73,37 @@ The book will present a unified account of all the material needed by users of t
 *** Spending Policies
 *** Multi-Assets
 *** Native Tokens, fungible and non-fungible
-. Nodes and Wallets
-** Introduction to nodes
-** Lite vs full-node wallets
-** Daedalus
-** Light wallets
-*** Eternl
-*** Yoroi
-*** Nami
-*** Typhon
-*** Flint
-*** etc. 
-** #Lace#
+. Writing smart contracts
+** Prefaces
+*** Plutus preface
+*** Marlowe preface
+** Smart contract programming languages
+** Smart contract case studies
+** Cardano addresses
+*** Binary format
+** Marlowe smart contracts
+*** About Marlowe
+*** Developer tools and services
+*** Marlowe Runtime architecture
+*** Contract examples
+*** Integrating with Plinth
+*** Future of Marlowe
+*** Impact of Marlowe
+** Plutus smart contracts
+*** Overview and learning resources
+*** Plutus in comparison to Bitcoin Script and Solidity
+*** Plinth in comparison to Aiken
+*** Setting up a Plinth development environment
+*** Simple validation scripts
+*** Script context explained
+*** Time-dependent and parameterized validators
+*** Off-chain code with MeshJS
+*** Minting policies and native tokens
+*** PlutusV3 features
+** Smart contract security
+*** Cardano security
+*** Plutus security
+*** Marlowe security and best practices
 . Stake Pools and Stake Pool Operations - Jesse/Guild
 * https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/introduction.adoc[Introduction]
 * https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/stake_pool_glossary.adoc[Stake Pool Glossary]
