@@ -1720,25 +1720,24 @@ The script also sees a piece of arbitrary input data provided by the user
 submitting the transaction. This data is the redeemer, which is also contained
 in the script context of a transaction. The information in the redeemer can be used for:
 
-* Indicating the purpose of interacting with a script, eg placing a bet, paying a fee, or claiming a reward
+* Indicating the purpose of interacting with a script, eg, placing a bet, paying a fee, or claiming a reward
 * Providing information known only to a specific party, which can be used to unlock funds held at a script address
 * Supplying a value that modifies the current datum data.
 
-Section <<Script context explained>> covers in more detail the information
+Section <<Script context explained>> details the information
 contained in the script context that a transaction interacting with a script
 can access. A Plutus script can use all this information to decide whether it
-is ok to consume an UTXO or not. It is also possible to use a tool like the
-Cardano CLI or a off-chain code library to check whether a transaction will
+is ok to consume a UTXO or not. It is also possible to use a tool like the
+Cardano CLI or an off-chain code library to check whether a transaction will
 be validated before on-chain execution. If the transaction is valid, it will be
 processed on the network, given that all UTXO inputs are present and the
 processing time falls within the transaction's validity interval. In case these
-conditions are not met, the transaction will fail without charging any fees
-to the user, unlike in Ethereum, where users must pay gas fees for transactions
+conditions are not met, the transaction will fail without charging the user any fees, unlike in Ethereum, where users must pay gas fees for transactions
 that can ultimately fail. We say that transactions on Cardano are deterministic.
 This does not mean
 we know for sure if a transaction will be processed because a UTXO input might
-be consumed by a another transaction just before our transaction gets processed.
-It means that if the transaction gets processed the effect of the transaction
+be consumed by another transaction just before our transaction gets processed.
+It means that if the transaction gets processed, the effect of the transaction
 on the ledger is deterministic and can be computed off-chain.
 
 Ethereum's accounting and Cardano's EUTXO models are equally powerful in
@@ -1751,7 +1750,7 @@ Then, create a new EUTXO-based architecture based on that specification
 to have the same intended properties as the original contract.
 
 Further comparison between Cardano and Ethereum is outlined in section
-<<Cardano security>> that highlights some of the security advantages that
+<<Cardano security>>, which highlights some of the security advantages that
 Cardano's EUTXO model brings over Ethereum's EVM model. You can find
 research articles about the technical implementation of Plutus in the
 https://iohk.io/en/research/library/[IO library]. A good entry point is the research
@@ -1761,13 +1760,13 @@ https://docs.cardano.org/developer-resources/smart-contracts/plutus/[Plutus
 documentation] provides short explainers and various learning
 resources. The https://github.com/IntersectMBO/plutus[Plutus]
 GitHub repository also provides links to specifications, design documents,
-academic papers and talks.
+academic papers, and talks.
 
 ==== Plinth in comparison to Aiken
 
 Plinth enables developers to write and compile their on-chain code to Plutus,
-or more precisely to Untyped Plutus Core (UPLC) which the Cardano nodes execute.
-Plinth provides a compiler plugin for GHC (the Glasgow Haskell Compiler) that
+or more precisely to Untyped Plutus Core (UPLC), which the Cardano nodes execute.
+Plinth provides a compiler plugin for the Glasgow Haskell Compiler (GHC), which
 compiles to Plutus. More details about the Plinth-to-Plutus compilation pipeline
 are outlined in section <<Plutus security>>.
 
@@ -1786,8 +1785,7 @@ official https://plutus.cardano.intersectmbo.org/docs/[Plutus user
 guide] provides developer-related information on Plutus and Plinth.
 
 https://aiken-lang.org/[Aiken] is another popular Cardano smart contract
-language that is written in Rust and directly compiles to Untyped Plutus
-Core (UPLC). This process is illustrated on the diagram below:
+language written in Rust, which directly compiles to UPLC. This process is illustrated in the diagram below:
 
 image::sc_aiken_compilation.png[width=590,height=390,title="Aiken code transformation, source: https://cardanofoundation.org/blog/aiken-the-future-of-smart-contracts[CF blog]"]
 
@@ -1795,12 +1793,12 @@ Aiken was developed with the support of https://txpipe.io/[TxPipe]
 and the https://cardanofoundation.org/[Cardano Foundation].
 Currently, IO is also supporting the development of Aiken.
 More information about maintenance and support can be found at the
-https://aiken-lang.org/credits[offcial page]. Aiken takes inspiration
-from many modern languages such as Gleam, Rust, and Elm,
+https://aiken-lang.org/credits[official page]. Aiken takes inspiration
+from many modern languages, such as Gleam, Rust, and Elm,
 which are known for friendly error messages and an overall excellent
 developer experience. It is a purely functional language with strong
-static typing and inference and offers a more accessible and familiar
-syntax to developers, that makes it easy to learn. Aiken enables
+static typing and inference. It offers a more accessible and familiar
+syntax to developers, which makes it easy to learn. Aiken enables
 cost-efficient smart contract development and comes with a modern
 development environment that has a package manager, helpful error
 diagnostics, a language-server protocol (LSP) with auto-formatting, and
@@ -1809,16 +1807,16 @@ documented and offers a built-in testing framework that ensures proper
 and robust smart contract execution with property-based testing. Aiken's
 testing framework uses the same underlying virtual machine as in real
 smart contract execution, ensuring that memory consumption and contract
-behavior during testing are identical to those on the main network.
+behavior during testing are identical to those on the mainnet.
 
 Plinth has a more expressive type system than Aiken. It supports basic
 Haskell features such as regular algebraic data types, type classes, higher
 order functions, parametric polymorphism, etc. However, it doesn’t support
 many of Haskell’s more advanced features. For more information, see the
-_Differences From Haskell_ section at the official
+_Differences from Haskell_ section in the official
 https://plutus.cardano.intersectmbo.org/docs/using-plinth/differences-from-haskell[Plinth
 user guide].
-Previously Plinth compiled and encoded data types using the
+Previously, Plinth compiled and encoded data types using the
 https://en.wikipedia.org/wiki/Mogensen–Scott_encoding[Scott-Encoding] approach
 (https://well-typed.com/blog/2022/08/plutus-cores[Haskell example], see
 section _In Haskell. Scott encoding_),
@@ -1827,10 +1825,10 @@ execution costs between Haskell and other frameworks like Aiken. With the
 introduction of PlutusV3, sums of products allow for encoding data types
 in a more compact and cost-effective way. Also, Plutus now provides
 a way to deal directly with the [purple]#Data# type for all Plutus script
-versions (V1, V2 and V3) that allows for better code optimization.
+versions (V1, V2, and V3), allowing for better code optimization.
 The https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/optimizing-scripts-with-asData[Plinth user guide]
 provides instructions on that. Aiken compiles all its custom data types
-into the builtin Plutus type [purple]#Data#. We will look at this data
+into the built-in Plutus type [purple]#Data#. We will look at this data
 type in section <<Simple validation scripts>>.
 
 Both languages are purely functional, which makes it easier for an auditor
@@ -1842,11 +1840,11 @@ You can read more about the topic of formally verifying Haskell code with
 the Agda proof assistant in the scientific paper
 https://iohk.io/en/research/library/papers/reasonable-agda-is-correct-haskell-writing-verified-haskell-using-agda2hs/[Reasonable
 Agda Is Correct Haskell: Writing Verified Haskell using agda2hs]. Since Agda
-isn't Haskell specific, it could also be used with Aiken. However, the gap to
+isn't Haskell-specific, it could also be used with Aiken. However, the gap to
 bridge between Aiken and Agda is larger than that between Plinth and Agda.
 
-Both Plinth and Aiken compile to Plutus, so the logic of writing
-smart contracts in them is very similar, even though the syntax is different.
+Both Plinth and Aiken compile to Plutus, so the logic of writing such
+smart contracts is very similar, even though the syntax is different.
 Learning one language will help a developer understand any other Cardano smart
 contract language that compiles to Plutus. To learn the Aiken smart contract
 language, one can check out the
@@ -1864,10 +1862,10 @@ covering the following topics:
 * MeshJS and PyCardano off-chain code.
 
 The https://github.com/aiken-lang/awesome-aiken[Awesome Aiken] repository
-provides many links to Aiken libraries, DApps, tutorials and video
+provides many links to Aiken libraries, DApps, tutorials, and video
 lessons. One can also read the https://piefayth.github.io/blog/pages/aiken1/[Aiken for amateurs]
-tutorial that is at the time of writing not included in the Awesome
-Aiken repository. For those which prefer to learn by a book, the
+tutorial that is, at the time of writing, not included in the Awesome
+Aiken repository. For those who prefer to learn from a book, the
 https://book.io/book/i-can-aiken/[I can Aiken] book, written by John
 Greene provides comprehensive information and learning examples.
 
@@ -1891,15 +1889,14 @@ environment you will use to run and test this code needs to support these
 features. The smart contract code presented in this section was compiled
 with a Nix shell that was set up with instructions provided in the
 https://github.com/iohkedu/plinth-dev-env/blob/main/instructions/using-nix.md[plinth-dev-env]
-repository. Nix version `2.25.3` was used and a nix shell provided by
+repository. Nix version `2.25.3` was used and a Nix shell provided by
 the https://github.com/IntersectMBO/plinth-template[plinth-template]
 repository, commit `4adea2ef260a99ec9d36de609579ae5208ac8c10`.
 
 The https://demeter.run/[Demeter.Run] online platform offers various
 tools and development environments for the Cardano ecosystem. One can
 set up development environments for smart contract languages such as
-Plinth and Aiken, and also programming languages like Rust or Python
-that come with useful Cardano tools and libraries written in those
+Plinth and Aiken, as well as programming languages like Rust or Python, come with useful Cardano tools and libraries written in those
 languages. The platform offers backend hosting for DApps and allows
 integration testing within its environments. It manages monitoring,
 security, and version upgrades. Depending on development needs, the
@@ -1912,13 +1909,13 @@ https://www.cardanocube.com/cardano-ecosystem-interactive-map[Cardano
 developer map] for more options.
 
 To query various Plutus types, one can use the official
-https://plutus.cardano.intersectmbo.org/haddock/latest/[Plutus haddock
+https://plutus.cardano.intersectmbo.org/haddock/latest/[Plutus Haddock
 documentation], which presents types in Haskell syntax. Press CTRL + S
 to search for a keyword, such as a specific data type or function name.
 The search engine might provide more options for a single data type, function
-or type class that you are querying. This is because implementations
-of types, functions and type classes can change with a new Plutus version
-and the haddock documentation keeps track of all of them.
+or type class you are querying. This is because implementations
+of types, functions, and type classes can change with a new Plutus version
+and the Haddock documentation keeps track of all of them.
 After locating the desired item, click the _Source_ icon next to its
 name to open the corresponding Haskell source code. The software
 packages for the libraries hosted on the Plutus haddock documentation
@@ -1932,7 +1929,7 @@ that implement Plutus types. One example is the official
 https://aiken-lang.github.io/stdlib/[standard library] for the Aiken
 language.
 
-Plinth data types cannot be explored in standard GHCi REPL because the
+Plinth data types cannot be explored in the standard GHCi REPL because the
 GHC compiler pipeline first compiles Plinth code to an intermediate
 language called Haskell Core. The Plutus compiler then takes this
 Haskell Core and compiles it to the Plutus script language. This means
@@ -1940,7 +1937,7 @@ that GHC is unaware of Plinth data types. Additionally, the Plinth
 libraries are not hosted on Hackage, which means the only way to query
 Plinth types from a REPL is to build it with a Cabal file that imports
 those libraries. There are some intermediate steps in the compilation
-pipeline which will be in detail explained in section <<Plutus security>>.
+pipeline which are explained in detail in section <<Plutus security>>.
 
 ==== Simple validation scripts
 
@@ -1957,10 +1954,10 @@ the type of the script context, there are two possible implementations of
 a Plinth validation script:
 
 * In the low-level implementation, the script context is represented
-using the [purple]#BuiltinData# type and the return parameter is of type
+using the [purple]#BuiltinData# type, and the return parameter is of type
 [purple]#BuiltinUnit#.
 * In the high-level implementation, the script context is represented as
-a predefined Haskell type and the return parameter is of type [purple]#Bool#.
+a predefined Haskell type, and the return parameter is of type [purple]#Bool#.
 
 Below you can see two example validation script type signatures, one
 low-level and one high-level:
@@ -2094,15 +2091,15 @@ serializedMkGiftValidator :: SerialisedScript
 serializedMkGiftValidator = serialiseCompiledCode compiledMkGiftValidator
 ----
 
-The long list of language pragmas, GHC compiler options and import statements
+The long list of language pragmas, GHC compiler options, and import statements
 is necessary to cover the functionality for all validators presented in the
-<<Simple validation scripts>> section. From the language pragmas we note that
+<<Simple validation scripts>> section. From the language pragmas, we note that
 we add the [purple]#NoImplicitPrelude# extension that prevents the standard
 `Prelude` module from being imported. The `PlutusTx` module defines a custom
-prelude where all functions use strict evaluation rather than the lazy one.
+prelude where all functions use strict evaluation rather than lazy evaluation.
 This also applies to all other functions defined in any module used for
 Plinth coding. One can read more about GHC language pragmas at the
-https://wiki.haskell.org/Language_Pragmas[Haskell wiki] that provides
+https://wiki.haskell.org/Language_Pragmas[Haskell wiki], which provides
 links to official GHC documentation. The
 https://downloads.haskell.org/ghc/latest/docs/users_guide/using-optimisation.html#ghc-flag--ffull-laziness[GHC docs]
 also cover various GHC compiler options. We name our module `Week02.Validators`.
@@ -2113,11 +2110,11 @@ modules that define functions for working with PlutusV3 scripts.
 
 After that follows the on-chain validator code.
 We name the validator function [blue]#mkGiftValidator#. It is an untyped validator
-that always succeeds. It takes in the script context as the only argument which is
+that always succeeds. It takes in the script context as the only argument, which is
 of type [purple]#BuiltinData# and returns something of type [purple]#BuiltinUnit#.
 In the body of the function, all input values are ignored, and we use the [blue]#check#
-function which takes a value of type [purple]#Bool#, and it returns a value of type
-[purple]#BuiltinUnit# in case the input argument is true or raises an error if it is false.
+function which takes a value of type [purple]#Bool#, and returns a value of type
+[purple]#BuiltinUnit# if the input argument is true, or raises an error if it is false.
 
 [source,haskell]
 ----
@@ -2134,7 +2131,7 @@ The [blue]#check# function returns the [blue]#unitval# variable that is a
 wrapper around the unit (empty tuple) type. The unit type in Haskell can be
 viewed as an analogy to the Void type used in other programming languages like
 Java or C++. If an untyped validator returns the [purple]#BuiltinUnit#
-type the validation logic passes and in case an error is raised the validation
+type the validation logic passes, and if an error is raised, the validation
 logic fails. It is now clear why this validator is called `Gift` – anyone can
 claim funds from this address, since the validation will always succeed.
 
@@ -2149,17 +2146,17 @@ pragma, which enables this language extension.
 
 It is important to note that normally in Oxford brackets, you cannot
 reference anything defined outside of them. This can become an issue
-when validator functions are long expressions, or when library functions
+when validator functions are long expressions or when library functions
 are called within their body. A workaround is to make the function
-inlinable. By adding the [pruple]#INLINABLE# pragma statement before or
+inlinable. By adding the [purple]#INLINABLE# pragma statement before or
 after the function definition, the GHC compiler replaces the function call
 in the Oxford brackets with the actual function body.
 
-This completes the on-chain code. Next we use the [blue]#serialiseCompiledCode#
-helper function that returns something of [purple]#ShortByteString# type which
-is a compact representation of a [purple]#Word8# vector. At the end of this section
-we will present the code that lets us generate https://cips.cardano.org/cip/CIP-57[Plutus blueprints]
-for all validator presented in this section. Plutus blueprints allow documenting
+This completes the on-chain code. Next, we use the [blue]#serialiseCompiledCode#
+helper function that returns something of [purple]#ShortByteString# type, which
+is a compact representation of a [purple]#Word8# vector. At the end of this section,
+we present the code that lets us generate https://cips.cardano.org/cip/CIP-57[Plutus blueprints]
+for all the validators presented in this section. Plutus blueprints allow documenting
 Plutus validators in `JSON` format and include the compiled validator code that is
 represented as a `CBORHEX`. The https://en.wikipedia.org/wiki/CBOR[Concise Binary
 Object Representation] (`CBOR`) is a binary data serialization format loosely based
@@ -2193,14 +2190,13 @@ serializedMkBurnValidator = serialiseCompiledCode compiledMkBurnValidator
 ----
 
 We call the validator [blue]#mkBurnValidator#, as no funds can be reclaimed from
-the contract once sent. The [blue]#traceError# function can be used to produce an
-error and log a message that get displayed by the failed off-chain code transaction
-that tries to claim any funds from this script address. Also in this case we ignore
+the contract once sent. The [blue]#traceError# function can produce an
+error and log a message displayed by the failed off-chain code transaction
+that tries to claim any funds from this script address. Also, in this case, we ignore
 the entire script context. Then we compile the validator and serialize it. We could
-also use the [blue]#check# function with a `False` argument but in that case there
-would be no error message logged.
+also use the [blue]#check# function with a `False` argument, but in that case, no error message would be logged.
 
-Next we show an example where we make use of the redeemer in the validation logic.
+Next, we show an example where we make use of the redeemer in the validation logic.
 The redeemer type is defined as a wrapper around the [purple]#BuiltinData# data type:
 
 [source,haskell]
@@ -2241,17 +2237,16 @@ serializedMk42ValidatorLarge = serialiseCompiledCode compiledMk42ValidatorLarge
 ----
 
 In the example above, we first convert the untyped script context to its
-typed form with the use of the [blue]#fromBuiltinData# function. It takes in
+typed form using the [blue]#fromBuiltinData# function. It takes in
 a variable of type [purple]#BuiltinData# and returns a [purple]#Maybe# type parameterized
-with type variable. If that type variable is a type that has an instance of the
-[purple]#FromData# type class then the conversion will succeed. Else the function returns
+with a type variable. If that type variable is a type that has an instance of the
+[purple]#FromData# type class, then the conversion will succeed. Otherwise, the function returns
 [purple]#Nothing#. You can find class instances for various Plutus types in the Plutus
-https://plutus.cardano.intersectmbo.org/haddock/latest/[haddock documentation].
+https://plutus.cardano.intersectmbo.org/haddock/latest/[Haddock documentation].
 There also exists the [blue]#unsafeFromBuiltinData# function that is defined in the
 [blue]#UnsafeFromData# type class. This function directly returns a type variable
-instead of wrapping it in a [purple]#Maybe# type. In case the conversion fails
-the function raises an error and also the validation logic fails. That is also the
-reason why we call it _unsafe_ because the conversion might fail with an error. Below
+instead of wrapping it in a [purple]#Maybe# type. If the conversion fails,
+the function raises an error, and the validation logic fails. We call it _unsafe_ since the conversion might fail with an error. Below
 you can see the [purple]#FromData# and [purple]#UnsafeFromData# type classes.
 
 [source,haskell]
@@ -2263,19 +2258,18 @@ class UnsafeFromData a where
   unsafeFromBuiltinData :: BuiltinData -> a
 ----
 
-Once we have the script context in typed form we can access the redeemer which
-is a wrapper around the [purple]#BuiltinData# type. Then we again try to convert
+Once we have the script context in typed form, we can access the redeemer, a wrapper around the [purple]#BuiltinData# type. Then we again try to convert
 that type, in this case to an [purple]#Integer#. Now that the redeemer is in the
 correct form, we can simply check if it is equal to 42 and return the [blue]#unitval#
 variable or raise an error and log a message. We could also use the [blue]#check#
-function as we did in our previous examples. After that we compile and serialize
+function as we did in our previous examples. After that, we compile and serialize
 the validator.
 
 The reason why we stated _"large CBOR"_ in the comment above the code is that
 converting the script context to its typed form is a costly operation and produces
-a large CBOR. Next let us look at the same validator in untyped form where we decode
-the script by keeping it in form of the [purple]#BuiltinData# type. In the end of
-this section we will make a comparison of `CBORHEX` lengths for the 42 validators.
+a large CBOR. Next, let us look at the same validator in untyped form, where we decode
+the script by keeping it in the form of the [purple]#BuiltinData# type. At the end of
+this section, we will compare `CBORHEX` lengths for the 42 validators.
 
 [source,haskell]
 ----
@@ -2309,23 +2303,23 @@ serializedMk42ValidatorSmall :: SerialisedScript
 serializedMk42ValidatorSmall = serialiseCompiledCode compiledMk42ValidatorSmall
 ----
 
-First we define a function called [blue]#constrArgs# that helps us to
+First, we define a function called [blue]#constrArgs# that helps us to
 convert the [purple]#BuiltinData# to the [purple]#BuiltinList# type. We
 recall that the script context is an algebraic product type that combines
-the transaction info, redeemer and script info types with a logical `AND`.
-Once we have converted the script context to a builtin list we can use the
-[blue]#tail# and [blue]#head# functions to extract the element we need.
-In the case of the script context the redeemer is in the second place so
+the transaction info, redeemer, and script info types with a logical `AND`.
+Once we have converted the script context to a built-in list, we can use the
+[blue]#tail# and [blue]#head# functions to extract the needed element.
+In the case of the script context, the redeemer is in the second place, so
 we first apply the [blue]#tail# function and then the [blue]#head# function.
-Once we have the redeemer in the form of [purple]#BuiltinData# we can use
+Once we have the redeemer in the form of [purple]#BuiltinData#, we can use
 the [blue]#unsafeDataAsI# that converts it to an integer. It is called
-_unsafe_ because it raises an error if the conversion fails. Next we
+_unsafe_ because it raises an error if the conversion fails. Next, we
 compile and then serialize the validator.
 
-We note that in the case the redeemer would be a more structured algebraic
-data type we could further decode it with the [blue]#constrArgs#, [blue]#tail#
+We note that if the redeemer were a more structured algebraic
+data type, we could further decode it with the [blue]#constrArgs#, [blue]#tail#
 and [blue]#head# functions, or we could use the [blue]#fromBuiltinData# function
-to convert it to its typed form and then access the elements we need.
+to convert it to its typed form and access the elements we need.
 
 Let us look now at the same validator that is written in a typed form.
 
@@ -2353,18 +2347,18 @@ serializedMk42TypedValidator :: SerialisedScript
 serializedMk42TypedValidator = serialiseCompiledCode compiledMk42TypedValidator
 ----
 
-The type signature now changes to `ScriptContext -> Bool` which means
+The type signature now changes to `ScriptContext -> Bool`, which means
 the validator succeeds if the logic returns `True` and fails if it returns
 `False`. We can now access the redeemer directly from the script context
 in its typed form and then try to convert the data inside the redeemer from
 [purple]#BuiltinData# to [purple]#Integer#. The issue we have now is that
 we can no longer compile our validator because it is in typed form. So we wrap
 it such that we use the [blue]#unsafeFromBuiltinData# that converts the
-script context from its untyped form to typed and then apply the
-[blue]#mk42TypedValidator# and [blue]#check# functions. After that we can
+script context from its untyped form to typed, and then apply the
+[blue]#mk42TypedValidator# and [blue]#check# functions. After that, we can
 compile the wrapped validator and serialize it.
 
-At the end we can look at one final 42 validator example where we define
+At the end, we can look at one final 42 validator example where we define
 a custom redeemer type that is a wrapper around an [purple]#Integer# type.
 
 [source,haskell]
@@ -2399,20 +2393,20 @@ serializedMk42CustomValidator :: SerialisedScript
 serializedMk42CustomValidator = serialiseCompiledCode compiledMk42CustomValidator
 ----
 
-At the beginning we define the custom data type [purple]#MySillyRedeemer#
-that is a wrapper around the [purple]#Integer# type. Then we use the
+Here, we first define the custom data type [purple]#MySillyRedeemer#
+which is a wrapper around the [purple]#Integer# type. Then we use the
 [blue]#makeIsDataSchemaIndexed# function that generates the [purple]#ToData#,
 [purple]#FromData#, [purple]#UnsafeFromData# and [purple]#HasBlueprintSchema#
-instances for our custom type which contain functions for converting our custom
+instances for our custom type, which contain functions for converting our custom
 data type to the [purple]#Data# type back and forth. We use template Haskell,
-that requires to add two single quotes in front of the type that return the
-type's name. After we have defined our redeemer type we write the
-validator logic same way as in the previous example, just that we now
+which requires adding two single quotes in front of the type that returns the
+type's name. After we have defined our redeemer type, we write the
+validator logic in the same way as in the previous example, just that we now
 convert the redeemer from [purple]#BuiltinData# to the [purple]#MySillyRedeemer#
-type. We compile and serialize the validator same way as in the previous example.
+type. We compile and serialize the validator in the same way as in the previous example.
 
 Altogether, we have defined four different variants for the 42 validator. We
-note that if we would import the [purple]#ScriptContext# data type from the
+note that if we were to import the [purple]#ScriptContext# data type from the
 `PlutusLedgerApi.Data.V3` module instead of the `PlutusLedgerApi.V3` module,
 the `CBORHEX` lengths decrease by around 10%. The table below shows compiled
 code lengths for the four validators and for the two different `PlutusLedgerApi`
@@ -2460,8 +2454,8 @@ avoiding the upfront cost of decoding the [purple]#BuiltinData# into sums of pro
 We call a data type _data-backed_ if it is representationally equivalent to [purple]#BuiltinData#.
 
 Since Plutus now provides a way to deal directly with the [purple]#Data# type
-for all Plutus script versions (V1, V2 and V3), developers can move away from Sums of
-Products or Scott encoding. The
+for all Plutus script versions (V1, V2, and V3), developers can move away from sums of
+products or Scott encoding. The
 https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/optimizing-scripts-with-asData[Plinth user guide]
 provides instructions on how to optimize scripts with the `PlutusTx.asData`
 module that contains template Haskell (TH) code for encoding algebraic data
@@ -2475,14 +2469,14 @@ guidelines.
 We again state the various possibilities that a redeemer can be used for
 in smart contracts:
 
-* Defining the reason for interacting with a script as eg making a bet,
-pay a fee, gather a reward, etc.
-* Provide information to the script known only by person X, which can
-be used to unlock funds of a UTXO sitting at a script address.
+* Defining the reason for interacting with a script as eg, making a bet,
+pay a fee, gather a reward, etc
+* Provide information to the script known only to person X, which can
+be used to unlock funds of a UTXO sitting at a script address
 * Define a value that will be used to modify the current datum data.
 
-At the end we show the code for generating Plutus blueprints for two of the
-six validators we have defined in this section, to shorten the code. We choose
+At the end, we show the code for generating Plutus blueprints for two of the
+six validators we have defined in this section to shorten the code. We choose
 the gift validator and the untyped 42 validator that generates a small CBOR.
 
 [source,haskell]
@@ -2542,15 +2536,15 @@ preamble =
     }
 ----
 
-We first define all language pragmas and import necessary modules including the
-`Week02.Validators` module where we have defined our validators from this section.
-In the [blue]#main# function we write the blueprint to a `JSON` file and after
+We first define all language pragmas and import the necessary modules, including the
+`Week02.Validators` module, where we have defined our validators from this section.
+In the [blue]#main# function, we write the blueprint to a `JSON` file, and after
 that comes the blueprint definition. It contains the contract ID, the preamble
 that defines some general information, the contract validators, which we will
 define next, and the contract definitions. The definitions include a list of types
 that we have used in the validator code. After that, we see the [blue]#preamble#
-definition. Next we show the validator blueprint definitions for two validators
-that we have choosen.
+definition. Next, we show the validator blueprint definitions for two validators
+that we have chosen.
 
 [source,haskell]
 ----
@@ -2597,13 +2591,13 @@ mk42ValSmall =
 
 For every validator we can use boilerplate code to define a blueprint. The
 blueprint defines the validator title, description, parameters that are defined
-if we have a parameterized validator, redeemer information, datum information
-and the compiled code which we reference from the `Week02.Validators` module
+if we have a parameterized validator, redeemer information, datum information,
+and the compiled code, which we reference from the `Week02.Validators` module
 that we have imported. One can extend the blueprint code such that it generates
 the data and compiled code for all six validators we have defined in this section.
 All validators presented in section <<Plutus smart contracts>> can be found at the
 https://github.com/input-output-hk/plutus-pioneer-program/tree/plinth-plutusV3[plinth-plutusV3]
-branch of the Plutus pioneer program, that also contains a `blueprint.json` file
+branch of the Plutus pioneer program, which also contains a `blueprint.json` file
 with all compiled validator code. Below is an example blueprint for the blueprint
 code we have defined in this section. The compiled validator code is contained in
 the `"compiledCode"` fields.
@@ -2684,7 +2678,7 @@ the `"compiledCode"` fields.
 ----
 
 We also show the `cabal.project` and `.cabal` files we use to compile the code.
-First we look at the `cabal.project` file.
+Let's look at the `cabal.project` file.
 
 [source,haskell]
 ----
@@ -2709,12 +2703,12 @@ packages:
   ./.
 ----
 
-In the file we define the
+In the file, we define the
 https://github.com/IntersectMBO/cardano-haskell-packages[CHAP repository]
 that contains all Haskell packages used by Cardano that are not hosted on
-https://hackage.haskell.org/[Hackage] the Haskell community's central package
-archive. The `cabal` tool can then download the Plutus packages that are defined
-in the `.cabal` file when compiling the project. Next we look at the `.cabal` file.
+https://hackage.haskell.org/[Hackage], the Haskell community's central package
+archive. When compiling the project, the `cabal` tool can then download the Plutus packages defined
+in the `.cabal` file. Next, we look at the `.cabal` file.
 
 [source,haskell]
 ----
@@ -2759,12 +2753,12 @@ executable gen-blueprint
     , scripts
 ----
 
-In the `.cabal` we define our compiler options, the library where our validator
-code resides and the build depends that lists Plutus packages needed by our validator
-code. At the end we define the executable project which tells cabal which file is the
-entry point for compiling the project, and we list also here the build depends. We name
+In `.cabal`, we define our compiler options, the library where our validator
+code resides, and the build dependencies that list Plutus packages needed by our validator
+code. At the end, we define the executable project, which tells Cabal which file is the
+entry point for compiling the project, and we also list the build dependencies. We name
 the file with the code for generating blueprints `GenBlueprint.hs`. Our project should
-be structured the following way:
+be structured in the following way:
 
 [source,shell]
 ----
@@ -2788,19 +2782,19 @@ cabal update
 cabal run
 ----
 
-At the end we note that the `.cabal` file shown here lists all Plutus libraries
+At the end, we note that the `.cabal` file shown here lists all Plutus libraries
 needed to compile any Plutus code presented in the <<Plutus smart contracts>>
 section. It can be reused when compiling code from other sections that we will
 present next. One only needs to add the module names under the `exposed-modules:`
-section and also update the `GenBlueprint.hs` file with additional blueprint
-definitions. As already mention all Plinth validator code presented in this
-chapter including blueprint and cabal configuration files can be found at the
+section and update the `GenBlueprint.hs` file with additional blueprint
+definitions. As already mentioned, all Plinth validator code presented in this
+chapter, including blueprint and cabal configuration files, can be found at the
 https://github.com/input-output-hk/plutus-pioneer-program/tree/plinth-plutusV3[plinth-plutusV3]
 branch of the Plutus pioneer program.
 
 ==== Script context explained
 
-In this section we will look into more detail at the [purple]#ScriptContext# data type.
+In this section, we will examine the [purple]#ScriptContext# data type in more detail.
 All data types contained in the script context will be presented as Haskell data types.
 Let us recall the implementation of the script context data type.
 
@@ -2815,15 +2809,10 @@ data ScriptContext = ScriptContext
   deriving anyclass (HasBlueprintDefinition)
 ----
 
-It contains transaction information, the redeemer and script information.
-We state again if a transaction tries to spend multiple UTXOs at a script address,
-the spending script is run for every UTXO individually where the redeemer and the
-script information are individually assigned for every UTXO in that transaction,
-in contrast to the transaction information, that is only one and can be accessed
-by every script that is triggered by a single transaction.
+It contains transaction information, the redeemer, and script information.
+To reiterate: if a transaction attempts to spend multiple UTXOs at a script address, the spending script is executed separately for each UTXO. The redeemer and script information are assigned individually to each UTXO, whereas the transaction information is shared across all scripts triggered by that transaction.
 
-In the previous code examples, the transaction information and script information
-were not used in the validation logic. However, in most validator scripts, they are
+In the previous code examples, the validation logic did not use the transaction and script information. However, in most validator scripts, they are
 used. First we look at the script information data type.
 
 *Script information*
@@ -2848,8 +2837,8 @@ data ScriptInfo
   deriving (Pretty) via (PrettyShow ScriptInfo)
 ----
 
-The script information contains information about the script purpose.
-If a transaction tries to mint a native asset the then the script info
+The script information contains information about the script's purpose.
+If a transaction tries to mint a native asset, the script info
 contains the [purple]#MintingScript# data constructor that carries the
 [purple]#CurrencySymbol# data type.
 
@@ -2865,12 +2854,12 @@ newtype CurrencySymbol = CurrencySymbol {unCurrencySymbol :: PlutusTx.BuiltinByt
     via LedgerBytes
 ----
 
-The currency symbol data type is a wrapped around a [purple]#BuiltinByteString#
-that represents the hash of the minting policy that gets triggered when minting
+The currency symbol data type is wrapped around a [purple]#BuiltinByteString#
+which represents the hash of the minting policy that gets triggered when minting
 a native asset. We will talk more about native assets and minting in section
 <<Minting policies and native tokens>>.
 
-If a transaction tries to spend a UTXO at a script address then the script
+If a transaction tries to spend a UTXO at a script address, the script
 info contains the [purple]#SpendingScript# data constructor that carries
 a transaction output reference [purple]#TxOutRef# and a [purple]#Maybe V2.Datum#.
 
@@ -2884,14 +2873,12 @@ data TxOutRef = TxOutRef
   deriving anyclass (NFData, HasBlueprintDefinition)
 ----
 
-The transaction output reference contains the transaction ID which is an SHA-256
-hash of the transaction and the transaction index which is an integer number.
-Each UTXO a transaction creates gets a transaction index assigned starting with
-0 and increasing by 1. Because transaction hashes (IDs) are unique, a UTXO defined
-by the transaction hash and the output index is also unique and can exist only once.
+The transaction output reference contains the transaction ID, which is an SHA-256
+hash of the transaction and the transaction index, which is an integer number.
+Each UTXO that a transaction creates gets a transaction index assigned starting with
+0 and increasing by 1. Because transaction hashes (IDs) are unique, the transaction hash defines a UTXO, and the output index is also unique and can exist only once.
 The reason transaction hashes are unique is because a new transaction hash includes
-the hash of the transaction that created the UTXO being consumed. Every transaction is
-consuming at least one UTXO as it needs to pay some fees. By a simple induction
+the hash of the transaction that created the UTXO being consumed. Every transaction consumes at least one UTXO as it needs to pay some fees. By a simple induction
 argument, it follows that two identical transaction hashes can never exist.
 We also rely on the fact that the probability of a hash collision is negligible.
 
@@ -2908,9 +2895,9 @@ newtype TxId = TxId {getTxId :: PlutusTx.BuiltinByteString}
     via LedgerBytes
 ----
 
-For PlutusV3 scripts a datum is no longer necessary to be attached to a UTXO
-when creating it at a script address as it was the case for PlutusV2 scripts.
-For this reason the script info for a spending script contains a maybe datum.
+For PlutusV3 scripts, a datum is no longer necessary to be attached to a UTXO
+when creating it at a script address, as was the case for PlutusV2 scripts.
+For this reason, the script info for a spending script contains a maybe datum.
 
 [source,haskell]
 ----
@@ -2921,8 +2908,8 @@ newtype Datum = Datum {getDatum :: BuiltinData}
   deriving anyclass (NFData, HasBlueprintDefinition)
 ----
 
-The [purple]#Datum# type is same as the [purple]#Redeemer# type a wrapper
-around the [purple]#BuiltinData# type. The datum allows information being
+The [purple]#Datum# type is the same as the [purple]#Redeemer# type, a wrapper
+around the [purple]#BuiltinData# type. The datum allows information to be
 attached to a UTXO that can then be accessed within the validation script
 logic. We note that the redeemer is defined when we construct a spending
 transaction that consumes one or more UTXOs at a script address, and the
@@ -2931,8 +2918,8 @@ one or more UTXOs at a script address. We will see examples of how to
 construct producing and spending transactions in section
 <<Off-chain code with MeshJS>>.
 
-The third option for a script purpose is rewarding that is used for
-withdrawing staking rewards. The rewarding constructor carries the
+The third option for script purposes is rewarding, which is used to
+withdraw staking rewards. The rewarding constructor carries the
 [purple]#Credential# data type.
 
 [source,haskell]
@@ -2945,22 +2932,21 @@ data Credential =
 ----
 
 This data type either contains a public key hash or a script hash. In
-the case of a public key hash the owner of the private key corresponding
+the case of a public key hash, the owner of the private key corresponding
 to the public key needs to sign the transaction to be able to spend the
 staking rewards. In the case of a script hash the transaction must include
-or reference the validation script that will be used to decided whether
+or reference the validation script that will be used to decide whether
 the staking rewards can be withdrawn by the transaction.
 
-Both the [purple]#PubKeyHash# and [purple]#ScriptHash# data types are
-both wrappers around the [purple]#BuiltinByteString# data type.
+Both the [purple]#PubKeyHash# and [purple]#ScriptHash# data types are wrappers around the [purple]#BuiltinByteString# data type.
 
 Other possibilities for the [purple]#ScriptInfo# data type cover the
 following script purposes:
 
-* Certifying - is for issuing certificates.
-* Voting and proposing - are used when government actions are involved.
+* Certifying - for issuing certificates
+* Voting and proposing - used when government actions are involved.
 
-In the <<Plutus smart contracts>> section we will focus on the spending,
+In the <<Plutus smart contracts>> section, we will focus on the spending,
 minting and rewarding script purposes.
 
 *Decoding the script information in untyped form*
