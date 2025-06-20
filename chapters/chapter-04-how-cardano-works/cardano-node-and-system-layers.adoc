@@ -196,7 +196,7 @@ being less distinct compared to the clear separation between the
 consensus and ledger layers. A simple diagram below represents these
 node layers:
 
-image:node_internals.png[image,width=700,height=340]
+image:node_internals.png[width=700,height=340,title="Cardano node layers"]
 
 The Cardano node also contains an additional layer called the
 https://github.com/input-output-hk/cardano-shell[node shell], which
