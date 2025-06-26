@@ -12,7 +12,7 @@ Formal methods, machine-comprehensible specifications, and integrating a treasur
 
 === Cardano Improvement Proposals (CIPs)
 
-CIP stands for 'Cardano Improvement Proposals'. Similar concepts exist for other blockchains, such as the Bitcoin Improvement Proposals (BIPs) or the Ethereum Improvement Proposals (EIPs). While these share similarities, each works quite differently. In November 2020, http://github.com/cardano-foundation/CIPs/tree/master/CIP-0001[CIP-0001]  was drafted to explain what a CIP is. A CIP is a formal, structured document proposing a solution to a common problem, highlighting various solutions and their trade-offs.
+CIP stands for 'Cardano Improvement Proposal'. Similar concepts exist for other blockchains, such as the Bitcoin Improvement Proposals (BIPs) or the Ethereum Improvement Proposals (EIPs). While these share similarities, each works quite differently. In November 2020, http://github.com/cardano-foundation/CIPs/tree/master/CIP-0001[CIP-0001]  was drafted to explain what a CIP is. A CIP is a formal, structured document proposing a solution to a common problem, highlighting various solutions and their trade-offs.
 
 Anyone with ideas for enhancing Cardano can present them as CIPs. While CIPs are not a formal component of Cardano governance, they help steer the protocol and tooling in the right direction, benefiting the entire ecosystem.
 
@@ -189,7 +189,7 @@ The paper concludes that while each blockchain displays some of the properties, 
 
 *CIP-1694*
 
-https://cips.cardano.org/cip/CIP-1694[CIP-1694] was named after Voltaire’s year of birth. It is arguably the most important CIP to date as it is a proposal to bootstrap the age of Voltaire. Co-authored by Charles Hoskinson, it is the first CIP he has gotten directly involved with. It’s clear a lot of thought went into it, and it’s intentionally written as a transitional, living document.
+https://cips.cardano.org/cip/CIP-1694[CIP-1694] was named after Voltaire’s year of birth. It is arguably the most important CIP to date as it is a proposal to bootstrap the age of Voltaire. Co-authored by Charles Hoskinson, it is the first CIP he has gotten directly involved with. It’s clear a lot of thought went into it, and it was intentionally written as a transitional, living document.
 
 When Cardano was formed, there was a tripartite structure with Emurgo, the Cardano Foundation (CF), and IOG with remits for ecosystem growth, governance, and engineering, respectively. The intention was always to move to a members-based organization (MBO) that would manage the protocol governance.
 
@@ -261,7 +261,7 @@ https://www.intersectmbo.org/[Intersect] empowers a distributed network of build
 
 ==== How Intersect operates
 
-Intersect aims to administer the governing processes for Cardano’s continued roadmap and development of the Cardano protocol. Intersect is currently facilitating the rollout of Cardano’s groundbreaking governance features. Visit the Intersect latest https://www.intersectmbo.org/news[news] page to keep up to speed with the latest developments.
+Intersect aims to administer the governing processes for Cardano’s continued roadmap and development of the Cardano protocol. Intersect is currently facilitating the rollout of Cardano’s governance features. Visit the Intersect latest https://www.intersectmbo.org/news[news] page to keep up to speed with the latest developments.
 
 All Cardano ecosystem participants are welcome to become Intersect members. Made up of a distributed group of participants, including the foremost experts on Cardano and current ecosystem contributors, Intersect aims to facilitate healthy discussions and sound decision-making amongst its members and the community to uncover pain points and champion successes.
 
@@ -309,9 +309,9 @@ Think of ‘*continuity*’ as the essential technical services needed to keep C
 
 Cardano is an open-source project, with over 40 code repositories maintained by Intersect and its members. You can find more information and explore these repositories on https://github.com/IntersectMBO[GitHub].
 
-True open source means having the flexibility to choose different options. The Cardano Foundation also follows an open-source strategy. http://cardanofoundation.org/en/news/accessing-cardano-blockchain-data-with-ledger-sync/[Ledger Sync], http://identity.cardanofoundation.org[Identity Wallet], Aiken, http://github.com/CardanoSolutions/kupo#readme[Kupo], and http://ogmios.dev/[Ogmios] all follow open-source principles and make life easier for developers on Cardano.
+True open source means having the flexibility to choose different options. The Cardano Foundation also follows an open-source strategy. http://cardanofoundation.org/en/news/accessing-cardano-blockchain-data-with-ledger-sync/[Ledger Sync], https://www.veridian.id/[Veridian Identity Platform], Aiken, http://github.com/CardanoSolutions/kupo#readme[Kupo], and http://ogmios.dev/[Ogmios] all follow open-source principles and make life easier for developers on Cardano.
 
-Acknowledging that Java is still the preferred language for many enterprise developers, the CF created Ledger Sync and the Identity Wallet in Java as open-source tools with this audience in mind. Ledger Sync puts sequential blockchain data in a new, more accessible database structure, while the Identity Wallet is a W3C-compatible mobile wallet for managing self-sovereign identities across Cardano and other blockchains. The wallet supports multiple standards, integrating key event receipt infrastructure (KERI) for interoperability to fit a broad range of use cases and enterprise adoption.
+Acknowledging that Java is still the preferred language for many enterprise developers, the CF created Ledger Sync and the Veridian Identity Platform in Java as open-source tools with this audience in mind. Ledger Sync puts sequential blockchain data in a new, more accessible database structure, while the Veridian Identity Platform is a W3C-compatible mobile wallet for managing self-sovereign identities across Cardano and other blockchains. The wallet supports multiple standards, integrating key event receipt infrastructure (KERI) for interoperability to fit a broad range of use cases and enterprise adoption.
 
 In addition, The Cardano Ballot project, a http://github.com/cardano-foundation/merkle-tree-java[Merkle Tree] in Java/Aiken, the Cardano conversions http://github.com/cardano-foundation/cf-cardano-conversions-java[library], and state channels layer 2 (hydra-java http://github.com/cardano-foundation/hydra-java[Client]) were all made open source. The CF also made the http://cardanofoundation.org/en/news/releasing-an-open-source-rewards-calculation/[rewards calculation] open source to enable anyone to perform and validate the rewards calculation independently of a single implementation.
 
@@ -591,7 +591,7 @@ SanchoNet’s capabilities have been continually enhanced. For example, support 
 
 SanchoNet has proven itself robust to adversarial behavior. Mike Hornan of Able Pool SPO, orchestrated a sustained community-driven stress test on SanchoNet, ensuring the network has the required resilience to handle thousands of governance actions concurrently.
 
-SanchoNet has allowed users to experiment with upcoming features. For example, SanchoNet users were the first to test PlutusV3 in Conway-era transactions. PlutusV3 opens up a world of possibilities with a new voting script purpose for writing voting scripts, access to governance actions in the ScriptContext, and new cryptographic Plutus primitives. Olga Hryniuk explained more in this IOG blog post.
+SanchoNet has allowed users to experiment with upcoming features. For example, SanchoNet users were the first to test PlutusV3 in Conway-era transactions. PlutusV3 opens up a world of possibilities with a new voting script purpose for writing voting scripts, access to governance actions in the ScriptContext, and new cryptographic Plutus primitives.
 
 === Governance tools
 
@@ -637,7 +637,7 @@ CIP-1694 defines seven categories of governance actions:
 
 === The Chang upgrade explained
 
-The next series of Cardano upgrades are named after Phillip Chang, who passed away in 2022, in honor of his contribution to the early design and concepts described in CIP-1694. The Chang upgrade marks a significant moment for Cardano, representing the culmination of years of dedicated development and community involvement. Extensive testing on SanchoNet and valuable feedback from community workshops have paved the way for this critical step.
+The next series of Cardano upgrades are named after Phillip Chang, who passed away in 2022, in honor of his contribution to the early design and concepts described in CIP-1694. The Chang upgrade marked a significant moment for Cardano, representing the culmination of years of dedicated development and community involvement. Extensive testing on SanchoNet and valuable feedback from community workshops have paved the way for this critical step.
 
 *From Basho to Voltaire: a self-sustaining future*
 
@@ -697,7 +697,7 @@ In the first quarter of 2024, Intersect awarded contracts to seven of its member
 * https://mpc.intersectmbo.org/e3t/Ctc/ZX+113/d5bx9l04/VX9XH53g3wtKN4g68ypMv_D2W3Dl4Sm5cxtY9MyCDlz3lYMRW5BW0B06lZ3lZW5nz4H96wZ68mW17v7746Z7Vn7W7BJXMM8KMLb8W1lpPPQ83p73hW7xK4Km1dn0SfW2bRx2M8F_rZPN5qbTRDptyLtVbfzww18dsQ9W6PYSNc26sJwkW7TZjwZ82-XZYN6LwJMbQ_gyHW6j7vNd3zlwWVW5_7yZv23_HGlV3RTYs29l4XrW4hCSmc3sx9TJW5-SmXD73yGk8W81QVps2DQKk0W8RDTt-10RX9bdZLyJ604[Vacuum Labs] ensures the continued smooth operation and functionality of Ledger and Trezor hardware wallets for the Cardano community, with enhancements planned for the Conway era.
 * https://mpc.intersectmbo.org/e3t/Ctc/ZX+113/d5bx9l04/VX9XH53g3wtKN4g68ypMv_D2W3Dl4Sm5cxtY9MyCDlz3lYMRW5BW0B06lZ3p0W1d9Vj-5XyFLnW5r7_RY4r8NlnW40Zf2G4k5rG4W1KG-NF40SK9gW5Sw4G56bsSvtW4ZcYwk3YzbZ4W2BMyhq2kXNkzW30nW721WcdjBW19j6__2NFd6PW8q3B7x7LYWpdW8R99sv3R1Y0pW97f3P516H6fYW69sLzq48qQb9W7pRCJ72nnjd7W6J9Z0F8CDBx8W3zl8MB15F6M3W4cdNjj84B-GPW5f1Kq17m-Vq-f7Rnn4s04[Byron] leads the launch and beta testing phase of the GovTool web application. This involves identifying and fixing bugs while gathering valuable user feedback.
 * https://mpc.intersectmbo.org/e3t/Ctc/ZX+113/d5bx9l04/VX9XH53g3wtKN4g68ypMv_D2W3Dl4Sm5cxtY9MyCDlz3lYMRW5BW0B06lZ3q4VVK8DN6vgFWLW3kkNnf1ZVYPsW2G8BBL8JylRbVS2rdB56sQD8N5gFm757ySfDW19WHhs4txz1pW4R7fSG1091cnW7Sr4bX4fjFRhW7P7lX38q0NJRW2YNwkg2DmrW8W7tYzGq1pFTnJW5z6v_w3FtsjqW6bk8Xs4DySJyW24v5yg6fTyfgW8xCJxT3QsHYTW4gD6LT79ZBQ9W7Ylt5Z17yFdvW8zZJMq6k8236f993CWM04[DQuadrant] is developing a suite of web application tools to support Cardano's evolving governance system. Additionally, they're creating best practice guides for testing strategies that can be applied to current and future Cardano tooling. With a strong track record, DQuadrant was contracted for feature and regression testing in preparation for the Chang hard fork. The delivery assurance team, the technical steering committee, and the hard fork working group will manage this work.
-* https://mpc.intersectmbo.org/e3t/Ctc/ZX+113/d5bx9l04/VX9XH53g3wtKN4g68ypMv_D2W3Dl4Sm5cxtY9MyCDlz3lYMRW5BW0B06lZ3pBW8kpfjx4YpNKRW3f8H_z3SnZkyVN-Yws874bwmW2ZNywq3LbHDvN7kv2ZpBPdtBW17M2w-7v9sdHW4Wd1rS6VXs6FW4LLjk77Q-k4RVfMBd92LdyFRW2zkhdl4HfhLdW4C9RTw8LN9l2N4cRmTxVfjrmW6G6Yh81t4QfSW3rCDcF3Bp8qCN8kfPTxBKfk1W1VyzBc6b_vMdW7WX--x5XkvtyVw6QC574gJcjf577Q1604[EMURGO] creates educational resources to explain the core concepts of CIP-1694. Additionally, they're developing, testing, and supporting the Cardano serialization library, a crucial technical component.
+* https://emurgo.io[EMURGO] focuses on investments, partnerships, and infrastructure development. Just some of their projects include the USDA stablecoin, the Yoroi wallet and Cardano Spot, a Cardano Social Network.
 
 As grants are continuously offered over different cohorts, it’s best to check for the latest on the Intersect website.
 
@@ -709,7 +709,7 @@ Intersect closed the year by holding elections for its various committees and bo
 
 === Pragma
 
-From the outset of the Voltaire development phase, it was always expected, and some feel necessary, to have multiple MBOs. https://pragma.builders/[PRAGMA] was announced on the eve of the inaugural _BuidlFest_ meetup in Toulouse, France. PRAGMA is a member-based, not-for-profit, open-source association for blockchain software projects. Initially, it will be made up of familiar faces to the Cardano developer ecosystem: Blink Labs, Cardano Foundation, dcSpark, SundaeLabs, and TxPipe, but will expand to incorporate more projects and members in 2025.
+From the outset of the Voltaire development phase, it was always expected, and some feel necessary, to have multiple MBOs. https://pragma.builders/[PRAGMA] was announced on the eve of the inaugural _BuidlFest_ meetup in Toulouse, France. PRAGMA is a member-based, not-for-profit, open-source association for blockchain software projects. Initially, it will be made up of familiar faces to the Cardano developer ecosystem: Blink Labs, Cardano Foundation, dcSpark, SundaeLabs, and TxPipe, but will expand to incorporate more projects and members in future.
 
 PRAGMA will not compete with Intersect, but run as a complementary effort. While the mission of Intersect is broader, PRAGMA is focused solely on open-source software development with two key projects for now: Aiken, the popular programming language for on-chain smart contracts on Cardano, and Amaru, a Rust node client for Cardano. It’s important to note that anyone can submit a budget proposal. For example, Amaru have a draft http://hackmd.io/@PRAGMA-org/amaru-proposal[budget proposal] outlining their vision for 2025.
 For Cardano to thrive, PRAGMA and Intersect need to work together to deliver what is best for the ecosystem.
