@@ -3,6 +3,8 @@ TO DO:
 - Updated up to Plomin hard fork, update/edit based on events since Jan 2025.
 - Asciidoc format = https://gist.github.com/powerman/d56b2675dfed38deb298
 
+[image::sc_cardano_address.png[width=400,height=200,title="Cardano address"]
+
 
 == Cardano governance
 
