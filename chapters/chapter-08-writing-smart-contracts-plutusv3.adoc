@@ -354,7 +354,7 @@ interpreted languages that are interpreted by a compiled language.
 https://marlowe.iohk.io/[Marlowe], initially developed by IO, is an
 interpreted smart contract language that is not Turing-complete. It is
 well-suited for designing financial contracts, such as those defined in 
-Algorithmic Contract Types Unified Standards (https://www.actusfrf.org/about/[ACTUS]), 
+Algorithmic Contract Types Unified Standards (https://www.actusfrf.org/about/[Actus]), 
 for example. The Marlowe interpreter is 
 written as a Plinth smart contract. Besides the programming language,
 the Marlowe project provides open-source tools to easily create, verify,
@@ -711,7 +711,7 @@ Marlowe could also be implemented on Ethereum or other blockchain
 platforms, making it 'platform-agnostic', similar to modern
 programming languages like Java and C++. Designed as an industry-scale
 solution, Marlowe embodies examples from the
-https://actusfrf.org[ACTUS]
+https://actusfrf.org[Actus]
 taxonomy for financial contracts. It can also interact with
 real-world data providers through oracles, enabling contract
 participants to make choices within the contract flow that determine
@@ -1177,19 +1177,19 @@ can use two empty strings. At the end, we specify the amount of the
 currency we want to deposit. For this, we can use the *Constant*
 constructor followed by a number.
 
-After defining the first part of the case-statement, the next step is to
+After defining the first part of the `Case` statement, the next step is to
 outline the logic for when the condition is met. This begins with a new
-when-statement, in which Bob will deposit 10 ada, and a new timeout is
+`When` statement, in which Bob will deposit 10 ada, and a new timeout is
 set. The code for Bob's deposit mirrors Alice's, but the role name
 changes from Alice to Bob. After that, we again define the logic that
-follows if Bob makes his deposit. We use a when-statement that says
+follows if Bob makes his deposit. We use a `When` statement that says
 Charlie has to make a choice. We set a timeout for the statement in case
 Charlie does not make his choice and then the contract gets terminated.
-We use a case-statement for Charlie to make a choice, and in the code,
+We use a `Case` statement for Charlie to make a choice, and in the code,
 we apply the *Choice* constructor for that decision. This constructor
 takes two arguments. First, it takes the information about the choice
 name and the person making the choice. The *ChoiceId* constructor
-defines this, specifying the person with the role statement. The second
+defines this, specifying the person with the `Role` statement. The second
 argument is a list of integers that defines Charlie's possible choices.
 Since Charlie decides whether the funds go to Alice or Bob, the list
 contains only two numbers.
@@ -1206,16 +1206,16 @@ The first case that follows the conditional statement is when the choice
 equals 1, which means that the funds from Bob will go to Alice. To
 transfer the funds from Bob's internal account to Alice's internal
 account, we use the *Pay* constructor. We first specify the party that
-sends the money, for which we can use the role-statement. After that, we
+sends the money, for which we can use the `Role` statement. After that, we
 have to specify the account with the *Account* constructor, which can
-again take a role-statement. Because we chose the *Account*
+again take a `Role` statement. Because we chose the *Account*
 constructor, the transfer occurs between internal accounts. There is
 also a *Party* constructor that can be used in this field, which takes
 an *Address* constructor and sends the money to an external address.
 Next, we need to specify the currency and the amount we want to send. At
 the end, we write the *Close* constructor, which means that the funds
 from the internal accounts will be sent back to the external account of
-those parties. The second pay-statement is the same, but the roles of
+those parties. The second `Pay` statement is the same, but the roles of
 Alice and Bob are reversed, as Charlie will send the funds to Bob if he
 makes choice 2.
 
@@ -1289,15 +1289,15 @@ image::sc_marlowe_contract_escrow.png[width=400,height=1130,title="Marlowe escro
 
 First, the buyer must deposit the funds into the seller's internal
 account, with the amount defined by the _Price_ parameter. The next
-when-statement presents two options. In the first case, the buyer
+`When` statement presents two options. In the first case, the buyer
 confirms everything is fine, and the contract closes. This is handled
-using a choice-statement, where the buyer has only one option. In the
+using a `Choice` statement, where the buyer has only one option. In the
 second case, the buyer reports a problem, and the funds are returned to
 the buyer's internal account. Two further possibilities arise: if the
 seller agrees with the problem, the contract closes, and the buyer's
 funds are transferred back to their external account. If the seller
 disputes the issue, and no action is taken by the timeout, the contract
-closes, and the buyer is refunded. If disputed, another when-statement
+closes, and the buyer is refunded. If disputed, another `When` statement
 allows the mediator to either dismiss the claim, transferring the funds
 to the seller's internal account before closing the contract, or confirm
 the issue, in which case the buyer is refunded, and the contract closes.
@@ -1335,7 +1335,7 @@ https://github.com/input-output-hk/real-world-marlowe[Real world
 Marlowe] GitHub repository, which also showcases the off-chain code for
 interacting with contracts. Additionally, a
 https://github.com/input-output-hk/marlowe-cardano/tree/main/marlowe-actus[Marlowe
-ACTUS implementation] is available for https://actusfrf.org[ACTUS].
+Actus implementation] is available for https://actusfrf.org[Actus].
 
 Marlowe DApps can be discovered by searching the keyword "Marlowe" in
 various https://projectcatalyst.io/search?q=marlowe[Project Catalyst] proposals.
