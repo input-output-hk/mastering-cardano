@@ -353,9 +353,9 @@ The third category of smart contract languages in Cardano consists of
 interpreted languages that are interpreted by a compiled language.
 https://marlowe.iohk.io/[Marlowe], initially developed by IO, is an
 interpreted smart contract language that is not Turing-complete. It is
-well-suited for designing financial contracts, such as those defined in
-https://www.actusfrf.org/[ACTUS] (Algorithmic Contract Types
-Unified Standards), for example. The Marlowe interpreter is
+well-suited for designing financial contracts, such as those defined in 
+Algorithmic Contract Types Unified Standards (https://www.actusfrf.org/[ACTUS]), 
+for example. The Marlowe interpreter is 
 written as a Plinth smart contract. Besides the programming language,
 the Marlowe project provides open-source tools to easily create, verify,
 and deploy secure financial smart contracts on Cardano. You can write
@@ -711,7 +711,7 @@ Marlowe could also be implemented on Ethereum or other blockchain
 platforms, making it 'platform-agnostic', similar to modern
 programming languages like Java and C++. Designed as an industry-scale
 solution, Marlowe embodies examples from the
-https://en.wikipedia.org/wiki/Algorithmic_Contract_Types_Unified_Standards[ACTUS]
+https://actusfrf.org[ACTUS]
 taxonomy for financial contracts. It can also interact with
 real-world data providers through oracles, enabling contract
 participants to make choices within the contract flow that determine
@@ -1335,7 +1335,7 @@ https://github.com/input-output-hk/real-world-marlowe[Real world
 Marlowe] GitHub repository, which also showcases the off-chain code for
 interacting with contracts. Additionally, a
 https://github.com/input-output-hk/marlowe-cardano/tree/main/marlowe-actus[Marlowe
-ACTUS implementation] is available for the ACTUS financial standard.
+ACTUS implementation] is available for https://actusfrf.org[ACTUS].
 
 Marlowe DApps can be discovered by searching the keyword "Marlowe" in
 various https://projectcatalyst.io/search?q=marlowe[Project Catalyst] proposals.
