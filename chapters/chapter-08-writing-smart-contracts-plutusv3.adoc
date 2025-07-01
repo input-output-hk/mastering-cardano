@@ -12,7 +12,7 @@ _University of Edinburgh and IOG_
 
 Smart contracts for the Cardano blockchain run in a language called
 Plutus. Roughly speaking, Plutus plays the role for Cardano that the
-Ethereum Virtual Machine (EVM) for Ethereum. But where the EVM
+Ethereum Virtual Machine (EVM) does for Ethereum. But where the EVM
 requires a dense forty-two-page yellow paper to define, the key
 concepts of Plutus can be spelled out in less than one page.
 
@@ -22,7 +22,7 @@ elaboration of the lambda calculus called System F, first defined by
 the logician Jean-Yves Girard in the 1970s. To be fair, that claim is
 a bit of an oversimplification. While the core of Plutus is indeed
 based on those systems and can be described quite concisely, Plutus
-also contains a collection of built-in operators and rules for costing
+also contains a collection of built-in operators and rules for costing,
 which takes longer to spell out.
 
 The reason for designing a language with such a tiny core is tied
@@ -36,7 +36,7 @@ Because this fifty-year-old theory would now be executed directly on
 the Cardano blockchain, carrying billions of dollars of value, there
 was a business case for formally validating that theory. Input | Output (IO) hired
 James Chapman to validate our variant of System F in the Agda proof
-assistant -- James, having written his dissertation on a related subject,
+assistant. James, having written his dissertation on a related subject,
 is one of the foremost experts in the field. The completed proof validated
 the theory. It also gave us an executable version of
 Plutus. Continuous Integration ensures the production Plutus
@@ -118,7 +118,7 @@ and run complete DApps on Cardano, leveraging the guarantees of Marlowe
 smart contracts and integrating with Web3 workflows through a TypeScript
 SDK. The platform includes:
 
-* *The Marlowe Runtime*, which supports all the necessary on- and
+* *The Marlowe Runtime* supports all the necessary on- and
 off-chain contract actions, including the tedious work of transaction
 construction and tracking contract activity by other participants.
 
@@ -130,18 +130,18 @@ as well as execution.
 through its Blockly representation, as well as simulation and analysis
 of contracts as they are developed.
 
-* *End-to-end DApp examples*, developed in collaboration with Gimbalabs
-with Catalyst Fund12 support, designed to make access to the Marlowe
+* *End-to-end DApp examples* were developed in collaboration with Gimbalabs
+with Catalyst Fund12 support, and are designed to make access to the Marlowe
 Platform as straightforward as possible.
 
-* *Other components* supporting free-standing execution of Marlowe smart
+* *Other components* support free-standing execution of Marlowe smart
 contracts, including the Marlowe Runner and the Marlowe CLI.
 
 The platform simplifies development for the developer community and
 provides key components, such as oracles, used in many DApps. Individual
 end users can also execute Marlowe contracts directly on the Cardano
 blockchain, using the facilities that the Marlowe Runner and the CLI provide.
-This directly supports decentralized finance (DeFi) interactions,
+These features directly support decentralized finance (DeFi) interactions,
 including peer-to-peer loans and escrow facilities.
 
 The Marlowe platform offers a complementary route to DApp development
@@ -166,7 +166,12 @@ and training. It also hosts Marlowe open-source software repositories
 and maintains the ecosystem's online presence.
 
 With Tomasz Rybarczyk, I have been funded under Catalyst Fund13,
-https://projectcatalyst.io/funds/13/f13-cardano-use-cases-concept/marlowe-2025-oracle-protocol-design-and-implementation[project 1300131],
+The platform simplifies development for the developer community and
+provides key components, such as oracles, used in many DApps. Individual
+end users can also execute Marlowe contracts directly on the Cardano
+blockchain, using the facilities that the Marlowe Runner and the CLI provide.
+This directly supports decentralized finance (DeFi) interactions,
+including peer-to-peer loans and escrow facilities.https://projectcatalyst.io/funds/13/f13-cardano-use-cases-concept/marlowe-2025-oracle-protocol-design-and-implementation[project 1300131],
 to formalize, develop, and implement the Marlowe Oracle protocol
 based on a novel pull-based model, where oracles respond dynamically to
 on-chain data requests, ensuring better adaptability and data coverage
@@ -349,8 +354,8 @@ interpreted languages that are interpreted by a compiled language.
 https://marlowe.iohk.io/[Marlowe], initially developed by IO, is an
 interpreted smart contract language that is not Turing-complete. It is
 well-suited for designing financial contracts, such as those defined in
-the https://www.actusfrf.org/[ACTUS] (Algorithmic Contract Types
-Unified Standards) standard, for example. The Marlowe interpreter is
+https://www.actusfrf.org/[ACTUS] (Algorithmic Contract Types
+Unified Standards), for example. The Marlowe interpreter is
 written as a Plinth smart contract. Besides the programming language,
 the Marlowe project provides open-source tools to easily create, verify,
 and deploy secure financial smart contracts on Cardano. You can write
@@ -653,8 +658,8 @@ addresses.
 
 Marlowe is a domain-specific language (DSL) for building financial smart
 contracts. One can think of Marlowe as a robust, open-source technology
-that provides a special purpose language describing asset flows on the
-blockchain. As a special purpose DSL, it offers a higher-level model of
+that provides a special-purpose language describing asset flows on the
+blockchain. As a special-purpose DSL, it offers a higher-level model of
 contracts in a more restricted domain than other Cardano languages
 compiling directly to Plutus. This means that Marlowe can provide
 safety guarantees, such as ensuring that no assets are held in a script
@@ -664,10 +669,10 @@ execution.
 
 The implementation of Marlowe on Cardano is carried out using Plinth.
 Marlowe smart contracts are interpreted by a Plinth smart contract under
-the hood. Marlowe enables for the implementation of specific domain
+the hood. Marlowe enables the implementation of specific domain
 expertise to write and manage contracts conveniently, without the steep
 learning curve associated with software development, blockchain, or
-smart contracts. Marlowe core technology has been audited, and it
+smart contracts. Marlowe's core technology has been audited, and it
 supports contracts on mainnet and pre-production testing environments.
 Its Runtime enables all the necessary on- and off-chain contract
 activity, including the tedious work of transaction construction. The
@@ -703,11 +708,11 @@ LexiFi, which provides contract software for the financial sector. In
 developing Marlowe, these languages have been adapted to work on
 blockchain. Although it is implemented on the Cardano blockchain,
 Marlowe could also be implemented on Ethereum or other blockchain
-platforms, making it a 'platform-agnostic', similar to modern
+platforms, making it 'platform-agnostic', similar to modern
 programming languages like Java and C++. Designed as an industry-scale
 solution, Marlowe embodies examples from the
 https://en.wikipedia.org/wiki/Algorithmic_Contract_Types_Unified_Standards[ACTUS]
-taxonomy and standard for financial contracts. It can also interact with
+taxonomy for financial contracts. It can also interact with
 real-world data providers through oracles, enabling contract
 participants to make choices within the contract flow that determine
 on-chain and off-chain outcomes, such as in a wallet.
@@ -790,7 +795,7 @@ Lamela et al. 2020]. Marlowe contract examples are presented in section
 The https://playground.marlowe-lang.org/[Marlowe Playground] is the
 main entry point for learning and developing Marlowe smart contracts. It
 is an online simulation that allows users to experiment with, develop,
-simulate, and analyze Marlowe contracts in the web browser without
+simulate, and analyze Marlowe contracts in a web browser without
 installing any software. Supported programming languages include Marlowe
 itself, Haskell, JavaScript, and TypeScript. The playground also
 includes Blockly – an editor for visual programming. Together, these
@@ -873,7 +878,7 @@ CLI] is a command-line tool that provides access to Marlowe
 capabilities on testnet and mainnet. It is specifically built to run
 Marlowe contracts directly without needing a web browser or a mobile
 app. Just as the `cardano-cli` tool enables plain transactions, simple
-scripts, and Plutus scripts, the Marlowe CLI tool facilitates the
+scripts, and Plutus scripts, the Marlowe CLI tool provides the
 ability to interact with and develop Marlowe contracts. Users can
 measure transaction size, submit transactions, test wallet integration,
 and debug validators. The tool provides a concrete representation of
