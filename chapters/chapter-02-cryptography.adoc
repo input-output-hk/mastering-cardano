@@ -22,9 +22,12 @@ To reiterate the point, the algorithm will produce a unique fingerprint in a man
 
 // This is a required feature of a hash algorithm: it is impossible [footnote: again, computationally infeasible] to find another data input that produces the same hash. -->
 
-#include diagram of hash algorithm#
+[caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
+.A depiction of different inputs fed into a hashing algorithm and outputs from the hashing algorithm over varying space (exact locations) and time (over 10 years).
+[#img_hashing]
+image::hashing.png[]
 
-#Figure X depicts a hash algorithm...#
+Figure <<img_hashing>> depicts different inputs and outputs for a hashing algorithm (specifically the SHA-256 hashing algorithm).
 
 // Once a hash is generated, potentially sent, and ultimately stored, anyone with a copy of the hash can be assured that the associated data used to generate the hash has not been altered. 
 
