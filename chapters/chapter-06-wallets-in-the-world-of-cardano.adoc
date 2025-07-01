@@ -211,6 +211,7 @@ Bitcoin addresses can start with _1_, _3_, or _bc1_ for different address format
 
 Please note that these addresses are provided as examples only and should not be used for actual transactions. Each cryptocurrency wallet generates a unique set of addresses for an individual user, ensuring the security and privacy of the assets.
 
+[[create-wallet]]
 === 6.1.7 Creating a wallet address
 
 The process of creating a wallet address may vary depending on the blockchain, but the following steps are generally followed.
