@@ -134,7 +134,15 @@ To verify that a particular sender created a digitally signed message, the recip
 
 * The recipient computes the hash of the received message and compares it to the decrypted hash obtained in the previous step. If the two match, the recipient can be certain that the sender created the message. Specifically, the recipient can guarantee that the sender's private/public key pair was used to generate the digital signature. Since the digital signature is the encrypted hash, and the hash uniquely identifies the specific piece of data, it can be confirmed that the data has not been altered since the digital signature was created and that it originated from the sender (using their public/private key pair).
 
-#Consider adding a diagram for digital signatures...#
+[caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
+.A depiction of how digital signatures are created.
+[#img_create_signature]
+image::create_signature.png[]
+
+[caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
+.A depiction of how digital signatures are verified.
+[#img_verify_signature]
+image::verify_signature.png[]
 
 Having introduced the main cryptographic building blocks used in blockchain systems, this section will explore how they help maintain and secure these systems.
 
