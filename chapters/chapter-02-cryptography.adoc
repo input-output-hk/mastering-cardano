@@ -118,33 +118,38 @@ While asymmetric encryption ensures that only the intended recipient can decrypt
 
 === Digital signatures
 
-Digital signatures address the issue of sender impersonation (discussed above) by allowing anyone to verify that a message was created and 'digitally signed' by a specific sending party and that the content remains unchanged. They are established using two fundamental components: _public key encryption_ and _hashing algorithms_. The process to create a digital signature involves the following steps:
-
-* The content of the message is hashed by passing it through a hash function, creating a unique fingerprint (hash) of the original data. This fingerprint uniquely identifies the content in its original, unaltered form.
-
-* The hash created in the previous step is then encrypted using public key encryption with the sender's private key. The resulting encrypted hash is the digital signature.
-
-* The sender can then transmit the message content along with the generated digital signature. Any recipient can verify that the sender created the message and that it has not been altered.
-
-To verify that a particular sender created a digitally signed message, the recipient would follow these steps:
-
-* The recipient should first receive the message and the digital signature.
-
-* The recipient then decrypts the digital signature using the sender's public key. The decrypted value should be the hash (unique fingerprint) of the original message.
-
-* The recipient computes the hash of the received message and compares it to the decrypted hash obtained in the previous step. If the two match, the recipient can be certain that the sender created the message. Specifically, the recipient can guarantee that the sender's private/public key pair was used to generate the digital signature. Since the digital signature is the encrypted hash, and the hash uniquely identifies the specific piece of data, it can be confirmed that the data has not been altered since the digital signature was created and that it originated from the sender (using their public/private key pair).
+Digital signatures address the issue of sender impersonation (discussed above) by allowing anyone to verify that a message was created and 'digitally signed' by a specific sending party and that the content remains unchanged. They are established using two fundamental components: _public key encryption_ and _hashing algorithms_. The process to create a digital signature is depicted in <<img_create_signature>>.
 
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
 .A depiction of how digital signatures are created.
 [#img_create_signature]
 image::create_signature.png[]
 
+
+We now walkthrough the steps involved to create a digital signature as follows:
+
+* The content of the message (e.g. "Hello") is hashed by passing it through a hashing algorithm, creating a unique fingerprint (hash) of the original data (e.g. 185f...1969). This fingerprint uniquely identifies the original content.
+
+* The hash created in the previous step is then encrypted using public key encryption with the sender's private key. The resulting encrypted hash is the digital signature (e.g. c1f3...691c).
+
+* The sender can then transmit the message content along with the generated digital signature. Thereafter, any recipient can verify that the sender created the message and that it has not been altered.
+
+The process to verify a digital signature is depicted in <<img_verify_signature>>.
+
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
 .A depiction of how digital signatures are verified.
 [#img_verify_signature]
 image::verify_signature.png[]
 
-Having introduced the main cryptographic building blocks used in blockchain systems, this section will explore how they help maintain and secure these systems.
+We now walkthrough the process to verify a digitally signed message as follows:
+
+* The recipient should first have received the message (e.g. "Hello") and the associated digital signature (e.g. c1f3...691c).
+
+* The recipient then decrypts the digital signature using the sender's public key. The decrypted value should be the hash (unique fingerprint) of the original message (e.g. 185f...1969 depicted in the bottom right of <<img_verify_signature>>).
+
+* The recipient computes the hash of the received message and compares it to the decrypted hash obtained in the previous step. If the two match, the recipient can be certain that the sender created the message. Specifically, the recipient can guarantee that the sender's private/public key pair was used to generate the digital signature. Since the digital signature is the encrypted hash, and the hash uniquely identifies the specific piece of data, it can be confirmed that the data has not been altered since the digital signature was created and that it originated from the sender (using their public/private key pair).
+
+Having introduced the main cryptographic building blocks used in blockchain systems, this section will now explore how they help maintain and secure these systems.
 
 === Its role in securing the blockchain
 How it provides security
