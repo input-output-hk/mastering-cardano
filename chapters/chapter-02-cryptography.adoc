@@ -27,11 +27,18 @@ To reiterate the point, the algorithm will produce a unique fingerprint in a man
 [#img_hashing]
 image::hashing.png[]
 
-Figure <<img_hashing>> depicts different inputs and outputs for a hashing algorithm (specifically the SHA-256 hashing algorithm).
+<<img_hashing>> depicts different inputs and outputs for a hashing algorithm (specifically the SHA-256 hashing algorithm). In the first leftmost depiction, the text "Hello" is passed into the hashing algorithm that generates a hash (i.e. a unique fingerprint of the text "Hello") that starts with the characters "185f" and ends with the characters "1969". You can test generating hashes using online tools:
+
+* Such as by using either of these online tools: https://emn178.github.io/online-tools/sha256.html or https://codebeautify.org/sha256-hash-generator
+* In fact, if you type in the text: Hello
+* You should see that you end up with the following output hash: 185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969
+* Both the tools should output the exact same hash for the exact same input text. In fact, any tool that implements the "SHA-256" hashing algorithm should output the exact same hash for the exact same input.
+
+Looking back at <<img_hashing>>, comparing the hashes from the first and second depicitons (from the left), it can be seen that even the smallest change in text leads to a drastically different generated hash -- try it out for yourself in the hashing tools (provided above). Yet if the exact same text is inputted into a hashing algorithm, even if over larger periods of time and in different locations, the exact same hash will be generated for the same input. For example if you input the text "Hello" 20 years ago in the USA (the leftmost depiction in <<img_hashing>>), and I also input "Hello" now (20 years later), then the exact same hash will be generated. 
 
 // Once a hash is generated, potentially sent, and ultimately stored, anyone with a copy of the hash can be assured that the associated data used to generate the hash has not been altered. 
 
-Hash functions guarantee that data remains unchanged by storing the generated hash of the respective data. As long as the hash remains unchanged, it can be verified that the respective data has not been modified. However, if someone alters the data and adjusts the hash to match the new data, the receiver would be unable to detect this change. We will discuss a solution to this issue later in this chapter.
+To summarise, hash functions can guarantee that data remains unchanged by storing the generated hash of the respective data. As long as the hash remains unchanged, it can be verified that the respective data has not been modified. However, if someone alters the data and adjusts the hash to match the new data, the receiver would be unable to detect this change. We will discuss a solution to this issue later in this chapter.
 
 While hash functions solve a significant problem for communicating devices, they do not ensure the privacy of the data being transmitted. We will now explore encryption techniques designed to provide privacy for data communicated between different parties.
 
