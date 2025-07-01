@@ -2450,8 +2450,8 @@ We see that we get by far the most compact compiled code if we decode the
 to typed form. We call that lazy decoding. This also brings an on-chain code
 performance advantage.
 
-The reason why the compiled code is shorter if we import the [purple]#ScriptContext#
-from the `PlutusLedgerApi.Data.V3` module is because that module provides an alternative
+The reason the compiled code is shorter if we import the [purple]#ScriptContext#
+from the `PlutusLedgerApi.Data.V3` module is that module provides an alternative
 interface that works directly with the Plutus Core [purple]#Data# type under the hood. Because
 of the updates to Plutus, data types can now be thin wrappers over the [purple]#BuiltinData#
 type, which allows retaining the user-friendliness of the data type version while also
@@ -3083,7 +3083,7 @@ data TxInInfo = TxInInfo
 ----
 
 A transaction input information contains a transaction output reference
-that we have previously explained. It defines the input UTXO. And it also
+that we have previously explained. It defines the input UTXO, and it also
 contains resolved transaction input information in form of the transaction
 output [purple]#TxOut# data type.
 
@@ -3099,7 +3099,7 @@ data TxOut = TxOut
   deriving anyclass (NFData, HasBlueprintDefinition)
 ----
 
-A transaction output of a UTXO contains the address this UTXO is residing,
+A transaction output of a UTXO contains the address of this UTXO,
 the value it contains, the output datum and possibly a script hash. We look
 first at the [purple]#Address# type.
 
@@ -3242,7 +3242,7 @@ following certificates:
 . A digest of the PoolParams
 . The retirement certificate and the Epoch in which the retirement will take place
 . Authorize a Hot credential for a specific Committee member's cold credential
-. Resign committee member's cold credential
+. Resign committee member's cold credential.
 
 After certificates comes the data that manages withdrawals of staking rewards.
 The data is contained in a [purple]#Map# of credentials and lovelace. Next follows
@@ -3324,10 +3324,10 @@ of public key hashes that represent transaction signatories. We note again
 that the [purple]#PubKeyHash# data type is a wrapper around the
 [purple]#BuiltinByteString# data type.
 
-Then come the redeemers and datums. As stated before a transaction can spend
+Then come the redeemers and datums. As stated before, a transaction can spend
 multiple UTXOs that get individual redeemers assigned. In case any of these
 UTXOs have only a datum hash attached, the transaction also needs to contain
-the datums that belong to those hashes. Both data for redeemers and datums is
+the datums that belong to those hashes. Data for both redeemers and datums is
 packaged inside a [purple]#Map# object. The keys for the redeemer data are
 of type [purple]#ScriptPurpose#.
 
