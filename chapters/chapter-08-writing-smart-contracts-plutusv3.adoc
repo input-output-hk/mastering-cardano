@@ -354,7 +354,7 @@ interpreted languages that are interpreted by a compiled language.
 https://marlowe.iohk.io/[Marlowe], initially developed by IO, is an
 interpreted smart contract language that is not Turing-complete. It is
 well-suited for designing financial contracts, such as those defined in 
-Algorithmic Contract Types Unified Standards (https://www.actusfrf.org/[ACTUS]), 
+Algorithmic Contract Types Unified Standards (https://www.actusfrf.org/about/[ACTUS]), 
 for example. The Marlowe interpreter is 
 written as a Plinth smart contract. Besides the programming language,
 the Marlowe project provides open-source tools to easily create, verify,
@@ -1419,7 +1419,7 @@ potential by implementing critical updates to its validator and tech
 stack, transforming the Marlowe Runtime, protocols, and contracts into
 competitive products. These updates will create new business
 opportunities by making Marlowe tools essential for small and medium
-businesses, developers, infrastructure providers, and SPOs. The Marlowe
+businesses, developers, infrastructure providers, and stake pool operators (SPOs). The Marlowe
 2025 application targets the following areas:
 
 *Marlowe DApp starter kit*
@@ -1442,7 +1442,7 @@ flow, the changes aim to optimize a set of key contracts with business
 value potential. This process will not only improve efficiency but also
 expand capabilities, including the integration of off-chain micropayment
 channels into the framework. These changes will also be incorporated
-across the whole Marlowe tool-set. The selected contracts, chosen for
+across the whole Marlowe toolset. The selected contracts, chosen for
 their real-world application potential, will be demonstrated through
 DApp prototypes, fully documented and accessible via the marlowe-ts-sdk
 for developers to build upon.
@@ -1463,7 +1463,7 @@ The Marlowe oracle protocol will be formalized and expanded with a
 detailed CIP specification, building on the oracle scanner MVP. This
 protocol employs a unique on-chain request-response mechanism, offering
 distinct advantages over traditional feed-based systems by enabling
-extensive data set coverage. We will collaborate with existing oracle
+extensive data set coverage. The Marlowe Foundation will collaborate with existing oracle
 providers on the Cardano network to ensure seamless integration. The
 protocol will also be made interoperable with other languages such as
 Aiken or Plinth, allowing scripts to efficiently manage oracle data.
@@ -1480,7 +1480,7 @@ community collaboration to further drive the technology evolution and
 refinement.
 
 The Marlowe 2025 proposal marks the first step in launching Marlowe as
-an independent project. The Marlowe foundation will make further bids to
+an independent project. The Marlowe Foundation will make further bids to
 Catalyst and other funding bodies, engaging with the community through
 the special Interest group and potentially collaborating with other
 partners. A key focus will be the development of Marlowe V2 – a separate
