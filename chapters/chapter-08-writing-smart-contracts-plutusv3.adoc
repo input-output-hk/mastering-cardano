@@ -1164,7 +1164,7 @@ constructor for that, which contains two pairs of regular brackets.
 The first one defines the case of what has to happen for the contract to
 progress, and the second one defines the logic that follows if the case
 action is met. In the first bracket, we specify that Alice should
-deposit 10 ada. We do this by using the *Deposit* constructor. First,
+deposit 10 lovelaces. We do this by using the *Deposit* constructor. First,
 we specify to which account the deposit should go. We can specify this
 with the *Role* constructor followed by the role name, which, in our
 case, is Alice. Second, we specify who is depositing into the previously
@@ -1173,13 +1173,13 @@ name. We could also use the *Address* constructor, where we would have
 to input Alice's Cardano address. Then, we have to specify what kind of
 currency we are depositing. For this, we use the *Token* constructor
 and add the currency symbol and the token name. For the ada currency, we
-can use two empty strings. At the end, we specify the amount of the
+can use two empty strings to mean lovelaces. At the end, we specify the amount of the
 currency we want to deposit. For this, we can use the *Constant*
 constructor followed by a number.
 
 After defining the first part of the `Case` statement, the next step is to
 outline the logic for when the condition is met. This begins with a new
-`When` statement, in which Bob will deposit 10 ada, and a new timeout is
+`When` statement, in which Bob will deposit 10 lovelaces, and a new timeout is
 set. The code for Bob's deposit mirrors Alice's, but the role name
 changes from Alice to Bob. After that, we again define the logic that
 follows if Bob makes his deposit. We use a `When` statement that says
@@ -3349,17 +3349,16 @@ data ScriptPurpose
   deriving (Pretty) via (PrettyShow ScriptPurpose)
 ----
 
-It is structured same way as the [purple]#ScriptInfo# data type except that
-the constructor names are different, and the _Spending_ constructor holds only
-a transaction output reference without a maybe datum. Which is the case in
-the [purple]#ScriptInfo# data type. The keys for the datums are datum hashes
-that map to actual datums.
+The [purple]#ScriptPurpose# data type is structured in the same way as the 
+[purple]#ScriptInfo# data type except that the constructor names are different 
+and the _Spending_ constructor holds only a transaction output reference without a maybe datum. 
+The keys for the datums are datum hashes that map to actual datums.
 
 Next comes the transaction ID of type [purple]#TxId# which represents the
 hash of the transaction being validated. As already stated this type is a
 wrapper around the [purple]#BuiltinByteString# data type.
 
-After that come the votes and proposal procedures that are both used when
+After that come the votes and proposal procedures that are used when
 dealing with government actions. The last two pieces of data contained in
 the transaction information are the current treasury amount and treasury
 donation. Both are of type [purple]#Maybe V2.Lovelace#. Learn more about
@@ -3495,10 +3494,10 @@ comes from the _Week03_ examples from the Plutus pioneer program.
 Then we define our [purple]#VestingDatum# datum type. It contains the
 beneficiaries public key hash and the deadline in form of [purple]#POSIXTime#
 after which the funds can be claimed. Because we are defining a custom data
-type we need to use the [blue]#makeIsDataSchemaIndexed# function that generates
-the [purple]#ToData#, [purple]#FromData#, [purple]#UnsafeFromData# and
+type, we need to use the [blue]#makeIsDataSchemaIndexed# function that generates
+the [purple]#ToData#, [purple]#FromData#, [purple]#UnsafeFromData#, and
 [purple]#HasBlueprintSchema# instances for our custom type. As stated in
-a previous section we use template Haskell, that requires to add two single
+a previous section, we use template Haskell, that requires to add two single
 quotes in front of the type to return the type's name.
 
 Next comes the code for the validator. The validation logic says
@@ -3525,7 +3524,7 @@ In the examples we have seen so far, the validators took in a single parameter,
 the script context and returned a [purple]#Bool# or a [purple]#BuiltinUnit#. If
 there is any variability in the contract, we model that by using the datum as in
 the vesting example, that contained the beneficiary and the deadline. An alternative
-approach are parameterized contracts, where variability is integrated into the contract
+approach is to use parameterized contracts, where variability is integrated into the contract
 by adding a parameter variable to the validator function. The code below shows this,
 containing a modified version of the previous vesting code example.
 
@@ -3600,16 +3599,16 @@ There are a lot of instances for existing Plutus type in this type class such as
 [purple]#Bool#. However, this is not used for functions, as they cannot be
 used to compile Haskell to Plutus validators.
 
-The reason why it is possible to compile a parameterized validator in Plutus is
-because the input parameter is not some arbitrary Haskell function, it is static
-data, which you can pass at runtime to a script function if you create an instance
+The reason it is possible to compile a parameterized validator in Plutus is
+that the input parameter is not some arbitrary Haskell function, it is static
+data that you can pass at runtime to a script function if you create an instance
 of the [purple]#Lift# type class.
 
 Next comes the validator code. The type signature of the validator function
 changes such that it takes the additional vesting parameter. We note that a
 validator function can take any number of parameters. Our example uses only one
 parameter. In the body of the validator function, we now read the deadline and
-the beneficiaries public key hash from the vesting parameter. Apart from that,
+the beneficiary's public key hash from the vesting parameter. Apart from that,
 the logic of the validator stays the same. Then the validator gets compiled and
 serialized. When compiling the validator, another type parameter needs to be
 added to the type signatures, and we also need to apply the [blue]#unsafeFromBuiltinData#
@@ -3661,7 +3660,7 @@ other sections you can use https://deno.com/[Deno] that is a runtime
 environment for JavaScript and TypeScript. All off-chain code presented in
 this and other sections was tested with Deno version `2.1.9` and various
 MeshSDK packages version `1.9.0-beta.3`. To install the MeshSDK packages
-that are needed by the off-chain code the `npm` package manager for JavaScript
+that are needed by the off-chain code, the `npm` package manager for JavaScript
 can be used. To fix a package version one can create the `package.json`
 file before installing the packages. Below is an example of this file.
 
@@ -3677,11 +3676,11 @@ file before installing the packages. Below is an example of this file.
 }
 ----
 
-The package that installs other MeshSDK packages that are required by
+The package that installs other MeshSDK packages required by
 our code is `@meshsdk/core`. The official
 https://www.npmjs.com/package/@meshsdk/core[npm page] for this package
 lists the MeshSDK packages that will get installed as dependencies.
-To install these packages locally `cd` to the root location of your
+To install these packages locally, `cd` to the root location of your
 project, create the `package.json` file there and run:
 
 [source,shell]
@@ -3743,7 +3742,7 @@ export const secretSeed = ["seed1", "seed2", ... ] ;
 
 Next, we define a provider which helps us to query the blockchain and
 submit transactions. We use https://blockfrost.io/[BlockFrost]. For the
-code to work one has to provide his blockfrost key, which users can get
+code to work, one has to provide their blockfrost key, which users can get
 for free at the official webpage. The key is tied to a specific network
 (mainnet, preprod, preview or SanchoNet). The off-chain code we will
 present in this and other sections was tested on the preview network.
@@ -3790,13 +3789,13 @@ the deadline, which sets the time after which the funds can be claimed
 from the script address. We set the time in ISO UTC format and then
 convert it to `POSIX` time in milliseconds.
 
-After we have defined our data that we will attach in the datum we can
+After we have defined our data that we will attach in the datum, we can
 define our vesting script and compute the address of this script. We
 note that we have to apply the function [blue]#applyCborEncoding# that
 takes the raw script `CBORHEX` from the blueprint and formats it in
 the correct way. The compiled code in our code snippet is shortened.
 When running this off-chain code, the full compiled code of the validator
-has to be provided that can be found in the `blueprint.json` file at the
+has to be provided. That can be found in the `blueprint.json` file at the
 https://github.com/input-output-hk/plutus-pioneer-program/tree/plinth-plutusV3[plinth-plutusV3]
 branch of the Plutus pioneer program repository. Now we can send some
 funds to the vesting script.
@@ -3827,7 +3826,7 @@ class where we provide our wallet as initiator. Then we set the network.
 The Mesh source code states that setting the network is mainly used to know the
 cost models to be used to calculate script integrity hash. After that we
 use the [blue]#sendLovelace# function, where we specify our script address,
-the datum that we want to attach, if we want to inline it and in the end
+the datum that we want to attach, if we want to inline it, and in the end
 the amount we want to send. We create the datum with the [blue]#mConStr0#
 function that helps us to create a Mesh Data index 0 constructor object.
 At the end of the transaction we set the change address to our address which
@@ -3866,9 +3865,9 @@ data VestingDatumMix = VestingDatum1 { beneficiary1 :: PubKeyHash,
 makeIsDataSchemaIndexed ''VestingDatumMix [('VestingDatum1, 0), ('VestingDatum2, 1)]
 ----
 
-When we make the data schema we then assign the numbers 0 and 1 to the data
+When we make the data schema, we then assign the numbers 0 and 1 to the data
 constrcutors in the same order we have defined them. Now that we have our datum
-type we can modify our validator such that it can work with this type.
+type, we can modify our validator such that it can work with this type.
 
 [source,haskell]
 ----
@@ -3902,7 +3901,7 @@ vestingValMix ctx =
 ----
 
 We now have two options in our off-chain code how to define the datum. In the
-case we would use the [purple]#VestingDatum1# data constructor, we would attach
+case of the [purple]#VestingDatum1# data constructor, we would attach
 the datum the same way as we have shown in the [blue]#sendFunds# function. For
 the second case, if we would want to provide the datum as the second option where
 the arguments are flipped, we would do that the following way:
@@ -3960,9 +3959,9 @@ async function claimFunds(txHashVestedUTXO: string): Promise<string> {
 //console.log(await claimFunds("<txHash>"));
 ----
 
-First we define the [blue]#getUtxo# function. It takes in script address
-and a transaction hash both of type [purple]#string#. It then checks if
-at the given address a UTXO exist that contains the provided transaction
+First, we define the [blue]#getUtxo# function. It takes in script address
+and a transaction hash both of type [purple]#string#. It then checks if,
+at the given address, a UTXO exists that contains the provided transaction
 hash and then returns this UTXO. After that we define our function for
 claiming funds from the vesting script address.
 
@@ -3999,8 +3998,8 @@ current time and subtract 40.000 milliseconds. Then we define our
 transaction. We first set the network and then use the [blue]#redeemValue#
 function to redeem our vested UTXO. It takes in the UTXO we want to
 redeem, the script at which the UTXO is residing and the redeemer.
-The redeemer is optional and could also be skipped. The same goes for
-the datum, that we haven't provided here, because we have inlined
+The redeemer is optional and could be skipped. The same goes for
+the datum, which we haven't provided here because we have inlined
 the datum to the UTXO we are claiming.
 
 Next, we set the validity interval for the transaction with the
@@ -4020,8 +4019,8 @@ that we call with 5 ada, and the [blue]#claimFunds# function that
 we call with the transaction hash the previous function call returns
 and gets logged to the console. For a user to test this code, one
 should first uncomment the first function call and run the code.
-After the transaction is successfully submitted, we comment again
-the first command, copy the logged transaction hash to the second
+After the transaction is successfully submitted, we comment
+the first command again, copy the logged transaction hash to the second
 command, uncomment it and run the code again. If we name our file
 that contains the off-chain code `vesting.ts` we can run the code
 with the command below.
@@ -4106,7 +4105,7 @@ const burnScript: PlutusScript = {
 const burnAddr: string = resolvePlutusScriptAddress(burnScript, 0);
 ----
 
-Similar as before we define our wallet address, public key hash and
+As before, we define our wallet address, public key hash and
 the deadline in POSIX milliseconds time. Then we define the script parameter
 that we will apply to the parameterized script and that contains our own
 public key hash and the deadline we have defined. Next we define our
@@ -4114,7 +4113,7 @@ parameterized vesting script. We again shorten the `CBORHEX` compiled
 code. The full compiled code can be found in the `blueprint.json` file that resides at the
 https://github.com/input-output-hk/plutus-pioneer-program/tree/plinth-plutusV3[plinth-plutusV3]
 branch. We use now the function [blue]#applyParamsToScript# and add the
-script parameter we have previously defined. If there would be more
+script parameter we have previously defined. If there were more
 than one parameter, we would enter all of them in the list in the
 correct order. Then we compute the script address. We also define
 the burn script, from which no funds can be retrieved. The reason for
@@ -4139,7 +4138,7 @@ async function sendFunds(amount: string): Promise<string> {
 }
 ----
 
-We define the [blue]#sendFunds# similarly as in the previous
+We define the [blue]#sendFunds# similarly to the previous
 vesting example. The difference is that this time we don't specify a
 datum in the [blue]#sendLovelace# function. This means we will create
 a UTXO without a datum. After that, we can deploy our parameterized
@@ -4169,7 +4168,7 @@ async function deployRefScript(lovelaceAmount: string): Promise<string> {
 
 The [blue]#deployRefScript# takes in a lovelace amount in form or a
 string which will be used to deploy the reference script. First we look
-up the UTXO at our wallt. Then we define a transaction builder that we
+up the UTXO at our wallet. Then we define a transaction builder that we
 will use to build the transaction. After that we define our transaction.
 We first specify that we want to deploy our vesting script at the burn
 address and the amount of lovelace we will spend. Then we specify the
@@ -4224,18 +4223,18 @@ async function claimFunds(txHashVestedUTXO: string,
 
 The [blue]#getUtxo# is defined the same way as in our previous off-chain
 code example. The [blue]#claimFunds# function is defined in a similar way
-as in the previous code. It takes again in the transaction hash of our
-UTXO we have vested at the script. And it also takes in the transaction
+as in the previous code. It takes in the transaction hash of our
+UTXO we have vested at the script, and also the transaction
 hash of the UTXO that contains our deployed vesting script. In the body
 of the function, we first define our UTXO that we want to claim. Then
 we define the UTXO that contains our script. After that we again define
-the redeemer and slot same as in the previous off-chain code.
+the redeemer and slot, as in the previous off-chain code.
 
-The transaction to claim the funds is structured also similarly
-as in the previous example. The only difference is that now the [blue]#redeemValue#
+The transaction to claim the funds is also structured similarly
+to the previous example. The only difference is that now the [blue]#redeemValue#
 function takes in the reference UTXO that contains the parameterized vesting
 script instead of the actual script. We again set the validity interval
-and the required signature to the transaction. After that we build, sing
+and the required signature to the transaction. After that we build, sign
 and submit the transaction and return the transaction hash.
 
 At the end, we define the function calls by logging their return values.
@@ -4256,7 +4255,7 @@ deno run -A vesting-param.ts
 We can again check the transaction details by inputing the hashes at the
 http://preview.cardanoscan.io/[preview.cardanoscan.io] webpage.
 
-We note that the reason why it would make sense to deploy a script to
+We note that the reason it would make sense to deploy a script to
 an unredeemable UTXO is that referencing a script from a UTXO is cheaper
 than attaching it to the transaction. Of course, the upfront cost is
 larger because we need to pay fees for deploying the script. So this
@@ -4279,7 +4278,7 @@ specific Cardano era and may not work in future eras if blockchain parameters ch
 For this reason, it is good practice to upgrade the off-chain code library versions
 your code is using and test the code when upgrades to the Cardano ledger happen.
 
-If a reader wants to know more about MeshJS one can look at:
+More information about MeshJS is available at:
 
 * https://meshjs.dev/guides[MeshJS guides]
 * https://docs.meshjs.dev/[MeshJS documentation]
