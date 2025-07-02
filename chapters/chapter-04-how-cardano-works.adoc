@@ -2,33 +2,12 @@
 [[how-cardano-works]]
 == How Cardano Works
 
-This chapter explains how the Cardano platform works and outlines the core components of the system. Let's take a closer look at the software running Cardano.
+This chapter explains how the Cardano platform works and outlines the core components of the system. 
+Cardano has been designed in modules, with linked components that can be used in various ways. These components of the Cardano platform stack work together under the hood to support the construction and use of the live Cardano blockchain. Let's take a closer look at the software running Cardano.
 
-=== Cardano Architecture
+include::chapter-04-how-cardano-works/cardano-node-and-system-layers.adoc[]
 
-Cardano's design includes three layers:
-
-* Consensus layer
-* Ledger layer
-* Network layer
-
-==== Consensus Layer
-
-This layer runs the Ouroboros protocol and makes decisions such as producing blocks, adopting blocks, and making a choice about competing chains. It also maintains the state of the entities needed to make these decisions.
-
-==== Ledger Layer
-
-This layer manages the state of the ledger and updates the ledger for each new block that is made. It handles the transitions between sucessive ledger states as outlined in the ledger rules to cater for epoch boundary transitions and hard fork combinator events.
-
-==== Network Layer
-
-This layer manages the connections between all the distributed nodes within the Cardano network, transmits blocks between nodes, obtains new blocks from the block producing nodes, manages relay nodes, and builds newly minted transactions into blocks.
-
-include::chapter-04-how-cardano-works/network-protocols.adoc[]
-
-[[about-the-ouroboros-protocol]]
-=== About the Ouroboros Protocol
-Fundamentally, Cardano has been built as a resilient and sustainable blockchain with a proof-of-stake consensus protocol called https://iohk.io/en/blog/posts/2020/06/23/the-ouroboros-path-to-decentralization/[Ouroboros] which is proven to have the same security guarantees and is undoubtedly more energy efficient than proof-of-work protocols.
+include::chapter-04-how-cardano-works/chapter-utxo.adoc[]
 
 === Reaching Consensus using Proof-of-Stake
 
@@ -83,16 +62,11 @@ All of these advantages point to how important proof of stake is within the cont
 
 In contrast, proof of work is a synchronous protocol that encourages miners to compete to be the first who can solve any problems within the block. A rewards system is used to incentivize this problem solving. However, this approach comes at a cost, with increased electricity usage and longer time spans to solve problems within the chain. These factors can slow the network down significantly and be costly to maintain.
 
-=== Components of Cardano
-
-Cardano has been designed in modules, with linked components that can be used in various ways. These components of the Cardano platform stack work together under the hood to support the construction and use of the live Cardano blockchain.
-
 include::chapter-04-how-cardano-works/chapter-incentives.adoc[]
 
-include::chapter-04-how-cardano-works/chapter-utxo.adoc[]
+[[about-the-ouroboros-protocol]]
+=== About the Ouroboros Protocol
 
-include::chapter-04-how-cardano-works/cardano-node-and-system-layers.adoc[]
+Fundamentally, Cardano has been built as a resilient and sustainable blockchain with a proof-of-stake consensus protocol called https://iohk.io/en/blog/posts/2020/06/23/the-ouroboros-path-to-decentralization/[Ouroboros] which is proven to have the same security guarantees and is undoubtedly more energy efficient than proof-of-work protocols.
 
-=== Hard Fork Combinator
-
-One of the features of Cardano is seamless upgrades. Traditionally, blockchains upgrade using hard forks. When conducting a hard fork, the current protocol would stop operating, new rules and changes would be implemented, and the chain would restart – with its previous history being erased. Cardano handles hard forks differently. Instead of implementing radical changes, the Cardano hard-fork combinator technology ensures a smooth transition to a new protocol while saving the history of the previous blocks and not causing any disruptions for end users.
+include::chapter-04-how-cardano-works/network-protocols.adoc[]
