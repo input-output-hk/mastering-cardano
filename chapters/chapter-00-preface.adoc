@@ -5,13 +5,13 @@ Message from Charles here []
 
 == Welcome to Mastering Cardano!
 
-Congratulations on choosing Mastering Cardano as your reference guide to the exciting world of blockchain, decentralization, and the Cardano ecosystem. Whether you're a seasoned developer, a curious enthusiast, or a business professional looking to leverage cutting-edge technology, this book is designed to equip you with the knowledge and skills you need.
+Congratulations on choosing _Mastering Cardano_ as your canonical reference to the exciting world of blockchain, decentralization, and the Cardano ecosystem. Whether you're a seasoned developer, a curious enthusiast, or a business professional looking to leverage cutting-edge technology, this book is designed to equip you with the knowledge and skills you need.
 
 === Your Journey, Your Way
 
-While Mastering Cardano is structured to provide you with a comprehensive and logical progression through its topics, we understand that every learner has unique goals and prior knowledge. That's why we encourage you to explore our suggested reading paths as an alternative to a strictly linear approach.
+While _Mastering Cardano_ is structured to provide you with a comprehensive and logical progression through its topics, we understand that every learner has unique goals and prior knowledge. That's why we encourage you to explore our suggested reading paths as an alternative to a strictly linear approach.
 
-Think of these paths as curated journeys designed to help you quickly hone in on the information most relevant to your specific interests. You can choose to read Mastering Cardano cover-to-cover, or you can jump directly to the chapters and sections that you are most interested in and will accelerate your learning in a particular area.
+Think of these paths as curated journeys designed to help you quickly hone in on the information most relevant to your specific interests. You can choose to read _Mastering Cardano_ cover-to-cover, or you can jump directly to the chapters and sections that you are most interested in and will accelerate your learning in a particular area.
 
 === Why Choose a Reading Path?
 
@@ -25,23 +25,23 @@ Think of these paths as curated journeys designed to help you quickly hone in on
 
 ==== Dive Deeper
 
-We believe in continuous learning. Throughout "Mastering Cardano," you'll find curated reference links to essential research papers, insightful blog posts, and other valuable articles. These resources are carefully selected to provide you with opportunities to dive deeper into specific topics, understand the underlying theory, and stay current with the rapidly evolving Cardano landscape.
+We believe in continuous learning. Throughout _Mastering Cardano_, you'll find curated reference links to essential research papers, insightful blog posts, and other valuable articles. These resources are carefully selected to provide you with opportunities to dive deeper into specific topics, understand the underlying theory, and stay current with the rapidly evolving Cardano landscape.
 
 === How to Use This Guide
 
 Before you dive into the chapters, take a moment to review the available reading paths. Each path will suggest a sequence of chapters and sections, along with a brief description of what you'll learn. You might find a path that perfectly aligns with your current goals, or perhaps one that helps you discover new areas of interest within Cardano.
 
-We believe that by offering these flexible reading options and supplemental resources, "Mastering Cardano" will serve as an even more powerful and personalized tool on your journey to becoming a Cardano expert.
+We believe that by offering these flexible reading options and supplemental resources, _Mastering Cardano_ will serve as an even more powerful and personalized tool on your journey to becoming a Cardano expert.
 
 Happy reading!
 
 === Join the Community: Contribute to Mastering Cardano
-Mastering Cardano is more than just a book; it's intended to be a community-driven resource that grows and improves with the collective knowledge of the Cardano ecosystem. The world of blockchain is dynamic, and we believe the best way to keep this resource current, accurate, and truly comprehensive is through your valuable contributions.
+_Mastering Cardano_ is more than just a book; it's intended to be a community-driven resource that grows and improves with the collective knowledge of the Cardano ecosystem. The world of blockchain is dynamic, and we believe the best way to keep this resource current, accurate, and truly comprehensive is through your valuable contributions.
 
 We encourage you to become an active participant in shaping the future editions of this book. Whether you spot a typo, have a clearer explanation for a complex concept, discover an outdated reference, or identify an area where more depth is needed, your input is incredibly valuable.
 
 How can you contribute?
-Mastering Cardano is an evolving community resource which will improve with contributions and corrections from the Cardano community. 
+_Mastering Cardano_ is an evolving community resource which will improve with contributions and corrections from the Cardano community. 
 
 - Suggest Enhancements: Have an idea for a new section, a better example, or a more efficient way to explain something? Share it!
 - Propose Updates: As Cardano evolves, so too should this book. Help us keep the content fresh and relevant.
