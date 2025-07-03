@@ -41,7 +41,7 @@ _Mastering Cardano_ is more than just a book; it's intended to be a community-dr
 We encourage you to become an active participant in shaping the future editions of this book. Whether you spot a typo, have a clearer explanation for a complex concept, discover an outdated reference, or identify an area where more depth is needed, your input is incredibly valuable.
 
 How can you contribute?
-_Mastering Cardano_ is an evolving community resource which will improve with contributions and corrections from the Cardano community. 
+_Mastering Cardano_ is an evolving community resource which will improve with contributions and corrections from the Cardano community. Please raise a pull request in our repository with your suggested improvements. 
 
 - Suggest Enhancements: Have an idea for a new section, a better example, or a more efficient way to explain something? Share it!
 - Propose Updates: As Cardano evolves, so too should this book. Help us keep the content fresh and relevant.
