@@ -4290,7 +4290,7 @@ that interacts with the policy.
 
 ==== Minting policies and native tokens
 
-In Plutus, a minting policy or also called a minting script defines the
+In Plutus, a minting policy or minting script defines the
 conditions under which native tokens can be minted. Each UTXO has an
 address, a value, and potentially a datum. In previous examples, the
 value was always ada. To include native tokens in a UTXO, they must be
@@ -4386,7 +4386,7 @@ assetClassValueOf :: Value -> AssetClass -> Integer
 ----
 
 To construct a value variable and check the amount of tokens in it for a
-specific asset class, we can do so as follows from Prelude that we have
+specific asset class, we can do as follows from Prelude that we have
 build with the required Plutus libraries.
 
 [source,shell]
@@ -4432,18 +4432,18 @@ Prelude PlutusLedgerApi.V1.Value> flattenValue combined
 ----
 
 So far, we have focused on the spending constructor of the
-[purple]#ScriptInfo# type variable, that defines the purpose of the
-currently-executing script. The [purple]#TxInfo# data type, contains the
+[purple]#ScriptInfo# type variable that defines the purpose of the
+currently-executing script. The [purple]#TxInfo# data type contains the
 [purple]#MintValue# type that is structured the same way as the [purple]#Value#
 type. Minting policies are triggered if this field contains a non-zero
 value. Each currency symbol defined in this variable activates the
 corresponding minting policy, linking them through the policy's hash.
 
-A minting policy requires like a spending validation script only
+A minting policy, like a spending validation script, only requires
 one input: the script context. If for the currently-executing script the
 [purple]#ScriptInfo# data type defines the minting constructor that is
 parameterized with a currency symbol, then the corresponding minting policy
-gets triggered. The minting constructor does not contain a maybe datum as
+gets triggered. The minting constructor does not contain a maybe datum like
 the spending constructor does, because datums can exist at UTXOs sitting
 at script addresses, and minting scripts do not consume these UTXOs; they
 only produce new ones.
@@ -4452,7 +4452,7 @@ A single transaction may trigger several different minting policies if
 multiple native tokens with distinct currency symbols are minted. Each policy
 receives its own script info and redeemer as input, and they share the same
 transaction information data type. All minting policies within a transaction
-must pass for the transaction to succeed; otherwise, it fails.
+must pass for the transaction to succeed; otherwise it fails.
 
 Now, let us examine an example of a minting policy where only the owner
 of a specific public key, who signs the transaction, is permitted to
@@ -4618,14 +4618,14 @@ console.log(await mintTokens());
 ----
 
 We first define the tokens we want to mint where we specify the token
-name, amount of tokens and the address where the tokens should be created.
-In Plutus a token name can be an arbitrary byte string which is limited
+name, amount of tokens, and the address where the tokens should be created.
+In Plutus, a token name can be an arbitrary byte string which is limited
 to 32 bytes. If a human-readable name is set, wallets also display it in
 that form. The number of tokens has to be a positive integer. After setting
 the tokens we want to mint, we define our minting function. In it, we first
 define an empty redeemer. Next, we create our transaction. In the transaction
 we set the network, say which tokens we want to mint with which minting
-policy, add the redeemer and sing the transaction with our wallet key.
+policy, add the redeemer, and sign the transaction with our wallet key.
 At the end we build, sign and submit the transaction and return the
 transaction hash. Now we can make our function call and mint the tokens.
 If we name our file `signed-minting.ts`, we can mint our tokens as:
@@ -4647,7 +4647,7 @@ minting policy is referencing something unique on the Cardano blockchain,
 and for that, we use UTXOs. UTXOs can exist only once, and once consumed
 as input to a transaction, they can never exist again. UTXOs are defined
 by transaction hashes, which are unique, and by output indices. The reason
-why every transaction has a unique hash was explained in section
+every transaction has a unique hash was explained in section
 <<Script context explained>>.
 
 When minting an NFT, the idea is to include a specific parameter in the
@@ -4701,12 +4701,12 @@ serializedNFTVal = serialiseCompiledCode compiledNftVal
 ----
 
 The language pragmas and import of modules from the previous minting
-policy example cover also the functionality needed in this minting policy.
+policy example also cover the functionality needed in this minting policy.
 Our script will be parameterized by two inputs: the transaction output
 reference - [purple]#TxOutRef# - of the UTXO we are spending and the token
 name. The condition we check is that the minting transaction consumes the
 specified transaction reference passed to the script. The [blue]#any# function
-is used to check this, which takes a Boolean-returning function and applies
+is used to check this. It takes a Boolean-returning function and applies
 it to a list, returning true if at least one element satisfies the condition.
 We also ensure that only one token with the specified name is minted by using
 the [blue]#flattenValue# function, which converts a value type into a list
@@ -4714,7 +4714,7 @@ of triples. These checks ensure only one coin is minted with the currency
 symbol tied to a specific parameterized script.
 
 After we have defined our minting policy, we compile it. The transaction
-output reference is composed out of two types, which are the transaction hash
+output reference is made up of two types, which are the transaction hash
 and output index. Before we compile our script in untyped form, we can change
 it such that it takes in the transaction hash and output index as two separate
 parameters. We do that in the [blue]#wrappedVal# helper function. It takes
@@ -4723,7 +4723,7 @@ to their custom data types before applying them to our typed minting policy.
 After we compile our untyped minting policy, we serialize it. In principle,
 we could also leave our policy such that it takes in the transaction output
 reference as a whole and then model that in our off-chain code. In our code,
-we wanted to show that how to split up such a variable and correctly apply
+we wanted to show how to split up such a variable and correctly apply
 the [blue]#unsafeFromBuiltinData# to individual parts. Next, we show the
 off-chain code that interacts with our NFT minting policy.
 
@@ -4809,10 +4809,10 @@ console.log(await mintNFT());
 ----
 
 We define our token that we want to mint and provide the
-token name, token quantity which should be one and set the
+token name, token quantity (which should be one), and set the
 recipient address to our own address. Then we define our minting
 function. We set an empty redeemer and create the transaction,
-similar as in the previous minting policy. The difference is
+similar to the previous minting policy. The difference is
 that in this example we specify the UTXO we want to spend,
 and we do not need to add the required signature linked to
 our wallet as we did in the previous minting example. At the
@@ -4830,7 +4830,7 @@ class is defined by both the token name and its unique currency symbol.
 
 At the end of this section, we note that the utility of a token can be determined by its use
 case, the market, or the community that issues and adopts it. Tokens can be
-used for various purposes as issuing a new cryptocurrency, representing access
+used for various purposes such as issuing a new cryptocurrency, representing access
 rights, or enabling in-app transactions. Native tokens enable a wide range of
 applications by combining secure on-chain logic with the flexibility of custom
 asset creation. From the
@@ -4890,7 +4890,7 @@ been possible in the past.
 
 Cryptographic primitives form the foundation of blockchain technology.
 The choice of primitives significantly influences blockchain's
-capabilities. Because other blockchains choose different primitives than
+capabilities. Because other blockchains choose different primitives from
 Cardano, it is challenging to interoperate with them. An example of
 interoperability is checking Ethereum signatures in Plutus, which is
 possible with PlutusV3. There are three groups of new cryptographic
@@ -4902,7 +4902,7 @@ Hydra, Mithril and ATALA
 * Blake2b_224 is a cryptographic hash function that enables hashing of
 public keys and scripts within Plutus, facilitating various interesting
 applications
-* Keccak-256 is also a cryptographic hash function that supports
+* Keccak-256 is another cryptographic hash function that supports
 Ethereum signature verification within Plutus scripts.
 
 These cryptographic primitives bring new possibilities, unlock better
@@ -4943,12 +4943,11 @@ also provides information on that.
 ==== Cardano security
 
 The security of smart contracts is an important topic, since these programs
-can manage significant amounts of funds. Estimates for the loss of funds due
-to various attacks and hacks, including scams, say that the total loss of
-funds was over $3.2bn in 2021 and over $3.7bn in 2022 (source:
+can manage significant amounts of funds. Coindesk's estimate of the loss of funds due
+to various attacks and hacks, including scams, was over $3.2bn in 2021 and over $3.7bn in 2022 (source:
 https://www.coindesk.com/tech/2023/05/24/attackers-left-empty-handed-as-crypto-hacks-drop-70-in-q1-2023/[CoinDesk]).
 If we look at hacks to blockchain smart contracts and bridges only, up to
-October 2023 they have totaled to $4.28bn (source:
+October 2023 they have totaled $4.28bn (source:
 https://www.emurgo.io/press-news/why-your-web3-dapp-needs-a-smart-contract-audit/[Emurgo]).
 The graph below displays the cumulative amount of lost funds in audited
 and unaudited codebases for Web3 projects in a three-year period (data
@@ -4984,7 +4983,7 @@ discussed in the <<Plutus security>> section.
 Cardano was designed with security in mind from the beginning. Input |
 Output (IO) has invested much effort into academic research, and its
 research team has written and collaborated on
-https://iohk.io/en/research/library/[250 scientific papers] as of
+https://iohk.io/en/research/library/[250 scientific papers] as at
 the time of writing. Some of the important research areas that IO
 targets are cryptography, software engineering, distributed systems,
 networks, formal verification, and programming languages. Ouroboros,
@@ -5011,7 +5010,7 @@ https://www.314pool.com/post/cardano-post-mortem-1[this] and
 https://cardanospot.io/news/cardano-node-outage-what-we-know-0[this]
 post-mortem.
 
-In EUTXO transactions can be validated _before_ they are submitted to the
+In EUTXO, transactions can be validated _before_ they are submitted to the
 blockchain. Given that the inputs are present at the time of submission and
 that the validity interval contains the time of transaction processing,
 a valid transaction will _always_ succeed with a predictable outcome.
@@ -5024,7 +5023,7 @@ predictable. If the inputs to a valid transaction are not present at the
 time of submission, the submitted transaction will not be processed, and
 the user will not be charged any fees. Because of determinism in EUTXO,
 multiple transactions that target the same validator can be processed inside
-the same block if the transactions consume different inputs. Beside this also
+the same block if the transactions consume different inputs. Beside this,
 https://iohk.io/en/blog/posts/2022/04/13/boosting-cardano-s-throughput-with-script-referencing/[reference
 inputs] enable multiple transactions referencing the same UTXO, which
 is possible because none of those transactions consumes the referenced
@@ -5045,7 +5044,7 @@ make such an attack very expensive.
 
 This https://iohk.io/en/blog/posts/2021/09/06/no-surprises-transaction-validation-on-cardano/[IO
 blog] explains in more detail the determinism of transaction and script
-validation in Cardano. The blog states that account-based blockchains,
+validation in Cardano. The blog states that account-based blockchains
 like Ethereum are in-deterministic, which means that they cannot guarantee
 the predictability of the transaction's effect on-chain. It further explains
 the key points that make the outcomes of script and transaction validation
@@ -5063,13 +5062,13 @@ altered by an adversary in a way that causes scripts to fail
 . Applying a transaction in the EUTXO ledger model is deterministic.
 
 Also, transaction fees are deterministic in Cardano. A user knows how much a
-transaction will cost before he submits it. The reason for this is that protocol
+transaction will cost before they submit it. The reason for this is that protocol
 parameters, rather than network traffic, govern pricing on Cardano.
 Determinism of fees and transactions can also be advantageous in Web3
 applications, such as decentralized exchanges (DEXs). On DEXs users trade
 with the help of smart contracts that eliminate the need for a central entity
 which is in centralized exchanges holding custody of traders tokens.
-Liquidity providers that provide token pairs to DEXs such that normal
+Liquidity providers that provide token pairs to DEXs, such that normal
 users can trade those tokens, face the issue of impermanent loss on DEXs
 that use the https://www.coindesk.com/learn/what-is-an-automated-market-maker/[Automated
 market maker] (AMM) design model. In an AMM-style DEX, smart contracts
@@ -5093,8 +5092,8 @@ If the liquidity provider now wants to withdraw his funds, he gets around
 0.5774 ETH and 1,732 USDT, which at the current market price
 of ETH adds to around 3,464 USD. But if the trader had held on to the
 initial funds of one ETH and 1,000 USDT, he would now have 4,000 USD,
-meaning, his impermanent loss was around 536 USD. The reason why it pays
-off to be a DEX liquidity provider is because they get a percentage of
+meaning, his impermanent loss was around 536 USD. The reason it pays
+off to be a DEX liquidity provider is that they get a percentage of
 the trading fees. Arbitrage and normal traders that both use the pool
 pay for every transaction they make. The percentage of trading fees that
 liquidity providers get can be larger than the amount of impermanent loss. This
@@ -5109,16 +5108,15 @@ environment for liquidity providers. The blog explains in more
 detail how impermanent loss affects DEXs built on the account-based
 accounting models compared to EUTXO.
 
-Cardano's design also makes front-running invasion attacks harder to
-carry out that could target transactions on a decentralized exchange.
-The Cardano node is designed such that it processes transactions in the
+Cardano's design also makes front-running invasion attacks that could target transactions on a decentralized exchange harder to
+carry out. The Cardano node is designed such that it processes transactions in the
 same order as they arrive into the mempol independent of the transaction
 fees associated with them. This is not the case for all blockchains where
 a node might favor transactions that carry higher fees. It is still
 possible for an adversary that operates a stake pool to inspect transactions
-that arrive in the mempool since they are not encrypted. He could then create his own
+that arrive in the mempool since they are not encrypted. They could then create their own
 transaction with similar parameters and insert it in front of the transaction
-that he received in his pool. In reality, this is hard to achieve because
+that was received in the pool. In reality, this is hard to achieve because
 Cardano's mainnet has a high number of block producing nodes (around 3000
 at the time of writing) and also because of Cardano's design, none of these
 nodes controls a significant amount of staked ada. You can read more about
@@ -5258,9 +5256,9 @@ the compiled Plutus scripts during transaction validation with the help
 of the Plutus virtual machine (VM). A VM is a virtual environment that
 executes code securely inside a node, when talking in context of a blockchain.
 When a Cardano node executes validator code compiled to Untyped Plutus
-Core this code does not access the computer's resources directly as a
-normal computer programs would do. This is because of security reasons,
-since VMs offer a safe execution environment. Every Cardano node has a
+Core, this code does not access the computer's resources directly as a
+normal computer programs would do. For security reasons,
+VMs offer a safe execution environment. Every Cardano node has a
 built-in Plutus virtual machine that is currently written in Haskell.
 
 Plutus is a simple, functional language similar to Haskell, and a large
@@ -5328,8 +5326,8 @@ replacing parts -or all- of the compilation pipeline. Validators can be
 coded in pre-existing languages like Typescript
 (https://github.com/HarmonicLabs/plu-ts[Plu-ts]) and Python
 (https://opshin.dev/[OpShin]), or they can be coded in new
-languages like https://aiken-lang.org/[Aiken]. A comparison of Aiken which
-is the most used smart contract languages in the Cardano ecosystem as of 2023,
+languages like https://aiken-lang.org/[Aiken]. A comparison of Aiken, which
+is the most used of the smart contract languages in the Cardano ecosystem as of 2023,
 and Plinth is presented in section <<Plinth in comparison to Aiken>>.
 
 Haskell was also chosen as a programming language to implement the
@@ -5390,13 +5388,13 @@ fact that the execution order is not deterministic because it can change
 every time the software runs. In other words, the same code can be run
 hundreds of times and only fail once. The blog explains that a way
 to get around this is by using simulations with deterministic execution
-order. Running tests in such a simulation allows to reliably find and
-fix a class of bugs in testing, which would otherwise only occur
+order. Running tests in such a simulation allows developers to reliably find and
+fix a class of bugs in testing that would otherwise only occur
 randomly in production.
 
 Formal verification and property-based testing can also be used to
 secure the development of smart contracts. While Haskell is a great
-programming language for implementing reliable software, it can not
+programming language for implementing reliable software, it cannot
 catch all possible mistakes a programmer can make, so the code still
 needs to be tested. One can write property-based tests for PlutusV3
 Plinth smart contracts using the following tools:
@@ -5407,10 +5405,9 @@ Plinth smart contracts using the following tools:
 
 This https://www.mlabs.city/blog/testing-dapps-on-cardano-with-clb-emulator[MLabs blog]
 shows how to use Atlas with the CLB to test plinth scripts.
-The https://atlas-app.io/[Atlas] application backend is a open
-source tool that covers all functionalities needed to work with
+The https://atlas-app.io/[Atlas] application backend is an open-source tool that covers all functionalities needed to work with
 Plinth smart contracts and enables writing the complete server side code
-in Haskell. It is the Haskell alternative to TypeScript off-chain tools
+in Haskell. It is the Haskell alternative to TypeScript off-chain tools such
 as MeshJS and Lucid evolution. It was developed by the company
 https://www.geniusyield.co/[GeniusYield] in collaboration with other
 companies such as MLabs, Well-Typed, and Plank. It significantly
@@ -5466,7 +5463,7 @@ types of issues or bugs and is characterized as low cost, low effort,
 and accessible to everyone while providing a substantial level of
 assurance. It can be applied repeatedly and automatically, so each time
 there is a release or a sub-release of an application, the application
-can be tested to confirm it still has the expected properties that we expect.
+can be tested to confirm it still has the properties that we expect.
 * *In-depth audit* looks at the technology and processes that led to it
 being produced. It involves a manual audit and verification of smart
 contracts within the DApp itself. The testing is performed at a much
@@ -5579,8 +5576,8 @@ properties of such programs. In practice, for a large class of programs,
 it may be possible to have automated tools, but there can be no general
 tools that decide whether the program stops or not. This is only one
 example of undecidability. More often, the security properties of the
-program need to be checked and proven that the program behaves as
-expected. On the other hand, if you are willing not to have
+program need to be checked and it must be proven that the program behaves as
+expected. On the other hand, if you are willing to forgo
 Turing-completeness, you can have simple but powerful program analysis
 tools and program language built-in security features. Powerful analysis
 tools also exist for Turing-complete programs; they are just more
@@ -5631,7 +5628,7 @@ Marlowe's safety:
 * Looping is not supported.
 * Functions or macros may not be defined.
 * Timeouts must be numeric constants.
-* Only *Case* continuations may be merkleized. The Faustus programming
+* Only *Case* continuations may be Merkleized. The Faustus programming
 language relaxes some of the limitations above, yet it compiles to safe
 Marlowe. Besides Faustus, you can "relax" the above limitations if you
 embed Marlowe into another language (JavaScript, for example). By using
@@ -5644,7 +5641,7 @@ used to verify any kind of data stored, handled, and transferred in and
 between computers. It enables large smart contracts to be concisely
 represented on-chain. Instead of storing gigabytes of data representing
 a huge contract, only the hash of that contract needs to be represented
-on-chain. You can learn more about merkleization in Marlowe in
+on-chain. You can learn more about Merkleization in Marlowe in
 https://www.youtube.com/watch?v=e6vdq5GN5Q8[a video from IO Academy].
 Merkleization is hidden through the Marlowe object concept, and you can
 read about the marlowe-object package in its
