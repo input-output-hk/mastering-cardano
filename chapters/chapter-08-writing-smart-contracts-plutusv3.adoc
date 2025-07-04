@@ -36,7 +36,7 @@ Because this fifty-year-old theory would now be executed directly on
 the Cardano blockchain, carrying billions of dollars of value, there
 was a business case for formally validating that theory. Input | Output (IO) hired
 James Chapman to validate our variant of System F in the Agda proof
-assistant. James, having written his dissertation on a related subject,
+assistant James -- having written his dissertation on a related subject,
 is one of the foremost experts in the field. The completed proof validated
 the theory. It also gave us an executable version of
 Plutus. Continuous Integration ensures the production Plutus
@@ -166,12 +166,7 @@ and training. It also hosts Marlowe open-source software repositories
 and maintains the ecosystem's online presence.
 
 With Tomasz Rybarczyk, I have been funded under Catalyst Fund13,
-The platform simplifies development for the developer community and
-provides key components, such as oracles, used in many DApps. Individual
-end users can also execute Marlowe contracts directly on the Cardano
-blockchain, using the facilities that the Marlowe Runner and the CLI provide.
-This directly supports decentralized finance (DeFi) interactions,
-including peer-to-peer loans and escrow facilities.https://projectcatalyst.io/funds/13/f13-cardano-use-cases-concept/marlowe-2025-oracle-protocol-design-and-implementation[project 1300131],
+https://projectcatalyst.io/funds/13/f13-cardano-use-cases-concept/marlowe-2025-oracle-protocol-design-and-implementation[project 1300131],
 to formalize, develop, and implement the Marlowe Oracle protocol
 based on a novel pull-based model, where oracles respond dynamically to
 on-chain data requests, ensuring better adaptability and data coverage
@@ -1173,7 +1168,7 @@ name. We could also use the *Address* constructor, where we would have
 to input Alice's Cardano address. Then, we have to specify what kind of
 currency we are depositing. For this, we use the *Token* constructor
 and add the currency symbol and the token name. For the ada currency, we
-can use two empty strings to mean lovelaces. At the end, we specify the amount of the
+can use two empty strings. At the end, we specify the amount (in lovelaces) of the
 currency we want to deposit. For this, we can use the *Constant*
 constructor followed by a number.
 
@@ -3099,7 +3094,7 @@ data TxOut = TxOut
   deriving anyclass (NFData, HasBlueprintDefinition)
 ----
 
-A transaction output of a UTXO contains the address of this UTXO,
+A transaction output of a UTXO contains the address at which this UTXO resides,
 the value it contains, the output datum and possibly a script hash. We look
 first at the [purple]#Address# type.
 
@@ -5577,7 +5572,7 @@ it may be possible to have automated tools, but there can be no general
 tools that decide whether the program stops or not. This is only one
 example of undecidability. More often, the security properties of the
 program need to be checked and it must be proven that the program behaves as
-expected. On the other hand, if you are willing to forgo
+expected. On the other hand, if you are willing to give up
 Turing-completeness, you can have simple but powerful program analysis
 tools and program language built-in security features. Powerful analysis
 tools also exist for Turing-complete programs; they are just more
