@@ -13,15 +13,19 @@ While _Mastering Cardano_ is structured to provide you with a comprehensive and 
 
 Think of these paths as curated journeys designed to help you quickly hone in on the information most relevant to your specific interests. You can choose to read _Mastering Cardano_ cover-to-cover, or you can jump directly to the chapters and sections that you are most interested in and will accelerate your learning in a particular area.
 
-=== Why Choose a Reading Path?
+==== Why Choose a Reading Path?
 
-- Tailored Learning: Focus on what matters most to you, whether it's smart contract development, staking, network architecture, or dApp creation.
+- Tailored learning: Focus on what matters most to you, whether it's smart contract development, staking, network architecture, or dApp creation.
+- Time efficiency: Get up to speed faster by prioritizing key concepts and practical applications for your specific needs.
+- Goal-oriented: Each path is designed with a clear objective in mind, helping you achieve your learning goals more effectively.
+- Flexible exploration: Even if you follow a specific path, you can branch out and explore other sections as required.
 
-- Time Efficiency: Get up to speed faster by prioritizing key concepts and practical applications for your specific needs.
-
-- Goal-Oriented: Each path is designed with a clear objective in mind, helping you achieve your learning goals more effectively.
-
-- Flexible Exploration: Even if you follow a specific path, you can branch out and explore other sections as required.
+=== Suggested Reading Paths
+- *Cardano fundamentals path* — Ideal for anyone new to blockchain or Cardano, this path provides a solid foundational understanding of the Cardano ecosystem, its core principles, and its journey.
+- *Smart contracts developer path* — For developers eager to build on Cardano, this path guides you through the essential concepts and practical skills needed to write, test, and deploy smart contracts using Aiken and Plutus.
+- *Cardano user path* — For non-technical readers and blockchain enthusiasts, this path helps you understand the Cardano ecosystem, manage assets, explore NFTs, and engage with the community without delving into code.
+- *Stake pool operator path* — This path is for readers whose goal is to learn how to run a node and start a stake pool, but are not necessarily interested in programming smart contracts or DApps.
+- *Cardano governance and future path* — For readers keen on Cardano's long-term vision, this path explores the principles of decentralized governance, the mechanisms for community decision-making, and the exciting future developments shaping the network.
 
 ==== Dive Deeper
 
