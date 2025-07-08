@@ -5,7 +5,7 @@ Message from Charles here []
 
 == Welcome to Mastering Cardano!
 
-Congratulations on choosing _Mastering Cardano_ as your canonical reference to the exciting world of blockchain, decentralization, and the Cardano ecosystem. Whether you're a seasoned developer, a curious enthusiast, or a business professional looking to leverage cutting-edge technology, this book is designed to equip you with the knowledge and skills you need.
+Congratulations on choosing _Mastering Cardano_ as your canonical reference to the exciting world of blockchain, decentralization, and the Cardano ecosystem. Whether you're a seasoned developer, a curious enthusiast, or a business professional looking to leverage cutting-edge technology, this book is designed to equip you with the knowledge and skills you need. This book is a living, breathing Cardano community resource and will evolve to incoporate changes and updates as Cardano and its ecosystem grows and develops.
 
 Happy reading!
 
@@ -90,10 +90,10 @@ Understand how Cardano's governance model operates, explore key initiatives like
 === Join the Community: Contribute to Mastering Cardano
 _Mastering Cardano_ is more than just a book; it's intended to be a community-driven resource that grows and improves with the collective knowledge of the Cardano ecosystem. The world of blockchain is dynamic, and we believe the best way to keep this resource current, accurate, and truly comprehensive is through your valuable contributions.
 
-We encourage you to become an active participant in shaping the future editions of this book. Whether you spot a typo, have a clearer explanation for a complex concept, discover an outdated reference, or identify an area where more depth is needed, your input is incredibly valuable.
+We encourage you to become an active participant in shaping the future editions of this book. Whether you spot a typo, have a clearer explanation for a complex concept, discover an outdated reference, or identify an area where more depth is needed, your input is incredibly valuable. We kindly ask that you first spend time navigating the book and its content and getting to know its structure and sections, so that your feedback is most valuable. 
 
 ==== How can you contribute?
-_Mastering Cardano_ is an evolving community resource which will improve with contributions and corrections from the Cardano community. Please raise a pull request in our repository with your suggested improvements. 
+_Mastering Cardano_ is an evolving community resource which will improve with contributions and corrections from the Cardano community. Please raise a pull request in our Mastering Cardano repository with your suggested improvements. 
 
 - Suggest Enhancements: Have an idea for a new section, a better example, or a more efficient way to explain something? Share it!
 - Propose Updates: As Cardano evolves, so too should this book. Help us keep the content fresh and relevant.
