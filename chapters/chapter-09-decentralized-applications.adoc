@@ -179,7 +179,7 @@ We’ll now create the following aspects of a DApp:
 * Server-side code: A NodeJS server that will send a page's HTML/JavaScript to the end-user.
 * Client-side code: This is the code that will be sent from the server (discussed above), but will execute in the client-side browser. This code will connect to the wallet and communicate with a deployed smart contract.
 
-We will not create smart contract code in this section (since that is handled in #Chapter XXX#). Indeed, DApps can be created that communicate with existing deployed smart contracts that may not necessarily be written by the same developers/teams — just as we demonstrate now below.
+We will not create smart contract code in this section (since that is handled in #Chapter 6#). Indeed, DApps can be created that communicate with existing deployed smart contracts that may not necessarily be written by the same developers/teams — just as we demonstrate now below.
 
 _Creating a Server (with NodeJS)_
 
