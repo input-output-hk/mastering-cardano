@@ -47,15 +47,12 @@ To further exemplify how guarantees can be provided through smart contracts (in 
 
 ==== Prerequisites
 
-We now list a number of prerequisites required to follow the upcoming sections on how to use a DApp and how to build a DApp.
+We now list a number of prerequisite steps required in order to follow upcoming sections on how to use a DApp and how to build a DApp.
 
 _Installing a Wallet_
 
-Prior to building a DApp, we need to ensure that we have a wallet
-installed in a browser that will allow for the client web-page to
-communicate with the blockchain directly. We’ll use the Lace wallet in the rest of this chapter, but you may use any other wallet that supports the Cardano blockchain.
+Prior to building a DApp, we need to ensure that we have a wallet installed in a browser that will allow for the client web-page to communicate with the blockchain directly. We’ll use the Lace wallet (introduce in #Chapter 6#) in the rest of this chapter, but you may use any other wallet that supports the Cardano blockchain. 
 
-#Should we add instructions here, or as a tutorial on installing Lace been handled elsewhere? Depending on this we may want to add a tutorial to installing the wallet, and backing up pass phrase etc here or in another chapter.#
 
 _Configuring Wallet to Connect To Testnet_
 
