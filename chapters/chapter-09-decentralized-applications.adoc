@@ -435,7 +435,7 @@ async function connectWallet() {
 
 ==== Interacting with the Redeemer 42 Smart Contract
 
-To demonstrate DApp interaction, we'll start by writing client-side JavaScript code to interact with the Redeemer 42 smart contract.footnote:[See https://github.com/LukaKurnjek/ppp-plutusV3-plinth/blob/main/off-chain/meshjs/Week02/redeemer42-ref-script.ts for a #hhh# example from the #aaa# which this chapter builds on.] #Add details on how to read more on the Redeemer 42 smart contract.# We'll start by sending funds to the smart contract and then #XXXX#.
+To demonstrate DApp interaction, we'll start by writing client-side JavaScript code to interact with the Redeemer 42 smart contract.footnote:[See https://github.com/LukaKurnjek/ppp-plutusV3-plinth/blob/main/off-chain/meshjs/Week02/redeemer42-ref-script.ts for a #hhh# example from the #aaa# which this chapter builds on.] You can read Section <<Simple validation scripts>> to get a better understanding of the Redeemer 42 Script (if you have not already done so). We'll start by sending funds to the smart contract and then #XXXX#.
 
 _Sending Funds to the Redeemer 42 Smart Contract_
 
