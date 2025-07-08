@@ -5,7 +5,7 @@ Message from Charles here []
 
 == Welcome to Mastering Cardano!
 
-Congratulations on choosing _Mastering Cardano_ as your canonical reference to the exciting world of blockchain, decentralization, and the Cardano ecosystem. Whether you're a seasoned developer, a curious enthusiast, or a business professional looking to leverage cutting-edge technology, this book is designed to equip you with the knowledge and skills you need. This book is a living, breathing Cardano community resource and will evolve to incoporate changes and updates as Cardano and its ecosystem grows and develops.
+Congratulations on choosing _Mastering Cardano_ as your canonical reference to the exciting world of blockchain, decentralization, and the Cardano ecosystem. Whether you're a seasoned developer, a curious enthusiast, or a business professional looking to leverage cutting-edge technology, this book is designed to equip you with the knowledge and skills you need. This book is a living, breathing Cardano community resource and will evolve to incorporate changes and updates as Cardano and its ecosystem grows and develops.
 
 Happy reading!
 
