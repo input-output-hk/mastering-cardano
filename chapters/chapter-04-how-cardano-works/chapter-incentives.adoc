@@ -71,9 +71,9 @@ So far we have discussed why incentives are needed in the first place and what b
 
 Each transaction on Cardano incurs _transaction fees_, which consist of a low _flat fee_ and a part that is proportional to the sizefootnote:[Here "size" refers to the size in _bytes_ and not to the amount. A transaction sending ten million ADA(((ADA))) (10,000,000,000,000 lovelace)(((lovelace))) is only slightly more expensive than one sending ten ADA(((ADA))) (10,000,000 lovelace)(((lovelace))), and that slight difference is due to the fact that serializing 10,000,000,000,000 needs a few more bytes than serializing 10,000,000.] of the transaction.
 
-One purpose of transaction fees(((transaction fees))) is to prevent _DDoSfootnote:[DDoS stands for "Distributed Denial of Service".] attacks_(((DDoS attack))), where an attacker would try to flood and overload the network by issuing a large number of small transactions. Such an attack would be prohibitively expensive for the attacker, because the small flat fees for each transaction would add up to a significant amount, no matter how small each individual transaction is.
+One purpose of transaction fees(((transaction, fees))) is to prevent _DDoSfootnote:[DDoS stands for "Distributed Denial of Service".] attacks_(((DDoS attack))), where an attacker would try to flood and overload the network by issuing a large number of small transactions. Such an attack would be prohibitively expensive for the attacker, because the small flat fees for each transaction would add up to a significant amount, no matter how small each individual transaction is.
 
-The other purpose of transaction fees(((transaction fees))) is the one relevant for this chapter: Transaction fees are used to fund the incentives mechanism.
+The other purpose of transaction fees(((transaction, fees))) is the one relevant for this chapter: Transaction fees are used to fund the incentives mechanism.
 
 ===== Monetary Expansion
 
@@ -88,11 +88,11 @@ Every _epoch_ (every five days), a certain fixedfootnote:[This percentage is giv
 Let us look at a very simple example and assume that ρ(((ρ (rho))))=1% of remaining reserves are taken each epoch(((epoch))) (the actual value of ρ(((ρ (rho)))) is _much_ smaller). Then for the first epoch(((epoch))), we would take 1% of 14 billion ADA(((ADA))), which is 140 million ADA(((ADA))). In the second epoch(((epoch))), remaining reserves have shrunk to 13,860,000,000 ADA(((ADA))), and 1% of that is 138,600,000 ADA(((ADA))), so available rewards for the second epoch(((epoch))) are slightly less. For the third epoch(((epoch))), 13,721,400,000 ADA(((ADA))) are remaining, and 137,214,000 are used for rewards and so on and so on. But remember that the actual decline is much more gradual!
 ======
 
-The hope is that this decline in rewards that are coming from monetary expansion(((monetary expansion))) is compensated by an _incline_ in rewards coming from transaction fees(((transaction fees))) when more and more people start using Cardano and submit more and more transactions over time.
+The hope is that this decline in rewards that are coming from monetary expansion(((monetary expansion))) is compensated by an _incline_ in rewards coming from transaction fees(((transaction, fees))) when more and more people start using Cardano and submit more and more transactions over time.
 
 ==== Distribution
 
-Distribution of rewards happens once every epoch(((epoch))), so once every five days. Each time rewards are calculated and paid out, all transaction fees(((transaction fees))) that have been collected since the last distribution are combined with a part of the remaining rewards given by ρ(((ρ (rho)))) into a virtual _rewards pot_.
+Distribution of rewards happens once every epoch(((epoch))), so once every five days. Each time rewards are calculated and paid out, all transaction fees(((transaction, fees))) that have been collected since the last distribution are combined with a part of the remaining rewards given by ρ(((ρ (rho)))) into a virtual _rewards pot_.
 
 A fixed percentage τ(((τ (tau)))) of the rewards pot(((rewards pot))) is given to the treasury(((treasury))). The rest is distributed among the stake pools.
 
