@@ -18,10 +18,10 @@ font:
       italic: roboto-italic.ttf
       bold_italic: roboto-bold-italic.ttf
     Bitter:
-      normal: bitter-normal.ttf
-      bold: bitter-bold.ttf
-      italic: bitter-italic.ttf
-      bold_italic: bitter-bold-italic.ttf
+      normal: NotoSerif-Regular.ttf
+      bold: NotoSerif-Bold.ttf
+      italic: NotoSerif-Italic.ttf
+      bold_italic: NotoSerif-BoldItalic.ttf
 role:
   blue:
     font-color: #0000FF
