@@ -4,3 +4,4 @@ This folder contains online resources the accompany the Mastering Cardano book.
 
 Resources from external repositories: 
 * [Instructions](https://github.com/iohkedu/plinth-dev-env) for setting up a Plinth development enviroment. 
+* [Code](https://github.com/input-output-hk/plutus-pioneer-program/tree/plinth-plutusV3) for the chapter _Writing smart contracts_. 
