@@ -29,6 +29,7 @@ The actual 'response' that the web server sends back to your web browser most ty
 
 The HTML and JavaScript code described above is sent to your browser on your computer, and is executed in your browser (on your computer). Really this means that you could manipulate the HTML and JavaScript code, which means you can change what a web page you interact with looks like, and also its functionality.footnote:[ Most web browsers allow users to use 'Developer Tools' that are built into the web browsers themselves, that allow you to manipulate web pages once they are in your browser.] This code received from the web browser, which is executed in your browser, is what we call “client-side” — i.e. code that executes in the client’sfootnote:[ It may help to consider that when using a web site you are the client, and this is why it is referred to as client-side code, since the code is executing on your laptop. Really though the terminology comes from ;'client-server' architectures (which has resemblances to the analogy provided).] browser. Since the code can be manipulated by yourself (the client), web site operators cannot just trust any interactions or code that take place on your device, and it is for this reason that some functionality is not encoded into the 'client-side' HTML and JavaScript but encoded into 'server-side' code which executes on the web server owned by the particular entity the original web page was received from. For the code that is executed on the web server, the website operator has full control over that logic and as users of that website we must trust the operator. To exemplify this further consider an online shopping platform. Whilst end-users are displayed with products and prices on screen and are able to select which products they would like to purchase, the site operator cannot trust end-users to calculate the total cost due after selecting products. Since as described above, end-users would be able to manipulate the total calculation taking place within their browser. Therefore, the web site is built in such a way that code concerned with total calculation is ultimately done on the web server ('server-side'). Once a total is calculated and a client is ready to pay, clients' are typically sent to a payment page where they enter their bank card details. Again, processing of card transactions is typically done 'server-side' for the same reasons. Yet, in this scenario, clients that are making purchases need to trust the operator and the code that is handling the total calculation (and executing on the web server) to not overcharge after entering their card details. Traditional web applications and their architectures heavily support keeping site operators in a position of power, i.e. where platform providers are in full control and end-users are reliant on the platforms, and must trust that the platforms do their job properly — and when they do not must try to seek recourse in some other manner if possible (e.g. through contacting the operator, or seeking legal recourse if necessary and possible).
 
+[[dapp-architecture]]
 === Decentralized Application Architecture
 
 The advent of blockchain platforms and smart contracts built on them, provided a new place where code could be executed, i.e. in smart contracts on a blockchain. Executing code in smart contracts, unlike code executed in client browsers or server-side, provides guarantees that the code cannot be manipulated or altered — not even by the programmer that created the code! Furthermore the code executed in smart contracts is publicly available, and therefore users can look into the smart contract logic prior to interacting with them. Through the availability of smart contract code, a new architecture was possible that enabled for Decentralized Applications (DApps). DApps build on traditional web applications, in that they also make use of client-side and server-side code, yet smart contracts can be utilized to provide guarantees to all stakeholders. Consider the example discussed in the section above, regarding the calculation of the total due for an online shopping platform. If the calculation of the total is done on the client-side, then users could manipulate the amount due, therefore service providers calculate totals on the server-side. While this makes complete sense, server operators could manipulate the logic to calculate a higher total due — though end-users are likely to notice this before payment. Yet in a similar vein server operators could display one amount, and process a transaction for a different amount. This is really the status-quo of traditional web architecture. Using a DApp, instead such logic could be delegated into a smart contract that would provide guarantees to both the service provider as well as to end-users, since the code is transparent and publicly available for everyone to see. Furthermore, the code is immutable, it cannot be changed — not even by the developer that wrote it. We will now provide an overview of typical DApp architecture, followed by a walkthrough on how to use a DApp, and then close off with code snippets demonstrating how a DApp can be built. <<fig-dapp>> depicts an abstract overview of typical DApp interaction.
@@ -453,7 +454,7 @@ const redeemer42Addr = resolvePlutusScriptAddress(redeemer42Script, 0);
 ----
 
 [start=2]
-. Then to actually send funds we'll use the following code (that is explained in below the code):
+. Then to actually send funds we'll use the following code (that is explained below the code):
 
 [source,javascript,linenums]
 ----
@@ -474,9 +475,9 @@ async function sendFunds(amount) {
 
 Line number 2 connects to the wallet (if it has not already been connected to, e.g. using the connect button we already created).
 
-Line number 3 gets the change address, #discussed in Chapter XXX#, that will be passed set for the transaction being constructed.
+Line number 3 gets the change address (#discussed in Chapter 8#), that will be set in the transaction being constructed.
 
-Line numbers 4-7 set the required parameters for the transaction including: passing in a reference to the wallet we're using to send funds, the network (i.e. #preprod#), the smart contract address (computed in the 1st step) and the amount of Lovelace (#discussed in Chapter XXX#) to send, and the change address.
+Line numbers 4-7 sets the required parameters for the transaction including: passing in a reference to the wallet we're using to send funds, the network (i.e. #preprod#), the smart contract address (computed in the 1st step) and the amount of Lovelace to send, and the change address.
 
 In line number 9, 10 and 11, we build the transaction, sign it and submit the transaction respectively.
 
@@ -705,16 +706,28 @@ async function connectWallet() {
 ----
 
 
+=== Decentralized Web Storage
 
 
-#Discuss decentralising web servers, the trade-offs and options.
-Close-off with challenges and UI issues, and what the future may hold.#
+The DApp architecture introduced in Section <<dapp-architecture>> relies on a traditional centralised web server to deliver the initial HTML/JS web-page content, and then provides guarantees to users through the interaction with on-chain scripts (smart contracts). Yet, relying on a centralized web server to deliver the initial HTML/JS web-content may not be suitable for certain applications and/or it may be desirable that some web content is not dependent on a centralized web server.
 
+Different solutions have been proposed for decentralized web storage (including IPFS, Arweave, Filecoin, Storj, and others) that vary in cost, persistence, latency and reliability -- we therefore suggest that readers interested to make use of decentralized storage to explore different alternatives. Yet one common feature of decentralized web storage is that the resources (e.g. html pages, images, etc) are 'content-addressable' -- i.e. the resource's unique identifier directly represents the content. Typically, the hash of the resource's data is used as the unique identifier to refer to the specific resource. Content addressable unique identifiers/references can be thought of as providing a system that allows for resources to be retrieved based on the actual content itself, rather than where it is located (i.e. a filename on a specific server). Using such a system for web resources:
 
-#Continue with a note on on-chain/off-chain SCs parts?#
+* guarantees the integrity of resources (since the hash of the content must match the unique identifier -- that can always be checked);
+* minimises data storage requirements for resources with same content;
+* allows for decentralization from relying on a single specific server to host and server the specific resource -- any peer in the network that hosts the resource can serve it.
 
-=== Onchain vs Off Chain Code
-#rewrite the below in context of the above... potentially remove as a lot was covered in the beginning#
-In the Cardano and Plutus context, on-chain and off-chain codes refer to two different aspects of the same smart contract system.
+=== DApps and UI/UX Issues
 
-On-chain code refers to the part of a smart contract that runs on the blockchain itself. This code is written in Plutus Core, and it essentially implements the custom logic that controls how the contract's assets can be spent. Once a smart contract is deployed, its on-chain code becomes unchangeable—it is, in fact, a part of the blockchain.
+While DApps promise to decentralize many multi-party digital services, without a doubt there are still several challenges that must be overcome for their mass-adoption -- particularly for the non-tech-savvy. We now discuss some challenges (that DApps on all blockchains face) and potential future directions to overcome such challenges:
+
+* *Wallet setup woes*: New users may find it daunting to install a wallet and store the wallet's seed phrase. Various directions to circumvent some of these issues have been proposed including "account abstraction", use of "ephermal keys", and use of "passkeys". 
+
+* *Switching between user interfaces*: Users may find it hard to deal with switching between DApp web pages, wallet pop-ups, and block explorers. That being said, confirming actions in wallets is akin to how users confirm online purchases with internet banking apps. As wallets become more integrated into browsers and mobiles, and as wallets provide users with information that is more digestible (without having to use a block explorer), user experience should also reach similar levels to internet banking apps.
+
+* *Gas costs*: for non-cryptocurrency related DApps, esppecially those that a user may not interact with often, users may find it troublesome to both purchase and cover required gas costs. Solutions to this may include feeless/gasless transaction models.
+ 
+* *Smart contract/on-chain script code and errors may be opaque*: Even though on-chain code is available for all to see, and some may be able to viewed in an intuitive visual block format, understanding code logic is often beyond what many non-tech users are capable of. Furthermore, errors that are often displayed to users require technical knowledge to understand. Different avenues are being investigated that may eventually help non-tech users to understand both the scripts they are confirming to interact with and any errors reported.
+
+* *Losing access to keys*: Whilst not exactly a barrier to using DApps, some users may not feel comfortable using DApps associated with a private key/seed phrase that they may lose. Different approaches are being investigated to circumvent users taking full responsibility on keeping their keys safe including: social recovery, shared wallets, and multi-sig wallets.
+
