@@ -1878,16 +1878,17 @@ options:
 * Use an online platform such as https://demeter.run/[Demeter.run]
 * Install system dependencies manually.
 
-The https://github.com/iohkedu/plinth-dev-env/tree/main[plinth-dev-env]
-GitHub repository provides instructions for setting up the development
-environment for the first three options. It aims to provide up-to-date
+The _plinth-dev-env_ GitHub repository provides instructions for setting 
+up the development environment for the first three options. A link to the 
+repository can be found in the 
+https://github.com/input-output-hk/mastering-cardano/tree/main/resources[resources] 
+folder of the mastering cardano repository. It aims to provide up-to-date
 instructions for the latest stable Plinth development environment. The smart
 contract code presented throughout section <<Plutus smart contracts>> uses features
 introduced in the Chang hard fork, which enabled PlutusV3. The development
 environment you will use to run and test this code needs to support these
 features. The smart contract code presented in this section was compiled
-with a Nix shell that was set up with instructions provided in the
-https://github.com/iohkedu/plinth-dev-env/blob/main/instructions/using-nix.md[plinth-dev-env]
+with a Nix shell that was set up with Nix instructions provided in the _plinth-dev-env_
 repository. Nix version `2.25.3` was used and a Nix shell provided by
 the https://github.com/IntersectMBO/plinth-template[plinth-template]
 repository, commit `4adea2ef260a99ec9d36de609579ae5208ac8c10`.
