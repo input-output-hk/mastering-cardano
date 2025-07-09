@@ -180,7 +180,7 @@ We’ll now create the following aspects of a DApp:
 * Server-side code: A NodeJS server that will send a page's HTML/JavaScript to the end-user.
 * Client-side code: This is the code that will be sent from the server (discussed above), but will execute in the client-side browser. This code will connect to the wallet and communicate with a deployed smart contract.
 
-We will not create smart contract code in this section (since that is handled in #Chapter 6#). Indeed, DApps can be created that communicate with existing deployed smart contracts that may not necessarily be written by the same developers/teams — just as we demonstrate now below.
+We will not create smart contract code in this section (since that is handled in #Chapter 8#). Indeed, DApps can be created that communicate with existing deployed smart contracts that may not necessarily be written by the same developers/teams — just as we demonstrate now below.
 
 _Creating a Server (with NodeJS)_
 
@@ -235,18 +235,17 @@ First, we’ll create an HTML button and JavaScript that will connect the client
 <script>
   async function connectWallet() {
     if (window.cardano && window.cardano.lace) {
-      try {
-        let lace = await window.cardano.lace.enable();
-        const walletAddressUsed = await lace.getUsedAddresses();
-        console.log("Connected to Lace Wallet.");
-        console.log("Addresses Used:", walletAddressUsed);
-      } catch (error) {
-        console.error("Error connecting to Lace Wallet:", error);
-      }
+        try {
+            let lace = await window.cardano.lace.enable();
+            const walletAddress = await lace.getUsedAddresses();
+            console.log("Connected to Lace Wallet:", walletAddress);
+        } catch (error) {
+            console.error("Error connecting to Lace Wallet:", error);
+        }
     } else {
-      console.error("Lace Wallet not found");
+        console.error("Lace Wallet not found");
     }
-  }
+}
 </script>
 ----
 
@@ -335,7 +334,7 @@ module.exports = {
 ----
 
 [start=5]
-. Run webpack to generate the bundles Mesh library:
+. Run webpack to generate the bundled Mesh library:
 [source]
 ----
 npx webpack
@@ -376,7 +375,7 @@ _Using the Bundled Mesh Library in the Client-Side JavaScript_
 
 Now, we'll use the bundled mesh library in the client-side JavaScript to communicate with smart contracts.
 
-We'll expand on the HTML file described above (in the section covering <<para-csc>>). Again, for simplicity sake we'll encode all HTML and JavaScript into a single file (which we called index.html). We'll start by adding the boilerplate functionality to use the bundled library:
+We'll expand on the HTML file described above (from the <<para-csc>> Section). Again, for simplicity sake we'll encode all HTML and JavaScript into a single file (in index.html). We'll start by adding the boilerplate functionality to use the bundled library:
 
 . Import the bundled library:
 
@@ -431,12 +430,12 @@ async function connectWallet() {
 ----
 
 [start=4]
-. To test this code, the Node server will need to be started (potentially restarted), and the page loaded by opening the url localhost:3000 in a browser. Then check to make sure that loading of the library and loading of the Mesh library objects and functions do not raise any errors (though you might see an error relating to not being able to load favicon.ico).
+. To test this code, the Node server will need to be started (potentially restarted), and the page loaded by opening the url `localhost:3000` in a browser. Then check to make sure that loading of the library and loading of the Mesh library objects and functions do not raise any errors (though you might see an error relating to not being able to load favicon.ico).
 
 
 ==== Interacting with the Redeemer 42 Smart Contract
 
-To demonstrate DApp interaction, we'll start by writing client-side JavaScript code to interact with the Redeemer 42 smart contract.footnote:[See https://github.com/LukaKurnjek/ppp-plutusV3-plinth/blob/main/off-chain/meshjs/Week02/redeemer42-ref-script.ts for a #hhh# example from the #aaa# which this chapter builds on.] You can read Section <<Simple validation scripts>> to get a better understanding of the Redeemer 42 Script (if you have not already done so). We'll start by sending funds to the smart contract and then #XXXX#.
+To demonstrate DApp interaction, we'll write client-side JavaScript code to interact with the Redeemer 42 smart contract (discussed in #Chapter 8#).footnote:[Also see https://github.com/LukaKurnjek/ppp-plutusV3-plinth/blob/main/off-chain/meshjs/Week02/redeemer42-ref-script.ts] You can read Section <<Simple validation scripts>> to get a better understanding of the Redeemer 42 Script (if you have not already done so). We'll start by sending funds to the smart contract and then #XXXX#.
 
 _Sending Funds to the Redeemer 42 Smart Contract_
 
@@ -544,7 +543,7 @@ After running the NodeJS server and refreshing the page (i.e. refreshing localho
 [#fig-sendFunds]
 image::redeemer42-sendFunds.png[pdfwidth=50%]
 
-Upon clicking 'Send Funds' the wallet should pop-up asking that you confirm sending 3 Ada to the smart contract.
+Upon clicking 'Send Funds' the wallet should pop-up asking that you confirm sending 3 Ada to the smart contract. It may take a while until the transaction is part of a block -- you can check your wallet's transaction history and also search in a Cardano preview network block explorer for your wallet's address for a successful transaction (at the associate date/time).
 
 _Deploying a reference script for the Redeemer 42 Smart Contract_
 
@@ -693,7 +692,7 @@ async function connectWallet() {
     if (window.cardano && window.cardano.lace) {
         try {
             let lace = await window.cardano.lace.enable();
-            const walletAddress = lace.getUsedAddresses();
+            const walletAddress = await lace.getUsedAddresses();
             console.log("Connected to Lace Wallet:", walletAddress);
         } catch (error) {
             console.error("Error connecting to Lace Wallet:", error);
