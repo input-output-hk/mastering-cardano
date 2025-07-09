@@ -8,7 +8,7 @@
 ==== Plutus preface
 
 _Prof Philip Wadler, FRS_ +
-_University of Edinburgh and IOG_
+_University of Edinburgh and IO_
 
 Smart contracts for the Cardano blockchain run in a language called
 Plutus. Roughly speaking, Plutus plays the role for Cardano that the
@@ -36,7 +36,7 @@ Because this fifty-year-old theory would now be executed directly on
 the Cardano blockchain, carrying billions of dollars of value, there
 was a business case for formally validating that theory. Input | Output (IO) hired
 James Chapman to validate our variant of System F in the Agda proof
-assistant James -- having written his dissertation on a related subject,
+assistant -- James, having written his dissertation on a related subject,
 is one of the foremost experts in the field. The completed proof validated
 the theory. It also gave us an executable version of
 Plutus. Continuous Integration ensures the production Plutus
@@ -1565,10 +1565,7 @@ https://www.haskell.org/documentation/[Haskell documentation] site
 provides more learning resources.
 
 Before reading section _Plutus smart contracts_, one should have a basic
-understanding of blockchain principles and Cardano's extended UTXO (EUTXO)
-accounting model. You can learn this in the first four chapters of this book.
-If you are already familiar with blockchain technology, refer to the
-Cardano-specific content in those chapters. The EUTXO model is presented
+understanding of the extended UTXO (EUTXO) accounting model that is presented
 in <<The EUTXO model>> section. One should also be familiar with the types
 of smart contract languages offered by Cardano, covered in the
 <<Smart contract programming languages>> section, which lists each type and provides
@@ -1609,7 +1606,7 @@ https://github.com/input-output-hk/plutus-pioneer-program/tree/plinth-plutusV3[p
 branch of the Plutus Pioneer program (PPP) GitHub repository. This
 branch contains validator examples of the
 https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[4th
-PPP iteration], which showcases PlutusV2 code examples translated to PlutusV3. In addition
+PPP iteration], translated from PlutusV2 to PlutusV3. In addition
 to MeshJS off-chain code, the _plinth-plutusV3_ branch also contains
 https://anastasia-labs.github.io/lucid-evolution/[Lucid Evolution]
 off-chain code examples. Further Cardano learning resources and smart
@@ -1720,8 +1717,10 @@ The script also sees a piece of arbitrary input data provided by the user
 submitting the transaction. This data is the redeemer, which is also contained
 in the script context of a transaction. The information in the redeemer can be used for:
 
-* Indicating the purpose of interacting with a script, eg, placing a bet, paying a fee, or claiming a reward
-* Providing information known only to a specific party, which can be used to unlock funds held at a script address
+* Indicating the purpose of interacting with a script, eg, placing a bet, 
+paying a fee, or claiming a reward
+* Providing information known only to a specific party, which can be used 
+to unlock funds held at a script address
 * Supplying a value that modifies the current datum data.
 
 Section <<Script context explained>> details the information
@@ -2469,11 +2468,11 @@ guidelines.
 We again state the various possibilities that a redeemer can be used for
 in smart contracts:
 
-* Defining the reason for interacting with a script as eg, making a bet,
-pay a fee, gather a reward, etc
-* Provide information to the script known only to person X, which can
-be used to unlock funds of a UTXO sitting at a script address
-* Define a value that will be used to modify the current datum data.
+* Indicating the purpose of interacting with a script, eg, placing a bet, 
+paying a fee, or claiming a reward
+* Providing information known only to a specific party, which can be used 
+to unlock funds held at a script address
+* Supplying a value that modifies the current datum data.
 
 At the end, we show the code for generating Plutus blueprints for two of the
 six validators we have defined in this section to shorten the code. We choose
@@ -3016,8 +3015,8 @@ to typed form where extracting any information can be done in a simpler way.
 We again state the various possibilities that a datum can be used for
 in smart contracts:
 
-* Answering who/when/with what data can a UTXO be consumed.
-* Defining the current state of the UTXO.
+* Indicating who can consume a UTXO, when, and under what conditions
+* Representing the current state of the UTXO
 * Defining metadata and/or configurations.
 
 *Transaction information*
