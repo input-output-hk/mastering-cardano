@@ -1,0 +1,31 @@
+
+[[foreword-lars]]
+== Foreword by Lars Brünjes
+
+People often ask what drew me to Cardano. It wasn’t just one thing, but a combination that, for a mathematician like me, was simply irresistible.
+
+First, there was the intellectual pull. I’ve spent my career in Number Theory and have a long-standing love for functional programming, especially Haskell. The chance to work on a blockchain built from peer-reviewed research and coded in Haskell was, frankly, a dream scenario. It was a project that valued getting things right from the start, which is a stark contrast to the tech world’s usual "move fast and break things" mantra. We’ve felt that pressure to cut corners, and I’m proud that we always chose rigor when people's trust—and their savings—were on the line.
+
+The second reason was the mission itself: building a financial operating system for those who have been left behind. Early in my career, you were often told to pick: do something interesting or do something meaningful. I once saw a job posting to optimize gambling machine algorithms. The math was fascinating, but I couldn't stomach the ethics. On the other hand, you could do something undeniably good, like building roads in the developing world, but I wouldn't have been using the skills I was passionate about.
+
+Cardano was the first time I saw a project that didn't ask me to choose. It was a chance to tackle incredibly hard problems in cryptography and game theory for a cause that could genuinely change lives. It had the elegance of Bitcoin without boiling the oceans to secure it—our Ouroboros protocol is about a million times more energy-efficient. And it had the flexibility of Ethereum, but with our EUTXO model, which gives developers a level of safety and predictability that makes formal verification a practical tool, not just a theory.
+
+Which brings us to this book.
+
+Cardano is a huge undertaking. It spans everything from the nuts and bolts of network protocols to the high-level world of smart contracts and governance. It would have been pure arrogance to try and write this alone. Truthfully, I didn't know nearly enough about many parts of it.
+
+That's why this book had to be a team effort, just like Cardano itself. My main co-author, Professor Joshua Ellul, my entire education team at IOG, and many others from the wider Cardano community all pitched in. It only makes sense. Cardano is open source, and so is this book. We see it as a living document.
+
+And that's where you come in. We're inviting you, the reader, to help us shape its future—to correct, refine, and expand it as Cardano grows.
+
+We wrote this book for a wide audience. Whether you're a developer ready to build, a stake pool operator keeping the network secure, a student digging into cryptography, or you're simply curious about how it all works—there's a path for you in these pages.
+
+So whatever brought you here—building, learning, or just curiosity—welcome. We're excited to have you with us.
+
+Happy reading!
+
+_Dr. Lars Brünjes +
+Director of Education, IOG +
+L'Agulhas, South Africa +
+July 10, 2025_
+

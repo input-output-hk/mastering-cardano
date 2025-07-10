@@ -1,7 +1,9 @@
 [[preface]]
 == #Preface#
 
-Message from Charles here []
+#Message from Charles here#
+
+include::foreword-lars.adoc[]
 
 == Welcome to Mastering Cardano!
 
@@ -73,10 +75,10 @@ Learn the foundational blockchain concepts, then discover how to interact with t
 
 ===== Suggested Chapters & Sections:
 - Preface: How to Navigate, How to Contribute
-- Chapter 1: Vision of Blockchain: What is the Vision of Blockchain?, Sample Use Cases, Overview of a Blockchain Network, Blockchain Generations (Cardano, Bitcoin, and Ethereum) 
-- Chapter 3: Learn About Cardano: What is Cardano?, Cardano Community and Growth of the Ecosystem 
-- Chapter 4: How Cardano Works: UTXO and EUTXO Models, Multi-assets, Native Tokens (fungible and non-fungible) 
-- Chapter 6: Wallets in the Cardano Ecosystem: Fundamentals of Wallets, Wallets in the Cardano Ecosystem, Setting Up a Cardano Light Wallet, Common operations in a Cardano Wallet (Sending and receiving ada, Staking ada) 
+- Chapter 1: Vision of Blockchain: What is the Vision of Blockchain?, Sample Use Cases, Overview of a Blockchain Network, Blockchain Generations (Cardano, Bitcoin, and Ethereum)
+- Chapter 3: Learn About Cardano: What is Cardano?, Cardano Community and Growth of the Ecosystem
+- Chapter 4: How Cardano Works: UTXO and EUTXO Models, Multi-assets, Native Tokens (fungible and non-fungible)
+- Chapter 6: Wallets in the Cardano Ecosystem: Fundamentals of Wallets, Wallets in the Cardano Ecosystem, Setting Up a Cardano Light Wallet, Common operations in a Cardano Wallet (Sending and receiving ada, Staking ada)
 
 ==== Cardano Governance & Future Path
 Understand how Cardano's governance model operates, explore key initiatives like Project Catalyst and CIPs, and look ahead to future advancements and the Cardano 2.0 vision.
@@ -90,10 +92,10 @@ Understand how Cardano's governance model operates, explore key initiatives like
 === Join the Community: Contribute to Mastering Cardano
 _Mastering Cardano_ is more than just a book; it's intended to be a community-driven resource that grows and improves with the collective knowledge of the Cardano ecosystem. The world of blockchain is dynamic, and we believe the best way to keep this resource current, accurate, and truly comprehensive is through your valuable contributions.
 
-We encourage you to become an active participant in shaping the future editions of this book. Whether you spot a typo, have a clearer explanation for a complex concept, discover an outdated reference, or identify an area where more depth is needed, your input is incredibly valuable. We kindly ask that you first spend time navigating the book and its content and getting to know its structure and sections, so that your feedback is most valuable. 
+We encourage you to become an active participant in shaping the future editions of this book. Whether you spot a typo, have a clearer explanation for a complex concept, discover an outdated reference, or identify an area where more depth is needed, your input is incredibly valuable. We kindly ask that you first spend time navigating the book and its content and getting to know its structure and sections, so that your feedback is most valuable.
 
 ==== How can you contribute?
-_Mastering Cardano_ is an evolving community resource which will improve with contributions and corrections from the Cardano community. Please raise a pull request in our Mastering Cardano repository with your suggested improvements. 
+_Mastering Cardano_ is an evolving community resource which will improve with contributions and corrections from the Cardano community. Please raise a pull request in our Mastering Cardano repository with your suggested improvements.
 
 - Suggest Enhancements: Have an idea for a new section, a better example, or a more efficient way to explain something? Share it!
 - Propose Updates: As Cardano evolves, so too should this book. Help us keep the content fresh and relevant.
