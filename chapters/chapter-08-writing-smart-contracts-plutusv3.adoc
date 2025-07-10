@@ -255,6 +255,7 @@ JavaScript/TypeScript SDK and typed DSL
 * https://github.com/plutonomicon/plutarch-plutus[Plutarch]: a typed
 eDSL in Haskell for writing efficient Plutus validators
 * https://scalus.org/[Scalus]: a typed eDSL in Scala
+* https://github.com/mlabs-haskell/purus[Purus]: a PureScript to Plutus Core compiler
 * https://github.com/Plutonomicon/pluto[Pluto]: a DSL resembling UPLC
 with some syntactic sugar, written in a Haskell-like syntax.
 
@@ -272,12 +273,10 @@ are Aiken and Plinth. A comparison of these languages is discussed in
 section <<Plinth in comparison to Aiken>>. A brief comparison of
 some of the listed languages can also be found in the following blogs:
 
-* The Emurgo blog about
-https://www.emurgo.io/press-news/the-programming-languages-behind-cardano-on-chain-code/[the
-programming languages behind Cardano on-chain code]
-* The Essential Cardano blog about
-https://www.essentialcardano.io/article/programming-languages[programming
-languages].
+* The https://www.emurgo.io/press-news/the-programming-languages-behind-cardano-on-chain-code/[Emurgo]
+blog about the programming languages behind Cardano on-chain code
+* The https://www.essentialcardano.io/article/programming-languages[Essential Cardano] 
+blog about programming languages.
 
 Languages that compile to Plutus generate scripts that have the same
 logic, but might be optimized differently for factors like size or
@@ -297,17 +296,17 @@ Plinth or other compiled Cardano smart contract languages include:
 
 * NFT marketplaces and platforms (https://www.nmkr.io/[NMKR],
 https://cardahub.io/home[CardaHub],
-https://www.jpg.store/[JPGStore], https://flipr.io/[Flipr],
+https://www.jpg.store/[JPGStore], 
 https://jamonbread.io/[JamOnBread])
 * Decentralized exchanges (DEX) (https://muesliswap.com/[MuesliSwap],
-https://minswap.org/[MinSwap], https://sundaeswaap.com/[SundaeSwap],
+https://minswap.org/[MinSwap], https://sundae.fi/products/sundaeswap[SundaeSwap],
 https://www.geniusyield.co/[GeniusYield])
 * Automated lending and borrowing platforms
-(https://liqwid.finance/[Liqwid], https://www.meld.com/[MELD],
+(https://liqwid.finance/[Liqwid],
 https://lenfi.io/[Lenfi], https://fluidtokens.com/[FluidTokens])
 * Digital identity management platforms
-(https://github.com/hyperledger/identus[Identus], https://iamx.id/[IAMX],
-https://www.profila.com/[Profila], https://identity.cardanofoundation.org/[Identity wallet])
+(https://github.com/hyperledger-identus[Identus], https://iamx.id/[IAMX],
+https://www.profila.com/[Profila], https://cardanofoundation.org/veridian[Veridian])
 * Decentralized, blockchain-powered mobile network
 (https://worldmobile.io/en[WorldMobile])
 * Decentralized artificial intelligence systems
