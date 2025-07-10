@@ -8,7 +8,7 @@
 ==== Plutus preface
 
 _Prof Philip Wadler, FRS_ +
-_University of Edinburgh and IOG_
+_University of Edinburgh and IO_
 
 Smart contracts for the Cardano blockchain run in a language called
 Plutus. Roughly speaking, Plutus plays the role for Cardano that the
@@ -36,7 +36,7 @@ Because this fifty-year-old theory would now be executed directly on
 the Cardano blockchain, carrying billions of dollars of value, there
 was a business case for formally validating that theory. Input | Output (IO) hired
 James Chapman to validate our variant of System F in the Agda proof
-assistant James -- having written his dissertation on a related subject,
+assistant -- James, having written his dissertation on a related subject,
 is one of the foremost experts in the field. The completed proof validated
 the theory. It also gave us an executable version of
 Plutus. Continuous Integration ensures the production Plutus
@@ -207,8 +207,7 @@ The Alonzo era introduced the Plutus scripting language, also referred
 to as Plutus Core. Since Plutus smart contracts validate
 transactions, they are also called validation scripts or validators.
 Plutus is a simple, functional language that enables general-purpose
-Turing-complete (see <<glossary, Glossary>>) smart contracts on Cardano. It
-implements Cardano's extended UTXO
+Turing-complete smart contracts on Cardano. It implements Cardano's extended UTXO
 (EUTXO) model, which is as powerful in expressing smart contract logic
 as Ethereum's account-based model, allowing for arbitrary logic in smart
 contracts. The EUTXO model is explained in detail in section
@@ -1565,10 +1564,7 @@ https://www.haskell.org/documentation/[Haskell documentation] site
 provides more learning resources.
 
 Before reading section _Plutus smart contracts_, one should have a basic
-understanding of blockchain principles and Cardano's extended UTXO (EUTXO)
-accounting model. You can learn this in the first four chapters of this book.
-If you are already familiar with blockchain technology, refer to the
-Cardano-specific content in those chapters. The EUTXO model is presented
+understanding of the extended UTXO (EUTXO) accounting model that is presented
 in <<The EUTXO model>> section. One should also be familiar with the types
 of smart contract languages offered by Cardano, covered in the
 <<Smart contract programming languages>> section, which lists each type and provides
@@ -1609,7 +1605,7 @@ https://github.com/input-output-hk/plutus-pioneer-program/tree/plinth-plutusV3[p
 branch of the Plutus Pioneer program (PPP) GitHub repository. This
 branch contains validator examples of the
 https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[4th
-PPP iteration], which showcases PlutusV2 code examples translated to PlutusV3. In addition
+PPP iteration], translated from PlutusV2 to PlutusV3. In addition
 to MeshJS off-chain code, the _plinth-plutusV3_ branch also contains
 https://anastasia-labs.github.io/lucid-evolution/[Lucid Evolution]
 off-chain code examples. Further Cardano learning resources and smart
@@ -1639,8 +1635,10 @@ program iterations:
 * https://github.com/input-output-hk/plutus-pioneer-program/tree/third-iteration[third-iteration] - PlutusV1 examples
 * https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[fourth-iteration] - PlutusV2 examples.
 
-Cardano’s hard fork combinator technology, briefly introduced
-in section <<Cardano node layers>>, subsection *Consensus and storage layer*, enables the Cardano node to continue processing scripts written in earlier versions of Plutus even after a hard fork introduces a new Plutus version.
+Cardano's hard fork combinator technology, briefly introduced in section 
+<<cardano-node-layers, Cardano node layers>>, subsection *Consensus and storage layer*, 
+enables the Cardano node to continue processing scripts written in earlier 
+versions of Plutus even after a hard fork introduces a new Plutus version. 
 
 ==== Plutus in comparison to Bitcoin Script and Solidity
 
@@ -1720,8 +1718,10 @@ The script also sees a piece of arbitrary input data provided by the user
 submitting the transaction. This data is the redeemer, which is also contained
 in the script context of a transaction. The information in the redeemer can be used for:
 
-* Indicating the purpose of interacting with a script, eg, placing a bet, paying a fee, or claiming a reward
-* Providing information known only to a specific party, which can be used to unlock funds held at a script address
+* Indicating the purpose of interacting with a script, eg, placing a bet, 
+paying a fee, or claiming a reward
+* Providing information known only to a specific party, which can be used 
+to unlock funds held at a script address
 * Supplying a value that modifies the current datum data.
 
 Section <<Script context explained>> details the information
@@ -1879,16 +1879,17 @@ options:
 * Use an online platform such as https://demeter.run/[Demeter.run]
 * Install system dependencies manually.
 
-The https://github.com/iohkedu/plinth-dev-env/tree/main[plinth-dev-env]
-GitHub repository provides instructions for setting up the development
-environment for the first three options. It aims to provide up-to-date
+The _plinth-dev-env_ GitHub repository provides instructions for setting 
+up the development environment for the first three options. A link to the 
+repository can be found in the 
+https://github.com/input-output-hk/mastering-cardano/tree/main/resources[resources] 
+folder of the mastering cardano repository. It aims to provide up-to-date
 instructions for the latest stable Plinth development environment. The smart
 contract code presented throughout section <<Plutus smart contracts>> uses features
 introduced in the Chang hard fork, which enabled PlutusV3. The development
 environment you will use to run and test this code needs to support these
 features. The smart contract code presented in this section was compiled
-with a Nix shell that was set up with instructions provided in the
-https://github.com/iohkedu/plinth-dev-env/blob/main/instructions/using-nix.md[plinth-dev-env]
+with a Nix shell that was set up with Nix instructions provided in the _plinth-dev-env_
 repository. Nix version `2.25.3` was used and a Nix shell provided by
 the https://github.com/IntersectMBO/plinth-template[plinth-template]
 repository, commit `4adea2ef260a99ec9d36de609579ae5208ac8c10`.
@@ -2469,11 +2470,11 @@ guidelines.
 We again state the various possibilities that a redeemer can be used for
 in smart contracts:
 
-* Defining the reason for interacting with a script as eg, making a bet,
-pay a fee, gather a reward, etc
-* Provide information to the script known only to person X, which can
-be used to unlock funds of a UTXO sitting at a script address
-* Define a value that will be used to modify the current datum data.
+* Indicating the purpose of interacting with a script, eg, placing a bet, 
+paying a fee, or claiming a reward
+* Providing information known only to a specific party, which can be used 
+to unlock funds held at a script address
+* Supplying a value that modifies the current datum data.
 
 At the end, we show the code for generating Plutus blueprints for two of the
 six validators we have defined in this section to shorten the code. We choose
@@ -3016,8 +3017,8 @@ to typed form where extracting any information can be done in a simpler way.
 We again state the various possibilities that a datum can be used for
 in smart contracts:
 
-* Answering who/when/with what data can a UTXO be consumed.
-* Defining the current state of the UTXO.
+* Indicating who can consume a UTXO, when, and under what conditions
+* Representing the current state of the UTXO
 * Defining metadata and/or configurations.
 
 *Transaction information*
@@ -3614,14 +3615,12 @@ off-chain code that interacts with the validators presented in this section.
 
 ==== Off-chain code with MeshJS
 
-The blockchain is passive – it only acts when a user interacts with it.
+The blockchain is passive -- it only acts when a user interacts with it.
 The code that queries the blockchain, builds, and submits transactions
 is called off-chain code. Off-chain code does not need to have the same
-performance and security standards as on-chain code. Further comparison
-between on-chain and off-chain code will be made in section
-<<Onchain vs off chain Code>>. In this section, we will showcase how to
-write off-chain code for the on-chain code example presented in the
-previous section.
+performance and security standards as on-chain code. In this section, 
+we will showcase how to write off-chain code for the on-chain code example 
+presented in the previous section. 
 
 After the Alonzo era, when smart contracts became available on Cardano,
 the https://github.com/IntersectMBO/plutus-apps[Plutus application platform]
@@ -4983,7 +4982,8 @@ the time of writing. Some of the important research areas that IO
 targets are cryptography, software engineering, distributed systems,
 networks, formal verification, and programming languages. Ouroboros,
 Cardano's consensus protocol, is explained in detail in section
-<<about-the-ouroboros-protocol, About the Ouroboros protocol>>. Ouroboros represents the outcome of long
+<<about-the-ouroboros-protocol, About the Ouroboros protocol>>. 
+Ouroboros represents the outcome of long
 research presented in multiple papers. It is the first blockchain
 consensus protocol developed through peer-reviewed research with
 mathematically proven security features that guarantee the protocol is
@@ -5115,8 +5115,9 @@ that was received in the pool. In reality, this is hard to achieve because
 Cardano's mainnet has a high number of block producing nodes (around 3000
 at the time of writing) and also because of Cardano's design, none of these
 nodes controls a significant amount of staked ada. You can read more about
-this topic in chapter <<stake-pools-and-stake-pool-operation, Stake pools and stake pool operation>>. We also
-note that for transactions that interact with the same validator and spend
+this topic in chapter 
+<<stake-pools-and-stake-pool-operation, Stake pools and stake pool operation>>.
+We also note that for transactions that interact with the same validator and spend
 different UTXOs, rearranging them is inconsequential because there is no
 global state that would affect both of the transaction. You can read more
 about the mempool and front-running invasion attacks on Cardano in the following
@@ -5365,7 +5366,7 @@ implementation. The https://github.com/IntersectMBO/plutus[Plutus]
 repository contains the formalization of Plutus in Agda. The project is
 located in the _plutus-metatheory_ folder. You can read more about
 formal methods and functional programming in section
-<<Using functional programming and formal methods>>.
+<<The importance of program correctness for cryptocurrency ledgers>>.
 
 Besides formal methods, property-based testing is also used to deliver
 high-assurance software for Cardano. For Haskell code, property-based

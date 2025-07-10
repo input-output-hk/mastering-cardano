@@ -41,6 +41,18 @@ We believe in continuous learning. Throughout _Mastering Cardano_, you'll find c
 - *Stake pool operator path* — This path is for readers whose goal is to learn how to run a node and start a stake pool, but are not necessarily interested in programming smart contracts or DApps.
 - *Cardano governance and future path* — For readers keen on Cardano's long-term vision, this path explores the principles of decentralized governance, the mechanisms for community decision-making, and the exciting future developments shaping the network.
 
+Here's how our paths allow for flexible learning:
+
+-Foundation & Core Concepts: (e.g., Chapters 1-3) - For those new to blockchain or Cardano, providing a solid theoretical base.
+
+-Developer Deep Dive: (e.g., Chapters 4, 7, 10, 12) - Focuses on smart contract development, dApp creation, and developer tools.
+
+-Staking & Delegation: (e.g., Chapters 5, 8) - For understanding how to participate in network security and earn rewards.
+
+-Network Architecture & Governance: (e.g., Chapters 2, 6, 9, 11) - Exploring the underlying structure, Ouroboros, and Project Catalyst.
+
+-Business & Use Cases: (e.g., Chapters 3, 13, 14) - For those interested in real-world applications and the economic impact of Cardano.
+
 ==== Cardano Fundamentals Path
 Explore the vision and challenges of blockchain, delve into the cryptography securing the network, and then get a robust introduction to Cardano's unique design, history, and innovative protocols.
 
