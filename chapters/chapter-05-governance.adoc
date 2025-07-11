@@ -674,7 +674,7 @@ The interim Constitution was drafted early in 2024, and along with the technical
 The first interim Constitutional Committee (ICC), the body that upholds the interim Constitution and votes on the first on-chain governance actions, was formed. The community voted for three representatives to sit alongside pioneer entities IOG, EMURGO, and the Cardano Foundation, and Intersect. The https://intersect.gitbook.io/2024-constitutional-committee-members-election/candidates/the-cardano-atlantic-council[Cardano Atlantic Council], https://intersect.gitbook.io/2024-constitutional-committee-members-election/candidates/cardano-japan[Cardano Japan], and https://app.gitbook.com/o/Prbm1mtkwSsGWSvG1Bfd/s/LQX9Yzpr2CgxQjPsjkZf/candidates/eastern-cardano-council[Eastern Cardano Council] were duly elected to this responsible position.
 
 image::../images/5.7_intersect_roadmap.png[]
-*Figure 5.7:* Intersect Provisional Roadmap
+*Figure 5.7:* Cardano Constitutional Consulation period
 
 The constitution can only claim legitimacy with feedback from the community, and so the first of 63 Constitutional workshops across 50 countries was hosted by Nicolas Cerny, Governance Lead for the Cardano Foundation, in Berlin in July 2024.
 
