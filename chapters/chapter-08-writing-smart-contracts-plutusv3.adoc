@@ -344,7 +344,7 @@ page: tags projects by groups and adds a short description to each.
 
 The third category of smart contract languages in Cardano consists of
 interpreted languages that are interpreted by a compiled language.
-https://marlowe.iohk.io/[Marlowe], initially developed by IO, is an
+https://marlowe-lang.org/[Marlowe], initially developed by IO, is an
 interpreted smart contract language that is not Turing-complete. It is
 well-suited for designing financial contracts, such as those defined in 
 Algorithmic Contract Types Unified Standards (https://www.actusfrf.org/about/[Actus]), 
@@ -400,7 +400,7 @@ providing numerous tools to easily build DApps on Cardano. It also
 integrates the popular https://react.dev/[React] library.
 * https://lucid.spacebudz.io/[Lucid]: a popular JavaScript/TypeScript
 library for off-chain code, which is further developed by the
-https://anastasia-labs.github.io/lucid-evolution/[Lucid Evolution]
+https://no-witness-labs.github.io/lucid-evolution/[Lucid Evolution]
 project funded by
 https://projectcatalyst.io/funds/11/cardano-open-developers/anastasia-labs-lucid-evolution-redefining-off-chain-transactions-in-cardano[Catalyst
 Fund11].
@@ -714,11 +714,11 @@ Marlowe is based on original, peer-reviewed research conducted by the
 Marlowe team, initially at the University of Kent with support from a
 research grant from IO, and later as an internal engineering team within
 IO. The Marlowe team at IO was also collaborating with the
-https://www.uwyo.edu/wabl/index.html[Wyoming Advanced Blockchain R&D
-Laboratory (WABL)] at the University of Wyoming. More information about
+https://www.uwyo.edu/acct-fin/cbdi/[Wyoming Center for Blockchain and Digital 
+Innovation (CBDI)] at the University of Wyoming. More information about
 the research conducted for Marlowe can be found on the official
 documentation page, which also lists
-https://docs.marlowe.iohk.io/docs/platform-and-architecture/platform#research-based[published
+https://docs.marlowe-lang.org/docs/platform-and-architecture/platform#research-based[published
 research papers] related to Marlowe.
 
 In the future, Marlowe will be administered by an independent vehicle, a
@@ -776,7 +776,7 @@ Marlowe foundation, some of these tools might have issues when using
 them with the latest test or main network due to Cardano updates.
 
 The
-https://docs.marlowe.iohk.io/docs/platform-and-architecture/marlowe-language-guide[Marlowe
+https://docs.marlowe-lang.org/docs/platform-and-architecture/marlowe-language-guide[Marlowe
 language] enables users to build contracts by combining a small number
 of constructs, which can describe many different financial contracts.
 Contract participants can engage in various actions: they can be asked
@@ -798,33 +798,31 @@ also allows downloading contracts as a JSON file for further use. For
 more details on how to use the playground, see this
 https://www.youtube.com/watch?v=EgCqG0hPmwc[video tutorial].
 
-https://docs.marlowe.iohk.io/docs/getting-started/runner[Marlowe
+https://docs.marlowe-lang.org/docs/getting-started/runner[Marlowe
 Runner] is an online tool that facilitates the deployment and execution
 of Marlowe contracts on the blockchain, eliminating the need for
 command-line expertise. With Marlowe Runner, users can deploy contracts
 created in the Marlowe playground, test them, and interact with them in
 a simulated environment before mainnet deployment. For this, users need
-to connect to the Runner using a Cardano wallet such as
-https://www.lace.io/[Lace], https://www.namiwallet.io/[Nami] or
-https://eternl.io/[Eternl]. Contracts can be uploaded to the Runner as
+to connect to the Runner using a Cardano wallet such as https://www.lace.io/[Lace] 
+or https://eternl.io/[Eternl]. Contracts can be uploaded to the Runner as
 a JSON file, or one can manually paste the JSON structure into an editor
 window. One can look at the source graph before creating a contract,
 which is also available when interacting with the contract. If a Marlowe
 contract uses role tokens, the funds cannot be retrieved from the
 role-token contract with the Runner. In such a case, one can use the
-https://docs.marlowe.iohk.io/docs/developer-tools/ts-sdk/payouts-dapp-prototype[Payout
+https://docs.marlowe-lang.org/docs/developer-tools/ts-sdk/payouts-dapp-prototype[Payout
 DApp prototype]. A
 https://www.youtube.com/watch?v=B5XcH0j7Y7w&list=PLNEK_Ejlx3x2ukxS8Xd0Z-cq24-1jP9G9[video
-tutorial] about using Marlowe Runner can be found on the IO Academy
-YouTube channel.
+tutorial] about using Marlowe Runner can be found on the IO YouTube channel.
 
-https://marlowescan.com/[Marlowe Scan] is a website that allows users
-to query information about Marlowe contracts and view the current
-contract state. The service is available for the preview and
-pre-production test networks and the main network. Users can also view
-the contract code, download it, and view a list of transaction IDs.
+https://github.com/marlowe-lang/marlowe-scan[Marlowe Scan] is a tool  
+that allows users to query information about Marlowe contracts and view 
+the current contract state. It can be used for the preview and pre-production 
+test networks and the mainnet. Users can also view the contract code, 
+download it, and view a list of transaction IDs.
 
-https://docs.marlowe.iohk.io/docs/developer-tools/runtime/marlowe-runtime[Marlowe
+https://docs.marlowe-lang.org/docs/developer-tools/runtime/marlowe-runtime[Marlowe
 Runtime] is the application backend for managing Marlowe contracts on
 Cardano. It provides easy-to-use, higher-level APIs and complete backend
 services that enable developers to build and deploy enterprise and Web3
@@ -862,11 +860,10 @@ allowing developers to focus mainly on smart contract logic rather than
 implementation details. However, more complex workflows might require
 lower-level control, necessitating a deeper understanding of Plutus. For
 more information, refer to the list of high- and low-level operations on
-the
-https://docs.marlowe.iohk.io/docs/developer-tools/overview[developer
+the https://docs.marlowe-lang.org/docs/developer-tools/overview[developer
 tools] documentation page.
 
-https://docs.marlowe.iohk.io/docs/developer-tools/marlowe-cli[Marlowe
+https://docs.marlowe-lang.org/docs/developer-tools/marlowe-cli[Marlowe
 CLI] is a command-line tool that provides access to Marlowe
 capabilities on testnet and mainnet. It is specifically built to run
 Marlowe contracts directly without needing a web browser or a mobile
@@ -884,9 +881,9 @@ services such as libraries, faucets, and marketplaces.
 The image below offers an overview and description of the Marlowe CLI
 and Marlowe Runtime tools for running and querying Marlowe contracts:
 
-image::sc_marlowe_tools.png[width=624,height=350,title="Marlowe tools, source: https://docs.marlowe.iohk.io/docs/developer-tools/overview[Marlowe docs]"]
+image::sc_marlowe_tools.png[width=624,height=350,title="Marlowe tools, source: https://docs.marlowe-lang.org/docs/developer-tools/overview[Marlowe docs]"]
 
-The https://github.com/input-output-hk/marlowe-starter-kit[Marlowe
+The https://github.com/marlowe-lang/marlowe-starter-kit[Marlowe
 starter kit] is a GitHub repository that contains Jupyter notebook
 lessons demonstrating the use of the Marlowe CLI and Marlowe Runtime
 tools through concrete examples. It can be used with Demeter Run, a
@@ -896,14 +893,13 @@ environments. Additionally, the Jupyter notebooks offer guidance on
 interacting with Marlowe smart contracts, covering different approaches
 and tools.
 
-The
-https://docs.marlowe.iohk.io/docs/developer-tools/ts-sdk/ts-sdk-intro[Marlowe
+The https://docs.marlowe-lang.org/docs/developer-tools/ts-sdk/ts-sdk-intro[Marlowe
 TypeScript SDK] (TS-SDK) consists of JavaScript and TypeScript
 libraries, available as npm packages, designed to support DApp
 developers with the necessary tools to build and integrate with the
 Marlowe smart contract ecosystem. There are
 https://www.youtube.com/watch?v=0Qa1CsZUGnw&list=PLNEK_Ejlx3x1lRhBpL8TUdirMdBPOOvlp[short
-video tutorials] on the Input Output YouTube channel that demonstrate
+video tutorials] on the IO YouTube channel that demonstrate 
 how to use the TS-SDK to build an example DApp. Since the tutorials were
 created during the beta stage, function names may change in the official
 release. The TS-SDK offers the following features:
@@ -918,20 +914,20 @@ release. The TS-SDK offers the following features:
 You can read more about these features in the official TS-SDK
 documentation. To interact with Marlowe contracts, the TS-SDK needs a
 Runtime instance. TS-SDK GitHub repository provides the
-https://github.com/input-output-hk/marlowe-ts-sdk/?tab=readme-ov-file#cip-30-and-browser[following
+https://github.com/marlowe-lang/marlowe-ts-sdk?tab=readme-ov-file#cip-30-and-browser[following
 table] showing the compatibility between the SDK and the Runtime
 versions. The SDK also provides a wrapper around the
 https://github.com/spacebudz/lucid[Lucid Library]. This allows using
 the SDK in a Node.js environment.
 
 The https://demeter.run/[Demeter.Run] platform, developed and
-maintained by the https://txpipe.io/[TxPipe] company, offers a variety
+maintained by https://txpipe.io/[TxPipe], offers a variety
 of tools and development environments targeting the Cardano ecosystem.
 Their price model depends on the usage of their services, and users also
 have the option to get some working time for free. You can read more
 about the platform in section <<Setting up a Plinth development environment>>.
 
-The https://docs.marlowe.iohk.io/docs/introduction[Marlowe
+The https://docs.marlowe-lang.org/docs/introduction[Marlowe
 documentation] provides extensive explanations, links to learning
 resources, and access to tutorials and community resources from the top
 bar.
@@ -940,15 +936,14 @@ bar.
 
 Below is the Marlowe Runtime architecture:
 
-image::sc_marlowe_runtime_architecture.png[width=605,height=364,title="Marlowe runtime architecture, source: https://github.com/input-output-hk/marlowe-cardano/blob/main/marlowe-runtime/doc/ReadMe.md#architecture[Marlowe GitHub]"]
+image::sc_marlowe_runtime_architecture.png[width=605,height=364,title="Marlowe runtime architecture, source: https://github.com/marlowe-lang/marlowe-cardano/blob/main/marlowe-runtime/doc/ReadMe.md#architecture[Marlowe GitHub]"]
 
 The Marlowe Runtime backend consists of a chain-indexing and query
 service (marlowe-chain-indexer / marlowe-chain-sync), a
 contract-indexing and query service for Marlowe contracts
 (marlowe-indexer / marlowe-sync), and a transaction-creation service for
 Marlowe contracts (marlowe-tx). These backend services work together,
-relying upon
-https://github.com/input-output-hk/cardano-node/[cardano-node]
+relying upon https://github.com/IntersectMBO/cardano-node[cardano-node]
 for blockchain connectivity and PostgreSQL for persistent storage.
 Access to the backend services is provided via a command-line client
 (marlowe-runtime-cli), or a REST/WebSocket server (web-server) that uses
@@ -973,8 +968,7 @@ Haskell client for Runtime having minimal dependencies in its `.cabal`
 file.
 
 Please note that the Marlowe Runtime architecture may evolve. Refer to
-the
-https://docs.marlowe.iohk.io/docs/platform-and-architecture/architecture[Marlowe
+the https://docs.marlowe-lang.org/docs/platform-and-architecture/architecture[Marlowe
 documentation] for the latest version.
 
 ==== Contract examples
@@ -1043,19 +1037,19 @@ step of execution, besides returning a new state and continuation
 contract, it is possible that effects – payments – and warnings can also
 be generated. A description of each of the methods that the Contract
 data type defines can be found in the
-https://docs.marlowe.iohk.io/docs/platform-and-architecture/marlowe-language-guide#about-a-marlowe-contract[Marlowe
+https://docs.marlowe-lang.org/docs/platform-and-architecture/marlowe-language-guide#about-a-marlowe-contract[Marlowe
 language guide] hosted on the official documentation page.
 
 The Haskell source code for the data types that Marlowe code uses can be
 found in the
-https://github.com/input-output-hk/marlowe-cardano[marlowe-cardano]
+https://github.com/marlowe-lang/marlowe-cardano[marlowe-cardano]
 GitHub repository. If you are writing Marlowe version 1 scripts, the
 module you need to import in a Haskell project to be able to write
 Marlowe code is `Language.Marlowe.Extended.V1`
-(https://github.com/input-output-hk/marlowe-cardano/blob/main/marlowe/src/Language/Marlowe/Extended/V1.hs[source
+(https://github.com/marlowe-lang/marlowe-cardano/blob/main/marlowe/src/Language/Marlowe/Extended/V1.hs[source 
 code]). Some important Haskell data types that this module exports are
 contained in the `Language.Marlowe.Core.V1.Semantics.Types` module
-(https://github.com/input-output-hk/marlowe-cardano/blob/main/marlowe/src/Language/Marlowe/Core/V1/Semantics/Types.hs[source
+(https://github.com/marlowe-lang/marlowe-cardano/blob/main/marlowe/src/Language/Marlowe/Core/V1/Semantics/Types.hs[source
 code]). You can look up these modules if you view the documentation for
 Marlowe dependencies. The
 https://github.com/input-output-hk/marlowe-dependency-docs[marlowe-dependency-docs]
