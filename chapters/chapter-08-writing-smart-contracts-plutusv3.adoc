@@ -87,7 +87,7 @@ professor's memory I fear I would leave someone out. I am grateful for
 the opportunity I've had to work with them and with everyone at
 IO. I'm particularly grateful to Charles Hoskinson for the
 opportunity to collaborate with IO. It's been an amazing
-experience -- it's not often that you can suggest a practical
+experience – it's not often that you can suggest a practical
 application of a fifty-year-old theory and have people take you
 seriously!
 
@@ -347,7 +347,7 @@ interpreted languages that are interpreted by a compiled language.
 https://marlowe-lang.org/[Marlowe], initially developed by IO, is an
 interpreted smart contract language that is not Turing-complete. It is
 well-suited for designing financial contracts, such as those defined in 
-Algorithmic Contract Types Unified Standards (https://www.actusfrf.org/about/[Actus]), 
+Algorithmic Contract Types Unified Standards (https://www.actusfrf.org/[Actus]), 
 for example. The Marlowe interpreter is 
 written as a Plinth smart contract. Besides the programming language,
 the Marlowe project provides open-source tools to easily create, verify,
@@ -1298,7 +1298,7 @@ lending. A borrower can obtain loans directly from individual lenders,
 bypassing traditional financial institutions. An example of a
 zero-coupon bond contract, which functions as a peer-to-peer lending
 agreement, can be found on the
-https://github.com/input-output-hk/marlowe-starter-kit[Marlowe starter
+https://github.com/marlowe-lang/marlowe-starter-kit[Marlowe starter
 kit] GitHub page. In this case, the loan is not collateralized, meaning
 the lender risks losing the funds if the borrower fails to repay, as the
 smart contract can not enforce repayment. There are a couple of options
@@ -1319,24 +1319,24 @@ ownership to another person. A Marlowe contract can facilitate these
 token trades, and ownership of role tokens can also be traded for
 certain time periods. More contract examples can be found in the Marlowe
 Playground or the
-https://github.com/input-output-hk/real-world-marlowe[Real world
+https://github.com/marlowe-lang/real-world-marlowe[Real world
 Marlowe] GitHub repository, which also showcases the off-chain code for
 interacting with contracts. Additionally, a
-https://github.com/input-output-hk/marlowe-cardano/tree/main/marlowe-actus[Marlowe
+https://github.com/marlowe-lang/marlowe-cardano/tree/main/marlowe-actus[Marlowe
 Actus implementation] is available for https://actusfrf.org[Actus].
 
 Marlowe DApps can be discovered by searching the keyword "Marlowe" in
 various https://projectcatalyst.io/search?q=marlowe[Project Catalyst] proposals.
 The Marlowe team at IO has also developed the following Marlowe DApps:
 
-* https://github.com/input-output-hk/marlowe-payouts[Marlowe Payouts]
+* https://github.com/marlowe-lang/marlowe-payouts[Marlowe Payouts]
 – helps users discover available payouts from Marlowe contracts on the
 Cardano blockchain, simplifying the tracking and withdrawal process
-* https://github.com/input-output-hk/marlowe-token-plans[Token Plan
+* https://github.com/marlowe-lang/marlowe-token-plans[Token Plan
 Prototype] – allows token providers to create token plans, where they
 deposit ada, and release funds over time to a claimer, based on a
 time-based scheme
-* https://github.com/input-output-hk/marlowe-order-book-swap[Order Book
+* https://github.com/marlowe-lang/marlowe-order-book-swap[Order Book
 Swap Prototype] – a decentralized platform for users to list tokens for
 swap, specifying the desired return. Interested parties can accept
 offers, resulting in a token swap.
@@ -1349,15 +1349,15 @@ integration with Plinth. One example is the open roles Plinth smart
 contract, which enables interaction with a Marlowe contract where
 participants' Cardano addresses are unknown at deployment. When using
 open roles, the Marlowe contract sends role tokens to the
-https://github.com/input-output-hk/marlowe-plutus/blob/581e95bb9c93a16dc5c9a3181e90abed4639f728/marlowe-plutus/src/Language/Marlowe/Plutus/OpenRoles.hs[open
+https://github.com/marlowe-lang/marlowe-plutus/blob/main/marlowe-plutus/src/Language/Marlowe/Plutus/OpenRoles.hs[open
 roles] Plinth validator script that holds them until an address is
 specified later. This enables the contract to be verified on-chain
 before users interact with it. When the user initiates an action, like a
 deposit or choice, the smart contract assigns them the appropriate role
 and distributes the role token from the validator script. The developer
-simply needs to specify the *OpenRoles* type when setting contract
+simply needs to specify the `OpenRoles` type when setting contract
 participants, while Marlowe Runtime manages the rest. The
-https://github.com/input-output-hk/marlowe-cardano/blob/main/marlowe-runtime/doc/open-roles.md[Open
+https://github.com/marlowe-lang/marlowe-cardano/blob/main/marlowe-runtime/doc/open-roles.md[Open
 roles in Marlowe] GitHub documentation page explains this process in
 more detail.
 
@@ -1535,7 +1535,6 @@ cornerstone of the Cardano economy.
 ==== Overview and learning resources
 
 The _Plutus smart contracts_ section presents the rules of the Plutus language by demonstrating how to write and interact with Plinth smart contracts (formerly known as PlutusTx). Plinth is a high-level smart contract language embedded in Haskell that compiles to Untyped Plutus Core (UPLC).
-
 Because these rules also apply to other compiled languages such as Aiken, Plu-Ts, and OpShin, learning the basics of Plinth helps developers read and write smart contracts in other languages that target Plutus.
 
 The https://cardano-foundation.github.io/state-of-the-developer-ecosystem/2024/#what-do-you-use-or-plan-to-use-for-writing-plutus-script-validators-smart-contracts[2024
@@ -1774,7 +1773,7 @@ write Haskell code that can be compiled to Plutus. The repository also
 includes the combined
 https://intersectmbo.github.io/plutus/haddock/latest[documentation],
 generated using Haddock, for all public Plutus code libraries. The
-official https://plutus.cardano.intersectmbo.org/docs/[Plutus user
+official https://plutus.cardano.intersectmbo.org/docs/[Plinth user
 guide] provides developer-related information on Plutus and Plinth.
 
 https://aiken-lang.org/[Aiken] is another popular Cardano smart contract
@@ -1846,19 +1845,17 @@ the official documentation, which also provides a walkthrough of creating a
 link:++https://aiken-lang.org/example--hello-world/basics++[Hello World project],
 covering the following topics:
 
-* pre-requisites
-* scaffolding
-* using the standard library
-* the first validator
-* adding traces
-* writing a test
-* MeshJS and PyCardano off-chain code.
+* Pre-requisites
+* Scaffolding
+* Using the standard library
+* The first validator
+* Adding traces
+* Writing a test
+* End-to-end off-chain code (MeshJS and PyCardano). 
 
 The https://github.com/aiken-lang/awesome-aiken[Awesome Aiken] repository
-provides many links to Aiken libraries, DApps, tutorials, and video
-lessons. One can also read the https://piefayth.github.io/blog/pages/aiken1/[Aiken for amateurs]
-tutorial that is, at the time of writing, not included in the Awesome
-Aiken repository. For those who prefer to learn from a book, the
+provides many links to Aiken libraries, DApps, tutorials, and video lessons. 
+For those who prefer to learn from a book, the
 https://book.io/book/i-can-aiken/[I can Aiken] book, written by John
 Greene provides comprehensive information and learning examples.
 
@@ -1937,7 +1934,9 @@ pipeline which are explained in detail in section <<Plutus security>>.
 
 In this section, we will look at basic Plinth validation scripts. All
 validation scripts and data types presented in the <<Plutus smart contracts>>
-section are PlutusV3 scripts and data types. A validation script or
+section are PlutusV3 scripts and data types. An exception are PlutusV1 
+and V2 data types that were not modified with the introduction of PlutusV3 
+and can be still used in PlutusV3 scripts. A validation script or
 validator is the smart contract program that checks whether funds at a
 script address are allowed to be spent by a given transaction. As stated
 previously, a validation script in EUTXO cannot see the entire state of
@@ -2940,8 +2939,8 @@ following script purposes:
 * Certifying - for issuing certificates
 * Voting and proposing - used when government actions are involved.
 
-In the <<Plutus smart contracts>> section, we will focus on the spending,
-minting and rewarding script purposes.
+In the <<Plutus smart contracts>> section, we will focus on the spending 
+and minting script purposes.
 
 *Decoding the script information in untyped form*
 
@@ -3587,7 +3586,6 @@ There are a lot of instances for existing Plutus type in this type class such as
 [purple]#BuiltinData#, [purple]#BuiltinString#, [purple]#BuiltinInteger# and
 [purple]#Bool#. However, this is not used for functions, as they cannot be
 used to compile Haskell to Plutus validators.
-
 The reason it is possible to compile a parameterized validator in Plutus is
 that the input parameter is not some arbitrary Haskell function, it is static
 data that you can pass at runtime to a script function if you create an instance
@@ -3608,7 +3606,7 @@ off-chain code that interacts with the validators presented in this section.
 
 ==== Off-chain code with MeshJS
 
-The blockchain is passive -- it only acts when a user interacts with it.
+The blockchain is passive – it only acts when a user interacts with it.
 The code that queries the blockchain, builds, and submits transactions
 is called off-chain code. Off-chain code does not need to have the same
 performance and security standards as on-chain code. In this section, 
@@ -3625,7 +3623,7 @@ Currently, the platform is in maintenance mode and no longer under
 active development.
 
 Another way for constructing off-chain transactions is by using the
-https://github.com/input-output-hk/cardano-cli[Cardano CLI]. You can
+https://github.com/IntersectMBO/cardano-cli[Cardano CLI]. You can
 find examples and read more about the Cardano CLI at the
 https://developers.cardano.org/docs/get-started/cardano-cli/get-started/[Cardano developers]
 webpage.
@@ -3634,7 +3632,7 @@ There are several community-built tools for writing off-chain code in
 various programming languages. Some of them are listed at the end of
 section <<Smart contract programming languages>>, where
 off-chain code is briefly covered. For those using Plinth and interested
-in writing off-chain code in Haskell, the https://atlas-app.io/[Atlas application backend],
+in writing off-chain code in Haskell, the https://atlas-app.io/[Atlas] application backend,
 developed by https://www.geniusyield.co/[GeniusYield], provides a solution. It
 allows code-sharing between the on-chain and off-chain components while
 enabling the creation of a backend for decentralized applications.
@@ -3658,8 +3656,7 @@ file before installing the packages. Below is an example of this file.
     "@meshsdk/core": "1.9.0-beta.3",
     "@meshsdk/common": "1.9.0-beta.3",
     "@meshsdk/core-cst": "1.9.0-beta.3",
-    "deno": "2.1.9"
-  }
+    "deno": "2.1.9" }
 }
 ----
 
@@ -3667,7 +3664,7 @@ The package that installs other MeshSDK packages required by
 our code is `@meshsdk/core`. The official
 https://www.npmjs.com/package/@meshsdk/core[npm page] for this package
 lists the MeshSDK packages that will get installed as dependencies.
-To install these packages locally, `cd` to the root location of your
+To install all MeshJS packages locally, `cd` to the root location of your
 project, create the `package.json` file there and run:
 
 [source,shell]
@@ -3681,8 +3678,14 @@ install npm packages locally or globally and manage the `package.json`
 file one can read the
 https://docs.npmjs.com/packages-and-modules/getting-packages-from-the-registry[Getting
 packages from the registry] and
-https://docs.npmjs.com/packages-and-modules/getting-packages-from-the-registry[Creating
-a package.json file] npm documentation pages.
+https://docs.npmjs.com/creating-a-package-json-file[Creating
+a package.json file] npm documentation pages. The `deno` tool can be 
+installed globaly. From the location of the `package.json` file run: 
+
+[source,shell]
+----
+npm install -g deno
+----
 
 Let us look now at off-chain code that interacts with the vesting smart
 contract `vestingVal` that we have defined in the previous section. Our code
@@ -3722,11 +3725,13 @@ First, we import the necessary components from the `@meshsdk/core` and
 the `@meshsdk/common` libraries. Then we import the seed phrase of our
 Cardano wallet. The `seed.ts` file should be in the following form:
 
-[source,shell]
+[source,typescript]
 ----
-export const secretSeed = ["seed1", "seed2", ... ] ;
+export const secretSeed = ["seed1", "seed2", ... ];
 ----
 
+For instructions on how to create a wallet and generate a seed phrase 
+see chapter <<wallets-in-the-world-of-cardano, Wallets in the world of Cardano>>. 
 Next, we define a provider which helps us to query the blockchain and
 submit transactions. We use https://blockfrost.io/[BlockFrost]. For the
 code to work, one has to provide their blockfrost key, which users can get
