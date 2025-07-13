@@ -400,8 +400,9 @@ providing numerous tools to easily build DApps on Cardano. It also
 integrates the popular https://react.dev/[React] library.
 * https://lucid.spacebudz.io/[Lucid]: a popular JavaScript/TypeScript
 library for off-chain code, which is further developed by the
-https://no-witness-labs.github.io/lucid-evolution/[Lucid Evolution]
-project funded by
+https://no-witness-labs.github.io/evolution-sdk/[Evolution-SDK]
+project. Temporary the project was called Lucid Evolution and 
+was funded by 
 https://projectcatalyst.io/funds/11/cardano-open-developers/anastasia-labs-lucid-evolution-redefining-off-chain-transactions-in-cardano[Catalyst
 Fund11].
 * https://atlas-app.io/[Atlas]: an all-in-one, Haskell-native
@@ -1137,31 +1138,31 @@ tool:
 
 image::sc_marlowe_contract_choice.png[width=493,height=807,title="Marlowe choice contract"]
 
-The *When* constructor, in the beginning, waits for an external action
+The `When` constructor, in the beginning, waits for an external action
 that we specify in square brackets. If this external action does not
 happen, we will close the contract. We do this by specifying a timeout
 in POSIX time (measured as milliseconds after UNIX epoch –
 00:00:00 https://en.wikipedia.org/wiki/Coordinated_Universal_Time[UTC] on
-January, 1, 1970) after the closing square bracket of the *When*
-constructor and add the *Close* constructor at the end. If the
+January, 1, 1970) after the closing square bracket of the `When`
+constructor and add the `Close` constructor at the end. If the
 external action does not happen before this timeout, the contract
 terminates. Our external action will be a deposit by Alice, and we say
-that the deposit should happen until a certain time. We use the *Case*
+that the deposit should happen until a certain time. We use the `Case`
 constructor for that, which contains two pairs of regular brackets.
 The first one defines the case of what has to happen for the contract to
 progress, and the second one defines the logic that follows if the case
 action is met. In the first bracket, we specify that Alice should
-deposit 10 lovelaces. We do this by using the *Deposit* constructor. First,
+deposit 10 lovelaces. We do this by using the `Deposit` constructor. First,
 we specify to which account the deposit should go. We can specify this
-with the *Role* constructor followed by the role name, which, in our
+with the `Role` constructor followed by the role name, which, in our
 case, is Alice. Second, we specify who is depositing into the previously
-mentioned account. We can again use the *Role* constructor and Alice's
-name. We could also use the *Address* constructor, where we would have
+mentioned account. We can again use the `Role` constructor and Alice's
+name. We could also use the `Address` constructor, where we would have
 to input Alice's Cardano address. Then, we have to specify what kind of
-currency we are depositing. For this, we use the *Token* constructor
+currency we are depositing. For this, we use the `Token` constructor
 and add the currency symbol and the token name. For the ada currency, we
 can use two empty strings. At the end, we specify the amount (in lovelaces) of the
-currency we want to deposit. For this, we can use the *Constant*
+currency we want to deposit. For this, we can use the `Constant`
 constructor followed by a number.
 
 After defining the first part of the `Case` statement, the next step is to
@@ -1173,34 +1174,34 @@ follows if Bob makes his deposit. We use a `When` statement that says
 Charlie has to make a choice. We set a timeout for the statement in case
 Charlie does not make his choice and then the contract gets terminated.
 We use a `Case` statement for Charlie to make a choice, and in the code,
-we apply the *Choice* constructor for that decision. This constructor
+we apply the `Choice` constructor for that decision. This constructor
 takes two arguments. First, it takes the information about the choice
-name and the person making the choice. The *ChoiceId* constructor
+name and the person making the choice. The `ChoiceId` constructor
 defines this, specifying the person with the `Role` statement. The second
 argument is a list of integers that defines Charlie's possible choices.
 Since Charlie decides whether the funds go to Alice or Bob, the list
 contains only two numbers.
 
 The logic that follows after that is a conditional statement, which uses
-the *If* constructor. First, it takes the condition statement and then
+the `If` constructor. First, it takes the condition statement and then
 the two possible cases depending on the condition. For the condition
-statement, we use the *ValueEQ* constructor. It takes the value that
+statement, we use the `ValueEQ` constructor. It takes the value that
 Charlie chose and compares it to a number. We retrieve the value from
-Charlie's choice by using the *ChoiceValue* constructor and input the
-*ChoiceId* statement that we previously used. The value to which we
-compare it is 1, for which we again use the *Constant* constructor.
+Charlie's choice by using the `ChoiceValue` constructor and input the
+`ChoiceId` statement that we previously used. The value to which we
+compare it is 1, for which we again use the `Constant` constructor.
 The first case that follows the conditional statement is when the choice
 equals 1, which means that the funds from Bob will go to Alice. To
 transfer the funds from Bob's internal account to Alice's internal
-account, we use the *Pay* constructor. We first specify the party that
+account, we use the `Pay` constructor. We first specify the party that
 sends the money, for which we can use the `Role` statement. After that, we
-have to specify the account with the *Account* constructor, which can
-again take a `Role` statement. Because we chose the *Account*
+have to specify the account with the `Account` constructor, which can
+again take a `Role` statement. Because we chose the `Account`
 constructor, the transfer occurs between internal accounts. There is
-also a *Party* constructor that can be used in this field, which takes
-an *Address* constructor and sends the money to an external address.
+also a `Party` constructor that can be used in this field, which takes
+an `Address` constructor and sends the money to an external address.
 Next, we need to specify the currency and the amount we want to send. At
-the end, we write the *Close* constructor, which means that the funds
+the end, we write the `Close` constructor, which means that the funds
 from the internal accounts will be sent back to the external account of
 those parties. The second `Pay` statement is the same, but the roles of
 Alice and Bob are reversed, as Charlie will send the funds to Bob if he
@@ -1600,10 +1601,9 @@ branch contains validator examples of the
 https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[4th
 PPP iteration], translated from PlutusV2 to PlutusV3. In addition
 to MeshJS off-chain code, the _plinth-plutusV3_ branch also contains
-https://anastasia-labs.github.io/lucid-evolution/[Lucid Evolution]
-off-chain code examples. Further Cardano learning resources and smart
-contract examples in Plinth, Aiken, and other smart contract languages
-can be found at:
+Lucid Evolution off-chain code examples. Further Cardano learning resources 
+and smart contract examples in Plinth, Aiken, and other smart contract 
+languages can be found at:
 
 * https://www.gomaestro.org/smart-contracts[Cardano's smart contract
 marketplace] – hosted by Maestro. The platform provides powerful APIs
@@ -5397,7 +5397,7 @@ shows how to use Atlas with the CLB to test plinth scripts.
 The https://atlas-app.io/[Atlas] application backend is an open-source tool that covers all functionalities needed to work with
 Plinth smart contracts and enables writing the complete server side code
 in Haskell. It is the Haskell alternative to TypeScript off-chain tools such
-as MeshJS and Lucid evolution. It was developed by the company
+as MeshJS and Evolution-SDK. It was developed by the company
 https://www.geniusyield.co/[GeniusYield] in collaboration with other
 companies such as MLabs, Well-Typed, and Plank. It significantly
 abstracts away the complexity of building Cardano transactions and
