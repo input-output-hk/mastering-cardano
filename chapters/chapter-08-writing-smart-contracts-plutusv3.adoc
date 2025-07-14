@@ -204,22 +204,19 @@ script can also be written to allow one group of keys to spend funds
 before a certain time, and another group after.
 
 The Alonzo era introduced the Plutus scripting language, also referred
-to as Plutus Core. Since Plutus smart contracts validate
-transactions, they are also called validation scripts or validators.
+to as Plutus Core. Plutus smart contracts validate transactions and because 
+of this they are also called validation scripts or validators. 
+In practice, the Cardano node executes an untyped version called Untyped
+Plutus Core (UPLC). The compilation pipeline from a compiled language to 
+UPLC is covered in section <<Plutus security>>.
 Plutus is a simple, functional language that enables general-purpose
 Turing-complete smart contracts on Cardano. It implements Cardano's extended UTXO
 (EUTXO) model, which is as powerful in expressing smart contract logic
 as Ethereum's account-based model, allowing for arbitrary logic in smart
-contracts. The EUTXO model is explained in detail in section
-<<The EUTXO model>>. A comparison of Plutus with Bitcoin Script and
-Solidity languages is presented in section
-<<Plutus in comparison to Bitcoin Script and Solidity>>.
-
-In practice, the Cardano node executes an untyped version called Untyped
-Plutus Core (UPLC). The compilation pipeline and Plutus security details
-are covered in section <<Plutus security>>. The security advantages of
-Cardano's EUTXO model over Ethereum's account-based model are discussed in
-section <<Cardano security>>.
+contracts. A comparison of Plutus with Bitcoin Script and Solidity languages 
+is presented in section <<Plutus in comparison to Bitcoin Script and Solidity>>. 
+The security advantages of Cardano's EUTXO model over Ethereum's account-based 
+model are discussed in section <<Cardano security>>.
 
 *Compiled languages*
 
@@ -264,7 +261,6 @@ https://plutus.cardano.intersectmbo.org/docs/delve-deeper/languages[Plinth docs]
 The logic in all compiled Cardano smart contract languages follows the
 same rules defined by Plutus. Learning one compiled language also helps a
 developer to understand other compiled languages that use different syntax.
-
 You can refer to the
 https://cardano-foundation.github.io/state-of-the-developer-ecosystem/2024/#what-do-you-use-or-plan-to-use-for-writing-plutus-script-validators-smart-contracts[State
 of the Cardano Developer Ecosystem report] – 2024 to see how much these
@@ -330,8 +326,7 @@ marketplaces, and more:
 
 * https://www.cardanocube.com/cardano-ecosystem-interactive-map[CardanoCube
 interactive map]: presents projects in a visually engaging, interactive
-format. For each selected project, the page provides a description, a
-price chart (if the project has a token), and links to an official
+format. For each selected project, the page provides a description and links to an official
 webpage, white paper, social media pages, and GitHub repository.
 * https://cardanospot.io/project-library/all[CardanoSpot project
 library]: offers a category filter to list projects by certain
@@ -401,7 +396,7 @@ integrates the popular https://react.dev/[React] library.
 * https://lucid.spacebudz.io/[Lucid]: a popular JavaScript/TypeScript
 library for off-chain code, which is further developed by the
 https://no-witness-labs.github.io/evolution-sdk/[Evolution-SDK]
-project. Temporary the project was called Lucid Evolution and 
+project, which was temporary called Lucid Evolution and 
 was funded by 
 https://projectcatalyst.io/funds/11/cardano-open-developers/anastasia-labs-lucid-evolution-redefining-off-chain-transactions-in-cardano[Catalyst
 Fund11].
@@ -415,9 +410,8 @@ Explore Cardano tools that can be used for building DApps at:
 Cardano Developer portal. You can filter the tools by
 language/technology or by domain. Every tool contains a short
 description.
-* The
-https://www.essentialcardano.io/article/a-list-of-community-built-developer-tools-on-cardano[Cardano
-community-built developer tools] list hosted on Essential Cardano.
+* The Cardano community-built
+https://www.essentialcardano.io/article/a-list-of-community-built-developer-tools-on-cardano[developer tools] list hosted on Essential Cardano.
 
 You can also look at the State of the Cardano Developer Ecosystem report
 – 2024, listing the most commonly used
