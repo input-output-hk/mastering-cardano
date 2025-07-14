@@ -4965,8 +4965,8 @@ an audit can also prove compliance with industry standards and best
 practices and increase trust and credibility. Audits can be grouped into
 manual auditing, where each line of code is analyzed by the auditors,
 and automated auditing, where auditors use software auditing tools. A
-combination of both is also possible. Auditing will be further
-discussed in the <<Plutus security>> section.
+combination of both is also possible. Auditing of smart contracts is 
+further discussed in the <<Plutus security>> section.
 
 Cardano was designed with security in mind from the beginning. Input |
 Output (IO) has invested much effort into academic research, and its
@@ -5217,8 +5217,8 @@ with a global state that might influence the final output. Besides
 auditing smart contracts, off-chain code and other parts of a DApp may
 also be audited to assess the security of the entire application.
 
-At the end of this section we list further learning resources about the
-EUTXO model in addition to section <<The EUTXO model>>:
+Further learning resources about the EUTXO model in addition to section 
+<<The EUTXO model>> can be found at:
 
 * https://ucarecdn.com/6d3813f2-6886-4c61-833f-e78ba5f887d7/EUTXOhandbook_for_EC.pdf[The EUTXO Handbook]
 * https://iohk.io/en/research/library/papers/the-extended-utxo-model/[The Extended UTXO Model scientific paper]
@@ -5249,7 +5249,10 @@ When a Cardano node executes validator code compiled to Untyped Plutus
 Core, this code does not access the computer's resources directly as a
 normal computer programs would do. For security reasons,
 VMs offer a safe execution environment. Every Cardano node has a
-built-in Plutus virtual machine that is currently written in Haskell.
+built-in Plutus virtual machine that is written in Haskell. There 
+is also a plan to develop a Cardano node written in the Rust language. 
+The project is managed by the https://pragma.io/[Pragma] member-based 
+organisation (MBO) and is called https://github.com/pragma-org/amaru[Amaru]. 
 
 Plutus is a simple, functional language similar to Haskell, and a large
 subset of Haskell can be used to write Plutus scripts. Its simple and
@@ -5302,10 +5305,10 @@ intermediate form that the compiler uses to statically check the
 program.
 * Fourth, we get to Untyped Plutus Core, which the Cardano node runs to
 validate the transaction. This language is hard to code directly, and it
-is usually stored in binary representation. It is wise to break down
-compilation pipelines by introducing intermediate languages to ensure no
-step is too large, and to test each step independently.
+is usually stored in binary representation. 
 
+It is wise to break down compilation pipelines by introducing intermediate 
+languages to ensure no step is too large, and to test each step independently.
 For more information about the compilation process, refer to this
 https://iohk.io/en/blog/posts/2021/02/02/plutus-tx-compiling-haskell-into-plutus-core/[IO
 blog].
@@ -5317,7 +5320,7 @@ coded in pre-existing languages like Typescript
 (https://github.com/HarmonicLabs/plu-ts[Plu-ts]) and Python
 (https://opshin.dev/[OpShin]), or they can be coded in new
 languages like https://aiken-lang.org/[Aiken]. A comparison of Aiken, which
-is the most used of the smart contract languages in the Cardano ecosystem as of 2023,
+is the most used smart contract language in the Cardano ecosystem as of 2023,
 and Plinth is presented in section <<Plinth in comparison to Aiken>>.
 
 Haskell was also chosen as a programming language to implement the
@@ -5404,30 +5407,15 @@ companies such as MLabs, Well-Typed, and Plank. It significantly
 abstracts away the complexity of building Cardano transactions and
 interacting with Plinth smart contracts. Different data providers can be
 configured to power the Atlas framework. It streamlines the process of
-building transactions and executing smart contracts and provides the
-following benefits:
-
-* Developers can easily build transactions by using an intuitive API to
-abstract away the complexity around building transactions, balancing
-UTXOs, and interfacing with Plinth smart contracts.
-* It leverages Haskell to avoid code duplication between on-chain and
-off-chain code. Developers can use advanced functionalities offered by
-IO Cardano/Plinth libraries, and easily convert between Atlas and
-Cardano/Plinth types.
-* It utilizes modular data providers. Developers can query ledger state
-information from Maestro, a local node, Cardano DB Sync, or build an own
-data provider.
-* It enables writing realistic unit tests that correspond to on-chain
-behavior and execute integration tests against the Cardano node in a
-private network.
-* It stays up to date, so developers benefit from Cardano's latest
-innovations such as reference inputs, inline datums, and reference
-scripts.
-
+building transactions and executing smart contracts. One can read more 
+about the benefits that the Atlas application backend provides at their 
+https://atlas-app.io/introduction#features[documentation page].
 Another tool one can use for testing Plinth smart contracts or any other
 smart contract language that compiles to Untyped Plutus Core is the
 https://github.com/tweag/cooked-validators[Cooked validators] library
-developed by Tweag.
+developed by Tweag. Aiken, that is a standalone smart contract language 
+comes with its own build-in toolkit for testing. You can read more 
+about it at the https://aiken-lang.org/language-tour/tests[Aiken documentation]. 
 
 For testing smart contracts, third-party auditing companies can write
 the tests as part of their auditing process of DApp smart contracts and
@@ -5493,7 +5481,7 @@ You can read further details of the above points in
 https://cips.cardano.org/cip/CIP-52[CIP-0052],
 which defines guidelines and best practices for auditing DApps built on
 Cardano. Furthermore, https://cips.cardano.org/cip/CIP-57[CIP-0057]
-defines a language specification for documenting Plutus contracts
+defines a language specification or so-called blueprint for documenting Plutus contracts
 through the form of a JSON schema that sets the vocabulary and
 validation rules to specify the Plutus contract interface. This enables
 a better understanding of Plutus smart contracts written in any of the
