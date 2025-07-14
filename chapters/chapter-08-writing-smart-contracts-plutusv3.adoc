@@ -608,7 +608,7 @@ currently 11 types of addresses in Cardano, which are either Shelley or
 Byron addresses, including the addresses used for staking. You can see
 the various address structures below:
 
-[source,shell]
+[source,console]
 ----
            TYPE  |     TAG     |   PAYMENT   |   DELEGATION
 ADDRESS = %b0000 | NETWORK-TAG | KEY-HASH    | KEY-HASH       ; type 00, Base
@@ -1068,7 +1068,7 @@ https://youtu.be/fldaBHmYfqk[Plutus Pioneer program] video.
 
 Below, you can see the contract code in the Marlowe language:
 
-[source,shell]
+[source,console]
 ----
 When
     [Case
@@ -1213,7 +1213,7 @@ transfer between a buyer and a seller. If there is a disagreement
 between them, a mediator will decide whether the funds are refunded or
 paid to the seller. Below, you can see the Marlowe contract code:
 
-[source,shell]
+[source,console]
 ----
 When [
   (Case
@@ -2156,7 +2156,7 @@ Object Representation] (`CBOR`) is a binary data serialization format loosely ba
 on `JSON`. The `COBORHEX` is a hexadecimal representation of this data format.
 For our [blue]#mkGiftValidator# the blueprint will show the following `CBORHEX`:
 
-[source,shell]
+[source,json]
 ----
 "compiledCode": "450101002499"
 ----
@@ -2753,7 +2753,7 @@ entry point for compiling the project, and we also list the build dependencies. 
 the file with the code for generating blueprints `GenBlueprint.hs`. Our project should
 be structured in the following way:
 
-[source,shell]
+[source,console]
 ----
 .
 ├── app
@@ -2769,7 +2769,7 @@ be structured in the following way:
 The `blueprint.json` file will only be there after we have compiled the project.
 We can do this by running the following commands from the top of our project directory:
 
-[source,shell]
+[source,console]
 ----
 cabal update
 cabal run
@@ -3643,13 +3643,15 @@ to construct and submit transactions interacting with a smart contract by
 writing JavaScript or TypeScript code. To run the off-chain code in this and
 other sections you can use https://deno.com/[Deno] that is a runtime
 environment for JavaScript and TypeScript. All off-chain code presented in
-this and other sections was tested with Deno version `2.1.9` and various
+this and other sections was tested with Deno version `2.1.9` and 
 MeshSDK packages version `1.9.0-beta.3`. To install the MeshSDK packages
-that are needed by the off-chain code, the `npm` package manager for JavaScript
+that are needed by the off-chain code, the 
+https://docs.npmjs.com/downloading-and-installing-node-js-and-npm[npm] 
+package manager for JavaScript runtime environment Node.js
 can be used. To fix a package version one can create the `package.json`
 file before installing the packages. Below is an example of this file.
 
-[source,shell]
+[source,json]
 ----
 {
   "dependencies": {
@@ -3665,9 +3667,9 @@ our code is `@meshsdk/core`. The official
 https://www.npmjs.com/package/@meshsdk/core[npm page] for this package
 lists the MeshSDK packages that will get installed as dependencies.
 To install all MeshJS packages locally, `cd` to the root location of your
-project, create the `package.json` file there and run:
+project, create the `package.json` file and run:
 
-[source,shell]
+[source,console]
 ----
 npm install @meshsdk/core
 ----
@@ -3682,7 +3684,7 @@ https://docs.npmjs.com/creating-a-package-json-file[Creating
 a package.json file] npm documentation pages. The `deno` tool can be 
 installed globaly. From the location of the `package.json` file run: 
 
-[source,shell]
+[source,console]
 ----
 npm install -g deno
 ----
@@ -4017,7 +4019,7 @@ command, uncomment it and run the code again. If we name our file
 that contains the off-chain code `vesting.ts` we can run the code
 with the command below.
 
-[source,shell]
+[source,console]
 ----
 deno run -A vesting.ts
 ----
@@ -4239,7 +4241,7 @@ example, we have to uncomment only one line at a time and execute the
 code. If we name our file `vesting-param.ts` we can again execute it
 with Deno as:
 
-[source,shell]
+[source,console]
 ----
 deno run -A vesting-param.ts
 ----
@@ -4381,7 +4383,7 @@ To construct a value variable and check the amount of tokens in it for a
 specific asset class, we can do as follows from Prelude that we have
 build with the required Plutus libraries.
 
-[source,shell]
+[source,console]
 ----
 Prelude> import PlutusLedgerApi.V1.Value
 Prelude PlutusLedgerApi.V1.Value> :set -XOverloadedStrings
@@ -4392,7 +4394,7 @@ Prelude PlutusLedgerApi.V1.Value> myTokenValue = assetClassValue myAssetClass 77
 To construct an asset class for ada, we can use the [blue]#adaSymbol# and
 [blue]#adaToken# variables provided by the `PlutusLedgerApi.V1.Value` module.
 
-[source,shell]
+[source,console]
 ----
 Prelude PlutusLedgerApi.V1.Value> ada = assetClass adaSymbol adaToken
 Prelude PlutusLedgerApi.V1.Value> adaValue = assetClassValue ada 100000000
@@ -4403,7 +4405,7 @@ operator [blue]#<># as the value type has an instance of the semigroup type
 class. Using the [blue]#assetClassValueOf# function, we can get the quantity of
 a given asset class contained in a value.
 
-[source,shell]
+[source,console]
 ----
 Prelude PlutusLedgerApi.V1.Value> combined = myTokenValue <> adaValue
 Value (Map [(,Map [("",100000000)]),(a507ff33,Map [("MyToken",77)])])
@@ -4415,7 +4417,7 @@ We can also extract information from a value type variable as a list of
 triples using the [blue]#flattenValue# function, which takes a value type and
 returns a list of triples.
 
-[source,shell]
+[source,console]
 ----
 Prelude PlutusLedgerApi.V1.Value> :t flattenValue
 flattenValue :: Value -> [(CurrencySymbol, TokenName, Integer)]
@@ -4622,7 +4624,7 @@ At the end we build, sign and submit the transaction and return the
 transaction hash. Now we can make our function call and mint the tokens.
 If we name our file `signed-minting.ts`, we can mint our tokens as:
 
-[source,shell]
+[source,console]
 ----
 deno run -A signed-minting.ts
 ----
@@ -4974,9 +4976,9 @@ discussed in the <<Plutus security>> section.
 
 Cardano was designed with security in mind from the beginning. Input |
 Output (IO) has invested much effort into academic research, and its
-research team has written and collaborated on
-https://iohk.io/en/research/library/[250 scientific papers] as at
-the time of writing. Some of the important research areas that IO
+research team has written and collaborated on more than 
+https://iohk.io/en/research/library/[250 scientific papers]. 
+Some of the important research areas that IO
 targets are cryptography, software engineering, distributed systems,
 networks, formal verification, and programming languages. Ouroboros,
 Cardano's consensus protocol, is explained in detail in section
@@ -5391,7 +5393,7 @@ secure the development of smart contracts. While Haskell is a great
 programming language for implementing reliable software, it cannot
 catch all possible mistakes a programmer can make, so the code still
 needs to be tested. One can write property-based tests for PlutusV3
-Plinth smart contracts using the following tools:
+Plinth smart contracts by combining the following tools:
 
 * https://atlas-app.io/[Atlas] a Plutus application backend developed by GeniusYield
 * https://mlabs-haskell.github.io/clb-docs[Cardano ledger backend] (CLB) library developed by MLabs
@@ -5589,7 +5591,7 @@ possible to lock funds by creating a contract that exceeds the
 limitations of the blockchain, for example, by making too many external
 payments in the same transaction. The chapter _Tools for Detecting
 Potential Locking/Blocking of Marlowe_ in the
-https://www.google.com/url?q=https://github.com/input-output-hk/marlowe-cardano/blob/d73ecdc0b05836eacf66a157dad785b541669d9d/marlowe/best-practices.md%23tools-for-detecting-potential-lockingblocking-of-marlowe-on-cardano&sa=D&source=docs&ust=1710169345676571&usg=AOvVaw1LUgqEGLs9N71F5AcXSMYD[Marlowe
+https://github.com/marlowe-lang/marlowe-cardano/blob/main/marlowe/best-practices.md#tools-for-detecting-potential-lockingblocking-of-marlowe-on-cardano[Marlowe
 best practices] page explains how to prevent such a scenario. In the
 real world, you can enforce contracts by using the legal system or
 financial regulations. However, due to the decentralized nature of the
@@ -5637,12 +5639,11 @@ between computers. It enables large smart contracts to be concisely
 represented on-chain. Instead of storing gigabytes of data representing
 a huge contract, only the hash of that contract needs to be represented
 on-chain. You can learn more about Merkleization in Marlowe in
-https://www.youtube.com/watch?v=e6vdq5GN5Q8[a video from IO Academy].
+https://www.youtube.com/watch?v=e6vdq5GN5Q8[this video] from IO Academy.
 Merkleization is hidden through the Marlowe object concept, and you can
-read about the marlowe-object package in its
-https://github.com/input-output-hk/marlowe-ts-sdk/tree/main/packages/marlowe-object[frontend
-documentation]. The
-https://github.com/input-output-hk/marlowe-cardano/blob/main/marlowe-object/doc/object-format.md[Marlowe
+read about the marlowe-object package in its frontend
+https://github.com/marlowe-lang/marlowe-ts-sdk/tree/main/packages/marlowe-object[documentation]. The
+https://github.com/marlowe-lang/marlowe-cardano/blob/main/marlowe-object/doc/object-format.md[Marlowe
 Object Format] is a way to describe a Marlowe contract as a set of
 labeled objects that reference one another, which can be linked to
 create a Marlowe contract. The term comes from the object files produced
@@ -5669,16 +5670,16 @@ rule specified by the protocol parameter maxTxSize
 memory in a transaction, it may violate the rule that execution costs in
 Plutus are limited to specific usage of "memory" and CPU "steps".
 
-You can look up the
-https://github.com/input-output-hk/marlowe-cardano/blob/main/marlowe/best-practices.md[Marlowe
-best practices guide] to read more about these limitations. While
+You can look up the Marlowe
+https://github.com/marlowe-lang/marlowe-cardano/blob/main/marlowe/best-practices.md[best 
+practices guide] to read more about these limitations. While
 Marlowe contracts might run on the Playground, they would not run
 on-chain if the contract violates the
 https://cardano-ledger.readthedocs.io/en/latest/[Cardano ledger
 restrictions]. You can check a Marlowe contract for compatibility with
 the Cardano ledger rules by using the _marlowe-cli run analyze_ command.
 The Marlowe CLI
-https://github.com/input-output-hk/marlowe-cardano/blob/main/marlowe-cli/ReadMe.md[GitHub
+https://github.com/marlowe-lang/marlowe-cardano/blob/main/marlowe-cli/ReadMe.md[GitHub
 page] provides additional information about this topic.
 
 The following properties regarding the safety of Marlowe were proven
@@ -5694,18 +5695,18 @@ using formal methods:
 The formal specification and proofs for the Marlowe language were made
 using the Isabelle proof assistant, which can be used for formal
 software verification. The proofs were audited and can be found in the
-https://github.com/input-output-hk/marlowe[Marlowe GitHub repository].
+https://github.com/marlowe-lang/marlowe[Marlowe GitHub repository].
 This repository also contains the
-https://github.com/input-output-hk/marlowe/tree/master/marlowe-spec-test[marlowe-spec]
+https://github.com/marlowe-lang/marlowe/tree/master/marlowe-spec-test[marlowe-spec]
 software tool, with which a Marlowe interpreter written in any smart
 contract language can be validated for compliance with the Marlowe
 formal specifications. The specifications can be found in the
 marlowe-cardano
-https://github.com/input-output-hk/marlowe-cardano/tree/main/marlowe/specification[GitHub repository]
+https://github.com/marlowe-lang/marlowe-cardano/tree/main/marlowe/specification[GitHub repository]
 that contains the official Cardano implementation of
 Marlowe. The Marlowe interpreter and the role-payout validator are
 implemented as Plinth scripts and can be found in the
-marlowe-plutus https://github.com/input-output-hk/marlowe-plutus[GitHub
+marlowe-plutus https://github.com/marlowe-lang/marlowe-plutus[GitHub
 repository], which also provides instructions on how to compile the
 scripts.
 
@@ -5720,7 +5721,7 @@ were addressed before deploying Marlowe on mainnet. The full
 https://github.com/tweag/tweag-audit-reports/blob/main/Marlowe-2023-03.pdf[audit
 report] can be found at Tweag's GitHub page. IO also issued a report on
 the
-https://github.com/input-output-hk/marlowe/blob/master/response-to-audit-report.md[Marlowe
+https://github.com/marlowe-lang/marlowe/blob/master/response-to-audit-report.md[Marlowe
 GitHub page] explaining the actions taken. You can read a short
 description of the issues and how they were addressed in this
 https://iohk.io/en/blog/posts/2023/06/27/a-comprehensive-guide-to-marlowes-security-audit-outcomes-built-in-functional-restrictions-and-ledger-security-features/[IO
@@ -5791,7 +5792,7 @@ whether or not it is _possible_ to avoid violating the ledger rules in
 executing a contract. This does not mean that it is _trivial_ to
 construct every valid transaction for the contract. Further details can
 also be found in the
-https://github.com/input-output-hk/marlowe-cardano/blob/main/marlowe/best-practices.md[Marlowe
+https://github.com/marlowe-lang/marlowe-cardano/blob/main/marlowe/best-practices.md[Marlowe
 best practices guide], which explains how to avoid protocol limits when
 designing Marlowe contracts in the following cases:
 
@@ -5806,7 +5807,7 @@ lovelace
 . Be parsimonious in the use of the contract's internal state.
 
 Look up the
-https://github.com/input-output-hk/marlowe-cardano/blob/main/marlowe/debugging-cookbook.md[Marlowe
+https://github.com/marlowe-lang/marlowe-cardano/blob/main/marlowe/debugging-cookbook.md[Marlowe
 debugging cookbook] for technical approaches on how to debug Marlowe
 contracts on Cardano. Some types of contracts are not well suited for
 using Marlowe on the Cardano blockchain, including:
@@ -5833,7 +5834,7 @@ transaction:
 * What else is occurring in the transaction?
 
 The
-https://github.com/input-output-hk/marlowe-cardano/blob/main/marlowe/security.md[Marlowe
+https://github.com/marlowe-lang/marlowe-cardano/blob/main/marlowe/security.md[Marlowe
 security guide] answers all these questions in detail. As a conclusion,
 when developing a Marlowe smart contract, one should:
 
