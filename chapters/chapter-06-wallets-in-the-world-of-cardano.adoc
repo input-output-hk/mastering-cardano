@@ -2,7 +2,7 @@
 :imagesdir: images
 
 [[wallets-in-the-world-of-cardano]]
-== #Wallets in the world of Cardano#
+== Wallets in the world of Cardano
 
 == 6.1 Fundamentals of crypto wallets
 
