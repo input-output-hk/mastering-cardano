@@ -1536,19 +1536,19 @@ Cardano ecosystem report] shows that Aiken is the most used smart contract
 language in the Cardano community. It is a user-friendly standalone language
 with easy-to-follow and comprehensive documentation. It provides a simple
 setup of the development environment needed to write, test, and compile smart
-contracts for Cardano. Plinth, as a high assurance language embedded in Haskell,
+contracts for Cardano. A more detailed comparison of Aiken and Plinth 
+can be found in the <<Plinth in comparison to Aiken>> section, which also lists 
+Aiken learning resources. Plinth, as a high assurance language embedded in Haskell,
 works better with the https://wiki.portal.chalmers.se/agda/pmwiki.php[Agda]
 proof assistants that can be used for the formal verification of smart contract
-code. A more detailed comparison of Aiken and Plinth can be found in the
-<<Plinth in comparison to Aiken>> section, which also lists Aiken learning
-resources. The advantages of the Haskell programming language are presented
+code. The advantages of the Haskell programming language are presented
 in section <<Features and benefits of Haskell>>. IO offers a free self-paced
 and beginner-friendly
 https://github.com/input-output-hk/haskell-course/[Haskell course]
 that is hosted on GitHub and teaches the necessary skills for programmers to
 read and write Plinth scripts. The official
 https://www.haskell.org/documentation/[Haskell documentation] site
-provides more learning resources.
+provides more learning resources. 
 
 Before reading section _Plutus smart contracts_, one should have a basic
 understanding of the extended UTXO (EUTXO) accounting model that is presented
@@ -1614,17 +1614,16 @@ online book written by John Greene that is available under an open-source licens
 * Cardano foundation's free online https://academy.cardanofoundation.org/[Cardano academy]
 course, that teaches the basics of blockchain and Cardano.
 
+Cardano's hard fork combinator technology, briefly introduced in section 
+<<cardano-node-layers, Cardano node layers>>, subsection *Consensus and storage layer*, 
+enables the Cardano node to continue processing scripts written in earlier 
+versions of Plutus even after a hard fork introduces a new Plutus version.
 If you encounter smart contract code examples written in PlutusV1 or PlutusV2,
 you can check out videos and learning examples of the previous Plutus Pioneer
 program iterations:
 
 * https://github.com/input-output-hk/plutus-pioneer-program/tree/third-iteration[third-iteration] - PlutusV1 examples
-* https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[fourth-iteration] - PlutusV2 examples.
-
-Cardano's hard fork combinator technology, briefly introduced in section 
-<<cardano-node-layers, Cardano node layers>>, subsection *Consensus and storage layer*, 
-enables the Cardano node to continue processing scripts written in earlier 
-versions of Plutus even after a hard fork introduces a new Plutus version. 
+* https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[fourth-iteration] - PlutusV2 examples. 
 
 ==== Plutus in comparison to Bitcoin Script and Solidity
 
@@ -1729,7 +1728,7 @@ on the ledger is deterministic and can be computed off-chain.
 Ethereum's accounting and Cardano's EUTXO models are equally powerful in
 expressing smart contract logic. However, translating a smart contract from
 Ethereum to Cardano requires rethinking both the design and implementation.
-So, rewriting the exact logic of an Ethereum smart contract to Cardano will
+Rewriting the exact logic of an Ethereum smart contract to Cardano will
 likely generate an undesired result. A better approach is to analyze the
 original contract and produce a high-level specification of what it does.
 Then, create a new EUTXO-based architecture based on that specification
