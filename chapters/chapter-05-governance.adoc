@@ -100,7 +100,7 @@ Voting process
 Voting is a critical component of Project Catalyst, as it empowers the Cardano community to have a direct say in which proposals receive funding. This process ensures that decisions are decentralized and reflective of the community's collective priorities. Here’s an in-depth look at how the voting process works:
 
 1. *Registration*. The registration process involves taking a snapshot of the participant’s ada holdings at a specific point in time. This snapshot determines the voting power of each participant.
-2. Download the https://projectcatalyst.io/get-involved/become-a-voter[Catalyst Voting App], available on mobile devices.
+2. *Download* the https://projectcatalyst.io/get-involved/become-a-voter[Catalyst Voting App], available on mobile devices.
 3.*Reviewing proposals*. All proposals are publicly accessible on the IdeaScale platform and the voting application. Detailed information about each proposal, including the problem statement, proposed solution, team details, and budget is there to discuss and provide feedback on.
 4. *Voting begins*. For each proposal, voters typically have multiple options to express their support or opposition.Once you’ve cast a vote on blockchain, you cannot change it anymore.
 5. *Counting votes*. After the voting period ends, votes are tallied.
