@@ -4816,6 +4816,14 @@ the minting script each time with a different UTXO. This difference in
 currency symbols ensures that each token is truly an NFT, as the asset
 class is defined by both the token name and its unique currency symbol.
 
+It is also possible to associate an image with a token or NFT. It can be 
+referenced from the https://ipfs.tech/[InterPlanetary file system] or 
+embedded as a https://en.wikipedia.org/wiki/Base64[base64] encoded string 
+into the datum metadata of the token or NFT. For more information, see 
+https://cips.cardano.org/cip/CIP-68[CIP-68] that defines the datum metadata standard. 
+The https://meshjs.dev/apis/txbuilder/minting#mintingCip68[MeshJS docs] provide 
+an example of how to mint assets with the CIP-68 metadata standard. 
+
 At the end of this section, we note that the utility of a token can be determined by its use
 case, the market, or the community that issues and adopts it. Tokens can be
 used for various purposes such as issuing a new cryptocurrency, representing access
