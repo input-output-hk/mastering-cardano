@@ -16,7 +16,7 @@ To define a custom theme read the official documentation for [custom themes](htt
 
 ## Colorizing text 
 
-`asciidoctor-pdf` does not support built-in colors. You must define them in your own theme. The `custom-theme.yml` file in this folder is an example of a theme needed for `chapter-8-writing-smart-contracts.adoc`. It defines the blue and purple color fonts.  
+`asciidoctor-pdf` does not support built-in colors. You must define them in your own theme. The `custom-theme.yml` file in this folder is an example of a theme needed for chapter 8 _Writting smart contracts_. It defines the blue and purple color fonts.  
 
 You need to add the following line to the start of your document:
 ```
