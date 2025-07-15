@@ -14,6 +14,10 @@ Then your task is to create a list of words, names, and expressions that should 
 
 
 
+You do not need to produce a summary of the uploaded content, only the above-mentioned list. You can organize the list alphabetically, but single letters that show when a new letter starts do not need to be included.
+
+
+
 Think of hierarchical groupings: For example, if you encounter 'John Nash' and 'Nash Equilibrium', those should appear in the index nested under 'Nash':
 
 
