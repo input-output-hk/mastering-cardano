@@ -156,37 +156,100 @@ The education team at IO brings together extensive experience in:
 
 This collective expertise ensures that educational programs are both comprehensive and practical, tailored to meet the needs of diverse learners. The education team aims to enhance understanding of Cardano technologies using a variety of learning and training assets targeted at a wide range of audiences. The team aims to provide knowledge and information to enterprise decision-makers so they know what business problems the technologies can solve. It strives to create a supportive learning environment for all participants, and continuously shares what its team members have learned from working directly with our community members.
 
-IOG is committed to improving the developer experience and smart contract adoption through education to further enhance the flourishing smart contract landscape on Cardano.
-Partnerships
+IO is committed to improving the developer experience and smart contract adoption through education to further enhance the flourishing smart contract landscape on Cardano.
+
+===== Partnerships
+
 IO collaborates with esteemed universities and educational institutions worldwide to deliver high-quality education and is partnered with various universities and educational institutions, including:
-University of Edinburgh, where there is a blockchain laboratory run by IOG’s chief scientist Prof Aggelos Kiayias and his research team
-University of Athens
-University of West Indies
-University of Wyoming
-Carnegie Mellon University
-European Business University of Luxembourg
-University of Malta
-University of Wyoming
-University of Cantabria
 
-Additionally, IO worked with Yeovil College in the UK and Consilium Academy in South Africa on curriculum design for their blockchain programs.
-Mission-based education
-This education stream covers the Haskell training courses conducted over the years and aligns with the mission to provide free education to the Cardano community.
+- https://www.ed.ac.uk/[University of Edinburgh], where there is a blockchain laboratory run by IOG’s chief scientist https://iohk.io/en/leadership/aggelos-kiayias[Prof Aggelos Kiayias] and his research team
+- https://en.uoa.gr/[University of Athens]
+- https://www.uwi.edu/[University of West Indies]
+- https://www.uwyo.edu/index.html[University of Wyoming]
+- https://www.cmu.edu/[Carnegie Mellon University]
+- https://ebulux.lu/[European Business University of Luxembourg]
+- https://www.um.edu.mt/[University of Malta]
+- https://www.uwyo.edu/index.html[University of Wyoming]
+- https://web.unican.es/[University of Cantabria]
 
-Haskell Course: aimed at those looking to master the functional programming language Haskell, which is integral to Cardano's development.
-Cardano Days events: interactive events that provide a deep dive into the Cardano platform, covering its unique features and applications.
-Blockchain workshops: in-person or virtual workshops and lectures on the fundamentals of blockchain and Cardano.
-Essential Cardano: the Essential Cardano List repository was created in 2021 as a central canonical guide to the Cardano ecosystem. It serves as a resource for understanding Cardano,  identifying its partners, learning about its mission and roadmap, and getting started with building on Cardano. A new Essential Cardano website was launched in 2022 and has since become a thriving community resource.
+Additionally, IO worked with https://www.yeovil.ac.uk/[Yeovil College] in the UK and https://za.linkedin.com/company/consilium-academy[Consilium Academy] in South Africa on curriculum design for their blockchain programs.
 
-As part of this stream, IO offers comprehensive in-person courses in Haskell that run for 10-12 weeks (depending on the curriculum). Dr. Lars Brünjes and his team have delivered several of these Haskell courses, including:
-
-Haskell and cryptocurrency course 2017, which ran for eight weeks at the National Technical University of Athens.
-Haskell and cryptocurrency course 2018, which ran for eight weeks at the University of West Indies, in Barbados.
-Haskell course 2019 Ethiopia: this three-month course was delivered in Addis Ababa, Ethiopia, in conjunction with the Ethiopian Ministry of Innovation and Technology. It was delivered to an all-female audience of Ethiopian and Ugandan students.
-
-Dr. Lars Brünjes says:
+Dr. Lars Brünjes, Director of Education at IO, says:
 
  ‘Education is a cornerstone of our approach at Cardano. By equipping individuals with the knowledge and skills to navigate and innovate within the blockchain ecosystem, we empower them to build a more decentralized and inclusive future. My greatest fulfillment came from teaching the all-female Haskell course in Ethiopia, witnessing firsthand the transformative power of education. That experience reaffirmed my belief in the potential of education to create substantive, lasting change.’
+
+===== Mission-based education
+
+This education stream aligns with the mission to provide free education to the Cardano community.
+
+- Haskell Course: Aimed at those looking to master the functional programming language Haskell, which is integral to Cardano's development.
+- Cardano Days: Interactive events that provide a deep dive into the Cardano platform, covering its unique features and applications.
+- Blockchain Workshops: In-person or virtual workshops and lectures on the fundamentals of blockchain and Cardano.
+- Essential Cardano: The https://www.essentialcardano.io/[Essential Cardano website] was launched in 2022 and has since become a thriving community resource. It serves as a resource for understanding Cardano, identifying its partners, learning about its mission and roadmap, and getting started with building on Cardano. This was preceded by the original https://github.com/IntersectMBO/essential-cardano[Essential Cardano List repository] which was created in 2021 as a central canonical guide to the Cardano ecosystem. 
+
+As part of this stream, IO offers comprehensive in-person courses in Haskell that run for 10-12 weeks (depending on the curriculum). https://iohk.io/en/research/library/authors/lars-brunjes/[Dr. Lars Brünjes] and his team have delivered several of these Haskell courses, including:
+
+- Haskell and cryptocurrency course 2017, which ran for eight weeks at the https://www.ntua.gr/en/[National Technical University of Athens].
+- https://iohk.io/en/blog/posts/2018/04/07/iohk-haskell-and-cryptocurrency-course-in-barbados/[Haskell and cryptocurrency course 2018], which ran for eight weeks at the University of West Indies, in Barbados.
+- https://iohk.io/en/blog/posts/2019/04/04/training-blockchain-developers-in-africa/[Haskell course 2019 Ethiopia]: this three-month course was delivered in Addis Ababa, Ethiopia, in conjunction with the Ethiopian Ministry of Innovation and Technology. It was delivered to an all-female audience of Ethiopian and Ugandan students.
+- Online Haskell Course 2020: This course was originally planned for Mongolia, but due to Covid 19 it was migrated to an online course. 
+- Haskell Course 2023: Delivered with additional Marlowe and Plutus components. This comprehensive blended learning course was taught in conjunction with https://www.theafricablockchaincenter.com/[the African Blockchain Center] and taught at their offices in Nairobi, Kenya. The team adopted a train-the-trainer approach for this course and produced a train-the-trainer kit for professors in the group. The course blended in-person and virtual interactions, allowing us to connect with attendees and understand their perspectives on the topics covered during the session
+
+===== Cardano Days events
+
+Cardano Days events were launched in 2023, and the team has held several of these very successful events around the globe, including:
+
+- ITESO University, Guadalajara, Mexico
+- University of Celaya, Guanajuato, Mexico
+- University of Malta, Valletta Campus, Malta.
+- University of Wyoming, USA.
+- University of Cantabria, Santander, Spain.
+- Florida International University, Miami, USA.
+- National Technical University of Athens, Greece.
+- <Azteca Unis>
+- Tokyo Intstitute of Technology, Japan
+
+These two-day events cover the basics of blockchain technology, Cardano, and smart contracts and proved very popular, with an NPS score of 92. More of these events are planned, so if you would like to know more about hosting this event, please get in touch by emailing education@iohk.io.
+
+===== Developer education
+
+The Cardano education program (CEP)for developers consists of a set of courses that cover all aspects of Cardano. This program includes a set of courses and flexible modules that can be tailored to the needs of each audience. 
+
+- Cardano Developer course: a blended learning course that teaches Haskell and smart contract development to aspiring blockchain developers.
+- https://github.com/input-output-hk/haskell-course[Haskell Bootcamp]: an immersive self-paced Haskell course. This course provides a stepping stone for people to upskill on Haskell before enrolling in the Plutus Pioneer program. It consists of videos and interactive lessons and has received very positive feedback and engagement. 
+- Plutus Pioneer program: focuses on Plutus, Cardano’s smart contract platform, offering hands-on experience in writing and deploying smart contracts. 
+- Marlowe Pioneer program: specializes in Marlowe, a domain-specific language for financial contracts on Cardano, and is aimed at both developers and financial professionals.
+- DRep Pioneer program: prepares participants to become decentralized representatives, playing a crucial role in Cardano’s governance. 
+- Tutorials: technical tutorials that describe features of Cardano and how to work with them.
+- Educational videos: introduce technical aspects, new features, hard fork events, and so on.
+- Hackathon support: writing hackathon challenges and attending the event to support the participants.
+
+The first Cardano Developer course was delivered online in conjunction with the African Blockchain Center to participants from the African region and covered the core modules of Haskell fundamentals and smart contract development languages, including Aiken, Plutus, and Marlowe. This course evolved from the original Haskell course and was expanded to include lectures on Aiken. A further iteration of the course was delivered in person at the Universidad Technológica Nacional in Buenos Aires, Argentina.
+Pioneer programs
+There are a variety of successful online pioneer programs available for developers and new users. These interactive training courses aim to widen the reach of IOG’s education resources and have been completed by over nine thousand people. These courses cover Plutus, Marlowe, Atala, and have recently rolled out a DRep Pioneer program to educate people on governance in Cardano.
+During these programs, participants attend weekly lectures delivered by Lars Brünjes, director of education at IOG, who also held weekly follow-up interactive Q&A sessions. People were supported by a thriving community in the Discord chat system that encouraged collaboration and problem-solving.
+
+One of the most positive outcomes of these courses was the amazing community participation on Discord. The participants supported each other, created additional learning resources, were quick to report any issues, and tested features – they really were acting as true pioneers. We also saw a wide range of innovative resources and ideas from the courses, including new wallets, training materials, and new projects on Cardano.
+
+A self-paced version of this course is being developed where participants will be able to pick and choose the modules they want to complete and work at their own pace, rather than follow a weekly schedule. 
+
+How can we work together?
+The IO education team values interactive and meaningful training workshops, and continues hosting these in various locations around the world each year. If you are interested in hosting an education event such as Cardano Days, or to collaborate on a training course, please get in touch. Stay tuned for more education updates and visit the IO Academy. 
+
+About the Cardano developer portal
+The Developer Portal is one of the ‘cardano.org’ websites: a product-and-vendor neutral contact point for technical topics. 
+Guided by the principle of community involvement, all content is contributed openly and transparently using a Git process (branch, pull request, review, merge). This approach allows anyone to submit proposals with new or updated Markdown-formatted content and thus contribute actively and constructively.
+Under the hood, Docusaurus (an open-source project for building, deploying, and maintaining websites) works as a generator of web pages with extensive search functions.
+Content
+The Developer Portal content is intended to practically demonstrate and exemplify how certain functions and operations can be implemented on the Cardano blockchain, as well as showcase existing projects. A basic requirement for including projects is that they must be functioning and usable on the mainnet (see the guideline for adding new projects).
+The Developer Portal provides resources to integrate Cardano, build with transaction metadata, explore native tokens, create smart contracts, participate in governance, and operate a stake pool.
+Contributors
+Contributions from all individuals, including non-developers, are encouraged to foster continuous evolution by the community. Contributing to the portal can boost reputation and visibility, or serve as a good learning experience in the GitHub open-source and knowledge-minded contribution process. Each contribution acts as a valuable addition to your resume, potentially leading to career opportunities within the Cardano ecosystem. Ways to contribute include spreading awareness, creating issues on GitHub or the Cardano Forum, improving the copy by fixing errors or enhancing writing, and creating explanatory graphics.
+There is even a dedicated section that describes how best to contribute.
+The Builder Tools section of the developer portal encourages the addition of valuable tools that benefit Cardano developers. Guidelines for adding tools include being an actual builder tool, having a stable domain name, and using a GitHub account with a history or presence in the Cardano community.
+The documentation in the portal can be improved, and users are encouraged to contribute by creating and enhancing tutorials. Reviewing pull requests is another way to contribute, requiring technical understanding and prior contributions. The FAQs cover topics such as the pull request review process, becoming a reviewer, getting added to the contributor list, and connecting with the developer community through Discord and the forum.
+
+
 
 
 === Suggested Reading
