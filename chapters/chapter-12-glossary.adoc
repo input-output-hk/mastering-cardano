@@ -1,4 +1,11 @@
-[[glossary]]
-== #Glossary#
 
-TO DO: Write the Glossary.
+[[glossary]]
+== Glossary
+
+To look up terms, one can check the 
+https://www.essentialcardano.io/glossary[Essential Cardano glossary],
+that also contains a search bar at the top of the page. 
+If you find a term in the book that is not covered there and feel that
+it needs an explanation, feel free to contribute to the glossary
+https://github.com/input-output-hk/essential-cardano-content/tree/main/content/glossary[GitHub repository]. 
+
