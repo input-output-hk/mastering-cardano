@@ -1,5 +1,5 @@
 
-:imagesdir: images
+:imagesdir: ../images
 
 == Writing smart contracts
 
@@ -204,18 +204,18 @@ script can also be written to allow one group of keys to spend funds
 before a certain time, and another group after.
 
 The Alonzo era introduced the Plutus scripting language, also referred
-to as Plutus Core. Plutus smart contracts validate transactions and because 
-of this they are also called validation scripts or validators. 
+to as Plutus Core. Plutus smart contracts validate transactions and because
+of this they are also called validation scripts or validators.
 In practice, the Cardano node executes an untyped version called Untyped
-Plutus Core (UPLC). The compilation pipeline from a compiled language to 
+Plutus Core (UPLC). The compilation pipeline from a compiled language to
 UPLC is covered in section <<Plutus security>>.
 Plutus is a simple, functional language that enables general-purpose
 Turing-complete smart contracts on Cardano. It implements Cardano's extended UTXO
 (EUTXO) model, which is as powerful in expressing smart contract logic
 as Ethereum's account-based model, allowing for arbitrary logic in smart
-contracts. A comparison of Plutus with Bitcoin Script and Solidity languages 
-is presented in section <<Plutus in comparison to Bitcoin Script and Solidity>>. 
-The security advantages of Cardano's EUTXO model over Ethereum's account-based 
+contracts. A comparison of Plutus with Bitcoin Script and Solidity languages
+is presented in section <<Plutus in comparison to Bitcoin Script and Solidity>>.
+The security advantages of Cardano's EUTXO model over Ethereum's account-based
 model are discussed in section <<Cardano security>>.
 
 *Compiled languages*
@@ -271,7 +271,7 @@ some of the listed languages can also be found in the following blogs:
 
 * The https://www.emurgo.io/press-news/the-programming-languages-behind-cardano-on-chain-code/[Emurgo]
 blog about the programming languages behind Cardano on-chain code
-* The https://www.essentialcardano.io/article/programming-languages[Essential Cardano] 
+* The https://www.essentialcardano.io/article/programming-languages[Essential Cardano]
 blog about programming languages.
 
 Languages that compile to Plutus generate scripts that have the same
@@ -292,7 +292,7 @@ Plinth or other compiled Cardano smart contract languages include:
 
 * NFT marketplaces and platforms (https://www.nmkr.io/[NMKR],
 https://cardahub.io/home[CardaHub],
-https://www.jpg.store/[JPGStore], 
+https://www.jpg.store/[JPGStore],
 https://jamonbread.io/[JamOnBread])
 * Decentralized exchanges (DEX) (https://muesliswap.com/[MuesliSwap],
 https://minswap.org/[MinSwap], https://sundae.fi/products/sundaeswap[SundaeSwap],
@@ -341,9 +341,9 @@ The third category of smart contract languages in Cardano consists of
 interpreted languages that are interpreted by a compiled language.
 https://marlowe-lang.org/[Marlowe], initially developed by IO, is an
 interpreted smart contract language that is not Turing-complete. It is
-well-suited for designing financial contracts, such as those defined in 
-Algorithmic Contract Types Unified Standards (https://www.actusfrf.org/[Actus]), 
-for example. The Marlowe interpreter is 
+well-suited for designing financial contracts, such as those defined in
+Algorithmic Contract Types Unified Standards (https://www.actusfrf.org/[Actus]),
+for example. The Marlowe interpreter is
 written as a Plinth smart contract. Besides the programming language,
 the Marlowe project provides open-source tools to easily create, verify,
 and deploy secure financial smart contracts on Cardano. You can write
@@ -396,8 +396,8 @@ integrates the popular https://react.dev/[React] library.
 * https://lucid.spacebudz.io/[Lucid]: a popular JavaScript/TypeScript
 library for off-chain code, which is further developed by the
 https://no-witness-labs.github.io/evolution-sdk/[Evolution-SDK]
-project, which was temporary called Lucid Evolution and 
-was funded by 
+project, which was temporary called Lucid Evolution and
+was funded by
 https://projectcatalyst.io/funds/11/cardano-open-developers/anastasia-labs-lucid-evolution-redefining-off-chain-transactions-in-cardano[Catalyst
 Fund11].
 * https://atlas-app.io/[Atlas]: an all-in-one, Haskell-native
@@ -709,7 +709,7 @@ Marlowe is based on original, peer-reviewed research conducted by the
 Marlowe team, initially at the University of Kent with support from a
 research grant from IO, and later as an internal engineering team within
 IO. The Marlowe team at IO was also collaborating with the
-https://www.uwyo.edu/acct-fin/cbdi/[Wyoming Center for Blockchain and Digital 
+https://www.uwyo.edu/acct-fin/cbdi/[Wyoming Center for Blockchain and Digital
 Innovation (CBDI)] at the University of Wyoming. More information about
 the research conducted for Marlowe can be found on the official
 documentation page, which also lists
@@ -799,7 +799,7 @@ of Marlowe contracts on the blockchain, eliminating the need for
 command-line expertise. With Marlowe Runner, users can deploy contracts
 created in the Marlowe playground, test them, and interact with them in
 a simulated environment before mainnet deployment. For this, users need
-to connect to the Runner using a Cardano wallet such as https://www.lace.io/[Lace] 
+to connect to the Runner using a Cardano wallet such as https://www.lace.io/[Lace]
 or https://eternl.io/[Eternl]. Contracts can be uploaded to the Runner as
 a JSON file, or one can manually paste the JSON structure into an editor
 window. One can look at the source graph before creating a contract,
@@ -811,10 +811,10 @@ DApp prototype]. A
 https://www.youtube.com/watch?v=B5XcH0j7Y7w&list=PLNEK_Ejlx3x2ukxS8Xd0Z-cq24-1jP9G9[video
 tutorial] about using Marlowe Runner can be found on the IO YouTube channel.
 
-https://github.com/marlowe-lang/marlowe-scan[Marlowe Scan] is a tool  
-that allows users to query information about Marlowe contracts and view 
-the current contract state. It can be used for the preview and pre-production 
-test networks and the mainnet. Users can also view the contract code, 
+https://github.com/marlowe-lang/marlowe-scan[Marlowe Scan] is a tool
+that allows users to query information about Marlowe contracts and view
+the current contract state. It can be used for the preview and pre-production
+test networks and the mainnet. Users can also view the contract code,
 download it, and view a list of transaction IDs.
 
 https://docs.marlowe-lang.org/docs/developer-tools/runtime/marlowe-runtime[Marlowe
@@ -894,7 +894,7 @@ libraries, available as npm packages, designed to support DApp
 developers with the necessary tools to build and integrate with the
 Marlowe smart contract ecosystem. There are
 https://www.youtube.com/watch?v=0Qa1CsZUGnw&list=PLNEK_Ejlx3x1lRhBpL8TUdirMdBPOOvlp[short
-video tutorials] on the IO YouTube channel that demonstrate 
+video tutorials] on the IO YouTube channel that demonstrate
 how to use the TS-SDK to build an example DApp. Since the tutorials were
 created during the beta stage, function names may change in the official
 release. The TS-SDK offers the following features:
@@ -1041,7 +1041,7 @@ https://github.com/marlowe-lang/marlowe-cardano[marlowe-cardano]
 GitHub repository. If you are writing Marlowe version 1 scripts, the
 module you need to import in a Haskell project to be able to write
 Marlowe code is `Language.Marlowe.Extended.V1`
-(https://github.com/marlowe-lang/marlowe-cardano/blob/main/marlowe/src/Language/Marlowe/Extended/V1.hs[source 
+(https://github.com/marlowe-lang/marlowe-cardano/blob/main/marlowe/src/Language/Marlowe/Extended/V1.hs[source
 code]). Some important Haskell data types that this module exports are
 contained in the `Language.Marlowe.Core.V1.Semantics.Types` module
 (https://github.com/marlowe-lang/marlowe-cardano/blob/main/marlowe/src/Language/Marlowe/Core/V1/Semantics/Types.hs[source
@@ -1536,8 +1536,8 @@ Cardano ecosystem report] shows that Aiken is the most used smart contract
 language in the Cardano community. It is a user-friendly standalone language
 with easy-to-follow and comprehensive documentation. It provides a simple
 setup of the development environment needed to write, test, and compile smart
-contracts for Cardano. A more detailed comparison of Aiken and Plinth 
-can be found in the <<Plinth in comparison to Aiken>> section, which also lists 
+contracts for Cardano. A more detailed comparison of Aiken and Plinth
+can be found in the <<Plinth in comparison to Aiken>> section, which also lists
 Aiken learning resources. Plinth, as a high assurance language embedded in Haskell,
 works better with the https://wiki.portal.chalmers.se/agda/pmwiki.php[Agda]
 proof assistants that can be used for the formal verification of smart contract
@@ -1548,7 +1548,7 @@ https://github.com/input-output-hk/haskell-course/[Haskell course]
 that is hosted on GitHub and teaches the necessary skills for programmers to
 read and write Plinth scripts. The official
 https://www.haskell.org/documentation/[Haskell documentation] site
-provides more learning resources. 
+provides more learning resources.
 
 Before reading section _Plutus smart contracts_, one should have a basic
 understanding of the extended UTXO (EUTXO) accounting model that is presented
@@ -1594,8 +1594,8 @@ branch contains validator examples of the
 https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[4th
 PPP iteration], translated from PlutusV2 to PlutusV3. In addition
 to MeshJS off-chain code, the _plinth-plutusV3_ branch also contains
-Lucid Evolution off-chain code examples. Further Cardano learning resources 
-and smart contract examples in Plinth, Aiken, and other smart contract 
+Lucid Evolution off-chain code examples. Further Cardano learning resources
+and smart contract examples in Plinth, Aiken, and other smart contract
 languages can be found at:
 
 * https://www.gomaestro.org/smart-contracts[Cardano's smart contract
@@ -1614,16 +1614,16 @@ online book written by John Greene that is available under an open-source licens
 * Cardano foundation's free online https://academy.cardanofoundation.org/[Cardano academy]
 course, that teaches the basics of blockchain and Cardano.
 
-Cardano's hard fork combinator technology, briefly introduced in section 
-<<cardano-node-layers, Cardano node layers>>, subsection *Consensus and storage layer*, 
-enables the Cardano node to continue processing scripts written in earlier 
+Cardano's hard fork combinator technology, briefly introduced in section
+<<cardano-node-layers, Cardano node layers>>, subsection *Consensus and storage layer*,
+enables the Cardano node to continue processing scripts written in earlier
 versions of Plutus even after a hard fork introduces a new Plutus version.
 If you encounter smart contract code examples written in PlutusV1 or PlutusV2,
 you can check out videos and learning examples of the previous Plutus Pioneer
 program iterations:
 
 * https://github.com/input-output-hk/plutus-pioneer-program/tree/third-iteration[third-iteration] - PlutusV1 examples
-* https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[fourth-iteration] - PlutusV2 examples. 
+* https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[fourth-iteration] - PlutusV2 examples.
 
 ==== Plutus in comparison to Bitcoin Script and Solidity
 
@@ -1648,7 +1648,7 @@ conditional statements). The primitive operations that can be used in
 Bitcoin Script are also very limited (for example, the division
 operation was originally included but was subsequently disabled).
 . The computational context available to a Bitcoin Script program is
-very constrained. For example, it cannot inspect a transaction 
+very constrained. For example, it cannot inspect a transaction
 currently being validated, but it can access the transaction's hash.
 . There is no 'official' high-level language compiling to Bitcoin
 Script, although several proposals have been put forward by a variety of
@@ -1703,9 +1703,9 @@ The script also sees a piece of arbitrary input data provided by the user
 submitting the transaction. This data is the redeemer, which is also contained
 in the script context of a transaction. The information in the redeemer can be used for:
 
-* Indicating the purpose of interacting with a script, eg, placing a bet, 
+* Indicating the purpose of interacting with a script, eg, placing a bet,
 paying a fee, or claiming a reward
-* Providing information known only to a specific party, which can be used 
+* Providing information known only to a specific party, which can be used
 to unlock funds held at a script address
 * Supplying a value that modifies the current datum data.
 
@@ -1844,10 +1844,10 @@ covering the following topics:
 * The first validator
 * Adding traces
 * Writing a test
-* End-to-end off-chain code (MeshJS and PyCardano). 
+* End-to-end off-chain code (MeshJS and PyCardano).
 
 The https://github.com/aiken-lang/awesome-aiken[Awesome Aiken] repository
-provides many links to Aiken libraries, DApps, tutorials, and video lessons. 
+provides many links to Aiken libraries, DApps, tutorials, and video lessons.
 For those who prefer to learn from a book, the
 https://book.io/book/i-can-aiken/[I can Aiken] book, written by John
 Greene provides comprehensive information and learning examples.
@@ -1862,10 +1862,10 @@ options:
 * Use an online platform such as https://demeter.run/[Demeter.run]
 * Install system dependencies manually.
 
-The _plinth-dev-env_ GitHub repository provides instructions for setting 
-up the development environment for the first three options. A link to the 
-repository can be found in the 
-https://github.com/input-output-hk/mastering-cardano/tree/main/resources[resources] 
+The _plinth-dev-env_ GitHub repository provides instructions for setting
+up the development environment for the first three options. A link to the
+repository can be found in the
+https://github.com/input-output-hk/mastering-cardano/tree/main/resources[resources]
 folder of the mastering cardano repository. It aims to provide up-to-date
 instructions for the latest stable Plinth development environment. The smart
 contract code presented throughout section <<Plutus smart contracts>> uses features
@@ -1927,8 +1927,8 @@ pipeline which are explained in detail in section <<Plutus security>>.
 
 In this section, we will look at basic Plinth validation scripts. All
 validation scripts and data types presented in the <<Plutus smart contracts>>
-section are PlutusV3 scripts and data types. An exception are PlutusV1 
-and V2 data types that were not modified with the introduction of PlutusV3 
+section are PlutusV3 scripts and data types. An exception are PlutusV1
+and V2 data types that were not modified with the introduction of PlutusV3
 and can be still used in PlutusV3 scripts. A validation script or
 validator is the smart contract program that checks whether funds at a
 script address are allowed to be spent by a given transaction. As stated
@@ -2189,7 +2189,7 @@ The redeemer type is defined as a wrapper around the [purple]#BuiltinData# data 
 ----
 newtype Redeemer = Redeemer {getRedeemer :: BuiltinData}
   deriving stock (Generic, Haskell.Show, Typeable)
-  deriving newtype (Haskell.Eq, Haskell.Ord, Eq, ToData, FromData, 
+  deriving newtype (Haskell.Eq, Haskell.Ord, Eq, ToData, FromData,
                     UnsafeFromData, Pretty)
   deriving anyclass (NFData, HasBlueprintDefinition)
 ----
@@ -2316,7 +2316,7 @@ Let us look now at the same validator that is written in a typed form.
 
 {-# INLINEABLE mk42TypedValidator #-}
 mk42TypedValidator :: ScriptContext -> Bool
-mk42TypedValidator ctx = traceIfFalse "Redeemer is a number different than 42" 
+mk42TypedValidator ctx = traceIfFalse "Redeemer is a number different than 42"
                                       $ 42 == r
  where
   r = case fromBuiltinData $ getRedeemer (scriptContextRedeemer ctx) of
@@ -2361,10 +2361,10 @@ makeIsDataSchemaIndexed ''MySillyRedeemer [('MkMySillyRedeemer, 0)]
 
 {-# INLINEABLE mk42CustomValidator #-}
 mk42CustomValidator :: ScriptContext -> Bool
-mk42CustomValidator ctx = traceIfFalse "Redeemer is a number different than 42" 
+mk42CustomValidator ctx = traceIfFalse "Redeemer is a number different than 42"
                                        $ 42 == r
  where
-   r = case fromBuiltinData @MySillyRedeemer . getRedeemer $ 
+   r = case fromBuiltinData @MySillyRedeemer . getRedeemer $
                             scriptContextRedeemer ctx of
      Just (MkMySillyRedeemer rInt) -> rInt
      Nothing -> traceError "Redeemer is not of MySillyRedeemer type."
@@ -2455,9 +2455,9 @@ guidelines.
 We again state the various possibilities that a redeemer can be used for
 in smart contracts:
 
-* Indicating the purpose of interacting with a script, eg, placing a bet, 
+* Indicating the purpose of interacting with a script, eg, placing a bet,
 paying a fee, or claiming a reward
-* Providing information known only to a specific party, which can be used 
+* Providing information known only to a specific party, which can be used
 to unlock funds held at a script address
 * Supplying a value that modifies the current datum data.
 
@@ -2889,7 +2889,7 @@ For this reason, the script info for a spending script contains a maybe datum.
 ----
 newtype Datum = Datum {getDatum :: BuiltinData}
   deriving stock (Generic, Typeable, Haskell.Show)
-  deriving newtype (Haskell.Eq, Haskell.Ord, Eq, ToData, FromData, 
+  deriving newtype (Haskell.Eq, Haskell.Ord, Eq, ToData, FromData,
                     UnsafeFromData, Pretty)
   deriving anyclass (NFData, HasBlueprintDefinition)
 ----
@@ -2932,7 +2932,7 @@ following script purposes:
 * Certifying - for issuing certificates
 * Voting and proposing - used when government actions are involved.
 
-In the <<Plutus smart contracts>> section, we will focus on the spending 
+In the <<Plutus smart contracts>> section, we will focus on the spending
 and minting script purposes.
 
 *Decoding the script information in untyped form*
@@ -3330,9 +3330,9 @@ data ScriptPurpose
   deriving (Pretty) via (PrettyShow ScriptPurpose)
 ----
 
-The [purple]#ScriptPurpose# data type is structured in the same way as the 
-[purple]#ScriptInfo# data type except that the constructor names are different 
-and the _Spending_ constructor holds only a transaction output reference without a maybe datum. 
+The [purple]#ScriptPurpose# data type is structured in the same way as the
+[purple]#ScriptInfo# data type except that the constructor names are different
+and the _Spending_ constructor holds only a transaction output reference without a maybe datum.
 The keys for the datums are datum hashes that map to actual datums.
 
 Next comes the transaction ID of type [purple]#TxId# which represents the
@@ -3602,9 +3602,9 @@ off-chain code that interacts with the validators presented in this section.
 The blockchain is passive – it only acts when a user interacts with it.
 The code that queries the blockchain, builds, and submits transactions
 is called off-chain code. Off-chain code does not need to have the same
-performance and security standards as on-chain code. In this section, 
-we will showcase how to write off-chain code for the on-chain code example 
-presented in the previous section. 
+performance and security standards as on-chain code. In this section,
+we will showcase how to write off-chain code for the on-chain code example
+presented in the previous section.
 
 After the Alonzo era, when smart contracts became available on Cardano,
 the https://github.com/IntersectMBO/plutus-apps[Plutus application platform]
@@ -3636,10 +3636,10 @@ to construct and submit transactions interacting with a smart contract by
 writing JavaScript or TypeScript code. To run the off-chain code in this and
 other sections you can use https://deno.com/[Deno] that is a runtime
 environment for JavaScript and TypeScript. All off-chain code presented in
-this and other sections was tested with Deno version `2.1.9` and 
+this and other sections was tested with Deno version `2.1.9` and
 MeshSDK packages version `1.9.0-beta.3`. To install the MeshSDK packages
-that are needed by the off-chain code, the 
-https://docs.npmjs.com/downloading-and-installing-node-js-and-npm[npm] 
+that are needed by the off-chain code, the
+https://docs.npmjs.com/downloading-and-installing-node-js-and-npm[npm]
 package manager for JavaScript runtime environment Node.js
 can be used. To fix a package version one can create the `package.json`
 file before installing the packages. Below is an example of this file.
@@ -3674,8 +3674,8 @@ file one can read the
 https://docs.npmjs.com/packages-and-modules/getting-packages-from-the-registry[Getting
 packages from the registry] and
 https://docs.npmjs.com/creating-a-package-json-file[Creating
-a package.json file] npm documentation pages. The `deno` tool can be 
-installed globaly. From the location of the `package.json` file run: 
+a package.json file] npm documentation pages. The `deno` tool can be
+installed globaly. From the location of the `package.json` file run:
 
 [source,console]
 ----
@@ -3725,8 +3725,8 @@ Cardano wallet. The `seed.ts` file should be in the following form:
 export const secretSeed = ["seed1", "seed2", ... ];
 ----
 
-For instructions on how to create a wallet and generate a seed phrase 
-see chapter <<wallets-in-the-world-of-cardano, Wallets in the world of Cardano>>. 
+For instructions on how to create a wallet and generate a seed phrase
+see chapter <<wallets-in-the-world-of-cardano, Wallets in the world of Cardano>>.
 Next, we define a provider which helps us to query the blockchain and
 submit transactions. We use https://blockfrost.io/[BlockFrost]. For the
 code to work, one has to provide their blockfrost key, which users can get
@@ -4815,13 +4815,13 @@ the minting script each time with a different UTXO. This difference in
 currency symbols ensures that each token is truly an NFT, as the asset
 class is defined by both the token name and its unique currency symbol.
 
-It is also possible to associate an image with a token or NFT. It can be 
-referenced from the https://ipfs.tech/[InterPlanetary file system] or 
-embedded as a https://en.wikipedia.org/wiki/Base64[base64] encoded string 
-into the datum metadata of the token or NFT. For more information, see 
-https://cips.cardano.org/cip/CIP-68[CIP-68] that defines the datum metadata standard. 
-The https://meshjs.dev/apis/txbuilder/minting#mintingCip68[MeshJS docs] provide 
-an example of how to mint assets with the CIP-68 metadata standard. 
+It is also possible to associate an image with a token or NFT. It can be
+referenced from the https://ipfs.tech/[InterPlanetary file system] or
+embedded as a https://en.wikipedia.org/wiki/Base64[base64] encoded string
+into the datum metadata of the token or NFT. For more information, see
+https://cips.cardano.org/cip/CIP-68[CIP-68] that defines the datum metadata standard.
+The https://meshjs.dev/apis/txbuilder/minting#mintingCip68[MeshJS docs] provide
+an example of how to mint assets with the CIP-68 metadata standard.
 
 At the end of this section, we note that the utility of a token can be determined by its use
 case, the market, or the community that issues and adopts it. Tokens can be
@@ -4972,18 +4972,18 @@ an audit can also prove compliance with industry standards and best
 practices and increase trust and credibility. Audits can be grouped into
 manual auditing, where each line of code is analyzed by the auditors,
 and automated auditing, where auditors use software auditing tools. A
-combination of both is also possible. Auditing of smart contracts is 
+combination of both is also possible. Auditing of smart contracts is
 further discussed in the <<Plutus security>> section.
 
 Cardano was designed with security in mind from the beginning. Input |
 Output (IO) has invested much effort into academic research, and its
-research team has written and collaborated on more than 
-https://iohk.io/en/research/library/[250 scientific papers]. 
+research team has written and collaborated on more than
+https://iohk.io/en/research/library/[250 scientific papers].
 Some of the important research areas that IO
 targets are cryptography, software engineering, distributed systems,
 networks, formal verification, and programming languages. Ouroboros,
 Cardano's consensus protocol, is explained in detail in section
-<<about-the-ouroboros-protocol, About the Ouroboros protocol>>. 
+<<about-the-ouroboros-protocol, About the Ouroboros protocol>>.
 Ouroboros represents the outcome of long
 research presented in multiple papers. It is the first blockchain
 consensus protocol developed through peer-reviewed research with
@@ -5116,7 +5116,7 @@ that was received in the pool. In reality, this is hard to achieve because
 Cardano's mainnet has a high number of block producing nodes (around 3000
 at the time of writing) and also because of Cardano's design, none of these
 nodes controls a significant amount of staked ada. You can read more about
-this topic in chapter 
+this topic in chapter
 <<stake-pools-and-stake-pool-operation, Stake pools and stake pool operation>>.
 We also note that for transactions that interact with the same validator and spend
 different UTXOs, rearranging them is inconsequential because there is no
@@ -5224,7 +5224,7 @@ with a global state that might influence the final output. Besides
 auditing smart contracts, off-chain code and other parts of a DApp may
 also be audited to assess the security of the entire application.
 
-Further learning resources about the EUTXO model in addition to section 
+Further learning resources about the EUTXO model in addition to section
 <<The EUTXO model>> can be found at:
 
 * https://ucarecdn.com/6d3813f2-6886-4c61-833f-e78ba5f887d7/EUTXOhandbook_for_EC.pdf[The EUTXO Handbook]
@@ -5256,10 +5256,10 @@ When a Cardano node executes validator code compiled to Untyped Plutus
 Core, this code does not access the computer's resources directly as a
 normal computer programs would do. For security reasons,
 VMs offer a safe execution environment. Every Cardano node has a
-built-in Plutus virtual machine that is written in Haskell. There 
-is also a plan to develop a Cardano node written in the Rust language. 
-The project is managed by the https://pragma.io/[Pragma] member-based 
-organisation (MBO) and is called https://github.com/pragma-org/amaru[Amaru]. 
+built-in Plutus virtual machine that is written in Haskell. There
+is also a plan to develop a Cardano node written in the Rust language.
+The project is managed by the https://pragma.io/[Pragma] member-based
+organisation (MBO) and is called https://github.com/pragma-org/amaru[Amaru].
 
 Plutus is a simple, functional language similar to Haskell, and a large
 subset of Haskell can be used to write Plutus scripts. Its simple and
@@ -5312,9 +5312,9 @@ intermediate form that the compiler uses to statically check the
 program.
 * Fourth, we get to Untyped Plutus Core, which the Cardano node runs to
 validate the transaction. This language is hard to code directly, and it
-is usually stored in binary representation. 
+is usually stored in binary representation.
 
-It is wise to break down compilation pipelines by introducing intermediate 
+It is wise to break down compilation pipelines by introducing intermediate
 languages to ensure no step is too large, and to test each step independently.
 For more information about the compilation process, refer to this
 https://iohk.io/en/blog/posts/2021/02/02/plutus-tx-compiling-haskell-into-plutus-core/[IO
@@ -5414,15 +5414,15 @@ companies such as MLabs, Well-Typed, and Plank. It significantly
 abstracts away the complexity of building Cardano transactions and
 interacting with Plinth smart contracts. Different data providers can be
 configured to power the Atlas framework. It streamlines the process of
-building transactions and executing smart contracts. One can read more 
-about the benefits that the Atlas application backend provides at their 
+building transactions and executing smart contracts. One can read more
+about the benefits that the Atlas application backend provides at their
 https://atlas-app.io/introduction#features[documentation page].
 Another tool one can use for testing Plinth smart contracts or any other
 smart contract language that compiles to Untyped Plutus Core is the
 https://github.com/tweag/cooked-validators[Cooked validators] library
-developed by Tweag. Aiken, that is a standalone smart contract language 
-comes with its own build-in toolkit for testing. You can read more 
-about it at the https://aiken-lang.org/language-tour/tests[Aiken documentation]. 
+developed by Tweag. Aiken, that is a standalone smart contract language
+comes with its own build-in toolkit for testing. You can read more
+about it at the https://aiken-lang.org/language-tour/tests[Aiken documentation].
 
 For testing smart contracts, third-party auditing companies can write
 the tests as part of their auditing process of DApp smart contracts and
@@ -5660,7 +5660,7 @@ memory in a transaction, it may violate the rule that execution costs in
 Plutus are limited to specific usage of "memory" and CPU "steps".
 
 You can look up the Marlowe
-https://github.com/marlowe-lang/marlowe-cardano/blob/main/marlowe/best-practices.md[best 
+https://github.com/marlowe-lang/marlowe-cardano/blob/main/marlowe/best-practices.md[best
 practices guide] to read more about these limitations. While
 Marlowe contracts might run on the Playground, they would not run
 on-chain if the contract violates the
