@@ -1,4 +1,6 @@
 
+:imagesdir: ../../images
+
 === The EUTXO model(((EUTXO model)))
 
 ==== Accounting models
