@@ -398,8 +398,7 @@ library for off-chain code, which is further developed by the
 https://no-witness-labs.github.io/evolution-sdk/[Evolution-SDK]
 project, which was temporary called Lucid Evolution and
 was funded by
-https://projectcatalyst.io/funds/11/cardano-open-developers/anastasia-labs-lucid-evolution-redefining-off-chain-transactions-in-cardano[Catalyst
-Fund11].
+https://projectcatalyst.io/funds/11/cardano-open-developers/anastasia-labs-lucid-evolution-redefining-off-chain-transactions-in-cardano[Catalyst Fund11].
 * https://atlas-app.io/[Atlas]: an all-in-one, Haskell-native
 application backend for writing off-chain code for Plutus smart
 contracts.
@@ -1962,9 +1961,9 @@ _typed validation scripts_.
 
 The [purple]#BuiltinData# doesn't have its constructors exposed. The module
 that defines [purple]#BuiltinData# contains two conversion functions:
-[blue]#builtinDataToData# and [blue]#dataToBuiltinData#. Those functions can
+[blue]#builtinDataToData# and [blue]#dataToBuiltinData#, that can
 convert [purple]#BuiltinData# back and forth to the [purple]#Data# type. They
-work in off-chain code, but not in on-chain code. The [purple]#Data# type has
+can be used in off-chain code, but not in on-chain code. The [purple]#Data# type has
 its constructor exposed, as illustrated in the code below:
 
 [source,haskell]
@@ -1980,7 +1979,7 @@ data Data
 ----
 
 It is a recursive data type that contains integers and byte strings, which can
-be packed into common lists and maps. Next, we show the Haskell implementation
+be packed into lists and maps. Next, we show the Haskell implementation
 of the script context data type:
 
 [source,haskell]
@@ -2006,7 +2005,7 @@ We will look into those data types in more detail in section
 at a script address, the spending script is run for every UTXO individually.
 The redeemer and the script information are individually assigned for every
 UTXO in that transaction. The transaction information is only one and is
-accessible to every script that is being triggered by a single transaction.
+accessible to every script instance that is being triggered by a single transaction.
 
 Let us now examine a simple untyped validator script that always succeeds:
 
@@ -2090,12 +2089,14 @@ links to official GHC documentation. The
 https://downloads.haskell.org/ghc/latest/docs/users_guide/using-optimisation.html#ghc-flag--ffull-laziness[GHC docs]
 also cover various GHC compiler options. We name our module `Week02.Validators`.
 The naming of modules through the <<Plutus smart contracts>> code examples
-section follows the naming from the fourth Plutus pioneer program iteration.
+section follows the naming from the 
+https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[fourth 
+iteration] of the Plutus pioneer program.
 Next, we import several submodules from the `PlutusLedgerApi` and the `PlutusTx`
 modules that define functions for working with PlutusV3 scripts.
 
-After that follows the on-chain validator code.
-We name the validator function [blue]#mkGiftValidator#. It is an untyped validator
+After that follows the on-chain validator code. We name the validator function
+[blue]#mkGiftValidator# that means _make gift validator_. It is an untyped validator
 that always succeeds. It takes in the script context as the only argument, which is
 of type [purple]#BuiltinData# and returns something of type [purple]#BuiltinUnit#.
 In the body of the function, all input values are ignored, and we use the [blue]#check#
@@ -2252,10 +2253,11 @@ function as we did in our previous examples. After that, we compile and serializ
 the validator.
 
 The reason why we stated _"large CBOR"_ in the comment above the code is that
-converting the script context to its typed form is a costly operation and produces
+converting the script context into a typed form is a costly operation and produces
 a large CBOR. Next, let us look at the same validator in untyped form, where we decode
 the script by keeping it in the form of the [purple]#BuiltinData# type. At the end of
-this section, we will compare `CBORHEX` lengths for the 42 validators.
+this section, we will compare `CBORHEX` lengths for all 42 validators presented in
+this section.
 
 [source,haskell]
 ----
@@ -2291,7 +2293,7 @@ serializedMk42ValidatorSmall = serialiseCompiledCode compiledMk42ValidatorSmall
 
 First, we define a function called [blue]#constrArgs# that helps us to
 convert the [purple]#BuiltinData# to the [purple]#BuiltinList# type. We
-recall that the script context is an algebraic product type that combines
+recall that the script context is an algebraic data type that combines
 the transaction info, redeemer, and script info types with a logical `AND`.
 Once we have converted the script context to a built-in list, we can use the
 [blue]#tail# and [blue]#head# functions to extract the needed element.
@@ -2429,7 +2431,10 @@ modules we can use.
 We see that we get by far the most compact compiled code if we decode the
 [purple]#ScriptContext# in its untyped form and then convert the part we need
 to typed form. We call that lazy decoding. This also brings an on-chain code
-performance advantage.
+performance advantage. The largest `CBORHEX` is the one for the untyped
+validator, where we convert the entire [purple]#ScriptContext# into typed form.
+The reason is this type carries much information and convert the whole type
+into typed form is a costly operation.
 
 The reason the compiled code is shorter if we import the [purple]#ScriptContext#
 from the `PlutusLedgerApi.Data.V3` module is that module provides an alternative
