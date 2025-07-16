@@ -231,13 +231,13 @@ He has been called one of the most intelligent people in modern history.
 
 .John von Neumann(((von Neumann, John))) (Los Alamos). By LANL - http://www.lanl.gov/history/atomicbomb/images/NeumannL.GIF (archive copy at the Wayback Machine), Attribution, https://commons.wikimedia.org/w/index.php?curid=3429594
 
-image::neumann.png[John von Neumann(((von Neumann, John))), 200]
+image::neumann.png[John von Neumann, 200]
 
 Another pioneer of game theory(((game theory))) was John Nash(((Nash, John))), who won the Nobel prize in economics in 1994 for his work on the subject. His fascinating story, full of triumph and tragedy, has been made popular for millions of people by the 2001 movie _A Beautiful Mind_.
 
 .John Forbes Nash Jr.(((Nash, John))) (June 13, 1928 – May 23, 2015) was an American mathematician and economist. Serving as Senior Research Mathematician at Princeton University(((Princeton University))) during the later part of his life, he shared the 1994 Nobel Memorial Prize in Economic Sciences(((Nobel Memorial Prize in Economic Sciences))) with game theorists Reinhard Selten(((Selten, Reinhard))) and John Harsanyi(((Harsanyi, John))). By Peter Badge / Typos1 - submission by way of Jimmy Wales, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=6977799
 
-image::nash.png[John Forbes Nash Jr.(((Nash, John Forbes, Jr.))), 200]
+image::nash.png[John Forbes Nash Jr., 200]
 
 In game theory(((game theory))), Nash's(((Nash, John))) concept of a _Nash Equilibrium_(((Nash, equilibrium))) is of central importance.
 A Nash Equilibrium(((Nash, equilibrium))) is a situation where no player can improve his payoff by unilaterally changing his strategy.
