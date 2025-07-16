@@ -199,15 +199,15 @@ As part of this stream, IO offers comprehensive in-person courses in Haskell tha
 
 Cardano Days events were launched in 2023, and the team has held several of these very successful events around the globe, including:
 
-- ITESO University, Guadalajara, Mexico
-- University of Celaya, Guanajuato, Mexico
-- University of Malta, Valletta Campus, Malta.
-- University of Wyoming, USA.
-- University of Cantabria, Santander, Spain.
-- Florida International University, Miami, USA.
-- National Technical University of Athens, Greece.
+- https://www.iteso.mx/en/[ITESO University], Guadalajara, Mexico
+- https://www.udec.edu.mx/en/[University of Celaya], Guanajuato, Mexico
+- https://www.um.edu.mt/[University of Malta], Valletta Campus, Malta.
+- https://www.uwyo.edu/index.html[University of Wyoming], USA.
+- https://web.unican.es/[University of Cantabria], Santander, Spain.
+- https://www.fiu.edu/[Florida International University], Miami, USA.
+- https://www.ntua.gr/en/[National Technical University of Athens], Greece.
 - <Azteca Unis>
-- Tokyo Intstitute of Technology, Japan
+- https://www.titech.ac.jp/english[Tokyo Intstitute of Technology], Japan
 
 These two-day events cover the basics of blockchain technology, Cardano, and smart contracts and proved very popular, with an NPS score of 92. More of these events are planned, so if you would like to know more about hosting this event, please get in touch by emailing education@iohk.io.
 
@@ -217,43 +217,48 @@ The Cardano education program (CEP)for developers consists of a set of courses t
 
 - Cardano Developer course: a blended learning course that teaches Haskell and smart contract development to aspiring blockchain developers.
 - https://github.com/input-output-hk/haskell-course[Haskell Bootcamp]: an immersive self-paced Haskell course. This course provides a stepping stone for people to upskill on Haskell before enrolling in the Plutus Pioneer program. It consists of videos and interactive lessons and has received very positive feedback and engagement. 
-- Plutus Pioneer program: focuses on Plutus, Cardano’s smart contract platform, offering hands-on experience in writing and deploying smart contracts. 
-- Marlowe Pioneer program: specializes in Marlowe, a domain-specific language for financial contracts on Cardano, and is aimed at both developers and financial professionals.
-- DRep Pioneer program: prepares participants to become decentralized representatives, playing a crucial role in Cardano’s governance. 
+- https://docs.cardano.org/pioneer-programs/plutus-pioneers[Plutus Pioneer program]: focuses on Plutus, Cardano’s smart contract platform, offering hands-on experience in writing and deploying smart contracts. 
+- https://sancho.network/drep-pioneer-program/drep-pp/overview[DRep Pioneer program]: prepares participants to become decentralized representatives, playing a crucial role in Cardano’s governance. 
+- https://github.com/input-output-hk/marlowe-pioneer-program[Marlowe Pioneer program]: specializes in Marlowe, a domain-specific language for financial contracts on Cardano, and is aimed at both developers and financial professionals.
 - Tutorials: technical tutorials that describe features of Cardano and how to work with them.
 - Educational videos: introduce technical aspects, new features, hard fork events, and so on.
 - Hackathon support: writing hackathon challenges and attending the event to support the participants.
 
-The first Cardano Developer course was delivered online in conjunction with the African Blockchain Center to participants from the African region and covered the core modules of Haskell fundamentals and smart contract development languages, including Aiken, Plutus, and Marlowe. This course evolved from the original Haskell course and was expanded to include lectures on Aiken. A further iteration of the course was delivered in person at the Universidad Technológica Nacional in Buenos Aires, Argentina.
-Pioneer programs
-There are a variety of successful online pioneer programs available for developers and new users. These interactive training courses aim to widen the reach of IOG’s education resources and have been completed by over nine thousand people. These courses cover Plutus, Marlowe, Atala, and have recently rolled out a DRep Pioneer program to educate people on governance in Cardano.
-During these programs, participants attend weekly lectures delivered by Lars Brünjes, director of education at IOG, who also held weekly follow-up interactive Q&A sessions. People were supported by a thriving community in the Discord chat system that encouraged collaboration and problem-solving.
+The first Cardano Developer course was delivered online in conjunction with https://www.theafricablockchaincenter.com/[the African Blockchain Center] to participants from the African region and covered the core modules of Haskell fundamentals and smart contract development languages, including Aiken, Plutus, and Marlowe. This course evolved from the original Haskell course and was expanded to include lectures on Aiken. A further iteration of the course was delivered in person at the https://utn.edu.ar/es/[Universidad Technológica Nacional] in Buenos Aires, Argentina.
+
+We have delivered several Pioneer Programs aimed at developers and new users. These interactive online training courses aim to widen the reach of IO’s education resources and have been completed by over nine thousand people. During these programs, participants attend weekly lectures delivered by Lars Brünjes, director of education at IO, who also held weekly follow-up interactive Q&A sessions. Learners are supported by a thriving community in the Discord chat system that encouraged collaboration and problem-solving.
 
 One of the most positive outcomes of these courses was the amazing community participation on Discord. The participants supported each other, created additional learning resources, were quick to report any issues, and tested features – they really were acting as true pioneers. We also saw a wide range of innovative resources and ideas from the courses, including new wallets, training materials, and new projects on Cardano.
 
-A self-paced version of this course is being developed where participants will be able to pick and choose the modules they want to complete and work at their own pace, rather than follow a weekly schedule. 
+A self-paced Cardeno education program is currently being developed where participants will be able to pick and choose the modules they want to complete and work at their own pace, rather than follow a weekly schedule. 
 
-How can we work together?
-The IO education team values interactive and meaningful training workshops, and continues hosting these in various locations around the world each year. If you are interested in hosting an education event such as Cardano Days, or to collaborate on a training course, please get in touch. Stay tuned for more education updates and visit the IO Academy. 
+===== How can we work together?
 
-About the Cardano developer portal
-The Developer Portal is one of the ‘cardano.org’ websites: a product-and-vendor neutral contact point for technical topics. 
-Guided by the principle of community involvement, all content is contributed openly and transparently using a Git process (branch, pull request, review, merge). This approach allows anyone to submit proposals with new or updated Markdown-formatted content and thus contribute actively and constructively.
-Under the hood, Docusaurus (an open-source project for building, deploying, and maintaining websites) works as a generator of web pages with extensive search functions.
-Content
-The Developer Portal content is intended to practically demonstrate and exemplify how certain functions and operations can be implemented on the Cardano blockchain, as well as showcase existing projects. A basic requirement for including projects is that they must be functioning and usable on the mainnet (see the guideline for adding new projects).
-The Developer Portal provides resources to integrate Cardano, build with transaction metadata, explore native tokens, create smart contracts, participate in governance, and operate a stake pool.
-Contributors
+The IO education team values interactive and meaningful training workshops, and continues hosting these in various locations around the world each year. If you are interested in hosting an education event such as Cardano Days, or to collaborate on a training course, please get in touch by emailing education@iohk.io. Stay tuned for more education updates and visit the https://www.youtube.com/channel/UCX9j__vYOJu00iqBrCzecVw[IO Academy]. 
+
+===== About the Cardano developer portal
+
+The https://developers.cardano.org/[Cardano developer portal] is an additional learning resource and is part of the Cardano.org domain: a product-and-vendor neutral contact point for technical topics. 
+
+Guided by the principle of community involvement, all content is contributed openly and transparently using a GitHub process (branch, pull request, review, merge). This approach allows anyone to submit proposals with new or updated Markdown-formatted content and thus contribute actively and constructively.
+
+Under the hood, https://docusaurus.io/[Docusaurus] (an open-source project for building, deploying, and maintaining websites) works as a generator of web pages with extensive search functions.
+
+The content of this developer portal is intended to practically demonstrate and exemplify how certain functions and operations can be implemented on Cardano, as well as showcase existing projects. A basic requirement for including projects is that they must be functioning and usable on the mainnet (see the guideline for https://developers.cardano.org/docs/portal-contribute/#add-a-project-to-showcase[adding new projects]).
+
+This portal provides resources to https://developers.cardano.org/docs/integrate-cardano/[integrate Cardano], https://developers.cardano.org/docs/transaction-metadata/[build with transaction metadata], https://developers.cardano.org/docs/native-tokens/[explore native tokens], https://developers.cardano.org/docs/smart-contracts/[create smart contracts], https://developers.cardano.org/docs/governance/[participate in governance], and https://developers.cardano.org/docs/operate-a-stake-pool/[operate a stake pool].
+
 Contributions from all individuals, including non-developers, are encouraged to foster continuous evolution by the community. Contributing to the portal can boost reputation and visibility, or serve as a good learning experience in the GitHub open-source and knowledge-minded contribution process. Each contribution acts as a valuable addition to your resume, potentially leading to career opportunities within the Cardano ecosystem. Ways to contribute include spreading awareness, creating issues on GitHub or the Cardano Forum, improving the copy by fixing errors or enhancing writing, and creating explanatory graphics.
-There is even a dedicated section that describes how best to contribute.
-The Builder Tools section of the developer portal encourages the addition of valuable tools that benefit Cardano developers. Guidelines for adding tools include being an actual builder tool, having a stable domain name, and using a GitHub account with a history or presence in the Cardano community.
-The documentation in the portal can be improved, and users are encouraged to contribute by creating and enhancing tutorials. Reviewing pull requests is another way to contribute, requiring technical understanding and prior contributions. The FAQs cover topics such as the pull request review process, becoming a reviewer, getting added to the contributor list, and connecting with the developer community through Discord and the forum.
+There is a dedicated section that describes https://developers.cardano.org/docs/portal-contribute/[how best to contribute].
 
+The https://developers.cardano.org/docs/portal-contribute/[Builder Tools] section of the portal encourages the addition of valuable tools that benefit Cardano developers. Guidelines for adding tools include being an actual builder tool, having a stable domain name, and using a GitHub account with a history or presence in the Cardano community.
 
-
+The documentation in the portal can always be improved, and users are encouraged to contribute by creating and enhancing tutorials. Reviewing pull requests is another way to contribute, requiring technical understanding and prior contributions. The FAQs cover topics such as the pull request review process, becoming a reviewer, getting added to the contributor list, and connecting with the developer community through Discord and the forum.
 
 === Suggested Reading
 - https://docs.cardano.org/introduction/[Cardano Docs]
-- https://iohk.io/en/blog/posts/page-1/[IO Blog]
+- https://www.youtube.com/channel/UCX9j__vYOJu00iqBrCzecVw[IO Academy]
+- https://www.essentialcardano.io/[Essential Cardano]
+- https://iohk.io/en/blog/posts/2025/07/09/cardano-tokenomics-design-incentives-and-stablecoins-1//[Cardano Tokenomics]
 - https://academy.cardanofoundation.org/[Cardano Academy]
 - https://cardanofoundation.org/developer-portal[Cardano Developer Portal]
