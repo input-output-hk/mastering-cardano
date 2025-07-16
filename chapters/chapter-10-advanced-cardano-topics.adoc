@@ -1,4 +1,0 @@
-[[advanced-cardano-topics]]
-== Advanced Cardano topics
-
-TO DO: Write Advanced Cardano topics.

@@ -51,11 +51,10 @@ include::chapters/chapter-06-wallets-in-the-world-of-cardano.adoc[]
 include::chapters/chapter-07-stake-pools-and-stake-pool-operation.adoc[]
 include::chapters/chapter-08-writing-smart-contracts-plutusv3.adoc[]
 include::chapters/chapter-09-decentralized-applications.adoc[]
-include::chapters/chapter-10-advanced-cardano-topics.adoc[]
-include::chapters/chapter-11-looking-forward.adoc[]
+include::chapters/chapter-10-looking-forward.adoc[]
 
 // Disable chapter numbering.
 :sectnums!:
 
-include::chapters/chapter-12-glossary.adoc[]
-include::chapters/chapter-13-index.adoc[]
+include::chapters/chapter-11-glossary.adoc[]
+include::chapters/chapter-12-index.adoc[]
