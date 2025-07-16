@@ -201,12 +201,17 @@ Cardano Days events were launched in 2023, and the team has held several of thes
 
 - https://www.iteso.mx/en/[ITESO University], Guadalajara, Mexico
 - https://www.udec.edu.mx/en/[University of Celaya], Guanajuato, Mexico
-- https://www.um.edu.mt/[University of Malta], Valletta Campus, Malta.
-- https://www.uwyo.edu/index.html[University of Wyoming], USA.
-- https://web.unican.es/[University of Cantabria], Santander, Spain.
-- https://www.fiu.edu/[Florida International University], Miami, USA.
-- https://www.ntua.gr/en/[National Technical University of Athens], Greece.
-- <Azteca Unis>
+- https://www.um.edu.mt/[University of Malta], Valletta Campus, Malta
+- https://www.uwyo.edu/index.html[University of Wyoming], USA
+- https://web.unican.es/[University of Cantabria], Santander, Spain
+- https://www.fiu.edu/[Florida International University], Miami, USA
+- https://www.ntua.gr/en/[National Technical University of Athens], Greece
+- https://uatx.mx/[Autonomous University of Tlaxcala (UATx)], Tlaxcala, Mexico
+- https://www.ipn.mx/english/[National Polytechnic Institute (IPN) – Puebla Campus], Puebla, Mexico
+- https://www.buap.mx/[Meritorious Autonomous University of Puebla (BUAP)], Puebla, Mexico
+- https://uttecam.edu.mx/[Technological University of Tecamachalco (UTTECAM)], Puebla, Mexico
+- https://utbispuebla.edu.mx/[Bilingual and Sustainable Technological University of Puebla (UTBIS Puebla)], Puebla, Mexico
+- https://teziutlan.tecnm.mx/[Higher Technological Institute of Teziutlan (TecNM Teziutlan)], Puebla, Mexico
 - https://www.titech.ac.jp/english[Tokyo Intstitute of Technology], Japan
 
 These two-day events cover the basics of blockchain technology, Cardano, and smart contracts and proved very popular, with an NPS score of 92. More of these events are planned, so if you would like to know more about hosting this event, please get in touch by emailing education@iohk.io.
