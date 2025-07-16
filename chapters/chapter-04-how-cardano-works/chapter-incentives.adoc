@@ -1,4 +1,6 @@
 
+:imagesdir: ../../images
+
 === Incentives
 
 ==== What are Incentives?
