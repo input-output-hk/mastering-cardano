@@ -3,7 +3,7 @@
 [[decentralized-applications]]
 == Decentralized Applications
 
-Decentralized Applications (DApps) aim to empower end-users through ensuring that the encoded digital processes and data stored are not centrally controlled (as discussed in previous chapters). So far in the previous chapters, we have covered some of the components that support decentralised applications including the blockchain network, smart contracts and wallets. In this chapter we focus on those technological components that support user interaction and bridge the gap between foundational blockchain and smart contract infrastructure and users.
+Decentralized Applications (DApps) aim to empower end-users through ensuring that the encoded digital processes and data stored are not centrally controlled (as discussed in previous chapters). So far in the previous chapters, we have covered some of the components that support decentralised applications including the blockchain network, smart contract/on-chain scripts and wallets. In this chapter we focus on those technological components that support user interaction and bridge the gap between foundational blockchain and on-chain script infrastructure and users.
 
 === Traditional Web Application Architecture
 
@@ -40,11 +40,11 @@ The advent of blockchain platforms and smart contracts built on them, provided a
 [#fig-dapp]
 image::dAppArchitecture.png[]
 
-Interaction with DApps, at an abstract level, can be broken down into three steps exactly like traditional web applications. Yet following the initial web page request (depicted in step 1) and web page response (depicted in step 2), future interaction (depicted in interactions marked as 3) between the client browser is not restricted only to communication with the centralised platform (or other centralised services), but can interact with decentralized platforms such as Cardano’s blockchain and smart contracts running on top of it. Consider the same example discussed above. Initially, an end-user can request the web page that displays different products (and in turn their browser receiving the web page including HTML and JavaScript). Thereafter, when the user wants to select a product to purchase which will require for the total to be calculated, this interaction could take place directly from the client’s web browser with a smart contract deployed on the blockchain. Thereafter, payment could be made again through direct interaction between the user’s web browser and smart contracts. Fulfilment of the order could even take place by underlying smart contracts — if the service is one that can be fulfilled digitally through smart contracts, e.g. if a user was buying a particular token in exchange for another cryptocurrency.
+Interaction with DApps, at an abstract level, can be broken down into three steps exactly like traditional web applications. Yet following the initial web page request (depicted in step 1) and web page response (depicted in step 2), future interaction (depicted in interactions marked as 3) between the client browser is not restricted only to communication with the centralised platform (or other centralised services), but can interact with decentralized platforms such as Cardano’s blockchain and on-chain scripts running on top of it. Consider the same example discussed above. Initially, an end-user can request the web page that displays different products (and in turn their browser receiving the web page including HTML and JavaScript). Thereafter, when the user wants to select a product to purchase which will require for the total to be calculated, this interaction could take place directly from the client’s web browser with on-chain code deployed on the blockchain. Thereafter, payment could be made again through direct interaction between the user’s web browser and on-chain scripts. Fulfilment of the order could even take place by underlying on-chain scripts — if the service is one that can be fulfilled digitally through on-chain scripts, e.g. if a user was buying a particular token in exchange for another cryptocurrency.
 
-While the server is responsible for delivery of the initial HTML and JavaScript sent to the client’s web browser, and even most of the logic coordinating future interaction, any required guarantees can be provided based on logic encoded in smart contracts. Really the front-end HTML code, and JavaScript code that coordinates the interaction with underlying smart contracts can be seen as the gateway facilitating interaction with the actual logic encoded in the smart contracts. If it was desirable to do away with the centralised request/response delivering the initial HTML/JavaScript code, then other distributed platforms could be used to replace the centralised components such as IPFS (which will discuss in more depth later in this chapter).
+While the server is responsible for delivery of the initial HTML and JavaScript sent to the client’s web browser, and even most of the logic coordinating future interaction, any required guarantees can be provided based on logic encoded in on-chain script code. Really the front-end HTML code, and JavaScript code that coordinates the interaction with underlying on-chaoin script code can be seen as the gateway facilitating interaction with the actual logic encoded in the on-chain scripts. If it was desirable to do away with the centralised request/response delivering the initial HTML/JavaScript code, then other distributed platforms could be used to replace the centralised components such as IPFS (which will discuss in more depth later in this chapter).
 
-To further exemplify how guarantees can be provided through smart contracts (in spite of initial HTML/JavaScript code being delivered by centralised infrastructure), we’ll now introduce how to use a DApp, and then later how to build a DApp.
+To further exemplify how guarantees can be provided through on-chain scripts (in spite of initial HTML/JavaScript code being delivered by centralised infrastructure), we’ll now introduce how to use a DApp, and then later how to build a DApp.
 
 ==== Prerequisites
 
@@ -169,7 +169,7 @@ image::lace-done.png[pdfwidth=45%]
 [#fig-minswap-balances-updated]
 image::minswap-balances-updated.png[pdfwidth=45%]
 
-And that’s it! You have used your first DApp (if you haven’t already done so, of course). To further build on what was discussed in the previous section, it is important to highlight the different interactions that took place from your browser and what it was communicating with. First we requested the DApp by visiting the web site (i.e. https://testnet-preprod.minswap.org/[_https://testnet-preprod.minswap.org/_]), through which your browser requested the web page (i.e. HTML and JavaScript and other images and media-assets) from the centralised Minswap server. We then instructed the DApp to connect to our wallet, and confirmed in the wallet that we agree to it connecting with the DApp. Our wallet runs on our computers and is the interface that we can trust to verify interactions with the underlying blockchain. The DApp fetches swap prices to display on screen by communicating with the centralised server directly — and though this may raise eyebrows in that the centralised server can manipulate prices, the guarantees with respect to actual swap prices used are provided through the final smart contract call that is used to initiate the swap (discussed next). When the user agrees to the swap in the wallet popup, it is at this point that the wallet directly communicates with the smart contract (deployed on the blockchain), within which the swap price is guaranteed to be the current price as defined by the smart contract logic. So, the guarantee provided to the user is that the swap will be performed at the current price (defined with decentralized smart contract code) — irrespective of whether the centralized server reports a different price. This potential price discrepancy is why such DEXs allow for users to specify a 'slippage' amount and/or minimum/maximum prices for swaps - so that users can express what minimum/maximum swap price they agree to in the case that there is a discrepancy between the prices reported on screen (by the centralized server) and the actual current price that the swap would use. This discrepancy emerges not only from the fact that servers may report different prices, but also given that time passes between user acceptance and the time the actual swap would take place — and within this time it may be the case that other swaps were executed for the specific price-pair that would affect the swap price.
+And that’s it! You have used your first DApp (if you haven’t already done so, of course). To further build on what was discussed in the previous section, it is important to highlight the different interactions that took place from your browser and what it was communicating with. First we requested the DApp by visiting the web site (i.e. https://testnet-preprod.minswap.org/[_https://testnet-preprod.minswap.org/_]), through which your browser requested the web page (i.e. HTML and JavaScript and other images and media-assets) from the centralised Minswap server. We then instructed the DApp to connect to our wallet, and confirmed in the wallet that we agree to it connecting with the DApp. Our wallet runs on our computers and is the interface that we can trust to verify interactions with the underlying blockchain. The DApp fetches swap prices to display on screen by communicating with the centralised server directly — and though this may raise eyebrows in that the centralised server can manipulate prices, the guarantees with respect to actual swap prices used are provided through the final on-chain script call that is used to initiate the swap (discussed next). When the user agrees to the swap in the wallet popup, it is at this point that the wallet directly communicates with the on-chain script code (deployed on the blockchain), within which the swap price is guaranteed to be the current price as defined by the on-chain logic. So, the guarantee provided to the user is that the swap will be performed at the current price (defined with decentralized on-chain script code) — irrespective of whether the centralized server reports a different price. This potential price discrepancy is why such DEXs allow for users to specify a 'slippage' amount and/or minimum/maximum prices for swaps - so that users can express what minimum/maximum swap price they agree to in the case that there is a discrepancy between the prices reported on screen (by the centralized server) and the actual current price that the swap would use. This discrepancy emerges not only from the fact that servers may report different prices, but also given that time passes between user acceptance and the time the actual swap would take place — and within this time it may be the case that other swaps were executed for the specific price-pair that would affect the swap price.
 
 Having explored using a DApp, let’s now delve into aspects of internal workings of a DApp by re-creating parts of a DApp.
 
@@ -178,9 +178,9 @@ Having explored using a DApp, let’s now delve into aspects of internal working
 We’ll now create the following aspects of a DApp:
 
 * Server-side code: A NodeJS server that will send a page's HTML/JavaScript to the end-user.
-* Client-side code: This is the code that will be sent from the server (discussed above), but will execute in the client-side browser. This code will connect to the wallet and communicate with a deployed smart contract.
+* Client-side code: This is the code that will be sent from the server (discussed above), but will execute in the client-side browser. This code will connect to the wallet and communicate with a deployed on-chain script.
 
-We will not create smart contract code in this section (since that is handled in #Chapter 8#). Indeed, DApps can be created that communicate with existing deployed smart contracts that may not necessarily be written by the same developers/teams — just as we demonstrate now below.
+We will not create on-chain script code in this section (since that is handled in #Chapter 8#). Indeed, DApps can be created that communicate with existing deployed on-chain scripts that may not necessarily be written by the same developers/teams — just as we demonstrate now below.
 
 _Creating a Server (with NodeJS)_
 
@@ -224,7 +224,7 @@ image::node-hello-world.png[pdfwidth=45%]
 
 [[para-csc, Creating Client-Side Code]]_Creating the Client-Side Code to Connect to the Wallet_
 
-Now that we have a server able to send HTML/JavaScript to end-users, let’s write the client-side code to connect to a user’s wallet and interact with the underlying smart contracts. We’ll only provide the bare minimal code that is needed. Indeed, you may want to look into implementing a full HTML page (including html, head and body tags), but we’ll only provide the necessities for the sake of simplicity.
+Now that we have a server able to send HTML/JavaScript to end-users, let’s write the client-side code to connect to a user’s wallet and interact with the underlying on-chain scripts. We’ll only provide the bare minimal code that is needed. Indeed, you may want to look into implementing a full HTML page (including html, head and body tags), but we’ll only provide the necessities for the sake of simplicity.
 
 First, we’ll create an HTML button and JavaScript that will connect the client-side code to the wallet. The code to provide a connect button is provided below.
 
@@ -257,11 +257,11 @@ After reloading the webpage (i.e. refreshing the url, localhost:3000), you shoul
 [#dapp-connect-to-lace]
 image::dapp-connect-to-lace.png[]
 
-Now that we have connected the client-side code to the wallet, we'll write some code that will interact with an underlying smart contract. Just before we do this though, we'll now package some libraries that we need to use in the client-side JavaScript.
+Now that we have connected the client-side code to the wallet, we'll write some code that will interact with an underlying on-chain script. Just before we do this though, we'll now package some libraries that we need to use in the client-side JavaScript.
 
 _Packaging Libraries for use in Client-Side JavaScript_
 
-In the client-side JavaScript code, we'll use Mesh - a library that will provide an easier-to-use interface to interact with the smart contracts deployed on the blockchain. To do so, we'll package the Mesh library using webpack and serve it to the client-side JavaScript code. Indeed, you can use a different method to package and serve the library. The code we provide here may require changes (especially when considering different versions of sdks used, e.g. NodeJS). If the code does not work out-of-the-box you may need to investigate how to package and deploy libraries and/or fix this code as required for your environment. We will not delve into the intricacies of this code but you may want to read up on how to package and serve libraries for client-side JavaScript code.
+In the client-side JavaScript code, we'll use Mesh - a library that will provide an easier-to-use interface to interact with the on-chain script code deployed on the blockchain. To do so, we'll package the Mesh library using webpack and serve it to the client-side JavaScript code. Indeed, you can use a different method to package and serve the library. The code we provide here may require changes (especially when considering different versions of sdks used, e.g. NodeJS). If the code does not work out-of-the-box you may need to investigate how to package and deploy libraries and/or fix this code as required for your environment. We will not delve into the intricacies of this code but you may want to read up on how to package and serve libraries for client-side JavaScript code.
 
 To export the Mesh library follow these steps:
 
@@ -373,7 +373,7 @@ app.listen(port, () => {
 
 _Using the Bundled Mesh Library in the Client-Side JavaScript_
 
-Now, we'll use the bundled mesh library in the client-side JavaScript to communicate with smart contracts.
+Now, we'll use the bundled mesh library in the client-side JavaScript to communicate with on-chain script.
 
 We'll expand on the HTML file described above (from the <<para-csc>> Section). Again, for simplicity sake we'll encode all HTML and JavaScript into a single file (in index.html). We'll start by adding the boilerplate functionality to use the bundled library:
 
@@ -433,19 +433,19 @@ async function connectWallet() {
 . To test this code, the Node server will need to be started (potentially restarted), and the page loaded by opening the url `localhost:3000` in a browser. Then check to make sure that loading of the library and loading of the Mesh library objects and functions do not raise any errors (though you might see an error relating to not being able to load favicon.ico).
 
 
-==== Interacting with the Redeemer 42 Smart Contract
+==== Interacting with the Redeemer 42 On-Chain Script Code
 
-To demonstrate DApp interaction, we'll write client-side JavaScript code to interact with the Redeemer 42 smart contract (discussed in #Chapter 8#).footnote:[Also see https://github.com/LukaKurnjek/ppp-plutusV3-plinth/blob/main/off-chain/meshjs/Week02/redeemer42-ref-script.ts] You can read Section <<Simple validation scripts>> to get a better understanding of the Redeemer 42 Script (if you have not already done so). We'll first send funds to the smart contract and then #XXXX#.
+To demonstrate DApp interaction, we'll write client-side JavaScript code to interact with the Redeemer 42 on-chain script code (discussed in #Chapter 8#).footnote:[Also see https://github.com/LukaKurnjek/ppp-plutusV3-plinth/blob/main/off-chain/meshjs/Week02/redeemer42-ref-script.ts] You can read Section <<Simple validation scripts>> to get a better understanding of the Redeemer 42 Script (if you have not already done so). We'll send funds, deploy a reference script and then claim back the funds sent.
 
 The Redeemer 42's reference script that the DApp will interact with has already been deployed to the preprod network. Its transaction hash is: ac43f379762d68839a75d95146c332e6025e5a305fffc071308d138849109bfc
 
 
 
-_Sending Funds to the Redeemer 42 Smart Contract_
+_Sending Funds to the Redeemer 42 On-chain Scripts_
 
-To add functionality that sends funds to the Redeemer 42 smart contract follow these steps:
+To add functionality that sends funds to the Redeemer 42 on-chain script code follow these steps:
 
-. Add into the client-side JavaScript code the following to get a reference to the deployed Redeemer 42 smart contract:
+. Add into the client-side JavaScript code the following to get a reference to the deployed Redeemer 42 script:
 
 [source,javascript]
 ----
@@ -480,12 +480,12 @@ Line number 2 connects to the wallet (if it has not already been connected to, e
 
 Line number 3 gets the change address (#discussed in Chapter 8#), that will be set in the transaction being constructed.
 
-Line numbers 4-7 sets the required parameters for the transaction including: passing in a reference to the wallet we're using to send funds, the network (i.e. #preprod#), the smart contract address (computed in the 1st step) and the amount of Lovelace to send, and the change address.
+Line numbers 4-7 sets the required parameters for the transaction including: passing in a reference to the wallet we're using to send funds, the network (i.e. #preprod#), the script address (computed in the 1st step) and the amount of Lovelace to send, and the change address.
 
 In line number 9, 10 and 11, we build the transaction, sign it and submit the transaction respectively.
 
 [start=3]
-. We also add a 'Send Funds' button to call the added functionality to send 3,000,000 Lovelace (3 Ada) to the smart contract.
+. We also add a 'Send Funds' button to call the added functionality to send 3,000,000 Lovelace (3 Ada).
 
 For reference, the full updated index.html file follows:
 
@@ -547,11 +547,11 @@ After running the NodeJS server and refreshing the page (i.e. refreshing localho
 [#fig-sendFunds]
 image::redeemer42-sendFunds.png[pdfwidth=50%]
 
-Upon clicking 'Send Funds' the wallet should pop-up asking that you confirm sending 3 Ada to the smart contract. It may take a while until the transaction is part of a block -- you can check your wallet's transaction history and also search in a Cardano preprod network block explorer for your wallet's address for a successful transaction (at the associate date/time).
+Upon clicking 'Send Funds' the wallet should pop-up asking that you confirm to sending 3 Ada. It may take a while until the transaction is part of a block -- you can check your wallet's transaction history and also search in a Cardano preprod network block explorer for your wallet's address for a successful transaction (at the associate date/time).
 
-_Deploying a reference script for the Redeemer 42 Smart Contract_
+_Deploying a reference script for the Redeemer 42 Scripts_
 
-To add functionality that deploys a reference script (discussed in #Chapter 8#) for the Redeemer 42 smart contract follow these steps:
+To add functionality that deploys a reference script (discussed in #Chapter 8#) for the Redeemer 42 scripts follow these steps:
 
 . First, we'll import the MeshTxBuilder and KoiosProvider objects from the mesh sdk bundle we created before. The added lines are denoted by the 'added now' comments:
 
@@ -719,7 +719,7 @@ async function connectWallet() {
 [#fig-deployReference]
 image::dapp-deploy-reference-script.png[pdfwidth=50%]
 
-_Claiming back funds from the Redeemer 42 Smart Contract_
+_Claiming back funds from the Redeemer 42 Scripts_
 
 
 === Decentralized Web Storage
