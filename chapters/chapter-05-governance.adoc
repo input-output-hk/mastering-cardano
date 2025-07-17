@@ -119,11 +119,11 @@ Catalyst continues to improve and evolve with shared learnings. For example, fun
 * Smart Contract Legal Advice  
 * Token Classification Support 
 
-The Catalyst team released their http://projectcatalyst.io/reports/horizons.pdf[Catalyst Horizons report] documenting various milestones. To dig deeper into the stats and trends, visit the https://projectcatalyst.io/reports[Reports]section of projectcatalyst.io for the latest data.
+The Catalyst team released their http://projectcatalyst.io/reports/horizons.pdf[Catalyst Horizons report] documenting various milestones. To dig deeper into the stats and trends, visit the https://projectcatalyst.io/reports[Reports] section of projectcatalyst.io for the latest data.
 
 === The age of Voltaire
 
-As Catalyst took a ‘tactical pause’ break after Fund9, there was a timely Systemization of Knowledge (SoK) research paperfootnote:[Kiayias, Lazos (2022), 'SoK: Blockchain Governance', arxiv.org/pdf/2201.07188.pdf] published just around this same time, reflecting on the state of governance in ten blockchains, including Bitcoin, Ethereum, and Cardano.
+As Catalyst took a ‘tactical pause’ after Fund9, there was a timely _Systemization of Knowledge (SoK)_ research paperfootnote:[Kiayias, Lazos (2022), 'SoK: Blockchain Governance', arxiv.org/pdf/2201.07188.pdf] published just around this same time, reflecting on the state of governance in ten blockchains, including Bitcoin, Ethereum, and Cardano.
 
 The paper lists *seven properties* to assess different requirements for effective blockchain governance:
 
