@@ -412,9 +412,11 @@ Any ada holder can become a DRep. This means ada holders can choose to directly 
 
 *Why delegate?*
 
-Delegation allows ada holders to empower representatives who are potentially better equipped to make informed decisions on their behalf. This fosters a more democratic system where everyone has a say, even if they don't have the time or expertise to delve into every proposal.
+Delegation allows ada holders to empower representatives who are potentially better equipped to make informed decisions on their behalf. This fosters a more democratic system where everyone has a say, even if they don’t have the time or expertise to delve into every proposal.
 
 The first community DRep workshop took place on January 20, 2024, in Oslo. This initiative was funded by a Catalyst Fund10 https://projectcatalyst.io/funds/10/f10-drep-improvement-and-onboarding/drep-recruitment-training-and-ethical-code-development-workshops[proposal] from Eyetein Hansen, Adam Rusch, Ekow Harding, Jose De Gamboa, Thomas Lindseth, and Yuki Oishi. Many more workshops followed.
+
+Intersect collaborated with the IOG education team on the https://sancho.network/drep-pioneer-program/drep-pp/overview[DRep Pioneer program], an online interactive training course for nominated delegate representatives (DReps) involved in Cardano’s proposed governance structure.
 
 *Stake pool operators (SPOs)*
 
@@ -431,13 +433,14 @@ SPOs play a vital part in Cardano's on-chain voting governance by:
 
 *The constitutional committee (CC)*
 
-Unlike other Cardano governance bodies, the CC operates independently and entirely outside of Intersect. It is one of three key groups (alongside SPOs and DReps) that vote on proposals to change Cardano's core systems through governance actions. The CC's primary function is to review proposed changes with a limited focus: ensuring that they align with the principles outlined in Cardano's constitution.
+Unlike other Cardano governance bodies, the CC operates independently and entirely outside of Intersect. It is one of three key groups (alongside SPOs and DReps) that vote on proposals to change Cardano’s core systems through governance actions. The CC’s primary function is to review proposed changes with a limited focus: ensuring that they align with the principles outlined in Cardano’s constitution.
 
 === Cardano governance flow
 
 CIP-1694 outlines Cardano's on-chain governance process, but it's also important to consider the supporting off-chain activities.
 
 *Off-chain proposal discussions*
+
 Before proposals are submitted to the blockchain for official votes, there is a crucial off-chain stage for discussion and refinement. Off-chain debate allows for:
 
 * *Clearer proposals*: proposers can share more details, rationale, and supporting evidence to ensure everyone understands the idea
@@ -453,11 +456,24 @@ Intersect recognizes the importance of off-chain discussions and has issued a gr
 
 Once a proposal has been thoroughly discussed and refined off-chain, it is ready for the official vote on the blockchain. This is known as on-chain governance action submission. Proposals can be submitted on-chain through the Cardano command-line interface (CLI) or via GovTool’s user-friendly interface. The specific content required for an on-chain proposal depends on the type of governance action being submitted. Proposers can optionally add metadata to provide additional context and information alongside the proposal.
 
+=== Governance actions 
+What are governance actions? Imagine them as proposals submitted on the Cardano blockchain for voting. These proposals trigger events on the blockchain through transactions and have a set timeframe for voting before they expire and can’t be enacted. Any ada holder can submit a governance action for on-chain voting. Once a proposal is submitted and recorded on the ledger, voters can vote through separate voting transactions. Note a governance action requires a refundable deposit of 100,000 ADA to prevent spam and demonstrate commitment. The deposit is returned after the action is finalized.
+
+CIP-1694 defines seven categories of governance actions:
+
+1. Motion of no-confidence: creates a state of no-confidence in the current constitutional committee
+2. New constitutional committee or quorum size: proposes a change to the members of the constitutional committee and/or to its signature threshold and/or terms
+3. Updates to the constitution: proposes a change to the off-chain constitution, recorded as an on-chain hash of the text document
+4. Hard fork initiation: triggers a non-backward compatible upgrade of the network
+5. Protocol parameter changes: proposes a change to one or more updatable protocol parameters
+6. Treasury withdrawals: proposals for how to spend funds from the Cardano treasury
+7. Info: simply provide information and don’t require enactment.
+
+Governance actions vary in complexity. Info Actions and Treasury Withdrawals are relatively straightforward, but Constitutional updates require metadata, a constitution hash, a URL, and a proposal policy script. Protocol Parameter Changes and Hard Fork Initiation are non-trivial to implement, requiring technical expertise. To demystify some of the processes, the CF published https://cardanofoundation.org/blog/understanding-cardano-governance-actions[flow charts] to encourage wider participation. 
+
 === Registering as a DRep on-chain
 
 DRep registration occurs on the blockchain and can be done through the Cardano CLI or GovTool. During registration, DReps can optionally add details about themselves (metadata) to help ada holders decide who to delegate their votes to.
-
-Intersect recognizes the importance of a strong DRep system and has issued a https://intersect.gitbook.io/intersect-community-grants/cohort-2/drep-campaign-platform[grant] to establish a DRep campaign platform.
 
 *On-chain DRep delegation*
 
