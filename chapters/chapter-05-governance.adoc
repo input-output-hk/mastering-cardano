@@ -359,15 +359,32 @@ How it works:
 * The community will vote on the budget proposal at the annual members meeting (AMM)
 * Upon approval, funds will be allocated from the Cardano treasury through on-chain voting.
 
-Figure 5.4: Provisional Budget process timeline
+image::../images/5.4_budget_roadmap.png[]
+*Figure 5.4:* Provisional Budget process timeline
 
 *Product committee*
 
+The product committee manages and tracks the roadmap for development items. Their responsibilities include facilitating processes to converge on a shared vision and roadmap. The committee encouraged the community to submit projects for consideration for the 2025 roadmap, with an https://committees.docs.intersectmbo.org/intersect-technical-steering-committee/technical-roadmap/how-to-participate-in-shaping-the-technical-roadmap[explainer] to guide them through the process.
 
-image::../images/5.4_provisional_budget_process.png[]
-*Figure 5.4:* Provisional Budget process timeline
+*Working groups*
 
-==== Product committee
+Intersect forms temporary groups called working groups to address specific needs as they arise. These groups can focus on any topic and operate less formally than the permanent committees.
+
+* Each working group defines its purpose, operating procedures, and member roles and responsibilities in a terms of reference document
+* Participation limitations, like application processes or elections, are set with board approval
+* Meeting frequency and procedures are also established
+* Each working group works under a specific committee but may collaborate with others
+* They report their progress and findings to their overseeing committee(s).
+
+Intersect's *hard fork working group* was one of the busiest as it oversaw the Chang and Plomin upgrades. It began as just three attendees on the first call in February 2024. As the working group has met at least weekly, often more, the attendee list grew to over sixty. The group’s last call was almost a year later on Tuesday, February 11, 2025, fulfilling its remit to oversee all aspects of the Chang and Plomin hard forks to a successful conclusion. 
+
+To learn more, head over to the Intersect https://intersect.gitbook.io/intersect-working-groups/[working groups] space for a complete list and further details.
+Committees are elected by Intersect members only, using a one-member, one-vote system. Elections take place twice yearly. Half of each committee’s members were elected in the first elections in October 2024, and the remaining members were elected in 2025. The official final numbers for newly elected committees were made up of a “Who’s Who” of Cardano’s brains trust:
+
+image::../images/5.5_committee_election_results.png[]
+*Figure 5.5:* Committee Election results
+
+==== Cardano governance: a three-part approach
 The product committee manages and tracks the roadmap for development items. Their responsibilities include:
 
 * Continuity, in other words, maintenance, upgrades, and core development, feature requests
