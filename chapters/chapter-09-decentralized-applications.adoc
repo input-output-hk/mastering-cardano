@@ -19,20 +19,20 @@ When browsing web sites, at an abstract level, the process can be broken down in
 
 . Your request for a web page (depicted in Step 1 in <<fig-tradweb>>). When you use a web browser on your computer (or mobile phone) and go to a website, really what is happening is your browser makes a 'request' to the web server that hosts the web page, asking it for the content of the specific page.
 
-. The web server which is centrally owned and controlled by some entity, receives the request and puts together its 'response' — more specifically the web page content to return. This 'response' is sent back to your web browser, operating on your device (depicted in Step 2 of <<fig-tradweb>>).
+. The web server which is centrally owned and controlled by some entity, receives the request and puts together its 'response' -- more specifically the web page content to return. This 'response' is sent back to your web browser, operating on your device (depicted in Step 2 of <<fig-tradweb>>).
 
 . Once a web page has been loaded in your web browser, subsequent data and interaction can take place between the web page itself and the web server (depicted in Step 3 of <<fig-tradweb>>). This could be to retrieve, for example, the latest news articles on a news website. Web applications are typically composed of more than one web page. Usage of one web page may lead to directing a user to another web page, resulting in a request for a new web page (which would initiate the process for requesting a new web page depicted in step 1).
 
-Some web pages have static content, i.e. their content is always the same (and perhaps hard-coded). For example, consider a web page that always displays the text 'Hello World!'. While other pages may be more dynamic, which allow for the web server to decide on the specific content to respond with. For example, consider a web page that displays the current date and time — the content dynamically changes according to the date and time. Really, most web pages nowadays consist of some degree of static content and some amount of dynamic content. Though it is also not unheard of to have completely static web pages — for example, many company landing pages often have a static view of what they want their clients to see as the first page of their web site.
+Some web pages have static content, i.e. their content is always the same (and perhaps hard-coded). For example, consider a web page that always displays the text 'Hello World!'. While other pages may be more dynamic, which allow for the web server to decide on the specific content to respond with. For example, consider a web page that displays the current date and time -- the content dynamically changes according to the date and time. Really, most web pages nowadays consist of some degree of static content and some amount of dynamic content. Though it is also not unheard of to have completely static web pages -- for example, many company landing pages often have a static view of what they want their clients to see as the first page of their web site.
 
-The actual 'response' that the web server sends back to your web browser most typically consists of two parts: (a) HTML code; and (b) JavaScript code (and some other media assets and styling sheets). The HTML code describes what the web page should look like.footnote:[ The content likely also makes use of CSS code, but this detail can be ignored unless you want to dig deeper into web page design.] Your browser uses the HTML code it receives as a means of 'drawing' the visual aspect to the web page. Consider a web page that can be used as a calculator. The HTML would describe and provide the instructions for your browser to visualise all aspects of the calculator including the different buttons on the calculator, and the display. Yet with such a visual representation (that HTML provides) only, pressing the buttons would not have any effect. A second component is needed to provide instructions to the browser that describes the functionality of the web page — i.e. for the calculator use-case, functionality for displaying a '1' when the '1' button is pressed, and for adding two numbers together and displaying their result when required. This functionality is encoded within the JavaScript component of a web page.
+The actual 'response' that the web server sends back to your web browser most typically consists of two parts: (a) HTML code; and (b) JavaScript code (and some other media assets and styling sheets). The HTML code describes what the web page should look like.footnote:[ The content likely also makes use of CSS code, but this detail can be ignored unless you want to dig deeper into web page design.] Your browser uses the HTML code it receives as a means of 'drawing' the visual aspect to the web page. Consider a web page that can be used as a calculator. The HTML would describe and provide the instructions for your browser to visualise all aspects of the calculator including the different buttons on the calculator, and the display. Yet with such a visual representation (that HTML provides) only, pressing the buttons would not have any effect. A second component is needed to provide instructions to the browser that describes the functionality of the web page -- i.e. for the calculator use-case, functionality for displaying a '1' when the '1' button is pressed, and for adding two numbers together and displaying their result when required. This functionality is encoded within the JavaScript component of a web page.
 
-The HTML and JavaScript code described above is sent to your browser on your computer, and is executed in your browser (on your computer). Really this means that you could manipulate the HTML and JavaScript code, which means you can change what a web page you interact with looks like, and also its functionality.footnote:[ Most web browsers allow users to use 'Developer Tools' that are built into the web browsers themselves, that allow you to manipulate web pages once they are in your browser.] This code received from the web browser, which is executed in your browser, is what we call “client-side” — i.e. code that executes in the client’sfootnote:[ It may help to consider that when using a web site you are the client, and this is why it is referred to as client-side code, since the code is executing on your laptop. Really though the terminology comes from ;'client-server' architectures (which has resemblances to the analogy provided).] browser. Since the code can be manipulated by yourself (the client), web site operators cannot just trust any interactions or code that take place on your device, and it is for this reason that some functionality is not encoded into the 'client-side' HTML and JavaScript but encoded into 'server-side' code which executes on the web server owned by the particular entity the original web page was received from. For the code that is executed on the web server, the website operator has full control over that logic and as users of that website we must trust the operator. To exemplify this further consider an online shopping platform. Whilst end-users are displayed with products and prices on screen and are able to select which products they would like to purchase, the site operator cannot trust end-users to calculate the total cost due after selecting products. Since as described above, end-users would be able to manipulate the total calculation taking place within their browser. Therefore, the web site is built in such a way that code concerned with total calculation is ultimately done on the web server ('server-side'). Once a total is calculated and a client is ready to pay, clients' are typically sent to a payment page where they enter their bank card details. Again, processing of card transactions is typically done 'server-side' for the same reasons. Yet, in this scenario, clients that are making purchases need to trust the operator and the code that is handling the total calculation (and executing on the web server) to not overcharge after entering their card details. Traditional web applications and their architectures heavily support keeping site operators in a position of power, i.e. where platform providers are in full control and end-users are reliant on the platforms, and must trust that the platforms do their job properly — and when they do not must try to seek recourse in some other manner if possible (e.g. through contacting the operator, or seeking legal recourse if necessary and possible).
+The HTML and JavaScript code described above is sent to your browser on your computer, and is executed in your browser (on your computer). Really this means that you could manipulate the HTML and JavaScript code, which means you can change what a web page you interact with looks like, and also its functionality.footnote:[ Most web browsers allow users to use 'Developer Tools' that are built into the web browsers themselves, that allow you to manipulate web pages once they are in your browser.] This code received from the web browser, which is executed in your browser, is what we call "client-side" -- i.e. code that executes in the client'sfootnote:[ It may help to consider that when using a web site you are the client, and this is why it is referred to as client-side code, since the code is executing on your laptop. Really though the terminology comes from ;'client-server' architectures (which has resemblances to the analogy provided).] browser. Since the code can be manipulated by yourself (the client), web site operators cannot just trust any interactions or code that take place on your device, and it is for this reason that some functionality is not encoded into the 'client-side' HTML and JavaScript but encoded into 'server-side' code which executes on the web server owned by the particular entity the original web page was received from. For the code that is executed on the web server, the website operator has full control over that logic and as users of that website we must trust the operator. To exemplify this further consider an online shopping platform. Whilst end-users are displayed with products and prices on screen and are able to select which products they would like to purchase, the site operator cannot trust end-users to calculate the total cost due after selecting products. Since as described above, end-users would be able to manipulate the total calculation taking place within their browser. Therefore, the web site is built in such a way that code concerned with total calculation is ultimately done on the web server ('server-side'). Once a total is calculated and a client is ready to pay, clients' are typically sent to a payment page where they enter their bank card details. Again, processing of card transactions is typically done 'server-side' for the same reasons. Yet, in this scenario, clients that are making purchases need to trust the operator and the code that is handling the total calculation (and executing on the web server) to not overcharge after entering their card details. Traditional web applications and their architectures heavily support keeping site operators in a position of power, i.e. where platform providers are in full control and end-users are reliant on the platforms, and must trust that the platforms do their job properly -- and when they do not must try to seek recourse in some other manner if possible (e.g. through contacting the operator, or seeking legal recourse if necessary and possible).
 
 [[dapp-architecture]]
 === Decentralized Application Architecture
 
-The advent of blockchain platforms and smart contracts built on them, provided a new place where code could be executed, i.e. in smart contracts on a blockchain. Executing code in smart contracts, unlike code executed in client browsers or server-side, provides guarantees that the code cannot be manipulated or altered — not even by the programmer that created the code! Furthermore the code executed in smart contracts is publicly available, and therefore users can look into the smart contract logic prior to interacting with them. Through the availability of smart contract code, a new architecture was possible that enabled for Decentralized Applications (DApps). DApps build on traditional web applications, in that they also make use of client-side and server-side code, yet smart contracts can be utilized to provide guarantees to all stakeholders. Consider the example discussed in the section above, regarding the calculation of the total due for an online shopping platform. If the calculation of the total is done on the client-side, then users could manipulate the amount due, therefore service providers calculate totals on the server-side. While this makes complete sense, server operators could manipulate the logic to calculate a higher total due — though end-users are likely to notice this before payment. Yet in a similar vein server operators could display one amount, and process a transaction for a different amount. This is really the status-quo of traditional web architecture. Using a DApp, instead such logic could be delegated into a smart contract that would provide guarantees to both the service provider as well as to end-users, since the code is transparent and publicly available for everyone to see. Furthermore, the code is immutable, it cannot be changed — not even by the developer that wrote it. We will now provide an overview of typical DApp architecture, followed by a walkthrough on how to use a DApp, and then close off with code snippets demonstrating how a DApp can be built. <<fig-dapp>> depicts an abstract overview of typical DApp interaction.
+The advent of blockchain platforms and smart contracts built on them, provided a new place where code could be executed, i.e. in smart contracts on a blockchain. Executing code in smart contracts, unlike code executed in client browsers or server-side, provides guarantees that the code cannot be manipulated or altered -- not even by the programmer that created the code! Furthermore the code executed in smart contracts is publicly available, and therefore users can look into the smart contract logic prior to interacting with them. Through the availability of smart contract code, a new architecture was possible that enabled for Decentralized Applications (DApps). DApps build on traditional web applications, in that they also make use of client-side and server-side code, yet smart contracts can be utilized to provide guarantees to all stakeholders. Consider the example discussed in the section above, regarding the calculation of the total due for an online shopping platform. If the calculation of the total is done on the client-side, then users could manipulate the amount due, therefore service providers calculate totals on the server-side. While this makes complete sense, server operators could manipulate the logic to calculate a higher total due -- though end-users are likely to notice this before payment. Yet in a similar vein server operators could display one amount, and process a transaction for a different amount. This is really the status-quo of traditional web architecture. Using a DApp, instead such logic could be delegated into a smart contract that would provide guarantees to both the service provider as well as to end-users, since the code is transparent and publicly available for everyone to see. Furthermore, the code is immutable, it cannot be changed -- not even by the developer that wrote it. We will now provide an overview of typical DApp architecture, followed by a walkthrough on how to use a DApp, and then close off with code snippets demonstrating how a DApp can be built. <<fig-dapp>> depicts an abstract overview of typical DApp interaction.
 
 [[fig-dapp]]
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
@@ -40,11 +40,11 @@ The advent of blockchain platforms and smart contracts built on them, provided a
 [#fig-dapp]
 image::dAppArchitecture.png[]
 
-Interaction with DApps, at an abstract level, can be broken down into three steps exactly like traditional web applications. Yet following the initial web page request (depicted in step 1) and web page response (depicted in step 2), future interaction (depicted in interactions marked as 3) between the client browser is not restricted only to communication with the centralised platform (or other centralised services), but can interact with decentralized platforms such as Cardano’s blockchain and on-chain scripts running on top of it. Consider the same example discussed above. Initially, an end-user can request the web page that displays different products (and in turn their browser receiving the web page including HTML and JavaScript). Thereafter, when the user wants to select a product to purchase which will require for the total to be calculated, this interaction could take place directly from the client’s web browser with on-chain code deployed on the blockchain. Thereafter, payment could be made again through direct interaction between the user’s web browser and on-chain scripts. Fulfilment of the order could even take place by underlying on-chain scripts — if the service is one that can be fulfilled digitally through on-chain scripts, e.g. if a user was buying a particular token in exchange for another cryptocurrency.
+Interaction with DApps, at an abstract level, can be broken down into three steps exactly like traditional web applications. Yet following the initial web page request (depicted in step 1) and web page response (depicted in step 2), future interaction (depicted in interactions marked as 3) between the client browser is not restricted only to communication with the centralised platform (or other centralised services), but can interact with decentralized platforms such as Cardano's blockchain and on-chain scripts running on top of it. Consider the same example discussed above. Initially, an end-user can request the web page that displays different products (and in turn their browser receiving the web page including HTML and JavaScript). Thereafter, when the user wants to select a product to purchase which will require for the total to be calculated, this interaction could take place directly from the client's web browser with on-chain code deployed on the blockchain. Thereafter, payment could be made again through direct interaction between the user's web browser and on-chain scripts. Fulfilment of the order could even take place by underlying on-chain scripts -- if the service is one that can be fulfilled digitally through on-chain scripts, e.g. if a user was buying a particular token in exchange for another cryptocurrency.
 
-While the server is responsible for delivery of the initial HTML and JavaScript sent to the client’s web browser, and even most of the logic coordinating future interaction, any required guarantees can be provided based on logic encoded in on-chain script code. Really the front-end HTML code, and JavaScript code that coordinates the interaction with underlying on-chaoin script code can be seen as the gateway facilitating interaction with the actual logic encoded in the on-chain scripts. If it was desirable to do away with the centralised request/response delivering the initial HTML/JavaScript code, then other distributed platforms could be used to replace the centralised components such as IPFS (which will discuss in more depth later in this chapter).
+While the server is responsible for delivery of the initial HTML and JavaScript sent to the client's web browser, and even most of the logic coordinating future interaction, any required guarantees can be provided based on logic encoded in on-chain script code. Really the front-end HTML code, and JavaScript code that coordinates the interaction with underlying on-chaoin script code can be seen as the gateway facilitating interaction with the actual logic encoded in the on-chain scripts. If it was desirable to do away with the centralised request/response delivering the initial HTML/JavaScript code, then other distributed platforms could be used to replace the centralised components such as IPFS (which will discuss in more depth later in this chapter).
 
-To further exemplify how guarantees can be provided through on-chain scripts (in spite of initial HTML/JavaScript code being delivered by centralised infrastructure), we’ll now introduce how to use a DApp, and then later how to build a DApp.
+To further exemplify how guarantees can be provided through on-chain scripts (in spite of initial HTML/JavaScript code being delivered by centralised infrastructure), we'll now introduce how to use a DApp, and then later how to build a DApp.
 
 ==== Prerequisites
 
@@ -52,12 +52,12 @@ We now list a number of prerequisite steps required in order to follow upcoming 
 
 _Installing a Wallet_
 
-Prior to building a DApp, we need to ensure that we have a wallet installed in a browser that will allow for the client web-page to communicate with the blockchain directly. We’ll use the Lace wallet (introduce in #Chapter 6#) in the rest of this chapter, but you may use any other wallet that supports the Cardano blockchain. 
+Prior to building a DApp, we need to ensure that we have a wallet installed in a browser that will allow for the client web-page to communicate with the blockchain directly. We'll use the Lace wallet (introduce in #Chapter 6#) in the rest of this chapter, but you may use any other wallet that supports the Cardano blockchain. 
 
 
 _Configuring Wallet to Connect To Testnet_
 
-We’ll configure the Wallet to connect to the Cardano test network so that we can test without having to spend real cryptocurrency. In Lace, you can do this by:
+We'll configure the Wallet to connect to the Cardano test network so that we can test without having to spend real cryptocurrency. In Lace, you can do this by:
 
 . Clicking on the currently selected Wallet (as depicted in <<fig-wallet-settings>>)
 . Then selecting 'Settings'
@@ -80,7 +80,7 @@ image::wallet-preprod.png[pdfwidth=50%]
 
 _Receiving Test Cryptocurrency_
 
-In order to interact with the blockchain, users must spend some cryptocurrency. Since we want to avoid spending real cryptocurrency whilst testing we’ve switched to the Preprod test network (as discussed above), and need to obtain some test cryptocurrency. To do so we’ll request some test Ada (Cardano’s cryptocurrency) from a faucet.footnote:[Faucets are the term typically used for services that send test cryptocurrency.] One such faucet can be found here: +
+In order to interact with the blockchain, users must spend some cryptocurrency. Since we want to avoid spending real cryptocurrency whilst testing we've switched to the Preprod test network (as discussed above), and need to obtain some test cryptocurrency. To do so we'll request some test Ada (Cardano's cryptocurrency) from a faucet.footnote:[Faucets are the term typically used for services that send test cryptocurrency.] One such faucet can be found here: +
 https://docs.cardano.org/cardano-testnets/tools/faucet[_https://docs.cardano.org/cardano-testnets/tools/faucet_]
 
 To retrieve test Ada, configure the fields as follows:
@@ -88,7 +88,7 @@ To retrieve test Ada, configure the fields as follows:
 * Environment: Preprod Testnet
 * Action: Receive test ADA
 
-Then, copy your wallet address. In Lace this can be done by clicking on 'Copy address' located at the bottom of the main screen of the wallet as depicted in <<fig-wallet-copy-address>>. Then pase the address in the address field. Ensure to click on 'I’m not a robot' and press 'Request Funds'. A success message should appear shortly, and the test Ada should appear in your wallet within a few minutes.
+Then, copy your wallet address. In Lace this can be done by clicking on 'Copy address' located at the bottom of the main screen of the wallet as depicted in <<fig-wallet-copy-address>>. Then pase the address in the address field. Ensure to click on "I'm not a robot" and press 'Request Funds'. A success message should appear shortly, and the test Ada should appear in your wallet within a few minutes.
 
 [[fig-wallet-copy-address]]
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
@@ -111,11 +111,11 @@ image::faucet.png[]
 
 ==== Using a DApp
 
-Now that we have some test cryptocurrency in our wallet, let’s try to use a DApp. We’ll use a decentralized exchange (DEX) to swap some of our testnet Ada for some other token. More specifically we’ll use a preprod test network version of the Minswap DEX as follows:
+Now that we have some test cryptocurrency in our wallet, let's try to use a DApp. We'll use a decentralized exchange (DEX) to swap some of our testnet Ada for some other token. More specifically we'll use a preprod test network version of the Minswap DEX as follows:
 
 . Go to https://testnet-preprod.minswap.org/[_https://testnet-preprod.minswap.org/_]
 . Connect your wallet by clicking 'Connect Wallet', then choosing 'Lace' (or a different wallet if you are not using Lace).
-. The wallet will popup asking you to confirm that you want to connect your wallet to the minswap.org site. By doing so we’ll be able to use our wallet with the minswap.org site and interact directly with the blockchain. So, we’ll press “Authorize”. You can then choose whether you want to always allow the site to connect to your wallet, or whether it can only connect this time. Once your wallet is connected, go back to the Minswap main screen by pressing the 'X' as depicted in <<fig-minswap-close>>.
+. The wallet will popup asking you to confirm that you want to connect your wallet to the minswap.org site. By doing so we'll be able to use our wallet with the minswap.org site and interact directly with the blockchain. So, we'll press "Authorize". You can then choose whether you want to always allow the site to connect to your wallet, or whether it can only connect this time. Once your wallet is connected, go back to the Minswap main screen by pressing the 'X' as depicted in <<fig-minswap-close>>.
 
 [[fig-minswap-close]]
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
@@ -124,7 +124,7 @@ Now that we have some test cryptocurrency in our wallet, let’s try to use a DA
 image::minswap-close.png[]
 
 [start=4]
-. Click on the 'Trade' link in the top left (depicted in <<fig-minswap-trade>>) so that we’re sent to the 'swap' functionality.
+. Click on the 'Trade' link in the top left (depicted in <<fig-minswap-trade>>) so that we're sent to the 'swap' functionality.
 
 [[fig-minswap-trade]]
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
@@ -133,7 +133,7 @@ image::minswap-close.png[]
 image::minswap-trade.png[]
 
 [start=5]
-. The DApp is likely automatically loaded with details to swap from Ada (which you should have in your wallet) to Min (Minswap’s own token). The testnet version of Minswap only supports swapping between Ada and Min. When you use the mainnet’s version though you can choose to swap to other tokens as well. Enter an amount of Ada that you will swap in from your wallet, and the amount of Min that will be swapped out will be displayed (<<fig-minswap-review-trade>> depicts a swap of 123 test Ada to the relevant amount of test Min at the time of writing).
+. The DApp is likely automatically loaded with details to swap from Ada (which you should have in your wallet) to Min (Minswap's own token). The testnet version of Minswap only supports swapping between Ada and Min. When you use the mainnet's version though you can choose to swap to other tokens as well. Enter an amount of Ada that you will swap in from your wallet, and the amount of Min that will be swapped out will be displayed (<<fig-minswap-review-trade>> depicts a swap of 123 test Ada to the relevant amount of test Min at the time of writing).
 
 [[fig-minswap-review-trade]]
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
@@ -169,37 +169,31 @@ image::lace-done.png[pdfwidth=45%]
 [#fig-minswap-balances-updated]
 image::minswap-balances-updated.png[pdfwidth=45%]
 
-And that’s it! You have used your first DApp (if you haven’t already done so, of course). To further build on what was discussed in the previous section, it is important to highlight the different interactions that took place from your browser and what it was communicating with. First we requested the DApp by visiting the web site (i.e. https://testnet-preprod.minswap.org/[_https://testnet-preprod.minswap.org/_]), through which your browser requested the web page (i.e. HTML and JavaScript and other images and media-assets) from the centralised Minswap server. We then instructed the DApp to connect to our wallet, and confirmed in the wallet that we agree to it connecting with the DApp. Our wallet runs on our computers and is the interface that we can trust to verify interactions with the underlying blockchain. The DApp fetches swap prices to display on screen by communicating with the centralised server directly — and though this may raise eyebrows in that the centralised server can manipulate prices, the guarantees with respect to actual swap prices used are provided through the final on-chain script call that is used to initiate the swap (discussed next). When the user agrees to the swap in the wallet popup, it is at this point that the wallet directly communicates with the on-chain script code (deployed on the blockchain), within which the swap price is guaranteed to be the current price as defined by the on-chain logic. So, the guarantee provided to the user is that the swap will be performed at the current price (defined with decentralized on-chain script code) — irrespective of whether the centralized server reports a different price. This potential price discrepancy is why such DEXs allow for users to specify a 'slippage' amount and/or minimum/maximum prices for swaps - so that users can express what minimum/maximum swap price they agree to in the case that there is a discrepancy between the prices reported on screen (by the centralized server) and the actual current price that the swap would use. This discrepancy emerges not only from the fact that servers may report different prices, but also given that time passes between user acceptance and the time the actual swap would take place — and within this time it may be the case that other swaps were executed for the specific price-pair that would affect the swap price.
+And that's it! You have used your first DApp (if you haven't already done so, of course). To further build on what was discussed in the previous section, it is important to highlight the different interactions that took place from your browser and what it was communicating with. First we requested the DApp by visiting the web site (i.e. https://testnet-preprod.minswap.org/[_https://testnet-preprod.minswap.org/_]), through which your browser requested the web page (i.e. HTML and JavaScript and other images and media-assets) from the centralised Minswap server. We then instructed the DApp to connect to our wallet, and confirmed in the wallet that we agree to it connecting with the DApp. Our wallet runs on our computers and is the interface that we can trust to verify interactions with the underlying blockchain. The DApp fetches swap prices to display on screen by communicating with the centralised server directly -- and though this may raise eyebrows in that the centralised server can manipulate prices, the guarantees with respect to actual swap prices used are provided through the final on-chain script call that is used to initiate the swap (discussed next). When the user agrees to the swap in the wallet popup, it is at this point that the wallet directly communicates with the on-chain script code (deployed on the blockchain), within which the swap price is guaranteed to be the current price as defined by the on-chain logic. So, the guarantee provided to the user is that the swap will be performed at the current price (defined with decentralized on-chain script code) -- irrespective of whether the centralized server reports a different price. This potential price discrepancy is why such DEXs allow for users to specify a 'slippage' amount and/or minimum/maximum prices for swaps -- so that users can express what minimum/maximum swap price they agree to in the case that there is a discrepancy between the prices reported on screen (by the centralized server) and the actual current price that the swap would use. This discrepancy emerges not only from the fact that servers may report different prices, but also given that time passes between user acceptance and the time the actual swap would take place -- and within this time it may be the case that other swaps were executed for the specific price-pair that would affect the swap price.
 
-Having explored using a DApp, let’s now delve into aspects of internal workings of a DApp by re-creating parts of a DApp.
+Having explored using a DApp, let's now delve into aspects of internal workings of a DApp by re-creating parts of a DApp.
 
 ==== Creating a DApp
 
-We’ll now create the following aspects of a DApp:
+We'll now create the following aspects of a DApp:
 
 * Server-side code: A NodeJS server that will send a page's HTML/JavaScript to the end-user.
 * Client-side code: This is the code that will be sent from the server (discussed above), but will execute in the client-side browser. This code will connect to the wallet and communicate with a deployed on-chain script.
 
-We will not create on-chain script code in this section (since that is handled in #Chapter 8#). Indeed, DApps can be created that communicate with existing deployed on-chain scripts that may not necessarily be written by the same developers/teams — just as we demonstrate now below.
+We will not create on-chain script code in this section (since that is handled in #Chapter 8#). Indeed, DApps can be created that communicate with existing deployed on-chain scripts that may not necessarily be written by the same developers/teams -- just as we demonstrate now below.
 
 _Creating a Server (with NodeJS)_
 
-We now discuss creating a NodeJS server that will be used to serve
-content to requesting users. You can use any other framework to create server-side code if you wish (such as Python, PHP, .NET, Java, or any other framework you may prefer). We’ll use NodeJS' express package. Follow these steps to create the server:
+We now discuss creating a NodeJS server that will be used to serve content to requesting users. You can use any other framework to create server-side code if you wish (such as Python, PHP, .NET, Java, or any other framework you may prefer). We'll use NodeJS' express package. Follow these steps to create the server:
 
 . First, you need to ensure that NodeJS is installed, and that you can run 'node' and 'npm' from the command line.
-. Create a new directory where your server code will be saved. We’ll refer to this as the 'server' directory.
+. Create a new directory where your server code will be saved. We'll refer to this as the 'server' directory.
 . In the server directory, run: *npm init* +
 and for ease of this tutorial, you can just keep all default settings. +
  +
  This will create a package.json file that defines the settings of the NodeJS project. Verify that the 'main' setting is set to 'index.js'. This setting defines the main entry point file for code in the NodeJS project.
 . Create the 'index.js' file in the server directory.
 . The template code is provided below.
-. We are making use of the 'express' package, and therefore need to install it. You can do so by running the following command: *npm install express*
-. Create an HTML file that the server will send to the client. We’ll call this index.html. For now, just put the text 'Hello World!' in index.html and save the file.
-. Thereafter you can run the server using the following command: *node index.js*
-. Open a browser, and go to the url: localhost:3000 +
- You should see a page similar to <<node-hello-world>>
 
 [source,javascript]
 ----
@@ -216,6 +210,15 @@ app.listen(port, () => {
 });
 ----
 
+[start=6]
+. We are making use of the 'express' package, and therefore need to install it. You can do so by running the following command: *npm install express*
+. Create an HTML file that the server will send to the client. We'll call this index.html. For now, just put the text 'Hello World!' in index.html and save the file.
+. Thereafter you can run the server using the following command: *node index.js*
+. Open a browser, and go to the url: localhost:3000 +
+ You should see a page similar to <<node-hello-world>>
+
+
+
 [[node-hello-world]]
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
 .A first web server!.
@@ -224,21 +227,21 @@ image::node-hello-world.png[pdfwidth=45%]
 
 [[para-csc, Creating Client-Side Code]]_Creating the Client-Side Code to Connect to the Wallet_
 
-Now that we have a server able to send HTML/JavaScript to end-users, let’s write the client-side code to connect to a user’s wallet and interact with the underlying on-chain scripts. We’ll only provide the bare minimal code that is needed. Indeed, you may want to look into implementing a full HTML page (including html, head and body tags), but we’ll only provide the necessities for the sake of simplicity.
+Now that we have a server able to send HTML/JavaScript to end-users, let's write the client-side code to connect to a user's wallet and interact with the underlying on-chain scripts. We'll only provide the bare minimal code that is needed. Indeed, you may want to look into implementing a full HTML page (including html, head and body tags), but we'll only provide the necessities for the sake of simplicity.
 
-First, we’ll create an HTML button and JavaScript that will connect the client-side code to the wallet. The code to provide a connect button is provided below.
+First, we'll create an HTML button and JavaScript that will connect the client-side code to the wallet. The code to provide a connect button is provided below.
 
 [source,javascript]
 ----
 <button id="connectWallet" onclick="connectWallet()">Connect Wallet</button>
 
 <script>
-  async function connectWallet() {
+async function connectWallet() {
     if (window.cardano && window.cardano.lace) {
         try {
             let lace = await window.cardano.lace.enable();
-            const walletAddress = await lace.getUsedAddresses();
-            console.log("Connected to Lace Wallet:", walletAddress);
+            const walletAddresses = await lace.getUsedAddresses();
+            console.log("Connected to Lace:", walletAddresses);
         } catch (error) {
             console.error("Error connecting to Lace Wallet:", error);
         }
@@ -257,11 +260,11 @@ After reloading the webpage (i.e. refreshing the url, localhost:3000), you shoul
 [#dapp-connect-to-lace]
 image::dapp-connect-to-lace.png[]
 
-Now that we have connected the client-side code to the wallet, we'll write some code that will interact with an underlying on-chain script. Just before we do this though, we'll now package some libraries that we need to use in the client-side JavaScript.
+Now that we have connected the client-side code to the wallet, we'll write some code that will interact with an on-chain script. Just before we do this though, we'll now package some libraries that we need to use in the client-side JavaScript.
 
 _Packaging Libraries for use in Client-Side JavaScript_
 
-In the client-side JavaScript code, we'll use Mesh - a library that will provide an easier-to-use interface to interact with the on-chain script code deployed on the blockchain. To do so, we'll package the Mesh library using webpack and serve it to the client-side JavaScript code. Indeed, you can use a different method to package and serve the library. The code we provide here may require changes (especially when considering different versions of sdks used, e.g. NodeJS). If the code does not work out-of-the-box you may need to investigate how to package and deploy libraries and/or fix this code as required for your environment. We will not delve into the intricacies of this code but you may want to read up on how to package and serve libraries for client-side JavaScript code.
+In the client-side JavaScript code, we'll use Mesh -- a library that will provide an easier-to-use interface to interact with the on-chain script code deployed on the blockchain. To do so, we'll package the Mesh library using webpack and serve it to the client-side JavaScript code. Indeed, you can use a different method to package and serve the library. The code we provide here may require changes (especially when considering different versions of SDKs used, e.g. NodeJS). If the code does not work out-of-the-box you may need to investigate how to package and deploy libraries and/or fix this code as required for your environment. We will not delve into the intricacies of this code but you may want to read up on how to package and serve libraries for client-side JavaScript code.
 
 To export the Mesh library follow these steps:
 
@@ -290,7 +293,7 @@ export {
     resolvePlutusScriptAddress,
     applyCborEncoding,
     MeshTxBuilder,
-    KoiosProvider,
+    BlockfrostProvider,
 } from '@meshsdk/core';
 ----
 
@@ -359,7 +362,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public')); //added now
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
@@ -390,10 +393,12 @@ We'll expand on the HTML file described above (from the <<para-csc>> Section). A
 [source,javascript]
 ----
 <script>
-const { BrowserWallet,
-    Transaction,
-    resolvePlutusScriptAddress,
-    applyCborEncoding
+const { BrowserWallet, 
+    Transaction, 
+    resolvePlutusScriptAddress, 
+    applyCborEncoding,
+    MeshTxBuilder, 
+    BlockfrostProvider, 
 } = window.Mesh;
 ----
 
@@ -407,18 +412,20 @@ const { BrowserWallet,
 <script src="js/mesh.bundle.js"></script>
 
 <script>
-const { BrowserWallet,
-    Transaction,
-    resolvePlutusScriptAddress,
-    applyCborEncoding
-} = window.Mesh;
+const { BrowserWallet, //added now
+    Transaction, //added now
+    resolvePlutusScriptAddress, //added now
+    applyCborEncoding, //added now
+    MeshTxBuilder, //added now
+    BlockfrostProvider, //added now
+} = window.Mesh; //added now
 
 async function connectWallet() {
   if (window.cardano && window.cardano.lace) {
     try {
       let lace = await window.cardano.lace.enable();
-      const walletAddress = await lace.getUsedAddresses();
-      console.log("Connected to Lace Wallet:", walletAddress);
+      const walletAddresses = await lace.getUsedAddresses();
+      console.log("Connected to Lace:", walletAddresses);
     } catch (error) {
       console.error("Error connecting to Lace Wallet:", error);
     }
@@ -445,6 +452,40 @@ _Sending Funds to the Redeemer 42 On-chain Scripts_
 
 To add functionality that sends funds to the Redeemer 42 on-chain script code follow these steps:
 
+. First, we'll add some variable definitions at the top of the script tag:
+ 
+[source,javascript]
+----
+<script>
+let wallet;
+let walletAddress;
+
+let txHashAssetUtxo;
+----
+
+[start=2]
+. Then, we'll modify the `connectWallet` function to get a reference to the wallet that we can use with the `BrowserWallet` class imported as follows:
+
+[source,javascript]
+----
+async function connectWallet() {
+  if (window.cardano && window.cardano.lace) {
+    try {
+      let lace = await window.cardano.lace.enable();            
+      wallet = await BrowserWallet.enable('lace'); //changed now
+      walletAddress = await wallet.getChangeAddress(); //added now
+      console.log("Connected to Lace:", walletAddress); //changed now
+    } catch (error) {
+      console.error("Error connecting to Lace Wallet:", error);
+    }
+  } else {
+    console.error("Lace Wallet not found");
+  }
+}
+----
+
+
+[start=3]
 . Add into the client-side JavaScript code the following to get a reference to the deployed Redeemer 42 script:
 
 [source,javascript]
@@ -456,35 +497,33 @@ const redeemer42Script = {
 const redeemer42Addr = resolvePlutusScriptAddress(redeemer42Script, 0);
 ----
 
-[start=2]
+[start=4]
 . Then to actually send funds we'll use the following code (that is explained below the code):
 
 [source,javascript,linenums]
 ----
 async function sendFunds(amount) {
-    const wallet = await BrowserWallet.enable('lace');
-    const walletAddress = await wallet.getChangeAddress();
+    console.log(`Sending funds: ${amount}`);
     const tx = new Transaction({ initiator: wallet })
         .setNetwork("preprod")
         .sendLovelace({ address: redeemer42Addr }, amount)
         .setChangeAddress(walletAddress);
-
+    
+    console.log('Building transaction...');
     const txUnsigned = await tx.build();
+    console.log('Transaction built... Signing transaction...');
     const txSigned = await wallet.signTx(txUnsigned);
-    const txHash = await wallet.submitTx(txSigned);
-    return txHash;
+    console.log('Transaction signed... Submitting transaction...');
+    txHashAssetUtxo = await wallet.submitTx(txSigned);
+    console.log(`Transaction submitted... Asset UTXO hash: ${txHashAssetUtxo}`);
 }
 ----
 
-Line number 2 connects to the wallet (if it has not already been connected to, e.g. using the connect button we already created).
+Line numbers 3-6 sets the required parameters for the transaction including: passing in a reference to the wallet we're using to send funds, the network (i.e. preprod), the script address and the amount of Lovelace to send, and the change address.
 
-Line number 3 gets the change address (#discussed in Chapter 8#), that will be set in the transaction being constructed.
+In line number 9, 11 and 13, we build the transaction, sign it and submit the transaction respectively.
 
-Line numbers 4-7 sets the required parameters for the transaction including: passing in a reference to the wallet we're using to send funds, the network (i.e. #preprod#), the script address (computed in the 1st step) and the amount of Lovelace to send, and the change address.
-
-In line number 9, 10 and 11, we build the transaction, sign it and submit the transaction respectively.
-
-[start=3]
+[start=5]
 . We also add a 'Send Funds' button to call the added functionality to send 3,000,000 Lovelace (3 Ada).
 
 For reference, the full updated index.html file follows:
@@ -492,43 +531,53 @@ For reference, the full updated index.html file follows:
 [source,javascript]
 ----
 <button id="connectWallet" onclick="connectWallet()">Connect Wallet</button>
-<button id="sendFunds" onclick="sendFunds('3000000')">Send Funds</button>
+<button id="sendFunds" onclick="sendFunds('3000000')">Send Funds</button> <!-- added now -->
 
 <script src="js/mesh.bundle.js"></script>
 
 <script>
-const { BrowserWallet,
-    Transaction,
-    resolvePlutusScriptAddress,
-    applyCborEncoding
-} = window.Mesh;
+const { BrowserWallet, 
+    Transaction, 
+    resolvePlutusScriptAddress, 
+    applyCborEncoding, 
+    MeshTxBuilder, 
+    BlockfrostProvider, 
+} = window.Mesh; 
 
-const redeemer42Script = {
+const redeemer42Script = { //added now
   code: applyCborEncoding("581e010100255333573466e1d2054375a6ae84d5d11aab9e3754002229308b01"),
-  version: "V3"
-};
-const redeemer42Addr = resolvePlutusScriptAddress(redeemer42Script, 0);
+  version: "V3" 
+} 
+const redeemer42Addr = resolvePlutusScriptAddress(redeemer42Script, 0); //added now
 
-async function sendFunds(amount) {
-    const wallet = await BrowserWallet.enable('lace');
-    const walletAddress = await wallet.getChangeAddress();
+let wallet; //added now
+let walletAddress; //added now
+
+let txHashAssetUtxo; //added now
+
+async function sendFunds(amount) { //added now
+    console.log(`Sending funds: ${amount}`);
     const tx = new Transaction({ initiator: wallet })
         .setNetwork("preprod")
         .sendLovelace({ address: redeemer42Addr }, amount)
         .setChangeAddress(walletAddress);
-
+    
+    console.log('Building transaction...');
     const txUnsigned = await tx.build();
+    console.log('Transaction built... Signing transaction...');
     const txSigned = await wallet.signTx(txUnsigned);
-    const txHash = await wallet.submitTx(txSigned);
-    return txHash;
+    console.log('Transaction signed... Submitting transaction...');
+    txHashAssetUtxo = await wallet.submitTx(txSigned);
+    console.log(`Transaction submitted... Asset UTXO hash: ${txHashAssetUtxo}`);
 }
 
 async function connectWallet() {
     if (window.cardano && window.cardano.lace) {
         try {
-            let lace = await window.cardano.lace.enable();
-            const walletAddress = await lace.getUsedAddresses();
-            console.log("Connected to Lace Wallet:", walletAddress);
+            let lace = await window.cardano.lace.enable();            
+            wallet = await BrowserWallet.enable('lace'); //changed now
+            walletAddress = await wallet.getChangeAddress(); //added now
+            console.log("Connected to Lace:", walletAddress); //changed now
         } catch (error) {
             console.error("Error connecting to Lace Wallet:", error);
         }
@@ -549,78 +598,67 @@ image::redeemer42-sendFunds.png[pdfwidth=50%]
 
 Upon clicking 'Send Funds' the wallet should pop-up asking that you confirm to sending 3 Ada. It may take a while until the transaction is part of a block -- you can check your wallet's transaction history and also search in a Cardano preprod network block explorer for your wallet's address for a successful transaction (at the associate date/time).
 
-_Deploying a reference script for the Redeemer 42 Scripts_
+_Deploying a reference script for the Redeemer 42 example_
 
-To add functionality that deploys a reference script (discussed in #Chapter 8#) for the Redeemer 42 scripts follow these steps:
+To add functionality that deploys a reference script (discussed in #Chapter 8#) for the Redeemer 42 example follow these steps:
 
-. First, we'll import the MeshTxBuilder and KoiosProvider objects from the mesh sdk bundle we created before. The added lines are denoted by the 'added now' comments:
+. We will make use of an RPC provider, which allows for querying of parameters from the blockchain. We'll make use of the BlockfrostProvider provided by mesh SDK, but you could also look into using other providers:
 
 [source,javascript]
 ----
-const { BrowserWallet,
-    Transaction,
-    resolvePlutusScriptAddress,
-    applyCborEncoding,
-    MeshTxBuilder, //added now
-    KoiosProvider //added now
-} = window.Mesh;
+const provider = new BlockfrostProvider('<YOUR API KEY>');
 ----
 
 [start=2]
-. We will make use of an RPC provider, which allows for querying of parameters from the blockchain. We'll make use of KoiosProvider provided by mesh SDK, but you could also look into using other providers:
+. Then we can include the burn address where to associate the reference script to:
 
 [source,javascript]
 ----
-const provider = new KoiosProvider('preprod');
+const burnAddr = 'addr_test1wr4mrzsjwa6pquu0m6480mq06kpxsht80d4nfh56dcak6lsejdm28'; 
 ----
 
 [start=3]
-. Then we compute the burn address where we'll deploy the reference script to:
-
-[source,javascript]
-----
-const burnScript = {
-  code: applyCborEncoding("450101002601"),
-  version: "V3"
-};
-const burnAddr = resolvePlutusScriptAddress(burnScript, 0);
-----
-
-[start=4]
-. A function that will handle deploying the reference script follows:
+. We add a function that will handle deploying the reference script as follows:
 
 [source,javascript,linenums]
 ----
-async function deployRefScript() {
-    const wallet = await BrowserWallet.enable('lace');
-    const walletAddress = await wallet.getChangeAddress();
-
-    const utxos = await wallet.getUtxos();
+async function deployRefScript() { 
+    console.log('Deploying reference script');        
     const txBuilder = new MeshTxBuilder({
-        fetcher: provider
+        fetcher: provider 
     });
-
+    
+    console.log('Getting Wallet UTXOs...');        
+    const utxos = await wallet.getUtxos();
+    console.log(`Retrieved [${utxos.length}] Wallet UTXOs`);        
+    console.log('Building reference script transaction...');        
     const unsignedTx = await txBuilder
         .txOut(burnAddr, [{ unit: "lovelace", quantity: '3000000' }])
         .txOutReferenceScript(redeemer42Script.code, redeemer42Script.version)
         .changeAddress(walletAddress)
         .selectUtxosFrom(utxos)
         .complete();
-
+    
+    console.log('Signing transaction...');        
     const signedTx = await wallet.signTx(unsignedTx);
-    const txHash = await wallet.submitTx(signedTx);
-    return txHash;
+    console.log('Transaction signed... submitting transaction...');        
+    txHashRefUtxo = await wallet.submitTx(signedTx);
+    console.log(`Transaction submitted... Reference Script UTXO hash: ${txHashRefUtxo}`);
 }
 ----
 
-Lines 2 and 3 were already discussed above. Line 5 gets the wallet's UTXOs (unspent transactions) that could be used (for the transaction that will be submitted). Lines 6-8 defines a transaction builder that will help us build the transaction (to deploy the reference script). We pass in the provider that will be used to help the MeshTxBuilder request parameters and interact with the blockchain. Lines 10-15 builds the transaction to deploy the reference script, and then the transaction is signed and submitted (on lines 17 and 18).
+In Line 3-5, we create an instance of a transaction builder that will we use in a few lines.
 
-[start=5]
+Line 8 gets the wallet's UTXOs (unspent transactions) that could be used (for the transaction that will be submitted). 
+
+Lines 11-16 builds the transaction to deploy the reference script, and then the transaction is signed and submitted (on lines 19 and 21).
+
+[start=4]
 . Finally, we'll add a button to test out the deploy reference script functionality:
 
 [source,javascript]
 ----
-<button id="deployRefScript" onclick="deployRefScript('3000000')">Deploy Reference Script</button>
+<button id="deployRefScript" onclick="deployRefScript()">Deploy Reference Script</button> 
 ----
 
 
@@ -629,75 +667,82 @@ The whole code should now look something like this:
 [source,javascript,linenums]
 ----
 <button id="connectWallet" onclick="connectWallet()">Connect Wallet</button>
-<button id="sendFunds" onclick="sendFunds('3000000')">Send Funds</button>
-<button id="deployRefScript" onclick="deployRefScript('3000000')">Deploy Reference Script</button>
+<button id="sendFunds" onclick="sendFunds('3000000')">Send Funds</button> 
+<button id="deployRefScript" onclick="deployRefScript()">Deploy Reference Script</button> <!-- added now -->
 
 <script src="js/mesh.bundle.js"></script>
 
 <script>
-const { BrowserWallet,
-    Transaction,
-    resolvePlutusScriptAddress,
-    applyCborEncoding,
-    MeshTxBuilder,
-    KoiosProvider,
-} = window.Mesh;
+const { BrowserWallet, 
+    Transaction, 
+    resolvePlutusScriptAddress, 
+    applyCborEncoding, 
+    MeshTxBuilder, 
+    BlockfrostProvider, 
+} = window.Mesh; 
 
-const redeemer42Script = {
-  code: applyCborEncoding("581e010100255333573466e1d2054375a6ae84d5d11aab9e3754002229308b01"),
-  version: "V3"
-};
-const redeemer42Addr = resolvePlutusScriptAddress(redeemer42Script, 0);
+const redeemer42Script = { 
+  code: applyCborEncoding("581e010100255333573466e1d2054375a6ae84d5d11aab9e3754002229308b01"), 
+  version: "V3" 
+} 
+const redeemer42Addr = resolvePlutusScriptAddress(redeemer42Script, 0); 
 
-const provider = new KoiosProvider('preprod');
+const provider = new BlockfrostProvider('<YOUR API KEY>'); //added now
 
-const burnScript = {
-  code: applyCborEncoding("450101002601"),
-  version: "V3"
-};
-const burnAddr = resolvePlutusScriptAddress(burnScript, 0);
+const burnAddr = 'addr_test1wr4mrzsjwa6pquu0m6480mq06kpxsht80d4nfh56dcak6lsejdm28'; //added now
 
-async function deployRefScript(amount) {
-    const wallet = await BrowserWallet.enable('lace');
-    const walletAddress = await wallet.getChangeAddress();
+let wallet; 
+let walletAddress; 
 
-    const utxos = await wallet.getUtxos();
+let txHashAssetUtxo; 
+
+async function deployRefScript() { //added now
+    console.log('Deploying reference script');        
     const txBuilder = new MeshTxBuilder({
-        fetcher: provider
+        fetcher: provider 
     });
-
+    
+    console.log('Getting Wallet UTXOs...');        
+    const utxos = await wallet.getUtxos();
+    console.log(`Retrieved [${utxos.length}] Wallet UTXOs`);        
+    console.log('Building reference script transaction...');        
     const unsignedTx = await txBuilder
-        .txOut(burnAddr, [{ unit: "lovelace", quantity: amount }])
+        .txOut(burnAddr, [{ unit: "lovelace", quantity: '3000000' }])
         .txOutReferenceScript(redeemer42Script.code, redeemer42Script.version)
         .changeAddress(walletAddress)
         .selectUtxosFrom(utxos)
         .complete();
-
+    
+    console.log('Signing transaction...');        
     const signedTx = await wallet.signTx(unsignedTx);
-    const txHash = await wallet.submitTx(signedTx);
-    return txHash;
+    console.log('Transaction signed... submitting transaction...');        
+    txHashRefUtxo = await wallet.submitTx(signedTx);
+    console.log(`Transaction submitted... Reference Script UTXO hash: ${txHashRefUtxo}`);
 }
 
-async function sendFunds(amount) {
-    const wallet = await BrowserWallet.enable('lace');
-    const walletAddress = await wallet.getChangeAddress();
+async function sendFunds(amount) { 
+    console.log(`Sending funds: ${amount}`);
     const tx = new Transaction({ initiator: wallet })
         .setNetwork("preprod")
         .sendLovelace({ address: redeemer42Addr }, amount)
         .setChangeAddress(walletAddress);
-
+    
+    console.log('Building transaction...');
     const txUnsigned = await tx.build();
+    console.log('Transaction built... Signing transaction...');
     const txSigned = await wallet.signTx(txUnsigned);
-    const txHash = await wallet.submitTx(txSigned);
-    return txHash;
+    console.log('Transaction signed... Submitting transaction...');
+    txHashAssetUtxo = await wallet.submitTx(txSigned);
+    console.log(`Transaction submitted... Asset UTXO hash: ${txHashAssetUtxo}`);
 }
 
 async function connectWallet() {
     if (window.cardano && window.cardano.lace) {
         try {
-            let lace = await window.cardano.lace.enable();
-            const walletAddress = await lace.getUsedAddresses();
-            console.log("Connected to Lace Wallet:", walletAddress);
+            let lace = await window.cardano.lace.enable();            
+            wallet = await BrowserWallet.enable('lace'); 
+            walletAddress = await wallet.getChangeAddress(); 
+            console.log("Connected to Lace:", walletAddress); 
         } catch (error) {
             console.error("Error connecting to Lace Wallet:", error);
         }
@@ -708,10 +753,9 @@ async function connectWallet() {
 </script>
 ----
 
-[start=6]
-. Indeed, if this DApp were to be deployed by the developer, they would likely be the ones to deploy the reference script -- and only then have the user use the depoyed reference script via the DApp.
+Indeed, if this DApp were to be deployed by the developer, they may facilitate the deployment of the reference script -- and not require the user to actively choose to deploy the reference script via the interface.
 
-. After re-running the NodeJS server and refreshing the page (i.e. refreshing localhost:3000), you should see the added button 'Deploy Reference Script':
+After re-running the NodeJS server and refreshing the page (i.e. refreshing localhost:3000), you should see the added button 'Deploy Reference Script':
 
 [[fig-deployReference]]
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
@@ -719,8 +763,227 @@ async function connectWallet() {
 [#fig-deployReference]
 image::dapp-deploy-reference-script.png[pdfwidth=50%]
 
-_Claiming back funds from the Redeemer 42 Scripts_
+_Claiming back funds from the Redeemer 42 example_
 
+To claim back funds follow these steps:
+
+. We add a button to initiate claiming back of the funds:
+
+[source,javascript]
+----
+<button id="claimFunds" onclick="claimFunds()">Claim Funds</button>
+----
+
+[start=2]
+. We add a function to help retrieve back UTXOs that we'll make reference to when initiating the transaction to claim back funds, as follows:
+
+[source,javascript]
+----
+async function getUtxo(scriptAddress, txHash) {
+    const utxos = await provider.fetchAddressUTxOs(scriptAddress);
+    if (utxos.length == 0) {
+        throw 'No listing found.';
+    }
+    let filteredUtxo = utxos.find((utxo) => {
+        return utxo.input.txHash == txHash;
+    });
+    return filteredUtxo;
+}
+----
+
+[start=4]
+. Finally, we add the functionality to initiate the transaction to claim back funds, as follows:
+
+[source,javascript,linenums]
+----
+async function claimFunds() { 
+    console.log('Claiming funds');        
+    console.log(`Retrieving Asset UTXO [${txHashAssetUtxo}] from [${redeemer42Addr}]`);        
+    const assetUtxo = await getUtxo(redeemer42Addr, txHashAssetUtxo);
+    console.log(`Retrieving Script UTXO [${txHashRefUtxo}] from [${burnAddr}]`);        
+    const refScriptUtxo = await getUtxo(burnAddr, txHashRefUtxo);
+    const redeemer = { data: BigInt(42) };
+
+    console.log('Find collateral UTXO');
+    const walletUtxos = await wallet.getUtxos();
+    const collateral = walletUtxos.find(utxo => utxo.output.amount.find(asset => asset.unit === "lovelace" && BigInt(asset.quantity) >= BigInt(5000000)));
+
+    console.log('Building claim funds transaction...');        
+    const tx = new Transaction({ initiator: wallet, fetcher: provider })
+        .setNetwork("preprod")
+        .redeemValue({ value: assetUtxo, 
+                   script: refScriptUtxo,
+                   datum: undefined,
+                   redeemer: redeemer})
+        .sendValue(walletAddress, assetUtxo)        
+        .setCollateral([collateral])
+        .setRequiredSigners([walletAddress]);        
+    const txUnsigned = await tx.build();
+
+    console.log('Signing transaction...');        
+    const txSigned = await wallet.signTx(txUnsigned, true);
+
+    console.log('Transaction signed... submitting transaction...');        
+    const txHash = await wallet.submitTx(txSigned);
+    console.log(`Transaction submitted... Claim Funds hash: ${txHash}`);
+}
+----
+
+In Line 4, we retrieve back the initial asset UTXO in which we sent funds.
+
+In Line 6, we retrieve back the reference script UTXO.
+
+In Line 7, we define the reedemer value (42) to send to the script.
+
+In Lines 10 and 11, we find a UTXO that can be used as collateral. Though this step may be automatically undertaken for us in non-browser environments, we need to explicitly determine the collateral to be used when using a browser interface like BrowserWallet.
+
+In Lines 14-23, we build the transaction, then in Line 26 we sign the transaction, and submit the transaction in Line 29.
+
+The whole updated code follows:
+[source,javascript,linenums]
+----
+<button id="connectWallet" onclick="connectWallet()">Connect Wallet</button>
+<button id="sendFunds" onclick="sendFunds('3000000')">Send Funds</button> 
+<button id="deployRefScript" onclick="deployRefScript()">Deploy Reference Script</button>
+<button id="claimFunds" onclick="claimFunds()">Claim Funds</button> <!-- added now -->
+
+<script src="js/mesh.bundle.js"></script>
+
+<script>
+const { BrowserWallet, 
+    Transaction, 
+    resolvePlutusScriptAddress, 
+    applyCborEncoding, 
+    MeshTxBuilder, 
+    BlockfrostProvider, 
+} = window.Mesh; 
+
+const redeemer42Script = { 
+  code: applyCborEncoding("581e010100255333573466e1d2054375a6ae84d5d11aab9e3754002229308b01"), 
+  version: "V3" 
+} 
+const redeemer42Addr = resolvePlutusScriptAddress(redeemer42Script, 0); 
+
+const provider = new BlockfrostProvider('<ENTER API KEY>'); 
+
+const burnAddr = 'addr_test1wr4mrzsjwa6pquu0m6480mq06kpxsht80d4nfh56dcak6lsejdm28'; 
+
+let wallet; 
+let walletAddress; 
+
+let txHashAssetUtxo;
+
+async function getUtxo(scriptAddress, txHash) { //added now
+    const utxos = await provider.fetchAddressUTxOs(scriptAddress);
+    if (utxos.length == 0) {
+        throw 'No listing found.';
+    }
+    let filteredUtxo = utxos.find((utxo) => {
+        return utxo.input.txHash == txHash;
+    });
+    return filteredUtxo;
+}
+
+async function claimFunds() { //added now
+    console.log('Claiming funds');        
+    console.log(`Retrieving Asset UTXO [${txHashAssetUtxo}] from [${redeemer42Addr}]`);        
+    const assetUtxo = await getUtxo(redeemer42Addr, txHashAssetUtxo);
+    console.log(`Retrieving Script UTXO [${txHashRefUtxo}] from [${burnAddr}]`);        
+    const refScriptUtxo = await getUtxo(burnAddr, txHashRefUtxo);
+    const redeemer = { data: BigInt(42) };
+
+    console.log('Find collateral UTXO');
+    const walletUtxos = await wallet.getUtxos();
+    const collateral = walletUtxos.find(utxo => utxo.output.amount.find(asset => asset.unit === "lovelace" && BigInt(asset.quantity) >= BigInt(5000000)));
+
+    console.log('Building claim funds transaction...');        
+    const tx = new Transaction({ initiator: wallet, fetcher: provider })
+        .setNetwork("preprod")
+        .redeemValue({ value: assetUtxo, 
+                   script: refScriptUtxo,
+                   datum: undefined,
+                   redeemer: redeemer})
+        .sendValue(walletAddress, assetUtxo)        
+        .setCollateral([collateral])
+        .setRequiredSigners([walletAddress]);        
+    const txUnsigned = await tx.build();
+
+    console.log('Signing transaction...');        
+    const txSigned = await wallet.signTx(txUnsigned, true);
+
+    console.log('Transaction signed... submitting transaction...');        
+    const txHash = await wallet.submitTx(txSigned);
+    console.log(`Transaction submitted... Claim Funds hash: ${txHash}`);
+}
+
+async function deployRefScript() { 
+    console.log('Deploying reference script');        
+    const txBuilder = new MeshTxBuilder({
+        fetcher: provider 
+    });
+    
+    console.log('Getting Wallet UTXOs...');        
+    const utxos = await wallet.getUtxos();
+    console.log(`Retrieved [${utxos.length}] Wallet UTXOs`);        
+    console.log('Building reference script transaction...');        
+    const unsignedTx = await txBuilder
+        .txOut(burnAddr, [{ unit: "lovelace", quantity: '3000000' }])
+        .txOutReferenceScript(redeemer42Script.code, redeemer42Script.version)
+        .changeAddress(walletAddress)
+        .selectUtxosFrom(utxos)
+        .complete();
+    
+    console.log('Signing transaction...');        
+    const signedTx = await wallet.signTx(unsignedTx);
+    console.log('Transaction signed... submitting transaction...');        
+    txHashRefUtxo = await wallet.submitTx(signedTx);
+    console.log(`Transaction submitted... Reference Script UTXO hash: ${txHashRefUtxo}`);
+}
+
+async function sendFunds(amount) { 
+    console.log(`Sending funds: ${amount}`);
+    const tx = new Transaction({ initiator: wallet })
+        .setNetwork("preprod")
+        .sendLovelace({ address: redeemer42Addr }, amount)
+        .setChangeAddress(walletAddress);
+    
+    console.log('Building transaction...');
+    const txUnsigned = await tx.build();
+    console.log('Transaction built... Signing transaction...');
+    const txSigned = await wallet.signTx(txUnsigned);
+    console.log('Transaction signed... Submitting transaction...');
+    txHashAssetUtxo = await wallet.submitTx(txSigned);
+    console.log(`Transaction submitted... Asset UTXO hash: ${txHashAssetUtxo}`);
+}
+
+async function connectWallet() {
+    if (window.cardano && window.cardano.lace) {
+        try {
+            let lace = await window.cardano.lace.enable();            
+            wallet = await BrowserWallet.enable('lace'); 
+            walletAddress = await wallet.getChangeAddress(); 
+            console.log("Connected to Lace:", walletAddress); 
+        } catch (error) {
+            console.error("Error connecting to Lace Wallet:", error);
+        }
+    } else {
+        console.error("Lace Wallet not found");
+    }
+}
+</script>
+----
+
+After re-running the NodeJS server and refreshing the page (i.e. refreshing localhost:3000), you should see the added button 'Claim Funds':
+
+[[fig-claimFunds]]
+[caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
+.Added 'Claim Funds' button.
+[#fig-claimFunds]
+image::dapp-claim-funds.png[pdfwidth=50%]
+
+The above provides the full DApp implementation. To run through the example DApp you should first ensure your wallet is connected by pressing 'Connect Wallet'.  Thereafter, pressing the 'Send Funds' button should send a transaction within which you send funds to the Redeemer 42 script. Once confirming the transaction in your wallet it is ideal to wait to see that the transaction is confirmed. Thereafter, you can press the 'Deploy Reference Script' button to the deploy the reference script -- again, after confirming the transaction in your wallet you should wait to see that the transaction is confirmed. Finally, you can claim back funds by pressing the 'Claim Funds' button -- and yet again after confirming the transaction in your wallet you should wait to see that the tranaction is confirmed. In the final transaction, you should see that funds were received into your wallet (i.e. the initial funds sent into and locked in the redeemer script were sent back to you).
+
+Indeed, the DApp is barebones, and serves the purpose to demonstrate of how we to interact from client-side JavaScript with Cardano on-chain scripts. 
 
 === Decentralized Web Storage
 
