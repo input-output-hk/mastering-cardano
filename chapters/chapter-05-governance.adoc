@@ -259,24 +259,21 @@ Cardano’s vision and backlog refer to Cardano’s future development, includin
 
 Cardano is an open-source project, with over 40 code repositories maintained by Intersect and its members. You can find more information and explore these repositories on https://github.com/IntersectMBO[GitHub].
 
-True open source means having the flexibility to choose different options. The Cardano Foundation also follows an open-source strategy. http://cardanofoundation.org/en/news/accessing-cardano-blockchain-data-with-ledger-sync/[Ledger Sync], https://www.veridian.id/[Veridian Identity Platform], Aiken, http://github.com/CardanoSolutions/kupo#readme[Kupo], and http://ogmios.dev/[Ogmios] all follow open-source principles and make life easier for developers on Cardano.
+True open source means having the flexibility to choose different options. The Cardano Foundation also follows an open-source strategy. https://www.veridian.id/[Veridian Identity Platform], https://cardanofoundation.org/blog/unveiling-reeve-enterprise-reporting[Reeve] (enterprise financial reporting on-chain), https://aiken-lang.org[Aiken], http://github.com/CardanoSolutions/kupo#readme[Kupo], and http://ogmios.dev/[Ogmios] all follow open-source principles and make life easier for developers on Cardano.
 
-Acknowledging that Java is still the preferred language for many enterprise developers, the CF created Ledger Sync and the Veridian Identity Platform in Java as open-source tools with this audience in mind. Ledger Sync puts sequential blockchain data in a new, more accessible database structure, while the Veridian Identity Platform is a W3C-compatible mobile wallet for managing self-sovereign identities across Cardano and other blockchains. The wallet supports multiple standards, integrating key event receipt infrastructure (KERI) for interoperability to fit a broad range of use cases and enterprise adoption.
+Acknowledging that Java is still the preferred language for many enterprise developers, the CF created https://github.com/bloxbean/yaci-store[Yaci Store] (a modular library for Java developers) and the Veridian Identity Platform, as open-source tools with this audience in mind. The Veridian Identity Platform features a W3C-compatible mobile wallet for managing self-sovereign identities across Cardano and other blockchains. The wallet supports multiple standards, integrating key event receipt infrastructure (KERI) for interoperability to fit a broad range of use cases and enterprise adoption.
 
 In addition, The Cardano Ballot project, a http://github.com/cardano-foundation/merkle-tree-java[Merkle Tree] in Java/Aiken, the Cardano conversions http://github.com/cardano-foundation/cf-cardano-conversions-java[library], and state channels layer 2 (hydra-java http://github.com/cardano-foundation/hydra-java[Client]) were all made open source. The CF also made the http://cardanofoundation.org/en/news/releasing-an-open-source-rewards-calculation/[rewards calculation] open source to enable anyone to perform and validate the rewards calculation independently of a single implementation.
 
 *Open source office (OSO)*
 
-The OSO manages Cardano's open-source program and community. They ensure open and effective communication with the wider open-source community. Intersect manages contracts with companies working on Cardano's development, acting on behalf of DevTrust.
-Intersect handles all aspects of supplier contracts for DevTrust. This includes negotiating terms, managing the agreements, and overseeing the work. Intersect ensures the contracts align with DevTrust's goals and that companies meet their obligations. They also monitor progress and take steps to optimize efficiency and keep the community informed.
+The OSO manages Cardano’s open-source program and community. They ensure open and effective communication with the wider open-source community. Intersect manages contracts with companies working on Cardano’s development. Office hours are held twice a month, with an open format welcoming new topics. The OSO regularly produce content for the community. For example, the https://committees.docs.intersectmbo.org/intersect-open-source-committee/policies/contribution-ladder-framework[Contribution Ladder] serves as a framework to help new contributors engage with a project.
 
 *Delivery assurance*
 
-Delivery assurance ensures that projects are completed on time and according to specifications. This involves managing risks, tracking progress, and taking action to ensure successful completion. The approach varies based on the project's size, complexity, and potential risks.
+Delivery assurance ensures that projects are completed on time and according to specifications. This involves managing risks, tracking progress, and taking action to ensure successful completion. The approach varies based on the project’s size, complexity, and potential risks. You can review information about contract work completed, and in progress, on the Intersect knowledgebase.
 
-Led by the _technical steering committee_ (TSC), Intersect's delivery assurance team plays a vital role. This team works on behalf of the Cardano community to guarantee that Cardano's development plan stays on track.
-
-=== Intersect committees
+=== Intersect structure
 
 Intersect operates on the principle of community leadership for Cardano's development. This is achieved through standing committees formed by and led by its members.
 
