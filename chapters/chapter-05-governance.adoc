@@ -228,21 +228,17 @@ All Cardano ecosystem participants are welcome to become Intersect members. Made
 4. *Continuity*: to ensure system stability, Intersect facilitates Cardano's ongoing continuity
 5. *Open-source development*: Intersect plays a role in coordinating the open-source development of Cardano's core technologies.
 
-*Intersect* has a central governing board, similar to a city council, chosen and managed by its members. This board is supported by various committees and working groups, each focusing on specific areas or interests within the Cardano ecosystem. With its diverse global membership, this structure allows Intersect to effectively identify key goals for Cardano's development.
+Intersect has a central governing board, similar to a city council, chosen and managed by its members. This board is supported by various committees and working groups, each focusing on specific areas or interests within the Cardano ecosystem. 
 
-Intersect's governing board starts with five seats. Three are filled by founding members (seed funders, Input Output Global, and EMURGO), with the Intersect chief operating officer (COO) holding a temporary seat. Another seat is offered to the University of Wyoming's Blockchain Center for a one-year term.
+Intersect’s governing board started with five seats. Three were filled by founding members (seed funders, Input Output Global, and EMURGO), with the Intersect chief operating officer (COO) holding a temporary seat. Another seat was offered to the University of Wyoming’s Blockchain Center for a one-year term.
 
-The remaining two permanent seats will be filled later in 2024 by Intersect members through an election process that will be designed collaboratively.
-
-A new advisory board will be created with member input to find the best people for the remaining board seats. This group will also explore how to hold elections for future committees. The board meets monthly and publishes agendas and https://intersect.gitbook.io/intersect-board[minutes] for transparency, and can be contacted at board@intersectmbo.org.
-
-A community working group was formed in January 2024 to support transparency. This group observes board meetings and gathers community feedback to ensure Intersect meets members' needs.
+The remaining two permanent seats were filled later in 2024 through an election process with Kavinda Kariyapperuma, Adam Rusch voted in by Intersect members. The Board now plans to expand from five to seven, with the number of seats elected by Intersect members rising from two to four. This doubles the community representation, which will make up the majority of the seats at the board leadership level. The board meets monthly and publishes agendas and https://intersect.gitbook.io/intersect-board[minutes] for transparency, and can be contacted at board@intersectmbo.org.
 
 *Intersect's funding*
 
-Intersect uses funding to promote open and accessible systems through technology and education and to shape Cardano's development. This includes running Intersect itself and supporting the open-source development of Cardano's technology.
-Input Output Global and EMURGO initially funded Intersect to get things running. For future funding, the community will be asked to vote on using funds from the Cardano treasury or explore other options.
-Maintaining and improving Cardano requires ongoing costs. For 2024, Input Output Global and EMURGO have provided funding to cover these operational costs. This allows a group of members to continue providing essential technical services. Intersect created the Cardano development trust (DevTrust) to manage these initial funds. This trust can only use funds to benefit Cardano, such as funding ongoing development and honoring existing agreements. Intersect manages the DevTrust to ensure these funds are used appropriately and to generate income to support its operations.
+Input Output Global and EMURGO initially funded Intersect to get things running. For future funding, the community will be asked to vote on using funds from the Cardano treasury.
+
+The Cardano Development Holdings (CDH), established in the crypto-friendly Cayman Islands, funds and facilitates the maintenance, development, and growth of the Cardano ecosystem. It is the main recipient of direct funding from the Cardano treasury but can also receive donations from external sources for Cardano’s development. All CDH funds are administered by Intersect. This structure was chosen for reasons related to accounting, legal clarity, and liability management. 
 
 Becoming a founding member comes with the following benefits:
 
