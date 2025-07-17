@@ -189,13 +189,13 @@ For CIP-1694 to succeed, it is essential to realize the vision presented in the 
 
 Charles Hoskinson’s keynote at ScotFest 2022:footnote:[ IO ScotFest Keynote with Charles Hoskinson, youtu.be/tbtkClr3Y3I]
 
-  _‘So that's Voltaire …it’s deeply philosophical, it's the hardest thing I've ever done in my life, it's the hardest thing you're ever going to do in your life, and we're going to get it done, because it needs to get done and I'm damn tired of our industry failing, and it's about time we can point to something and say ‘you know what, we did it the right way’. We have to tend to our own gardens first. That was a lesson of Candide. So we have to fix Cardano's governance before we have the right to complain about any other person's governance.’_
+_"So that's Voltaire …it’s deeply philosophical, it's the hardest thing I've ever done in my life, it's the hardest thing you're ever going to do in your life, and we're going to get it done, because it needs to get done and I'm damn tired of our industry failing, and it's about time we can point to something and say ‘you know what, we did it the right way’. We have to tend to our own gardens first. That was a lesson of Candide. So we have to fix Cardano's governance before we have the right to complain about any other person's governance."_
 
 2023 was all about debating how to implement CIP-1694. The CIP was written in a deliberately high-level, approachable format to stimulate discussion and feedback. The community did not disappoint with 50 http://cip1694.intersectmbo.org/[workshops], 30 in-person and 20 online, with over 1,000 participants from 20+ countries.
 
 In addition to community-led workshops, IOG, EMURGO, and the Cardano Foundation co-hosted three governance workshops. The CF workshop took place in Zug, Switzerland, in June, followed by EMURGO’s workshop in Tokyo, Japan. The final workshop, hosted by IOG in Edinburgh in July 2023, marked the conclusion of the CIP-1694 design feedback loop.
 
-Dozens of blogs have been written, and contentious issues have been argued over Reddit, X (Twitter), and Telegram. It is impossible to acknowledge every voice here, but you can dig into the finer detail by following Nicolas Cerny’s http://forum.cardano.org/t/cardano-governance-updates-community-input-voltaire-phase-and-CIP 1694-updates/115878[diary of events] on the Cardano Forum.
+Dozens of blogs have been written, and contentious issues have been argued over Reddit, X (Twitter), and Telegram. It is impossible to acknowledge every voice here, but you can dig into the finer detail by following Nicolas Cerny’s http://forum.cardano.org/t/cardano-governance-updates-community-input-voltaire-phase-and-CIP1694-updates/115878[diary of events] on the Cardano Forum.
 
 Governance on Cardano hit a milestone on Friday, June 30, 2023, when the https://github.com/cardano-foundation/CIPs/pull/380[CIP-1694 pull request] was merged into the main branch of the Cardano Foundation CIP repository. The proposal’s status advanced to the ‘Proposed’ stage.
 
