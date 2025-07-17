@@ -174,16 +174,16 @@ CIP-1694 could fill a book on its own and, like all CIPs, is a living document t
 
 Before the Chang hard fork, governance transactions (eg, hard forks, parameter changes, etc) required a signature from at least five out of the seven Cardano governance (genesis) keys, currently held by the three founding entities. This process was always intended to be an ephemeral form of governance as we got through the earlier phases of the roadmap before Voltaire. There have traditionally been just two types of governance transactions:
 
-Protocol parameter updates using transaction http://github.com/input-output-hk/cardano-ledger/blob/8884d921c8c3c6e216a659fca46caf729282058b/eras/babbage/test-suite/cddl-files/babbage.cddl#L56[field nº6 of the transaction body]
-Movements of the treasury and the reserves using Move Instantaneous Rewards (MIR) certificates.
+* Protocol parameter updates using transaction http://github.com/input-output-hk/cardano-ledger/blob/8884d921c8c3c6e216a659fca46caf729282058b/eras/babbage/test-suite/cddl-files/babbage.cddl#L56[field nº6 of the transaction body]
+* Movements of the treasury and the reserves using Move Instantaneous Rewards (MIR) certificates.
 
-*Where we are going*
+*Where we are now*
 
-The current proposal encompasses two new ledger eras. The first era is called Conway, after the celebrated English mathematician John Horton Conway. The current plan for the Conway ledger era is to:
+The CIP-1694 proposal encompasses two new ledger eras. The first era is called Conway, after the celebrated English mathematician John Horton Conway. The Conway ledger era:
 
-* introduce SPO voting for hard forks
-* provide an on-chain mechanism for rotating the governance keys
-* rewire the ledger rules involving governance as outlined in CIP-1694.
+* introduced SPO voting for hard forks
+* provided an on-chain mechanism for rotating the governance keys
+* rewired the ledger rules involving governance as outlined in CIP-1694.
 
 For CIP-1694 to succeed, it is essential to realize the vision presented in the _Road to a Polyglot Ecosystem for Cardano_ whiteboard http://youtube.com/watch?v=skcCg1WaedA[video]. The new governance mechanisms will support multiple clients, enabling different development teams to employ different approaches, programming languages, and commercial unique selling propositions (USPs).
 
