@@ -110,7 +110,7 @@ Measuring the success of Project Catalyst is essential to ensure that the initia
 8. Growth in Project Catalyst participation
 9. Long-term sustainability and scalability
 
-Catalyst continues to improve and evolve with shared learnings. For example, funded projects from Funds 9–13 can now avail of legal support from Storm Partners. This may include:
+Catalyst continues to improve and evolve with shared learnings. For example, funded projects from Funds 9–13 can now avail of legal support from _Storm Partners_. This may include:
 
 * Contract Review & Protection  
 * Global Dapp Compliance  
@@ -134,7 +134,6 @@ The paper lists *seven properties* to assess different requirements for effectiv
 5. *Sustainability*: are decision-makers suitably incentivized?
 6. *Pareto efficiency*: how effectively can decision-makers' intentions be turned into actions?
 7. *Liveness*: how quickly can a blockchain’s governance mechanism produce outputs efficiently?
-
 
 image::../images/5.2_governance_properties.png[]
 *Figure 5.2:* The partition map of governance properties from the ‘SoK: Blockchain Governance’ paper
