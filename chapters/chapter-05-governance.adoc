@@ -577,12 +577,23 @@ The constitution can only claim legitimacy with feedback from the community, and
 
 The feedback was collated and 128 delegates (64 voting, 64 traveling alternates) were chosen to attend the constitutional convention in Buenos Aires, Argentina and Nairobi, Kenya, in early December 2024.
 
-After two days of debate and speeches, the constitution was approved by 95% of delegates. The constitution was officially signed on the third day of the convention, and is now entering the process of ratification by an on-chain vote of the community of ada holders.
+After two days of debate and speeches, the constitution was approved by 95% of delegates. The proposed https://constitution.gov.tools/en/constitution[constitution] featured a refined preamble, ten guiding tenets, a framework for the ecosystem budget, codes of conduct, compensation guidelines, clarity and safeguards for the Constitution Committee and an amendment process.  While passing the constitution was no doubt a milestone, many delegates spotted areas requiring further clarity and scope. 
 
-The second and final stage of the Chang upgrade, the Plomin hard fork, occurred on the 29th January 2025. Cardano’s move to the Voltaire development phase is now complete and Cardano will be fully governed by the community.
+The constitution was officially signed on the third day of the convention, and so began the process of ratification by an on-chain vote by the broader community of ada holders. This interim phase allowed the community to gain practical experience with on-chain governance, stress testing various tools and processes.
+
+The second and final stage of the Chang upgrade, the Plomin hard fork, occurred on the 29th January 2025. Cardano’s move to the Voltaire development phase was now complete and Cardano was henceforth to be fully governed by the community.
+
+The ratified constitution was https://adastat.net/governances/8c653ee5c9800e6d31e79b5a7f7d4400c81d44717ad4db633dc18d4c07e4a4fd00[enacted] on February 23, 2025. It formalized the roles of ADA holders, DReps, SPOs, and the Constitutional Committee but importantly, remains a ‘living document’ not set in stone. 
 
 image::../images/5.8_lloyd_selfie.png[]
-*Figure 5.8:* Chair of Proceedings in Buenos Aires, Lloyd Duhon, marking the historic moment with a group selfie at the Buenos Aires, Argentina event  - documenting this historic moment
+*Figure 5.9:* Chair of Proceedings in Buenos Aires, Lloyd Duhon, marking the historic moment with a group selfie at the Buenos Aires, Argentina event  - documenting this historic moment
+
+*Liquid democracy*
+
+As a result of the Plomin hard fork, you can continue accumulating staking rewards but you cannot withdraw them unless you delegate your ada’s voting rights to a DRep or a predefined voting option. The community made this decision way back at the first CIP-1694 workshop in Colorado in March 2023.
+Similar to the “liquid staking” concept, the staked ada never leaves your wallet, "liquid democracy" means you can change your DRep every five days without locking your ADA tokens. There is no additional cost or risk. With just a few clicks, you can participate in governance on Cardano. 
+
+The first governance action submitted of the new era was a proposal to change the treasury_growth_rate from 20% to 10%. This was the first community-raised parameter change using the new features. Although it didn’t pass, the topic sparked lively debate and featured on this episode of https://www.youtube.com/watch?v=un4WBkH35sE_[NerdOut - Let's Have a TEA Party]_.  
 
 === Intersect's role in ongoing development
 
