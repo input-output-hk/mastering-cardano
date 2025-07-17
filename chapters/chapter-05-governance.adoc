@@ -508,35 +508,34 @@ Ideally, the outcome should be communicated through the same off-chain channels 
 SanchoNet was named after the character Sancho Panza, Don Quixote’s companion in Miguel de Cervantes’ literary classic. SanchoNet is ultimately about transforming an aspirational digital Barataria into an on-chain governance reality on Cardano mainnet. Note that SanchoNet is not another incentivized testnet (ITN), but a testnet where test ada is used to stress test experimental features. SanchoNet was rolled out in six phases, with each Cardano node (cardano-cli) release enabling new governance capabilities.
 
 image::../images/5.6_sanchonet_roadmap.png[]
-*Figure 5.6:* SanchoNet roadmap
+*Figure 5.7:* SanchoNet roadmap
 
 SanchoNet goes beyond simple testing. It also serves as a platform for:
 * *Informing the community*: keeping the Cardano community updated on the ongoing development of Voltaire
 * *Engaging stakeholders*: encouraging community participation and feedback on the evolving governance features
 * *Building a collaborative future*: as SanchoNet matures, it aims to become a space where ideas become reality, contributions shape the ecosystem, and fully decentralized decision-making takes root.
 
-SanchoNet’s capabilities have been continually enhanced. For example, support for governance metadata standards CIP-100 and CIP-108. SundaeLabs developed CIP-100 to settle on a standard for all CIP-1694-related off-chain metadata.
-
 SanchoNet has proven itself robust to adversarial behavior. Mike Hornan of Able Pool SPO, orchestrated a sustained community-driven stress test on SanchoNet, ensuring the network has the required resilience to handle thousands of governance actions concurrently.
-
-SanchoNet has allowed users to experiment with upcoming features. For example, SanchoNet users were the first to test PlutusV3 in Conway-era transactions. PlutusV3 opens up a world of possibilities with a new voting script purpose for writing voting scripts, access to governance actions in the ScriptContext, and new cryptographic Plutus primitives.
 
 === Governance tools
 
-*Cardano's vision* is a truly decentralized blockchain fueled by collaborative decision-making.
-Effective governance requires more than just principles and processes. It needs the right tools to empower the community and enable consensus across the Cardano ecosystem.
+Cardano’s vision is a truly decentralized blockchain fueled by collaborative decision-making. Effective governance requires more than just principles and processes. It needs the right tools to empower the community and enable consensus across the Cardano ecosystem.
 
-The development of Cardano's on-chain governance prioritizes building these tools. This will create a smoother experience and open new avenues for community involvement in shaping Cardano's future.
+These tools will equip the Cardano community to actively participate in on-chain governance actions. Intersect has already issued grants to develop key components of this toolset. Find out more about these https://docs.intersectmbo.org/intersect-community-grants/open-grants[grants] here. 
 
-These governance tools will be open source and owned by the community. Through its committees and working groups, Intersect will play a role in hosting and maintaining them with community approval. The goal is to build this foundation with various Cardano ecosystem developers.
+The https://gov.tools/[GovTool] is a central hub for interacting with Cardano’s on-chain governance system, and testing upcoming features. GovTool is fully open sourced and maintained by Intersect members WeDeliver, Byron, Lido Nation, and Bloxico. It enables users to connect their wallets to mainnet to participate in governance. They can also connect to SanchoNet, the testnet environment where CIP-1694’s ideas are tested.
 
-Once the core set of tools is established, the community can further contribute by:
+Intersect initially evaluated multiple tools to support DReps. GovTool was initially prioritized for its open APIs, but https://docs.ekklesiademocracy.org/en/latest/[Ekklesia] was subsequently implemented as an early signalling tool to “temperature check” the DRep sentiments ahead of on-chain governance actions. Ekklesia does not host a formal vote, but rather a critical indicator to aid in building consensus. Only proposals that surpassed 50% support in Ekklesia, at the snapshot, were eligible for inclusion in the 2025 budget info action. You can review all the proposals on Ekklesia. 
 
-* Maintaining and improving existing features
-* Creating entirely new functionalities or tools
-* Working independently or collaborating with Intersect's grant and award programs.
+Several proposals, including Intersect’s, were updated following feedback from DReps but once proposals are submitted as part of a budget info action on-chain, they are immutable. The budget info action is presented to DReps for an on-chain vote.  
+The budget process and tooling caused some confusion and frustration, an obvious area for improvement for the future. There have been calls to abolish the off-chain debates, and move to on-chain info actions followed by treasury withdrawals. Some suggested making immutable metadata for governance actions a requirement in the Cardano Constitution, highlighting a desire to enhance transparency and permanence in on-chain decisions.
 
-These tools will equip the Cardano community to actively participate in on-chain governance actions. Intersect has already issued grants to develop key components of this toolset. Find out more about these grants https://docs.intersectmbo.org/intersect-community-grants/open-grants[here]. The _governance tools working group_ has begun decentralizing ownership and maintaining the GovTool and constitutional committee portal.
+The governance tools working group has begun decentralizing ownership and maintaining the GovTool and constitutional committee portal. Community members are invited to participate in feature development, with discussions ongoing in the https://discord.com/channels/1136727663583698984/1212344688523214869[wg-governance-tools] Discord channel.
+
+The Cardano Foundation released a https://voting.cardanofoundation.org/[voting tool] at voting.cardanofoundation.org where other tools built by the community are also listed. 
+
+image::../images/5.8_governance_tools.png[]
+*Figure 5.8:* Governance tools
 
 === GovTool
 
