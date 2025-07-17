@@ -275,11 +275,11 @@ Delivery assurance ensures that projects are completed on time and according to 
 
 === Intersect structure
 
-Intersect operates on the principle of community leadership for Cardano's development. This is achieved through standing committees formed by and led by its members.
+Intersect operates on the principle of community leadership for Cardano’s development. This is achieved through standing committees formed and led by its members. At present, seven standing committees report to the ISC (Intersect Steering Committee). 
 
-*Standing committees* are permanent committees covering various functions critical to guiding Cardano's ‘continuity’ (ongoing maintenance and development), shaping Cardano's constitution, and supporting internal membership needs. While changes can be made as the committees and their goals evolve, they are intended to be long-lasting. The governing board will provide support and review any proposed adjustments.
+Standing committees are permanent committees covering various functions critical to guiding Cardano’s ‘continuity’ (ongoing maintenance and development), shaping Cardano’s constitution, and supporting internal membership needs. While changes can be made as the committees and their goals evolve, they are intended to be long-lasting. 
 
-*Working groups* are temporary and typically support a standing committee's broader objectives. They may also be formed to tap into expertise outside of Intersect's membership. Flexible and less formal than committees, working groups can address diverse topics relevant to Cardano's development. For example, the _marketing working group_ was formed by creatives and marketers who felt it was an area Cardano could improve upon. The group meets weekly and is active on https://discord.com/channels/1136727663583698984/1240228290799865878[Discord].
+Working groups are temporary and typically support a standing committee’s broader objectives. They may also be formed to tap into expertise outside of Intersect’s membership. Flexible and less formal than committees, working groups can address diverse topics relevant to Cardano’s development. 
 
 ==== The civics committee
 The civics committee acts as a guide and supervisor for the Cardano community on governance issues:
@@ -288,20 +288,17 @@ The civics committee acts as a guide and supervisor for the Cardano community on
 - They collaborate with subject matter experts when needed
 - They assist the Cardano constitutional committee as requested.
 
-This committee is crucial for ensuring Cardano's governance system is:
-- Accessible: easy for everyone to understand and participate in
-- Fair: upholding equal rights and opportunities for all community members
-- Transparent: open and clear communication about all governance processes.
-
-The _civics committee_ addresses topics like:
+This committee is crucial for ensuring Cardano’s governance system is accessible, fair, inclusive and transparent. The civics committee addresses topics like:
 
 - *Ratifying the constitution*: facilitating a period for community approval of the Cardano constitution
 - *Off-chain discussions*: tracking and maintaining a record of informal discussions about proposals before they are formally presented
 - *On-chain voting tools*: monitoring these tools to ensure they are functional and well-maintained
 - *Voting guidelines*: developing and updating clear instructions and best practices for on-chain voting
 - *Governance improvements*: providing non-binding recommendations based on community input to enhance Cardano's governance system.
+- *Budget guidance*, for example, they released a https://committees.docs.intersectmbo.org/intersect-civics-committee/about/civics-committee-budget-guidance[guidance document] for the 2025 process.  
 
 ==== Membership and community committee (MCC)
+
 The MCC helps build a strong Cardano community within Intersect. They achieve this by:
 
 * Attracting new members through effective sales and account management
@@ -309,31 +306,33 @@ The MCC helps build a strong Cardano community within Intersect. They achieve th
 * Offering https://docs.intersectmbo.org/intersect-community-grants/open-grants[grants] for creating useful community tools
 * Providing education and hosting engaging events.
 
-This committee creates a space for Cardano enthusiasts to connect, share knowledge, and collaborate on projects. For example, a grant was awarded to Ryan Wiley for his ‘Cardano Governance Minimum Attack Vector (MAV) Dashboard’. This tool displays real-time governance action data through donut charts, breaking down participation in governance actions by DReps, SPOs, the CC, and an aggregated total of all groups. This highlights which entities sway over each proposal type based on stake-weighted delegation and voting thresholds. Anyone in the Cardano ecosystem can flag specific centralization concerns with this user-friendly dashboard.
+This committee creates a space for Cardano enthusiasts to connect, share knowledge, and collaborate on projects. For example, a grant was awarded to Ryan Wiley (Cerkoryn) for his _changwatch.com_ dashboard. This tool displays real-time governance action data through donut charts, breaking down participation in governance actions by DReps, SPOs, the CC, and an aggregated total of all groups. This highlights which entities sway over each proposal type based on stake-weighted delegation and voting thresholds. Anyone in the Cardano ecosystem can flag specific centralization concerns with this user-friendly dashboard.
 
-The MCC manages Intersect memberships, ensuring everyone gets the most out of the program and can contribute to Cardano's development. They also review proposals for community working groups.
-Want to learn more or join the MCC? Email them at membership-and-community-committee@intersectmbo.org. They hold public meetings every four weeks, and their minutes are https://intersect.gitbook.io/community-and-membership-committee/[public]. Check out the MCC terms of reference https://docs.google.com/presentation/d/1gvaSrd7tJ6B5e0JIwaus0Yj6DXDcENT3gJwPCad83NQ/edit#slide=id.g2422287dda8_0_0[(ToR)] for a deeper dive.
+The MCC manages Intersect memberships, ensuring everyone gets the most out of the program and can contribute to Cardano’s development. They also review proposals for community working groups. Public meetings are held every four weeks, and the minutes are https://intersect.gitbook.io/community-and-membership-committee/[public]. 
+
+==== Growth and marketing committee 
+This committee takes the form of a strategic planning body, focussed on impactful marketing and ecosystem growth and adoption. The _Marketing Strategy Working Group_ sits alongside the committee. Its mission is to formulate Cardano’s long-term marketing strategy and go-to-market plan. It endeavours to leverage the hive mind of the Cardano community and DReps.
 
 ==== The technical steering committee (TSC)
 
-The TSC oversees Cardano's technical health, ensuring that decisions are based on solid technical knowledge and best practices.
+The TSC oversees Cardano’s technical health, ensuring that decisions are based on solid technical knowledge and best practices.
 
-This committee brings together key players to ensure Cardano's development runs smoothly. They handle contracts with developers, create technical proposals, and review ideas from the Cardano community, like updates or major changes to the network.
+This committee brings together key players to ensure Cardano’s development runs smoothly. They handle contracts with developers, create technical proposals, and review ideas from the Cardano community, like updates or major changes to the network.
 
-The TSC leads in guiding the development of Cardano's ongoing technical foundation. They provide in-depth technical analysis and advice for everything from development projects to network settings. Think of them as the guardians of Cardano's technical well-being. The minutes from their meetings are https://intersect.gitbook.io/technical-steering-committee/tsc-meeting-minutes[public]. Check out the https://intersect.gitbook.io/technical-steering-committee/[Intersect GitBook] for further details on the TSC and its working groups.
+The TSC leads in guiding the development of Cardano’s ongoing technical foundation. They provide in-depth technical analysis and advice for everything from development projects to network settings. Think of them as the guardians of Cardano’s technical well-being. The minutes from their meetings are https://intersect.gitbook.io/technical-steering-committee/tsc-meeting-minutes[public]. 
 
-==== The parameter committee (PC)
+==== The parameters committee (PC)
 
-The PC is a team within the TSC that focuses on optimizing Cardano's settings. They ensure these parameters are set based on the best technical knowledge available.
-This committee plays a crucial role in maintaining Cardano's long-term health. They consider factors like economics, security, and network performance when recommending updates to Cardano's core settings.
+The PC is a subcommittee within the TSC that focuses on optimizing Cardano’s settings. They ensure these parameters are set based on the best technical knowledge available. They consider factors like economics, security, and network performance when recommending updates to Cardano’s core settings. Regular meetings discuss updates and consider proposals from the community to adjust parameters. There advisory groups within the PC, such as:
 
-The PC delves into Cardano's parameters, including technical settings, network behavior, and economic factors. They meet regularly to discuss updates and consider proposals from the community to adjust these parameters.
+* Economic parameters advisory group
+* Network parameters advisory group
+* Technical parameters advisory group
+* Governance parameters advisory group.
 
-Membership in this technical group is by invitation only. However, anyone can submit suggestions for parameter changes on the Cardano Forum. The PC also participates in monthly calls with Cardano's stake pool operators to share updates and answer questions.
+Membership in this technical group is by invitation only. However, anyone can submit suggestions for parameter changes on the Cardano Forum. The PC also participates in monthly calls with Cardano’s stake pool operators to share updates and answer questions.
 
 Matthew Capps’ http://twitter.com/cryptstitution/status/1725745468821344432?s=46[X thread], _Protocol Change Proposal-001: Chronology of Documented Events_, provides insight into the careful consideration and deliberation involved in a parameter change.
-
-To learn more, check out the https://intersect.gitbook.io/parameter-committee-knowledge-base/[meeting notes] and learn how to submit parameter change proposals on the https://forum.cardano.org/c/governance/parameters-committee-updates/220[Cardano Forum].
 
 ==== The open source committee (OSC)
 
