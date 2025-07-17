@@ -167,6 +167,9 @@ The MBO, later christened _Intersect_, is Voltaire's anchor institution, but it 
 
   _‘Institutions… their only job is to take complexity and turn it into simplicity’_ – Charles Hoskinsonfootnote:[Charles Hoskinson: Crypto regulations & policy, Importance of stablecoins & the future of Cardano, youtu.be/uEV8tQ6z87k?si=iVazdagl5JWZez3q&t=1983]
 
+_"Institutions… their only job is to take complexity and turn it into simplicity"_
+--– Charles Hoskinson footnote:[Charles Hoskinson: Crypto regulations & policy, Importance of stablecoins & the future of Cardano, youtu.be/uEV8tQ6z87k?si=iVazdagl5JWZez3q&t=1983]
+
 CIP-1694 could fill a book on its own and, like all CIPs, is a living document that evolves with feedback. It aims to bootstrap the Voltaire development phase, integrating on-chain and off-chain components for ecosystem self-governance. The ultimate aim is a fully end-to-end, on-chain governance layer for Cardano.
 
 *Where we came from – the five out of seven system*
