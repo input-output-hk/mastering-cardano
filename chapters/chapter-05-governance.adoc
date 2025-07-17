@@ -267,11 +267,9 @@ In addition, The Cardano Ballot project, a http://github.com/cardano-foundation/
 
 *Open source office (OSO)*
 
-The OSO manages Cardano’s open-source program and community. They ensure open and effective communication with the wider open-source community. Intersect manages contracts with companies working on Cardano’s development. Office hours are held twice a month, with an open format welcoming new topics. The OSO regularly produce content for the community. For example, the https://committees.docs.intersectmbo.org/intersect-open-source-committee/policies/contribution-ladder-framework[Contribution Ladder] serves as a framework to help new contributors engage with a project.
+The OSO manages Cardano’s open-source program and community. They ensure open and effective communication with the wider open-source community. Intersect manages contracts with companies working on Cardano’s development. Office hours are held twice a month, with an open format welcoming new topics. The OSO regularly produce content for the community. For example, the https://committees.docs.intersectmbo.org/intersect-open-source-committee/policies/contribution-ladder-framework[Contribution Ladder] serves as a framework to help new contributors engage with a project. 
 
-*Delivery assurance*
-
-Delivery assurance ensures that projects are completed on time and according to specifications. This involves managing risks, tracking progress, and taking action to ensure successful completion. The approach varies based on the project’s size, complexity, and potential risks. You can review information about contract work completed, and in progress, on the Intersect knowledgebase.
+*Delivery assurance* ensures that projects are completed on time and according to specifications. This involves managing risks, tracking progress, and taking action to ensure successful completion. The approach varies based on the project’s size, complexity, and potential risks. You can review information about contract work completed, and in progress, on the Intersect knowledgebase.
 
 === Intersect structure
 
@@ -336,24 +334,23 @@ Matthew Capps’ http://twitter.com/cryptstitution/status/1725745468821344432?s=
 
 ==== The open source committee (OSC)
 
-The OSC owns the roadmap (strategy) for Cardano's open-source projects, advising others on open-source best practices, and acts as a central point for anyone building within Cardano's open-source environment.
-
+The OSC owns the roadmap (strategy) for Cardano’s open-source projects, advising others on open-source best practices, and acts as a central point for anyone building within Cardano’s open-source environment.
 This committee helps developers navigate the world of open-source development on Cardano.
 
-The OSC tackles several key areas:
-* Defining what ‘open source’ means for Cardano projects
-* Developing and maintaining Cardano's open-source strategy
-* Overseeing pilot projects for open source on Cardano
-* Establishing best practices for open-source development within Cardano
-* Creating a model for future open-source projects within Intersect.
+The OSC tackles several key areas: 
 
-The OSC was the first Intersect committee and is currently chaired by Tweag. Anyone can join the OSC's https://meet.google.com/eeb-qjbx-agw[weekly public call] on Fridays (8-9 AM PST) to learn more and ask questions. They also have a Discord channel (#osc-feedback) for ongoing discussions.
+* Defining what ‘open source’ means for Cardano projects 
+* Developing and maintaining Cardano’s open-source strategy 
+* Overseeing pilot projects for open source on Cardano 
+* Establishing best practices for open-source development within Cardano 
+* Creating a model for future open-source projects within Intersect
+* Running the _Developer Advocate Program_
 
-Check out the latest https://intersect.gitbook.io/open-source-committee/[meeting notes], their governance https://github.com/IntersectMBO/documentation/blob/master/open-source-committee/policies/governance.md[policy], and a community-drafted https://github.com/IntersectMBO/documentation/pull/2[voting procedure proposal].
+An Open Source strategy can incur risks if relying on unpaid contributors to regularly show up. With this in mind, Christian Taylor proposed a solution called the https://493748844-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FLBdnzp0eZpGri9sVpseI%2Fuploads%2FvuisqFT8uCyKSDgpNmyW%2FPaid%20Open%20Source%20Model-%20LIVE.pdf?alt=media&token=577c8bd1-c9df-43a0-8b57-e883ddb1254a[paid open source model], which can be adapted to other projects, offering hope for a more sustainable and secure open source ecosystem.
 
 ==== Cardano budget committee
 
-A _budget committee_ aims to manage Cardano's operational costs. This committee creates a yearly budget for community review and approval. The committee provides clear information on Cardano's core expenses, ensuring transparency for the community.
+Th budget committee manages Cardano’s operational costs and creates a yearly budget for community review and approval. The committee provides clear information on Cardano’s core expenses, ensuring transparency for the community.
 
 How it works:
 
@@ -362,7 +359,10 @@ How it works:
 * The community will vote on the budget proposal at the annual members meeting (AMM)
 * Upon approval, funds will be allocated from the Cardano treasury through on-chain voting.
 
-The initial Cardano budget will be presented before the AMM for community review and voting. On-chain ratification will follow after the AMM vote.
+Figure 5.4: Provisional Budget process timeline
+
+*Product committee*
+
 
 image::../images/5.4_provisional_budget_process.png[]
 *Figure 5.4:* Provisional Budget process timeline
