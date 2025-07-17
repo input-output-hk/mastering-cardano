@@ -593,43 +593,106 @@ image::../images/5.8_lloyd_selfie.png[]
 As a result of the Plomin hard fork, you can continue accumulating staking rewards but you cannot withdraw them unless you delegate your ada’s voting rights to a DRep or a predefined voting option. The community made this decision way back at the first CIP-1694 workshop in Colorado in March 2023.
 Similar to the “liquid staking” concept, the staked ada never leaves your wallet, "liquid democracy" means you can change your DRep every five days without locking your ADA tokens. There is no additional cost or risk. With just a few clicks, you can participate in governance on Cardano. 
 
-The first governance action submitted of the new era was a proposal to change the treasury_growth_rate from 20% to 10%. This was the first community-raised parameter change using the new features. Although it didn’t pass, the topic sparked lively debate and featured on this episode of https://www.youtube.com/watch?v=un4WBkH35sE_[NerdOut - Let's Have a TEA Party]_.  
+The first governance action submitted of the new era was a proposal to change the treasury_growth_rate from 20% to 10%. This was the first community-raised parameter change using the new features. Although it didn’t pass, the topic sparked lively debate and featured on this episode of https://www.youtube.com/watch?v=un4WBkH35sE[NerdOut - Let's Have a TEA Party].  
 
-=== Intersect's role in ongoing development
+*The Net Change Limit*
 
-Intersect plays a vital role in ensuring Cardano's smooth progress. One of their key functions is facilitating *Cardano's continuity*. This means providing the technical expertise and resources needed to maintain and improve the Cardano blockchain, both for existing and future features.
-In the first quarter of 2024, Intersect awarded contracts to seven of its members. These contracts focus on continued development efforts, ensuring Cardano can deliver the exciting new features the community awaits. Here's a breakdown of what work is ongoing:
+The net-change-limit guards the sustainability and stability of Cardano’s treasury. It sets the constitutional and democratic mandate for the amount of ada that can be withdrawn from the Treasury over an annual period. Like most things with Cardano governance, the name itself even prompted questions and https://x.com/C1cADA_Markus/status/1899463012194373775?t=fD8FfGwJhqRlAkxxeoTVPg[debate]. Some feel it should be called an ‘annual withdrawal limit’ as the treasury replenishes itself constantly. You can read more about the reasoning for such a limit on the https://forum.cardano.org/t/net-change-limit/143118[Cardano Forum] which hosts discussions like Nicolas Cerny’s post https://forum.cardano.org/t/budget-info-actions-vs-net-change-limit-where-the-cardano-constitution-draws-the-line/145861[Budget Info Actions vs. Net Change Limit: Where the Cardano Constitution Draws the Line].   
 
-* https://mpc.intersectmbo.org/e3t/Ctc/ZX+113/d5bx9l04/VX9XH53g3wtKN4g68ypMv_D2W3Dl4Sm5cxtY9MyCDlz3lYMRW5BW0B06lZ3nGMmK-052CxqJW2ZSGKS5h85vLW2HtC6J6m_H-rW1SV9_V1j-K6xW5jH84N67TD31W2Whqk03gWCTWW4sjg2t69tXFLN6D8tDyYxyJzV6RWRV2DPr20W17K7lD5fG016W1MVkqF99gYG6W8zJw2k6tG3SXN8x8ng05h7mnW8Xvl-14Qv7J5W4Mhl5K24j7m2W5r5TnP6-7cVrW1ygZGp15sWR2VV81y68Rqx_0f27MtWR04[Input Output Global]’s (IOG) infrastructure team continues to develop and test the Cardano governance node in readiness for CIP-1694 implementation on-chain.
-* https://mpc.intersectmbo.org/e3t/Ctc/ZX+113/d5bx9l04/VX9XH53g3wtKN4g68ypMv_D2W3Dl4Sm5cxtY9MyCDlz3lYMRW5BW0B06lZ3nJTSN4Y273LflW6tQC-Y5hJTw2W5SrsRT1qymCBVGm2lf1xvjgtW1Sbt6y4xH97sW7NqP5-3X20_TW2NlShB8SPZ-xW5m8v9n5M6dtRW7pdCxC47hvqWW5-Y0vW4xVNl7VXKryV1bgB9bW3gfN_Y8qCJmVW5v1PPH6DQMGJW4pTyxn6HxNjLW5Yt2f82CZSwbW183MyK4h-RNMW2zG9vj5H3vqbW4BW9Ck40kbKmf3h9Dbs04[Galois] works on zero-knowledge proofs (ZKPs) to enable interoperability between Cardano and other chains.
-* https://mpc.intersectmbo.org/e3t/Ctc/ZX+113/d5bx9l04/VX9XH53g3wtKN4g68ypMv_D2W3Dl4Sm5cxtY9MyCDlT3lYMRW69sMD-6lZ3lFW5G5D9F5vxSBXW7Z91ZV8ZWgFYW41tmSS4LWyDMV_fkG63VxbTFN5T461jyLkqKW96p2wP2dZMySW7XRmZd48_l5jW7kgJCr8zfcWtW6z9TTq3dMLGsW86JwGJ48tKH-W5DNCs17cNq59W7kkXjk7-JNsDW7F7Syd55m5QSN18TqZJnLVZdN7rZ8FNcb5jJW6VlhYr47sbv_W4sHHBR6vlbnWW8Gy8RK9glq3QVLPnhh5s8c5BW8rBhMJ7J3k3Rf4R5kq004[Welltyped] is developing new Log Structured Merge Tree implementations, which will store the ledger's UTXO set on disk rather than in memory. There are many benefits as a result: an increased number of UTXOs will improve bandwidth, facilitating more users. Nodes will be able to run on cheaper, lower-spec machines.
-* https://mpc.intersectmbo.org/e3t/Ctc/ZX+113/d5bx9l04/VX9XH53g3wtKN4g68ypMv_D2W3Dl4Sm5cxtY9MyCDlz3lYMRW5BW0B06lZ3lBW4zbzhw3-2ng4N3S9t-zDpgt2W6ZGwVt6nmGHcN4gmRh7x1-qZW9brw4R2yhyFTW6-BHNg5MYs7VW4mCZfP3rc990V5631n5TrR9BW9dNxxC88xTvBVYL0sP7JdTyNW6h5x3w3897whW40WmMv8mqX7pVmM2vl4F1hxbW8QTGbV29rtWdW3wG1F_2bD3L3N7pNsXcs4vk9W1243r_7NDRY2W3CH00n6-BXK4f8lbHCC04[Tweag]’s focus is on the Ouroboros Genesis mechanism. This allows new nodes to seamlessly join and rejoin the Cardano network without relying on a trusted service.
-* https://mpc.intersectmbo.org/e3t/Ctc/ZX+113/d5bx9l04/VX9XH53g3wtKN4g68ypMv_D2W3Dl4Sm5cxtY9MyCDlz3lYMRW5BW0B06lZ3lZW5nz4H96wZ68mW17v7746Z7Vn7W7BJXMM8KMLb8W1lpPPQ83p73hW7xK4Km1dn0SfW2bRx2M8F_rZPN5qbTRDptyLtVbfzww18dsQ9W6PYSNc26sJwkW7TZjwZ82-XZYN6LwJMbQ_gyHW6j7vNd3zlwWVW5_7yZv23_HGlV3RTYs29l4XrW4hCSmc3sx9TJW5-SmXD73yGk8W81QVps2DQKk0W8RDTt-10RX9bdZLyJ604[Vacuum Labs] ensures the continued smooth operation and functionality of Ledger and Trezor hardware wallets for the Cardano community, with enhancements planned for the Conway era.
-* https://mpc.intersectmbo.org/e3t/Ctc/ZX+113/d5bx9l04/VX9XH53g3wtKN4g68ypMv_D2W3Dl4Sm5cxtY9MyCDlz3lYMRW5BW0B06lZ3p0W1d9Vj-5XyFLnW5r7_RY4r8NlnW40Zf2G4k5rG4W1KG-NF40SK9gW5Sw4G56bsSvtW4ZcYwk3YzbZ4W2BMyhq2kXNkzW30nW721WcdjBW19j6__2NFd6PW8q3B7x7LYWpdW8R99sv3R1Y0pW97f3P516H6fYW69sLzq48qQb9W7pRCJ72nnjd7W6J9Z0F8CDBx8W3zl8MB15F6M3W4cdNjj84B-GPW5f1Kq17m-Vq-f7Rnn4s04[Byron] leads the launch and beta testing phase of the GovTool web application. This involves identifying and fixing bugs while gathering valuable user feedback.
-* https://mpc.intersectmbo.org/e3t/Ctc/ZX+113/d5bx9l04/VX9XH53g3wtKN4g68ypMv_D2W3Dl4Sm5cxtY9MyCDlz3lYMRW5BW0B06lZ3q4VVK8DN6vgFWLW3kkNnf1ZVYPsW2G8BBL8JylRbVS2rdB56sQD8N5gFm757ySfDW19WHhs4txz1pW4R7fSG1091cnW7Sr4bX4fjFRhW7P7lX38q0NJRW2YNwkg2DmrW8W7tYzGq1pFTnJW5z6v_w3FtsjqW6bk8Xs4DySJyW24v5yg6fTyfgW8xCJxT3QsHYTW4gD6LT79ZBQ9W7Ylt5Z17yFdvW8zZJMq6k8236f993CWM04[DQuadrant] is developing a suite of web application tools to support Cardano's evolving governance system. Additionally, they're creating best practice guides for testing strategies that can be applied to current and future Cardano tooling. With a strong track record, DQuadrant was contracted for feature and regression testing in preparation for the Chang hard fork. The delivery assurance team, the technical steering committee, and the hard fork working group will manage this work.
-* https://emurgo.io[EMURGO] focuses on investments, partnerships, and infrastructure development. Just some of their projects include the USDA stablecoin, the Yoroi wallet and Cardano Spot, a Cardano Social Network.
+You can think of the Net-change-limit  as a constitutional mechanism, like a financial safeguard controlling how much ada can be withdrawn from the Treasury within a set period. The community evaluated several proposals, before the ‘₳350m Net Change Limit’ https://adastat.net/governances/9b62b3c632f329016a968ac25211825bb4f84b12461121c7da3aa11df92370f900[governance action] passed with strong community support.
 
-As grants are continuously offered over different cohorts, it’s best to check for the latest on the Intersect website.
+The _Cardano Constitution_ requires that a Net Change Limit be in place before a budget proposal can be passed. With consensus reached, the next phase could commence, garnering much debate as Treasury-funded proposals could now be submitted and considered through on-chain Budget Info Actions.  
 
-Cardano's operation requires ongoing costs to cover maintenance, upgrades, and technical advancements. This ensures Cardano remains a leading and up-to-date blockchain platform. IOG and EMURGO generously funded Cardano's continuity in 2024. This allowed a team of experts to continue providing essential technical services for core operations. The 2025 Cardano budget will be defined through a community-driven process. With on-chain approval from the community, funding will come from the Cardano treasury. Intersect will continue to manage and oversee the technical delivery of these continuity services.
+The role of Intersect committees needed to evolve to align with Cardano’s new budget process. Some of the key changes introduced were:
+* DReps were now the final decision makers for funding, with committees focussing more on roadmap development and governance oversight.
+* Committees no longer submit block budgets.
+* Focus on transparency, enabled by multi-signature smart contracts, so funding decisions and treasury withdrawals can be verified.
 
-Intersect's delivery assurance and technical operations teams created the first-ever Cardano continuity https://docs.intersectmbo.org/cardano/cardano-continuity/milestone-report-q1-2024[milestone report] in Q1, 2024. Inspired by Project Catalyst, these recurring quarterly reports will provide clear progress updates from funded projects, fostering trust and transparency. Additionally, they are developing a backlog and budget proposal, which will form the foundation for Cardano's first official budget.
+*Budget Process*
+Cardano’s Budget Process was ‘recalibrated’ several times throughout late 2024 and early 2025 as the community provided robust feedback. Attempting to meet everyone’s expectations and cater for many projects eager for funding three years into a bear market cycle is no small feat. Intersect made the necessary adjustments, eventually achieving consensus on funding priorities via the https://committees.docs.intersectmbo.org/intersect-product-committee/committee-outcomes/2025-cardanos-roadmap/2025-proposed-cardano-roadmap[product roadmap].
 
-Intersect closed the year by holding elections for its various committees and boards. Details of the various roles, voting processes and candidate profiles are outlined on the https://committees.docs.intersectmbo.org/v/intersect-elections-2024[knowledge base].
+The community was invited too, with anyone allowed to seek treasury funding. The DReps and the Constitutional Committee would ultimately vote to decide how and when Treasury funds are allocated. Intersect’s role was to facilitate, and provide administrative oversight. 
 
-=== Pragma
+*Intersect’s own budget proposal* 
 
-From the outset of the Voltaire development phase, it was always expected, and some feel necessary, to have multiple MBOs. https://pragma.builders/[PRAGMA] was announced on the eve of the inaugural _BuidlFest_ meetup in Toulouse, France. PRAGMA is a member-based, not-for-profit, open-source association for blockchain software projects. Initially, it will be made up of familiar faces to the Cardano developer ecosystem: Blink Labs, Cardano Foundation, dcSpark, SundaeLabs, and TxPipe, but will expand to incorporate more projects and members in future.
+On the back of lengthy community feedback, there was a leadership reset, a refined scope and a revised Treasury proposal seeking less ada. The new leadership pledged to  return Intersect to its founding mission — to enable decentralized coordination, shepherding, rather than directing, the network. The full proposal on Govtool outlines deliverables including:
 
-PRAGMA will not compete with Intersect, but run as a complementary effort. While the mission of Intersect is broader, PRAGMA is focused solely on open-source software development with two key projects for now: Aiken, the popular programming language for on-chain smart contracts on Cardano, and Amaru, a Rust node client for Cardano. It’s important to note that anyone can submit a budget proposal. For example, Amaru have a draft http://hackmd.io/@PRAGMA-org/amaru-proposal[budget proposal] outlining their vision for 2025.
-For Cardano to thrive, PRAGMA and Intersect need to work together to deliver what is best for the ecosystem.
+* 2026 product roadmap and budget submission
+* Intersect and committee elections
+* Expansion of regional hubs
+* Open Source Fellowship launch
+* Ongoing support for working groups, events, and governance tooling
 
-=== Staying updated
-Cardano governance continues to evolve, and it can be tricky to keep up with so much going on. Here are some resources that may be helpful:
+The final temperature check in Ekklesia produced 40 proposals that met the threshold, with 39 of those requested Intersect as their Administrator. You can read all of the proposals on the Cardano Forum, starting with the Cardano Budget 2025 Overview.
 
-* https://mpc.intersectmbo.org/e3t/Ctc/ZX+113/d5bx9l04/VWtzL23cpggkW8RKGx05ckBH6W5r_q0D5dmm3VN54gmNR3lYMRW69sMD-6lZ3mzW24NKNj5sjtqxW60SCrh747Dd9W96hYsZ83dt94VB8K4g8pGXK7W7LS2BQ2XqzZwN36HyWjC1BbGW18dkyW2Tw1dQN3MgH8D_0tzpW2NNFrM8lTGdBW1pg6W75rLl4_W87pcgS4xtpchW1Q9v-t3JDpxBVrsXM17r3GZNV7-gLx8pMR0bW3Tjgfr2T5RwTN1X4MVRNB-3WW7pS7VG3SrT7XW3PdZzx7HC2FkW2Yrh0L3mzV6WW7DFWTh4MbJsrf4g-FcK04[Intersect Knowledge Base]: frequently updated, it provides granular detail on Intersect’s internal governance structure, committees and working groups, and funding opportunities, among many other items
-* https://forum.cardano.org/c/governance/140[Cardano Forum] governance section
-* GovTool and https://github.com/cardano-foundation/cf-cardano-ballot[Cardano ballot]: enable anyone interested to test governance actions and processes
-* https://mpc.intersectmbo.org/e3t/Ctc/ZX+113/d5bx9l04/VWtzL23cpggkW8RKGx05ckBH6W5r_q0D5dmm3VN54gmNR3lYMRW69sMD-6lZ3lKW82s2d_4kr31NW4Pk2Qd2ss_pmVSqkv673bSsVW4-2DrW73BfQnW4Yrc1J3dhzbFW5ng2-v13-JvFW7XrLMr71C0FgW7R6ClX3C2tLjN5jlh31ffSp3W4R31ls69vQygW1_yTjP3nQvwFW3dFNWg4v9y9NW6sDwKw22jJQYW94f53q2Kr03TW2sQwcM71JJJPN8jS_HPNRVjFW24Z3v518p8xFW6dVlMB7BKx4sW6zRhbR5xbTv0V56xpx7_gTdtf36xtsd04[Discord] / https://mpc.intersectmbo.org/e3t/Ctc/ZX+113/d5bx9l04/VWtzL23cpggkW8RKGx05ckBH6W5r_q0D5dmm3VN54gmNR3lYMRW69sMD-6lZ3l0W8fT7b33NNN3ZW8cN9v973TXV2W2Gbhlz8BhqSXW6gqBs29lgmv4W7yfkgl7sSPVqW6kdknz5z2GQvW2F3RlP2LGsH6VkT8Rm58GTq2W7B6nVj12XdGmW2VCv64243H_fW6jM0GG6bxc6LVcS8M38WHGR1W7DxTLR6hJMBhW3cNpjv3hX-7ZN6Hfyzwz3ZNsW6lNPT_4_CcG-W8lL7K48Cxf57W17lLWX2X_0b0VbbfC68qhFk1W7ckbQy2pcBbRf4bx8b404[Telegram]: interact with committees, working groups, and other Intersect members.
-* Given the many moving parts within Intersect and the rapid pace of developments, members can stay informed following the https://docs.intersectmbo.org/intersect-overview/intersect-development-updates[weekly development updates].
+On June 14, 2025, an X post by @gomadrep confirmed the ₳275M Budget Info Action (BIA) had passed. 63.66% of DReps, 93.26% of SPOs and 6/7 of the Cardno Constitution approved. 
 
+A non-binding poll was also proposed on Ekklesia asking DReps to signal their preferred approach for submitting Treasury Withdrawals. Ultimately the community voted for Option E: 39 individual Treasury Withdrawals, one per proposal. 
+
+*Smart Contracts*
+Smart contracts can leverage the eUTXO model to enforce deterministic behavior from a limited set of actors, with no single entity acting unilaterally. The preference is for a predictable “can’t be evil” model instead of a hopeful “don't be evil” setup.
+The Cardano Constitution mandates that treasury withdrawals include independent audits, on-chain oversight, and separate, auditable accounts that delegate to the auto-abstain voting option (not an SPO).
+To align with the Cardano Constitution, there needs to be:
+
+* A means to hold Treasury ada securely and transparently, auditable at any time
+* A mechanism for releasing funds to vendors after set milestones
+* Safeguards to ensure no single entity can act alone when moving funds
+* Independent verification from any oversight body to allay concerns and build trust
+
+As part of the changes to the budget process, a Smart Contract working group was set up under the Budget committee to oversee the automation of treasury fund management with smart contracts. The solution was delivered through Intersect by Input Output | Global, SundaeLabs, and Xerberus. The implementation of smart contract satisfies Article 4, section 2 of the Cardano Constitution:
+
+_“Development of Cardano Blockchain ecosystem budgets and the administration of such budgets shall utilize, to the extent possible and beneficial, smart contracts and other blockchain based tools to facilitate decision-making and ensure transparency.”_
+
+*Two types of smart contracts*
+SundaeLabs’s live demonstration, where viewers were encouraged to follow the activity at an address, showcased the two key smart contract types used to manage operations:
+*Treasury Contracts* act as reserve accounts for ada withdrawn from the Cardano Treasury. These funds can only move funds after strict conditions are met, such as a multi-signature from different parties on  the Oversight Committee. 
+*Vendor Contracts* inherit their permissions from their parent Treasury Contract, releasing funds to Vendors on completion of set milestones. 
+As Intersect is the only Administrator available at time of writing, it initiates all actions, with an Oversight Committee scrutinizing each step. Intersect apply various best practices to ensure the integrity of governance actions. For example, they published the verification key used to sign all governance metadata they author. This is an important safeguard which prevents misuse and ensures accountability. This is enabled by governance metadata standards defined in CIP-100 and CIP-108. 
+
+*Oversight Committee*
+The Oversight Committee is composed of independent third-parties who provides an additional verification layer within the smart contract framework. They cross-check the accuracy and consistency of key actions. The inaugural members are:
+
+* Sundae Labs
+* Xerberus
+* NMKR
+* Dquadrant
+* The Cardano Foundation
+
+*Constitutional Committee*
+
+The Constitutional Committee upholds the principles and rules of the Cardano constitution. 
+The Interim Constitutional Committee was set up as a temporary body in September 2024. It was structured as a mix of appointed members, with seats held by Intersect, the founding entities, and three elected seats.
+With ICC's fixed term expiring in September 2025 so the process to elect a new committee was initiated in November 2024, when a working group was formed. The new CC’s term would see the election’s top three winners serving two years, and the remaining four serving one year.
+Each ICC member agreed not to run for the new committee, allowing for a fresh start. As befits a permissionless, public blockchain, any ada holder could run for the CC. That said, each candidate’s credentials were scrutinized in a battery of AMAs, roundtables and X spaces. 
+
+
+
+Figure 5.10: Constitutional Committee Election Timeline
+The seven members elected are:
+* Cardano Atlantic Council
+* Tingvard
+* Eastern Cardano Council
+* KTorZ
+* Ace Alliance
+* Cardano Japan Council
+* Phil_uplc
+
+The successors began a comprehensive training program in preparation for their roles, while all on-chain votes were audited by DQuadrant. The final step is the ratification of the new CC on-chain via an ‘update committee’ governance action when DReps and SPOs will vote in September 2025. 
+
+This timeline means the new committee was not required to vote on the 39 individual treasury withdrawal proposals. It allowed time for training and a seamless transition before the current Interim Constitutional Committee's (ICC) mandate expires.
+
+=== PRAGMA
+From the outset of the Voltaire development phase, it was always expected, and some feel necessary, to have multiple MBOs. PRAGMA was announced on the eve of the inaugural BuidlFest meetup in Toulouse, France. PRAGMA is a member-based, not-for-profit, open-source association for blockchain software projects. Initially, it will be made up of familiar faces to the Cardano developer ecosystem: Blink Labs, Cardano Foundation, dcSpark, SundaeLabs, and TxPipe, but will expand to incorporate more projects and members in future.
+
+PRAGMA will not compete with Intersect, but run as a complementary effort. While the mission of Intersect is broader, PRAGMA is focused solely on open-source software development with two key projects for now: Aiken, the popular programming language for on-chain smart contracts on Cardano, and Amaru, a Rust node client for Cardano. It’s important to note that anyone can submit a budget proposal. For example, Amaru’s budget proposal for 2025 was passed and became the first Treasury Withdrawal governance action to be executed. For Cardano to thrive, PRAGMA and Intersect need to work together to deliver what is best for the ecosystem. 
+
+=== Looking forward
+Decentralized governance requires continuous iteration and community participation, which can pose coordination challenges. Without central leadership, decentralized governance risks deadlock or disputes. Critics argue that decentralized models prohibit fast decision-making and true accountability due to complex processes. Cardano has sought to mitigate these risks by implementing CIP-1694 and maintaining technical oversight through qualified third parties, however, the long-term viability of this model depends largely on participation from ada holders.
+
+A balance must be struck so rigorous analysis doesn’t lead to procrastination. With competitor blockchains spending vast sums at the drop of a hat, the process needs to be more agile, making funds more accessible so Cardano can pivot easily and compete in a volatile industry. This can be achieved while still adopting prudent investment strategies ensuring fiscal responsibility. 
+
+Cardano’s treasury holds approximately 1.7 billion ADA, so ensuring its long-term sustainability is critical. Some have looked to existing structures, such as Sovereign Wealth Funds, drawing inspiration from the Santiago Principles. However, the Cardano treasury’s ada-first policy lacks options to diversify assets. Adding Cardano native tokens, stablecoins, and other assets would mitigate risks of market volatility. Intersect is working on adopting Cardano’s native stablecoins as part of the evolving strategy. USDM (@USDMOfficial) and USDA (@AnzensOfficial) are obvious candidates to bootstrap more practical funding mechanisms across the ecosystem.
+
+*Staying informed*
+
+Given the many moving parts within Intersect and the rapid pace of updates, you can stay informed following the weekly development newsletter. For a broader perspective, the Cardano Foundation regularly blog outlining their rationale on governance.
