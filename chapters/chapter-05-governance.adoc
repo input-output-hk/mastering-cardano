@@ -537,32 +537,7 @@ The Cardano Foundation released a https://voting.cardanofoundation.org/[voting t
 image::../images/5.8_governance_tools.png[]
 *Figure 5.8:* Governance tools
 
-=== GovTool
-
-The https://gov.tools/[GovTool] is a central hub for interacting with Cardano's on-chain governance system, and testing upcoming features. It enables users to connect their wallets to mainnet to participate in governance. They can also connect to SanchoNet, the testnet environment where CIP-1694's ideas are tested.
-
-The GovTool empowers the Cardano community to:
-
-* Register as a DRep, delegate voting power to a DRep, vote, and much more. There are extensive https://docs.gov.tools/[guides] available.
-* Shape the future by providing feedback on their experiences, enabling the community to help refine Cardano’s governance framework for future implementation.
-
-GovTool is not the only governance tool. _Cardano ballot_ is another innovative voting system designed for Cardano's governance process. It combines the strengths of both on-chain and off-chain mechanisms, developed by the Cardano Foundation and IOG. It is open source, and contributions are welcome on https://github.com/cardano-foundation/cf-cardano-ballot[GitHub].
-
-=== Governance actions (proposals for change)
-
-What are governance actions? Imagine them as proposals submitted on the Cardano blockchain for voting. These proposals trigger events on the blockchain through transactions and have a set timeframe for voting before they expire and can't be enacted. Any ada holder can submit a governance action for on-chain voting. Once a proposal is submitted and recorded on the ledger, voters can vote through separate voting transactions.
-
-CIP-1694 defines seven categories of governance actions:
-
-1. *Motion of no-confidence*: creates a state of no-confidence in the current constitutional committee
-2. *New constitutional committee or quorum size*: proposes a change to the members of the constitutional committee and/or to its signature threshold and/or terms
-3. *Updates to the constitution*: proposes a change to the off-chain constitution, recorded as an on-chain hash of the text document
-4. *Hard fork initiation*: triggers a non-backward compatible upgrade of the network
-5. *Protocol parameter changes*: proposes a change to one or more updatable protocol parameters
-6. *Treasury withdrawals*: proposals for how to spend funds from the Cardano treasury
-7. *Info*: simply provide information and don't require enactment.
-
-=== The Chang upgrade explained
+=== From theory to practice
 
 The next series of Cardano upgrades are named after Phillip Chang, who passed away in 2022, in honor of his contribution to the early design and concepts described in CIP-1694. The Chang upgrade marked a significant moment for Cardano, representing the culmination of years of dedicated development and community involvement. Extensive testing on SanchoNet and valuable feedback from community workshops have paved the way for this critical step.
 
