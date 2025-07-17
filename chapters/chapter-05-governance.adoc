@@ -1,6 +1,6 @@
 TO DO:
 
-- Updated up to Plomin hard fork, update/edit based on events since Jan 2025.
+- Time of last update: Thurs 17th July 2025.
 - Asciidoc format = https://gist.github.com/powerman/d56b2675dfed38deb298
 
 
