@@ -384,58 +384,7 @@ Committees are elected by Intersect members only, using a one-member, one-vote s
 image::../images/5.5_committee_election_results.png[]
 *Figure 5.5:* Committee Election results
 
-==== Cardano governance: a three-part approach
-The product committee manages and tracks the roadmap for development items. Their responsibilities include:
-
-* Continuity, in other words, maintenance, upgrades, and core development, feature requests
-* Research.
-* Marketing, promotion, or other non-technical categories.
-
-The community are encouraged to submit projects for consideration for the 2025 roadmap, with an https://committees.docs.intersectmbo.org/intersect-technical-steering-committee/technical-roadmap/how-to-participate-in-shaping-the-technical-roadmap[explainer] to guide them through the process.
-
-==== Working groups
-
-Intersect forms temporary groups called working groups to address specific needs as they arise. These groups can focus on any topic and operate less formally than the permanent committees.
-
-* Each working group defines its purpose, operating procedures, and member roles and responsibilities in a terms of reference document
-* Participation limitations, like application processes or elections, are set with board approval
-* Meeting frequency and procedures are also established
-* Each working group works under a specific committee but may collaborate with others
-* They report their progress and findings to their overseeing committee(s).
-
-To learn more, head over to the Intersect https://intersect.gitbook.io/intersect-working-groups/[working groups space] for a complete list and further details.
-
-Towards the end of 2024, Intersect held elections for open positions for the various committees and boards. The successful candidates were:
-
-* *Intersect board* -  Kavinda Kariyapperuma, Adam Rusch
-* *Intersect steering committee* - Yuki Oishi, Kevin Hammond
-* *Budget committee* - Mercy Fordwoo, Jose Velazquez, Kristijan Kowalsky, Pepe Otegui
-* *Cardano civics committee* - Reshan Fernando, Taichi Yokoyama, Eystein Magnus Hansen, Daniela Alves
-* *Membership and community committee* - Sanjaya Wanigasekera, Matthew Capps, Ha Nguyen, Akheel Fouze, Darlington Wleh
-* *Open source committee* - Adam Dean, Johnny Kelly, Sebastian Pabon, Pedro Lucas
-* *Product committee* - Naushad Fouze, Samuel Leathers, Juan Sierra, Kyle Solomon
-* *Technical steering committee* - Adam Dean, Kevin Hammond, Markus Gufler, Ben Hart, Johnny Kelly
-
-==== DRep education
-
-Intersect is collaborating with the IOG education team on the https://sancho.network/drep-pioneer-program/drep-pp/overview[DRep Pioneer program], an online interactive training course for nominated delegate representatives (DReps) involved in Cardano’s proposed governance structure.
-
-These DRep leaders are true pioneers, playing an important role in educating the community about decentralized governance for Cardano. As instructors, they will train individuals from the Cardano community interested in becoming DReps.
-
-DReps will leverage the voting power of multiple ada holders and ensure that everyone can truly contribute to shaping the protocol's future.
-
-Intersect was inundated with applications from candidates. After a meticulous selection process, the initial cohort was announced. Pedro Lucas, Martin Musagara, Ha Nguyen, Cameron Smith, Joao Bosco Ribeiro, Reshma Mohan, Daniela Alvez, Phil Lewis, Eystein Magnus Hansen, Ubio Obu, Jaromir Tesar, Adam Rusch, Jenny Brito, Hosky and Wada Global Ltd represent the diversity of the global Cardano ecosystem.
-
-Intersect member https://www.lidonation.com/[LIDO Nation] created the DRep Campaign Platform hosted at http://sancho.1694.io/dreps[sancho.1694.io/dreps] which enables DReps to create off-chain profiles linked to their on-chain actions to campaign for delegation from Ada Holders.
-
-==== Get involved
-
-All Cardano ecosystem participants are welcome to https://www.intersectmbo.org/join[join] Intersect as members. Intersect consists of a distributed group of participants, including leading experts on Cardano and active ecosystem contributors. Its goal is to facilitate healthy discussions and sound decision-making among its members and the broader community, to both uncover pain points and champion successes. Intersect members are also encouraged to join the various working groups.
-
-Intersect members can apply for grants to support specific projects and initiatives related to the continuity and development of Cardano. With CIP-1694, the initial focus of these grants will be on enhancing governance in the age of Voltaire for the Cardano ecosystem.
-Given the many moving parts within Intersect and the rapid pace of updates, members can stay informed following the https://docs.intersectmbo.org/intersect-overview/intersect-development-updates[weekly development updates].
-
-=== Cardano's evolving governance: a three-part approach
+=== Cardano governance: a three-part approach
 
 Cardano's future governance leans on three key pillars:
 
