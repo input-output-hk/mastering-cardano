@@ -66,46 +66,25 @@ The funds for Project Catalyst are sourced from the Cardano treasury. The treasu
 
 *Structure of funding rounds*
 
-Each funding round, or fund, operates cyclically, typically lasting several weeks to a few months. Each fund is identified numerically (eg, Fund1, Fund2) and has a defined budget. The structure of a funding round generally includes the following phases:
+Each funding round, known as a fund, operates cyclically, typically lasting several weeks to a few months. Each fund is identified numerically (eg, Fund1, Fund2) and has a defined budget. The structure of a funding round generally includes the following phases:
 
 1. *Proposal submission*: innovators submit their project proposals on the https://cardano.ideascale.com/[IdeaScale platform]. Each proposal must align with the thematic goals set for that particular fund.
-2. *Community review*: during this phase, the community reviews and provides feedback on the submitted proposals. This feedback helps proposers refine their ideas and improve their chances of success.
+2. *Community review*: during this phase, the community reviews and provides feedback on the submitted proposals. 
 3. *Voting*: any ada holder can vote on proposals using the https://cardano.ideascale.com/[Catalyst voting application]. Voting power is proportional to the amount of ada held, incentivizing ada holders to participate actively in the governance process.
 4. *Funding allocation*: based on the voting results, funds are allocated to the awarded proposals. Proposals with the highest votes receive funding until the budget for that fund is exhausted.
 
 For more information about how Project Catalyst works, read the https://projectcatalyst.io/how-it-works[‘How it works’ section] on Project Catalyst’s website.
 
-*Thematic goals and challenges for funding*
-
-Each fund is designed around specific themes or challenges that align with the strategic goals of the Cardano ecosystem. These themes guide proposers on the types of projects that are most needed and valued.
-
-Examples of thematic challenges might include:
-
-* *DeFi solutions*: developing decentralized finance applications on Cardano
-* *Community tools*: creating tools that support community engagement and governance
-* *Educational resources*: developing educational content to onboard new users and developers.
-
-*Proposal requirements*
-
-To ensure the quality and feasibility of the proposals, there are several key requirements that proposers must meet:
-
-* *Clear problem statement*: proposals must clearly define the problem they intend to solve
-* *Detailed solution*: a comprehensive explanation of the proposed solution, including its technical aspects and how it addresses the problem
-* *Team information*: details about the team members, their backgrounds, and their roles in the project
-* *Budget breakdown*: a transparent and itemized budget that outlines how the funds will be used.
-
-You can review the latest proposals sent to Project Catalyst on the https://cardano.ideascale.com/c/home[‘Home’ section] of the IdeaScale website.
-
-Voting process
+*Voting process*
 
 Voting is a critical component of Project Catalyst, as it empowers the Cardano community to have a direct say in which proposals receive funding. This process ensures that decisions are decentralized and reflective of the community's collective priorities. Here’s an in-depth look at how the voting process works:
 
-1. *Registration*. The registration process involves taking a snapshot of the participant’s ada holdings at a specific point in time. This snapshot determines the voting power of each participant.
-2. *Download* the https://projectcatalyst.io/get-involved/become-a-voter[Catalyst Voting App], available on mobile devices.
-3.*Reviewing proposals*. All proposals are publicly accessible on the IdeaScale platform and the voting application. Detailed information about each proposal, including the problem statement, proposed solution, team details, and budget is there to discuss and provide feedback on.
-4. *Voting begins*. For each proposal, voters typically have multiple options to express their support or opposition.Once you’ve cast a vote on blockchain, you cannot change it anymore.
+1. *Download* the https://projectcatalyst.io/get-involved/become-a-voter[Catalyst Voting App]: available on mobile devices.
+2. *Registration*. The registration process involves taking a snapshot of the participant’s ada holdings at a specific point in time. This snapshot determines the voting power of each participant.
+3.*Reviewing proposals*. All proposals are publicly accessible on the _IdeaScale_ platform and the voting application. Detailed information about each proposal, including the problem statement, proposed solution, team details, and budget, is available for discussion and feedback.
+4. *Voting begins*. For each proposal, voters typically have multiple options to express their support or opposition. Once you’ve cast a vote on the blockchain, you cannot change it.
 5. *Counting votes*. After the voting period ends, votes are tallied.
-6. *Announcing results*. The results are announced publicly, detailing which proposals have been selected for funding. This transparency helps build trust within the community.
+6. The *results are announced* publicly, detailing which proposals have been selected for funding.
 
 After each funding round, feedback from the community is collected to identify areas for improvement in the voting process. Based on community feedback, enhancements are made to the voting process, such as improving the user interface of the voting application, increasing security measures, and refining the proposal evaluation criteria.
 
@@ -131,15 +110,16 @@ Measuring the success of Project Catalyst is essential to ensure that the initia
 8. Growth in Project Catalyst participation
 9. Long-term sustainability and scalability
 
-By carefully monitoring these success metrics, Project Catalyst can ensure it meets its goals of fostering innovation, supporting valuable projects, and effectively engaging the community. Continuous assessment and refinement based on these metrics will help Project Catalyst remain a dynamic and impactful component of the Cardano ecosystem. The *Catalyst* team released their http://projectcatalyst.io/reports/horizons.pdf[Catalyst Horizons report] documenting various milestones. To dig deeper into the stats and trends, visit the https://projectcatalyst.io/reports[Reports] section of projectcatalyst.io for the latest data.
+Catalyst continues to improve and evolve with shared learnings. For example, funded projects from Funds 9–13 can now avail of legal support from Storm Partners. This may include:
 
-Project Catalyst constantly improves with each iteration, leveraging support from it’s partners. For example, Funded Projects from Funds 9–13 can now avail of legals support from Storm Partners. This may include: 
 * Contract Review & Protection  
 * Global Dapp Compliance  
 * Crypto-Friendly Incorporation 
 * Decentralized Payment Compliance  
 * Smart Contract Legal Advice  
-* Token Classification Support
+* Token Classification Support 
+
+The Catalyst team released their http://projectcatalyst.io/reports/horizons.pdf[Catalyst Horizons report] documenting various milestones. To dig deeper into the stats and trends, visit the https://projectcatalyst.io/reports[Reports]section of projectcatalyst.io for the latest data.
 
 === The age of Voltaire
 
