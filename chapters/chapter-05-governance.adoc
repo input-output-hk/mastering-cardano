@@ -251,10 +251,9 @@ Becoming a founding member comes with the following benefits:
 
 *Amending Intersect membership governance*
 
-Proposals to change Intersect's membership governance must be clearly documented. The board can approve amendments by a simple majority vote. There are various streams regarding the ongoing work that maintains and improves Cardano.
-Think of ‘*continuity*’ as the essential technical services needed to keep Cardano running smoothly. This includes bug fixes, upgrades, and new developments like CIP-1694. In the first quarter of 2024, Intersect signed several contracts to deliver features and functionalities through continuity efforts. It's important to note that continuity focuses on the core infrastructure and many other exciting community projects and applications are being built on top.
+Proposals to change Intersect’s membership governance must be clearly documented. The board can approve amendments by a simple majority vote. There are various streams regarding the ongoing work that maintains and improves Cardano. Think of ‘continuity’ as the essential technical services needed to keep Cardano running smoothly. This includes bug fixes, upgrades, and new developments like CIP-1694. It’s important to note that continuity focuses on the core infrastructure and many other exciting community projects and applications are being built on top.
 
-*Cardano's vision and backlog* refer to Cardano's future development, including new features and functionalities. These features may still be in the research phase or identified by the community for further exploration.
+Cardano’s vision and backlog refer to Cardano’s future development, including new features and functionalities. These features may still be in the research phase or identified by the community for further exploration.
 
 *Open-source development*
 
