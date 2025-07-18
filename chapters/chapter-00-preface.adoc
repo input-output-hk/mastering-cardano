@@ -36,7 +36,7 @@ We believe in continuous learning. Throughout _Mastering Cardano_, you'll find c
 
 === Suggested Reading Paths
 - *Cardano fundamentals path* — Ideal for anyone new to blockchain or Cardano, this path provides a solid foundational understanding of the Cardano ecosystem, its core principles, and its journey.
-- *Smart contracts developer path* — For developers eager to build on Cardano, this path guides you through the essential concepts and practical skills needed to write, test, and deploy smart contracts using Aiken and Plutus.
+- *Smart contracts developer path* — For developers eager to build on Cardano, this path guides you through the essential concepts and practical skills needed to write, test, and deploy smart contracts using Aiken and Plutus. <!-- Plinth -->
 - *Cardano user path* — For non-technical readers and blockchain enthusiasts, this path helps you understand the Cardano ecosystem, manage assets, explore NFTs, and engage with the community without delving into code.
 - *Stake pool operator path* — This path is for readers whose goal is to learn how to run a node and start a stake pool, but are not necessarily interested in programming smart contracts or DApps.
 - *Cardano governance and future path* — For readers keen on Cardano's long-term vision, this path explores the principles of decentralized governance, the mechanisms for community decision-making, and the exciting future developments shaping the network.
@@ -67,7 +67,7 @@ Begin by understanding the core components of the Cardano network, delve into ho
 ===== Suggested Chapters & Sections:
 - Preface: How to Navigate, How to Contribute
 - Chapter 4: How Cardano Works: Overview of Cardano Network Protocols, Reaching Consensus using proof of stake, About the Ouroboros Protocol, Incentives in Cardano, Cardano Node and system layers (Introduction to the Cardano node, Cardano Node Layers), Components of the Cardano Ecosystem (Node, CLI, Db sync)
-- Chapter 6: Wallets in the Cardano Ecosystem: Fundamentals of Wallets (Public and private keys: What they are and how they work), Common operations in a Cardano Waller (Staking ADA: How it works and its benefits)
+- Chapter 6: Wallets in the Cardano Ecosystem: Fundamentals of Wallets (Public and private keys: What they are and how they work), Common operations in a Cardano Wallet (Staking ADA: How it works and its benefits)
 - Chapter 7: Stake Pools and Stake Pool Operations: Introduction, What is a Stake Pool?, SPO Requirements, Leadership Selection, Slot Conflict, Cardano CLI, Node Operations, Glossary
 
 ==== Cardano User Path

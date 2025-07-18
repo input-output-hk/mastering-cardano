@@ -1,5 +1,5 @@
 
-:imagesdir: images
+:imagesdir: ../images
 
 == Introduction
 
