@@ -86,7 +86,7 @@ Understand how Cardano's governance model operates, explore key initiatives like
 ===== Suggested Chapters & Sections:
 - Preface: How to Navigate, How to Contribute
 - Chapter 5: Governance
-- Chapter 11: Looking Forward: Mithril, Hydra
+- Chapter 10: Looking Forward: Mithril, Hydra
 
 === Join the Community: Contribute to Mastering Cardano
 _Mastering Cardano_ is more than just a book; it's intended to be a community-driven resource that grows and improves with the collective knowledge of the Cardano ecosystem. The world of blockchain is dynamic, and we believe the best way to keep this resource current, accurate, and truly comprehensive is through your valuable contributions.
