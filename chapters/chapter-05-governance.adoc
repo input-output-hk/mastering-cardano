@@ -8,7 +8,7 @@ TO DO:
 
 == Cardano governance
 
-IOG has been researching on-chain governance for some time, focusing on this crucial area since the original https://why.cardano.org/en/introduction/motivation[Why Cardano] essay. Research papers dating back to 2017, have proposed a treasury for Ethereum Classic.footnote:disclaimer[Kaidalov, Kovalchuk, Nastenko, Rodinko, Shevtzov, Oliynykov (2017), ‘A proposal for an Ethereum Classic Treasury System’, iohk.io/en/research/library/papers/a-proposal-for-an-ethereum-classic-treasury-system/] Another paper, authored at Lancaster University,footnote:[Zhang, Oliynykov and Balogun (2019), ‘A Treasury System for Cryptocurrencies: Enabling Better Collaborative Intelligence’, eprint.iacr.org/2018/435.pdf] explored the concept of a treasury system and a viable, democratic approach to long-term development financing for Cardano.
+IOG has been researching on-chain governance for some time, focusing on this crucial area since the original https://why.cardano.org/en/introduction/motivation[Why Cardano] essay. Research papers dating back to 2017 have proposed a treasury for Ethereum Classic.footnote:disclaimer[Kaidalov, Kovalchuk, Nastenko, Rodinko, Shevtzov, Oliynykov (2017), ‘A proposal for an Ethereum Classic Treasury System’, iohk.io/en/research/library/papers/a-proposal-for-an-ethereum-classic-treasury-system/] Another paper, authored at Lancaster University,footnote:[Zhang, Oliynykov and Balogun (2019), ‘A Treasury System for Cryptocurrencies: Enabling Better Collaborative Intelligence’, eprint.iacr.org/2018/435.pdf] explored the concept of a treasury system and a viable, democratic approach to long-term development financing for Cardano.
 
 Formal methods, machine-comprehensible specifications, and integrating a treasury system with this process for financial incentives are just some of the solutions pursued. Let’s discuss some of the mechanisms used thus far to enable governance on Cardano. Each component complements the others, contributing valuable lessons and experience as the age of Voltaire unfolds.
 
@@ -19,7 +19,7 @@ CIP stands for 'Cardano Improvement Proposal'. Similar concepts exist for other 
 
 Anyone with ideas for enhancing Cardano can present them as CIPs. While CIPs are not a formal component of Cardano governance, they help steer the protocol and tooling in the right direction, benefiting the entire ecosystem.
 
-The first CIP, created in October 2019 and later named https://cips.cardano.org/cip/CIP-1852[CIP-1852], extends http://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki[BIP44] and documents how Cardano wallets manage keys and addresses. This document predates the formal CIP process. It was named CIP-1852 by Sebastien Guillemot after the year Ada Lovelace passed away, with her birth year, 1815, used in the cointype field.
+The first CIP, created in October 2019 and later named https://cips.cardano.org/cip/CIP-1852[CIP-1852], extends http://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki[BIP44] and documents how Cardano wallets manage keys and addresses. This document predates the formal CIP process. The CIP was named CIP-1852 by Sebastien Guillemot after the year Ada Lovelace passed away, with her birth year, 1815, used in the cointype field.
 
 A CIP follows a standard format with a templated proposal structure that facilitates debate and evaluation. This structure allows community members to provide feedback on improvement recommendations or issues within a proposal. CIPs are stored as text files in a versioned http://github.com/cardano-foundation/CIPs[GitHub repository], where their revision history provides the proposal’s historical record. For those not on GitHub, the auto-generated sister site, cips.cardano.org, serves as a user-friendly resource maintained by the Cardano Foundation.
 
@@ -33,7 +33,7 @@ Every CIP has the following format:
 * Path to active
 * Copyright
 
-The concept is developed as a written proposal and submitted as a pull request to the CIP repository after initial discussion and feedback. The updated draft CIP is then publicly processed as follows:
+The concept is developed as a written proposal and submitted as a pull request to the CIP repository after initial discussion and feedback. The CIP editors then publicly process the updated draft CIP as follows:
 
 image::../images/5.1_cip_workflow.png[]
 
@@ -59,10 +59,9 @@ The primary goals of Project Catalyst are to:
 
 Project Catalyst's funding mechanism is designed to support various innovative projects within the Cardano ecosystem. It operates through a series of iterative funding rounds, known as funds, each with its own budget, themes, and goals.
 
-The funds for Project Catalyst are sourced from the Cardano treasury. The treasury is replenished through a combination of:
-
-* *Transaction fees*: a small fee collected from each transaction processed on the Cardano network.
-* *Reserve funds*: Cardano allocated a portion of its initial supply to a reserve, contributing to long-term funding for ecosystem development. This ensures a sustainable and growing pool of resources to support ongoing innovation.
+The funds for Project Catalyst are sourced from the Cardano treasury, which is replenished through a combination of:
+- Transaction fees, which are small fees collected from each transaction processed on the Cardano network.
+- Reserve funds, which come from a portion of Cardano’s initial supply allocated to a reserve for long-term ecosystem development funding.
 
 *Structure of funding rounds*
 
@@ -110,7 +109,7 @@ Measuring the success of Project Catalyst is essential to ensure that the initia
 8. Growth in Project Catalyst participation
 9. Long-term sustainability and scalability
 
-Catalyst continues to improve and evolve with shared learnings. For example, funded projects from Funds 9–13 can now avail of legal support from _Storm Partners_. This may include:
+Catalyst continues to improve and evolve with shared learnings. For example, funded projects from Funds 9–13 can now avail themselves of legal support from _Storm Partners_. This may include:
 
 * Contract Review & Protection  
 * Global Dapp Compliance  
@@ -571,7 +570,7 @@ This measured approach, explained in more detail in the https://docs.intersectmb
 
 The interim Constitution, drafted early in 2024 along with the technical guardrails, was made available for the community to read on the https://constitution.gov.tools/en[Constitution Committee Portal].
 
-The interim Constitutional Committee (ICC), the body that upheld the interim Constitution and votes on the first on-chain governance actions, was formed. The community voted for three representatives to sit alongside pioneer entities IOG, EMURGO, and the Cardano Foundation, and Intersect. The https://intersect.gitbook.io/2024-constitutional-committee-members-election/candidates/the-cardano-atlantic-council[Cardano Atlantic Council], https://intersect.gitbook.io/2024-constitutional-committee-members-election/candidates/cardano-japan[Cardano Japan], and https://app.gitbook.com/o/Prbm1mtkwSsGWSvG1Bfd/s/LQX9Yzpr2CgxQjPsjkZf/candidates/eastern-cardano-council[Eastern Cardano Council] were duly elected to this responsible position.
+The interim Constitutional Committee (ICC), the body that upholds the interim Constitution and votes on the first on-chain governance actions, was formed. The community voted for three representatives to sit alongside pioneer entities IOG, EMURGO, and the Cardano Foundation, and Intersect. The https://intersect.gitbook.io/2024-constitutional-committee-members-election/candidates/the-cardano-atlantic-council[Cardano Atlantic Council], https://intersect.gitbook.io/2024-constitutional-committee-members-election/candidates/cardano-japan[Cardano Japan], and https://app.gitbook.com/o/Prbm1mtkwSsGWSvG1Bfd/s/LQX9Yzpr2CgxQjPsjkZf/candidates/eastern-cardano-council[Eastern Cardano Council] were duly elected to this responsible position.
 
 The constitution can only claim legitimacy with feedback from the community, and so the first of 63 Constitutional workshops across 50 countries was hosted by Nicolas Cerny, Governance Lead for the Cardano Foundation, in Berlin in July 2024.
 
@@ -579,9 +578,9 @@ The feedback was collated and 128 delegates (64 voting, 64 traveling alternates)
 
 After two days of debate and speeches, the constitution was approved by 95% of delegates. The proposed https://constitution.gov.tools/en/constitution[constitution] featured a refined preamble, ten guiding tenets, a framework for the ecosystem budget, codes of conduct, compensation guidelines, clarity and safeguards for the Constitution Committee and an amendment process.  While passing the constitution was no doubt a milestone, many delegates spotted areas requiring further clarity and scope. 
 
-The constitution was officially signed on the third day of the convention, and so began the process of ratification by an on-chain vote by the broader community of ada holders. This interim phase allowed the community to gain practical experience with on-chain governance, stress testing various tools and processes.
+The constitution was officially signed on the third day of the convention, and, so, the process of ratification by an on-chain vote by the broader community of ada holders began. This interim phase allowed the community to gain practical experience with on-chain governance, stress testing various tools and processes.
 
-The second and final stage of the Chang upgrade, the Plomin hard fork, occurred on the 29th January 2025. Cardano’s move to the Voltaire development phase was now complete and Cardano was henceforth to be fully governed by the community.
+The second and final stage of the Chang upgrade, the Plomin hard fork occurred on the 29th January 2025. Cardano’s move to the Voltaire development phase was now complete and Cardano was henceforth to be fully governed by the community.
 
 The ratified constitution was https://adastat.net/governances/8c653ee5c9800e6d31e79b5a7f7d4400c81d44717ad4db633dc18d4c07e4a4fd00[enacted] on February 23, 2025. It formalized the roles of ADA holders, DReps, SPOs, and the Constitutional Committee but importantly, remains a ‘living document’ not set in stone. 
 
@@ -612,7 +611,7 @@ The role of Intersect committees needed to evolve to align with Cardano’s new 
 
 Cardano’s Budget Process was ‘recalibrated’ several times throughout late 2024 and early 2025 as the community provided robust feedback. Attempting to meet everyone’s expectations and cater for many projects eager for funding three years into a bear market cycle is no small feat. Intersect made the necessary adjustments, eventually achieving consensus on funding priorities via the https://committees.docs.intersectmbo.org/intersect-product-committee/committee-outcomes/2025-cardanos-roadmap/2025-proposed-cardano-roadmap[product roadmap].
 
-The community was invited too, with anyone allowed to seek treasury funding. The DReps and the Constitutional Committee would ultimately vote to decide how and when Treasury funds are allocated. Intersect’s role was to facilitate, and provide administrative oversight. 
+Anyone in the community could seek treasury funding. The DReps and the Constitutional Committee would ultimately vote to decide how and when Treasury funds are allocated. Intersect’s role was to facilitate, and provide administrative oversight. 
 
 *Intersect’s own budget proposal* 
 
