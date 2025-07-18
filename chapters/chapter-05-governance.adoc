@@ -237,7 +237,7 @@ The remaining two permanent seats were filled later in 2024 through an election 
 
 Input Output Global and EMURGO initially funded Intersect to get things running. For future funding, the community will be asked to vote on using funds from the Cardano treasury.
 
-The Cardano Development Holdings (CDH), established in the crypto-friendly Cayman Islands, funds and facilitates the maintenance, development, and growth of the Cardano ecosystem. It is the main recipient of direct funding from the Cardano treasury but can also receive donations from external sources for Cardano’s development. All CDH funds are administered by Intersect. This structure was chosen for reasons related to accounting, legal clarity, and liability management. 
+The Cardano Development Holdings (CDH), established in the crypto-friendly Cayman Islands, funds and facilitates the maintenance, development, and growth of the Cardano ecosystem. It may receive receive direct funding from the Cardano treasury but can also receive donations from external sources for Cardano’s development. All CDH funds are administered by Intersect. This structure was chosen for reasons related to accounting, legal clarity, and liability management. 
 
 Becoming a founding member comes with the following benefits:
 
