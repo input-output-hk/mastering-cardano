@@ -65,7 +65,7 @@ The funds for Project Catalyst are sourced from the Cardano treasury, which is r
 
 *Structure of funding rounds*
 
-Each funding round, known as a fund, operates cyclically, typically lasting several weeks to a few months. Each fund is identified numerically (eg, Fund1, Fund2) and has a defined budget. The structure of a funding round generally includes the following phases:
+Each funding round, operates cyclically, typically lasting several weeks to a few months. Each fund is identified numerically (eg, Fund1, Fund2) and has a defined budget. The structure of a funding round generally includes the following phases:
 
 1. *Proposal submission*: innovators submit their project proposals on the https://cardano.ideascale.com/[IdeaScale platform]. Each proposal must align with the thematic goals set for that particular fund.
 2. *Community review*: during this phase, the community reviews and provides feedback on the submitted proposals. 
