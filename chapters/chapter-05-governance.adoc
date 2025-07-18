@@ -8,7 +8,7 @@ TO DO:
 
 == Cardano governance
 
-IOG has been researching on-chain governance for some time, focusing on this crucial area since the original https://why.cardano.org/en/introduction/motivation[Why Cardano] essay. Research papers dating back to 2017 have proposed a treasury for Ethereum Classic.footnote:disclaimer[Kaidalov, Kovalchuk, Nastenko, Rodinko, Shevtzov, Oliynykov (2017), ‘A proposal for an Ethereum Classic Treasury System’, iohk.io/en/research/library/papers/a-proposal-for-an-ethereum-classic-treasury-system/] Another paper, authored at Lancaster University,footnote:[Zhang, Oliynykov and Balogun (2019), ‘A Treasury System for Cryptocurrencies: Enabling Better Collaborative Intelligence’, eprint.iacr.org/2018/435.pdf] explored the concept of a treasury system and a viable, democratic approach to long-term development financing for Cardano.
+IO has been researching on-chain governance for some time, focusing on this crucial area since the original https://why.cardano.org/en/introduction/motivation[Why Cardano] essay. Research papers dating back to 2017 have proposed a treasury for Ethereum Classic.footnote:disclaimer[Kaidalov, Kovalchuk, Nastenko, Rodinko, Shevtzov, Oliynykov (2017), ‘A proposal for an Ethereum Classic Treasury System’, iohk.io/en/research/library/papers/a-proposal-for-an-ethereum-classic-treasury-system/] Another paper, authored at Lancaster University,footnote:[Zhang, Oliynykov and Balogun (2019), ‘A Treasury System for Cryptocurrencies: Enabling Better Collaborative Intelligence’, eprint.iacr.org/2018/435.pdf] explored the concept of a treasury system and a viable, democratic approach to long-term development financing for Cardano.
 
 Formal methods, machine-comprehensible specifications, and integrating a treasury system with this process for financial incentives are just some of the solutions pursued. Let’s discuss some of the mechanisms used thus far to enable governance on Cardano. Each component complements the others, contributing valuable lessons and experience as the age of Voltaire unfolds.
 
@@ -221,11 +221,11 @@ All Cardano ecosystem participants are welcome to become Intersect members. Made
 
 *The five pillars of Intersect*
 
-1. *Community support*: this involves hosting events, hackathons, and conferences designed explicitly for developers within the Cardano ecosystem
-2. *Governance*: Intersect champions and oversees Cardano's community-driven governance system, implemented through CIP-1694
-3. *Technical roadmap*: following community approval, Intersect helps orchestrate the delivery of the Cardano technical roadmap
-4. *Continuity*: to ensure system stability, Intersect facilitates Cardano's ongoing continuity
-5. *Open-source development*: Intersect plays a role in coordinating the open-source development of Cardano's core technologies.
+1. Community support: Hosts events, hackathons, and conferences designed explicitly for developers within the Cardano ecosystem.
+2. Governance: Champions and oversees Cardano’s community-driven governance system, implemented through CIP-1694.
+3. Technical roadmap: Helps orchestrate the delivery of the Cardano technical roadmap
+4. Continuity: Ensures system stability, Intersect facilitates Cardano’s ongoing continuity
+5. Open-source development: Plays a role in coordinating the open-source development of Cardano’s core technologies.
 
 Intersect has a central governing board, similar to a city council, chosen and managed by its members. This board is supported by various committees and working groups, each focusing on specific areas or interests within the Cardano ecosystem. 
 
@@ -367,13 +367,13 @@ The product committee manages and tracks the roadmap for development items. Thei
 
 *Working groups*
 
-Intersect forms temporary groups called working groups to address specific needs as they arise. These groups can focus on any topic and operate less formally than the permanent committees.
+Intersect forms temporary groups called working groups to address specific needs as they arise. These groups can focus on any topic and operate less formally than the permanent committees. Each working group has the following specifications:
 
-* Each working group defines its purpose, operating procedures, and member roles and responsibilities in a terms of reference document
-* Participation limitations, like application processes or elections, are set with board approval
-* Meeting frequency and procedures are also established
-* Each working group works under a specific committee but may collaborate with others
-* They report their progress and findings to their overseeing committee(s).
+* Defines its purpose, operating procedures, and member roles and responsibilities in a terms of reference document.
+* Observes participation limitations, like application processes or elections, are set with board approval.
+* Establishes meeting frequency and procedures.
+* Works under a specific committee but may collaborate with others
+* Reports their progress and findings to their overseeing committee(s).
 
 Intersect's *hard fork working group* was one of the busiest as it oversaw the Chang and Plomin upgrades. It began as just three attendees on the first call in February 2024. As the working group has met at least weekly, often more, the attendee list grew to over sixty. The group’s last call was almost a year later on Tuesday, February 11, 2025, fulfilling its remit to oversee all aspects of the Chang and Plomin hard forks to a successful conclusion. 
 
