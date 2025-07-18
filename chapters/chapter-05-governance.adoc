@@ -585,8 +585,7 @@ The second and final stage of the Chang upgrade, the Plomin hard fork occurred o
 The ratified constitution was https://adastat.net/governances/8c653ee5c9800e6d31e79b5a7f7d4400c81d44717ad4db633dc18d4c07e4a4fd00[enacted] on February 23, 2025. It formalized the roles of ADA holders, DReps, SPOs, and the Constitutional Committee but importantly, remains a ‘living document’ not set in stone. 
 
 image::../images/5.8_lloyd_selfie.png[]
-*Figure 5.9:* Chair of Proceedings in Buenos Aires, Lloyd Duhon, marking the historic moment with a group selfie at the Buenos Aires, Argentina event  - documenting this historic moment
-
+*Figure 5.9:* Chair of Proceedings in Buenos Aires, Lloyd Duhon, marking the historic moment with a group selfie at the Buenos Aires
 *Liquid democracy*
 
 As a result of the Plomin hard fork, you can continue accumulating staking rewards but you cannot withdraw them unless you delegate your ada’s voting rights to a DRep or a predefined voting option. The community made this decision way back at the first CIP-1694 workshop in Colorado in March 2023.
