@@ -279,14 +279,15 @@ Turing-complete(((Turing-complete
 (https://www.sciencedirect.com/science/article/pii/S0167642323001338#se0070[Krijnen
 et al], 2023). It draws from modern language research to provide a
 safe, full-stack programming environment based on Haskell, the leading
-purely functional programming language. It is a general-purpose smart
+purely functional programming language(((purely functional programming))). 
+It is a general-purpose smart
 contract language that focuses on security. The basics of coding smart
 contracts in Plinth are explained in section <<Plutus smart contracts>>.
 
 There are also other compiled smart contract languages developed by
 companies within the Cardano ecosystem. They are all domain-specific
 languages
-(https://en.wikipedia.org/wiki/Domain-specific_language[DSL]) as they
+(https://en.wikipedia.org/wiki/Domain-specific_language[DSL(((DSL)))]) as they
 target the smart contract domain. Some of them, including Plinth, are
 embedded DSLs
 (https://en.wikipedia.org/wiki/Domain-specific_language#External_and_Embedded_Domain_Specific_Languages[eDSL])
@@ -412,9 +413,8 @@ written as a Plinth smart contract. Besides the programming language,
 the Marlowe project provides open-source tools to easily create, verify,
 and deploy secure financial smart contracts on Cardano. You can write
 smart contracts in JavaScript and Haskell or use Blockly(((Blockly
-))), a visual
-coding solution. All language options are available in the online
-development environment –
+))), a visual coding(((visual coding))) solution. All language options are 
+available in the online development environment –
 https://playground.marlowe-lang.org/#/[Marlowe playground]. The
 Marlowe language, its tools, architecture, and contract examples are
 presented in section <<Marlowe smart contracts>>.
@@ -422,14 +422,11 @@ presented in section <<Marlowe smart contracts>>.
 With Marlowe, it is possible to design a diversity of contracts for the
 following domains:
 
-* Bonds(((Bonds
-))), forwards, options, futures(((futures
-))), swaps, etc
+* Bonds(((Bonds))), forwards, options, futures(((futures))), swaps(((swaps))), etc
 * Structured financial products
 * Escrows
 * Auctions
-* Peer-to-peer loans(((Peer-to-peer loans
-)))
+* Peer-to-peer loans(((Peer-to-peer loans)))
 * Token swaps
 * Airdrops.
 
@@ -497,8 +494,7 @@ examples and also contains Lucid Evolution code examples.
 
 === Smart contract case studies
 
-*World Mobile Token(((WMT
-))) smart contracts*
+*World Mobile Token(((World Mobile Token))) smart contracts*
 
 The https://worldmobile.io/en[World Mobile] company offers an
 interesting case study of a solution that can change the current state
@@ -668,8 +664,7 @@ documentation page provides more information about address categories.
 Under the hood, a Cardano address is a sequence of bytes that conforms
 to a particular format. Users will typically interact with addresses
 only after they have been encoded into sequences of human-readable
-characters. https://en.bitcoin.it/wiki/Bech32(((Bech32
-)))[Bech32(((Bech32
+characters. https://en.bitcoin.it/wiki/Bech32[Bech32(((Bech32
 )))] and
 https://bitcoinwiki.org/wiki/base58[Base58(((Base58
 )))] are encodings used in
@@ -741,15 +736,15 @@ six characters of the data part form a checksum of the previous address
 data and contain no information. This allows for quick offline validity
 checks and provides an additional safety measure for wallets. For an
 additional explanation of address type structures, refer to
-https://cips.cardano.org/cips/cip19/#binaryformat[Cardano Improvement Proposal 19 (CIP-19(((CIP-19
-))))], which defines the technical details of Cardano
+https://cips.cardano.org/cips/cip19/#binaryformat[Cardano Improvement Proposal 19]
+(CIP-19(((CIP-19)))), which defines the technical details of Cardano
 addresses.
 
 === Marlowe smart contracts
 
 ==== About Marlowe
 
-Marlowe is a domain-specific language (DSL) for building financial smart
+Marlowe is a domain-specific language (DSL(((DSL)))) for building financial smart
 contracts. One can think of Marlowe as a robust, open-source technology
 that provides a special-purpose language describing asset flows on the
 blockchain. As a special-purpose DSL, it offers a higher-level model of
@@ -817,7 +812,8 @@ Marlowe team, initially at the University of Kent with support from a
 research grant from IO, and later as an internal engineering team within
 IO. The Marlowe team at IO was also collaborating with the
 https://www.uwyo.edu/acct-fin/cbdi/[Wyoming Center for Blockchain and Digital
-Innovation (CBDI)] at the University of Wyoming. More information about
+Innovation(((Wyoming Center for Blockchain and Digital Innovation)))] (CBDI) 
+at the University of Wyoming. More information about
 the research conducted for Marlowe can be found on the official
 documentation page, which also lists
 https://docs.marlowe-lang.org/docs/platform-and-architecture/platform#research-based[published
@@ -1065,7 +1061,7 @@ about the platform in section <<Setting up a Plinth development environment(((Pl
 )))>>.
 
 The https://docs.marlowe-lang.org/docs/introduction[Marlowe
-documentation] provides extensive explanations, links to learning
+documentation(((Marlowe documentation)))] provides extensive explanations, links to learning
 resources, and access to tutorials and community resources from the top
 bar.
 
@@ -1727,7 +1723,7 @@ proof assistants that can be used for the formal verification of smart contract
 code. The advantages of the Haskell programming language are presented
 in section <<Features and benefits of Haskell>>. IO offers a free self-paced
 and beginner-friendly
-https://github.com/input-output-hk/haskell-course/[Haskell course]
+https://github.com/input-output-hk/haskell-course/[Haskell course(((Haskell course)))]
 that is hosted on GitHub and teaches the necessary skills for programmers to
 read and write Plinth scripts. The official
 https://www.haskell.org/documentation/[Haskell documentation] site
@@ -1834,7 +1830,7 @@ or recursion. All Bitcoin scripts terminate, and it is possible to give
 an accurate estimate of the time taken to execute a script. Bitcoin
 scripts have the following developer limitations (taken from
 https://iohk.io/en/research/library/papers/functional-blockchain-contracts/[_Functional
-Blockchain Contracts_], _Chakravarty et al. 2019_):
+Blockchain Contracts(((Functional Blockchain Contracts)))_], _Chakravarty et al. 2019_):
 
 [arabic]
 . The Bitcoin Script(((Bitcoin Script
@@ -2020,7 +2016,7 @@ https://en.wikipedia.org/wiki/Mogensen–Scott_encoding[Scott-Encoding] approach
 section _In Haskell. Scott encoding_),
 which created an upfront cost that caused the difference in
 execution costs between Haskell and other frameworks like Aiken. With the
-introduction of PlutusV3, sums of products allow for encoding data types
+introduction of PlutusV3, sums of products(((sums of products))) allow for encoding data types
 in a more compact and cost-effective way. Also, Plutus now provides
 a way to deal directly with the [purple]#Data# type for all Plutus script
 versions (V1, V2, and V3), allowing for better code optimization.
@@ -2118,7 +2114,8 @@ developer map] for more options.
 
 To query various Plutus types, one can use the official
 https://plutus.cardano.intersectmbo.org/haddock/latest/[Plutus Haddock
-documentation], which presents types in Haskell syntax. Press CTRL + S
+documentation(((Plutus Haddock documentation)))], which presents types 
+in Haskell syntax. Press CTRL + S
 to search for a keyword, such as a specific data type or function name.
 The search engine might provide more options for a single data type, function
 or type class you are querying. This is because implementations
@@ -2142,7 +2139,7 @@ language.
 Plinth data types cannot be explored in the standard GHCi REPL because the
 GHC compiler(((compiler
 ))) pipeline first compiles Plinth code to an intermediate
-language called Haskell Core. The Plutus compiler(((compiler
+language called Haskell Core(((Haskell core))). The Plutus compiler(((compiler
 ))) then takes this
 Haskell Core and compiles it to the Plutus script language. This means
 that GHC is unaware of Plinth data types. Additionally, the Plinth
@@ -2185,8 +2182,9 @@ validatorName :: ScriptContext -> Bool
 Both implementations can be used in smart contract code. The main
 difference lies in code performance, with the low-level implementation
 offering better performance. Low-level validation scripts are referred
-to as _untyped validation scripts_, while high-level scripts are known as
-_typed validation scripts_.
+to as _untyped validation scripts(((untyped validation scripts)))_, 
+while high-level scripts are known as
+_typed validation scripts(((typed validation scripts)))_.
 
 The [purple]#BuiltinData# doesn't have its constructors exposed. The module
 that defines [purple]#BuiltinData# contains two conversion functions:
@@ -2375,7 +2373,8 @@ in the Oxford brackets with the actual function body.
 This completes the on-chain code. Next, we use the [blue]#serialiseCompiledCode#
 helper function that returns something of [purple]#ShortByteString# type, which
 is a compact representation of a [purple]#Word8# vector. At the end of this section,
-we present the code that lets us generate https://cips.cardano.org/cip/CIP-57[Plutus blueprints]
+we present the code that lets us generate https://cips.cardano.org/cip/CIP-57[Plutus 
+blueprints(((Plutus blueprints)))]
 for all the validators presented in this section. Plutus blueprints allow documenting
 Plutus validators in `JSON` format and include the compiled validator code that is
 represented as a `CBORHEX(((CBORHEX
@@ -2689,7 +2688,7 @@ We call a data type _data-backed_ if it is representationally equivalent to [pur
 
 Since Plutus now provides a way to deal directly with the [purple]#Data# type
 for all Plutus script versions (V1, V2, and V3), developers can move away from sums of
-products or Scott encoding. The
+products(((sums of products))) or Scott encoding. The
 https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/optimizing-scripts-with-asData[Plinth user guide(((Plinth user guide
 )))]
 provides instructions on how to optimize scripts with the `PlutusTx.asData`
@@ -4934,7 +4933,7 @@ deno run -A signed-minting.ts
 
 We can then check again the transaction details on the
 http://preview.cardanoscan.io/[preview.cardanoscan.io] webpage.
-This was an example of minting fungible tokens. Fungibility means
+This was an example of minting fungible tokens. Fungibility(((Fungibility))) means
 that one token is interchangeable with another token of the same type,
 meaning each unit has the same value as any other unit.
 
@@ -5130,7 +5129,7 @@ currency symbols ensures that each token is truly an NFT, as the asset
 class is defined by both the token name and its unique currency symbol.
 
 It is also possible to associate an image with a token or NFT. It can be
-referenced from the https://ipfs.tech/[InterPlanetary file system] or
+referenced from the https://ipfs.tech/[InterPlanetary file system(((IPFS)))] or
 embedded as a https://en.wikipedia.org/wiki/Base64[base64] encoded string
 into the datum metadata of the token or NFT. For more information, see
 https://cips.cardano.org/cip/CIP-68[CIP-68(((CIP-68)))] 
@@ -5190,7 +5189,7 @@ Specifically, PlutusV3 brings:
 
 * Bitwise primitives
 * Cryptographic primitives
-* Sums of products.
+* Sums of products(((sums of products))).
 
 Bitwise primitives allow for the manipulation of data at the lowest
 level of bits. Those operations are the fundamental building blocks of
@@ -5242,7 +5241,7 @@ further information on the
 https://docs.cardano.org/about-cardano/evolution/upgrades/chang/[Chang
 hard fork] that enables PlutusV3.
 
-The last feature PlutusV3 brings is sums of products. One common method
+The last feature PlutusV3 brings is sums of products(((sums of products))). One common method
 for encoding data types in Plutus Core(((Plutus Core
 ))) is the Scott approach(((Scott approach
 ))). With the
@@ -5416,11 +5415,11 @@ which is in centralized exchanges holding custody of traders tokens.
 Liquidity providers that provide token pairs to DEXs, such that normal
 users can trade those tokens, face the issue of impermanent loss on DEXs
 that use the https://www.coindesk.com/learn/what-is-an-automated-market-maker/[Automated
-market maker] (AMM) design model. In an AMM-style DEX, smart contracts
+market maker(((AMM)))] (AMM) design model. In an AMM-style DEX, smart contracts
 enable automated trading of cryptocurrency pairs, which are often a
 fungible token or a native cryptocurrency together with a stablecoin.
 
-To explain how impermanent loss works, let us consider an example of
+To explain how impermanent loss(((impermanent loss))) works, let us consider an example of
 an AMM DEX where the deposited token pair is ETH and USDT (Tether(((Tether
 )))),
 a stablecoin pegged to the value of the USD. If the price of 1 ETH is
@@ -5497,7 +5496,7 @@ examples of such attacks. Because such attacks are possible in Ethereum,
 the interaction of transactions with smart contracts is sometimes hard to
 predict. A reentrancy attack(((reentrancy attack
 ))) happened to the
-https://en.wikipedia.org/wiki/The_DAO[DAO smart contract] that was
+https://en.wikipedia.org/wiki/The_DAO[DAO smart contract(((DAO smart contract)))] that was
 https://www.coindesk.com/learn/understanding-the-dao-attack/[hacked in
 2016]. On that occasion, 3.6m ETH (worth around 50 million USD at the time)
 was affected. Such attacks are not possible in Cardano due to the design
@@ -5596,7 +5595,7 @@ Further learning resources about the EUTXO model in addition to section
 
 * https://ucarecdn.com/6d3813f2-6886-4c61-833f-e78ba5f887d7/EUTXOhandbook_for_EC.pdf[The EUTXO Handbook(((The EUTXO Handbook
 )))]
-* https://iohk.io/en/research/library/papers/the-extended-utxo-model/[The Extended UTXO Model scientific paper]
+* https://iohk.io/en/research/library/papers/the-extended-utxo-model/[The Extended UTXO Model(((The Extended UTXO Model)))] scientific paper
 * https://docs.cardano.org/about-cardano/learn/eutxo-explainer[EUTXO explained on Cardano Docs]
 * https://www.essentialcardano.io/infographic/eutxo-v-account-based-models[EUTXO vs account-based models infographic]
 * https://iohk.io/en/blog/posts/2025/01/08/six-reasons-why-eutxo-wins/[Six reasons why EUTXO wins] blog.
@@ -5611,7 +5610,8 @@ section.
 Cardano offers Plinth, previously called PlutusTx, which is a Turing-complete(((Turing-complete
 )))
 smart contract language realized on top of Haskell, a high-assurance,
-pure functional programming language with a strong type system. You can
+pure functional programming language(((pure functional programming language)))
+with a strong type system. You can
 read more about the characteristics and advantages of the Haskell
 programming language in section <<Features and benefits of Haskell>>.
 The Glasgow Haskell Compiler (GHC), that is the most well-established Haskell
@@ -5659,7 +5659,7 @@ in mind:
 You can read a short explanation of each of the above requirements in
 the
 https://ci.iog.io/job/input-output-hk-plutus/master/x86_64-linux.packages.plutus-report/latest/download/1[Plutus
-Platform] technical report, and you can read more about the design
+Platform (((Plutus Platform)))] technical report, and you can read more about the design
 details of the Plutus language in its
 https://ci.iog.io/job/input-output-hk-plutus/master/x86_64-linux.packages.plutus-core-spec/latest/download/1[formal
 specification] document. The
@@ -5740,13 +5740,13 @@ formalized, and then the properties of the language were proven to
 indicate that the design of the language was correct. Semantics are
 given first by describing the reduction semantics of the language with
 https://en.wikipedia.org/wiki/Operational_semantics#Structural_operational_semantics[Structural
-Operational Semantics] (SOS). Then, the semantics on an abstract
+Operational Semantics] (SOS(((SOS)))). Then, the semantics on an abstract
 machine (the https://en.wikipedia.org/wiki/CEK_Machine[CEK machine])
 are given and shown as equivalent to the SOS. Other properties are also
 shown. For example, the soundness and correctness of the typing system.
 From this formal specification, an executable is produced by compiling
 the specification into Haskell. This executable is a *reference
-implementation* that behaves correctly (by definition), but it's not
+implementation(((reference implementation)))* that behaves correctly (by definition), but it's not
 efficient enough to be used in production. Then, real (efficient)
 implementations can compare their results against those of the reference
 implementation. This is done by automated testing in the conformance
@@ -5754,7 +5754,7 @@ test suite. The production code is tested against the reference
 implementation. The https://github.com/IntersectMBO/plutus[Plutus]
 repository contains the formalization of Plutus in Agda. The project is
 located in the _plutus-metatheory_ folder. You can read more about
-formal methods and functional programming in section
+formal methods and functional programming(((functional programming))) in section
 <<The importance of program correctness for cryptocurrency ledgers>>.
 
 Besides formal methods, property-based testing is also used to deliver
@@ -5958,7 +5958,7 @@ into a single repository, are also worth exploring.
 In the design process of the Marlowe smart contract language, trade-offs
 were made in regard to how powerful the language should be. In computer
 science, the https://en.wikipedia.org/wiki/Halting_problem[Halting
-problem] states that it is impossible to write a program that takes as
+problem(((Halting problem)))] states that it is impossible to write a program that takes as
 input another program written in a Turing-complete(((Turing-complete
 ))) programming language,
 and decides whether that program will stop or not. Such programming
