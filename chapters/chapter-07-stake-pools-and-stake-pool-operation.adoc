@@ -216,9 +216,6 @@ Prior to mainnet(((mainnet))) operations, prospective SPOs should master such ke
 
 == Assigning Leadership Slots to Stake Pools
 
-:url-repo: https://github.com/input(((input)))-output-hk/mastering-cardano/chapters/chapter-stake-pools-and-stake-pool-operation
-:imagesdir: illustrations
-
 === Overview
 On proof-of-work blockchains like Bitcoin, miners generate blocks by solving cryptographic puzzles, which is highly resource-intensive. In contrast, Cardano, a proof-of-stake blockchain, selects stake pools to create blocks using a stake-weighted lottery system(((stake-weighted lottery system))). This system is detailed in the https://eprint.iacr.org/2016/889.pdf[Ouroboros paper], and this section offers a simplified overview.
 
@@ -248,9 +245,6 @@ Security is maintained by ensuring only the pool operator knows when they will c
 
 == Slot Battles, Height Battles, Forkers and Propagation
 
-:url-repo: https://github.com/input(((input)))-output-hk/mastering-cardano/chapters/chapter-stake-pools-and-stake-pool-operation
-:imagesdir: illustrations
-
 
 === Ouroboros leader selection review
 Based on the Ouroboros protocol, Cardano stake pools create blocks on behalf of their delegators. This protocol operates a lottery in every slot (one per second, per current parameters(((parameter)))), with a pool’s chance of being selected as a leader proportional to its stake. If a pool wins the lottery, it becomes the leader for that slot. While the full details of the algorithm are covered in the  https://eprint.iacr.org/2016/889.pdf[Ouroboros paper] and other sections of this book, the key point is that any pool with stake can potentially be a leader in any slot. This can result in multiple pools being chosen as leaders for the same or nearly the same slot. However, only one block can be accepted on the chain for a given slot, leading to situations known in the Cardano community as ‘battles.’
@@ -258,7 +252,7 @@ Based on the Ouroboros protocol, Cardano stake pools create blocks on behalf of 
 === Types of battles
 To understand the types of battles in Cardano, it is essential to review key aspects of blockchain functionality(((functionality))). Consider the illustration below featuring three blocks, starting with the one on the left at height 8,265,668 in slot 244,252, with a block hash of ‘c7b2…​8bac.’ The next block, with a hash of ‘f777…​498c’ at height 8,265,669, includes the parent hash ‘c7b2…​8bac,’ indicating it is built on the previous block. This block was created 9 slots (9 seconds, per current protocol parameters) later, in slot 244,261. Finally, the third block at height 8,265,670, which includes the parent hash ‘f777…​498c,’ was created in slot 244,309. This illustrates how blocks are sequentially built upon one another, contributing to the growth of the blockchain.
 
-image::nittygritty-illustration-1.png[width=100%,title="Basic blockchain(((blockchain))) illustration"]
+image::nittygritty-illustration-1.png[width=100%,title="Basic blockchain illustration"]
 ==== Slot Battles
 A slot battle is a situation when two blocks are presented at the same height, have the same parent hash(((parent hash))), and occur in the same slot.
 
