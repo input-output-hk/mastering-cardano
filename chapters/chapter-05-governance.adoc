@@ -143,13 +143,13 @@ The paper concludes that while each blockchain displays some of the properties, 
 
 https://cips.cardano.org/cip/CIP-1694[CIP-1694] was named after the philosopher Voltaire’s year of birth. It is arguably the most important CIP to date as it is a proposal to bootstrap the age of Voltaire. Co-authored by Charles Hoskinson, it is the first CIP he has gotten directly involved with. It’s clear a lot of thought went into it, and it was intentionally written as a transitional, living document.
 
-When Cardano was formed, there was a tripartite structure with Emurgo, the Cardano Foundation (CF), and IOG with remits for ecosystem growth, governance, and engineering, respectively. The intention was always to move to a members-based organization (MBO) that would manage the protocol governance.
+When Cardano was formed, there was a tripartite structure with EMURGO, the Cardano Foundation (CF), and IOG with remits for ecosystem growth, governance, and engineering, respectively. The intention was always to move to a a stake based governance model, where ada holders determine the future of the protocol.
 
 CIP-1694 is the fruit of years of research. IOG has been working on a decentralized update system for some time. For example, they wrote a paper _Updateable Blockchains_footnote:[Ciampi, Karayannidis, Kiayias and Zindros (2020), 'Updatable Blockchains', iohk.io/en/research/library/papers/updatable-blockchains/] with the European Union, with a Horizon 2020 grant, to explore ways to implement this vision.
 
 Early in 2022, IOG and the CF held workshops to hammer out a way forward for the Voltaire development phase. The first question was ‘What is good governance?’. Charles Hoskinson explained in his ScotFest keynote that the answer was based on three different categories:
 
-1. The *concept of representation* involves consent regarding decision-making authority. There are two types: *direct representation*, where individuals vote personally, and *delegated authority*, where individuals hand their vote to someone else. In CIP-1694, this role is called a delegate representative (DRep). This concept was already introduced in a similar form in Project Catalyst.
+1. The *concept of representation* involves consent regarding decision-making authority. There are two types: *direct representation*, where individuals vote personally, and *delegated authority*, where individuals hand their vote to someone else. In CIP-1694, this role is called a delegate representative (DRep). This concept was discussed, but as yet not implemented, in Project Catalyst. 
 
 2. Governance requires a set of rules, often called a constitution, which serves as guardrails to provide stability. In a blockchain context, a constitution can be machine-readable. Formal specifications can act as blueprints for Cardano, enabling integration with an update system. Once a voting system is established, the constitution can be ratified, hashed, and embedded in a transaction. This allows users to sign a type of ‘end user agreement’ by signing the transaction.
 
@@ -157,7 +157,7 @@ Early in 2022, IOG and the CF held workshops to hammer out a way forward for the
 
 *What is an MBO?*
 
-The MBO is a central hub that unites different groups, including thousands of stake pool operators, Cardano ambassadors, open-source projects running on Cardano, IOG, CF, Emurgo, and all ada holders. Members will own and run the MBO, staffing the steering committees.
+The MBO is a central hub that unites different groups, including thousands of stake pool operators, Cardano ambassadors, open-source projects running on Cardano, IOG, CF, EMURGO, and all ada holders. Members will own and run the MBO, staffing the steering committees.
 
 image::../images/5.3_gov_concepts.png[]
 *Figure 5.3:* Governance concepts defined, based on the slide from ScotFest 2022
