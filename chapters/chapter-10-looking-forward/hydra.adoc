@@ -1,19 +1,19 @@
 
-=== A Scaling Vision (The Scaling Chapter…?)
+=== A Scaling Vision
 
 ==== The Blockchain Trilemma
 
-Imagine, a robust and decentralized network with thousands of interconnected nodes participating in forming consensus on an ever-evolving ledger-state. While this describes the Cardano network, it (like many decentralized or distributed networks before) finds itself constrained at the hands of the Blockchain Trilemma.
+Imagine, a robust and decentralized network(((decentralized, network))) with thousands of interconnected nodes participating in forming consensus on an ever-evolving ledger-state. While this describes the Cardano network, it (like many decentralized or distributed networks before) finds itself constrained at the hands of the Blockchain Trilemma.
 
 image::hydra_blockchaintrilemma.png[]
 
-The Blockchain Trilemma is the Iron Triangle principle applied to decentralized networks. This concept generally asserts that any of the three intertwined principles may not be changed or affected without affecting the others in some way. In the world of blockchain, the three principles comprising this triangle are Security, Scalability, and Decentralization.
+The Blockchain Trilemma is the Iron Triangle principle(((Iron Triangle, principle))) applied to decentralized networks. This concept generally asserts that any of the three intertwined principles may not be changed or affected without affecting the others in some way. In the world of blockchain, the three principles comprising this triangle are Security, Scalability, and Decentralization.
 
 * *Security:* In simple terms, this refers to the ability of the blockchain to resist bad actors. Increased security typically requires a higher level of decentralization, but may have a negative effect on scalability.
 * *Scalability:* This refers to the ability of a decentralized network to increase overall throughput. This principle is usually at direct odds with decentralization, as the more the consensus or other actions of the protocol are distributed, the longer things take to happen in a secure manner.
 * *Decentralization:* The distribution of function away from the control of a single or several actors. The more decentralized a system is, the more secure, especially with well-spread geographic distributions and secure consensus mechanisms. (This is an involved topic on its own and significant efforts exist to https://informatics.ed.ac.uk/blockchain/edi[measure] decentralization for cryptocurrencies).
 
-While Cardano arguably has robust and efficient consensus at its base layer (Layer 1 in other words), in order to truly become the financial backbone of the world economy, all possible scaling options must be explored.
+While Cardano arguably has robust and efficient consensus at its base layer (Layer 1 in other words), in order to truly become the financial backbone of the world economy(((world, economy))), all possible scaling options must be explored.
 
 
 ==== Scaling
@@ -22,7 +22,7 @@ There are two fundamental ways in which decentralized systems typically scale: *
 
 *Vertical Scaling*
 
-Vertical scaling refers to the increase in the performance of a system by adding resources or modifying, streamlining, and adjusting the existing system. Cardano accomplishes this through a variety of on-chain methods:
+Vertical scaling refers to the increase in the performance of a system by adding resources or modifying, streamlining, and adjusting the existing system. Cardano accomplishes this through a variety of on-chain methods(((on-chain, methods))):
 
 * *Block Size Increases:* The larger the block, the more transactions it carries.
 * *Pipelining:* Also called diffusion pipelining, is a modification to the consensus layer that allows for faster block propagation by allowing nodes to pre-notify their downstream peers of an incoming block and allowing those nodes to pre-fetch the new block body.
@@ -30,11 +30,11 @@ Vertical scaling refers to the increase in the performance of a system by adding
 * *Cardano Node Enhancements:* Continual improvement to the node, such as lowering memory consumption and the spreading out of staking reward computations across each epoch allow the network to more easily scale long term.
 * *Input Endorsers:* Improves block propagation time by allowing transactions to be separated into pre-constructed blocks, improving propagation efficiency and allowing for higher transaction throughput.
 
-It is worth mentioning that increasing hardware requirements is necessary for some vertical scaling methods, such as increasing block size. This comes with tradeoffs of course, the cost can be lessened with node and plutus performance enhancements, allowing for even greater possibilities of scaling.
+It is worth mentioning that increasing hardware requirements(((hardware, requirements))) is necessary for some vertical scaling methods, such as increasing block size. This comes with tradeoffs of course, the cost can be lessened with node and plutus performance enhancements, allowing for even greater possibilities of scaling.
 
 *Horizontal Scaling*
 
-Horizontal scaling refers to increasing the performance and potential throughput of a decentralized network by adding systems that operate in parallel to the main network with the purpose of processing transactions and computations via external methods. Unlike vertical scaling, horizontal scaling is only limited by the methods introduced, how they work, and how widely they are implemented. These solutions are referred to as Layer 2 solutions. Here are some examples:
+Horizontal scaling refers to increasing the performance and potential throughput of a decentralized network(((decentralized, network))) by adding systems that operate in parallel to the main network with the purpose of processing transactions and computations via external methods. Unlike vertical scaling, horizontal scaling is only limited by the methods introduced, how they work, and how widely they are implemented. These solutions are referred to as Layer 2 solutions. Here are some examples:
 
 * *Payment Channels:* This type of protocol typically allows two parties to transact with each other through an off-chain protocol. Bitcoin’s Lightning Network is a collection of payment channels where payments may be routed between channels, creating a useful and fast payment network that offloads transaction volume from the main chain.
 * *State Channels:* A state channel is a generalization of a payment channel that extends the capabilities beyond payments to include script execution and complex logic handling all off-chain.
@@ -45,26 +45,26 @@ Horizontal scaling refers to increasing the performance and potential throughput
 
 === Enter Hydra
 
-Hydra is a family of state channel scaling solutions on Cardano that provides the network and applications running on it with the ability to do significant amounts of work off-chain in a secure manner.
+Hydra is a family of state channel scaling solutions(((state channel, scaling solutions))) on Cardano that provides the network and applications running on it with the ability to do significant amounts of work off-chain in a secure manner.
 
-One of the methods utilized in pursuit of the Hydra vision is the use of isomorphic state channels, which was brought to the public in IOGs 2021 paper https://eprint.iacr.org/2020/299.pdf[_Hydra: Fast Isomorphic State Channels_]. State channels allow multiple parties to take a small chunk of the ledger from the main chain, work on it out-of-band, agree on the changes and bring that chunk of changed ledger state to the main chain. State channels operate in a similar manner to Bitcoin’s Lightning network, but instead of leveraging the full feature set of EUTxO, the Lightning Network is relegated to payments only, limited by Bitcoin’s UTxO accounting model. Lightning payment channels only allow two parties to connect to a single channel, but with the implementation of HTLCs (Hash Time-Locked Contracts) it is possible to route payments between payment channels.
+One of the methods utilized in pursuit of the Hydra vision is the use of isomorphic state channels, which was brought to the public in IOGs 2021 paper https://eprint.iacr.org/2020/299.pdf[_Hydra: Fast Isomorphic State Channels_]. State channels allow multiple parties to take a small chunk of the ledger from the main chain, work on it out-of-band, agree on the changes and bring that chunk of changed ledger state to the main chain. State channels operate in a similar manner to Bitcoin’s Lightning network, but instead of leveraging the full feature set of EUTxO, the Lightning Network is relegated to payments only, limited by Bitcoin’s UTxO accounting model. Lightning payment channels(((Lightning, payment channels))) only allow two parties to connect to a single channel, but with the implementation of HTLCs (Hash Time-Locked Contracts) it is possible to route payments between payment channels.
 
-Hydra’s implementation of state channels on the other hand, offers the ability for multiple parties to open isomorphic state channels, granting those parties use of the full EUTxO feature-set, which includes smart contracts, script execution, and other expressive functions as well as simple payment transactions. The isomorphic nature of these state channels allows for nearly frictionless transfer between the main ledger and the state channels mini-ledger, since both can use the same level of expressiveness.
+Hydra’s implementation of state channels on the other hand, offers the ability for multiple parties to open isomorphic state channels(((isomorphic state, channels))), granting those parties use of the full EUTxO feature-set, which includes smart contracts, script execution, and other expressive functions as well as simple payment transactions. The isomorphic nature of these state channels allows for nearly frictionless transfer between the main ledger and the state channels mini-ledger, since both can use the same level of expressiveness.
 
-It is important to note that the use of state channels is one of a number of possible scaling methodologies that can be used. For example, the Hydra Tail protocol will likely use a form of either optimistic or zero-knowledge rollups instead of isomorphic state channels.
+It is important to note that the use of state channels is one of a number of possible scaling methodologies that can be used. For example, the Hydra Tail protocol will likely use a form of either optimistic or zero-knowledge rollups instead of isomorphic state channels(((isomorphic state, channels))).
 
 
 ==== Hydra Head
 
-Being the first implementation of the Hydra protocol, Hydra Head bears strong resemblance to the idea of fast isomorphic state channels presented in the original Hydra paper. Translational research led to the development of the https://hydra.family/head-protocol/assets/files/hydra-spec-47f58a353c228b5a2d2ba4a128a95a69.pdf[Hydra] HeadV1 Specification and the Hydra Head protocol, which is open source and can be found, used, built and developed on its https://github.com/input-output-hk/hydra[github repository].
+Being the first implementation of the Hydra protocol, Hydra Head bears strong resemblance to the idea of fast isomorphic state channels(((isomorphic state, channels))) presented in the original Hydra paper. Translational research led to the development of the https://hydra.family/head-protocol/assets/files/hydra-spec-47f58a353c228b5a2d2ba4a128a95a69.pdf[Hydra] HeadV1 Specification and the Hydra Head protocol, which is open source and can be found, used, built and developed on its https://github.com/input-output-hk/hydra[github repository].
 
-This protocol allows multiple users to agree on a set of rules, open a Hydra head with, import UTxOs into the head, transact, execute scripts, or do other work off the main chain, close the head, finalize the state and bring it back to the main chain. The opening and closing of a Hydra head each take a transaction, but there are no real limits to the amount of transactions that may take place in the Hydra head once opened. It is also important to note that though the mini-ledger used by a Hydra head follows the same ledger rules as the main chain, Hydra heads do not use Ouroboros consensus, and instead use an optimistic consensus model in which all clients must agree and update state with every transaction. The protocol contains built-in safeguards that allow any participant to close the head at any time. The total consensus algorithm requires all participants to remain online and reachable for the head to remain open. If one becomes unreachable, the Head will close and the state will be returned to the main chain.
+This protocol allows multiple users to agree on a set of rules, open a Hydra head with, import UTxOs into the head, transact, execute scripts, or do other work off the main chain, close the head, finalize the state and bring it back to the main chain. The opening and closing of a Hydra head each take a transaction, but there are no real limits to the amount of transactions that may take place in the Hydra head once opened. It is also important to note that though the mini-ledger used by a Hydra head follows the same ledger rules as the main chain, Hydra heads do not use Ouroboros consensus, and instead use an optimistic consensus model(((optimistic consensus, model))) in which all clients must agree and update state with every transaction. The protocol contains built-in safeguards that allow any participant to close the head at any time. The total consensus algorithm requires all participants to remain online and reachable for the head to remain open. If one becomes unreachable, the Head will close and the state will be returned to the main chain.
 
-The advantage of leveraging EUTxO to securely transact offline without using Ouroboros consensus is that the decentralized consensus no longer has to be paid for the same way, meaning that the parties using a Hydra head can agree on transaction fees that fit what they are doing, even potentially setting them to zero. Without requiring global consensus it is possible to transact at zero or low fees, and the constraints on throughput are significantly less restrictive if a low number of clients is assumed.
+The advantage of leveraging EUTxO to securely transact offline without using Ouroboros consensus(((Ouroboros, consensus))) is that the decentralized consensus no longer has to be paid for the same way, meaning that the parties using a Hydra head can agree on transaction fees that fit what they are doing, even potentially setting them to zero. Without requiring global consensus it is possible to transact at zero or low fees, and the constraints on throughput are significantly less restrictive if a low number of clients is assumed.
 
 image::hydra_state-channel.png[]
 
-The Hydra Head protocol is one part of a much bigger idea in regards to scaling with state channels on Cardano. A wide variety of Hydra implementations are possible and will be implemented based on the use-case and need, and serve as parts of a greater vision where Hydra allows Cardano and many of its applications to scale tremendously.
+The Hydra Head protocol is one part of a much bigger idea in regards to scaling with state channels on Cardano. A wide variety of Hydra implementations(((Hydra, implementations))) are possible and will be implemented based on the use-case and need, and serve as parts of a greater vision where Hydra allows Cardano and many of its applications to scale tremendously.
 
 Here are some potential future topologies.
 
@@ -72,55 +72,54 @@ Here are some potential future topologies.
 
 image::hydra_basichydrahead.png[]
 
-The idea of the basic Hydra Head network involves multiple hydra nodes connected together to form a Hydra head state channel between the connected nodes. The figure above shows two separate Hydra head networks, the blue and the green, with two and four participants respectively. Eventually, it will be possible for multiple Hydra nodes to be opened on a single hydra node.
+The idea of the basic Hydra Head network involves multiple hydra nodes connected together to form a Hydra head state channel(((Hydra head, state channel))) between the connected nodes. The figure above shows two separate Hydra head networks, the blue and the green, with two and four participants respectively. Eventually, it will be possible for multiple Hydra nodes to be opened on a single hydra node.
 
 ==== Delegated Hydra Head Network
 
 image::hydra_delegatedhydrahead.png[]
 
-The Delegated Hydra Head model involves a separation of the Operator and Client nodes. In this scenario, Operators possess the Hydra keys used by the protocol to sign snapshots on the Head as well as the keys used to progress the Head state machine on the main chain. The Clients will still still be in possession of the payment keys associated with any of the client UTxOs submitted to the head, but in this scenario it will be possible for hundreds or even thousands of clients to interact with a single state channel. A downside here is that the clients will have to trust at least a single operator, with the upside being many clients directly interacting with the state channel. This model could be best explained as running Hydra Head as a side-chain.
+The Delegated Hydra Head model involves a separation of the Operator and Client nodes. In this scenario, Operators possess the Hydra keys used by the protocol to sign snapshots on the Head as well as the keys used to progress the Head state machine(((Head, state machine))) on the main chain. The Clients will still still be in possession of the payment keys associated with any of the client UTxOs submitted to the head, but in this scenario it will be possible for hundreds or even thousands of clients to interact with a single state channel. A downside here is that the clients will have to trust at least a single operator, with the upside being many clients directly interacting with the state channel. This model could be best explained as running Hydra Head as a side-chain.
 
 ==== Managed Hydra Head Network
 
 image::hydra_managedhydrahead.png[]
 
-Rather than each Hydra Head requiring each participant to host an instance of Hydra node, Hydra nodes will be able to support multiple Heads per node. Here, a Managed Head Service Provider would host Hydra nodes as a service, allowing clients to connect to the Hydra Heads via API (Application Programming Interface) while clients still control the Hydra keys. The client in this case would be analogous to a “light node” that checks into the infrastructure maintainer, or in this case the Managed Head Service Provider.
+Rather than each Hydra Head requiring each participant to host an instance of Hydra node, Hydra nodes will be able to support multiple Heads per node. Here, a Managed Head Service Provider(((Managed Head Service, Provider))) would host Hydra nodes as a service, allowing clients to connect to the Hydra Heads via API (Application Programming Interface) while clients still control the Hydra keys. The client in this case would be analogous to a “light node” that checks into the infrastructure maintainer, or in this case the Managed Head Service Provider(((Managed Head Service, Provider))).
 
 ==== Hydra Head Network
 
 image::hydra_hydraheadnetwork.png[]
 
-The Hydra Head Network gives Basic Hydra Head Networks the ability to connect with each other through individual Hydra nodes. This will require Hydra nodes to be able to manage more than one Head per node, and HTLCs (Hash Time Locked Contracts) or adaptor signatures may be used to perform swaps between networks and forward payments of fungible assets. This is very similar to how the Lightning Network works on Bitcoin.
+The Hydra Head Network(((Hydra Head, Network))) gives Basic Hydra Head Networks the ability to connect with each other through individual Hydra nodes. This will require Hydra nodes to be able to manage more than one Head per node, and HTLCs (Hash Time Locked Contracts) or adaptor signatures may be used to perform swaps between networks and forward payments of fungible assets. This is very similar to how the Lightning Network works on Bitcoin.
 
-Hydra Head networks can also be assembled in arrangements resembling other network topologies.
+Hydra Head networks can also be assembled in arrangements resembling other network topologies(((network, topologies))).
 
 image::hydra_star-shapedheadnetwork.png[]
 
-An example being the Star-Shaped Hydra Head Network. In this case, a central Hydra node server (the hydra-node in the diagram with the green, yellow, and purple circles inside of it) would act as a Hydra Head aggregation point in which Client nodes (A, B, and C) would open channels with the central server independently. The Hydra Server could route transactions between state channels, and potentially use HTLCs in case the destination head is not currently active. The server node will need to have high operational uptime whereas the client nodes can attempt to connect as needed.
+An example being the Star-Shaped Hydra Head Network(((Star-Shaped Hydra Head, Network))). In this case, a central Hydra node server (the hydra-node in the diagram with the green, yellow, and purple circles inside of it) would act as a Hydra Head aggregation point in which Client nodes (A, B, and C) would open channels with the central server independently. The Hydra Server could route transactions between state channels, and potentially use HTLCs in case the destination head is not currently active. The server node will need to have high operational uptime whereas the client nodes can attempt to connect as needed.
 
 ==== Inter-Head Hydra Network
 
 image::hydra_interheadhydra.png[]
 
-Though the topologies listed so far will significantly help Cardano and many of its applications scale in a variety of ways, the concept of Interhead Hydra (Layer 3) takes it a step further and considers virtual Hydra Heads running on top of regular Hydra Heads allowing even more potential for out-of-band computation and consensus.
+Though the topologies listed so far will significantly help Cardano and many of its applications scale in a variety of ways, the concept of Interhead Hydra (Layer 3) takes it a step further and considers virtual Hydra Heads running on top of regular Hydra Heads allowing even more potential for out-of-band computation and consensus(((consensus))).
 
 ==== Hydra Tail
 
 image::hydra_hydratail.png[]
 
-The concept of the Hydra Tail does not use the Hydra Head protocol at all. Instead, it uses a server-client architecture, where the server remains online and maintains a ledger state waiting for client connections. Unlike the Hydra Head protocol, the Hydra Tail protocol is asymmetrical, with the Tail Server assuming most responsibilities. This asymmetry allows Tail Clients to be low-powered and unreliable (i.e. smartphones, personal computers, etc.) and can connect to the Tail Server when needed. There are methods to prevent the server from bad behavior such as putting collateral on the main chain and a challenge-response-protocol on the mainchain where clients may dispute server claims. The Hydra Tail protocol may also use zero knowledge proofs alongside optimistic consensus in the form of rollups.
+The concept of the Hydra Tail does not use the Hydra Head protocol at all. Instead, it uses a server-client architecture, where the server remains online and maintains a ledger state waiting for client connections. Unlike the Hydra Head protocol, the Hydra Tail protocol is asymmetrical, with the Tail Server assuming most responsibilities. This asymmetry allows Tail Clients to be low-powered and unreliable (i.e. smartphones, personal computers, etc.) and can connect to the Tail Server when needed. There are methods to prevent the server from bad behavior such as putting collateral on the main chain and a challenge-response-protocol(((challenge-response-protocol))) on the mainchain where clients may dispute server claims. The Hydra Tail protocol may also use zero knowledge proofs alongside optimistic consensus in the form of rollups.
 
 ==== Combined Hydra Head and Tail Network
 
 image::hydra_combinedheadtail.png[]
 
-Another potential way to accommodate high-throughput application demands is the combining of the Hydra Head and Hydra Tail protocols. Hydra head networks could be accessed through Tail Servers for clients that are unable to run a reliable hydra node for example, with Hydra nodes potentially serving as the Tail servers themselves.
+Another potential way to accommodate high-throughput application demands is the combining of the Hydra Head and Hydra Tail protocols. Hydra head networks could be accessed through Tail Servers(((Tail, Servers))) for clients that are unable to run a reliable hydra node for example, with Hydra nodes potentially serving as the Tail servers themselves.
 
 ==== Full Hydra Vision
 
 image::hydra_fullhydravision.png[]
 
-The concept of Hydra as a scaling solution goes well beyond a multi-party state channel that leverages the expressive EUTxO feature set to offload transaction volume from the mainchain and increase throughput for applications and services. It will eventually be possible to see Hydra evolve into a fully heterogenous Layer 2 solution that fits a multitude of use-cases. Once developed it will be possible to observe multiple large, interconnected and incredibly high-throughput Hydra networks with the ability to connect to each other, all running on top of Cardano.
-
+The concept of Hydra as a scaling solution goes well beyond a multi-party state channel that leverages the expressive EUTxO feature set to offload transaction volume(((transaction, volume))) from the mainchain and increase throughput for applications and services. It will eventually be possible to see Hydra evolve into a fully heterogenous Layer 2 solution that fits a multitude of use-cases. Once developed it will be possible to observe multiple large, interconnected and incredibly high-throughput Hydra networks with the ability to connect to each other, all running on top of Cardano.
 
 
