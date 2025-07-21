@@ -5865,10 +5865,24 @@ representation of the smart contract behavior. Then, the smart
 contract's specifications are defined in a language that both the model
 and the verification tools can comprehend. After that, the process of
 verification can start, where mathematical tools and logic are used to
-prove the correctness of the defined assumptions. In the end, the
-results of the verification process are analyzed, and issues are
-addressed. No matter the audit type, the company requesting it has to
-provide a standard set of documents and information:
+prove the correctness of the defined assumptions. In the end, the results
+of the verification process are analyzed, and issues are addressed.
+
+IO is also developing a new formal verification tool for Cardano smart
+contracts. Proof assistants such as Agda and Rocq (formerly Coq), offer
+strong guarantees, but require experienced developers to use. This new tool
+combines the power of the Lean4 proof system and SMT solvers, such as Z3,
+to automatically check that contracts behave as intended. The goal is to
+eliminate the need for developers to write any formal proofs themselves.
+It will work by simply clicking a button and the targeted smart contract
+will be formally verified. This tool can be integrated directly into the
+CI/CD pipeline and contracts can be formally verified on every commit –
+instantly, continuously, and affordably. The tool still remains under
+development at the time of writting. One can read more about the tool in this
+https://iohk.io/en/blog/posts/2025/07/17/a-new-era-of-smart-contract-verification-on-cardano/[IO blog].
+
+In case a company decides for an audit, no matter the audit type, the company
+requesting it has to provide a standard set of documents and information:
 
 * General specification and design documents that unambiguously describe
 the architecture, interfaces, and requirements characterizing the DApp.
