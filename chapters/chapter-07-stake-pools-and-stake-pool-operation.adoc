@@ -2,7 +2,6 @@
 [[stake-pools-and-stake-pool-operation]]
 == Stake Pools and Stake Pool Operation
 
-
 == Introduction
 
 The strength of the Cardano network lies in its widespread and diverse distribution of stake pools, stake pool operators (SPOs), delegators, builders, and community members at large. The ethos of this well-distributed network(((distributed network))) and broader ecosystem has found its way into the creation of this chapter.
@@ -14,7 +13,6 @@ This chapter aims to deliver a thorough technical and conceptual overview of sta
 It is recommended that prospective SPOs read through this chapter, understand the concepts, and then participate and practice operations on one or more of the publicly available testnets(((testnet))) until they gain sufficient expertise before spinning up on mainnet. Seasoned pool operators can use this guide as a refresher, address potential knowledge gaps, and, best of all, contribute where needed.
 
 A list of tools and guides is provided at the end of this chapter to assist with both learning how to operate stake pools and maintaining efficient long-term operations on mainnet(((mainnet))).
-
 
 == What is a Stake Pool?
 
@@ -150,7 +148,6 @@ As an open protocol, Cardano allows anyone to create and operate a stake pool us
 
 It is also important to note that many community-made tools(((community-made tools))) and scripts are available, which significantly lower the technical barrier to entry for operating a stake pool. These tools assist with operational tasks but are not a substitute for the necessary technical knowledge or skills required for effective stake pool management.
 
-
 === *Linux*
 
 A strong understanding of and ability to navigate, utilize, and manage the Linux operating system is a must for any stake pool operator. While cardano-node binaries are available for Linux, Mac, and Windows with each release, only Linux is supported in the block producer and relay roles. It is possible to build from source and operate cardano-node and cardano-cli on OpenBSD and potentially other Unix-based operating systems(((Unix-based operating systems))), but this is an advanced and separate topic.
@@ -159,7 +156,6 @@ Suggested readings and courses:
 
 * https://training.linuxfoundation.org/training/introduction-to-linux/[Introduction to Linux (LFS101x) by The Linux Foundation]
 * https://ubuntu.com/tutorials/command-line-for-beginners#1-overview[The Linux command line for beginners Tutorial by Canonical]
-
 
 === *Networking*
 
@@ -245,7 +241,6 @@ Security is maintained by ensuring only the pool operator knows when they will c
 
 == Slot Battles, Height Battles, Forkers and Propagation
 
-
 === Ouroboros leader selection review
 Based on the Ouroboros protocol, Cardano stake pools create blocks on behalf of their delegators. This protocol operates a lottery in every slot (one per second, per current parameters(((parameter)))), with a pool’s chance of being selected as a leader proportional to its stake. If a pool wins the lottery, it becomes the leader for that slot. While the full details of the algorithm are covered in the  https://eprint.iacr.org/2016/889.pdf[Ouroboros paper] and other sections of this book, the key point is that any pool with stake can potentially be a leader in any slot. This can result in multiple pools being chosen as leaders for the same or nearly the same slot. However, only one block can be accepted on the chain for a given slot, leading to situations known in the Cardano community as ‘battles.’
 
@@ -283,7 +278,6 @@ When a battle or fork occurs on the network, all nodes must reach consensus on w
 
 .  Chain Length, the longest chain length is always preferred.
 .  If the chain length is the same, we choose the block with the lowest block vrf.
-
 
 ==== Block VRF
 The block VRF is a value generated from the epoch nonce, the slot number, and the private VRF key registered by the pool. This value does not depend on the block’s contents and cannot be manipulated by the pool operator. Block VRF values can be quite large, represented as a 128-character hexadecimal number(((hexadecimal number))).
@@ -386,7 +380,6 @@ Public/private key pairs are fundamental in cryptography. In Cardano, the holder
 
 
 *Note: It is essential to protect all private keys from both unauthorized access and accidental deletion. Since the launch of Shelley, there have been numerous examples of mismanaged keys leading to non-functional stake pools and, in rare instances, stolen funds. Proper key management is crucial for the security and functionality of a stake pool.*
-
 
 === Addresses
 
@@ -574,7 +567,6 @@ The VRF key will reside on the connected block-producing node(((block-producing 
 
 
 *Note*: While it is possible to modify the VRF key of a stake pool by sending a new pool registration certificate, doing so will forfeit pool rewards for two epochs. This requirement helps encourage tight security practices.
-
 
 ==== KES keys pair
 
@@ -784,15 +776,11 @@ _The reward address will not be required to sign the transaction sending the cer
 
 `--pool-owner-stake-verification-key-file`: specifies the `stake.vk` of the `base.addr(((base.addr)))` used  as the pledge for the pool. While it can be the same as the reward account, a different address may be chosen. Multiple base addresses can be used for pledging.
 
-
 *The transaction sending the certificate will include a signature for each and every address referenced as a pool owner.*
-
 
 `--pool-pledge`: defines the minimum amount in lovelace that must collectively be present in the owner(s) account(s). If this requirement is not met, the pool will forfeit all rewards, both for delegators and the pool itself. To ensure flexibility(((flexibility))) or avoid risks in this example, it is set to 0.
 
-
 *The address(es) declared as pool’s pledge must all be delegated to the pool being registered.*
-
 
 `--pool-relay-ipv4`: the IP address of the relay node(((relay node))) used to shield the block produced from connections to the wider network. Note that an ipv6 option exists.
 
@@ -848,7 +836,6 @@ When a pool operator sends a deregistration certificate(((deregistration certifi
 
 *Only the pool cold keys are necessary to retire a pool. If the owner is not the pool operator, they have no authority in this process.*
 
-
 [discrete]
 ==== Delegation certificate
 
@@ -860,9 +847,7 @@ cardano-cli stake-address delegation-certificate --stake-verification-key-file .
 
 As expected, the delegation(((delegation))) process requires the `stake.vk` of the address from which you wish to delegate, along with the `pool.vk` of the pool you intend to delegate to. Since the pool is operated by you, obtaining this information should not be an issue.
 
-
 Do not hesitate to explore the `cardano-cli stake-address delegation-certificate` command to learn how to delegate to another stake pool(((stake pool))) for which you are not the operator (ie, you do not possess the corresponding `pool.vk`). 
-
 
 [discrete]
 ==== File Summary #3
@@ -1000,9 +985,7 @@ cardano-cli transaction calculate-min-fee \
 --protocol-params-file pparameters.json
 ----
 
-
 You may adjust the `--tx-in-count`, `--tx-out-count`, and `--witness-count` values accordingly. Here, we consume one UTxO, have the change sent back in a single address and will sign the transaction with 3 witnesses (a.k.a. secret keys).
-
 
 The command replies :
 
@@ -1012,9 +995,7 @@ The command replies :
 
 Perfect! Only 0.197313 ada. Not too expensive for a transaction containing three certificates.
 
-
 *Note*: Transaction fees are deterministic and as such, have a lower bound. However, users can always choose to pay more than the required amount. It is important to handle fee inputs with care.
-
 
 [discrete]
 ==== Build the final transaction
@@ -1036,7 +1017,6 @@ cardano-cli transaction build-raw \
 +
 [IMPORTANT]
 ====
-
 
 *`--tx-out` value is expressed in lovelaces.*
 * Registering an address requires a deposit of 2 ada (2000000 lovelaces).
@@ -1070,7 +1050,6 @@ The transaction must be signed by three private keys in this case.
 * `payment.skey` will authorize spending funds from the `base.addr`.
 * `stake.skey` will authorize the use of `base.addr` (its staking part) as a pool owner and authorize delegation to the pool at the same time.
 * `pool.skey` will authorize the registration of the pool
-
 
 *Note*: The address used for collecting pool rewards does not need to sign this transaction. In this case, the same address is used for both reward collection and pledge functions. The pool owner (pledge) is not required to sign a `de-registration certificate`. Updating pool parameters is done by sending a new `pool-registration certificate`, and the deposit is only required during the initial registration.
 
@@ -1120,9 +1099,7 @@ cardano-cli transaction build-raw \
 
 `--withdrawal`: specifies from which `stake.addr` rewards will be withdrawn from; `+` separates the address from the value withdrawn in lovelace.
 
-
 Since we only create a fake transaction in order to calculate transaction fees, we set the value withdrawn at 0.
-
 
 Next, run:
 
@@ -1154,7 +1131,6 @@ cardano-cli transaction build-raw \
 
 [IMPORTANT]
 ====
-
 
 *All values are expressed in lovelaces.*
 
@@ -1191,7 +1167,6 @@ cardano-cli transaction submit \
 
 This guide details all the necessary `cardano-cli` actions to become an autonomous stake pool operator on Cardano. Hopefully, this document has clarified the numerous components involved.
 
-
 Community tools, like https://github.com/cardano-community/guild-operators[Guild-Operators] or the https://github.com/gitmachtl/scripts[Stake Pool Operators Scripts] repositories, abstract most of the steps described. Aditionally, operations requiring a running instance of `cardano-node` (to query or post on the ledger) can be performed using a copycat of `cardano-cli` called https://github.com/blockfrost/blockfrost-cardano-cli[`blockfrost-cardano-cli`]. It can be sometimes faster than querying your local `cardano-node` instance!
 
 Given the importance of handling private keys securely, it’s recommended to use tools that integrate hardware wallets. One such tool is `cardano-hw-cli`, a version of `cardano-cli` designed to manage both addresses and pool private keys via hardware wallets https://github.com/vacuumlabs/cardano-hw-cli[here].
@@ -1211,7 +1186,6 @@ After installing Chrony, it is recommended to configure the default configuratio
 * Higher strata indicate further deviations from precise time.
 
 To check the stratum level, use the command `chrony ntpdata`. Below is an example of a typical `chrony.conf` configuration:
-
 
 [source, chrony.conf]
 ----
@@ -1238,11 +1212,9 @@ leapsectz right/UTC
 
 * Rtsync can be set to enable the kernel to periodically synchronize the system clock with the real-time clock, typically every 11 minutes on Linux. If the connected timesync server does not provide leap second updates in advance, the leapsectz option (e.g., leapsectz right/UTC) may be configured. In general, it is recommended to use Coordinated Universal Time (UTC) for server time, as this is the global standard and the format most GPS-based timesync servers report in.
  
-
 With that out of the way in a fairly short time (pun intended), a stake pool operator will be able to keep Cardano nodes collaborating well with the rest of the network in a timely manner!
 
 == Server Security and Hardening
-
 
 ``Security is a state characterized by the absence of fear or anxiety regarding one’s physical, economic, technological, or social well-being, or that of those under one’s care. In information technology (IT), achieving this requires implementing preventive measures, enforcing security policies and procedures, and conducting regular security assessments to identify and address vulnerabilities. IT security is critical today, with the widespread use of electronic communication, by protecting systems, networks, and the data they handle, and preventing data breaches.``
 
@@ -1329,7 +1301,6 @@ Key security considerations for securing SSH include:
 . When applicable, restrict access to the only IP address you’ll be using to connect to your server. Example: `nano /etc/ssh/sshd_config` and add the line `AllowUsers user@xxx.xxx.xxx.xxx`
 . Use SFTP or SCP to transfer files (over SSH) to and from your server, as it provides an added layer of security compared to FTP.
 . You can use SSH tunneling to encrypt and redirect traffic within remote nodes, in order to access backend infrastructure.
-
 
 ==== Use a VPN (as alternative to ssh tunneling)
 
