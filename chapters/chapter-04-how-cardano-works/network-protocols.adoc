@@ -10,23 +10,23 @@ Since its inception, the Cardano network has evolved and continues to change wit
 
 * *The Federated Network:* Introduced in the Byron era in 2017, the network was maintained by IOG, Emurgo, and the Cardano Foundation. Nodes relied on static topologies to connect with one-another.
 
-image::network_revised_federatednetwork.png[]
+image::network_revised_federatednetwork.png[title="Federated Network"]
 
 * *The Hybrid Network:* When the Shelley development phase began in 2020, the network was handed over to stake pool operators resulting in further decentralization of Cardano network. While nodes still required statically configured topologies to connect with one-another, the community-made https://cardano-community.github.io/guild-operators/Scripts/topologyupdater/[Topology Updater] script helped automate this process. The script lists peers based on geographical distance. It selects, skips, and again selects the peers to the end of the list to ensure that each node connects to a well-distributed variety of peers.
 
-image::network_revised_hybridnetwork.png[]
+image::network_revised_hybridnetwork.png[title="Hybrid Network"]
 
 * *Dynamic Peer to Peer(P2P):* This evolution of the Cardano network allowed nodes to automatically connect with other peers. However, trusted peers or relays are still required to be statically configured in order to bootstrap and synchronize to the network.
 
-image::network_revised_dynamicp2p.png[]
+image::network_revised_dynamicp2p.png[title="Dynamic P2P"]
 
 * *Ouroboros Genesis:* The fully realized iteration of P2P, Ouroboros Genesis will allow nodes to self-bootstrap from the Cardano network, shedding the requirement for nodes to connect to trusted peers. However, peer selection still utilizes on-chain registered stake pool relays.
 
-image::network_revised_ouroborosgenesis.png[]
+image::network_revised_ouroborosgenesis.png[title="Ouroboros Genesis"]
 
 * *Peer Sharing:* Peer sharing will allow the discovery of any node connected to the Cardano network, rather than only registered relays. This will allow non SPO nodes to contribute to running the network.
 
-image::network_revised_peersharing.png[]
+image::network_revised_peersharing.png[title="Peer Sharing"]
 
 
 ==== Protocol Overview
@@ -62,9 +62,7 @@ The NtN IPC is responsible for transferring transactions, block header transfers
 * *tx-submission*
 * *keep-alive*
 
-image::network_ntn.png[]
-_Figure N: Operational flow of the NtN(((NtN))) protocol suite between connected nodes_
-
+image::network_ntn.png[title="Node-to-Node"]
 
 ===== Node-to-Client(NtC) IPC
 
@@ -74,23 +72,19 @@ The NtC IPC facilitates the connection between a local full node and a local cli
 * *local-tx-submission*
 * *local-state-query*
 
-image::network_ntc.png[]
-_Figure N: Operational flow of the NtC(((NtC))) protocol suite between node and client_
+image::network_ntc.png[title="Node-to-Client"]
 
 ==== Multiplexing
 
 Within the _network layer_ of the Cardano node is a _multiplexing layer_, which allows the NtN protocol suite mini protocols to run in parallel through a single channel via TCP. The _multiplexing layer_ is implemented via the *network-mux* standalone multiplexing library.  This multiplexer uses a MUX thread to split the de-serialized messages(((de-serialized, messages))) from the mini protocols, assign a segment header and transmit the segments to the receiving DEMUX thread of another connected node, which in turn uses the segment headers to reassemble the messages from the sending node’s MUX thread.
 
-image::network_mux.png[]
-_Figure N. Multiple multiplexed NtN(((NtN))) protocols running in parallel over a single TCP connection_
+image::network_mux.png[title="mux"]
 
 ==== Peer to Peer(P2P) Networking
 
 The Cardano network benefits from the capabilities of a dynamic P2P system where nodes may automatically search for, connect with, and actively manage connections with other nodes allowing the network to be robust, decentralized, and flexible. The P2P stack is under continual development with regular increases in functionality. Through active peer selection and policy based exclusively on local information of the node, Cardano’s P2P system significantly reduces data diffusion times(((data diffusion, times))) across the network.
 
-image::network_p2pcomponents.png[]
-_Figure N. P2P(((P2P))) components_
-
+image::network_p2pcomponents.png[title="p2p components"]
 
 The following components make Cardano’s P2P(((P2P))) system possible:
 
@@ -124,15 +118,13 @@ It is also responsible for establishing and maintaining:
 * a diverse set of warm peers in terms of hop distance and geographic locations based on the connectivity map
 * frequent churn for hot, warm, cold, and unknown peer changes
 
-image::network_peerdiscovery.png[]
-_Figure N. The peer discovery process for P2P(((P2P))) on Cardano_
+image::network_peerdiscovery.png[title="Peer Discovery"]
 
 Research found 2-20 to be ideal for hot peers since block headers(((block, headers))), rather than full blocks are exchanged among them, with the block body only being requested once and being fetched by the peer with the quickest path to the requesting node.
 
 Warm peers can be quickly promoted to hot peers as candidates during the hot peer churn. The promotions and demotions between warm and hot rely on upstream measurements(((upstream, measurements))), while the churn between warm and cold is intended to discover network distances with the purpose of continually searching for better peers in a constantly changing network, where nodes may join and leave the network at any time.
 
 For those wishing to further research the mechanisms behind Cardnao networking protocols, please refer to the following sources:
-
 
 * https://docs.cardano.org/about-cardano/explore-more/cardano-network/[Cardano Docs Networking Page]
 * https://ouroboros-network.cardano.intersectmbo.org/pdfs/network-spec/network-spec.pdf[The Shelley Networking Protocol Spec]
