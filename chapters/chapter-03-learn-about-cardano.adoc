@@ -1,7 +1,7 @@
 == Learn About Cardano
 
 === What is Cardano?
-Cardano is an *open-source(((open-source)))*, *proof of stake(((proof of stake)))* blockchain platform. As a third-generation platform, it combines pioneering technologies to provide a more secure and scalable infrastructure for developing smart contracts(((smart contracts))) and decentralized applications (DApps(((DApps)))).
+Cardano is an *open-source(((open-source)))*, *proof of stake(((proof of stake)))* blockchain platform. As a third-generation platform, it combines pioneering technologies to provide a more secure and scalable infrastructure for developing smart contracts(((smart contracts))) and decentralized applications (DApps(((DApps))) ).
 
 Cardano aims to address the shortcomings of existing blockchain platforms by focusing on security(((security))), scalability(((scalability))), and interoperability(((interoperability))). As a fully https://informatics.ed.ac.uk/blockchain/edi[decentralized] blockchain, it can support a wide range of applications, from financial services to supply chain management and beyond. With the recent implementations of the https://iohk.io/en/blog/posts/2024/08/30/chang-upgrade-a-big-step-in-changing-the-world-with-cardano/[Chang] and https://www.intersectmbo.org/news/plomin-hard-fork-ratified[Plomin] hard forks(((hard forks))), Cardano has become the most decentralized blockchain network in operation.
 
@@ -152,7 +152,7 @@ The education team at IO brings together extensive experience in:
 - Project management and delivery
 - Technical aspects related to blockchain
 - Haskell(((Haskell))) and Cardano expertise
-- Smart contract languages and development (including Plutus(((Plutus))), Aiken(((Aiken))), and Marlowe(((Marlowe))))
+- Smart contract languages and development (including Plutus(((Plutus))), Aiken(((Aiken))), and Marlowe(((Marlowe))) )
 
 This collective expertise ensures that educational programs are both comprehensive and practical, tailored to meet the needs of diverse learners. The education team aims to enhance understanding of Cardano technologies using a variety of learning and training assets targeted at a wide range of audiences. The team aims to provide knowledge and information to enterprise decision-makers so they know what business problems the technologies can solve. It strives to create a supportive learning environment for all participants, and continuously shares what its team members have learned from working directly with our community members.
 
