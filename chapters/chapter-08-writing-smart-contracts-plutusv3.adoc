@@ -53,9 +53,9 @@ representing data types as higher-order functions(((higher-order functions))),
 but we had reason to believe the extra cost was negligible. Always check your
 assumptions! Once the system was up and running, performance
 measurements showed the cost of implementing data structures as
-functions was greater than expected. So, we modified the design to
-support data structures directly, and the feature will appear in the
-next version of Plutus.
+functions was greater than expected. So, we modified the design to 
+support data structures directly in Plutus Core, and the feature is 
+available as of version 1.1.0. 
 
 The on-chain production evaluator for Plutus is written in Haskell,
 one of the most widely used functional programming languages. Plutus
