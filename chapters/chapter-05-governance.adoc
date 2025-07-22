@@ -492,6 +492,12 @@ image::../images/5.5_gov_actions.png[]
 
 Following the on-chain voting process, a governance action is considered approved (or ratified) if it meets the specific voting thresholds set for its type. These thresholds determine the level of consensus needed from the different voting bodies.
 
+For DReps, only ‘Yes’ votes contribute to the passage of a governance action, and not voting counts as ‘No’.
+
+DRep voting is based on one lovelace, one vote. The passing threshold for an action is the stake voted ‘Yes’ expressed as a percentage of the total stake. Stake voted ‘Abstain’ or delegated to inactive DReps is excluded from the total stake. Stake delegated but not voted is added to the stake voted ‘No’ and included in the total stake.
+
+A DRep becomes inactive by not voting for a number of epochs of five days. This number is set by the protocol parameter `drepActivity`. A DRep can become active again simply by casting a vote.
+
 Once ratified, a governance action is then enacted on-chain, meaning it's implemented and becomes part of the Cardano protocol according to a well-defined set of rules.
 
 Proposals categorized as https://docs.intersectmbo.org/cardano/cardano-governance/key-terms/governance-action/ga-info[Info actions] are a special case. Since their purpose is solely to provide information, they don't require enactment and have no impact on the protocol itself. Their ratification simply acknowledges their informational value.
