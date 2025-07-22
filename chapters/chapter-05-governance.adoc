@@ -15,7 +15,7 @@ Formal methods, machine-comprehensible specifications, and integrating a treasur
 
 === Cardano Improvement Proposals (CIPs)
 
-CIP stands for 'Cardano Improvement Proposal'. Similar concepts exist for other blockchains, such as the Bitcoin Improvement Proposals (BIPs) or the Ethereum Improvement Proposals (EIPs). While these share similarities, each works quite differently. In November 2020, http://github.com/cardano-foundation/CIPs/tree/master/CIP-0001[CIP-0001] was drafted to explain what a CIP is. A CIP is a formal, structured document proposing a solution to a common problem, highlighting various options and their trade-offs.
+Similar concepts exist for other blockchains, such as the Bitcoin Improvement Proposals (BIPs) or the Ethereum Improvement Proposals (EIPs). While these share similarities, each works quite differently. In November 2020, http://github.com/cardano-foundation/CIPs/tree/master/CIP-0001[CIP-0001] was drafted to explain what a CIP is. A CIP is a formal, structured document proposing a solution to a common problem, highlighting various options and their trade-offs.
 
 Anyone with ideas for enhancing Cardano can present them as CIPs. While CIPs are not a formal component of Cardano governance, they help steer the protocol and tooling in the right direction, benefiting the entire ecosystem.
 
