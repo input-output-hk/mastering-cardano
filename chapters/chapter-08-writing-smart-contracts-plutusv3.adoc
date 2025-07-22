@@ -1750,10 +1750,16 @@ operation was originally included but was subsequently disabled).
 ))) program is
 very constrained. For example, it cannot inspect a transaction
 currently being validated, but it can access the transaction's hash.
-. There is no 'official' high-level language compiling to Bitcoin
-Script, although several proposals have been put forward by a variety of
-groups (eg, _Massimo Bartoletti and Roberto Zunino. 2018. BitML: A
-Calculus for Bitcoin Smart Contract_).
+
+A compilation pipeline is being developed at IO that builds a connection 
+from Cardano smart contracts to Bitcoin. This is done by combining Untyped 
+Plutus Core (UPLC), the CEK machine - a clever interpreter architecture, 
+and RISC-V that is a widely supported open-source reduced instruction set 
+architecture. BitVMX plays a key role, that makes Bitcoin programmable. 
+It runs computations off-chain, but gives Bitcoin users a way to successfully 
+challenge suspicious transactions. One can read more about this topic in 
+the following 
+https://iohk.io/en/blog/posts/2025/07/19/smart-contracts-on-bitcoin/[IO blog]. 
 
 Ethereum provides a Turing-complete(((Turing-complete
 ))) language for the Ethereum virtual
