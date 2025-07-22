@@ -58,3 +58,4 @@ include::chapters/chapter-10-looking-forward.adoc[]
 
 include::chapters/chapter-11-glossary.adoc[]
 include::chapters/chapter-12-index.adoc[]
+include::chapters/author-info.adoc[]
