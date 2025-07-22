@@ -39,7 +39,7 @@ image::../images/5.1_cip_workflow.png[]
 
 *Figure 5.1:* CIP workflow from CIP-0001
 
-CIPs are processed in a semi-formal manner. Editors of CIP proposals(((proposals))) meet regularly to discuss and evaluate ideas. The biweekly meeting http://github.com/cardano-foundation/CIPs/tree/master/BiweeklyMeetings[minutes] are publicly available.
+CIPs are processed in a semi-formal manner. Editors of CIP proposals(((proposals))) meet regularly to discuss and evaluate ideas. The fortnightly meeting http://github.com/cardano-foundation/CIPs/tree/master/BiweeklyMeetings[minutes] are publicly available.
 
 === Project Catalyst: democratizing innovation in Cardano
 
@@ -241,12 +241,12 @@ The Cardano Development Holdings(((Cardano Development Holdings))) (CDH), establ
 
 Becoming a founding member(((founding member))) comes with the following benefits:
 
-- Participate in steering groups, committees, and advisory boards, with the potential to establish new committees that will define Cardano's future governance.
-- Access grants and contribute to developing Cardano's codebase while guiding a grant program to strengthen the Cardano protocol and ecosystem.
-- Collaborate with other Cardano enthusiasts to build new partnerships and connections.
-- Showcase contributions through member events, conferences, marketing materials, and member spotlights.
-- Attend monthly meetings for updates on progress, committees, events, and funding opportunities.
-- Participate in the annual meeting (in-person or virtually), focusing on Intersect activities, including voting on proposals. There are many. https://intersect.gitbook.io/intersect-community-grants/overview/community-hub-faqs[Community Hubs], located worldwide, hosting events.
+- participate in steering groups, committees, and advisory boards, with the potential to establish new committees that will define Cardano's future governance
+- access grants and contribute to developing Cardano's codebase while guiding a grant program to strengthen the Cardano protocol and ecosystem
+- collaborate with other Cardano enthusiasts to build new partnerships and connections
+- showcase contributions through member events, conferences, marketing materials, and member spotlights
+- attend monthly meetings for updates on progress, committees, events, and funding opportunities
+- participate in the annual meeting (in-person or virtually), focusing on Intersect activities, including voting on proposals. There are many https://intersect.gitbook.io/intersect-community-grants/overview/community-hub-faqs[Community Hubs], located worldwide, hosting events.
 
 *Amending Intersect membership governance*
 
@@ -281,27 +281,27 @@ Working groups are temporary and typically support a standing committee’s broa
 ==== The civics committee
 The civics committee acts as a guide and supervisor(((guide and supervisor))) for the Cardano community on governance issues:
 
-- They develop and manage ways for the community to actively participate in Cardano's governance.
-- They collaborate with subject matter experts when needed.
-- They assist the Cardano constitutional committee as requested.
+- develop and manage ways for the community to actively participate in Cardano's governance
+- collaborate with subject matter experts when needed
+- assist the Cardano constitutional committee as requested.
 
 This committee is crucial for ensuring Cardano’s governance system is accessible, fair, inclusive and transparent. The civics committee(((civics committee))) addresses topics like:
 
-- *Ratifying the constitution*: facilitating a period for community approval of the Cardano constitution.
-- *Off-chain discussions*: tracking and maintaining a record of informal discussions about proposals before they are formally presented.
-- *On-chain voting tools*: monitoring these tools to ensure they are functional and well-maintained.
-- *Voting guidelines*: developing and updating clear instructions and best practices for on-chain voting.
-- *Governance improvements*: providing non-binding recommendations based on community input to enhance Cardano's governance system.
-- *Budget guidance*, for example, they released a https://committees.docs.intersectmbo.org/intersect-civics-committee/about/civics-committee-budget-guidance[guidance document] for the 2025 process.  
+- ratifying the constitution*: facilitating a period for community approval
+- off-chain discussions*: tracking and maintaining a record of informal discussions about proposals before they are formally presented
+- on-chain voting tools*: monitoring these tools to ensure they are fit for purpose
+- voting guidelines*: developing and updating clear instructions and best practices 
+- governance improvements*: providing non-binding recommendations based on community input to enhance Cardano's governance system.
+- budget guidance*, for example, they released a https://committees.docs.intersectmbo.org/intersect-civics-committee/about/civics-committee-budget-guidance[guidance document] for the 2025 process.  
 
 ==== Membership and community committee (MCC)
 
 The MCC helps build a strong Cardano community(((strong Cardano community))) within Intersect. They achieve this by:
 
-* Attracting new members through effective sales and account management
-* Supporting existing members with helpful resources and events
-* Offering https://docs.intersectmbo.org/intersect-community-grants/open-grants[grants] to create useful community tools <!-- TODO: https://www.intersectmbo.org/grants-->
-* Providing education and hosting engaging events
+* attracting new members through effective sales and account management
+* supporting existing members with helpful resources and events
+* offering https://docs.intersectmbo.org/intersect-community-grants/open-grants[grants] to create useful community tools <!-- TODO: https://www.intersectmbo.org/grants-->
+* providing education and hosting engaging events
 
 This committee creates a space for Cardano enthusiasts to connect, share knowledge, and collaborate on projects. For example, a grant was awarded to Ryan Wiley (Cerkoryn) for his _changwatch.com_ dashboard. This tool displays real-time governance action data through donut charts, breaking down participation in governance actions(((participation in governance actions))) by DReps, SPOs, the CC, and an aggregated total of all groups. This highlights which entities sway over each proposal type based on stake-weighted delegation and voting thresholds. Anyone in the Cardano ecosystem can flag specific centralization concerns with this user-friendly dashboard.
 
