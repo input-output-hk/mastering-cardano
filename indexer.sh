@@ -1,49 +1,13 @@
 #!/bin/bash
 
 # ==============================================================================
-# Asciidoctor Indexer
-#
-# Description:
-# This script reads a list of index terms from a file and inserts them into
-# an Asciidoctor document. The script is designed to work with a specific
-# input format where each line contains the term to find and the index entry,
-# separated by a semicolon.
-#
-# For a line like:
-#   John Nash; Nash, John
-#
-# The script will find all occurrences of "John Nash" as a whole word in the
-# Asciidoctor file and replace them with "John Nash(((Nash, John)))".
-#
-# It uses a two-stage process for reliability:
-# 1. A simple `grep` to check if the literal term exists in the file. This
-#    is used to flag terms that are not found.
-# 2. A powerful `perl` command to perform the actual replacement, which
-#    correctly handles whole-word matching and avoids duplicate entries.
-#
-# It is designed to be idempotent, meaning running it multiple times on the
-# same file will not create duplicate index entries.
-#
-# Usage:
-# ./asciidoctor_indexer.sh <asciidoctor_file> <index_terms_file>
-#
-# Arguments:
-#   <asciidoctor_file>    : The path to the .adoc file to be modified.
-#   <index_terms_file>  : The path to the text file containing the index terms.
-#
+# Robust Asciidoctor Indexer - Clean Version
 # ==============================================================================
 
-# --- Configuration and Setup ---
-
-# Exit immediately if a command exits with a non-zero status.
-# We temporarily disable this inside the loop for the existence check.
 set -e
 
 # --- Argument Validation ---
-
-# Check if the correct number of arguments is provided
-if [ "$#" -ne 2 ];
-    then
+if [ "$#" -ne 2 ]; then
     echo "Usage: $0 <asciidoctor_file> <index_terms_file>"
     exit 1
 fi
@@ -51,102 +15,222 @@ fi
 ASCIIDOC_FILE="$1"
 INDEX_FILE="$2"
 
-# Check if the Asciidoctor file exists and is readable
+# Check if files exist and are readable
 if [ ! -f "$ASCIIDOC_FILE" ] || [ ! -r "$ASCIIDOC_FILE" ]; then
     echo "Error: Asciidoctor file '$ASCIIDOC_FILE' not found or not readable."
     exit 1
 fi
 
-# Check if the index terms file exists and is readable
 if [ ! -f "$INDEX_FILE" ] || [ ! -r "$INDEX_FILE" ]; then
     echo "Error: Index terms file '$INDEX_FILE' not found or not readable."
     exit 1
 fi
 
-# --- Main Processing Loop ---
-
 echo "Starting the indexing process for '$ASCIIDOC_FILE'..."
 
-# Create a temporary file for processing to avoid issues with `perl -i` on some systems
+# Create temporary files
 TEMP_FILE=$(mktemp)
+SORTED_TERMS=$(mktemp)
+PYTHON_SCRIPT=$(mktemp --suffix=.py)
 cp "$ASCIIDOC_FILE" "$TEMP_FILE"
 
-# Array to store terms from the index file that were not found in the document
+# Create the Python processing script
+cat > "$PYTHON_SCRIPT" << 'EOF'
+import re
+import sys
+
+def process_file(filename, search_term, index_format):
+    with open(filename, 'r', encoding='utf-8') as f:
+        content = f.read()
+    
+    lines = content.split('\n')
+    result_lines = []
+    
+    in_code_block = False
+    in_listing_block = False
+    
+    for line in lines:
+        stripped_line = line.strip()
+        
+        # Track code block boundaries
+        if stripped_line.startswith('```'):
+            in_code_block = not in_code_block
+            result_lines.append(line)
+            continue
+        
+        if stripped_line.startswith('----'):
+            in_listing_block = not in_listing_block
+            result_lines.append(line)
+            continue
+        
+        # Skip processing if in code/listing block or already has markup
+        if in_code_block or in_listing_block or '(((' in line:
+            result_lines.append(line)
+            continue
+        
+        # Skip special AsciiDoc formatting and code-like lines
+        stripped = line.strip()
+        skip_conditions = [
+            stripped.startswith('='),
+            stripped.startswith('*'),
+            stripped.startswith('.'),
+            stripped.startswith('['),
+            stripped.startswith('|'),
+            stripped.startswith('//'),
+            stripped.startswith('::'),
+            stripped.startswith('+'),
+            stripped.startswith('-'),
+            stripped.startswith('cardano-cli'),
+            stripped.startswith('\\'),
+            stripped.startswith('{'),
+            stripped.startswith('}'),
+            stripped.startswith('"'),
+            stripped.startswith("'"),
+            stripped.endswith(' Lovelace'),
+            stripped.endswith(' lovelace'),
+            'pool ' in stripped and ('minpoll' in stripped or 'maxpoll' in stripped),
+            stripped.startswith('maxupdateskew'),
+            stripped.startswith('makestep'),
+            stripped.startswith('rtsync'),
+            stripped.startswith('leapsectz')
+        ]
+        
+        if any(skip_conditions):
+            result_lines.append(line)
+            continue
+        
+        # Skip lines that are just numbers followed by Lovelace
+        if re.match(r'^\d+\s+(Lovelace|lovelace)$', stripped):
+            result_lines.append(line)
+            continue
+        
+        # Perform the replacement
+        pattern = r'\b' + re.escape(search_term) + r'\b'
+        replacement = search_term + '(((' + index_format + ')))'
+        new_line = re.sub(pattern, replacement, line)
+        result_lines.append(new_line)
+    
+    with open(filename, 'w', encoding='utf-8') as f:
+        f.write('\n'.join(result_lines))
+
+if __name__ == "__main__":
+    if len(sys.argv) != 4:
+        print("Usage: python script.py <filename> <search_term> <index_format>")
+        sys.exit(1)
+    
+    filename = sys.argv[1]
+    search_term = sys.argv[2]
+    index_format = sys.argv[3]
+    
+    process_file(filename, search_term, index_format)
+EOF
+
+# Pre-process and sort terms by length (longest first)
+echo "Preprocessing and sorting terms..."
+while IFS= read -r line || [[ -n "$line" ]]; do
+    if [ -z "$line" ]; then
+        continue
+    fi
+    
+    search_term=$(echo "$line" | cut -d';' -f1 | sed 's/^[ \t]*//;s/[ \t]*$//')
+    index_format=$(echo "$line" | cut -d';' -f2 | sed 's/^[ \t]*//;s/[ \t]*$//')
+    
+    if [ -z "$search_term" ] || [ -z "$index_format" ]; then
+        continue
+    fi
+    
+    echo "${#search_term}|$line"
+done < "$INDEX_FILE" | sort -nr -t'|' -k1,1 | cut -d'|' -f2- > "$SORTED_TERMS"
+
+# Array to store terms not found
 NOT_FOUND_TERMS=()
 
-# Read the index file line by line
-# The `|| [[ -n $line ]]` part ensures that the last line is processed
-# even if it doesn't end with a newline character.
+# Process terms in sorted order (longest first)
 while IFS= read -r line || [[ -n "$line" ]]; do
-    # Skip empty lines
     if [ -z "$line" ]; then
         continue
     fi
 
-    # Parse the line into the search term and the index format
-    # The format is: search_term; index_format
     search_term=$(echo "$line" | cut -d';' -f1 | sed 's/^[ \t]*//;s/[ \t]*$//')
     index_format=$(echo "$line" | cut -d';' -f2 | sed 's/^[ \t]*//;s/[ \t]*$//')
 
-    # Check if both parts were successfully parsed
     if [ -z "$search_term" ] || [ -z "$index_format" ]; then
         echo "Warning: Skipping malformed line: '$line'"
         continue
     fi
 
-    # --- Stage 1: Check if term exists using a simple, literal search ---
-    # We use `grep -Fq` which is fast and reliable for checking if an exact
-    # string exists, including those with special UTF-8 characters.
-    # The `--` prevents terms starting with a hyphen from being treated as options.
-    # We wrap this in `set +e` and `set -e` to prevent the script from exiting
-    # if grep returns a non-zero status (which it does when a term is not found).
+    # Check if term exists
     set +e
     grep -qF -- "$search_term" "$TEMP_FILE"
     GREP_EXIT_CODE=$?
     set -e
 
     if [ $GREP_EXIT_CODE -ne 0 ]; then
-        # If grep's exit code is not 0, the term was not found.
         NOT_FOUND_TERMS+=("$line")
         continue
     fi
 
-    # --- Stage 2: Perform the smart, whole-word replacement ---
-    # If we get here, the term exists. Now we use the powerful perl regex
-    # to ensure we only modify the term when it appears as a whole word.
     echo "Processing: '$search_term' -> '((($index_format)))'"
+    python3 "$PYTHON_SCRIPT" "$TEMP_FILE" "$search_term" "$index_format"
 
-    replacement="((($index_format)))"
+done < "$SORTED_TERMS"
 
-    # We pass variables via the environment to avoid injection issues.
-    export search_term
-    export replacement
+# Clean up temporary files
+rm "$SORTED_TERMS"
+rm "$PYTHON_SCRIPT"
 
-    # The -CS flag ensures that STDIN/STDOUT/STDERR and environment variables are treated as UTF-8.
-    # The regex uses lookarounds to match whole words only and to be idempotent.
-    perl -CS -i -pe 's/(?<!\w)\Q$ENV{search_term}\E(?!\w|\(\(\()/$& . $ENV{replacement}/ge' "$TEMP_FILE"
-
-done < "$INDEX_FILE"
-
-# Overwrite the original file with the modified temporary file
+# Replace original file
 mv "$TEMP_FILE" "$ASCIIDOC_FILE"
 
 echo "-------------------------------------"
 echo "Indexing process completed successfully."
 echo "File '$ASCIIDOC_FILE' has been updated."
 
-# --- Report Not Found Terms ---
-# Check if the array of not found terms has any elements
+# Report not found terms and clean up index file
 if [ ${#NOT_FOUND_TERMS[@]} -ne 0 ]; then
     echo
-    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-    echo "!! WARNING: The following index terms were not found in the document:"
-    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-    # Loop through the array and print each unfound term
-    for term in "${NOT_FOUND_TERMS[@]}"; do
-        echo "  - $term"
-    done
+    echo "=============================================================="
+    echo "Cleaning up index file - removing terms not found in document"
+    echo "=============================================================="
+    
+    # Create a temporary file for the cleaned index
+    CLEANED_INDEX=$(mktemp)
+    
+    # Read the original index file and only keep terms that were found
+    while IFS= read -r line || [[ -n "$line" ]]; do
+        # Skip empty lines
+        if [ -z "$line" ]; then
+            echo "$line" >> "$CLEANED_INDEX"
+            continue
+        fi
+        
+        # Check if this line is in the NOT_FOUND_TERMS array
+        found_in_not_found=false
+        for not_found_term in "${NOT_FOUND_TERMS[@]}"; do
+            if [ "$line" = "$not_found_term" ]; then
+                found_in_not_found=true
+                break
+            fi
+        done
+        
+        # Only keep the line if it wasn't in the not found list
+        if [ "$found_in_not_found" = false ]; then
+            echo "$line" >> "$CLEANED_INDEX"
+        fi
+    done < "$INDEX_FILE"
+    
+    # Replace the original index file with the cleaned version
+    mv "$CLEANED_INDEX" "$INDEX_FILE"
+    
+    echo "Removed ${#NOT_FOUND_TERMS[@]} unused terms from '$INDEX_FILE'"
     echo
-    echo "Please check the terms above for typos or remove them from your index file."
-    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    echo "The following terms were removed:"
+    for term in "${NOT_FOUND_TERMS[@]}"; do
+        # Just show the search term part (before the semicolon)
+        search_term=$(echo "$term" | cut -d';' -f1 | sed 's/^[ \t]*//;s/[ \t]*$//')
+        echo "  - $search_term"
+    done
+    echo "=============================================================="
+else
+    echo "All index terms were found in the document - no cleanup needed."
 fi
