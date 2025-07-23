@@ -159,7 +159,7 @@ signature with Mithril(((Mithril))). You can learn more about this process in th
 https://www.essentialcardano.io/article/mithril-a-stronger-and-lighter-blockchain-for-better-efficiency[Mithril(((Mithril))):
 a stronger and lighter blockchain for better efficiency] blog post.
 
-image:signing_with_mithril.png[width=624,height=281,title="Mithril individual signature creation"]
+image::signing_with_mithril.png[width=624,height=281,title="Mithril individual signature creation"]
 
 ==== The Mithril network
 
