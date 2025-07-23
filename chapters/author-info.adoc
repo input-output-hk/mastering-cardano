@@ -64,7 +64,7 @@ Editorial support:
 
 - John Greene
 
-==== SPO Guild Members
+==== Cardano Operator's Guild Members
 
 - Adam Dean
 - Andrew Westberg
@@ -73,7 +73,6 @@ Editorial support:
 - Christian Kulas
 - Mike Fullman
 - Markus Gufler
-- Michael Dogali
 
 ==== Marlowe Language Community Interest Company
 
