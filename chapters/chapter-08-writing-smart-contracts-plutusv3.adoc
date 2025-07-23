@@ -907,7 +907,7 @@ The image below offers an overview and description of the Marlowe CLI(((Marlowe 
 and Marlowe Runtime(((Marlowe Runtime
 ))) tools for running and querying Marlowe contracts:
 
-image::sc_marlowe_tools.png[width=620,height=430,title="Marlowe tools, source: https://docs.marlowe-lang.org/docs/developer-tools/overview[Marlowe docs]"]
+image::sc_marlowe_tools.png[width=806,height=560,title="Marlowe tools, source: https://docs.marlowe-lang.org/docs/developer-tools/overview[Marlowe docs]"]
 
 The https://github.com/marlowe-lang/marlowe-starter-kit[Marlowe
 starter kit] is a GitHub repository that contains Jupyter notebook(((Jupyter notebook
@@ -974,7 +974,7 @@ bar.
 Below is the Marlowe Runtime(((Marlowe Runtime
 ))) architecture:
 
-image::sc_marlowe_runtime_architecture.png[width=600,height=360,title="Marlowe runtime architecture, source: https://github.com/marlowe-lang/marlowe-cardano/blob/main/marlowe-runtime/doc/ReadMe.md#architecture[Marlowe GitHub]"]
+image::sc_marlowe_runtime_architecture.png[width=900,height=540,title="Marlowe runtime architecture, source: https://github.com/marlowe-lang/marlowe-cardano/blob/main/marlowe-runtime/doc/ReadMe.md#architecture[Marlowe GitHub]"]
 
 The Marlowe Runtime(((Marlowe Runtime
 ))) backend consists of a chain-indexing and query
@@ -1177,13 +1177,13 @@ possible actions and outcomes of the above contract. The highlighted
 block is the start of the contract, and the greyed-out blocks show
 possible execution paths:
 
-image::sc_marlowe_contract_tree.png[width=620,height=138,title="Marlowe contract tree"]
+image::sc_marlowe_contract_tree.png[width=930,height=207,title="Marlowe contract tree"]
 
 Below, you can see the image of the contract implemented in the Blockly(((Blockly
 )))
 tool:
 
-image::sc_marlowe_contract_choice.png[width=488,height=800,title="Marlowe choice contract"]
+image::sc_marlowe_contract_choice.png[width=586,height=960,title="Marlowe choice contract"]
 
 The `When` constructor, in the beginning, waits for an external action
 that we specify in square brackets. If this external action does not
@@ -1457,7 +1457,7 @@ created the https://cardano.ideascale.com/c/idea/122392/[Marlowe 2025]
 Catalyst application and plans to seek additional funding from Catalyst
 and other sources.
 
-image::sc_marlowe_2025_plan.png[width=450,height=312,title="Marlowe 2025 plan"]
+image::sc_marlowe_2025_plan.png[width=675,height=468,title="Marlowe 2025 plan"]
 
 The Marlowe 2025 application targets DApp developers and aims to further
 Marlowe's development to help businesses leverage emerging market
