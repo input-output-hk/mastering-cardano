@@ -15,7 +15,7 @@ software(((software))) can be very slow and difficult, as it may be impossible t
 deprecate existing code. It is particularly tricky to deal with past
 exploits of existing vulnerabilities(((vulnerabilities))), which may have resulted in assets
 being stolen, or even downtime(((downtime))) of the entire system. Another reason for
-paying special attention to correctness, is, of course, that users'
+paying special attention to correctness is, of course, that users'
 assets(((assets))) are at stake.
 
 High-assurance guarantees about the behavior of the Cardano platform(((Cardano platform)))
@@ -35,7 +35,7 @@ property-test(((property-test))) those properties. There are many different FM t
 and a variety of tools.
 
 A formal specification(((formal specification))) is a description of what a given program (or a
-programming language) does, ie its semantics, written in symbolic logic
+programming language) does, i.e. its semantics, written in symbolic logic
 and mathematical notation. It may consist of a definition of how the
 program state (eg a ledger or smart contract state) is updated in the
 presence of some input(((input))). In the case of blockchain, such input(((input))) can be
@@ -86,7 +86,7 @@ The definition of transaction validity(((transaction validity))) must be given u
 specification. This includes details such as 'does the validity interval(((validity interval)))
 `[a, b]` of a transaction include the endpoints `a` or `b`?', or ‘does a
 transaction need to specify the exact set of keys that must sign for it
-to be valid?. There is not necessarily a 'correct' way to fill in these
+to be valid?'. There is not necessarily a 'correct' way to fill in these
 details - decisions must be made by the engineers or stakeholders(((stakeholders))) in a
 way that is consistent and suitable for the relevant use cases.
 
@@ -121,10 +121,10 @@ testing very useful for keeping the two codebases(((codebases))) synced.
 ==== FM techniques used in building the Cardano platform
 
 To answer each of the questions posed above, different techniques are
-applied in Cardano, tuning the level of formal rigorto the particular
+applied in Cardano, tuning the level of formal rigor to the particular
 use case. The most prevalent FM(((FM))) technique within Cardano is the use
 of _type systems_. A type(((type))) system is a set of rules that assigns a
-symbolic property of _type_ to each term, eg `5` is an `Integer(((Integer)))`, `[1 ; 2]` is
+symbolic property of _type_ to each term, e.g. `5` is an `Integer(((Integer)))`, `[1 ; 2]` is
 a `List Integer(((List Integer)))`, `True` is a `Boolean`, etc. A type system can provide such
 guarantees as 'all items in this list are integers', or 'it is not
 possible to add an integer and an error'. A strong type(((type))) system can
@@ -134,7 +134,7 @@ systems are 'the most successful formal method'.
 Strong type systems are famously helpful in refactoring code(((refactoring code))). This
 is because changing the type of a variable or a function's input(((input))) or
 output often results in compilation errors(((compilation errors))) that will prompt the
-developer to 'follow the types', ie to refactor all relevant parts of
+developer to 'follow the types', i.e. to refactor all relevant parts of
 the program until the type(((type))) system accepts it. This often coincides with
 completion of the required refactoring. For example, if a developer
 changes the output of some function to allow it to output an error, all
@@ -145,7 +145,7 @@ _Functional programming_, while not itself a kind of FM(((FM))) technique, is a
 programming paradigm(((programming paradigm))) that facilitates writing programs that are highly
 amenable to formal specification(((formal specification))) and verification, and is widely used in
 core Cardano technology(((core Cardano technology))). The name functional is chosen because all such
-programs consist of functions, in the mathematical or logical sense, ie
+programs consist of functions, in the mathematical or logical sense, i.e.
 
 [source,shell]
 ----
@@ -228,7 +228,7 @@ nevertheless, integral to the impactful application of FM(((FM))). The behavior
 of a specification is defined by constructing _properties_. If we have
 defined the specification correctly, these properties(((properties))) will be true for
 any execution of the program. The approach of using a proof(((proof))) assistant
-might be too heavy-handed for certain applications, ie too difficult or
+might be too heavy-handed for certain applications, i.e. too difficult or
 time consuming. Instead, special software(((software))) called _generators_ is used
 for generating extremely large numbers of random valid execution traces(((random valid execution traces))),
 and the desired property is then checked to hold for the generated
@@ -343,12 +343,12 @@ future development.
 A lot of FM research(((research))) and even application is done in an academic
 setting. Making such work possible in an industry setting(((industry setting))) presents some
 challenges, as mentioned in the CONS list above. To achieve optimal FM(((FM)))
-usage in Cardano, FM work has been (i) mechanized(((mechanized))), eg including Agda
-specifications and conformance testing(((conformance testing))), (ii) democratized, ie made more
+usage in Cardano, FM work has been (i) mechanized(((mechanized))), e.g. including Agda
+specifications and conformance testing(((conformance testing))), (ii) democratized, i.e. made more
 accessible to a broader audience, including the Cardano community and
-internal engineers(((engineers))), (iii) industrialized, ie has industry-like
+internal engineers(((engineers))), (iii) industrialized, i.e. has industry-like
 development practices and standards, and (iv) modified to include a
-broader scope of application of formal methods, eg cryptography(((cryptography))).
+broader scope of application of formal methods, e.g. cryptography(((cryptography))).
 
 However, more work remains to be done in all of these areas. Further
 verification of cryptographic protocols(((cryptographic protocols))) would be extremely valuable.
