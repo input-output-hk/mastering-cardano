@@ -158,25 +158,11 @@ This collective expertise ensures that educational programs are both comprehensi
 
 IO is committed to improving the developer experience and smart contract adoption through education to further enhance the flourishing smart contract landscape on Cardano.
 
-===== Partnerships
-
-IO collaborates with esteemed universities and educational institutions worldwide to deliver high-quality education and is partnered with various universities and educational institutions, including:
-
-- https://www.ed.ac.uk/[University of Edinburgh], where there is a blockchain laboratory run by IOG’s chief scientist https://iohk.io/en/leadership/aggelos-kiayias[Prof Aggelos Kiayias(((Kiayias, Aggelos)))] and his research team
-- https://en.uoa.gr/[University of Athens]
-- https://www.uwi.edu/[University of West Indies]
-- https://www.uwyo.edu/index.html[University of Wyoming]
-- https://www.cmu.edu/[Carnegie Mellon University]
-- https://ebulux.lu/[European Business University of Luxembourg]
-- https://www.um.edu.mt/[University of Malta]
-- https://www.uwyo.edu/index.html[University of Wyoming]
-- https://web.unican.es/[University of Cantabria]
-
-Additionally, IO worked with https://www.yeovil.ac.uk/[Yeovil College] in the UK and https://za.linkedin.com/company/consilium-academy[Consilium Academy] in South Africa on curriculum design for their blockchain programs.
-
 Dr. Lars Brünjes(((Burnes, Lars))), Director of Education at IO, says:
 
  ‘Education is a cornerstone of our approach at Cardano. By equipping individuals with the knowledge and skills to navigate and innovate within the blockchain ecosystem, we empower them to build a more decentralized and inclusive future. My greatest fulfillment came from teaching the all-female Haskell(((Haskell))) course in Ethiopia, witnessing firsthand the transformative power of education. That experience reaffirmed my belief in the potential of education to create substantive, lasting change.’
+
+image::mc_education_ pillars.png
 
 ===== Mission-based education
 
@@ -197,7 +183,7 @@ As part of this stream, IO offers comprehensive in-person courses in Haskell(((H
 
 ===== Cardano Days events
 
-Cardano Days events were launched in 2023, and the team has held several of these very successful events around the globe, including:
+Cardano Days events were launched in 2023, and the team has held several of these very successful events around the globe at various universities, including:
 
 - https://www.iteso.mx/en/[ITESO University], Guadalajara, Mexico
 - https://www.udec.edu.mx/en/[University of Celaya], Guanajuato, Mexico
@@ -218,7 +204,7 @@ These two-day events cover the basics of blockchain technology, Cardano, and sma
 
 ===== Developer education
 
-The Cardano education program (CEP)for developers consists of a set of courses that cover all aspects of Cardano. This program includes a set of courses and flexible modules that can be tailored to the needs of each audience. 
+The Cardano education program (CEP) for developers consists of a set of courses that cover all aspects of Cardano. This program includes a set of courses and flexible modules that can be tailored to the needs of each audience. 
 
 - Cardano Developer course: a blended learning course that teaches Haskell(((Haskell))) and smart contract development to aspiring blockchain developers.
 - https://github.com/input-output-hk/haskell-course[Haskell(((Haskell))) Bootcamp]: an immersive self-paced Haskell(((Haskell))) course. This course provides a stepping stone for people to upskill on Haskell(((Haskell))) before enrolling in the Plutus(((Plutus))) Pioneer program. It consists of videos and interactive lessons and has received very positive feedback and engagement. 
@@ -229,13 +215,29 @@ The Cardano education program (CEP)for developers consists of a set of courses t
 - Educational videos: introduce technical aspects, new features, hard fork events, and so on.
 - Hackathon support: writing hackathon challenges and attending the event to support the participants.
 
-The first Cardano Developer course was delivered online in conjunction with https://www.theafricablockchaincenter.com/[the African Blockchain Center] to participants from the African region and covered the core modules of Haskell(((Haskell))) fundamentals and smart contract development languages, including Aiken(((Aiken))), Plutus(((Plutus))), and Marlowe(((Marlowe))). This course evolved from the original Haskell(((Haskell))) course and was expanded to include lectures on Aiken(((Aiken))). A further iteration of the course was delivered in person at the https://utn.edu.ar/es/[Universidad Technológica Nacional] in Buenos Aires, Argentina.
+The first Cardano developer course was delivered online in conjunction with https://www.theafricablockchaincenter.com/[the African Blockchain Center] to participants from the African region and covered the core modules of Haskell(((Haskell))) fundamentals and smart contract development languages, including Aiken(((Aiken))), Plutus(((Plutus))), and Marlowe(((Marlowe))). This course evolved from the original Haskell(((Haskell))) course and was expanded to include lectures on Aiken(((Aiken))). A further iteration of the course was delivered in person at the https://utn.edu.ar/es/[Universidad Technológica Nacional] in Buenos Aires, Argentina.
 
 We have delivered several Pioneer Programs aimed at developers and new users. These interactive online training courses aim to widen the reach of IO’s education resources and have been completed by over nine thousand people. During these programs, participants attend weekly lectures delivered by Lars Brünjes, director of education at IO, who also held weekly follow-up interactive Q&A sessions. Learners are supported by a thriving community in the Discord chat system that encouraged collaboration and problem-solving.
 
 One of the most positive outcomes of these courses was the amazing community participation on Discord. The participants supported each other, created additional learning resources, were quick to report any issues, and tested features – they really were acting as true pioneers. We also saw a wide range of innovative resources and ideas from the courses, including new wallets, training materials, and new projects on Cardano.
 
-A self-paced Cardeno education program is currently being developed where participants will be able to pick and choose the modules they want to complete and work at their own pace, rather than follow a weekly schedule. 
+A self-paced Cardeno education program (CEP) is currently being developed where participants will be able to pick and choose the modules they want to complete and work at their own pace, rather than follow a weekly schedule. 
+
+===== Collaborations
+
+IO collaborates with esteemed universities and educational institutions worldwide to deliver high-quality education and is partnered with various universities and educational institutions, including:
+
+- https://www.ed.ac.uk/[University of Edinburgh], where there is a blockchain laboratory run by IOG’s chief scientist https://iohk.io/en/leadership/aggelos-kiayias[Prof Aggelos Kiayias(((Kiayias, Aggelos)))] and his research team
+- https://en.uoa.gr/[University of Athens]
+- https://www.uwi.edu/[University of West Indies]
+- https://www.uwyo.edu/index.html[University of Wyoming]
+- https://www.cmu.edu/[Carnegie Mellon University]
+- https://ebulux.lu/[European Business University of Luxembourg]
+- https://www.um.edu.mt/[University of Malta]
+- https://www.uwyo.edu/index.html[University of Wyoming]
+- https://web.unican.es/[University of Cantabria]
+
+Additionally, IO worked with https://www.yeovil.ac.uk/[Yeovil College] in the UK and https://za.linkedin.com/company/consilium-academy[Consilium Academy] in South Africa on curriculum design for their blockchain programs.
 
 ===== How can we work together?
 
