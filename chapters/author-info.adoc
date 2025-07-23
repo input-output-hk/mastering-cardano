@@ -29,36 +29,36 @@ He has given and taken part in over 150 invited talks and panels, and has publis
 
 ==== Input | Output
 
-- Charles Hoskinson
-- Aggelos Kiayias
-- Philip Wadler
-- Alejandro Garcia
-- Niamh Ahern
-- Jesse Smith
-- J. Arturo Mora
-- Luka Kurnjek
-- Robertino Martinez
-- Antonio Ibarra
-- Karina Lopez
-- Polina Vinogradova
-- James Chapman
-- Mauro Jaskelioff
-- Romain Soulat
-- Reza Baram
-- Joseph Fajen
-- Brian Bush
-- Sam Foo
+- Ahern, Niamh
+- Baram, Reza
+- Bush, Brian
+- Chapman, James
+- Fajen, Joseph
+- Foo, Sam
+- Garcia, Alejandro
+- Hoskinson, Charles
+- Ibarra, Antonio
+- Jaskelioff, Mauro
+- Kiayias, Aggelos
+- Kurnjek, Luka
+- Lopez, Karina
+- Martinez, Robertino
+- Mora, J. Arturo
+- Smith, Jesse
+- Soulat, Romain
+- Vinogradova, Polina
+- Wadler, Philip
 
 Editorial support:
 
-- Olga Hryniuk
-- Neil Burgess
-- Fernando Sanchez
-- Joseph Fajen
-- Tuvshintsenguun Erdenejargal
-- Alexey Sorokin
-- Kevin Hammond
-- Hernan Rajchert
+- Burgess, Neil
+- Erdenejargal, Tuvshintsenguun
+- Fajen, Joseph
+- Hammond, Kevin
+- Hryniuk, Olga
+- Rajchert, Hernan
+- Sanchez, Fernando
+- Sorokin, Alexey
 
 ==== Cardano Foundation
 
@@ -66,13 +66,13 @@ Editorial support:
 
 ==== Cardano Operator's Guild Members
 
-- Adam Dean
-- Andrew Westberg
-- Eystein Hansen
-- Malick Mbengue 
-- Christian Kulas
-- Mike Fullman
-- Markus Gufler
+- Dean, Adam
+- Fullman, Mike
+- Gufler, Markus
+- Hansen, Eystein
+- Kulas, Christian
+- Mbengue, Malick
+- Westberg, Andrew
 
 ==== Marlowe Language Community Interest Company
 
