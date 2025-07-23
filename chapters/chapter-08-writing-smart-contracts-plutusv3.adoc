@@ -533,7 +533,7 @@ blockchain and the user. With the introduction of stake pools(((stake pools)))
 in the Shelley era(((Shelley era))), a Cardano address consists of two parts:
 the _payment_ part and the _staking_ part.
 
-image::sc_cardano_address.png[title="Cardano address"]
+image::sc_cardano_address.png[width=400,height=280,title="Cardano address"]
 
 Both parts of a Cardano address are cryptographically derived from the
 private key(((private key))), containing the same owner information. The 
