@@ -1,3 +1,6 @@
+
+:imagesdir: ../images
+
 :figure-numbered:
 
 [[decentralized-applications]]
