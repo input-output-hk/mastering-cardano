@@ -49,9 +49,9 @@ Launched in 2020, Project Catalyst represents a significant milestone in the Car
 
 The primary goals of Project Catalyst(((Project Catalyst))) are to:
 
-* Foster innovation and development within the Cardano ecosystem
-* Enable community participation in governance and decision-making
-* Distribute funds transparently to high-potential projects that can solve real-world problems.
+* foster innovation and development within the Cardano ecosystem
+* enable community participation in governance and decision-making
+* distribute funds transparently to high-potential projects that can solve real-world problems.
 
 ==== How Project Catalyst works
 
@@ -60,8 +60,8 @@ The primary goals of Project Catalyst(((Project Catalyst))) are to:
 Project Catalyst's funding mechanism is designed to support various innovative projects within the Cardano ecosystem(((Cardano, ecosystem))). It operates through a series of iterative funding rounds, known as funds, each with its own budget, themes, and goals.
 
 The funds for Project Catalyst(((Project Catalyst))) are sourced from the Cardano treasury, which is replenished through a combination of:
-- Transaction fees, which are small fees collected from each transaction processed on the Cardano network.
-- Reserve funds, which come from a portion of Cardano’s initial supply allocated to a reserve for long-term ecosystem development funding.
+- transaction fees, which are small fees collected from each transaction processed on the Cardano network
+- reserve funds, which come from a portion of Cardano’s initial supply allocated to a reserve for long-term ecosystem development funding.
 
 *Structure of funding rounds*
 
@@ -91,32 +91,32 @@ After each funding round, feedback from the community is collected to identify a
 
 Project Catalyst(((Project Catalyst))) places a strong emphasis on transparency and accountability through the following measures:
 
-* *Publicly accessible proposals*: all proposals and their progress are publicly accessible on the IdeaScale platform, allowing the community to track their development
-* *Regular updates*: funded projects are required to provide regular updates on their progress, including milestones achieved and funds spent
-* *Community oversight*: the community plays an active role in monitoring and evaluating the progress of funded projects, ensuring that funds are used effectively.
+* publicly accessible proposals: all proposals and their progress are publicly accessible on the IdeaScale platform, allowing the community to track their development
+* regular updates: funded projects are required to provide regular updates on their progress, including milestones achieved and funds spent
+* community oversight: the community plays an active role in monitoring and evaluating the progress of funded projects, ensuring that funds are used effectively.
 
 ==== Success metrics in Project Catalyst
 
 Measuring the success of Project Catalyst is essential to ensure that the initiative effectively fosters innovation and contributes to the growth of the Cardano ecosystem(((Cardano, ecosystem))). The following metrics provide a comprehensive evaluation of its impact and effectiveness:
 
-1. Number of proposals submitted(((Number of proposals submitted)))
-2. Number of proposals funded(((Number of proposals funded)))
-3. Community participation in voting(((Community participation in voting)))
-4. Diversity of funded projects(((Diversity of funded projects)))
-5. Impact of funded projects(((Impact of funded projects)))
-6. Budget utilization and efficiency(((Budget utilization and efficiency)))
-7. Community feedback and satisfaction(((Community feedback and satisfaction)))
-8. Growth in Project Catalyst participation(((Growth in Project Catalyst participation)))
-9. Long-term sustainability(((Long-term sustainability))) and scalability
+1. number of proposals submitted(((number of proposals submitted)))
+2. number of proposals funded(((number of proposals funded)))
+3. community participation in voting(((community participation in voting)))
+4. diversity of funded projects(((diversity of funded projects)))
+5. impact of funded projects(((impact of funded projects)))
+6. budget utilization and efficiency(((budget utilization and efficiency)))
+7. community feedback and satisfaction(((community feedback and satisfaction)))
+8. growth in Project Catalyst participation(((growth in Project Catalyst participation)))
+9. long-term sustainability(((long-term sustainability))) and scalability.
 
 Catalyst continues to improve and evolve with shared learnings. For example, funded projects(((projects))) from Funds 9–13 can now avail themselves of legal support from _Storm Partners_. This may include:
 
-* Contract Review & Protection  
+* Contract Review and Protection  
 * Global Dapp Compliance  
 * Crypto-Friendly Incorporation 
 * Decentralized Payment Compliance  
 * Smart Contract Legal Advice  
-* Token Classification Support 
+* Token Classification Support.
 
 The Catalyst team released their http://projectcatalyst.io/reports/horizons.pdf[Catalyst Horizons report(((Catalyst, Horizons report)))] documenting various milestones. To dig deeper into the stats and trends, visit the https://projectcatalyst.io/reports[Reports] section of projectcatalyst.io for the latest data.
 
@@ -173,8 +173,8 @@ CIP-1694 could fill a book on its own and, like all CIPs, is a living document t
 
 Before the Chang hard fork, governance transactions(((governance transactions))) (eg, hard forks, parameter changes, etc) required a signature from at least five out of the seven Cardano governance (genesis) keys, currently held by the three founding entities. This process was always intended to be an ephemeral form of governance as we got through the earlier phases of the roadmap before Voltaire. There have traditionally been just two types of governance transactions(((governance transactions))):
 
-* Protocol parameter updates using transaction http://github.com/input-output-hk/cardano-ledger/blob/8884d921c8c3c6e216a659fca46caf729282058b/eras/babbage/test-suite/cddl-files/babbage.cddl#L56[field nº6 of the transaction body]
-* Movements of the treasury and the reserves using Move Instantaneous Rewards (MIR) certificates.
+* protocol parameter updates using transaction http://github.com/input-output-hk/cardano-ledger/blob/8884d921c8c3c6e216a659fca46caf729282058b/eras/babbage/test-suite/cddl-files/babbage.cddl#L56[field nº6 of the transaction body]
+* movements of the treasury and the reserves using Move Instantaneous Rewards (MIR) certificates.
 
 *Where we are now*
 
@@ -520,7 +520,7 @@ SanchoNet(((SanchoNet))) goes beyond simple testing. It also serves as a platfor
 * engaging stakeholders: encouraging community participation and feedback on the evolving governance features
 * building a collaborative future: as SanchoNet matures, it aims to become a space where ideas become reality, contributions shape the ecosystem, and fully decentralized decision-making takes root.
 
-SanchoNet has proven itself robust to adversarial behavior. Mike Hornan of Able Pool SPO, orchestrated a sustained community-driven stress test on SanchoNet, ensuring the network has the required resilience to handle thousands of governance actions concurrently(((thousands of governance actions concurrently))).
+SanchoNet has proven itself robust to adversarial behavior. Mike Hornan of Able Pool SPO orchestrated a sustained community-driven stress test on SanchoNet, ensuring the network has the required resilience to handle thousands of governance actions concurrently(((thousands of governance actions concurrently))).
 
 === Governance tools
 
@@ -552,7 +552,7 @@ With the Chang upgrade, Cardano transitioned from the Basho development phase to
 
 The upgrade unfolded in two stages(((two stages))):
 
-* *Chang upgrade*: On September 1st 2024, this initial upgrade introduced core governance functionalities to Cardano, initiating the technical bootstrapping phase as defined in CIP-1694. This took Cardano into the Conway ledger era and officially heralded the start of Voltaire.
+* *Chang upgrade*: On September 1, 2024, this initial upgrade introduced core governance functionalities to Cardano, initiating the technical bootstrapping phase as defined in CIP-1694. This took Cardano into the Conway ledger era and officially heralded the start of Voltaire.
 * *Plomin upgrade*: Originally named Chang Upgrade 2, the second phase was renamed to the Plomin Upgrade in memory of Matthew Plomin. Matthew was the pioneer and visionary behind Moneta and the USDM stablecoin, who sadly passed away in November 2024. The Plomin upgrade unlocked the full potential of on-chain governance, enabling DRep participation and treasury withdrawal capabilities. This marked the completion of the technical bootstrapping phase.
 
 Cardano’s on-chain governance relies on a core document: the ratified constitution. This document, approved through the new governance features, establishes the fundamental rules and principles(((fundamental rules and principles))) that guide Cardano’s operation.
@@ -572,11 +572,11 @@ The Chang upgrade followed a similar deployment strategy to the Vasil upgrade. T
 
 This measured approach, explained in more detail in the https://docs.intersectmbo.org/cardano/cardano-upgrades/major-release-process[documentation], ensured a smooth transition for all stakeholders as Cardano embraces its future of decentralized governance(((future of decentralized governance))).
 
-=== Journey to Ratification
+=== Journey to ratification
 
-The interim Constitution, drafted early in 2024 along with the technical guardrails, was made available for the community to read on the https://constitution.gov.tools/en[Constitution Committee Portal(((Constitution Committee Portal)))].
+The interim constitution, drafted early in 2024 along with the technical guardrails, was made available for the community to read on the https://constitution.gov.tools/en[Constitution Committee Portal(((Constitution Committee Portal)))].
 
-The interim Constitutional Committee (ICC), the body that upholds the interim Constitution and votes on the first on-chain governance actions(((votes on the first on-chain governance actions))), was formed. The community voted for three representatives to sit alongside pioneer entities IOG, EMURGO, and the Cardano Foundation, and Intersect. The https://intersect.gitbook.io/2024-constitutional-committee-members-election/candidates/the-cardano-atlantic-council[Cardano Atlantic Council], https://intersect.gitbook.io/2024-constitutional-committee-members-election/candidates/cardano-japan[Cardano Japan], and https://app.gitbook.com/o/Prbm1mtkwSsGWSvG1Bfd/s/LQX9Yzpr2CgxQjPsjkZf/candidates/eastern-cardano-council[Eastern Cardano Council] were duly elected to this responsible position.
+The interim Constitutional Committee (ICC), the body that upholds the interim constitution and votes on the first on-chain governance actions(((votes on the first on-chain governance actions))), was formed. The community voted for three representatives to sit alongside pioneer entities IOG, EMURGO, and the Cardano Foundation, and Intersect. The https://intersect.gitbook.io/2024-constitutional-committee-members-election/candidates/the-cardano-atlantic-council[Cardano Atlantic Council], https://intersect.gitbook.io/2024-constitutional-committee-members-election/candidates/cardano-japan[Cardano Japan], and https://app.gitbook.com/o/Prbm1mtkwSsGWSvG1Bfd/s/LQX9Yzpr2CgxQjPsjkZf/candidates/eastern-cardano-council[Eastern Cardano Council] were duly elected to this responsible position.
 
 The constitution can only claim legitimacy with feedback from the community(((feedback from the community))), and so the first of 63 Constitutional workshops across 50 countries was hosted by Nicolas Cerny, Governance Lead for the Cardano Foundation, in Berlin in July 2024.
 
@@ -584,18 +584,18 @@ The feedback was collated and 128 delegates (64 voting, 64 traveling alternates)
 
 After two days of debate and speeches, the constitution was approved by 95% of delegates. The proposed https://constitution.gov.tools/en/constitution[constitution] featured a refined preamble, ten guiding tenets, a framework for the ecosystem budget(((framework for the ecosystem budget))), codes of conduct, compensation guidelines, clarity and safeguards for the Constitution Committee and an amendment process.  While passing the constitution was no doubt a milestone, many delegates spotted areas requiring further clarity and scope. 
 
-The constitution was officially signed on the third day of the convention, and, so, the process of ratification by an on-chain vote by the broader community of ada holders began. This interim phase allowed the community to gain practical experience with on-chain governance(((practical experience with on-chain governance))), stress testing various tools and processes.
+The constitution was officially signed on the third day of the convention, and so the process of ratification by an on-chain vote by the broader community of ada holders began. This interim phase allowed the community to gain practical experience with on-chain governance(((practical experience with on-chain governance))), stress testing various tools and processes.
 
-The second and final stage of the Chang upgrade, the Plomin hard fork occurred on the 29th January 2025. Cardano’s move to the Voltaire development phase(((Cardano, move to the Voltaire development phase))) was now complete and Cardano was henceforth to be fully governed by the community.
+The second and final stage of the Chang upgrade, the Plomin hard fork occurred on the January 29, 2025. Cardano’s move to the Voltaire development phase(((Cardano, move to the Voltaire development phase))) was now complete and Cardano was henceforth to be fully governed by the community.
 
-The ratified constitution was https://adastat.net/governances/8c653ee5c9800e6d31e79b5a7f7d4400c81d44717ad4db633dc18d4c07e4a4fd00[enacted] on February 23, 2025. It formalized the roles of ADA holders, DReps, SPOs, and the Constitutional Committee(((formalized the roles of ADA holders, DReps, SPOs, and the Constitutional Committee))) but importantly, remains a ‘living document’ not set in stone. 
+The ratified constitution was https://adastat.net/governances/8c653ee5c9800e6d31e79b5a7f7d4400c81d44717ad4db633dc18d4c07e4a4fd00[enacted] on February 23, 2025. It formalized the roles of ada holders, DReps, SPOs, and the Constitutional Committee(((formalized the roles of ADA holders, DReps, SPOs, and the Constitutional Committee))) but importantly, remains a ‘living document’ not set in stone. 
 
 image::../images/5.8_lloyd_selfie.png[]
 *Figure 5.9:* Chair of Proceedings in Buenos Aires, Lloyd Duhon, marking the historic moment with a group selfie at the Buenos Aires
 *Liquid democracy*
 
 As a result of the Plomin hard fork, you can continue accumulating staking rewards but you cannot withdraw them unless you delegate your ada’s voting rights(((delegate your ada’s voting rights))) to a DRep or a predefined voting option. The community made this decision way back at the first CIP-1694 workshop in Colorado in March 2023.
-Similar to the “liquid staking” concept, the staked ada never leaves your wallet, "liquid democracy" means you can change your DRep every five days without locking your ADA tokens. There is no additional cost or risk. With just a few clicks, you can participate in governance on Cardano(((participate in governance on Cardano))). 
+Similar to the “liquid staking” concept, the staked ada never leaves your wallet, 'liquid democracy' means you can change your DRep every five days without locking your ada tokens. There is no additional cost or risk. With just a few clicks, you can participate in governance on Cardano(((participate in governance on Cardano))). 
 
 The first governance action submitted(((first governance action submitted))) of the new era was a proposal to change the treasury_growth_rate from 20% to 10%. This was the first community-raised parameter change using the new features. Although it didn’t pass, the topic sparked lively debate and featured on this episode of https://www.youtube.com/watch?v=un4WBkH35sE[NerdOut - Let's Have a TEA Party].  
 
@@ -605,16 +605,16 @@ The net-change-limit guards the sustainability and stability of Cardano’s trea
 
 You can think of the Net-change-limit  as a constitutional mechanism, like a financial safeguard controlling how much ada can be withdrawn(((controlling how much ada can be withdrawn))) from the Treasury within a set period. The community evaluated several proposals, before the ‘₳350m Net Change Limit’ https://adastat.net/governances/9b62b3c632f329016a968ac25211825bb4f84b12461121c7da3aa11df92370f900[governance action] passed with strong community support.
 
-The _Cardano Constitution_ requires that a Net Change Limit be in place before a budget proposal can be passed. With consensus reached, the next phase could commence, garnering much debate as Treasury-funded proposals could now be submitted and considered through on-chain Budget Info Actions(((on-chain Budget Info Actions))).  
+The _Cardano Constitution_ requires that a Net Change Limit be in place before a budget proposal can be passed. With consensus reached, the next phase could commence, garnering much debate as treasury-funded proposals could now be submitted and considered through on-chain Budget Info Actions(((on-chain Budget Info Actions))).  
 
 The role of Intersect committees needed to evolve to align with Cardano’s new budget process(((Cardano, new budget process))). Some of the key changes introduced were:
 * DReps were now the final decision makers for funding, with committees focussing more on roadmap development and governance oversight
 * committees no longer submit block budgets
 * focus on transparency, enabled by multi-signature smart contracts, so funding decisions and treasury withdrawals can be verified.
 
-*Budget Process*
+*Budget process*
 
-Cardano’s Budget Process was ‘recalibrated’ several times throughout late 2024 and early 2025 as the community provided robust feedback. Attempting to meet everyone’s expectations and cater for many projects eager for funding(((many projects eager for funding))) three years into a bear market cycle is no small feat. Intersect made the necessary adjustments, eventually achieving consensus on funding priorities via the https://committees.docs.intersectmbo.org/intersect-product-committee/committee-outcomes/2025-cardanos-roadmap/2025-proposed-cardano-roadmap[product roadmap].
+Cardano’s budget process was ‘recalibrated’ several times throughout late 2024 and early 2025 as the community provided robust feedback. Attempting to meet everyone’s expectations and cater for many projects eager for funding(((many projects eager for funding))) three years into a bear market cycle is no small feat. Intersect made the necessary adjustments, eventually achieving consensus on funding priorities via the https://committees.docs.intersectmbo.org/intersect-product-committee/committee-outcomes/2025-cardanos-roadmap/2025-proposed-cardano-roadmap[product roadmap].
 
 Anyone in the community could seek treasury funding. The DReps and the Constitutional Committee would ultimately vote to decide how and when Treasury funds are allocated(((Treasury funds are allocated))). Intersect’s role was to facilitate, and provide administrative oversight. 
 
@@ -636,9 +636,9 @@ A non-binding poll was also proposed on Ekklesia asking DReps to signal their pr
 
 *Smart Contracts*
 
-Smart contracts can leverage the eUTXO model to enforce deterministic behavior from a limited set of actors, with no single entity acting unilaterally(((no single entity acting unilaterally))). The preference is for a predictable “can’t be evil” model instead of a hopeful “don't be evil” setup.
+Smart contracts can leverage the EUTXO model to enforce deterministic behavior from a limited set of actors, with no single entity acting unilaterally(((no single entity acting unilaterally))). The preference is for a predictable “can’t be evil” model instead of a hopeful “don't be evil” setup.
 
-The Cardano Constitution mandates that treasury withdrawals include independent audits, on-chain oversight, and separate, auditable accounts that delegate to the auto-abstain voting option(((delegate to the auto-abstain voting option))) (not an SPO).
+The Cardano constitution mandates that treasury withdrawals include independent audits, on-chain oversight, and separate, auditable accounts that delegate to the auto-abstain voting option(((delegate to the auto-abstain voting option))) (not an SPO).
 
 To align with the Cardano Constitution(((Cardano, Constitution))), there needs to be:
 
@@ -657,11 +657,11 @@ SundaeLabs’s https://www.youtube.com/watch?v=S6RFKzmAebo[live demonstration], 
 *Treasury Contracts* act as reserve accounts for ada withdrawn from the Cardano Treasury. These funds can only move funds after strict conditions are met, such as a multi-signature from different parties on  the Oversight Committee. 
 *Vendor Contracts* inherit their permissions from their parent Treasury Contract, releasing funds to Vendors on completion of set milestones. 
 
-As Intersect is the only Administrator available at time of writing, it initiates all actions, with an Oversight Committee scrutinizing each step(((Oversight Committee scrutinizing each step))). Intersect apply various best practices to ensure the integrity of governance actions. For example, they published the verification key used to sign all governance metadata they author. This is an important safeguard which prevents misuse and ensures accountability. This is enabled by governance metadata standards defined in CIP-100 and CIP-108. 
+As Intersect is the only Administrator available at time of writing, it initiates all actions, with an Oversight Committee scrutinizing each step(((Oversight Committee scrutinizing each step))). Intersect applies various best practices to ensure the integrity of governance actions. For example, it published the verification key used to sign all governance metadata it authors. This is an important safeguard which prevents misuse and ensures accountability. This is enabled by governance metadata standards defined in CIP-100 and CIP-108. 
 
 *Oversight Committee*
 
-The Oversight Committee is composed of independent third-parties who provides an additional verification layer within the smart contract framework. They cross-check the accuracy and consistency(((cross-check the accuracy and consistency))) of key actions. The inaugural members are:
+The Oversight Committee is composed of independent third-parties who provide an additional verification layer within the smart contract framework. Members cross-check the accuracy and consistency(((cross-check the accuracy and consistency))) of key actions. The inaugural members are:
 
 * Sundae Labs
 * Xerberus
@@ -671,11 +671,11 @@ The Oversight Committee is composed of independent third-parties who provides an
 
 *Constitutional Committee*
 
-The Constitutional Committee upholds the principles and rules of the Cardano constitution(((principles and rules of the Cardano constitution))). The Interim Constitutional Committee was set up as a temporary body in September 2024. It was structured as a mix of appointed members, with seats held by Intersect, the founding entities, and three elected seats.
+The Constitutional Committee upholds the principles and rules of the Cardano constitution(((principles and rules of the Cardano constitution))). The interim Constitutional Committee was set up as a temporary body in September 2024. It was structured as a mix of appointed members, with seats held by Intersect, the founding entities, and three elected seats.
 
 With ICC's fixed term expiring in September 2025(((fixed term expiring in September 2025))) so the process to elect a new committee was initiated in November 2024, when a working group was formed. The new CC’s term would see the election’s top three winners serving two years, and the remaining four serving one year.
 
-Each ICC member agreed not to run for the new committee, allowing for a fresh start. As befits a permissionless, public blockchain, any ada holder could run for the CC. That said, each candidate’s credentials were scrutinized(((candidate’s credentials were scrutinized))) in a battery of AMAs, roundtables and X spaces. 
+Each ICC member agreed not to run for the new committee, allowing for a fresh start. As befits a permissionless, public blockchain, any ada holder could run for the CC. That said, each candidate’s credentials were scrutinized(((candidate’s credentials were scrutinized))) in a battery of ask me anthings (AMAs), roundtables and X spaces. 
 
 image::../images/5.10_cctimeline.png[]
 *Figure 5.10:* Constitutional Committee Election Timeline
@@ -701,7 +701,7 @@ From the outset of the Voltaire development phase, it was always expected, and s
 PRAGMA will not compete with Intersect, but run as a complementary effort. While the mission of Intersect is broader, PRAGMA is focused solely on open-source software development(((focused solely on open-source software development))) with two key projects for now: Aiken, the popular programming language for on-chain smart contracts on Cardano, and Amaru, a Rust node client for Cardano. It’s important to note that anyone can submit a budget proposal. For example, Amaru’s http://hackmd.io/@PRAGMA-org/amaru-proposal[budget proposal] for 2025 was passed and became the first Treasury Withdrawal https://explorer.cardano.org/tx/60ed6ab43c840ff888a8af30a1ed27b41e9f4a91a89822b2b63d1bfc52aeec45[governance action] to be executed. For Cardano to thrive, PRAGMA and Intersect need to work together to deliver what is best for the ecosystem. 
 
 === Looking forward
-Decentralized governance requires continuous iteration and community participation, which can pose coordination challenges. Without central leadership, decentralized governance risks deadlock or disputes. Critics argue that decentralized models prohibit fast decision-making(((decentralized models prohibit fast decision-making))) and true accountability due to complex processes. Cardano has sought to mitigate these risks by implementing CIP-1694 and maintaining technical oversight through qualified third parties, however, the long-term viability of this model depends largely on participation from ada holders.
+Decentralized governance requires continuous iteration and community participation, which can pose coordination challenges. Without central leadership, decentralized governance risks deadlock or disputes. Critics argue that decentralized models prohibit fast decision-making(((decentralized models prohibit fast decision-making))) and true accountability due to complex processes. Cardano has sought to mitigate these risks by implementing CIP-1694 and maintaining technical oversight through qualified third parties. However, the long-term viability of this model depends largely on participation from ada holders.
 
 A balance must be struck so rigorous analysis doesn’t lead to procrastination. With competitor blockchains spending vast sums at the drop of a hat, the process needs to be more agile, making funds more accessible so Cardano can pivot easily and compete in a volatile industry(((compete in a volatile industry))). This can be achieved while still adopting prudent investment strategies ensuring fiscal responsibility. 
 
