@@ -1,5 +1,5 @@
 [author-info]
-== Author information
+== Author Information
 Meet the authors behind this book:
 
 === Dr. Lars Brünjes
@@ -26,5 +26,56 @@ His research interests include:
 He has given and taken part in over 150 invited talks and panels, and has published over 75 papers that have been cited over 2,000 — with a main focus on cryptocurrencies and blockchain since 2018. He was responsible for the setting up of the Centre for DLT at the University of Malta and a multidisciplinary Master’s programme in Blockchain and DLT. He has lectured core computer science topics including Operating Systems and Systems Programming, to Blockchain and Smart Contract specific topics including DLT implementation and internals, and Smart Contract and DApp programming amongst many other topics.The book is intended for, and targeted to, a very broad range of readers. Essentially, anyone with an interest in the Cardano blockchain will be able to get something useful out of it.
 
 === Contributuing Writers
+
+==== Input | Output
+
+- Charles Hoskinson
+- Aggelos Kiayias
+- Philip Wadler
+- Alejandro Garcia
+- Niamh Ahern
+- Jesse Smith
+- J. Arturo Mora
+- Luka Kurnjek
+- Robertino Martinez
+- Antonio Ibarra
+- Karina Lopez
+- Polina Vinogradova
+- James Chapman
+- Mauro Jaskelioff
+- Romain Soulat
+- Reza Baram
+- Joseph Fajen
+- Brian Bush
+- Sam Foo
+
+Editorial support:
+
+- Olga Hryniuk
+- Neil Burgess
+- Fernando Sanchez
+- Joseph Fajen
+- Alexey Sorokin
+- Kevin Hammond
+- Hernan Rajchert
+
+==== Marlowe Language Community Interest Company
+
+- Simon Thompson
+
+==== Cardano Foundation
+
+- John Greene
+
+==== SPO Guild Members
+
+- Adam Dean
+- Andrew Westberg
+- Eystein Hansen
+- Malick Mbengue 
+- Christian Kulas
+- Mike Fullman
+- Markus Gufler
+- Michael Dogali
 
 
