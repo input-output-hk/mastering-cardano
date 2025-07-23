@@ -79,3 +79,7 @@ Editorial support:
 
 - Simon Thompson
 
+==== PaloIT
+- Jean-Philippe Raynaud
+
+
