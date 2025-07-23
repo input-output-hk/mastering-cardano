@@ -1,5 +1,5 @@
 
-:imagesdir: images
+:imagesdir: ../images
 
 [[wallets-in-the-world-of-cardano]]
 == Wallets in the world of Cardano

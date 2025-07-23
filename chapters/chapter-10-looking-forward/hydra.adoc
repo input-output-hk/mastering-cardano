@@ -1,4 +1,6 @@
 
+:imagesdir: ../../images
+
 === A Scaling Vision
 
 ==== The Blockchain Trilemma

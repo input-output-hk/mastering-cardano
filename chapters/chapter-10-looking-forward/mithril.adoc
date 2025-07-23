@@ -1,4 +1,6 @@
 
+:imagesdir: ../../images
+
 === Mithril
 
 ==== Mithril in a nutshell

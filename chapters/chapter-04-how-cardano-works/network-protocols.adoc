@@ -1,4 +1,6 @@
 
+:imagesdir: ../../images
+
 [[overview-of-cardano-network-protocols]]
 === Overview of Cardano Network Protocols
 

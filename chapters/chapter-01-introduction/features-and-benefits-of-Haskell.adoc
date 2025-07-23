@@ -1,4 +1,6 @@
 
+:imagesdir: ../../images
+
 === Features and benefits of Haskell
 
 Haskell(((Haskell))) is a general-purpose, advanced, purely functional programming

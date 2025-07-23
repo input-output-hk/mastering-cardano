@@ -1,4 +1,6 @@
 
+:imagesdir: ../../images
+
 === The importance of program correctness for cryptocurrency ledgers
 
 Guaranteeing correct behavior of cryptocurrency ledgers(((cryptocurrency ledgers))) implemented on
