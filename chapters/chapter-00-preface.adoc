@@ -15,7 +15,7 @@ Happy reading!
 
 While _Mastering Cardano_ is structured to provide you with a comprehensive and logical progression through its topics, we understand that every learner has unique goals and prior knowledge. That's why we encourage you to explore our suggested reading paths as an alternative to a strictly linear approach.
 
-Think of these paths as curated journeys designed to help you quickly hone in on the information most relevant to your specific interests. You can choose to read _Mastering Cardano_ cover-to-cover, or you can jump directly to the chapters and sections that you are most interested in and will accelerate your learning in a particular area.
+Think of these paths as curated journeys designed to help you quickly hone in on the information most relevant to your specific interests. You can choose to read _Mastering Cardano_ cover-to-cover, or you can jump directly to the chapters and sections that you are most interested in and that will accelerate your learning in a particular area.
 
 === How to Use This Guide
 
