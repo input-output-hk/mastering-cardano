@@ -6,8 +6,8 @@
 
 === *_Authors/Editors_*
 
-- Lars Brünjes, Director of Education, IOG and Prof. Joshua Ellul of the University of Malta (with the support of the education team) and Jesse
-- In addition to contributors per chapter (Romain, Aggelos, Simon, MPJ, Kevin etc) and John Greene author of Cardano for the Masses.
+- Lars Brünjes, Director of Education, IO and Prof. Joshua Ellul of the University of Malta (with the support of the education team) 
+- In addition to other contributors from IO, the SPO Guild, and the Cardano community, as well as John Greene, author of Cardano for the Masses.
 
 [%hardbreaks]
 
@@ -26,8 +26,8 @@ _We plan to deliver and publish this book as a series of volumes #with the Plutu
 The book will present a unified account of all the material needed by users of the Cardano blockchain. The following table of contents includes, at a minimum, the following topics:
 
 . Foreword _by Charles_
-. Introduction chapter: Vision of blockchain - Joshua
-** To democratize financial services to 2.3 billion people *(and other use-cases)* talk about Marlowe here
+. Introduction chapter: Vision of blockchain 
+** To democratize financial services to 2.3 billion people *(and other use-cases)*
 *** To provide both privacy and transparency
 *** Banking the unbanked - SSID
 *** Potentially mention marlowe<->plutus interaction and what it enables (if it is possible)
@@ -37,14 +37,14 @@ The book will present a unified account of all the material needed by users of t
 ** #*Cardano, Bitcoin and Ethereum?*#
 ** #What are Smart contracts?#
 ** #Why we use pure functional programming#
-. Orientation Section (how to navigate the book) - Niamh (at the end)
+. Orientation Section (how to navigate the book) - 
 . https://www.youtube.com/watch?v=zhFTO1jYjbk[What is Cardano?]
 ** Cardano Explained - JC/Niamh
-** Roles of IOG and the Cardano Foundation - JG
-** Cardano Community and Growth of the Ecosystem - JG
-** A Map of the Cardano Ecosystem - JC/Niamh
-** Educating the world about Cardano - Niamh
-** Essential Cardano and how to navigate - Niamh
+** Roles of IOG and the Cardano Foundation - 
+** Cardano Community and Growth of the Ecosystem - 
+** A Map of the Cardano Ecosystem - 
+** Educating the world about Cardano - 
+** Essential Cardano and how to navigate - 
 ** https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/developer-portal.adoc[Developer Portal and Showcase] - Markus
 . Governance
 ** #Introduction to governance#
