@@ -53,9 +53,9 @@ representing data types as higher-order functions(((higher-order functions))),
 but we had reason to believe the extra cost was negligible. Always check your
 assumptions! Once the system was up and running, performance
 measurements showed the cost of implementing data structures as
-functions was greater than expected. So, we modified the design to 
-support data structures directly in Plutus Core, and the feature is 
-available as of version 1.1.0. 
+functions was greater than expected. So, we modified the design to
+support data structures directly in Plutus Core, and the feature is
+available as of version 1.1.0.
 
 The on-chain production evaluator for Plutus is written in Haskell,
 one of the most widely used functional programming languages. Plutus
@@ -136,7 +136,7 @@ with Catalyst Fund12(((Catalyst Fund12))) support, and are designed to make acce
 Platform as straightforward as possible.
 
 * *Other components* support free-standing execution of Marlowe smart
-contracts, including the Marlowe Runner(((Marlowe Runner))) and the 
+contracts, including the Marlowe Runner(((Marlowe Runner))) and the
 Marlowe CLI(((Marlowe CLI))).
 
 The platform simplifies development for the developer community and
@@ -198,7 +198,7 @@ two available: simple scripts(((simple scripts))) and Plutus(((Plutus))).
 
 The Shelley era(((Shelley era))) introduced script addresses and
 https://developers.cardano.org/docs/get-started/cardano-cli/simple-scripts/[simple
-scripts(((simple scripts)))], also known as native scripts(((native scripts))). 
+scripts(((simple scripts)))], also known as native scripts(((native scripts))).
 They can be used for multi-signature addresses(((multi-signature addresses))),
 requiring multiple keys to sign a transaction to spend funds. The
 Allegra era extended simple scripts(((simple scripts))) by adding conditional time-based
@@ -218,8 +218,8 @@ Turing-complete(((Turing-complete))) smart contracts(((smart contracts)))
 on Cardano. It implements Cardano's extended UTXO
 (EUTXO(((EUTXO)))) model, which is as powerful in expressing smart contract logic
 as Ethereum's account-based model, allowing for arbitrary logic in smart
-contracts. A comparison of Plutus with Bitcoin Script(((Bitcoin Script))) and 
-Solidity(((Solidity))) languages is presented in section 
+contracts. A comparison of Plutus with Bitcoin Script(((Bitcoin Script))) and
+Solidity(((Solidity))) languages is presented in section
 <<Plutus in comparison to Bitcoin Script and Solidity>>.
 The security advantages of Cardano's EUTXO model over Ethereum's account-based
 model are discussed in section <<Cardano security>>.
@@ -234,7 +234,7 @@ Turing-complete(((Turing-complete))) subset of the Haskell programming language
 (https://www.sciencedirect.com/science/article/pii/S0167642323001338#se0070[Krijnen
 et al], 2023). It draws from modern language research to provide a
 safe, full-stack programming environment based on Haskell, the leading
-purely functional programming language(((purely functional programming))). 
+purely functional programming language(((purely functional programming))).
 It is a general-purpose smart
 contract language that focuses on security. The basics of coding smart
 contracts in Plinth are explained in section <<Plutus smart contracts>>.
@@ -256,7 +256,7 @@ TypeScript
 * https://github.com/hyperion-bt/helios[Helios]: a
 JavaScript/TypeScript SDK and typed DSL
 * https://github.com/plutonomicon/plutarch-plutus[Plutarch]: a typed
-eDSL in Haskell for writing efficient Plutus validators 
+eDSL in Haskell for writing efficient Plutus validators
 * https://scalus.org/[Scalus]: a typed eDSL in Scala
 * https://github.com/mlabs-haskell/purus[Purus]: a PureScript to
 Plutus Core(((Plutus Core))) compiler(((compiler)))
@@ -355,7 +355,7 @@ written as a Plinth smart contract. Besides the programming language,
 the Marlowe project provides open-source tools to easily create, verify,
 and deploy secure financial smart contracts on Cardano. You can write
 smart contracts in JavaScript and Haskell or use Blockly(((Blockly))),
-a visual coding(((visual coding))) solution. All language options are 
+a visual coding(((visual coding))) solution. All language options are
 available in the online development environment –
 https://playground.marlowe-lang.org/#/[Marlowe playground]. The
 Marlowe language, its tools, architecture, and contract examples are
@@ -415,7 +415,7 @@ contracts.
 Explore Cardano tools that can be used for building DApps at:
 
 * The https://developers.cardano.org/tools/[Builder Tools] page on the
-Cardano Developer portal. You can filter the tools by language/technology 
+Cardano Developer portal. You can filter the tools by language/technology
 or by domain. Every tool contains a short description.
 * The Cardano community-built
 https://www.essentialcardano.io/article/a-list-of-community-built-developer-tools-on-cardano[developer tools] list hosted on Essential Cardano(((Essential Cardano))).
@@ -537,7 +537,7 @@ the _payment_ part and the _staking_ part.
 image::sc_cardano_address.png[width=400,height=280,title="Cardano address"]
 
 Both parts of a Cardano address are cryptographically derived from the
-private key(((private key))), containing the same owner information. The 
+private key(((private key))), containing the same owner information. The
 payment part(((payment part))),
 which is always present, determines the conditions under which a UTXO at
 the address can be spent. It is either defined by the hash of a public
@@ -567,7 +567,7 @@ rights, are also shorter and can be used for sending and receiving
 funds. _Reward account addresses_, used to distribute proof-of-stake
 rewards (either directly or via delegation), are cryptographic hashes of
 the public staking key. They follow the account-based model, unlike the
-UTXO model(((UTXO model))). Rewards are reflected in accounts, and UTXOs 
+UTXO model(((UTXO model))). Rewards are reflected in accounts, and UTXOs
 are created only when rewards are withdrawn.
 
 The Shelley era(((Shelley era))) continued to support Byron-era(((Byron-era)))
@@ -717,7 +717,7 @@ Marlowe team, initially at the University of Kent with support from a
 research grant from IO, and later as an internal engineering team within
 IO. The Marlowe team at IO was also collaborating with the
 https://www.uwyo.edu/acct-fin/cbdi/[Wyoming Center for Blockchain and Digital
-Innovation(((Wyoming Center for Blockchain and Digital Innovation)))] (CBDI) 
+Innovation(((Wyoming Center for Blockchain and Digital Innovation)))] (CBDI)
 at the University of Wyoming. More information about
 the research conducted for Marlowe can be found on the official
 documentation page, which also lists
@@ -1752,15 +1752,15 @@ operation was originally included but was subsequently disabled).
 very constrained. For example, it cannot inspect a transaction
 currently being validated, but it can access the transaction's hash.
 
-A compilation pipeline is being developed at IO that builds a connection 
-from Cardano smart contracts to Bitcoin. This is done by combining Untyped 
-Plutus Core (UPLC), the CEK machine - a clever interpreter architecture, 
-and RISC-V that is a widely supported open-source reduced instruction set 
-architecture. BitVMX plays a key role, that makes Bitcoin programmable. 
-It runs computations off-chain, but gives Bitcoin users a way to successfully 
-challenge suspicious transactions. One can read more about this topic in 
-the following 
-https://iohk.io/en/blog/posts/2025/07/19/smart-contracts-on-bitcoin/[IO blog]. 
+A compilation pipeline is being developed at IO that builds a connection
+from Cardano smart contracts to Bitcoin. This is done by combining Untyped
+Plutus Core (UPLC), the CEK machine - a clever interpreter architecture,
+and RISC-V that is a widely supported open-source reduced instruction set
+architecture. BitVMX plays a key role, that makes Bitcoin programmable.
+It runs computations off-chain, but gives Bitcoin users a way to successfully
+challenge suspicious transactions. One can read more about this topic in
+the following
+https://iohk.io/en/blog/posts/2025/07/19/smart-contracts-on-bitcoin/[IO blog].
 
 Ethereum provides a Turing-complete(((Turing-complete
 ))) language for the Ethereum virtual
@@ -2026,7 +2026,7 @@ developer map] for more options.
 
 To query various Plutus types, one can use the official
 https://plutus.cardano.intersectmbo.org/haddock/latest/[Plutus Haddock
-documentation(((Plutus Haddock documentation)))], which presents types 
+documentation(((Plutus Haddock documentation)))], which presents types
 in Haskell syntax. Press CTRL + S
 to search for a keyword, such as a specific data type or function name.
 The search engine might provide more options for a single data type, function
@@ -2094,7 +2094,7 @@ validatorName :: ScriptContext -> Bool
 Both implementations can be used in smart contract code. The main
 difference lies in code performance, with the low-level implementation
 offering better performance. Low-level validation scripts are referred
-to as _untyped validation scripts(((untyped validation scripts)))_, 
+to as _untyped validation scripts(((untyped validation scripts)))_,
 while high-level scripts are known as
 _typed validation scripts(((typed validation scripts)))_.
 
@@ -2231,8 +2231,8 @@ https://downloads.haskell.org/ghc/latest/docs/users_guide/using-optimisation.htm
 also cover various GHC compiler(((compiler
 ))) options. We name our module `Week02.Validators`.
 The naming of modules through the <<Plutus smart contracts>> code examples
-section follows the naming from the 
-https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[fourth 
+section follows the naming from the
+https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[fourth
 iteration] of the Plutus pioneer program.
 Next, we import several submodules from the `PlutusLedgerApi` and the `PlutusTx`
 modules that define functions for working with PlutusV3 scripts.
@@ -2285,7 +2285,7 @@ in the Oxford brackets with the actual function body.
 This completes the on-chain code. Next, we use the [blue]#serialiseCompiledCode#
 helper function that returns something of [purple]#ShortByteString# type, which
 is a compact representation of a [purple]#Word8# vector. At the end of this section,
-we present the code that lets us generate https://cips.cardano.org/cip/CIP-57[Plutus 
+we present the code that lets us generate https://cips.cardano.org/cip/CIP-57[Plutus
 blueprints(((Plutus blueprints)))]
 for all the validators presented in this section. Plutus blueprints allow documenting
 Plutus validators in `JSON` format and include the compiled validator code that is
@@ -2856,8 +2856,8 @@ In the file, we define the
 https://github.com/IntersectMBO/cardano-haskell-packages[CHAP repository]
 that contains all Haskell packages used by Cardano that are not hosted on
 https://hackage.haskell.org/[Hackage], the Haskell community's central package
-archive. When compiling the project, the `cabal(((cabal)))` tool can then 
-download the Plutus packages defined in the `.cabal` file. Next, we look at the 
+archive. When compiling the project, the `cabal(((cabal)))` tool can then
+download the Plutus packages defined in the `.cabal` file. Next, we look at the
 `.cabal` file.
 
 [source,haskell]
@@ -3034,7 +3034,7 @@ The transaction output reference(((transaction output reference
 ))), which is an SHA-256
 hash of the transaction and the transaction index, which is an integer number.
 Each UTXO that a transaction creates gets a transaction index assigned starting with
-0 and increasing by 1. Because a transaction hash(((transaction hash))) (ID) is unique, 
+0 and increasing by 1. Because a transaction hash(((transaction hash))) (ID) is unique,
 together with the output index it uniquely defines a UTXO.
 The reason transaction hashes are unique is because a new transaction hash includes
 the hash of the transaction that created the UTXO being consumed. Every transaction consumes
@@ -5046,7 +5046,7 @@ It is also possible to associate an image with a token or NFT. It can be
 referenced from the https://ipfs.tech/[InterPlanetary file system(((IPFS)))] or
 embedded as a https://en.wikipedia.org/wiki/Base64[base64] encoded string
 into the datum metadata of the token or NFT. For more information, see
-https://cips.cardano.org/cip/CIP-68[CIP-68(((CIP-68)))] 
+https://cips.cardano.org/cip/CIP-68[CIP-68(((CIP-68)))]
 that defines the datum metadata standard.
 The https://meshjs.dev/apis/txbuilder/minting#mintingCip68[MeshJS docs] provide
 an example of how to mint assets with the CIP-68(((CIP-68
@@ -5707,7 +5707,7 @@ Plinth smart contracts by combining the following tools:
 
 This https://www.mlabs.city/blog/testing-dapps-on-cardano-with-clb-emulator[MLabs(((MLabs)))
 blog] shows how to use Atlas(((Atlas))) with the CLB to test plinth scripts.
-The Atlas application backend is an open-source tool that covers all 
+The Atlas application backend is an open-source tool that covers all
 functionalities needed to work with
 Plinth smart contracts and enables writing the complete server side code
 in Haskell. It is the Haskell alternative to TypeScript off-chain tools such
