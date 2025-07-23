@@ -1,2 +1,30 @@
 [author-info]
 == Author information
+Meet the authors behind this book:
+
+=== Dr. Lars Brünjes
+https://iohk.io/en/research/library/authors/lars-brunjes/[Dr. Lars Brünjes] is a renowned figure in the world of blockchain and cryptocurrency, with a rich background in mathematics, computer science, and a strong passion for functional programming. As the Director of Education at Input Output Global (IO), Dr. Brünjes has played a pivotal role in shaping the academic and educational foundations of Cardano, one of the most innovative and versatile blockchain platforms in existence.
+
+Armed with a Ph.D. in Pure Mathematics from the University of Regensburg, Dr. Brünjes has spent over a decade working in various industries, including software development and teaching. He brings a unique blend of knowledge, experience, and academic rigor to the table, making him the ideal author for "Mastering Cardano."
+
+Dr. Brünjes' journey with IO began when he was captivated by the vision and potential of the Cardano project. As a Haskell enthusiast and an expert in functional programming, he felt a strong connection with the project's focus on formal methods and evidence-based development. Under his leadership, IO's education department has created numerous courses, workshops, and learning resources to foster a global community of developers, researchers, and enthusiasts dedicated to the Cardano ecosystem.
+
+As one of the creators of the Cardano "Incentives" mechanism, Dr. Brünjes has made significant contributions to the platform's infrastructure. His expertise in designing the incentives system ensures maximal decentralization and prevents the concentration of power often seen in other blockchain platforms, such as Bitcoin mining pools.
+
+As the author of "Mastering Cardano," Dr. Brünjes brings a wealth of firsthand experience and intimate knowledge of the platform's intricacies. His extensive background in mathematics and computer science, coupled with his deep understanding of blockchain technology, ensures that this book will provide readers with a comprehensive and authoritative guide to Cardano's powerful features and capabilities.
+
+=== Prof. Joshua Ellul
+https://www.um.edu.mt/profile/joshuaellul[Prof. Joshua Ellul] is an Associate Professor within the Centre for DLT and the Department of Computer Science at the University of Malta. 
+
+His research interests include:
+
+- All things Blockchain, Smart Contracts and Cryptocurrency-Related
+- Applying AI in Cryptocurrency applications
+- Virtual Machines
+- Technology Regulatory, Policy and Societal Issues
+
+He has given and taken part in over 150 invited talks and panels, and has published over 75 papers that have been cited over 2,000 — with a main focus on cryptocurrencies and blockchain since 2018. He was responsible for the setting up of the Centre for DLT at the University of Malta and a multidisciplinary Master’s programme in Blockchain and DLT. He has lectured core computer science topics including Operating Systems and Systems Programming, to Blockchain and Smart Contract specific topics including DLT implementation and internals, and Smart Contract and DApp programming amongst many other topics.The book is intended for, and targeted to, a very broad range of readers. Essentially, anyone with an interest in the Cardano blockchain will be able to get something useful out of it.
+
+=== Contributuing Writers
+
+
