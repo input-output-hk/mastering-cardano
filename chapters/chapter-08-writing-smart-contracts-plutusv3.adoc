@@ -377,13 +377,14 @@ and best practices of Marlowe in more detail.
 
 *On-chain and off-chain code*
 
-Sometimes, smart contract code is referred to as on-chain code because
+Sometimes, smart contract code is referred to as on-chain code(((on-chain code))) because
 it runs in the node during the inclusion of new transactions that aim to
-spend a UTXO at a script address. Off-chain code, in contrast, runs on
+spend a UTXO at a script address. Off-chain code(((off-chain code))), in contrast, runs on
 the user's or a service provider's device and queries the blockchain,
 builds, signs, and submits transactions. A web application that
 connects with a wallet and interacts with one or more smart contracts is
-called a decentralized application (DApp). Chapter <<decentralized-applications, Decentralized applications>>
+called a decentralized application (DApp(((DApp)))). Chapter
+<<decentralized-applications, Decentralized applications>>
 covers DApps in more detail. Every DApp contains some
 off-chain code and interacts with one or more smart contracts that
 represent the on-chain code. Off-chain code tasks can be
@@ -540,7 +541,7 @@ private key(((private key))), containing the same owner information. The
 payment part(((payment part))),
 which is always present, determines the conditions under which a UTXO at
 the address can be spent. It is either defined by the hash of a public
-key or a Plutus script. If it contains a public key hash, UTXOs can only
+key or a Plutus script. If it contains a public key hash(((public key hash))), UTXOs can only
 be spent if the transaction is signed with the corresponding private
 (signing) key. If it contains a script hash(((script hash))), the script executes during
 validation to decide whether UTXOs at the address can be spent.
@@ -1647,7 +1648,7 @@ important. Plinth code examples presented in this section are based on
 PlutusV3, which became available after the Chang hard fork(((Chang hard fork
 ))). From the
 https://docs.cardano.org/about-cardano/evolution/upgrades/chang/[Cardano
-docs] page, we get a short description of what PlutusV3 brings to
+docs] page, we get a short description of what PlutusV3(((PlutusV3))) brings to
 Cardano:
 
 With the introduction of PlutusV3, Plutus scripts are available for use
@@ -1713,9 +1714,9 @@ Cardano's hard fork combinator(((HFC
 <<cardano-node-layers, Cardano node layers>>, subsection *Consensus and storage layer*,
 enables the Cardano node(((Cardano node))) to continue processing scripts written in earlier
 versions of Plutus even after a hard fork introduces a new Plutus version.
-If you encounter smart contract code examples written in PlutusV1 or PlutusV2,
-you can check out videos and learning examples of the previous Plutus Pioneer
-program iterations:
+If you encounter smart contract code examples written in PlutusV1(((PlutusV1)))
+or PlutusV2(((PlutusV2))), you can check out videos and learning examples of the
+previous Plutus Pioneer program iterations:
 
 * https://github.com/input-output-hk/plutus-pioneer-program/tree/third-iteration[third-iteration] - PlutusV1 examples
 * https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[fourth-iteration] - PlutusV2 examples.
@@ -2064,10 +2065,10 @@ pipeline which are explained in detail in section <<Plutus security>>.
 In this section, we will look at basic Plinth validation scripts. All
 validation scripts and data types presented in the <<Plutus smart contracts>>
 section are PlutusV3 scripts and data types. An exception are PlutusV1
-and V2 data types that were not modified with the introduction of PlutusV3
-and can be still used in PlutusV3 scripts. A validation script or
+and V2 data types that were not modified with the introduction of PlutusV3(((PlutusV3)))
+and can be still used in PlutusV3 scripts. A validation script(((validation script))) or
 validator is the smart contract program that checks whether funds at a
-script address are allowed to be spent by a given transaction. As stated
+script address(((script address))) are allowed to be spent by a given transaction. As stated
 previously, a validation script in EUTXO cannot see the entire state of
 the blockchain; instead, it can view the entire transaction being validated.
 The script uses a single parameter: the script context. It returns a parameter
@@ -3033,8 +3034,8 @@ The transaction output reference(((transaction output reference
 ))), which is an SHA-256
 hash of the transaction and the transaction index, which is an integer number.
 Each UTXO that a transaction creates gets a transaction index assigned starting with
-0 and increasing by 1. Because transaction hashes (IDs) are unique, the transaction hash
-defines a UTXO, and the output index is also unique and can exist only once.
+0 and increasing by 1. Because a transaction hash(((transaction hash))) (ID) is unique, 
+together with the output index it uniquely defines a UTXO.
 The reason transaction hashes are unique is because a new transaction hash includes
 the hash of the transaction that created the UTXO being consumed. Every transaction consumes
 at least one UTXO as it needs to pay some fees. By a simple induction
@@ -3188,7 +3189,8 @@ in smart contracts:
 
 *Transaction information*
 
-Let us look at the transaction information [purple]#TxInfo# data type.
+Let us look at the transaction information(((transaction information)))
+[purple]#TxInfo# data type.
 
 [source,haskell]
 ----
@@ -3316,7 +3318,7 @@ newtype Value = Value { getValue :: Map CurrencySymbol (Map TokenName Integer) }
     deriving Pretty via (PrettyShow Value)
 ----
 
-Every native token is defined with a currency symbol and a token name. They are
+Every native token is defined with a currency symbol and a token name(((token name))). They are
 both wrappers around a [purple]#BuiltinByteString#. The currency symbol is computed
 as the hash of the minting policy, and the token name can be an arbitrary string
 (but should not be longer than 32 bytes). The `ada` token is defined by an empty
@@ -3798,7 +3800,7 @@ off-chain code that interacts with the validators presented in this section.
 
 The blockchain is passive – it only acts when a user interacts with it.
 The code that queries the blockchain, builds, and submits transactions
-is called off-chain code. Off-chain code does not need to have the same
+is called off-chain code(((off-chain code))). Off-chain code does not need to have the same
 performance and security standards as on-chain code. In this section,
 we will showcase how to write off-chain code for the on-chain code example
 presented in the previous section.
@@ -5095,7 +5097,7 @@ Custom Tokens in the Extended UTXO(((EUTXO))) Model] scientific paper.
 
 ==== PlutusV3 features
 
-PlutusV3 focuses on performance throughput, smart contract size,
+PlutusV3(((PlutusV3))) focuses on performance throughput, smart contract size,
 platform capabilities, and interoperability with other blockchains.
 Specifically, PlutusV3 brings:
 
