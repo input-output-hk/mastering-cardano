@@ -59,10 +59,6 @@ Editorial support:
 - Kevin Hammond
 - Hernan Rajchert
 
-==== Marlowe Language Community Interest Company
-
-- Simon Thompson
-
 ==== Cardano Foundation
 
 - John Greene
@@ -78,4 +74,7 @@ Editorial support:
 - Markus Gufler
 - Michael Dogali
 
+==== Marlowe Language Community Interest Company
+
+- Simon Thompson
 
