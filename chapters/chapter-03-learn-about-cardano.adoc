@@ -3,7 +3,7 @@
 == Learn About Cardano
 
 === What is Cardano?
-Cardano is a *third-generation*, *open-source*, *proof-of-stake* blockchain platform designed to provide a secure, scalable, and interoperable infrastructure for developing smart contracts(((smart contracts))) and decentralized applications (DApps). Its primary goal is to address the limitations of earlier blockchain platforms by prioritizing these core tenets. As a fully https://informatics.ed.ac.uk/blockchain/edi[decentralized] network, Cardano supports a diverse range of applications, from financial services to supply chain management. Recent advancements, including the https://iohk.io/en/blog/posts/2024/08/30/chang-upgrade-a-big-step-in-changing-the-world-with-cardano/[Chang] and https://www.intersectmbo.org/news/plomin-hard-fork-ratified[Plomin] hard forks(((hard forks))), have further enhanced its decentralization, establishing it as a leading decentralized blockchain.
+Cardano is a *third-generation*, *open-source*, *proof-of-stake* blockchain platform designed to provide a secure, scalable, and interoperable infrastructure for developing smart contracts(((smart contract))) and decentralized applications (DApps). Its primary goal is to address the limitations of earlier blockchain platforms by prioritizing these core tenets. As a fully https://informatics.ed.ac.uk/blockchain/edi[decentralized] network, Cardano supports a diverse range of applications, from financial services to supply chain management. Recent advancements, including the https://iohk.io/en/blog/posts/2024/08/30/chang-upgrade-a-big-step-in-changing-the-world-with-cardano/[Chang] and https://www.intersectmbo.org/news/plomin-hard-fork-ratified[Plomin] hard forks(((hard forks))), have further enhanced its decentralization, establishing it as a leading decentralized blockchain.
 
 Cardano boasts a https://cardanoupdates.com/[thriving ecosystem] of builders, developers, content creators, and educators, supported by a wide array of tools and explorers. To learn more about this vibrant community, explore the https://www.cardanocube.com/cardano-ecosystem-interactive-map[ecosystem map], the https://www.essentialcardano.io/[Essential Cardano website], and the https://github.com/IntersectMBO/essential-cardano[Essential Cardano list].
 
@@ -50,7 +50,7 @@ As a third-generation blockchain, Cardano combines the strengths of earlier gene
 As Charles Hoskinson stated:
 _‘Governance is not optional. No matter who you are, what you do, when you create something that other people use, the first question is how do we upgrade, maintain, and change it to meet our needs?’_
 
-Cardano’s governance model reflects a *liquid and representative democracy*. Through individual participation and immutable vote recording, ada(((ada))) holders can decide on the distribution of treasury(((treasury))) funds and the platform's future development. 
+Cardano’s governance model reflects a *liquid and representative democracy*. Through individual participation and immutable vote recording, ada(((ada))) holders can decide on the distribution of treasury(((treasury))) funds and the platform's future development.
 
 Designing a proof-of-stake blockchain necessitates self-sustainability. *Cardano Improvement Proposals (CIPs)* foster and formalize discussions around new features and development within the community. The Cardano governance(((governance))) https://www.intersectmbo.org/roadmap[roadmap], particularly under *CIP-1694*, guides the community through a structured transition to a decentralized, community-driven governance model, allowing for extensive community feedback and refinement.
 
@@ -120,14 +120,14 @@ This education stream aligns with the mission to provide free education to the C
 - Haskell(((Haskell))) Course: Aimed at those looking to master the functional programming language(((functional programming language))) Haskell(((Haskell))), which is integral to Cardano's development.
 - Cardano Days: Interactive events that provide a deep dive into the Cardano platform, covering its unique features and applications.
 - Blockchain Workshops: In-person or virtual workshops and lectures on the fundamentals of blockchain and Cardano.
-- Essential Cardano(((Essential Cardano))): The https://www.essentialcardano.io/[Essential Cardano website] was launched in 2022 and has since become a thriving community resource. It serves as a resource for understanding Cardano, identifying its partners, learning about its mission and roadmap(((roadmap))), and getting started with building on Cardano. This was preceded by the original https://github.com/IntersectMBO/essential-cardano[Essential Cardano List repository] which was created in 2021 as a central canonical guide to the Cardano ecosystem. 
+- Essential Cardano(((Essential Cardano))): The https://www.essentialcardano.io/[Essential Cardano website] was launched in 2022 and has since become a thriving community resource. It serves as a resource for understanding Cardano, identifying its partners, learning about its mission and roadmap(((roadmap))), and getting started with building on Cardano. This was preceded by the original https://github.com/IntersectMBO/essential-cardano[Essential Cardano List repository] which was created in 2021 as a central canonical guide to the Cardano ecosystem.
 
 As part of this stream, IO offers comprehensive in-person courses in Haskell(((Haskell))) that run for 10-12 weeks (depending on the curriculum). https://iohk.io/en/research/library/authors/lars-brunjes/[Dr. Lars Brünjes] and his team have delivered several of these Haskell(((Haskell))) courses, including:
 
 - Haskell(((Haskell))) and cryptocurrency course 2017, which ran for eight weeks at the https://www.ntua.gr/en/[National Technical University of Athens].
 - https://iohk.io/en/blog/posts/2018/04/07/iohk-haskell-and-cryptocurrency-course-in-barbados/[Haskell and cryptocurrency course 2018], which ran for eight weeks at the University of West Indies in Barbados.
 - https://iohk.io/en/blog/posts/2019/04/04/training-blockchain-developers-in-africa/[Haskell course 2019 Ethiopia]: this three-month course was delivered in Addis Ababa, Ethiopia, in conjunction with the Ethiopian Ministry of Innovation and Technology. It was delivered to an all-female audience of Ethiopian and Ugandan students.
-- Online Haskell(((Haskell))) course 2020: This course was originally planned for Mongolia, but due to COVID-19 it was migrated to an online course. 
+- Online Haskell(((Haskell))) course 2020: This course was originally planned for Mongolia, but due to COVID-19 it was migrated to an online course.
 - Haskell(((Haskell))) course 2023: Delivered with additional Marlowe(((Marlowe))) and Plutus(((Plutus))) components. This comprehensive blended learning course was taught in conjunction with https://www.theafricablockchaincenter.com/[the African Blockchain Center] and taught at their offices in Nairobi, Kenya. The team adopted a train-the-trainer approach for this course and produced a train-the-trainer kit for professors in the group. The course blended in-person and virtual interactions, allowing us to connect with attendees and understand their perspectives on the topics covered during the session
 
 ===== Cardano Days events
@@ -149,16 +149,16 @@ Cardano Days events were launched in 2023, and the team has held several of thes
 - https://teziutlan.tecnm.mx/[Higher Technological Institute of Teziutlan (TecNM Teziutlan)], Puebla, Mexico
 - https://www.titech.ac.jp/english[Tokyo Institute of Technology], Japan
 
-These two-day events cover the basics of blockchain technology, Cardano, and smart contracts(((smart contracts))) and proved very popular, with an NPS score of 92. More of these events are planned, so if you would like to know more about hosting this event, please get in touch by emailing education@iohk.io.
+These two-day events cover the basics of blockchain technology, Cardano, and smart contracts(((smart contract))) and proved very popular, with an NPS score of 92. More of these events are planned, so if you would like to know more about hosting this event, please get in touch by emailing education@iohk.io.
 
 ===== Developer education
 
-The Cardano education program (CEP) for developers consists of a set of courses that cover all aspects of Cardano. This program includes a set of courses and flexible modules that can be tailored to the needs of each audience. 
+The Cardano education program (CEP) for developers consists of a set of courses that cover all aspects of Cardano. This program includes a set of courses and flexible modules that can be tailored to the needs of each audience.
 
 - Cardano Developer course: a blended learning course that teaches Haskell(((Haskell))) and smart contract development to aspiring blockchain developers.
-- https://github.com/input-output-hk/haskell-course[Haskell Bootcamp]: an immersive self-paced Haskell(((Haskell))) course. This course provides a stepping stone for people to upskill on Haskell(((Haskell))) before enrolling in the Plutus(((Plutus))) Pioneer program. It consists of videos and interactive lessons and has received very positive feedback and engagement. 
-- https://docs.cardano.org/pioneer-programs/plutus-pioneers[Plutus Pioneer program]: focuses on Plutus(((Plutus))), Cardano’s smart contract platform, offering hands-on experience in writing and deploying smart contracts(((smart contracts))). 
-- https://sancho.network/drep-pioneer-program/drep-pp/overview[DRep Pioneer program]: prepares participants to become decentralized representatives, playing a crucial role in Cardano’s governance(((governance))). 
+- https://github.com/input-output-hk/haskell-course[Haskell Bootcamp]: an immersive self-paced Haskell(((Haskell))) course. This course provides a stepping stone for people to upskill on Haskell(((Haskell))) before enrolling in the Plutus(((Plutus))) Pioneer program. It consists of videos and interactive lessons and has received very positive feedback and engagement.
+- https://docs.cardano.org/pioneer-programs/plutus-pioneers[Plutus Pioneer program]: focuses on Plutus(((Plutus))), Cardano’s smart contract platform, offering hands-on experience in writing and deploying smart contracts(((smart contract))).
+- https://sancho.network/drep-pioneer-program/drep-pp/overview[DRep Pioneer program]: prepares participants to become decentralized representatives, playing a crucial role in Cardano’s governance(((governance))).
 - https://github.com/input-output-hk/marlowe-pioneer-program[Marlowe Pioneer program]: specializes in Marlowe(((Marlowe))), a domain-specific language for financial contracts on Cardano, and is aimed at both developers and financial professionals.
 - Tutorials: technical tutorials that describe features of Cardano and how to work with them.
 - Educational videos: introduce technical aspects, new features, hard fork events, and so on.
@@ -170,7 +170,7 @@ We have delivered several Pioneer Programs aimed at developers and new users. Th
 
 One of the most positive outcomes of these courses was the amazing community participation on Discord. The participants supported each other, created additional learning resources, were quick to report any issues, and tested features – they really were acting as true pioneers. We also saw a wide range of innovative resources and ideas from the courses, including new wallets, training materials, and new projects on Cardano.
 
-A self-paced Cardano Education Program (CEP) is currently being developed where participants will be able to pick and choose the modules they want to complete and work at their own pace, rather than follow a weekly schedule. 
+A self-paced Cardano Education Program (CEP) is currently being developed where participants will be able to pick and choose the modules they want to complete and work at their own pace, rather than follow a weekly schedule.
 
 ===== Collaborations
 
@@ -190,11 +190,11 @@ Additionally, IO worked with https://www.yeovil.ac.uk/[Yeovil College] in the UK
 
 ===== How to collaborate
 
-The IO education team hosts interactive and meaningful training workshops and courses in various locations around the world each year, as well as online or blended learning options. If interested in hosting a Cardano Days event or collaborating on a training course, please contact education@iohk.io. Stay tuned for updates on the https://www.youtube.com/channel/UCX9j__vYOJu00iqBrCzecVw[IO Academy]. 
+The IO education team hosts interactive and meaningful training workshops and courses in various locations around the world each year, as well as online or blended learning options. If interested in hosting a Cardano Days event or collaborating on a training course, please contact education@iohk.io. Stay tuned for updates on the https://www.youtube.com/channel/UCX9j__vYOJu00iqBrCzecVw[IO Academy].
 
 ===== About the Cardano developer portal
 
-The https://developers.cardano.org/[Cardano developer portal] is an additional learning resource and is part of the Cardano.org domain: a product-and-vendor neutral contact point for technical topics. 
+The https://developers.cardano.org/[Cardano developer portal] is an additional learning resource and is part of the Cardano.org domain: a product-and-vendor neutral contact point for technical topics.
 
 Guided by the principle of community involvement, all content is contributed openly and transparently using a GitHub process (branch, pull request, review, merge). This approach allows anyone to submit proposals with new or updated Markdown-formatted content and thus contribute actively and constructively.
 
@@ -202,7 +202,7 @@ Under the hood, https://docusaurus.io/[Docusaurus] (an open-source(((open-source
 
 The content of this developer portal is intended to practically demonstrate and exemplify how certain functions and operations can be implemented on Cardano, as well as showcase existing projects. A basic requirement for including projects is that they must be functioning and usable on the mainnet (see the guideline for https://developers.cardano.org/docs/portal-contribute/#add-a-project-to-showcase[adding new projects]).
 
-This portal provides resources to https://developers.cardano.org/docs/integrate-cardano/[integrate Cardano], https://developers.cardano.org/docs/transaction-metadata/[build with transaction metadata], https://developers.cardano.org/docs/native-tokens/[explore native tokens], https://developers.cardano.org/docs/smart-contracts/[create smart contracts(((smart contracts)))], https://developers.cardano.org/docs/governance/[participate in governance(((governance)))], and https://developers.cardano.org/docs/operate-a-stake-pool/[operate a stake pool].
+This portal provides resources to https://developers.cardano.org/docs/integrate-cardano/[integrate Cardano], https://developers.cardano.org/docs/transaction-metadata/[build with transaction metadata], https://developers.cardano.org/docs/native-tokens/[explore native tokens], https://developers.cardano.org/docs/smart-contracts/[create smart contracts(((smart contract)))], https://developers.cardano.org/docs/governance/[participate in governance(((governance)))], and https://developers.cardano.org/docs/operate-a-stake-pool/[operate a stake pool].
 
 Contributions from all individuals, including non-developers, are encouraged to foster continuous evolution by the community. Contributing to the portal can boost reputation and visibility, or serve as a good learning experience in the GitHub open-source(((open-source))) and knowledge-minded contribution process. Each contribution acts as a valuable addition to your resume, potentially leading to career opportunities within the Cardano ecosystem. Ways to contribute include spreading awareness, creating issues on GitHub or the Cardano Forum, improving the copy by fixing errors or enhancing writing, and creating explanatory graphics.
 There is a dedicated section that describes https://developers.cardano.org/docs/portal-contribute/[how best to contribute].

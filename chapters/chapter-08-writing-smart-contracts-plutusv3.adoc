@@ -10,7 +10,7 @@
 _Prof Philip Wadler(((Wadler, Philip))), FRS_ +
 _University of Edinburgh and IO_
 
-Smart contracts(((Smart contracts))) for the Cardano blockchain run in a language called
+Smart contracts(((smart contract))) for the Cardano blockchain run in a language called
 Plutus. Roughly speaking, Plutus plays the role for Cardano that the
 Ethereum Virtual Machine(((EVM))) (EVM) does for Ethereum(((Ethereum))). But where the EVM
 requires a dense forty-two-page yellow paper to define, the key
@@ -116,7 +116,7 @@ Decentralized application (DApp) developers, small and medium-sized
 enterprises, and other entities can use the Marlowe platform to develop
 Cardano-based DApps. The platform provides everything needed to build
 and run complete DApps on Cardano, leveraging the guarantees of Marlowe
-smart contracts(((smart contracts))) and integrating with Web3(((Web3)))
+smart contracts(((smart contract))) and integrating with Web3(((Web3)))
 workflows through a TypeScript SDK. The platform includes:
 
 * *The Marlowe Runtime(((Marlowe Runtime)))* supports all the necessary on- and
@@ -213,7 +213,7 @@ In practice, the Cardano node executes an untyped version called Untyped
 Plutus Core(((Plutus Core))) (UPLC). The compilation pipeline from a
 compiled language to UPLC is covered in section <<Plutus security>>.
 Plutus is a simple, functional language that enables general-purpose
-Turing-complete(((Turing-complete))) smart contracts(((smart contracts)))
+Turing-complete(((Turing-complete))) smart contracts(((smart contract)))
 on Cardano. It implements Cardano's extended UTXO
 (EUTXO) model, which is as powerful in expressing smart contract logic
 as Ethereum's account-based model, allowing for arbitrary logic in smart
@@ -436,7 +436,7 @@ examples and also contains Lucid Evolution code examples.
 The https://worldmobile.io/en[World Mobile] company offers an
 interesting case study of a solution that can change the current state
 of internet networks. With the help of the Cardano blockchain and smart
-contracts(((smart contracts))), the company provides a sharing economy model to deliver
+contracts(((smart contract))), the company provides a sharing economy model to deliver
 network infrastructure and enable connectivity in a more distributed and
 decentralized manner.
 
@@ -523,7 +523,7 @@ accessible to different stakeholders to make more informed decisions
 * *Privacy*: user information is stored using private/public
 encryption(((private/public encryption))) provided by Cardano
 * *Immutability*: Cardano's EUTXO model ensures transaction immutability
-and restricts spending to only unspent transaction outputs(((transaction outputs))),
+and restricts spending to only unspent transaction outputs(((transaction, output))),
 making the reward system more deterministic.
 
 === Cardano addresses
@@ -1385,12 +1385,12 @@ Plinth script that holds the role token.
 ==== Future of Marlowe
 
 The Marlowe Foundation(((Marlowe Foundation))) will continue supporting
-Marlowe by consolidating and extending it for Cardano DApp builders. This 
+Marlowe by consolidating and extending it for Cardano DApp builders. This
 includes providing oracles(((oracles))) and micropayments(((micropayments))),
 optimizing execution, and supporting runtime monetization. Marlowe offers a
 lower barrier to entry for DApp development. The new Marlowe DApp starter
 kit (DSK), which will be maintained by the Marlowe Foundation(((Marlowe Foundation))),
-will highlight these advancements and streamline onboarding for small and 
+will highlight these advancements and streamline onboarding for small and
 medium-sized businesses, developers, infrastructure providers, and stake pool
 operators(((SPOs))).
 
@@ -1545,7 +1545,7 @@ cornerstone of the Cardano economy.
 
 ==== Overview and learning resources
 
-The _Plutus smart contracts(((smart contracts)))_ section presents the rules
+The _Plutus smart contracts(((smart contract)))_ section presents the rules
 of the Plutus language by demonstrating how to write and interact with Plinth(((Plinth)))
 smart contracts (formerly known as PlutusTx). Plinth is a high-level smart
 contract language embedded in Haskell that compiles to Untyped Plutus Core(((Plutus Core)))
@@ -1816,7 +1816,7 @@ which are known for friendly error messages and an overall excellent
 developer experience. It is a purely functional language with strong
 static typing and inference. It offers a more accessible and familiar
 syntax to developers, which makes it easy to learn. Aiken enables
-cost-efficient smart contract development(((smart contract development)))
+cost-efficient smart contract development(((smart contract, development)))
 and comes with a modern
 development environment that has a package manager, helpful error
 diagnostics, a language-server protocol (LSP) with auto-formatting, and
@@ -2895,7 +2895,7 @@ and minting in section <<Minting policies and native tokens>>.
 
 If a transaction tries to spend a UTXO at a script address, the script
 info contains the [purple]#SpendingScript# data constructor that carries
-a transaction output reference(((transaction output reference)))
+a transaction output reference(((transaction, output reference)))
 [purple]#TxOutRef# and a [purple]#Maybe V2.Datum#.
 
 [source,haskell]
@@ -2908,11 +2908,11 @@ data TxOutRef = TxOutRef
   deriving anyclass (NFData, HasBlueprintDefinition)
 ----
 
-The transaction output reference(((transaction output reference)))
-contains the transaction ID(((transaction ID))), which is an SHA-256
+The transaction output reference(((transaction, output reference)))
+contains the transaction ID(((transaction, ID))), which is an SHA-256
 hash of the transaction and the transaction index, which is an integer number.
 Each UTXO that a transaction creates gets a transaction index assigned starting with
-0 and increasing by 1. Because a transaction hash(((transaction hash))) (ID) is unique,
+0 and increasing by 1. Because a transaction hash(((transaction, hash))) (ID) is unique,
 together with the output index it uniquely defines a UTXO.
 The reason transaction hashes are unique is because a new transaction hash includes
 the hash of the transaction that created the UTXO being consumed. Every transaction consumes
@@ -3038,7 +3038,7 @@ third place in the script context so we use two time the [blue]#tail# function
 and one time the [blue]#head# function to extract it.
 
 Since we are working with a spending script the script info contains the spending
-constructor followed by the transaction output reference(((transaction output reference
+constructor followed by the transaction output reference(((transaction, output reference
 ))) and a maybe datum. We use
 once the [blue]#tail# function and the [blue]#head# function to extract it. Because
 we now have something of type [purple]#Maybe V2.Datum# we can not directly convert
@@ -3063,7 +3063,7 @@ in smart contracts:
 
 *Transaction information*
 
-Let us look at the transaction information(((transaction information)))
+Let us look at the transaction information(((transaction, information)))
 [purple]#TxInfo# data type.
 
 [source,haskell]
@@ -3120,10 +3120,10 @@ data TxInInfo = TxInInfo
   deriving anyclass (HasBlueprintDefinition)
 ----
 
-A transaction input information(((transaction input information)))
-contains a transaction output reference(((transaction output reference)))
+A transaction input information(((transaction, input information)))
+contains a transaction output reference(((transaction, output reference)))
 that we have previously explained. It defines the input UTXO, and it also
-contains resolved transaction input information(((transaction input information)))
+contains resolved transaction input information(((transaction, input information)))
 in form of the transaction output [purple]#TxOut# data type.
 
 [source,haskell]
@@ -3211,7 +3211,7 @@ The last data for the [purple]#TxOut# data type defines a [purple]#Maybe ScriptH
 A script hash(((script hash))) is also a wrapper around a [purple]#BuiltinByteString#.
 
 Next in the [purple]#TxInfo# data type are the transaction
-outputs(((transaction outputs))) which the
+outputs(((transaction, output))) which the
 transaction aims to create. A transaction output is defined with the [purple]#TxOut#
 data type that we have already shown. After that comes the data for fees and
 minting. Fees are defined with the [purple]#Lovelace# data type that is a
@@ -3393,17 +3393,17 @@ data ScriptPurpose
 The [purple]#ScriptPurpose# data type is structured in the same way as the
 [purple]#ScriptInfo# data type except that the constructor names are different
 and the _Spending_ constructor holds only a transaction output
-reference(((transaction output reference))) without a maybe datum.
+reference(((transaction, output reference))) without a maybe datum.
 The keys for the datums are datum hashes that map to actual datums.
 
-Next comes the transaction ID(((transaction ID))) of type
+Next comes the transaction ID(((transaction, ID))) of type
 [purple]#TxId# which represents the
 hash of the transaction being validated. As already stated this type is a
 wrapper around the [purple]#BuiltinByteString# data type.
 
 After that come the votes and proposal procedures that are used when
 dealing with government actions. The last two pieces of data contained in
-the transaction information are the current treasury amount(((treasury amount))) and treasury
+the transaction information are the current treasury amount(((treasury, amount))) and treasury
 donation. Both are of type [purple]#Maybe V2.Lovelace#. Learn more about
 governance features, including the topics of voting and proposal submission
 in chapter <<Cardano governance>>.
@@ -4222,7 +4222,7 @@ async function deployRefScript(lovelaceAmount: string): Promise<string> {
 
 The [blue]#deployRefScript# takes in a lovelace amount in form or a
 string which will be used to deploy the reference script. First we look
-up the UTXO at our wallet. Then we define a transaction builder(((transaction builder))) that we
+up the UTXO at our wallet. Then we define a transaction builder(((transaction, builder))) that we
 will use to build the transaction. After that we define our transaction.
 We first specify that we want to deploy our vesting script(((vesting script))) at the burn
 address and the amount of lovelace we will spend. Then we specify the
@@ -5312,11 +5312,11 @@ of Plutus can still be processed. You can read more about the HFC in
 Cardano smart contracts see a predictable number of inputs and can only
 produce a set number of outputs that are always the same given the same
 inputs. Because of that, they are also perfect for audits. The job of a
-smart contract auditor(((smart contract auditor
-))) is also more straightforward because outcomes
+smart contract auditor(((smart contract, auditor)))
+is also more straightforward because outcomes
 that cannot be foreseen are minimized by the design of the EUTXO model.
-A smart contract auditor(((smart contract auditor
-))) only needs to follow the logic of the validator
+A smart contract auditor(((smart contract, auditor)))
+only needs to follow the logic of the validator
 to assess if all possible outcomes are desirable and is not concerned
 with a global state that might influence the final output. Besides
 auditing smart contracts, off-chain code and other parts of a DApp may
