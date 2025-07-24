@@ -36,13 +36,13 @@ One of the features of Cardano is seamless upgrades. Traditionally, blockchains 
 
 === Core pillars: security, scalability, and interoperability
 
-As a third-generation blockchain, Cardano combines the strengths of earlier generations like Bitcoin and Ethereum, built on the fundamental principles of security, scalability, and interoperability.
+As a third-generation blockchain, Cardano combines the strengths of earlier generations like Bitcoin and Ethereum, built on the fundamental principles of security, scalability, and interoperability. These three core pillars have defined the design rationale of Cardano, as follows:
 
-- *Security*: Cardano is developed using formal methods, which involve mathematical specifications and proofs to guarantee the functional correctness of its core components, providing the highest level of assurance for digital fund management. The Cardano node is primarily written in Haskell, a secure functional programming language that promotes building systems with pure functions, leading to isolated and testable components. Haskell's advanced features enable rigorous code correctness checks, including formal and executable specifications, extensive property-based testing, and simulation. The Ouroboros protocol further establishes rigorous security guarantees, backed by numerous peer-reviewed papers presented at top-tier conferences in cybersecurity and cryptography.
+- *Security*: Cardano is developed using *formal methods*, which involve mathematical specifications and proofs to guarantee the functional correctness of its core components, providing the highest level of assurance for digital fund management. The Cardano node is primarily written in *Haskell*, a secure functional programming language that promotes building systems with pure functions, leading to isolated and testable components. Haskell's advanced features enable rigorous code correctness checks, including formal and executable specifications, extensive property-based testing, and simulation. The Ouroboros protocol further establishes rigorous security guarantees, backed by numerous peer-reviewed papers presented at top-tier conferences in cybersecurity and cryptography.
 
-- *Scalability*: The Cardano network is designed to scale with user demand, processing an increasing number of transactions and enhancing network bandwidth to manage significant supportive data efficiently. Cardano employs techniques like data compression and offers Hydra, a Layer 2 scalability solution. It also uses input endorsers to improve block propagation times and throughput, supporting higher transaction rates.
+- *Scalability*: The Cardano network is designed to *scale with user demand*, processing an increasing number of transactions and enhancing network bandwidth to manage significant supportive data efficiently. Cardano employs techniques like data compression and offers Hydra, a Layer 2 scalability solution. It also uses input endorsers to improve block propagation times and throughput, supporting higher transaction rates.
 
-- *Interoperability*: This is a fundamental design feature, enabling interaction with other systems. A key innovation is partner chain support, facilitating asset transfers between parallel blockchains with different rules, mechanisms, languages, or network utilization methods. Work is ongoing to support cross-chain transfers, multiple token types, and commonly used smart contract languages, with the partner chains toolkit marking the initial step.
+- *Interoperability*: This is a fundamental design feature, enabling interaction with other systems. A key innovation is *partner chain support*, facilitating asset transfers between parallel blockchains with different rules, mechanisms, languages, or network utilization methods. Work is ongoing to support cross-chain transfers, multiple token types, and commonly used smart contract languages, with the *partner chains toolkit* marking the initial step.
 
 ==== Sustainability and governance
 *Governance* is central to Cardano's design, ensuring system sustainability and adaptability. A well-developed governance strategy promotes effective, democratic funding for long-term development and organic growth in a decentralized manner. Decentralized governance empowers all users with a voice and control over the protocol’s future.
@@ -54,69 +54,49 @@ Cardano’s governance model reflects a *liquid and representative democracy*. T
 
 Designing a proof-of-stake blockchain necessitates self-sustainability. *Cardano Improvement Proposals (CIPs)* foster and formalize discussions around new features and development within the community. The Cardano governance(((governance))) https://www.intersectmbo.org/roadmap(((roadmap)))*[roadmap(((roadmap)))]*, particularly under *CIP-1694(((CIP-1694)))*, guides the community through a structured transition to a decentralized, community-driven governance model, allowing for extensive community feedback and refinement.
 
-https://www.intersectmbo.org/news/cardano-cip-1694-explained*[CIP-1694(((CIP-1694)))]*, named after Voltaire's birth year, was community-written to discuss the future of on-chain governance. It aims to give everyone a voice in Cardano's direction by advancing the current governance system. The proposal outlines a trilateral model consisting of stake pool operators (SPOs), delegate representatives (DReps), and a constitutional committee (CC), each with distinct responsibilities.
+https://www.intersectmbo.org/news/cardano-cip-1694-explained*[CIP-1694(((CIP-1694)))], named after Voltaire's birth year, was community-written to discuss the future of on-chain governance. It aims to give everyone a voice in Cardano's direction by advancing the current governance system. The proposal outlines a trilateral model consisting of stake pool operators (SPOs), delegate representatives (DReps), and a constitutional committee (CC), each with distinct responsibilities.
 
 Central to the treasury(((treasury))) is a *democratized voting mechanism* where ada(((ada))) holders decide fund allocation by voting on proposals. This ensures democratic decision-making for funding initiatives, protocol updates, and constitutional changes.
 
 Launched in 2023, https://www.intersectmbo.org/*[Intersect(((Intersect)))]* is a member-based organization for the Cardano ecosystem, placing the community at the core of Cardano’s future development.
 
-=== Design rationale of Cardano
-Cardano, as a third-generation blockchain, combines the properties of the prior generations and addresses previous limitations. It is the first blockchain platform to be designed from a scientific philosophy and research-first driven approach. Cardano is a decentralized and community-driven platform where the network is supported by an active community of global developers, researchers, and ada(((ada))) holders who contribute to its ongoing development and governance(((governance))).
-
-Cardano has been built in a way that ensures the highest security(((security))), scalability(((scalability))) (transaction throughput(((transaction throughput))), data scale, network bandwidth), and functionality (transaction processing and business deal settlement). Additionally, it is important to ensure that the technology was developed with the core tenets of transparency, sustainability(((sustainability))) and the ability to be interoperable with other blockchains and financial institutions.
-
-Cardano has been designed with security(((security))) as one of its founding principles. It is written in Haskell(((Haskell))), the functional programming language(((functional programming language))). In a functional language like Haskell(((Haskell))), building your system using pure functions is encouraged, which leads to a design where components are conveniently testable in isolation. Furthermore, advanced features of Haskell(((Haskell))) enable employing a whole range of powerful methods for ensuring the correctness of the code, such as basing the implementation on formal and executable specifications, extensive property-based testing, and running tests in simulation.
-
-The design rationale of Cardano focuses on the following core concepts:
-
-- Scalability – ensures that the Cardano network is capable of processing an increasing number of transactions as user demand grows. Scalability also provides higher bandwidth capabilities to allow transactions to carry a significant amount of supportive data that can be easily managed within the network. For these needs, Cardano is implementing various techniques (like data compression for instance), and introduces such scaling solutions as Hydra(((Hydra))) and Mithril(((Mithril))), for example. Read more about the research underpinning Cardano's scalability(((scalability))) here.
-
-- Interoperability – ensures the most multi-functional environment for financial, business, or commercial operations by enabling users to interact with different blockchain systems. Cardano aims to support cross-chain transfers, multiple token types, and commonly used smart contract languages. Read more about the concept of partner chains.
-
-- Sustainability – designing a proof-of-stake blockchain means it is vital to ensure that the system is self-sustainable. To drive growth and maturity in a truly decentralized manner, Cardano is built to allow the community to maintain its continuous development by participating, proposing, and implementing system improvements. This is now being implemented through CIP-1694(((CIP-1694))) on-chain governance(((governance))) mechanisms.
-
 ==== Advantages​ of Cardano
 
-- Academic research – formal methods(((formal methods))), such as mathematical specifications, property-based tests, and proofs, are the best way to deliver high assurance software systems and give confidence to users for the management of digital funds. Cardano has been built using formal methods(((formal methods))) to achieve strong guarantees on the functional correctness of core components of the system. All of the research and technical specifications that underpin Cardano are publicly available, and all Cardano development activity is published online.
+Cardano's unique strengths stem from its foundational design principles:
 
-- System design – Cardano is written in Haskell(((Haskell))), a secure functional programming language(((functional programming language))) that encourages building a system using pure functions, which leads to a design where components are conveniently testable in isolation. Advanced features of Haskell(((Haskell))) enable employing a whole range of powerful methods for ensuring code correctness, such as basing the implementation on formal and executable specifications, extensive property-based testing, and running tests in simulation.
+- *Academic research & formal methods*(((formal methods))): Cardano is built using formal methods, including mathematical specifications, property-based tests, and proofs, which ensure high assurance for software systems and security for digital funds. All underlying research and technical specifications are publicly available, and development activity is transparently published online.
 
-- Security – Ouroboros(((Ouroboros))) (the Cardano proof-of-stake protocol) establishes rigorous security(((security))) guarantees; it was delivered with several peer-reviewed papers presented in top-tier conferences and publications in the area of cybersecurity and cryptography.
+- *System design (Haskell)*(((Haskell))): a secure functional programming language(((functional programming language))) that encourages building a system using pure functions, which leads to a design where components are conveniently testable in isolation. Advanced features of Haskell(((Haskell))) enable employing a whole range of powerful methods for ensuring code correctness, such as basing the implementation on formal and executable specifications, extensive property-based testing, and running tests in simulation.
 
-- Energy efficiency – Cardano is a proof-of-stake blockchain. In contrast to proof-of-work blockchains, Cardano requires much less energy and computational power. The Bitcoin(((Bitcoin))) network is secured through computers doing ever-more-energy-intensive computations – proof of work(((proof of work))) – which is unsustainable in the long term. Cambridge University has an online tool that shows the computers powering Bitcoin(((Bitcoin))) already consume more electricity than some countries, like Switzerland for example.
+- *Security (Ouroboros)*(((Ouroboros))): (the Cardano proof-of-stake protocol) establishes rigorous security(((security))) guarantees; it was delivered with several peer-reviewed papers presented in top-tier conferences and publications in the area of cybersecurity and cryptography.
 
-- Seamless upgrades – traditionally, blockchains upgrade using hard forks(((hard forks))). When conducting a hard fork, the current protocol would stop operating, new rules and changes would be implemented, and the chain would restart – with its previous history being erased. Cardano handles hard forks(((hard forks))) differently. Instead of implementing radical changes, the Cardano hard fork combinator technology ensures a smooth transition to a new protocol while saving the history of the previous blocks and not causing any disruptions for end users.
+- *Energy efficiency*: As a proof-of-stake blockchain, Cardano is significantly more energy-efficient and requires less computational power than proof-of-work systems like Bitcoin, which consume substantial electricity.
 
-- Decentralization – Cardano is maintained by over 3,000 distributed stake pools(((stake pools))) that are operated by the community. All blocks and transactions are validated by network participants without any reliance on a centralized authority.
+- *Seamless upgrades*: Cardano's *hard fork combinator technology* enables smooth protocol transitions, preserving historical data and preventing disruptions for end-users.
 
-- Functional environment for business use cases – Cardano is establishing a foundation for global, decentralized finance to develop a range of DApps(((DApps))) that can run using functional and domain-specific smart contracts(((smart contracts))), providing multi-asset tokens for any needs.
+- *Decentralization*: Maintained by over 3,000 community-operated stake pools, Cardano is fully decentralized, with all blocks and transactions validated by network participants without central authority.
+
+- *Functional environment for business use cases*: Cardano provides a foundation for global, decentralized finance, supporting a range of DApps with functional and domain-specific smart contracts and multi-asset tokens.
 
 === Cardano community and growth of the ecosystem
 Cardano benefits from a vibrant and thriving ecosystem that promotes active engagement with builders, developers, content creators, and users. The Cardano ecosystem is a dynamic and rapidly-growing collection of projects, organizations, creators, and builders who are working together to improve and develop the platform even further.
 
 As a community-driven ecosystem, there is a strong focus on innovation, collaboration, and cooperation between innovators, smart contract developers, content creators, and distributed application (DApp) developers that build on Cardano. The aim is to grow the contributor ecosystem even more each year.
 
-==== About the Cardano ecosystem
-The Cardano ecosystem spans the globe with creators and builders dotted around the world. With many years of collaboration, innovation, and progress behind it, Cardano continues to grow and develop into a vast and self-governing ecosystem.
+==== Cardano community and ecosystem growth
+Cardano thrives due to its vibrant and rapidly growing ecosystem, fostering active engagement among builders, developers, content creators, and users globally. This community-driven environment emphasizes innovation, collaboration, and cooperation.
 
-You can take a closer look at the vibrant landscape of Cardano’s ecosystem and explore the wide range of current projects using the Cardano Cube interactive map.
+Key resources for the Cardano ecosystem include:
 
-Another important resource is our community platform resource Essential Cardano(((Essential Cardano))). Here you can learn more about the growing Cardano ecosystem and keep up to date with regular development updates, blogs on various topics, and learning resources.
+- *https://www.cardanocube.com/cardano-ecosystem-interactive-map[Cardano Cube Interactive Map]*: Explore the diverse landscape of current projects.
+- *https://www.essentialcardano.io/[Essential Cardano Website]*: A central community resource for understanding Cardano, its partners, mission, roadmap, and building on the platform. This evolved from the original Essential Cardano List repository created in 2021.
+- *https://developers.cardano.org/tools/[Builder Tools] and https://www.essentialcardano.io/communit[Community Channels]*: Various resources are available to navigate the ecosystem.
 
-There are a number of builder tools and various community channels available within the ecosystem to help you navigate the environment, for example:
-
-- https://developers.cardano.org/tools/[Builder Tools]
-- https://www.essentialcardano.io/community[Cardano community channels]
-
-==== Cardano improvement proposals
-The https://cips.cardano.org/[Cardano Improvement Proposal] (CIP) process is a structured process that enables ideas for change and improvement within the ecosystem. It is a community-led mechanism that  provides transparency and encourages collaboration among stakeholders, thereby enabling the community to shape the future of the Cardano ecosystem together.
-
-Anyone can write and submit a CIP, which typically covers both technical and non-technical suggestions and changes to Cardano. These CIPs must adhere to a set of guidelines and include a description of the issue, how it can be solved, and a plan on how to implement the changes. The next stage in the process is a review by https://cips.cardano.org/contributors[CIP editors(((CIP editors)))] who ensure that it adheres to the set of guidelines, before they open it up for community discussion on whether or not it should be implemented. During this feedback cycle, the proposal is often refined and further improved, before it is moved to the implementation stage. In some cases, where there is a proposed protocol change, further governance(((governance))) is required by the founding entities.
-
-Once a CIP is approved, it is implemented on-chain by the relevant developers and stake pool operators. In some cases, a network upgrade is needed which requires further collaboration between the various stakeholders. All CIPs are documented and maintained in the CIP repository, forming an audit trail of historical changes to Cardano.
+==== Cardano improvement proposals (CIPs)
+The https://cips.cardano.org/*[Cardano Improvement Proposal]* (CIP) process is a structured, community-led mechanism for suggesting and implementing changes and improvements. It ensures transparency and collaboration, allowing the community to shape Cardano's future. Anyone can submit a CIP, covering technical or non-technical suggestions. After adhering to guidelines and review by CIP editors, proposals are opened for community discussion, refinement, and eventual implementation on-chain. All CIPs are documented in the CIP repository, forming an audit trail of historical changes.
 
 ==== Cardano Ambassador program
-The https://cardano.org/ambassadors/[Cardano Ambassador program] promotes awareness, fosters relationships, and works to nurture and expand the wider community by increasing adoption. It includes a wide range of committed and hard-working individuals from all around the globe with a wide variety of age and social profiles. These ambassadors work diligently as content creators, translators, moderators, and educators to strengthen relationships, educate, and bring more people into the growing Cardano community.
+The https://cardano.org/ambassadors/*[Cardano Ambassador program]* aims to increase awareness and adoption, fostering relationships and expanding the community. Ambassadors, from diverse backgrounds globally, work diligently as content creators, translators, moderators, and educators to strengthen relationships and educate new members.
 
 === Educating the world about Cardano
 Education is a gateway for adoption and has always been an integral part of the strategy of Cardano’s pioneering members: https://iohk.io/[Input | Output], the https://cardanofoundation.org/[Cardano Foundation], and https://www.emurgo.io/[Emurgo(((Emurgo)))]. It plays a transformative role in fostering a knowledgeable and engaged global community by equipping them with the expertise, skills, confidence, and opportunities to deepen their understanding and successfully build on Cardano and thrive in the ecosystem.
