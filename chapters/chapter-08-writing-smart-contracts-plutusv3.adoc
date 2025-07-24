@@ -5066,7 +5066,7 @@ targets are cryptography, software engineering, distributed systems(((distribute
 networks, formal verification, and programming languages. Ouroboros(((Ouroboros
 ))),
 Cardano's consensus protocol, is explained in detail in section
-<<about-the-ouroboros-protocol, About the Ouroboros protocol>>.
+<<Ouroboros Consensus>>.
 Ouroboros(((Ouroboros
 ))) represents the outcome of long
 research presented in multiple papers. It is the first blockchain
