@@ -7,7 +7,7 @@ Ouroboros is a family of Proof-of-Stake protocols powering the Cardano blockchai
 
 TODO: Insert References to the papers#
 
-In this chapter we are going to build an intuition of how Ouroboros Work, so that when you go and read the formal papers describing the algorithm, you already have a good intuition about how it works, so that the mathematics make more sense.#
+In this chapter we are going to build an intuition of how Ouroboros works, so that if/when you read the more formal papers describing the algorithm, you would already have a good intuition about how it works -- so that the mathematics make more sense.#
 
 Let's start with a definition:
 
@@ -16,17 +16,18 @@ ____
 Intersect MBO
 ____
 
-Such a short definition, entails 100s of human-years of engineering effort.
-We will spend the rest of the chapters going on each element of the definition to make sense of it.
+Though it is such a short definition, it brings together 100s of years of engineering effort.
+We will spend the rest of the chapters going through each element of the definition so as to make sense of it.
 
 ==== Why do we need Consensus Algorithms?
 
-All blockchains have a consensus algorithm, Bitcoin has Proof-of-Work, Filecoin has prof-of-storage, and Cardano has Ouroboros Proof-of-work.#
-But before going forward, we need to ask ourselves: Why are Consensus Algorithms necessary?
+All blockchains have a consensus algorithm, Bitcoin has Proof-of-Work, Filecoin has Proof-of-Storage, and Cardano has Ouroboros Proof-of-Work.#
+But before going forward, we need to ask ourselves: Why are consensus algorithms necessary?
 
-The fundamental reasons are simply facts of nature:
-* the *CAP Theorem*
-* The speed light is not instantaneous, so there is always *Latency*.
+Due to fundamental reasons that are simply facts of nature:
+
+* Limitations as per the *CAP Theorem*
+* The speed of light is not instantaneous -- there will always be some amount of *latency*.
 
 
 For example,
