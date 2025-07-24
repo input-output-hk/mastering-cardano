@@ -7,7 +7,7 @@
 
 Mithril(((Mithril))) is a protocol and a network designed for proof-of-stake
 blockchains that aims to provide lightweight access to blockchain data(((blockchain, data)))
-with high security and decentralization (see the <<Mithril security(((Mithril, security))) (advanced)>>
+with high security and decentralization (see the <<Mithril security (advanced)>>
 section). While the Cardano blockchain(((Cardano, blockchain))) offers robust security, starting
 a new node(((node))), syncing it with the network, or exchanging data can be slow
 and resource intensive – requiring 24GB of RAM(((RAM))), 150GB (and growing) of
@@ -89,7 +89,7 @@ The protocol’s security directly depends on the values of these
 parameters, which are carefully chosen to ensure a negligible chance of
 an adversary forging a valid multi-signature(((multi-signature))). Details on the
 relationship between these parameters and protocol security are provided
-in the <<Mithril security(((Mithril, security))) (advanced)>> section.
+in the <<Mithril security (advanced)>> section.
 
 All network participants(((network, participants))), including signers and aggregators, must
 operate using identical protocol parameters(((protocol, parameters))). This protocol establishment
@@ -217,7 +217,7 @@ chain*.
 The *Mithril certificate chain(((Mithril, certificate chain)))* is the component that certifies the
 *Mithril stake distribution* used to create multi-signatures. Its
 primary purpose is to prevent adversaries from executing an
-https://academy.binance.com/en/articles/what-is-an-eclipse-attack[eclipse attack(((eclipse attack)))].
+https://academy.binance.com/en/articles/what-is-an-eclipse-attack[eclipse attack].
 
 Without the certificate chain(((certificate chain))), the stake distribution can't be trusted.
 A malicious actor(((malicious, actor))) could relatively easily create a fake stake
