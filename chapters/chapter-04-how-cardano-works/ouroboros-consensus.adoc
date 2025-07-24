@@ -1,7 +1,7 @@
 
 :imagesdir: ../../images
 
-=== Ouroboros Consensus Mechanism
+=== Ouroboros Consensus
 
 Ouroboros is a family of Proof-of-Stake protocols powering the Cardano blockchain, among others. It is backed by years of research and numerous peer-reviewed publications. #
 
