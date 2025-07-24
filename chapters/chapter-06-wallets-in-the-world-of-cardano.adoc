@@ -4,7 +4,7 @@
 [[wallets-in-the-world-of-cardano]]
 == Wallets in the world of Cardano
 
-=== 6.1 Fundamentals of crypto wallets
+=== Fundamentals of crypto wallets
 
 A wallet, also known as a crypto wallet, digital wallet, or cryptocurrency wallet, is like a digital version of a regular wallet. However, instead of holding cash, personal identification, or cards, it stores special digital keys that enable interaction with various blockchains, allowing users to manage digital assets such as cryptocurrencies, tokens, or non-fungible tokens (NFTs).
 
@@ -234,7 +234,7 @@ A wallet address is a critical component of cryptocurrency transactions, serving
 
 The following section explores wallets available in the Cardano ecosystem.
 
-=== 6.2 Wallets in the Cardano Ecosystem
+=== Wallets in the Cardano Ecosystem
 
 Cardano wallets are designed to store, send, and receive ada, the native currency of the Cardano blockchain. These wallets are designed to support Cardano’s unique features, offering users a secure way to manage their assets. Let's break down the specifics of Cardano wallets in a simple and understandable way.
 
@@ -569,7 +569,7 @@ No matter your experience with wallets, it's essential to keep them safe. Here a
 
 Adhering to these best practices can significantly enhance the security of your digital wallets and protect your investments from potential threats.
 
-=== 6.3 Common operations
+=== Common operations
 
 This section explores the functionalities and advanced features of Cardano wallets. Whether you're new to Cardano or seeking a deeper understanding, this guide will help you manage your ada and reveal Cardano's powerful blockchain capabilities.
 
