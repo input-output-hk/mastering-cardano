@@ -3,16 +3,16 @@
 == Learn About Cardano
 
 === What is Cardano?
-Cardano is a *third-generation*, *open-source(((open-source)))*, *proof of stake(((proof of stake)))* blockchain platform designed to provide a secure, scalable, and interoperable infrastructure for developing smart contracts(((smart contracts))) and decentralized applications (DApps). Its primary goal is to address the limitations of earlier blockchain platforms by prioritizing these core tenets. As a fully https://informatics.ed.ac.uk/blockchain/edi[decentralized] network, Cardano supports a diverse range of applications, from financial services to supply chain management. Recent advancements, including the https://iohk.io/en/blog/posts/2024/08/30/chang-upgrade-a-big-step-in-changing-the-world-with-cardano/[Chang] and https://www.intersectmbo.org/news/plomin-hard-fork-ratified[Plomin] hard forks(((hard forks))), have further enhanced its decentralization, making it a leading decentralized blockchain network.
+Cardano is a *third-generation*, *open-source(((open-source)))*, *proof-of-stake(((proof-of-stake)))* blockchain platform designed to provide a secure, scalable, and interoperable infrastructure for developing smart contracts(((smart contracts))) and decentralized applications (DApps). Its primary goal is to address the limitations of earlier blockchain platforms by prioritizing these core tenets. As a fully https://informatics.ed.ac.uk/blockchain/edi[decentralized] network, Cardano supports a diverse range of applications, from financial services to supply chain management. Recent advancements, including the https://iohk.io/en/blog/posts/2024/08/30/chang-upgrade-a-big-step-in-changing-the-world-with-cardano/[Chang] and https://www.intersectmbo.org/news/plomin-hard-fork-ratified[Plomin] hard forks(((hard forks))), have further enhanced its decentralization, establishing it as a leading decentralized blockchain.
 
 Cardano boasts a https://cardanoupdates.com/[thriving ecosystem] of builders, developers, content creators, and educators, supported by a wide array of tools and explorers. To learn more about this vibrant community, explore the https://www.cardanocube.com/cardano-ecosystem-interactive-map[ecosystem map(((ecosystem map)))], the https://www.essentialcardano.io/[Essential Cardano(((Essential Cardano))) website], and the https://github.com/IntersectMBO/essential-cardano[Essential Cardano(((Essential Cardano))) list].
 
 === Who built Cardano?
 The Cardano project began in 2015 and is based on *peer-reviewed research(((peer-reviewed research)))* and developed through *evidence-based methods*. It was built by leading scientists, expert developers, and the extended team at https://iohk.io/[Input | Output (IO)(((Input | Output (IO))))] (initially IOHK), under the leadership of https://iohk.io/en/leadership/charles-hoskinson[Charles Hoskinson(((Hoskinson, Charles(((Hoskinson, Charles))))))]. IO is a renowned blockchain infrastructure research and engineering company with a global presence, fostering a focused innovation ecosystem.
 
-The project is pioneered by https://iohk.io/[IO], the https://www.cardanofoundation.org/[Cardano Foundation], https://www.emurgo.io/[Emurgo(((Emurgo)))], and other third parties. The platform is named after https://www.britannica.com/biography/Girolamo-Cardano[Girolamo Cardano(((Cardano, Girolamo)))], a 16th century Italian physician and mathematician, while its native cryptocurrency, ada(((ada))), honours https://www.britannica.com/biography/Ada-Lovelace[Ada Lovelace(((Lovelace, Ada(((Lovelace, Ada))))))], the 19th century English mathematician credited with publishing the first computer program.
+The project is pioneered by https://iohk.io/[IO], the https://www.cardanofoundation.org/[Cardano Foundation], https://www.emurgo.io/[Emurgo(((Emurgo)))], and other third parties. The platform is named after https://www.britannica.com/biography/Girolamo-Cardano[Girolamo Cardano(((Cardano, Girolamo)))], a 16th-century Italian physician and mathematician, while its native cryptocurrency, ada(((ada))), honors https://www.britannica.com/biography/Ada-Lovelace[Ada Lovelace(((Lovelace, Ada(((Lovelace, Ada))))))], the 19th-century English mathematician credited with publishing the first computer program.
 
-Cardano's development adheres to an *evidence-based engineering approach*, applying formal logic to the software development cycle. This rigorous process, starting with published research papers and progressing to formal specifications and reference implementations, ensures correctness, safety, and code reliability. Prof Aggelos Kiayias(((Kiayias, Aggelos))), chief scientist at IO, states:
+Cardano's development adheres to an *evidence-based engineering approach*, applying formal logic to the software development cycle. This rigorous process, starting with published research papers and progressing to formal specifications and reference implementations, ensures correctness, safety, and code reliability. Prof. Aggelos Kiayias(((Kiayias, Aggelos))), chief scientist at IO, states:
 _‘When you go about designing a system, you have to present the system in the context of the research domain in which it belongs, why the system has the benefits it claims to have, and what exactly is the problem that the system is solving. There are a lot of benefits in taking such a first principles approach.’_
 
 === Core principles of Cardano
@@ -21,14 +21,14 @@ _‘When you go about designing a system, you have to present the system in the 
 Cardano's core mission, as a fully decentralized platform, is to improve global systems to enable economic inclusion and empowerment for all. Charles Hoskinson(((Hoskinson, Charles(((Hoskinson, Charles)))))) articulated this in 2020, stating:
 _‘Cardano is an open platform that seeks to provide economic identity to the billions who lack it by providing decentralized applications to manage identity, value, and governance(((governance))).’_
 
-At its heart, Cardano is a thriving *open-source(((open-source))) project* with a healthy and vibrant ecosystem of active developers and builders. This commitment to open-source principles fosters *collaboration and transparency* with the community,leading to a robust and inclusive environment for users and developers. All over two hundred https://iohk.io/en/research/library/[research papers] and technical specifications underpinning Cardano are publicly available, and all development activity is published online with weekly updates for transparency.
+At its heart, Cardano is a thriving *open-source(((open-source))) project* with a healthy and vibrant ecosystem of active developers and builders. This commitment to open-source principles fosters *collaboration and transparency* with the community, leading to a robust and inclusive environment for users and developers. All over two hundred https://iohk.io/en/research/library/[research papers] and technical specifications underpinning Cardano are publicly available, and all development activity is published online with weekly updates for transparency.
 
 ==== Decentralization and proof-of-stake consensus
 Cardano achieves full *decentralization* through over 3,000 community-operated *stake pools*. Over 1.3 million wallets delegate their ada to these pools, representing approximately 64% of the total active ada supply. Network participants validate all blocks and transactions without reliance on a centralized authority, sharing decisions and ownership of information amongst all users. Every ada holder holds a stake in the network, allowing them to delegate their ada to a stake pool to earn rewards and participate in network operations. Stake pool operators can also pledge ada to increase their pool's likelihood of receiving rewards.
 
-Cardano utilizes https://iohk.io/en/blog/posts/2020/06/23/the-ouroboros-path-to-decentralization[Ouroboros], a *proof of stake (PoS)* consensus protocol. Ouroboros has been rigorously proven to provide the same security guarantees as proof-of-work protocols, while being significantly more *energy-efficient*. You can learn more about Ouroboros in the dedicated chapter.
+Cardano utilizes https://iohk.io/en/blog/posts/2020/06/23/the-ouroboros-path-to-decentralization[Ouroboros], a *proof-of-stake (PoS)* consensus protocol. Ouroboros has been rigorously proven to provide the same security guarantees as proof-of-work protocols, while being significantly more *energy-efficient*. You can learn more about Ouroboros in the dedicated chapter.
 
-Cardano extends Bitcoin’s UTXO model with an *extended UTXO (EUTXO) accounting model*, which enables smart contracts. For more details on EUTXO, refer to the relevant chapter.
+Cardano extends Bitcoin's UTXO model with an *extended UTXO (EUTXO) accounting model*, which enables smart contracts. For more details on EUTXO, refer to the relevant chapter.
 
 ==== Seamless upgrades
 
@@ -60,17 +60,17 @@ Central to the treasury(((treasury))) is a *democratized voting mechanism* where
 
 Launched in 2023, https://www.intersectmbo.org/*[Intersect(((Intersect)))]* is a member-based organization for the Cardano ecosystem, placing the community at the core of Cardano’s future development.
 
-==== Advantages​ of Cardano
+==== Advantages of Cardano
 
 Cardano's unique strengths stem from its foundational design principles:
 
 - *Academic research & formal methods*(((formal methods))): Cardano is built using formal methods, including mathematical specifications, property-based tests, and proofs, which ensure high assurance for software systems and security for digital funds. All underlying research and technical specifications are publicly available, and development activity is transparently published online.
 
-- *System design (Haskell)*(((Haskell))): a secure functional programming language(((functional programming language))) that encourages building a system using pure functions, which leads to a design where components are conveniently testable in isolation. Advanced features of Haskell(((Haskell))) enable employing a whole range of powerful methods for ensuring code correctness, such as basing the implementation on formal and executable specifications, extensive property-based testing, and running tests in simulation.
+- *System design (Haskell)*(((Haskell))): The Cardano node is primarily written in *Haskell*, a secure functional programming language(((functional programming language))) that encourages building a system using pure functions, which leads to a design where components are conveniently testable in isolation. Advanced features of Haskell(((Haskell))) enable employing a whole range of powerful methods for ensuring code correctness, such as basing the implementation on formal and executable specifications, extensive property-based testing, and running tests in simulation.
 
-- *Security (Ouroboros)*(((Ouroboros))): (the Cardano proof-of-stake protocol) establishes rigorous security(((security))) guarantees; it was delivered with several peer-reviewed papers presented in top-tier conferences and publications in the area of cybersecurity and cryptography.
+- *Security (Ouroboros)*(((Ouroboros))): *Ouroboros* (the Cardano proof-of-stake protocol) establishes rigorous *security(((security))) guarantees*; it was delivered with several peer-reviewed papers presented in top-tier conferences and publications in the area of cybersecurity and cryptography.
 
-- *Energy efficiency*: As a proof-of-stake blockchain, Cardano is significantly more energy-efficient and requires less computational power than proof-of-work systems like Bitcoin, which consume substantial electricity.
+- *Energy efficiency*: As a proof-of-stake blockchain, Cardano is significantly more energy-efficient and requires less computational power than proof-of-work systems, like Bitcoin, which consume substantial electricity.
 
 - *Seamless upgrades*: Cardano's *hard fork combinator technology* enables smooth protocol transitions, preserving historical data and preventing disruptions for end-users.
 
@@ -78,19 +78,16 @@ Cardano's unique strengths stem from its foundational design principles:
 
 - *Functional environment for business use cases*: Cardano provides a foundation for global, decentralized finance, supporting a range of DApps with functional and domain-specific smart contracts and multi-asset tokens.
 
-=== Cardano community and growth of the ecosystem
+=== Cardano community and ecosystem growth
 Cardano benefits from a vibrant and thriving ecosystem that promotes active engagement with builders, developers, content creators, and users. The Cardano ecosystem is a dynamic and rapidly-growing collection of projects, organizations, creators, and builders who are working together to improve and develop the platform even further.
 
 As a community-driven ecosystem, there is a strong focus on innovation, collaboration, and cooperation between innovators, smart contract developers, content creators, and distributed application (DApp) developers that build on Cardano. The aim is to grow the contributor ecosystem even more each year.
-
-==== Cardano community and ecosystem growth
-Cardano thrives due to its vibrant and rapidly growing ecosystem, fostering active engagement among builders, developers, content creators, and users globally. This community-driven environment emphasizes innovation, collaboration, and cooperation.
 
 Key resources for the Cardano ecosystem include:
 
 - *https://www.cardanocube.com/cardano-ecosystem-interactive-map[Cardano Cube Interactive Map]*: Explore the diverse landscape of current projects.
 - *https://www.essentialcardano.io/[Essential Cardano Website]*: A central community resource for understanding Cardano, its partners, mission, roadmap, and building on the platform. This evolved from the original Essential Cardano List repository created in 2021.
-- *https://developers.cardano.org/tools/[Builder Tools] and https://www.essentialcardano.io/communit[Community Channels]*: Various resources are available to navigate the ecosystem.
+- *https://developers.cardano.org/tools/[Builder Tools] and https://www.essentialcardano.io/community[Community Channels]*: Various resources are available to navigate the ecosystem.
 
 ==== Cardano improvement proposals (CIPs)
 The https://cips.cardano.org/*[Cardano Improvement Proposal]* (CIP) process is a structured, community-led mechanism for suggesting and implementing changes and improvements. It ensures transparency and collaboration, allowing the community to shape Cardano's future. Anyone can submit a CIP, covering technical or non-technical suggestions. After adhering to guidelines and review by CIP editors, proposals are opened for community discussion, refinement, and eventual implementation on-chain. All CIPs are documented in the CIP repository, forming an audit trail of historical changes.
@@ -103,39 +100,29 @@ Education is a gateway for adoption and has always been an integral part of the 
 
 Education is a gift that empowers and enhances Cardano community members through access to knowledge and experience so that they can overcome the complexity of blockchain technology. Pioneering worldwide education on blockchain offers the opportunity to shape the field for generations and leave a lasting legacy.
 
-Whether you're a developer, an academic, or a business professional, Cardano’s educational offerings are designed to equip you with all the skills and knowledge you need.
-
-You can read more about the education programs run by IO in the next section.
+Cardano's educational offerings cater to developers, academics, and business professionals, equipping them with necessary skills and knowledge.
 
 ==== Input | Output education
-The education team at IO brings together extensive experience in:
+The IO education team possesses extensive experience in curriculum design, project management, blockchain technology, Haskell, Cardano expertise, and smart contract languages like Plutus, Aiken, and Marlowe. This ensures comprehensive and practical programs for diverse learners. The team aims to enhance understanding of Cardano technologies for various audiences, including enterprise decision-makers, and to foster a supportive learning environment. IO is committed to improving developer experience and smart contract adoption through education.
 
-- Curriculum design and planning
-- Project management and delivery
-- Technical aspects related to blockchain
-- Haskell(((Haskell))) and Cardano expertise
-- Smart contract languages and development -- including Plutus(((Plutus))), Aiken(((Aiken))), and Marlowe(((Marlowe))) 
-
-This collective expertise ensures that educational programs are both comprehensive and practical, tailored to meet the needs of diverse learners. The education team aims to enhance understanding of Cardano technologies using a variety of learning and training assets targeted at a wide range of audiences. The team aims to provide knowledge and information to enterprise decision-makers so they know what business problems the technologies can solve. It strives to create a supportive learning environment for all participants, and continuously shares what its team members have learned from working directly with our community members.
-
-IO is committed to improving the developer experience and smart contract adoption through education to further enhance the flourishing smart contract landscape on Cardano.
-
-Dr. Lars Brünjes(((Burnes, Lars))), Director of Education at IO, says:
+As Dr. Lars Brünjes(((Brünjes, Lars))), Director of Education at IO, emphasizes:
 
  ‘Education is a cornerstone of our approach at Cardano. By equipping individuals with the knowledge and skills to navigate and innovate within the blockchain ecosystem, we empower them to build a more decentralized and inclusive future. My greatest fulfillment came from teaching the all-female Haskell(((Haskell))) course in Ethiopia, witnessing firsthand the transformative power of education. That experience reaffirmed my belief in the potential of education to create substantive, lasting change.’
+
+IO offers various education streams:
 
 image::mc_education_ pillars.png
 
 ===== Mission-based education
 
-This education stream aligns with the mission to provide free education to the Cardano community.
+This education stream aligns with the mission to provide free education to the Cardano community, including:
 
 - Haskell(((Haskell))) Course: Aimed at those looking to master the functional programming language(((functional programming language))) Haskell(((Haskell))), which is integral to Cardano's development.
 - Cardano Days: Interactive events that provide a deep dive into the Cardano platform, covering its unique features and applications.
 - Blockchain Workshops: In-person or virtual workshops and lectures on the fundamentals of blockchain and Cardano.
 - Essential Cardano(((Essential Cardano))): The https://www.essentialcardano.io/[Essential Cardano(((Essential Cardano))) website] was launched in 2022 and has since become a thriving community resource. It serves as a resource for understanding Cardano, identifying its partners, learning about its mission and roadmap(((roadmap))), and getting started with building on Cardano. This was preceded by the original https://github.com/IntersectMBO/essential-cardano[Essential Cardano(((Essential Cardano))) List repository] which was created in 2021 as a central canonical guide to the Cardano ecosystem. 
 
-As part of this stream, IO offers comprehensive in-person courses in Haskell(((Haskell))) that run for 10-12 weeks (depending on the curriculum). https://iohk.io/en/research/library/authors/lars-brunjes/[Dr. Lars Brünjes(((Burnes, Lars)))] and his team have delivered several of these Haskell(((Haskell))) courses, including:
+As part of this stream, IO offers comprehensive in-person courses in Haskell(((Haskell))) that run for 10-12 weeks (depending on the curriculum). https://iohk.io/en/research/library/authors/lars-brunjes/[Dr. Lars Brünjes(((Brünjes, Lars)))] and his team have delivered several of these Haskell(((Haskell))) courses, including:
 
 - Haskell(((Haskell))) and cryptocurrency course 2017, which ran for eight weeks at the https://www.ntua.gr/en/[National Technical University of Athens].
 - https://iohk.io/en/blog/posts/2018/04/07/iohk-haskell-and-cryptocurrency-course-in-barbados/[Haskell(((Haskell))) and cryptocurrency course 2018], which ran for eight weeks at the University of West Indies in Barbados.
@@ -160,7 +147,7 @@ Cardano Days events were launched in 2023, and the team has held several of thes
 - https://uttecam.edu.mx/[Technological University of Tecamachalco (UTTECAM)], Puebla, Mexico
 - https://utbispuebla.edu.mx/[Bilingual and Sustainable Technological University of Puebla (UTBIS Puebla)], Puebla, Mexico
 - https://teziutlan.tecnm.mx/[Higher Technological Institute of Teziutlan (TecNM Teziutlan)], Puebla, Mexico
-- https://www.titech.ac.jp/english[Tokyo Intstitute of Technology], Japan
+- https://www.titech.ac.jp/english[Tokyo Institute of Technology], Japan
 
 These two-day events cover the basics of blockchain technology, Cardano, and smart contracts(((smart contracts))) and proved very popular, with an NPS score of 92. More of these events are planned, so if you would like to know more about hosting this event, please get in touch by emailing education@iohk.io.
 
@@ -201,9 +188,9 @@ IO collaborates with esteemed universities and educational institutions worldwid
 
 Additionally, IO worked with https://www.yeovil.ac.uk/[Yeovil College] in the UK and https://za.linkedin.com/company/consilium-academy[Consilium Academy] in South Africa on curriculum design for their blockchain programs.
 
-===== How can we work together?
+===== How to collaborate
 
-The IO education team values interactive and meaningful training workshops, and continues hosting these in various locations around the world each year. If you are interested in hosting an education event such as Cardano Days, or to collaborate on a training course, please get in touch by emailing education@iohk.io. Stay tuned for more education updates and visit the https://www.youtube.com/channel/UCX9j__vYOJu00iqBrCzecVw[IO Academy]. 
+The IO education team hosts interactive and meaningful training workshops and courses in various locations around the world each year, as well as online or blended learning options. If interested in hosting a Cardano Days event or collaborating on a training course, please contact education@iohk.io. Stay tuned for updates on the https://www.youtube.com/channel/UCX9j__vYOJu00iqBrCzecVw[IO Academy]. 
 
 ===== About the Cardano developer portal
 
