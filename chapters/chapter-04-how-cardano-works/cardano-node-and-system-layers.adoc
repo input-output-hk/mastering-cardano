@@ -52,7 +52,7 @@ block is verified, nodes propagate (or share) this information across
 the network, ensuring consistency(((consistency))) and synchronization among all nodes.
 
 A node in the Cardano blockchain(((Cardano blockchain))) is implemented in the
-https://github.com/IntersectMBO/cardano-node(((cardano-node)))[cardano-node(((cardano-node)))] software executable. The
+https://github.com/IntersectMBO/cardano-node[cardano-node] software executable. The
 cardano-node software is the backbone of the Cardano blockchain(((Cardano blockchain))) network.
 It is a crucial piece of software that runs on each node, enabling them
 to perform their essential functions. To fully understand the role of
@@ -98,7 +98,7 @@ stability, and efficiency of the Cardano blockchain(((Cardano blockchain))).
 The cardano-node(((cardano-node))) software undergoes constant development and updates, so
 the key features presented here provide an overview of its capabilities.
 For the latest information, please refer to the
-https://developers.cardano.org/[Cardano developers' website(((Cardano developers' website)))].
+https://developers.cardano.org/[Cardano developers' website].
 
 * *Blockchain synchronization.* Blockchain
 synchronization in Cardano uses the cardano-node(((cardano-node))) software and involves a
@@ -142,7 +142,7 @@ usage.
 If you are interested in installing and running a node, please refer to
 the node documentation on the https://developers.cardano.org/[Cardano
 developers’ website]. All node configuration(((configuration))) files can be found on the
-https://book.world.dev.cardano.org/[Cardano operations book(((Cardano operations book)))] website.
+https://book.world.dev.cardano.org/[Cardano operations book] website.
 
 *Cardano node design principles*
 
@@ -198,10 +198,10 @@ being less distinct compared to the clear separation between the
 consensus(((consensus))) and ledger layers. A simple diagram below represents these
 node layers:
 
-image::node_internals.png[width=700,height=340,title="Cardano node layers(((Cardano node layers)))"]
+image::node_internals.png[width=700,height=340,title="Cardano node layers"]
 
 The Cardano node(((Cardano node))) also contains an additional layer called the
-https://github.com/input-output-hk/cardano-shell[node shell(((node shell)))], which
+https://github.com/input-output-hk/cardano-shell[node shell], which
 manages various functions surrounding the node, namely:
 
 * logging
@@ -222,18 +222,18 @@ designed for proof-of-stake systems, the network layer(((network layer))) includ
 framework for writing typed protocols(((typed protocols))), supporting pipelining,
 multiplexing, and various protections against adversarial peers(((adversarial peers))).
 
-The https://github.com/IntersectMBO/ouroboros-network[Ouroboros(((Ouroboros)))
+The https://github.com/IntersectMBO/ouroboros-network[Ouroboros
 network] repository contains specifications of network protocols(((network protocols))) and
 implementations of the network components(((network components))) that run these protocols.
 These components support a family of Ouroboros consensus protocols(((Ouroboros consensus protocols))). The
 official
-https://docs.cardano.org/about-cardano/explore-more/cardano-network(((network)))/[network(((network)))
+https://docs.cardano.org/about-cardano/explore-more/cardano-network/[network
 documentation] explains the data flow(((data flow))) between and within Cardano nodes
 and the network constraints(((network constraints))), such as congestion control and real-time
 coordination. It also lists types of mini-protocols(((mini-protocols))) that are used to
 communicate between multiple nodes participating in the Cardano network(((network))).
 You can read more about network protocols(((network protocols))) in section
-<<overview-of-cardano-network-protocols, Overview of Cardano network protocols(((network protocols)))>>.
+<<overview-of-cardano-network-protocols, Overview of Cardano network protocols>>.
 
 *Consensus and storage layer*
 
@@ -295,9 +295,9 @@ between these layers and decides which chain(((chain))) is preferable and should
 adopted.
 
 The consensus layer(((consensus layer))) was designed not only to perform the above-mentioned
-tasks, but also to emphasize the *compositionality(((compositionality)))*, making it usable
+tasks, but also to emphasize the *compositionality*, making it usable
 with many different consensus algorithms(((consensus algorithms))) and ledgers. This enables the
-_hard fork(((fork))) combinator (HFC)_ technology that allows combining multiple
+_hard fork combinator (HFC)_ technology that allows combining multiple
 ledgers and regard them as a single blockchain(((single blockchain))). Because of the hard fork
 combinator, a new node version designed for the latest ledger era(((latest ledger era))) also
 understands all previous eras(((previous eras))). This capability ensures that previous
@@ -305,8 +305,8 @@ versions of Plutus scripts(((Plutus scripts))) remain supported by the node even
 is upgraded. The HFC enables smooth protocol upgrades(((protocol upgrades))) without disruption
 for users and also preserves the chain history(((chain history))) of all operations. You
 can read more about it in the
-https://iohk.io/en/blog/posts/2020/05/07/combinator-makes-easy-work-of-shelley-hard-fork(((fork)))/[hard
-fork(((fork))) combinator] blog.
+https://iohk.io/en/blog/posts/2020/05/07/combinator-makes-easy-work-of-shelley-hard-fork/[hard
+fork combinator] blog.
 
 Generally, the term _hard fork_ describes a radical change from one
 protocol to another. In most blockchains, a hard fork(((hard fork))) indicates block
@@ -326,7 +326,7 @@ Cardano nodes – can upgrade gradually, eliminating the need for
 simultaneous upgrades. Nevertheless, a hard fork(((hard fork))) still needs to be
 triggered, and the mechanism to do this will change from the
 genesis-key-based mechanism to the one defined in
-https://cips.cardano.org/cip/CIP-1694(((CIP-1694)))[CIP-1694(((CIP-1694)))]. The genesis key
+https://cips.cardano.org/cip/CIP-1694[CIP-1694]. The genesis key
 mechanism requires that 70% of all SPOs(((SPOs))) first upgrade to the new node
 version, and then a consensus of five out of seven genesis keys(((genesis keys))) needs to
 be reached to trigger the hard fork. The genesis keys(((genesis keys))) were distributed
@@ -350,12 +350,12 @@ layer include:
 
 You can read more about these goals in the Cardano consensus(((consensus))) and storage
 layer
-https://ouroboros-consensus(((consensus))).cardano.intersectmbo.org/pdfs/report.pdf[technical
+https://ouroboros-consensus.cardano.intersectmbo.org/pdfs/report.pdf[technical
 report], which targets more experienced developers.
 This report explains how the goals were achieved, identifies areas for
 improvement, and presents how the design of this layer can scale to meet
 future requirements. This
-https://iohk.io/en/blog/posts/2020/05/28/the-abstract-nature-of-the-consensus(((consensus)))-layer/[IO
+https://iohk.io/en/blog/posts/2020/05/28/the-abstract-nature-of-the-consensus-layer/[IO
 blog] also elaborates on these goals and provides simple code examples.
 
 *Settlement and scripting layers*
@@ -372,7 +372,7 @@ for each. The
 https://github.com/IntersectMBO/formal-ledger-specifications[Formal
 ledger specification] repository will eventually replace it. Some
 practical ledger explanations can also be found in the
-https://cardano-ledger.readthedocs.io/en/latest/[Cardano ledger docs(((Cardano ledger docs)))].
+https://cardano-ledger.readthedocs.io/en/latest/[Cardano ledger docs].
 
 The ledger layer is stateless and consists exclusively of pure functions(((pure functions)))
 that define how the ledger is updated with each new block. These
