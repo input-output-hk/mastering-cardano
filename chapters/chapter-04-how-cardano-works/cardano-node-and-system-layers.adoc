@@ -40,14 +40,14 @@ node performs several essential functions:
 
 * *Validating transactions.* Whenever a transaction, such as sending
 ada, occurs on the Cardano blockchain(((Cardano blockchain))), nodes are responsible for
-verifying and validating it. This process ensures that all transactions(((transactions)))
+verifying and validating it. This process ensures that all transactions(((transaction)))
 are legitimate and prevents double-spending(((double-spending))).
 * *Maintaining the blockchain.* The blockchain is a distributed ledger
-that records all transactions(((transactions))) on the network. Nodes maintain an
+that records all transactions(((transaction))) on the network. Nodes maintain an
 up-to-date and accurate copy of this ledger, continuously adding new
 blocks of transactions(((blocks of transactions))), which explains the term "blockchain".
 * *Propagating information.* Nodes communicate with each other to share
-information about transactions(((transactions))) and blocks. When a new transaction or
+information about transactions(((transaction))) and blocks. When a new transaction or
 block is verified, nodes propagate (or share) this information across
 the network, ensuring consistency(((consistency))) and synchronization among all nodes.
 
@@ -74,7 +74,7 @@ with specific roles and responsibilities:
 
 * *Relay nodes.* These nodes are responsible for maintaining connections
 with other nodes in the network(((network))). They relay (propagate) information such as
-transactions(((transactions))) and blocks between nodes, ensuring the network remains
+transactions(((transaction))) and blocks between nodes, ensuring the network remains
 synchronized.
 * *Block-producing nodes.* These nodes are responsible for producing new
 blocks and adding them to the blockchain. They are typically operated by
@@ -82,11 +82,11 @@ stake pools(((stake pools))), which are groups of stakeholders who combine their
 resources to increase their chances of being selected to produce a
 block.
 * *Edge nodes.* These nodes interact with end-users and applications.
-They provide interfaces for users to submit transactions(((transactions))) and query the
+They provide interfaces for users to submit transactions(((transaction))) and query the
 blockchain. Edge nodes(((Edge nodes))) do not produce blocks but play a crucial role in
 facilitating user interactions(((user interactions))) with the blockchain.
 * *Stake pool nodes.* These are specialized block-producing nodes that
-are part of a stake pool. They validate transactions(((transactions))), produce blocks,
+are part of a stake pool. They validate transactions(((transaction))), produce blocks,
 and maintain the combined stake(((stake))) of various stakeholders in a single
 entity.
 
@@ -112,7 +112,7 @@ synchronization ensures that the local database(((local database))) remains curr
 latest blockchain data, maintaining the integrity and consistency(((consistency))) of the
 Cardano network(((network))).
 * *Transaction validation.* One of the primary roles of
-cardano-node is to validate transactions(((transactions))). When a user initiates a
+cardano-node is to validate transactions(((transaction))). When a user initiates a
 transaction, the node software checks the transaction's validity. This
 involves verifying that the sender has enough ada(((ada))) to cover the
 transaction and ensuring that the transaction follows the network(((network)))'s
@@ -120,19 +120,19 @@ rules.
 * *Block production and validation.* The
 cardano-node(((cardano-node))) software creates new blocks for nodes participating in
 block production(((block production))) (such as stake pool nodes). It compiles validated
-transactions(((transactions))) into blocks and adds them to the blockchain. Additionally,
+transactions(((transaction))) into blocks and adds them to the blockchain. Additionally,
 it validates new blocks produced by other nodes to ensure they are
 legitimate.
 * *Network communication.* The cardano-node facilitates
 communication between nodes. It propagates information about new
-transactions(((transactions))) and blocks across the network, ensuring all nodes remain
+transactions(((transaction))) and blocks across the network, ensuring all nodes remain
 synchronized. This P2P communication(((P2P communication))) is vital for maintaining the
 network(((network)))'s decentralized nature.
 * *Consensus participation.* Cardano uses a
 proof-of-stake consensus mechanism(((proof-of-stake consensus mechanism))) called Ouroboros. The cardano-node
 software enables nodes to participate in this consensus(((consensus))) process. Stake
 pool nodes, in particular, play a significant role in producing new
-blocks and validating transactions(((transactions))) based on their stake in the network.
+blocks and validating transactions(((transaction))) based on their stake in the network.
 * *Monitoring and reporting.* The cardano-node software
 provides various monitoring(((monitoring))) and reporting tools that allow node
 operators to track the performance and health of their nodes. This
@@ -167,7 +167,7 @@ aims to mitigate distributed attacks aimed at a significant portion of
 block-producing nodes(((block-producing nodes))). Each version of the Cardano node comes as a
 single package, usable by both stake pool operators(((stake pool operators))) for block production
 and by users running the node for other purposes, such as network(((network)))
-synchronization and transaction management(((transaction management))). This approach ensures that
+synchronization and transaction management(((transaction, management))). This approach ensures that
 security features are consistent across both block-producing and
 non-producing nodes.
 
@@ -261,7 +261,7 @@ competing chains(((competing chains)))
 
 *Block production* occurs within the consensus layer, and to produce
 blocks, this layer must also maintain a memory pool(((memory pool))) (mempool) of
-transactions(((transactions))) to be inserted into those blocks. For more details about
+transactions(((transaction))) to be inserted into those blocks. For more details about
 block production(((block production))), read sections <<Reaching Consensus using Proof-of-Stake>>,
 and <<Ouroboros Consensus>>.
 
