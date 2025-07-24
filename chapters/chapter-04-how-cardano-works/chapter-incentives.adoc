@@ -5,7 +5,7 @@
 
 ==== What are Incentives?
 
-One of the most attractive and important features of a blockchain(((blockchain))) like Cardano is the fact that it is decentralized: There is no single point of failure, and the responsibility for maintaining the protocol and adding new blocks is distributed among many different Cardano nodes(((Cardano, node))).
+One of the most attractive and important features of a blockchain(((blockchain))) like Cardano is the fact that it is decentralized -- there is no single point of failure, and the responsibility for maintaining the protocol and adding new blocks is distributed among many different Cardano nodes(((Cardano, node))).
 
 Due to its permissionless nature, everyone with the necessary enthusiasm and technical skills can run a Cardano node and participate in the network.
 
@@ -17,7 +17,7 @@ In addition, the node operator(((node operator))) has to spend a lot of time set
 
 So while decentralization(((decentralization))) is great, it comes with costs, and it is important to properly incentivize people to participate in the network and to do so in a way that is beneficial for the network as a whole.
 
-For Cardano in particular, people need to be incentivized to become node operators and then be online when needed, participate in the election process of slot leaders(((slot leader))) and create a block when they themselves are elected.
+For Cardano in particular, people need to be incentivized to become node operators and ensure their node is online when needed, participate in the election process of slot leaders(((slot leader))) and create a block when they themselves are elected.
 
 Not every user on Cardano has the necessary technical skills, the time or the desire to run a node, however. Most users will simply delegate their ADA(((ADA))) to a stake pool(((stake pool))), earn staking rewards(((staking rewards))), and let the pool operator(((pool operator))) do the work. It is important to set the right incentives for this majority of people as well, so that they delegate to stake pools that are online when needed and faithfully follow the protocol. The more delegation(((delegation))) a stake pool(((stake pool))) receives, the more blocks it will be able to produce, so delegating wisely is important for the security and efficiency of the network.
 
@@ -33,7 +33,7 @@ Nobody should be forced to neglect their own financial interests in order to do 
 
 This goal is by no means trivial to achieve, and a look at other blockchain(((blockchain))) projects shows that the conflict between individual and collective interests is a common problem.
 
-Take Bitcoin(((Bitcoin))) as an example: In Bitcoin(((Bitcoin))), node operators (often called _Bitcoin miners_) are paid for each block they add to the Bitcoin(((Bitcoin))) blockchain(((blockchain))), and those rewards are _proportional_ to the number of blocks they add.
+Take Bitcoin(((Bitcoin))) as an example -- in Bitcoin(((Bitcoin))), node operators (often called _Bitcoin miners_) are paid for each block they add to the Bitcoin(((Bitcoin))) blockchain(((blockchain))), and those rewards are _proportional_ to the number of blocks they add.
 
 Bitcoin(((Bitcoin))) mining comes with significant costs, and some of those costs can be reduced by centralizing the mining operation, for example by joining a mining pool(((mining pool))).
 
@@ -47,13 +47,13 @@ The danger is very real and not just a theoretical concern: In 2014, the mining 
 
 There was a real conflict between the financial interests of the miners and the security of the network, and the conflict was only resolved by the miners voluntarily reducing their mining power.
 
-Cardano incentives have been designed from the ground up to prevent such conflicts of interest: By simply following their best financial interests, Cardano node operators and delegators(((delegator))) will also do the right thing for the network, keeping it decentralized and secure.
+Cardano incentives have been designed from the ground up to prevent such conflicts of interest -- by simply following their best financial interests, Cardano node operators and delegators(((delegator))) will also do the right thing for the network, keeping it decentralized and secure.
 
-This alignment will of course never be perfect, because people are obviously driven by more than just money. For example, somebody might delegate to a stake pool(((stake pool))) that pays less rewards than another pool, because the first pool is run by a charity or a non-profit organization that uses the rewards to fund a good cause. But the incentives scheme does not need to be perfect. It just needs to be "good" enough" and work well even if people are not perfectly rational.
+This alignment will of course never be perfect, because people are obviously driven by more than just money. For example, somebody might delegate to a stake pool(((stake pool))) that pays less rewards than another pool, because the first pool is run by a charity or a non-profit organization that uses the rewards to fund a good cause. But the incentives scheme does not need to be perfect. It just needs to be "good enough" and work well even if people are not perfectly rational.
 
 ==== Desired Configuration
 
-The security of the Cardano blockchain(((blockchain))) is guaranteed as long as there is an _honest majority of stake_: The majority of stake on Cardano must be delegated to stake pools who faithfully follow the Cardano protocol.
+The security of the Cardano blockchain(((blockchain))) is guaranteed as long as there is an _honest majority of stake_. The majority of stake on Cardano must be delegated to stake pools who faithfully follow the Cardano protocol.
 
 The more such stake pools there are, the more decentralized the network becomes. And ideally, those stake pools each should control a roughly equal amount of stake, so that none of them become too big and powerful.
 
@@ -63,7 +63,7 @@ So there is a trade-off between security and decentralization(((decentralization
 
 For this reason, the Cardano incentives mechanism(((Cardano, incentives mechanism))) is parameterized by a parameter k(((k (parameter)))) which denotes the desired number of (roughly equally sized) stake pools.
 
-The goal of the incentives mechanism is to lead to a configuration where a solid majority of stake is delegated to a number of k(((k (parameter)))) stake pools of roughly equal size, whose operators are online when needed and provide additional infrastructure (like relay nodes)(((relay nodes))).
+The goal of the incentives mechanism is to lead to a configuration where a solid majority of stake is delegated to a number of k(((k (parameter)))) stake pools of roughly equal size, whose operators' nodes are online when needed and provide additional infrastructure (like relay nodes)(((relay nodes))).
 
 ==== Sources of Incentives
 
@@ -71,7 +71,7 @@ So far we have discussed why incentives are needed in the first place and what b
 
 ===== Transaction Fees
 
-Each transaction on Cardano incurs _transaction fees_, which consist of a low _flat fee_ and a part that is proportional to the sizefootnote:[Here "size" refers to the size in _bytes_ and not to the amount. A transaction sending ten million ADA(((ADA))) (10,000,000,000,000 lovelace)(((lovelace))) is only slightly more expensive than one sending ten ADA(((ADA))) (10,000,000 lovelace)(((lovelace))), and that slight difference is due to the fact that serializing 10,000,000,000,000 needs a few more bytes than serializing 10,000,000.] of the transaction.
+Each transaction on Cardano incurs _transaction fees_, which consist of two parts: a low _flat fee_ and a part that is proportional to the sizefootnote:[Here "size" refers to the size in _bytes_ and not to the amount. A transaction sending ten million ADA(((ADA))) (10,000,000,000,000 lovelace)(((lovelace))) is only slightly more expensive than one sending ten ADA(((ADA))) (10,000,000 lovelace)(((lovelace))), and that slight difference is due to the fact that serializing 10,000,000,000,000 needs a few more bytes than serializing 10,000,000.] of the transaction.
 
 One purpose of transaction fees(((transaction, fees))) is to prevent _DDoSfootnote:[DDoS stands for "Distributed Denial of Service".] attacks_(((DDoS attack))), where an attacker would try to flood and overload the network by issuing a large number of small transactions. Such an attack would be prohibitively expensive for the attacker, because the small flat fees for each transaction would add up to a significant amount, no matter how small each individual transaction is.
 
@@ -129,7 +129,7 @@ The basic idea is simple: Pool rewards should be proportional to pool stakes. Th
 
 There are a number of problems with this basic idea, however:
 
-* _Large Pools_: If rewards are proportional to stake, then the same problem that Bitcoin(((Bitcoin))) suffers from arises.Two pools will always have an incentive to merge, as the rewards for the merged pool will be the same as the sum of the rewards for the two pools, but the costs of the merged pool can be lower than the sum of the costs of the pools. This is bad for decentralization(((decentralization))), because it will lead to a few very large pools controlling most of the stake.
+* _Large Pools_: If rewards are proportional to stake, then the same problem that Bitcoin(((Bitcoin))) suffers from arises. Two pools will always have an incentive to merge, as the rewards for the merged pool will be the same as the sum of the rewards for the two pools, but the costs of the merged pool can be lower than the sum of the costs of the pools. This is bad for decentralization(((decentralization))), because it will lead to a few very large pools controlling most of the stake.
 
 [example]
 ======
@@ -179,9 +179,9 @@ Assuming k(((k (parameter))))=1000 again, let's look at two pools, one with 0.05
 
 Stake pools should be penalized for not being online when it is their turn. Rewards will be proportional to performance, ensuring that pools follow the protocol faithfully. Whenever a pool is elected to create a block, it should create that block. If it fails to do so, it should be penalized. We therefore want to modify the pool rewards by a _performance factor_, which is given by the number of blocks a pool _did_ produce in an epoch(((epoch))) divided by the number of blocks it _should_ have produced. So a pool missing half its blocks should only receive half its rewards.
 
-There is, however, a problem with implementing this idea directly: Leader election(((leader election))) on Cardano is _private_, so that only the elected leaders themselves know that they have been elected. We therefore do not _know_ how many blocks a pool _should_ have produced in an epoch(((epoch))).
+There is, however, a problem with implementing this idea directly. Leader election(((leader election))) on Cardano is _private_, so that only the elected leaders themselves know that they have been elected. We therefore do not _know_ how many blocks a pool _should_ have produced in an epoch(((epoch))).
 
-We can, however, _estimate_ this number: The probability to be elected slot leader in a given slot is proportional to the pool's stake. A pool with twice the stake will - on average - be elected twice as often. We also know that - again on average - there _will_ be a leader every twenty slots. Combining these two pieces of information, we can estimate how many blocks a pool _should_ have produced in an epoch(((epoch))) and use that estimate to calculate the (approximate) performance factor(((performance factor))).
+We can, however, _estimate_ this number. The probability to be elected slot leader in a given slot is proportional to the pool's stake. A pool with twice the stake will -- on average -- be elected twice as often. We also know that -- again on average -- there _will_ be a leader every twenty slots. Combining these two pieces of information, we can estimate how many blocks a pool _should_ have produced in an epoch(((epoch))) and use that estimate to calculate the (approximate) performance factor(((performance factor))).
 
 [example]
 ======
@@ -210,15 +210,15 @@ If he _does_ honor his pledge(((pledge))) and delegates the promised amount (or 
 
 image::pledge.png[]
 
-This means that a bad actor who wants to launch a Sybil attack(((Sybil, attack))) now has a problem: Nobody can stop him from creating many different pools, but he only has a limited amount of money, which he will have to split among all his pools. This means that each of his pools will have less pledge(((pledge))) and therefore receive less rewards, thus making each pool less attractive for delegators(((delegator))), making it much harder for him to attract a significant proportion of total stake.
+This means that a bad actor who wants to launch a Sybil attack(((Sybil, attack))) now has a problem -- nobody can stop him from creating many different pools, but he only has a limited amount of money, which he will have to split among all his pools. This means that each of his pools will have less pledge(((pledge))) and therefore receive less rewards, thus making each pool less attractive for delegators(((delegator))), making it much harder for him to attract a significant proportion of total stake.
 
 ==== Undistributed Rewards
 
-These refinements can lead to situations where not all funds in the rewards pool are distributed. This, however, is a feature, not a bug: When this happens and some rewards remain in the rewards pool after rewarding all the stake pools, then the remaining funds are sent to the treasury(((treasury))), where they can be put to good use to improve and maintain Cardano.
+These refinements can lead to situations where not all funds in the rewards pool are distributed. This, however, is a feature, not a bug. When this happens and some rewards remain in the rewards pool after rewarding all the stake pools, then the remaining funds are sent to the treasury(((treasury))), where they can be put to good use to improve and maintain Cardano.
 
 ==== Not Being Short-Sighted
 
-Both pool operators and delegators(((delegator))) might be tempted to change their strategiesfootnote:[The strategy of a pool operator(((pool operator))) is to set costs and margin(((margin))), the strategy of a delegator is to choose one or more pools to delegate to.] for short-term gains. A popular pool with many delegators(((delegator))), for example, could suddenly increase his margin(((margin))). This would be short-sighted, however, because delegators(((delegator))) would leave the pool, and the pool operator(((pool operator))) would end up with less rewards than before. Similarly, delegators(((delegator))) might refrain from delegating to a good pool that just started, not taking into account that the pool will attract more delegators(((delegator))) in the future.
+Both pool operators and delegators(((delegator))) might be tempted to change their strategiesfootnote:[The strategy of a pool operator(((pool operator))) is to set costs and margin(((margin))), the strategy of a delegator is to choose one or more pools to delegate to.] for short-term gains. A popular pool with many delegators(((delegator))), for example, could suddenly decide to increase their own margin(((margin))). This would be short-sighted, however, because delegators(((delegator))) would leave the pool, and the pool operator(((pool operator))) would end up with less rewards than before. Similarly, delegators(((delegator))) might refrain from delegating to a good pool that just started, not taking into account that the pool will attract more delegators(((delegator))) in the future.
 
 This is handled by careful _ranking_ of pools when they are displayed to users to decide where to delegate. Instead of basing that ranking(((ranking (of pools)))) on the rewards of the last epoch(((epoch))), the ranking(((ranking (of pools)))) is instead based on the expectation that in the long run, only the k(((k (parameter)))) most "attractive" pools (with the most favorable combination of cost, margin(((margin))), pledge(((pledge))) and performance) will become saturated(((saturated (pool)))). This for example means that a pool that has just started and has not yet attracted many delegators(((delegator))) will still be ranked high if it has a good combination of pool parameters that make it attractive, even if rewards will be somewhat lower while the pool is still growing.
 
@@ -228,7 +228,7 @@ _Game theory_ is a branch of mathematics that studies strategic interactions bet
 
 Real people in the real world are of course not always rational, but the assumption of rationality is a good starting point to understand how people will behave in a given situation.
 
-One of the pioneers of game theory(((game theory))) was John von Neumann(((von Neumann, John))), who contributed to a staggering amount of different fields in mathematics, physics and economy and is - among other things - famous for his work on the Manhattan project(((Manhattan project))) and on computer architecture.
+One of the pioneers of game theory(((game theory))) was John von Neumann(((von Neumann, John))), who contributed to a staggering amount of different fields in mathematics, physics and economy and is -- among other things -- famous for his work on the Manhattan project(((Manhattan project))) and on computer architecture.
 He has been called one of the most intelligent people in modern history.
 
 .John von Neumann(((von Neumann, John))) (Los Alamos). By LANL - http://www.lanl.gov/history/atomicbomb/images/NeumannL.GIF (archive copy at the Wayback Machine), Attribution, https://commons.wikimedia.org/w/index.php?curid=3429594
@@ -268,17 +268,17 @@ This game has exactly one Nash Equilibrium(((Nash, equilibrium))): Both burglars
 
 Let us convince ourselves that this is indeed a Nash Equilibrium(((Nash, equilibrium)))!
 
-If Burglar A unilaterally changes his strategy and stays silent, while Burglar B sticks to his strategy of confessing, then instead of going to prison for five years, Burglar A will have to go to prison for ten years. The same is true for Burglar B: If Burglar B switches his strategy from confessing to staying silent, then he will have to go to prison for ten years instead of five, provided Burglar A sticks to his strategy of confessing.
+If Burglar A unilaterally changes his strategy and stays silent, while Burglar B sticks to his strategy of confessing, then instead of going to prison for five years, Burglar A will have to go to prison for ten years. The same is true for Burglar B. If Burglar B switches his strategy from confessing to staying silent, then he will have to go to prison for ten years instead of five, provided Burglar A sticks to his strategy of confessing.
 
 On the other hand, none of the other three possible outcomes of the game are Nash Equilibria(((Nash, equilibrium))):
 
-If both stay silent and thus need to go to prison for one year, then each of them has an incentive to switch his strategy and confess instead, because then he will go free.
+* If both stay silent and thus need to go to prison for one year, then each of them has an incentive to switch his strategy and confess instead, because then he will go free.
 
-If one of them stays silent and the other confesses, then the one staying silent can reduce his prison term from ten years to five years by confessing as well.
+* If one of them stays silent and the other confesses, then the one staying silent can reduce his prison term from ten years to five years by confessing as well.
 
 (The one confessing has _no_ incentive to switch his strategy in this case, because then instead of going free, he would need to spend one year in prison. However, for an outcome to be a Nash Equilibrium(((Nash, equilibrium))), _none_ of the players must have an incentive to switch his strategy.)
 
-Many people find this result surprising and somewhat depressing: "Clearly", if both simply stayed silent, they would be better off than if both confessed. And they maybe both _would_ stay silent if they had a chance to communicate and coordinate. But the Nash Equilibrium(((Nash, equilibrium))) is that both confess, and that is the only outcome that is stable in the sense that no player has an incentive to unilaterally change his strategy.
+Many people find this result surprising and somewhat depressing -- "Clearly", if both simply stayed silent, they would be better off than if both confessed. And they maybe both _would_ stay silent if they had a chance to communicate and coordinate. But the Nash Equilibrium(((Nash, equilibrium))) is that both confess, and that is the only outcome that is stable in the sense that no player has an incentive to unilaterally change his strategy.
 
 ======
 
