@@ -51,8 +51,8 @@ information about transactions(((transactions))) and blocks. When a new transact
 block is verified, nodes propagate (or share) this information across
 the network, ensuring consistency(((consistency))) and synchronization among all nodes.
 
-A node in the Cardano blockchain(((Cardano blockchain))) is implemented by a software called
-https://github.com/IntersectMBO/cardano-node(((cardano-node)))[cardano-node(((cardano-node)))]. The
+A node in the Cardano blockchain(((Cardano blockchain))) is implemented in the
+https://github.com/IntersectMBO/cardano-node(((cardano-node)))[cardano-node(((cardano-node)))] software executable. The
 cardano-node software is the backbone of the Cardano blockchain(((Cardano blockchain))) network.
 It is a crucial piece of software that runs on each node, enabling them
 to perform their essential functions. To fully understand the role of
@@ -173,7 +173,7 @@ non-producing nodes.
 
 You can find more information on the design principles and decisions in
 the https://www.youtube.com/watch?v=PKzkzqUB8e0[Cardano architecture]
-video lecture by Duncan Coutts Cardano’s chief technical architect(((chief technical architect))).
+video lecture by Duncan Coutts, Cardano’s chief technical architect(((chief technical architect))).
 
 [[cardano-node-layers]]
 ==== Cardano node layers
