@@ -491,7 +491,7 @@ On-chain voting is where the three voting groups (DReps, SPOs, and the CC) cast 
 For a proposed governance action to be approved and implemented, it needs to meet specific voting thresholds set by Cardano. These thresholds may vary depending on the type of governance action being voted on. In simpler terms, some proposals might require approval from all three voting groups, while others might only need a certain percentage from a specific group(((certain percentage from a specific group))).
 
 image::../images/5.5_gov_actions.png[]
-*Figure 5.6:* Voting on governance actions (table from Intersect’s https://docs.intersectmbo.org/[documentation])
+*Figure 5.6:* Voting on governance actions (based on a table from Intersect’s https://docs.intersectmbo.org/[documentation])
 
 Following the on-chain voting process, a governance action is considered approved (or ratified) if it meets the specific voting thresholds(((specific voting thresholds))) set for its type. These thresholds determine the level of consensus needed from the different voting bodies.
 
