@@ -69,7 +69,7 @@ Cardano transactions must be _balanced_ – roughly speaking, the sum of input v
 
     * Each transaction(((transaction))) needs to include _transaction fees_(((transaction, fees))),
       which get subtracted from the input values before being compared to the output values
-    * Cardano native tokens(((Cardano, native tokens))) can be _minted_ (created) or _burnt_ (destroyed) in a transaction(((transaction)))
+    * Cardano native tokens(((Cardano, native tokens))) (i.e. other tokens besides ada) can be _minted_ (created) or _burnt_ (destroyed) in a transaction(((transaction)))
     * Staking rewards can be withdrawn, getting added to the outputs(((transaction, output))) without having compensating
       inputsfootnote:[These staking(((staking))) rewards come from an internal reward account, not a regular UTXO(((unspent transaction output (UTXO)))).].
 
@@ -427,7 +427,7 @@ While ada(((ADA))) is the native currency of the Cardano blockchain, Cardano als
 
 Minting and burning custom tokens(((token, custom))) must have restrictions, otherwise, they would be pointless if allowed freely. Therefore, these actions are also governed by scripts(((script))).
 
-A Cardano native token is identified by two components: the _policy ID_ and the _token name_:
+A Cardano native token is identified by two components -- the _policy ID_ and the _token name_:
 
 - The token name(((token name))) is an arbitrary byte string, up to 32 bytes long
 - The policy ID(((policy ID))) is the hash of a script(((script))).
