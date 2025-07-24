@@ -5,7 +5,7 @@ Lars Brünjes <lars.bruenjes@iohk.io>; Joshua Ellul <joshua.ellul@um.edu.mt>;
 :description: This is the description of your book
 //
 // Set the cover image
-//:front-cover-image: image:cover.png[fit=cover]
+:front-cover-image: image:cover.png[fit=cover]
 //
 // Don't display a title page, since we have a cover image.
 //:notitle:
