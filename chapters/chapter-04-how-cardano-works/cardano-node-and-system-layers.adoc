@@ -395,7 +395,7 @@ smart-contract capabilities to Cardano and can be processed by Cardano
 nodes. Plutus is based on untyped lambda calculus(((untyped lambda calculus))) and acts as low-level
 interpreted assembly code(((interpreted assembly code))). The compilation pipeline from the
 Haskell-based Plinth(((Haskell-based Plinth))) (formerly Plutus TX) smart contract language to
-Plutus(((Plutus))) is explained in section <<Plutus(((Plutus))) security>>.
+Plutus(((Plutus))) is explained in section <<Plutus security>>.
 
 Chapter <<Writing smart contracts>>, besides providing an overview of
 smart contract language options, also showcases code examples, security
