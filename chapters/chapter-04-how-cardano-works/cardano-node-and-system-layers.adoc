@@ -263,7 +263,7 @@ competing chains(((competing chains)))
 blocks, this layer must also maintain a memory pool(((memory pool))) (mempool) of
 transactions(((transactions))) to be inserted into those blocks. For more details about
 block production(((block production))), read sections <<Reaching Consensus using Proof-of-Stake>>,
-and <<about-the-ouroboros-protocol, About the Ouroboros(((Ouroboros))) protocol>>.
+and <<Ouroboros Consensus>>.
 
 The problem of *chain selection(((chain selection)))* arises when two or more nodes extend
 the chain(((chain))) with different blocks. This can happen when nodes are unaware
