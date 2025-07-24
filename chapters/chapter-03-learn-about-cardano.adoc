@@ -12,11 +12,11 @@ Cardano has a https://cardanoupdates.com/[thriving ecosystem] of builders, devel
 === Who built Cardano?
 The Cardano project began in 2015 and is based on *peer-reviewed research(((peer-reviewed research)))* and developed through *evidence-based methods*. It has been built by leading scientists, expert developers, and the extended team at https://iohk.io/[Input | Output (IO)(((Input | Output (IO))))] (initially IOHK), led by https://iohk.io/en/leadership/charles-hoskinson[Charles Hoskinson(((Hoskinson, Charles(((Hoskinson, Charles))))))]. Input | Output is a pre-eminent blockchain infrastructure research and engineering company with over 600 employees globally. This extends to a focused innovation ecosystem.
 
-The Cardano project is pioneered by https://iohk.io/[IO], the https://www.cardanofoundation.org/[Cardano Foundation], https://www.emurgo.io/[Emurgo(((Emurgo)))], and other third parties. It is named after https://www.britannica.com/biography/Girolamo-Cardano[Girolamo Cardano(((Cardano, Girolamo)))], the 16th century Italian physician and mathematician and Cardano’s native cryptocurrency ada(((ada))), is inspired by https://www.britannica.com/biography/Ada-Lovelace[Ada Lovelace(((Lovelace, Ada(((Lovelace, Ada))))))], the 19th century English mathematician and the first person ever to publish a computer program.
+The Cardano project is pioneered by https://iohk.io/[IO], the https://www.cardanofoundation.org/[Cardano Foundation], https://www.emurgo.io/[Emurgo(((Emurgo)))], and other third parties. It is named after https://www.britannica.com/biography/Girolamo-Cardano[Girolamo Cardano(((Cardano, Girolamo)))], the 16th century Italian physician and mathematician and Cardano’s native cryptocurrency, ada(((ada))), is inspired by https://www.britannica.com/biography/Ada-Lovelace[Ada Lovelace(((Lovelace, Ada(((Lovelace, Ada))))))], the 19th century English mathematician and the first person ever to publish a computer program.
 
 Cardano follows an evidence-based engineering approach by applying formal logic to the software development cycle. This ensures that thoroughly researched and rigorous designs are turned into efficient implementations, guaranteeing correctness, safety, and code reliability. This process begins with published research papers which are later converted into formal specifications that evolve into reference implementations and products.
 
-Prof Aggelos Kiayias(((Kiayias, Aggelos))), chief scientist at IO says:
+Prof Aggelos Kiayias(((Kiayias, Aggelos))), chief scientist at IO, says:
 _‘When you go about designing a system, you have to present the system in the context of the research domain in which it belongs, why the system has the benefits it claims to have, and what exactly is the problem that the system is solving. There are a lot of benefits in taking such a first principles approach.’_
 
 === Mission of Cardano
@@ -33,12 +33,12 @@ All https://iohk.io/en/research/library/[research papers] and technical specific
 === Decentralization
 Cardano is maintained by over 3,000 community-operated stake pools(((stake pools))), ensuring full decentralization(((decentralization))). Over 1.3 million wallets delegate to these stake pools(((stake pools))),  representing approximately 64% of the total active ada(((ada))) supply. Network participants validate all blocks and transactions without any reliance on a centralized authority. Decisions and ownership of information are shared amongst all users.
 
-Every ada(((ada))) holder also holds a stake in the Cardano network, ada(((ada))) stored in a wallet can be delegated to a stake pool to earn rewards and participate in the network’s successful operation. Stake pool operators can also pledge some ada(((ada))) to their stake pool to increase its likelihood of receiving rewards.
+Every ada(((ada))) holder also holds a stake in the Cardano network -- ada(((ada))) stored in a wallet can be delegated to a stake pool to earn rewards and participate in the network’s successful operation. Stake pool operators can also pledge some ada(((ada))) to their stake pool to increase its likelihood of receiving rewards.
 
 === Reaching consensus using proof of stake(((proof of stake)))
-Cardano uses proof of stake(((proof of stake))) to reach a consensus. Fundamentally, Cardano has been built as a resilient and sustainable blockchain with a proof-of-stake consensus protocol called https://iohk.io/en/blog/posts/2020/06/23/the-ouroboros-path-to-decentralization(((decentralization)))/[Ouroboros(((Ouroboros)))], which has been proven to have the same security(((security))) guarantees as proof-of-work protocols and is undoubtedly more https://www.essentialcardano.io/article/comparison-of-energy-consumption-of-cardano-and-bitcoin[energy efficient]. To learn more about Ouroboros(((Ouroboros))), read the <x ref to Ouroboros(((Ouroboros))) chapter>.
+Cardano uses proof of stake(((proof of stake))) to reach a consensus. Fundamentally, Cardano has been built as a resilient and sustainable blockchain with a proof-of-stake consensus protocol called https://iohk.io/en/blog/posts/2020/06/23/the-ouroboros-path-to-decentralization(((decentralization)))/[Ouroboros(((Ouroboros)))], which has been proven to have the same security(((security))) guarantees as proof-of-work protocols and is undoubtedly more https://www.essentialcardano.io/article/comparison-of-energy-consumption-of-cardano-and-bitcoin[energy efficient]. To learn more about Ouroboros(((Ouroboros))), read the #<x ref to Ouroboros(((Ouroboros))) chapter>#.
 
-Cardano builds upon Bitcoin(((Bitcoin)))’s UTXO(((UTXO))) model and implements an extended UTXO(((UTXO))) (EUTXO) accounting model that supports smart contracts(((smart contracts))). To learn more about EUTXO, read the <ETXO chapter x-ref>.
+Cardano builds upon Bitcoin(((Bitcoin)))’s UTXO(((UTXO))) model and implements an extended UTXO(((UTXO))) (EUTXO) accounting model that supports smart contracts(((smart contracts))). To learn more about EUTXO, read the #<ETXO chapter x-ref>#.
 
 One of the features of Cardano is seamless upgrades. Traditionally, blockchains upgrade using hard forks(((hard forks))). When conducting a hard fork, the current protocol would stop operating, new rules and changes would be implemented, and the chain would restart. Cardano handles hard forks(((hard forks))) differently. Instead of implementing radical changes, the Cardano hard fork combinator technology ensures a smooth transition to a new protocol while saving the history of the previous blocks and not causing any disruptions for end users.
 
@@ -71,7 +71,7 @@ _‘Governance is not optional. No matter who you are, what you do, when you cre
 
 The community is central to Cardano's identity, and Cardano’s governance(((governance))) model reflects this by implementing liquid and representative democracy. Through individual participation and immutable vote recording, ada(((ada))) holders can decide on the distribution of treasury(((treasury))) funds and the platform's future development. So, as a community, how can we work together to outline policies and guidelines for the future development of Cardano and ensure that everyone has a voice?
 
-Designing a proof-of-stake blockchain means it is vital to ensure that the system is self-sustainable. Cardano Improvement Proposals (CIPs), are delivered to foster and formalize discussions around new features and their development within the community.
+Designing a proof-of-stake blockchain means it is vital to ensure that the system is self-sustainable. Cardano Improvement Proposals (CIPs) are delivered to foster and formalize discussions around new features and their development within the community.
 
 Cardano governance(((governance))) has a clear https://www.intersectmbo.org/roadmap(((roadmap)))[roadmap(((roadmap)))] guiding the community through the entire process. The stages of the Cardano governance(((governance))) roadmap(((roadmap))), particularly under CIP-1694(((CIP-1694))), reflect a structured approach to evolving Cardano's governance(((governance))) model into a decentralized, community-driven system. This roadmap(((roadmap))) facilitates a gradual transition, allowing for ample community feedback and refinement.
 
@@ -82,7 +82,7 @@ Central to the treasury(((treasury))) is a democratized voting mechanism where a
 Launched in 2023, https://www.intersectmbo.org/[Intersect(((Intersect)))] is a member-based organization for the Cardano ecosystem and puts the community at the core of Cardano’s future development. Bringing members together behind a shared vision, Intersect(((Intersect))) enables a more resilient, secure, transparent, and innovative Cardano ecosystem that puts members in the driving seat of Cardano’s future.
 
 === Design rationale of Cardano
-Cardano, as a third-generation blockchain combines the properties of the prior generations and addresses previous limitations. It is the first blockchain platform to be designed from a scientific philosophy and research-first driven approach. Cardano is a decentralized and community-driven platform where the network is supported by an active community of global developers, researchers, and ada(((ada))) holders who contribute to its ongoing development and governance(((governance))).
+Cardano, as a third-generation blockchain, combines the properties of the prior generations and addresses previous limitations. It is the first blockchain platform to be designed from a scientific philosophy and research-first driven approach. Cardano is a decentralized and community-driven platform where the network is supported by an active community of global developers, researchers, and ada(((ada))) holders who contribute to its ongoing development and governance(((governance))).
 
 Cardano has been built in a way that ensures the highest security(((security))), scalability(((scalability))) (transaction throughput(((transaction throughput))), data scale, network bandwidth), and functionality (transaction processing and business deal settlement). Additionally, it is important to ensure that the technology was developed with the core tenets of transparency, sustainability(((sustainability))) and the ability to be interoperable with other blockchains and financial institutions.
 
@@ -113,7 +113,7 @@ The design rationale of Cardano focuses on the following core concepts:
 - Functional environment for business use cases – Cardano is establishing a foundation for global, decentralized finance to develop a range of DApps(((DApps))) that can run using functional and domain-specific smart contracts(((smart contracts))), providing multi-asset tokens for any needs.
 
 === Cardano community and growth of the ecosystem
-Cardano benefits from a vibrant and thriving ecosystem that promotes active engagement with builders, developers, content creators, and users.The Cardano ecosystem is a dynamic and rapidly-growing collection of projects, organizations, creators, and builders who are working together to improve and develop the platform even further.
+Cardano benefits from a vibrant and thriving ecosystem that promotes active engagement with builders, developers, content creators, and users. The Cardano ecosystem is a dynamic and rapidly-growing collection of projects, organizations, creators, and builders who are working together to improve and develop the platform even further.
 
 As a community-driven ecosystem, there is a strong focus on innovation, collaboration, and cooperation between innovators, smart contract developers, content creators, and distributed application (DApp) developers that build on Cardano. The aim is to grow the contributor ecosystem even more each year.
 
@@ -125,18 +125,19 @@ You can take a closer look at the vibrant landscape of Cardano’s ecosystem and
 Another important resource is our community platform resource Essential Cardano(((Essential Cardano))). Here you can learn more about the growing Cardano ecosystem and keep up to date with regular development updates, blogs on various topics, and learning resources.
 
 There are a number of builder tools and various community channels available within the ecosystem to help you navigate the environment, for example:
+
 - https://developers.cardano.org/tools/[Builder Tools]
 - https://www.essentialcardano.io/community[Cardano community channels]
 
 ==== Cardano improvement proposals
-The https://cips.cardano.org/[Cardano improvement proposal] (CIP) process is a structured process that enables ideas for change and improvement within the ecosystem. It is a community-led mechanism that  provides transparency and encourages collaboration among stakeholders, thereby enabling the community to shape the future of the Cardano ecosystem together.
+The https://cips.cardano.org/[Cardano Improvement Proposal] (CIP) process is a structured process that enables ideas for change and improvement within the ecosystem. It is a community-led mechanism that  provides transparency and encourages collaboration among stakeholders, thereby enabling the community to shape the future of the Cardano ecosystem together.
 
 Anyone can write and submit a CIP, which typically covers both technical and non-technical suggestions and changes to Cardano. These CIPs must adhere to a set of guidelines and include a description of the issue, how it can be solved, and a plan on how to implement the changes. The next stage in the process is a review by https://cips.cardano.org/contributors[CIP editors(((CIP editors)))] who ensure that it adheres to the set of guidelines, before they open it up for community discussion on whether or not it should be implemented. During this feedback cycle, the proposal is often refined and further improved, before it is moved to the implementation stage. In some cases, where there is a proposed protocol change, further governance(((governance))) is required by the founding entities.
 
 Once a CIP is approved, it is implemented on-chain by the relevant developers and stake pool operators. In some cases, a network upgrade is needed which requires further collaboration between the various stakeholders. All CIPs are documented and maintained in the CIP repository, forming an audit trail of historical changes to Cardano.
 
 ==== Cardano Ambassador program
-The https://cardano.org/ambassadors/[Cardano Ambassador program] promotes awareness, fosters relationships, and works to nurture and expand the wider community by increasing adoption. It includes a wide range of committed and hard working individuals from all around the globe with a wide variety of age and social profiles. These ambassadors work diligently as content creators, translators, moderators, and educators to strengthen relationships, educate, and bring more people into the growing Cardano community.
+The https://cardano.org/ambassadors/[Cardano Ambassador program] promotes awareness, fosters relationships, and works to nurture and expand the wider community by increasing adoption. It includes a wide range of committed and hard-working individuals from all around the globe with a wide variety of age and social profiles. These ambassadors work diligently as content creators, translators, moderators, and educators to strengthen relationships, educate, and bring more people into the growing Cardano community.
 
 === Educating the world about Cardano
 Education is a gateway for adoption and has always been an integral part of the strategy of Cardano’s pioneering members: https://iohk.io/[Input | Output], the https://cardanofoundation.org/[Cardano Foundation], and https://www.emurgo.io/[Emurgo(((Emurgo)))]. It plays a transformative role in fostering a knowledgeable and engaged global community by equipping them with the expertise, skills, confidence, and opportunities to deepen their understanding and successfully build on Cardano and thrive in the ecosystem.
@@ -154,7 +155,7 @@ The education team at IO brings together extensive experience in:
 - Project management and delivery
 - Technical aspects related to blockchain
 - Haskell(((Haskell))) and Cardano expertise
-- Smart contract languages and development (including Plutus(((Plutus))), Aiken(((Aiken))), and Marlowe(((Marlowe))) )
+- Smart contract languages and development -- including Plutus(((Plutus))), Aiken(((Aiken))), and Marlowe(((Marlowe))) 
 
 This collective expertise ensures that educational programs are both comprehensive and practical, tailored to meet the needs of diverse learners. The education team aims to enhance understanding of Cardano technologies using a variety of learning and training assets targeted at a wide range of audiences. The team aims to provide knowledge and information to enterprise decision-makers so they know what business problems the technologies can solve. It strives to create a supportive learning environment for all participants, and continuously shares what its team members have learned from working directly with our community members.
 
@@ -178,10 +179,10 @@ This education stream aligns with the mission to provide free education to the C
 As part of this stream, IO offers comprehensive in-person courses in Haskell(((Haskell))) that run for 10-12 weeks (depending on the curriculum). https://iohk.io/en/research/library/authors/lars-brunjes/[Dr. Lars Brünjes(((Burnes, Lars)))] and his team have delivered several of these Haskell(((Haskell))) courses, including:
 
 - Haskell(((Haskell))) and cryptocurrency course 2017, which ran for eight weeks at the https://www.ntua.gr/en/[National Technical University of Athens].
-- https://iohk.io/en/blog/posts/2018/04/07/iohk-haskell-and-cryptocurrency-course-in-barbados/[Haskell(((Haskell))) and cryptocurrency course 2018], which ran for eight weeks at the University of West Indies, in Barbados.
+- https://iohk.io/en/blog/posts/2018/04/07/iohk-haskell-and-cryptocurrency-course-in-barbados/[Haskell(((Haskell))) and cryptocurrency course 2018], which ran for eight weeks at the University of West Indies in Barbados.
 - https://iohk.io/en/blog/posts/2019/04/04/training-blockchain-developers-in-africa/[Haskell(((Haskell))) course 2019 Ethiopia]: this three-month course was delivered in Addis Ababa, Ethiopia, in conjunction with the Ethiopian Ministry of Innovation and Technology. It was delivered to an all-female audience of Ethiopian and Ugandan students.
-- Online Haskell(((Haskell))) Course 2020: This course was originally planned for Mongolia, but due to Covid 19 it was migrated to an online course. 
-- Haskell(((Haskell))) Course 2023: Delivered with additional Marlowe(((Marlowe))) and Plutus(((Plutus))) components. This comprehensive blended learning course was taught in conjunction with https://www.theafricablockchaincenter.com/[the African Blockchain Center] and taught at their offices in Nairobi, Kenya. The team adopted a train-the-trainer approach for this course and produced a train-the-trainer kit for professors in the group. The course blended in-person and virtual interactions, allowing us to connect with attendees and understand their perspectives on the topics covered during the session
+- Online Haskell(((Haskell))) course 2020: This course was originally planned for Mongolia, but due to COVID-19 it was migrated to an online course. 
+- Haskell(((Haskell))) course 2023: Delivered with additional Marlowe(((Marlowe))) and Plutus(((Plutus))) components. This comprehensive blended learning course was taught in conjunction with https://www.theafricablockchaincenter.com/[the African Blockchain Center] and taught at their offices in Nairobi, Kenya. The team adopted a train-the-trainer approach for this course and produced a train-the-trainer kit for professors in the group. The course blended in-person and virtual interactions, allowing us to connect with attendees and understand their perspectives on the topics covered during the session
 
 ===== Cardano Days events
 
@@ -223,7 +224,7 @@ We have delivered several Pioneer Programs aimed at developers and new users. Th
 
 One of the most positive outcomes of these courses was the amazing community participation on Discord. The participants supported each other, created additional learning resources, were quick to report any issues, and tested features – they really were acting as true pioneers. We also saw a wide range of innovative resources and ideas from the courses, including new wallets, training materials, and new projects on Cardano.
 
-A self-paced Cardeno education program (CEP) is currently being developed where participants will be able to pick and choose the modules they want to complete and work at their own pace, rather than follow a weekly schedule. 
+A self-paced Cardano Education Program (CEP) is currently being developed where participants will be able to pick and choose the modules they want to complete and work at their own pace, rather than follow a weekly schedule. 
 
 ===== Collaborations
 
