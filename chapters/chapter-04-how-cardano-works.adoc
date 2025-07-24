@@ -53,6 +53,7 @@ One of the key features of proof of stake is that as a user's value increases, s
 It is worth remembering that participants accumulate the transaction fees within a PoS protocol, thereby adding to their wealth as they go. This encourages steady and stable growth of the blockchain and reduces the instances of stalled transactions that can prevent chain growth.
 
 Some of the primary advantages of proof of stake include:
+
 - Rigorous security protocols – are incorporated into a PoS protocol
 - Decentralization – the network is fully decentralized and not controlled by a single party or group
 - Energy efficiency – energy consumption is extremely efficient, as a smaller amount of electricity, as well as hardware resources, are needed to produce and secure the blockchain
@@ -67,6 +68,6 @@ include::chapter-04-how-cardano-works/chapter-incentives.adoc[]
 [[about-the-ouroboros-protocol]]
 === About the Ouroboros Protocol
 
-Fundamentally, Cardano has been built as a resilient and sustainable blockchain with a proof-of-stake consensus protocol called https://iohk.io/en/blog/posts/2020/06/23/the-ouroboros-path-to-decentralization/[Ouroboros] which is proven to have the same security guarantees and is undoubtedly more energy efficient than proof-of-work protocols.
+Fundamentally, Cardano has been built as a resilient and sustainable blockchain with a proof-of-stake consensus protocol called https://iohk.io/en/blog/posts/2020/06/23/the-ouroboros-path-to-decentralization/[Ouroboros], which is proven to have the same security guarantees and is undoubtedly more energy efficient than proof-of-work protocols.
 
 include::chapter-04-how-cardano-works/network-protocols.adoc[]
