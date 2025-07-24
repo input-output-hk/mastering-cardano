@@ -161,8 +161,7 @@ build complete DApps using familiar technology.
 Marlowe originated as a research project funded by IO at the
 University of Kent in 2017 and became part of IO in 2019. As of autumn
 2024, Marlowe is an independent open-source project owned and managed by
-Marlowe Language Community Interest Company
-(CIC)(((Marlowe Language Community Interest Company (CIC)))), a non-profit
+Marlowe Language Community Interest Company (CIC), a non-profit
 organization (UK company number 16010921). This CIC supports Marlowe
 users and developers by overseeing development, maintenance, education,
 and training. It also hosts Marlowe open-source software repositories
@@ -211,12 +210,12 @@ The Alonzo era(((Alonzo era))) introduced the Plutus scripting language, also re
 to as Plutus Core(((Plutus Core))). Plutus smart contracts validate transactions and because
 of this they are also called validation scripts or validators.
 In practice, the Cardano node executes an untyped version called Untyped
-Plutus Core(((Plutus Core))) (UPLC(((UPLC)))). The compilation pipeline from a
+Plutus Core(((Plutus Core))) (UPLC). The compilation pipeline from a
 compiled language to UPLC is covered in section <<Plutus security>>.
 Plutus is a simple, functional language that enables general-purpose
 Turing-complete(((Turing-complete))) smart contracts(((smart contracts)))
 on Cardano. It implements Cardano's extended UTXO
-(EUTXO(((EUTXO)))) model, which is as powerful in expressing smart contract logic
+(EUTXO) model, which is as powerful in expressing smart contract logic
 as Ethereum's account-based model, allowing for arbitrary logic in smart
 contracts. A comparison of Plutus with Bitcoin Script(((Bitcoin Script))) and
 Solidity(((Solidity))) languages is presented in section
@@ -383,7 +382,7 @@ spend a UTXO at a script address. Off-chain code(((off-chain code))), in contras
 the user's or a service provider's device and queries the blockchain,
 builds, signs, and submits transactions. A web application that
 connects with a wallet and interacts with one or more smart contracts is
-called a decentralized application (DApp(((DApp)))). Chapter
+called a decentralized application (DApp). Chapter
 <<decentralized-applications, Decentralized applications>>
 covers DApps in more detail. Every DApp contains some
 off-chain code and interacts with one or more smart contracts that
@@ -492,7 +491,7 @@ Earth nodes can operate from any location globally; however, traffic
 routing within the network is biased towards nearer nodes to enhance
 performance and service quality.
 
-*World Mobile token and Earth node non-fungible tokens (NFTs(((NFTs))))*
+*World Mobile token and Earth node non-fungible tokens (NFTs)*
 
 Utilizing Cardano's native token capabilities, World Mobile introduced
 the https://worldmobiletoken.com/[World Mobile Token] (WMT) as the
@@ -645,14 +644,14 @@ data and contain no information. This allows for quick offline validity
 checks and provides an additional safety measure for wallets. For an
 additional explanation of address type structures, refer to
 https://cips.cardano.org/cips/cip19/#binaryformat[Cardano Improvement Proposal 19]
-(CIP-19(((CIP-19)))), which defines the technical details of Cardano
+(CIP-19), which defines the technical details of Cardano
 addresses.
 
 === Marlowe smart contracts
 
 ==== About Marlowe
 
-Marlowe(((Marlowe))) is a domain-specific language (DSL(((DSL)))) for building
+Marlowe(((Marlowe))) is a domain-specific language (DSL) for building
 financial smart contracts. One can think of Marlowe as a robust, open-source
 technology that provides a special-purpose language describing asset flows
 on the blockchain. As a special-purpose DSL, it offers a higher-level model of
@@ -1390,7 +1389,7 @@ Marlowe by consolidating and extending it for Cardano DApp builders. This
 includes providing oracles(((oracles))) and micropayments(((micropayments))),
 optimizing execution, and supporting runtime monetization. Marlowe offers a
 lower barrier to entry for DApp development. The new Marlowe DApp starter
-kit (DSK(((DSK)))), which will be maintained by the Marlowe Foundation(((Marlowe Foundation))),
+kit (DSK), which will be maintained by the Marlowe Foundation(((Marlowe Foundation))),
 will highlight these advancements and streamline onboarding for small and 
 medium-sized businesses, developers, infrastructure providers, and stake pool
 operators(((SPOs))).
@@ -1548,9 +1547,9 @@ cornerstone of the Cardano economy.
 
 The _Plutus smart contracts(((smart contracts)))_ section presents the rules
 of the Plutus language by demonstrating how to write and interact with Plinth(((Plinth)))
-smart contracts (formerly known as PlutusTx(((PlutusTx)))). Plinth is a high-level smart
+smart contracts (formerly known as PlutusTx). Plinth is a high-level smart
 contract language embedded in Haskell that compiles to Untyped Plutus Core(((Plutus Core)))
-(UPLC(((UPLC)))). Because these rules also apply to other compiled
+(UPLC). Because these rules also apply to other compiled
 languages(((compiled languages))) such as Aiken, Plu-Ts, and OpShin, learning
 the basics of Plinth helps developers read and write smart contracts in other
 languages that target Plutus.
@@ -1575,7 +1574,7 @@ https://www.haskell.org/documentation/[Haskell documentation] site
 provides more learning resources.
 
 Before reading section _Plutus smart contracts_, one should have a basic
-understanding of the extended UTXO (EUTXO(((EUTXO)))) accounting model that is presented
+understanding of the extended UTXO (EUTXO) accounting model that is presented
 in <<The EUTXO model>> section. One should also be familiar with the types
 of smart contract languages offered by Cardano, covered in the
 <<Smart contract programming languages>> section, which lists each type and provides
@@ -1782,7 +1781,7 @@ academic papers, and talks.
 
 Plinth(((Plinth))) enables developers to write and compile their on-chain
 code to Plutus, or more precisely to Untyped Plutus Core(((Plutus Core)))
-(UPLC(((UPLC)))), which the Cardano nodes execute. Plinth provides a
+(UPLC), which the Cardano nodes execute. Plinth provides a
 compiler(((compiler))) plugin for the Glasgow Haskell Compiler (GHC), which
 compiles to Plutus. More details about the Plinth-to-Plutus compilation pipeline
 are outlined in section <<Plutus security>>.
@@ -4696,7 +4695,7 @@ This was an example of minting fungible tokens. Fungibility(((Fungibility))) mea
 that one token is interchangeable with another token of the same type,
 meaning each unit has the same value as any other unit.
 
-Plutus also allows the minting of non-fungible tokens (NFTs(((NFTs)))), which are
+Plutus also allows the minting of non-fungible tokens (NFTs), which are
 unique tokens that can only be minted once. The key to writing such a
 minting policy is referencing something unique on the Cardano blockchain,
 and for that, we use UTXOs. UTXOs can exist only once, and once consumed
@@ -5070,7 +5069,7 @@ research presented in multiple papers. It is the first blockchain
 consensus protocol developed through peer-reviewed research with
 mathematically proven security features that guarantee the protocol is
 secure as long as 51% of the active stake (ada locked in for an epoch
-snapshot) is held by honest participants. The extended UTXO (EUTXO(((EUTXO))))
+snapshot) is held by honest participants. The extended UTXO (EUTXO)
 model, explained in section <<The EUTXO model>>, was also
 developed through extensive research and is well-tested by the
 community. There have been no major security breaches, and the Cardano
@@ -5153,13 +5152,12 @@ which is in centralized exchanges holding custody of traders tokens.
 Liquidity providers that provide token pairs to DEXs, such that normal
 users can trade those tokens, face the issue of impermanent loss on DEXs
 that use the https://www.coindesk.com/learn/what-is-an-automated-market-maker/[Automated
-market maker] (AMM(((AMM)))) design model. In an AMM-style DEX, smart contracts
+market maker] (AMM) design model. In an AMM-style DEX, smart contracts
 enable automated trading of cryptocurrency pairs, which are often a
 fungible token or a native cryptocurrency together with a stablecoin.
 
 To explain how impermanent loss(((impermanent loss))) works, let us consider an example of
-an AMM DEX where the deposited token pair is ETH and USDT (Tether(((Tether
-)))),
+an AMM DEX where the deposited token pair is ETH and USDT (Tether),
 a stablecoin pegged to the value of the USD. If the price of 1 ETH is
 1,000 USD and a liquidity provider wants to add 1 ETH to the pool,
 he must also add 1,000 USDT. Then, over time, the price of ETH rises
@@ -5347,11 +5345,11 @@ pure functional programming language(((pure functional programming language)))
 with a strong type system. You can
 read more about the characteristics and advantages of the Haskell
 programming language in section <<Features and benefits of Haskell>>.
-The Glasgow Haskell Compiler (GHC(((GHC)))), that is the most well-established Haskell
+The Glasgow Haskell Compiler (GHC), that is the most well-established Haskell
 compiler(((compiler
 ))), is used to compile Plinth code. On-chain code is compiled into
 Untyped Plutus Core(((Plutus Core
-))) (known simply as Plutus(((Plutus)))), which is the scripting
+))) (known simply as Plutus), which is the scripting
 language used by Cardano to implement the EUTXO model. Cardano nodes execute
 the compiled Plutus scripts during transaction validation with the help
 of the Plutus virtual machine (VM). A VM(((VM))) is a virtual environment that
@@ -5363,8 +5361,7 @@ VMs offer a safe execution environment. Every Cardano node has a
 built-in Plutus virtual machine(((VM))) that is written in Haskell. There
 is also a plan to develop a Cardano node written in the Rust language.
 The project is managed by the https://pragma.io/[Pragma] member-based
-organisation (MBO(((MBO
-)))) and is called https://github.com/pragma-org/amaru[Amaru].
+organisation (MBO) and is called https://github.com/pragma-org/amaru[Amaru].
 
 Plutus is a simple, functional language similar to Haskell, and a large
 subset of Haskell can be used to write Plutus scripts. Its simple and
@@ -5469,7 +5466,7 @@ formalized, and then the properties of the language were proven to
 indicate that the design of the language was correct. Semantics are
 given first by describing the reduction semantics of the language with
 https://en.wikipedia.org/wiki/Operational_semantics#Structural_operational_semantics[Structural
-Operational Semantics] (SOS(((SOS)))). Then, the semantics on an abstract
+Operational Semantics] (SOS). Then, the semantics on an abstract
 machine (the https://en.wikipedia.org/wiki/CEK_Machine[CEK machine])
 are given and shown as equivalent to the SOS. Other properties are also
 shown. For example, the soundness and correctness of the typing system.
