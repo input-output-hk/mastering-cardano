@@ -148,7 +148,7 @@ Returns a Current Block Hash that has the desired number of trailing zeros ("000
 But in order to calculate the Current Block Hash the only way is to try Nonce numbers at random.
 like in this image we try with 0, 17... and so on
 
-image::ouroboros_trying_with_nonce.svg.
+image::ouroboros_trying_with_nonce.svg
 
 Until finally, we find the Nonce that gives a correct Current Block Hash:
 
