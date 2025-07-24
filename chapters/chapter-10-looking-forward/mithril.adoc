@@ -29,7 +29,7 @@ similar to Cardano’s.
 Mithril achieves its goals using a stake-based threshold multi-signature(((multi-signature, stake-based threshold)))
 (STM) scheme developed by the Input | Output (IO) research and
 engineering teams(((engineering, teams))) and presented in the
-https://iohk.io/en/research/library/papers/mithril-stake-based-threshold-multisignatures/[Mithril(((Mithril)))
+https://iohk.io/en/research/library/papers/mithril-stake-based-threshold-multisignatures/[Mithril
 research paper]. Simply put, the scheme generates a certificate(((certificate))) to
 prove that a minimum representative portion of signers(((signers))) – selected based
 on their stake(((stake))) – has signed a specific piece of data (here referred to
@@ -99,7 +99,7 @@ phase is conducted only once.
 
 This phase involves initializing each signer(((signer))) and registering their
 cryptographic keys. First, the signer retrieves the protocol parameters(((protocol, parameters)))
-to generate a new key pair (verification key(((verification, key))) and signing key) along with
+to generate a new key pair (verification key and signing key) along with
 a proof of possession(((proof of possession))) (PoP). The PoP proves that the signer owns the
 secret key associated with the verification key(((verification, key))) being registered. The
 verification key(((verification, key))) and PoP are broadcast to all parties for registration,
@@ -116,9 +116,9 @@ achieved among a subset of signers(((signers))) representing sufficient stake in
 protocol to ensure the quorum(((quorum))) of signatures can be met.
 
 Each party then computes a condensed representation of the key
-registration process: the *aggregate verification key(((aggregate, verification key)))* (AVK). The AVK,
+registration process: the *aggregate verification key* (AVK). The AVK,
 derived as the root of a
-https://en.wikipedia.org/wiki/Merkle_tree[Merkle tree(((Merkle tree)))] created from
+https://en.wikipedia.org/wiki/Merkle_tree[Merkle tree] created from
 the verification keys and stake of the registered signers(((signers))), is used to
 create individual signatures and ultimately verify the aggregated
 multi-signature(((multi-signature))).
@@ -156,7 +156,7 @@ cryptographic pairing operation(((cryptographic, pairing operation))), which is 
 
 The diagram below illustrates how a signer(((signer))) can create an individual
 signature with Mithril(((Mithril))). You can learn more about this process in the
-https://www.essentialcardano.io/article/mithril-a-stronger-and-lighter-blockchain-for-better-efficiency[Mithril(((Mithril))):
+https://www.essentialcardano.io/article/mithril-a-stronger-and-lighter-blockchain-for-better-efficiency[Mithril:
 a stronger and lighter blockchain for better efficiency] blog post.
 
 image::signing_with_mithril.png[width=624,height=281,title="Mithril individual signature creation"]
@@ -247,7 +247,7 @@ documentation. A link is provided in the <<Additional resources>> section.
 
 *Decentralization and peer-to-peer (P2P) networking*
 
-Ultimately, the *Mithril network(((Mithril, network)))* is designed to be fully decentralized.
+Ultimately, the *Mithril network* is designed to be fully decentralized.
 However, the first implementation is centralized, as full
 decentralization(((decentralization))) introduces complex subjects that are currently active
 areas of research for the Mithril(((Mithril))) team:
@@ -265,7 +265,7 @@ development.
 signatures from signers(((signers))) to aggregators over a network. This is currently
 achieved with a centralized mechanism on an aggregator(((aggregator))). In a
 decentralized setup, the signature diffusion needs to rely on a P2P
-network layer. https://cips.cardano.org/cip/CIP-0137[CIP-137(((CIP-137)))]
+network layer. https://cips.cardano.org/cip/CIP-0137[CIP-137]
 (Decentralized message queue) has been proposed to leverage the Cardano
 network layer to operate the diffusion of signatures, incorporating new
 mini-protocols(((mini-protocols))).
@@ -285,7 +285,7 @@ from multiple participants are aggregated into a single signature if the
 total stake(((stake))) of the participants exceeds a certain threshold.
 * *Stake-based eligibility*: the protocol ensures that only participants
 with sufficient stake(((stake))) are eligible to sign messages. This eligibility is
-determined https://en.wikipedia.org/wiki/Pseudorandomness[pseudorandomly(((pseudorandomly)))].
+determined https://en.wikipedia.org/wiki/Pseudorandomness[pseudorandomly].
 * *Aggregation and verification*: individual signatures are aggregated
 into a single multi-signature(((multi-signature))), which can then be verified efficiently.
 
@@ -372,7 +372,7 @@ representing nearly the entire Cardano stake(((stake))).
 *Threat model*
 
 Mithril security(((Mithril, security))) is also tied to its implementation, which is currently
-available in the https://github.com/input-output-hk/mithril/[Mithril(((Mithril))) repository].
+available in the https://github.com/input-output-hk/mithril/[Mithril repository].
 The Mithril(((Mithril))) team has published a
 https://mithril.network/doc/mithril/advanced/threat-model[threat
 model analysis], which assesses the assets involved in the Mithril(((Mithril)))
