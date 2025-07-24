@@ -1583,8 +1583,7 @@ of smart contract languages offered by Cardano, covered in the
 resources for development tools. Additionally, understanding Cardano addresses(((Cardano addresses)))
 and their binary format, as explained in section <<Cardano addresses>>, is
 important. Plinth code examples presented in this section are based on
-PlutusV3, which became available after the Chang hard fork(((Chang hard fork
-))). From the
+PlutusV3, which became available after the Chang hard fork(((Chang hard fork))). From the
 https://docs.cardano.org/about-cardano/evolution/upgrades/chang/[Cardano
 docs] page, we get a short description of what PlutusV3(((PlutusV3))) brings to
 Cardano:
@@ -1592,8 +1591,7 @@ Cardano:
 With the introduction of PlutusV3, Plutus scripts are available for use
 as part of the governance system, enabling sophisticated voting
 possibilities like supporting DAOs, for example. Chang also brings
-advanced Plutus cryptographic primitives(((cryptographic primitives
-))), other new primitives, and
+advanced Plutus cryptographic primitives(((cryptographic primitives))), other new primitives, and
 performance enhancements to the platform. These additions provide
 developers with a richer smart contract creation toolkit, enhancing both
 developer and user experiences, and unlocking new possibilities for
@@ -1603,12 +1601,9 @@ Section <<PlutusV3 features>> explains some of the PlutusV3 features
 that are not covered in the coding sections, and highlights the advantages
 they bring. The _Plutus smart contracts_ section covers the following topics:
 
-* Plutus in comparison to Bitcoin Script(((Bitcoin Script
-))) and Solidity(((Solidity
-)))
+* Plutus in comparison to Bitcoin Script(((Bitcoin Script))) and Solidity(((Solidity)))
 * Plinth in comparison to Aiken
-* Setting up a Plinth development environment(((Plinth development environment
-)))
+* Setting up a Plinth development environment(((Plinth development environment)))
 * Simple validation scripts
 * Script context explained
 * Time-dependent and parameterized validators
@@ -1619,9 +1614,8 @@ they bring. The _Plutus smart contracts_ section covers the following topics:
 Plinth validator code and https://meshjs.dev/[MeshJS] off-chain code
 presented in the _Plutus smart contracts_ section can be found at the
 https://github.com/input-output-hk/plutus-pioneer-program/tree/plinth-plutusV3[plinth-plutusV3]
-branch of the Plutus Pioneer program(((Plutus Pioneer program
-))) (PPP) GitHub repository. This
-branch contains validator examples of the
+branch of the Plutus Pioneer program(((Plutus Pioneer program))) (PPP)
+GitHub repository. This branch contains validator examples of the
 https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[4th
 PPP iteration], translated from PlutusV2 to PlutusV3. In addition
 to MeshJS off-chain code, the _plinth-plutusV3_ branch also contains
@@ -1632,8 +1626,7 @@ languages can be found at:
 * https://www.gomaestro.org/smart-contracts[Cardano's smart contract
 marketplace] – hosted by Maestro. The platform provides powerful APIs
 and advanced software tools to build and scale DApps with ease.
-* Gimbalabs(((Gimbalabs
-))) https://plutuspbl.io/[Plutus project-based learning] –
+* Gimbalabs(((Gimbalabs))) https://plutuspbl.io/[Plutus project-based learning] –
 provides _Course Repositories_ that redirect to Plutus example projects.
 More resources are available on their
 https://www.youtube.com/@gimbalabs/playlists[YouTube channel].
@@ -1642,13 +1635,12 @@ https://www.cardanocube.com/cardano-ecosystem-interactive-map[Cardano's
 interactive map]. One can also explore projects in other groups and view
 their GitHub repositories.
 * https://github.com/johnnygreeney/cardanoforthemasses[Cardano for the Masses]
-online book written by John Greene(((Greene, John
-))) that is available under an open-source license.
+online book written by John Greene(((Greene, John))) that is available
+under an open-source license.
 * Cardano foundation's free online https://academy.cardanofoundation.org/[Cardano academy]
 course, that teaches the basics of blockchain and Cardano.
 
-Cardano's hard fork combinator(((HFC
-))) technology, briefly introduced in section
+Cardano's hard fork combinator(((HFC))) technology, briefly introduced in section
 <<cardano-node-layers, Cardano node layers>>, subsection *Consensus and storage layer*,
 enables the Cardano node(((Cardano node))) to continue processing scripts written in earlier
 versions of Plutus even after a hard fork introduces a new Plutus version.
@@ -1665,11 +1657,9 @@ This section compares the basic characteristics of smart contracts in
 Bitcoin(((Bitcoin))), Ethereum(((Ethereum))), and Cardano(((Cardano))),
 highlighting the new concepts each introduced in the cryptocurrency space.
 
-A Bitcoin Script(((Bitcoin Script
-))) is a simple stack-based smart contract language, whose
+A Bitcoin Script(((Bitcoin Script))) is a simple stack-based smart contract language, whose
 most complex control structure is a conditional. It is written in a
-Forth-like non-Turing-complete(((Turing-complete
-))) language and is essentially linear, which
+Forth-like non-Turing-complete(((Turing-complete))) language and is essentially linear, which
 means it can branch, but the language does not offer looping constructs
 or recursion. All Bitcoin scripts terminate, and it is possible to give
 an accurate estimate of the time taken to execute a script. Bitcoin
@@ -1678,15 +1668,12 @@ https://iohk.io/en/research/library/papers/functional-blockchain-contracts/[_Fun
 Blockchain Contracts(((Functional Blockchain Contracts)))_], _Chakravarty et al. 2019_):
 
 [arabic]
-. The Bitcoin Script(((Bitcoin Script
-))) language constrains programs to be of a limited
+. The Bitcoin Script(((Bitcoin Script))) language constrains programs to be of a limited
 size and provides barely any control structures (essentially only
 conditional statements). The primitive operations that can be used in
-Bitcoin Script(((Bitcoin Script
-))) are also very limited (for example, the division
+Bitcoin Script(((Bitcoin Script))) are also very limited (for example, the division
 operation was originally included but was subsequently disabled).
-. The computational context available to a Bitcoin Script(((Bitcoin Script
-))) program is
+. The computational context available to a Bitcoin Script(((Bitcoin Script))) program is
 very constrained. For example, it cannot inspect a transaction
 currently being validated, but it can access the transaction's hash.
 
@@ -1700,18 +1687,14 @@ challenge suspicious transactions. One can read more about this topic in
 the following
 https://iohk.io/en/blog/posts/2025/07/19/smart-contracts-on-bitcoin/[IO blog].
 
-Ethereum provides a Turing-complete(((Turing-complete
-))) language for the Ethereum virtual
+Ethereum provides a Turing-complete(((Turing-complete))) language for the Ethereum virtual
 machine (EVM), which is the runtime environment for transaction
-execution in Ethereum. It also provides Solidity(((Solidity
-))), a custom higher-level
-programming language that compiles into EVM code. Solidity(((Solidity
-))) is an
+execution in Ethereum. It also provides Solidity(((Solidity))), a custom higher-level
+programming language that compiles into EVM code. Solidity(((Solidity))) is an
 object-oriented, statically typed programming language designed for
 developing smart contracts. It supports inheritance, libraries, and
 complex user-defined types. Gas fees must be paid for every smart
-contract transaction on Ethereum. A Solidity(((Solidity
-))) smart contract is able to
+contract transaction on Ethereum. A Solidity(((Solidity))) smart contract is able to
 see and access information from the entire global state of the
 blockchain. That is the opposite extreme of Bitcoin, where the script
 has very little context. This enables Ethereum smart contracts to be
@@ -1719,8 +1702,7 @@ more powerful, but it can also make it difficult to predict their
 behavior, leading to potential security issues. During the interval
 between a user constructing a transaction and its incorporation into the
 blockchain, concurrent events may also occur. In Ethereum, it is possible
-that a user has to pay gas fees(((gas fees
-))) for a transaction that interacts with a
+that a user has to pay gas fees(((gas fees))) for a transaction that interacts with a
 smart contract, although it can eventually fail with an error. Ethereum
 employs an account-based model, where each user has an account with a
 balance. When funds are transferred between accounts, the balances are
@@ -1763,13 +1745,11 @@ Section <<Script context explained>> details the information
 contained in the script context that a transaction interacting with a script
 can access. A Plutus script can use all this information to decide whether it
 is ok to consume a UTXO or not. It is also possible to use a tool like the
-Cardano CLI(((Cardano CLI
-))) or an off-chain code library to check whether a transaction will
+Cardano CLI(((Cardano CLI))) or an off-chain code library to check whether a transaction will
 be validated before on-chain execution. If the transaction is valid, it will be
 processed on the network, given that all UTXO inputs are present and the
 processing time falls within the transaction's validity interval. In case these
-conditions are not met, the transaction will fail without charging the user any fees, unlike in Ethereum, where users must pay gas fees(((gas fees
-))) for transactions
+conditions are not met, the transaction will fail without charging the user any fees, unlike in Ethereum, where users must pay gas fees(((gas fees))) for transactions
 that can ultimately fail. We say that transactions on Cardano are deterministic.
 This does not mean
 we know for sure if a transaction will be processed because a UTXO input might
@@ -1801,12 +1781,10 @@ academic papers, and talks.
 
 ==== Plinth in comparison to Aiken
 
-Plinth(((Plinth))) enables developers to write and compile their on-chain code to Plutus,
-or more precisely to Untyped Plutus Core(((Plutus Core
-))) (UPLC(((UPLC
-)))), which the Cardano nodes execute.
-Plinth provides a compiler(((compiler
-))) plugin for the Glasgow Haskell Compiler (GHC), which
+Plinth(((Plinth))) enables developers to write and compile their on-chain
+code to Plutus, or more precisely to Untyped Plutus Core(((Plutus Core)))
+(UPLC(((UPLC)))), which the Cardano nodes execute. Plinth provides a
+compiler(((compiler))) plugin for the Glasgow Haskell Compiler (GHC), which
 compiles to Plutus. More details about the Plinth-to-Plutus compilation pipeline
 are outlined in section <<Plutus security>>.
 
@@ -1816,8 +1794,7 @@ the highest level of assurance. Furthermore, developers don't have to
 run a full Cardano node to test their work. The tools that allow testing
 Plinth scripts are outlined in the <<Plutus security>> section. The
 https://github.com/IntersectMBO/plutus[Plutus] repository includes the
-Plinth compiler(((compiler
-))) (previously called PlutusTx), enabling developers to
+Plinth compiler(((compiler))) (previously called PlutusTx), enabling developers to
 write Haskell code that can be compiled to Plutus. The repository also
 includes the combined
 https://intersectmbo.github.io/plutus/haddock/latest[documentation],
@@ -1832,8 +1809,7 @@ This process is illustrated in the diagram below:
 image::sc_aiken_compilation.png[width=590,height=410,title="Aiken code transformation, source: https://cardanofoundation.org/blog/aiken-the-future-of-smart-contracts[CF blog]"]
 
 Aiken was developed with the support of https://txpipe.io/[TxPipe]
-and the https://cardanofoundation.org/[Cardano Foundation(((Cardano Foundation
-)))].
+and the https://cardanofoundation.org/[Cardano Foundation(((Cardano Foundation)))].
 Currently, IO is also supporting the development of Aiken.
 More information about maintenance and support can be found at the
 https://aiken-lang.org/credits[official page]. Aiken takes inspiration
@@ -1842,8 +1818,8 @@ which are known for friendly error messages and an overall excellent
 developer experience. It is a purely functional language with strong
 static typing and inference. It offers a more accessible and familiar
 syntax to developers, which makes it easy to learn. Aiken enables
-cost-efficient smart contract development(((smart contract development
-))) and comes with a modern
+cost-efficient smart contract development(((smart contract development)))
+and comes with a modern
 development environment that has a package manager, helpful error
 diagnostics, a language-server protocol (LSP) with auto-formatting, and
 popular editor integration (VSCode, NeoVim, Emacs). The language is well
@@ -1870,8 +1846,7 @@ introduction of PlutusV3, sums of products(((sums of products))) allow for encod
 in a more compact and cost-effective way. Also, Plutus now provides
 a way to deal directly with the [purple]#Data# type for all Plutus script
 versions (V1, V2, and V3), allowing for better code optimization.
-The https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/optimizing-scripts-with-asData[Plinth user guide(((Plinth user guide
-)))]
+The https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/optimizing-scripts-with-asData[Plinth user guide(((Plinth user guide)))]
 provides instructions on that. Aiken compiles all its custom data types
 into the built-in Plutus type [purple]#Data#. We will look at this data
 type in section <<Simple validation scripts>>.
@@ -1900,8 +1875,7 @@ covering the following topics:
 
 * Pre-requisites
 * Scaffolding
-* Using the standard library(((standard library
-)))
+* Using the standard library(((standard library)))
 * The first validator
 * Adding traces
 * Writing a test
@@ -1965,18 +1939,16 @@ https://github.com/IntersectMBO/cardano-haskell-packages[Haskell
 packages for Cardano] repository. It contains all Haskell packages used
 by Cardano that are not hosted on
 https://hackage.haskell.org/[Hackage] – the central archive for
-Haskell packages. Other compiled languages(((compiled languages
-))) provide their own libraries
+Haskell packages. Other compiled languages(((compiled languages)))
+provide their own libraries
 that implement Plutus types. One example is the official
-https://aiken-lang.github.io/stdlib/[standard library(((standard library
-)))] for the Aiken
-language.
+https://aiken-lang.github.io/stdlib/[standard library(((standard library)))]
+for the Aiken language.
 
 Plinth data types cannot be explored in the standard GHCi REPL because the
-GHC compiler(((compiler
-))) pipeline first compiles Plinth code to an intermediate
-language called Haskell Core(((Haskell core))). The Plutus compiler(((compiler
-))) then takes this
+GHC compiler(((compiler))) pipeline first compiles Plinth code to an intermediate
+language called Haskell Core(((Haskell core))).
+The Plutus compiler(((compiler))) then takes this
 Haskell Core and compiles it to the Plutus script language. This means
 that GHC is unaware of Plinth data types. Additionally, the Plinth
 libraries are not hosted on Hackage, which means the only way to query
@@ -2066,8 +2038,7 @@ a spending script, it potentially contains a datum).
 We will look into those data types in more detail in section
 <<Script context explained>>. If a transaction tries to spend multiple UTXOs
 at a script address, the spending script is run for every UTXO individually.
-The redeemer and the script information(((script information
-))) are individually assigned for every
+The redeemer and the script information(((script information))) are individually assigned for every
 UTXO in that transaction. The transaction information is only one and is
 accessible to every script instance that is being triggered by a single transaction.
 
@@ -2140,8 +2111,7 @@ serializedMkGiftValidator :: SerialisedScript
 serializedMkGiftValidator = serialiseCompiledCode compiledMkGiftValidator
 ----
 
-The long list of language pragmas, GHC compiler(((compiler
-))) options, and import statements
+The long list of language pragmas, GHC compiler(((compiler))) options, and import statements
 is necessary to cover the functionality for all validators presented in the
 <<Simple validation scripts>> section. From the language pragmas, we note that
 we add the [purple]#NoImplicitPrelude# extension that prevents the standard
@@ -2152,8 +2122,7 @@ Plinth coding. One can read more about GHC language pragmas at the
 https://wiki.haskell.org/Language_Pragmas[Haskell wiki], which provides
 links to official GHC documentation. The
 https://downloads.haskell.org/ghc/latest/docs/users_guide/using-optimisation.html#ghc-flag--ffull-laziness[GHC docs]
-also cover various GHC compiler(((compiler
-))) options. We name our module `Week02.Validators`.
+also cover various GHC compiler(((compiler))) options. We name our module `Week02.Validators`.
 The naming of modules through the <<Plutus smart contracts>> code examples
 section follows the naming from the
 https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[fourth
@@ -2202,8 +2171,7 @@ reference anything defined outside of them. This can become an issue
 when validator functions are long expressions or when library functions
 are called within their body. A workaround is to make the function
 inlinable. By adding the [purple]#INLINABLE# pragma statement before or
-after the function definition, the GHC compiler(((compiler
-))) replaces the function call
+after the function definition, the GHC compiler(((compiler))) replaces the function call
 in the Oxford brackets with the actual function body.
 
 This completes the on-chain code. Next, we use the [blue]#serialiseCompiledCode#
@@ -2213,21 +2181,17 @@ we present the code that lets us generate https://cips.cardano.org/cip/CIP-57[Pl
 blueprints(((Plutus blueprints)))]
 for all the validators presented in this section. Plutus blueprints allow documenting
 Plutus validators in `JSON` format and include the compiled validator code that is
-represented as a `CBORHEX(((CBORHEX
-)))`. The https://en.wikipedia.org/wiki/CBOR[Concise Binary
-Object Representation] (`CBOR(((CBOR
-)))`) is a binary data serialization format loosely based
+represented as a `CBORHEX(((CBORHEX)))`. The https://en.wikipedia.org/wiki/CBOR[Concise Binary
+Object Representation] (`CBOR(((CBOR)))`) is a binary data serialization format loosely based
 on `JSON`. The `COBORHEX` is a hexadecimal representation of this data format.
-For our [blue]#mkGiftValidator# the blueprint will show the following `CBORHEX(((CBORHEX
-)))`:
+For our [blue]#mkGiftValidator# the blueprint will show the following `CBORHEX(((CBORHEX)))`:
 
 [source,json]
 ----
 "compiledCode": "450101002499"
 ----
 
-Since our contract is simple, the `CBORHEX(((CBORHEX
-)))` value is short. For more complex
+Since our contract is simple, the `CBORHEX(((CBORHEX)))` value is short. For more complex
 contracts, this value would increase in length. This compiled code can then be
 used in off-chain code when attaching the validator to a transaction. Let us now
 explore an example where the validation logic always fails, regardless of the input.
@@ -2253,7 +2217,8 @@ the contract once sent. The [blue]#traceError# function can produce an
 error and log a message displayed by the failed off-chain code transaction
 that tries to claim any funds from this script address. Also, in this case, we ignore
 the entire script context. Then we compile the validator and serialize it. We could
-also use the [blue]#check# function with a `False` argument, but in that case, no error message would be logged.
+also use the [blue]#check# function with a `False` argument, but in that case,
+no error message would be logged.
 
 Next, we show an example where we make use of the redeemer(((redeemer))) in the validation logic.
 The redeemer type is defined as a wrapper around the [purple]#BuiltinData# data type:
@@ -2305,7 +2270,8 @@ https://plutus.cardano.intersectmbo.org/haddock/latest/[Haddock documentation].
 There also exists the [blue]#unsafeFromBuiltinData# function that is defined in the
 [blue]#UnsafeFromData# type class. This function directly returns a type variable
 instead of wrapping it in a [purple]#Maybe# type. If the conversion fails,
-the function raises an error, and the validation logic fails. We call it _unsafe_ since the conversion might fail with an error. Below
+the function raises an error, and the validation logic fails. We call it _unsafe_
+since the conversion might fail with an error. Below
 you can see the [purple]#FromData# and [purple]#UnsafeFromData# type classes.
 
 [source,haskell]
@@ -2317,22 +2283,20 @@ class UnsafeFromData a where
   unsafeFromBuiltinData :: BuiltinData -> a
 ----
 
-Once we have the script context in typed form, we can access the redeemer, a wrapper around the [purple]#BuiltinData# type. Then we again try to convert
+Once we have the script context in typed form, we can access the redeemer,
+a wrapper around the [purple]#BuiltinData# type. Then we again try to convert
 that type, in this case to an [purple]#Integer#. Now that the redeemer is in the
 correct form, we can simply check if it is equal to 42 and return the [blue]#unitval#
 variable or raise an error and log a message. We could also use the [blue]#check#
 function as we did in our previous examples. After that, we compile and serialize
 the validator.
 
-The reason why we stated _"large CBOR(((CBOR
-)))"_ in the comment above the code is that
+The reason why we stated _"large CBOR(((CBOR)))"_ in the comment above the code is that
 converting the script context into a typed form is a costly operation and produces
-a large CBOR(((CBOR
-))). Next, let us look at the same validator in untyped form, where we decode
-the script by keeping it in the form of the [purple]#BuiltinData# type. At the end of
-this section, we will compare `CBORHEX(((CBORHEX
-)))` lengths for all 42 validators presented in
-this section.
+a large CBOR(((CBOR))). Next, let us look at the same validator in untyped form, where
+we decode the script by keeping it in the form of the [purple]#BuiltinData# type.
+At the end of this section, we will compare `CBORHEX(((CBORHEX)))` lengths for
+all 42 validators presented in this section.
 
 [source,haskell]
 ----
@@ -2471,8 +2435,7 @@ type. We compile and serialize the validator in the same way as in the previous 
 Altogether, we have defined four different variants for the 42 validator. We
 note that if we were to import the [purple]#ScriptContext# data type from the
 `PlutusLedgerApi.Data.V3` module instead of the `PlutusLedgerApi.V3` module,
-the `CBORHEX(((CBORHEX
-)))` lengths decrease by around 10%. The table below shows compiled
+the `CBORHEX(((CBORHEX)))` lengths decrease by around 10%. The table below shows compiled
 code lengths for the four validators and for the two different `PlutusLedgerApi`
 modules we can use.
 
@@ -2507,16 +2470,15 @@ modules we can use.
 We see that we get by far the most compact compiled code if we decode the
 [purple]#ScriptContext# in its untyped form and then convert the part we need
 to typed form. We call that lazy decoding. This also brings an on-chain code
-performance advantage. The largest `CBORHEX(((CBORHEX
-)))` is the one for the untyped
+performance advantage. The largest `CBORHEX(((CBORHEX)))` is the one for the untyped
 validator, where we convert the entire [purple]#ScriptContext# into typed form.
 The reason is this type carries much information and convert the whole type
 into typed form is a costly operation.
 
 The reason the compiled code is shorter if we import the [purple]#ScriptContext#
 from the `PlutusLedgerApi.Data.V3` module is that module provides an alternative
-interface that works directly with the Plutus Core(((Plutus Core
-))) [purple]#Data# type under the hood. Because
+interface that works directly with the Plutus Core(((Plutus Core))) [purple]#Data#
+type under the hood. Because
 of the updates to Plutus, data types can now be thin wrappers over the [purple]#BuiltinData#
 type, which allows retaining the user-friendliness of the data type version while also
 avoiding the upfront cost of decoding the [purple]#BuiltinData# into sums of products.
@@ -2525,17 +2487,15 @@ We call a data type _data-backed_ if it is representationally equivalent to [pur
 Since Plutus now provides a way to deal directly with the [purple]#Data# type
 for all Plutus script versions (V1, V2, and V3), developers can move away from sums of
 products(((sums of products))) or Scott encoding. The
-https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/optimizing-scripts-with-asData[Plinth user guide(((Plinth user guide
-)))]
+https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/optimizing-scripts-with-asData[Plinth user guide(((Plinth user guide)))]
 provides instructions on how to optimize scripts with the `PlutusTx.asData`
 module that contains template Haskell (TH) code for encoding algebraic data
-types (ADTs) as `Data` objects in Plutus Core(((Plutus Core
-))) such that they become _data-backed_
+types (ADTs) as `Data` objects in Plutus Core(((Plutus Core)))
+such that they become _data-backed_
 types. The `PlutusLedgerApi.Data.V3` module already contains the [purple]#ScriptContext#
 in the form of a _data-backed_ type. Also, one can look at the
 https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/simplifying-before-compilation[Simplifying code before compilation]
-and https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/other-optimization-techniques[Other optimization techniques]
-guidelines.
+and https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/other-optimization-techniques[Other optimization techniques] guidelines.
 
 We again state the various possibilities that a redeemer can be used for
 in smart contracts:
@@ -2548,8 +2508,7 @@ to unlock funds held at a script address
 
 At the end, we show the code for generating Plutus blueprints for two of the
 six validators we have defined in this section to shorten the code. We choose
-the gift validator and the untyped 42 validator that generates a small CBOR(((CBOR
-))).
+the gift validator and the untyped 42 validator that generates a small CBOR(((CBOR))).
 
 [source,haskell]
 ----
@@ -2615,9 +2574,8 @@ that comes the blueprint definition. It contains the contract ID, the preamble
 that defines some general information, the contract validators, which we will
 define next, and the contract definitions. The definitions include a list of types
 that we have used in the validator code. After that, we see the [blue]#preamble#
-definition. Next, we show the validator blueprint(((validator blueprint
-))) definitions for two validators
-that we have chosen.
+definition. Next, we show the validator blueprint(((validator blueprint)))
+definitions for two validators that we have chosen.
 
 [source,haskell]
 ----
@@ -2827,8 +2785,7 @@ executable gen-blueprint
     , scripts
 ----
 
-In `.cabal`, we define our compiler(((compiler
-))) options, the library where our validator
+In `.cabal`, we define our compiler(((compiler))) options, the library where our validator
 code resides, and the build dependencies that list Plutus packages needed by our validator
 code. At the end, we define the executable project, which tells Cabal which file is the
 entry point for compiling the project, and we also list the build dependencies. We name
@@ -2885,13 +2842,14 @@ data ScriptContext = ScriptContext
 ----
 
 It contains transaction information, the redeemer, and script information(((script information))).
-To reiterate: if a transaction attempts to spend multiple UTXOs at a script address, the spending script is executed separately for each UTXO. The redeemer and script information(((script information
-))) are assigned individually to each UTXO, whereas the transaction information is shared across all scripts triggered by that transaction.
+To reiterate: if a transaction attempts to spend multiple UTXOs at a script address, the spending
+script is executed separately for each UTXO. The redeemer and script information(((script
+information))) are assigned individually to each UTXO, whereas the transaction information
+is shared across all scripts triggered by that transaction.
 
-In the previous code examples, the validation logic did not use the transaction and script information(((script information
-))). However, in most validator scripts, they are
-used. First we look at the script information(((script information
-))) data type.
+In the previous code examples, the validation logic did not use the transaction and script
+information(((script information))). However, in most validator scripts, they are
+used. First we look at the script information(((script information))) data type.
 
 *Script information*
 
@@ -2915,9 +2873,8 @@ data ScriptInfo
   deriving (Pretty) via (PrettyShow ScriptInfo)
 ----
 
-The script information(((script information
-))) contains information about the script's purpose.
-If a transaction tries to mint a native asset, the script info
+The script information(((script information))) contains information about the
+script's purpose. If a transaction tries to mint a native asset, the script info
 contains the [purple]#MintingScript# data constructor that carries the
 [purple]#CurrencySymbol# data type.
 
@@ -2953,9 +2910,8 @@ data TxOutRef = TxOutRef
   deriving anyclass (NFData, HasBlueprintDefinition)
 ----
 
-The transaction output reference(((transaction output reference
-))) contains the transaction ID(((transaction ID
-))), which is an SHA-256
+The transaction output reference(((transaction output reference)))
+contains the transaction ID(((transaction ID))), which is an SHA-256
 hash of the transaction and the transaction index, which is an integer number.
 Each UTXO that a transaction creates gets a transaction index assigned starting with
 0 and increasing by 1. Because a transaction hash(((transaction hash))) (ID) is unique,
@@ -2966,9 +2922,8 @@ at least one UTXO as it needs to pay some fees. By a simple induction
 argument, it follows that two identical transaction hashes can never exist.
 We also rely on the fact that the probability of a hash collision is negligible.
 
-The [purple]#TxId# data type that represents an SHA-256 hash(((SHA-256 hash
-))) of the transaction
-is a wrapper around a [purple]#BuiltinByteString#.
+The [purple]#TxId# data type that represents an SHA-256 hash(((SHA-256 hash)))
+of the transaction is a wrapper around a [purple]#BuiltinByteString#.
 
 [source,haskell]
 ----
@@ -3016,17 +2971,15 @@ data Credential =
     deriving anyclass (NFData, HasBlueprintDefinition)
 ----
 
-This data type either contains a public key hash or a script hash(((script hash
-))). In
-the case of a public key hash, the owner of the private key(((private key
-))) corresponding
+This data type either contains a public key hash or a script hash(((script hash))). In
+the case of a public key hash, the owner of the private key(((private key))) corresponding
 to the public key needs to sign the transaction to be able to spend the
-staking rewards. In the case of a script hash(((script hash
-))) the transaction must include
+staking rewards. In the case of a script hash(((script hash))) the transaction must include
 or reference the validation script that will be used to decide whether
 the staking rewards can be withdrawn by the transaction.
 
-Both the [purple]#PubKeyHash# and [purple]#ScriptHash# data types are wrappers around the [purple]#BuiltinByteString# data type.
+Both the [purple]#PubKeyHash# and [purple]#ScriptHash# data types are wrappers
+around the [purple]#BuiltinByteString# data type.
 
 Other possibilities for the [purple]#ScriptInfo# data type cover the
 following script purposes:
@@ -3037,8 +2990,7 @@ following script purposes:
 In the <<Plutus smart contracts>> section, we will focus on the spending
 and minting script purposes.
 
-*Decoding the script information(((script information
-))) in untyped form*
+*Decoding the script information(((script information))) in untyped form*
 
 Before we move on explaining the transaction information data type we look
 at another validator example that shows how to decode the [purple]#ScriptInfo#
@@ -3082,8 +3034,8 @@ serializedDatum42Validator = serialiseCompiledCode compiledDatum42Validator
 
 As we have already explained in the previous section we need to define the
 [blue]#constrArgs# helper function that helps us to convert the [purple]#BuiltinData#
-to the [purple]#BuiltinList# type. The script information(((script information
-))) is contained on the
+to the [purple]#BuiltinList# type. The script information(((script information)))
+is contained on the
 third place in the script context so we use two time the [blue]#tail# function
 and one time the [blue]#head# function to extract it.
 
@@ -3142,8 +3094,7 @@ data TxInfo = TxInfo
 
 It contains several fields that carry information about the transaction
 being validated. In the beginning, it contains a list of transaction inputs
-and reference inputs(((reference inputs
-))). Reference inputs are inputs accessible by the script
+and reference inputs(((reference inputs))). Reference inputs are inputs accessible by the script
 context but not consumed by the transaction. They are only referenced, hence
 the name. A transaction may need access to a UTXO without consuming it
 because the UTXO can contain important information in the datum that
@@ -3154,12 +3105,11 @@ instead of appending a script to a transaction that wants to spend funds
 at the script address, we simply reference this script from the UTXO
 that carries it. This lowers the transaction size and reduces the
 transaction cost. A code example of this is presented in section
-<<Off-chain code with MeshJS>>. Another advantage of reference inputs(((reference inputs
-))) is
+<<Off-chain code with MeshJS>>. Another advantage of reference
+inputs(((reference inputs))) is
 that several transactions in the same block can use the same UTXO as a
 reference input, since it is not being consumed by any of those transactions.
-Transaction inputs and reference inputs(((reference inputs
-))) are lists of type transaction input
+Transaction inputs and reference inputs(((reference inputs))) are lists of type transaction input
 info [purple]#TxInInfo# that defines the input of a pending transaction.
 
 [source,haskell]
@@ -3172,13 +3122,11 @@ data TxInInfo = TxInInfo
   deriving anyclass (HasBlueprintDefinition)
 ----
 
-A transaction input information(((transaction input information
-))) contains a transaction output reference(((transaction output reference
-)))
+A transaction input information(((transaction input information)))
+contains a transaction output reference(((transaction output reference)))
 that we have previously explained. It defines the input UTXO, and it also
-contains resolved transaction input information(((transaction input information
-))) in form of the transaction
-output [purple]#TxOut# data type.
+contains resolved transaction input information(((transaction input information)))
+in form of the transaction output [purple]#TxOut# data type.
 
 [source,haskell]
 ----
@@ -3193,9 +3141,8 @@ data TxOut = TxOut
 ----
 
 A transaction output of a UTXO contains the address at which this UTXO resides,
-the value it contains, the output datum and possibly a script hash(((script hash
-))). We look
-first at the [purple]#Address# type.
+the value it contains, the output datum and possibly a script hash(((script hash))).
+We look first at the [purple]#Address# type.
 
 [source,haskell]
 ----
@@ -3208,12 +3155,10 @@ data Address = Address
 ----
 
 As explained in section <<Cardano addresses>>, an address is composed of
-two parts: the payment part(((payment part
-))) and the optional staking part. The payment part(((payment part
-))),
+two parts: the payment part(((payment part))) and the optional staking part.
+The payment part(((payment part))),
 defined with the [purple]#Credential# data type, contains either a public
-key hash or a script hash(((script hash
-))) as we have explained when talking about rewarding.
+key hash or a script hash(((script hash))) as we have explained when talking about rewarding.
 
 The optional staking part is defined with the [purple]#StakingCredential#
 data type that can be either a staking hash or a staking pointer.
@@ -3265,11 +3210,10 @@ contains a string of type [purple]#BuiltinByteString# and the datum type is a
 wrapper around the [purple]#BuiltinData# type same as the [purple]#Redeemer# type.
 
 The last data for the [purple]#TxOut# data type defines a [purple]#Maybe ScriptHash#.
-A script hash(((script hash
-))) is also a wrapper around a [purple]#BuiltinByteString#.
+A script hash(((script hash))) is also a wrapper around a [purple]#BuiltinByteString#.
 
-Next in the [purple]#TxInfo# data type are the transaction outputs(((transaction outputs
-))) which the
+Next in the [purple]#TxInfo# data type are the transaction
+outputs(((transaction outputs))) which the
 transaction aims to create. A transaction output is defined with the [purple]#TxOut#
 data type that we have already shown. After that comes the data for fees and
 minting. Fees are defined with the [purple]#Lovelace# data type that is a
@@ -3450,19 +3394,18 @@ data ScriptPurpose
 
 The [purple]#ScriptPurpose# data type is structured in the same way as the
 [purple]#ScriptInfo# data type except that the constructor names are different
-and the _Spending_ constructor holds only a transaction output reference(((transaction output reference
-))) without a maybe datum.
+and the _Spending_ constructor holds only a transaction output
+reference(((transaction output reference))) without a maybe datum.
 The keys for the datums are datum hashes that map to actual datums.
 
-Next comes the transaction ID(((transaction ID
-))) of type [purple]#TxId# which represents the
+Next comes the transaction ID(((transaction ID))) of type
+[purple]#TxId# which represents the
 hash of the transaction being validated. As already stated this type is a
 wrapper around the [purple]#BuiltinByteString# data type.
 
 After that come the votes and proposal procedures that are used when
 dealing with government actions. The last two pieces of data contained in
-the transaction information are the current treasury amount(((treasury amount
-))) and treasury
+the transaction information are the current treasury amount(((treasury amount))) and treasury
 donation. Both are of type [purple]#Maybe V2.Lovelace#. Learn more about
 governance features, including the topics of voting and proposal submission
 in chapter <<Cardano governance>>.
@@ -3613,8 +3556,7 @@ that belongs to the hash. In the second variable, we access the transaction
 validity range and check whether it is contained inside the interval
 starting with the deadline and going to infinity. As a side note we state
 when the validity range for a transaction is being defined, that we construct
-either with off-chain code libraries or with the use of the Cardano CLI(((Cardano CLI
-))),
+either with off-chain code libraries or with the use of the Cardano CLI(((Cardano CLI))),
 the transaction gets submitted by a node only if the time of submission
 for this transaction falls into the validity range of the transaction.
 
@@ -3627,8 +3569,8 @@ In the examples we have seen so far, the validators took in a single parameter,
 the script context and returned a [purple]#Bool# or a [purple]#BuiltinUnit#. If
 there is any variability in the contract, we model that by using the datum as in
 the vesting example, that contained the beneficiary and the deadline. An alternative
-approach is to use parameterized contracts(((parameterized contracts
-))), where variability is integrated into the contract
+approach is to use parameterized contracts(((parameterized contracts))),
+where variability is integrated into the contract
 by adding a parameter variable to the validator function. The code below shows this,
 containing a modified version of the previous vesting code example.
 
@@ -3729,8 +3671,7 @@ performance and security standards as on-chain code. In this section,
 we will showcase how to write off-chain code for the on-chain code example
 presented in the previous section.
 
-After the Alonzo era(((Alonzo era
-))), when smart contracts became available on Cardano,
+After the Alonzo era(((Alonzo era))), when smart contracts became available on Cardano,
 the https://github.com/IntersectMBO/plutus-apps[Plutus application platform]
 provided a way to write off-chain code.
 Developed by IO and implemented as a set of Haskell libraries, it
@@ -3740,10 +3681,8 @@ Currently, the platform is in maintenance mode and no longer under
 active development.
 
 Another way for constructing off-chain transactions is by using the
-https://github.com/IntersectMBO/cardano-cli[Cardano CLI(((Cardano CLI
-)))]. You can
-find examples and read more about the Cardano CLI(((Cardano CLI
-))) at the
+https://github.com/IntersectMBO/cardano-cli[Cardano CLI(((Cardano CLI)))]. You can
+find examples and read more about the Cardano CLI(((Cardano CLI))) at the
 https://developers.cardano.org/docs/get-started/cardano-cli/get-started/[Cardano developers]
 webpage.
 
@@ -3752,8 +3691,8 @@ various programming languages. Some of them are listed at the end of
 section <<Smart contract programming languages>>, where
 off-chain code is briefly covered. For those using Plinth and interested
 in writing off-chain code in Haskell, the https://atlas-app.io/[Atlas] application backend,
-developed by https://www.geniusyield.co/[GeniusYield(((GeniusYield
-)))], provides a solution. It
+developed by https://www.geniusyield.co/[GeniusYield(((GeniusYield)))],
+provides a solution. It
 allows code-sharing between the on-chain and off-chain components while
 enabling the creation of a backend for decentralized applications.
 
@@ -3784,8 +3723,7 @@ file before installing the packages. Below is an example of this file.
 
 The package that installs other MeshSDK packages required by
 our code is `@meshsdk/core`. The official
-https://www.npmjs.com/package/@meshsdk/core[npm(((npm
-))) page] for this package
+https://www.npmjs.com/package/@meshsdk/core[npm(((npm))) page] for this package
 lists the MeshSDK packages that will get installed as dependencies.
 To install all MeshJS packages locally, `cd` to the root location of your
 project, create the `package.json` file and run:
@@ -3795,17 +3733,14 @@ project, create the `package.json` file and run:
 npm install @meshsdk/core
 ----
 
-If no `package.json` file is present `npm(((npm
-)))` will create one and install
+If no `package.json` file is present `npm(((npm)))` will create one and install
 the latest version of MeshSDK packages. For more information on how to
-install npm(((npm
-))) packages locally or globally and manage the `package.json`
+install npm(((npm))) packages locally or globally and manage the `package.json`
 file one can read the
 https://docs.npmjs.com/packages-and-modules/getting-packages-from-the-registry[Getting
 packages from the registry] and
 https://docs.npmjs.com/creating-a-package-json-file[Creating
-a package.json file] npm(((npm
-))) documentation pages. The `deno` tool can be
+a package.json file] npm(((npm))) documentation pages. The `deno` tool can be
 installed globaly. From the location of the `package.json` file run:
 
 [source,console]
@@ -3848,8 +3783,7 @@ const wallet: MeshWallet = new MeshWallet({
 ----
 
 First, we import the necessary components from the `@meshsdk/core` and
-the `@meshsdk/common` libraries. Then we import the seed phrase(((seed phrase
-))) of our
+the `@meshsdk/common` libraries. Then we import the seed phrase(((seed phrase))) of our
 Cardano wallet. The `seed.ts` file should be in the following form:
 
 [source,typescript]
@@ -3857,8 +3791,7 @@ Cardano wallet. The `seed.ts` file should be in the following form:
 export const secretSeed = ["seed1", "seed2", ... ];
 ----
 
-For instructions on how to create a wallet and generate a seed phrase(((seed phrase
-)))
+For instructions on how to create a wallet and generate a seed phrase(((seed phrase)))
 see chapter <<wallets-in-the-world-of-cardano, Wallets in the world of Cardano>>.
 Next, we define a provider which helps us to query the blockchain and
 submit transactions. We use https://blockfrost.io/[BlockFrost(((BlockFrost)))]. For the
@@ -3882,8 +3815,8 @@ and then provide the payment and staking keys. To see all options
 you can look at the source code in the official mesh GitHub repository
 that defines the
 https://github.com/MeshJS/mesh/blob/main/packages/mesh-wallet/src/mesh/index.ts[MeshWallet]
-class. Next we read out some wallet information and define our vesting script(((vesting script
-))).
+class. Next we read out some wallet information and define our vesting
+script(((vesting script))).
 
 [source,typescript]
 ----
@@ -3911,18 +3844,15 @@ from the script address. We set the time in ISO UTC format and then
 convert it to `POSIX` time in milliseconds.
 
 After we have defined our data that we will attach in the datum, we can
-define our vesting script(((vesting script
-))) and compute the address of this script. We
+define our vesting script(((vesting script))) and compute the address of this script. We
 note that we have to apply the function [blue]#applyCborEncoding# that
-takes the raw script `CBORHEX(((CBORHEX
-)))` from the blueprint and formats it in
+takes the raw script `CBORHEX(((CBORHEX)))` from the blueprint and formats it in
 the correct way. The compiled code in our code snippet is shortened.
 When running this off-chain code, the full compiled code of the validator
 has to be provided. That can be found in the `blueprint.json` file at the
 https://github.com/input-output-hk/plutus-pioneer-program/tree/plinth-plutusV3[plinth-plutusV3]
 branch of the Plutus pioneer program repository. Now we can send some
-funds to the vesting script(((vesting script
-))).
+funds to the vesting script(((vesting script))).
 
 [source,typescript]
 ----
@@ -4087,8 +4017,7 @@ First, we define the [blue]#getUtxo# function. It takes in script address
 and a transaction hash both of type [purple]#string#. It then checks if,
 at the given address, a UTXO exists that contains the provided transaction
 hash and then returns this UTXO. After that we define our function for
-claiming funds from the vesting script(((vesting script
-))) address.
+claiming funds from the vesting script(((vesting script))) address.
 
 The [blue]#claimFunds# function takes in a transaction hash, which should
 correspond to the UTXO we want to claim at the vesting address. We then
@@ -4234,9 +4163,8 @@ As before, we define our wallet address, public key hash and
 the deadline in POSIX milliseconds time. Then we define the script parameter
 that we will apply to the parameterized script and that contains our own
 public key hash and the deadline we have defined. Next we define our
-parameterized vesting script(((vesting script
-))). We again shorten the `CBORHEX(((CBORHEX
-)))` compiled
+parameterized vesting script(((vesting script))). We again shorten the
+`CBORHEX(((CBORHEX)))` compiled
 code. The full compiled code can be found in the `blueprint.json` file that resides at the
 https://github.com/input-output-hk/plutus-pioneer-program/tree/plinth-plutusV3[plinth-plutusV3]
 branch. We use now the function [blue]#applyParamsToScript# and add the
@@ -4270,8 +4198,7 @@ We define the [blue]#sendFunds# similarly to the previous
 vesting example. The difference is that this time we don't specify a
 datum in the [blue]#sendLovelace# function. This means we will create
 a UTXO without a datum. After that, we can deploy our parameterized
-vesting script(((vesting script
-))) to a UTXO.
+vesting script(((vesting script))) to a UTXO.
 
 [source,typescript]
 ----
@@ -4297,11 +4224,9 @@ async function deployRefScript(lovelaceAmount: string): Promise<string> {
 
 The [blue]#deployRefScript# takes in a lovelace amount in form or a
 string which will be used to deploy the reference script. First we look
-up the UTXO at our wallet. Then we define a transaction builder(((transaction builder
-))) that we
+up the UTXO at our wallet. Then we define a transaction builder(((transaction builder))) that we
 will use to build the transaction. After that we define our transaction.
-We first specify that we want to deploy our vesting script(((vesting script
-))) at the burn
+We first specify that we want to deploy our vesting script(((vesting script))) at the burn
 address and the amount of lovelace we will spend. Then we specify the
 parameterized script we want to deploy and its Plutus version. After
 that we define our change address and from which UTXOs we want to
@@ -4356,8 +4281,7 @@ The [blue]#getUtxo# is defined the same way as in our previous off-chain
 code example. The [blue]#claimFunds# function is defined in a similar way
 as in the previous code. It takes in the transaction hash of our
 UTXO we have vested at the script, and also the transaction
-hash of the UTXO that contains our deployed vesting script(((vesting script
-))). In the body
+hash of the UTXO that contains our deployed vesting script(((vesting script))). In the body
 of the function, we first define our UTXO that we want to claim. Then
 we define the UTXO that contains our script. After that we again define
 the redeemer and slot, as in the previous off-chain code.
@@ -4370,8 +4294,7 @@ and the required signature to the transaction. After that we build, sign
 and submit the transaction and return the transaction hash.
 
 At the end, we define the function calls by logging their return values.
-We send 3 ada to the parameterized vesting script(((vesting script
-))). Then we deploy the
+We send 3 ada to the parameterized vesting script(((vesting script))). Then we deploy the
 script to the burn address and use 20 ada for that. The amount can not
 be too low and depends on the script size we are deploying. Lastly we
 claim the funds. There we have to input the transaction hashes that the
@@ -4398,8 +4321,7 @@ address where funds are burned, it becomes unspendable and permanently
 accessible.
 
 We make an important distinction between off-chain and on-chain code.
-Because Cardano uses the hard fork combinator(((HFC
-))) technology, all Plutus
+Because Cardano uses the hard fork combinator(((HFC))) technology, all Plutus
 script versions are supported by the blockchain (read more in section
 <<cardano-node-layers, Cardano node layers>>). Once you have written on-chain code that works,
 it will work indefinitely. That is not the case for off-chain code.
@@ -4775,9 +4697,7 @@ This was an example of minting fungible tokens. Fungibility(((Fungibility))) mea
 that one token is interchangeable with another token of the same type,
 meaning each unit has the same value as any other unit.
 
-Plutus also allows the minting of non-fungible tokens(((NFTs
-))) (NFTs(((NFTs
-)))), which are
+Plutus also allows the minting of non-fungible tokens (NFTs(((NFTs)))), which are
 unique tokens that can only be minted once. The key to writing such a
 minting policy is referencing something unique on the Cardano blockchain,
 and for that, we use UTXOs. UTXOs can exist only once, and once consumed
@@ -4861,8 +4781,7 @@ we could also leave our policy such that it takes in the transaction output
 reference as a whole and then model that in our off-chain code. In our code,
 we wanted to show how to split up such a variable and correctly apply
 the [blue]#unsafeFromBuiltinData# to individual parts. Next, we show the
-off-chain code that interacts with our NFT minting policy(((NFT minting policy
-))).
+off-chain code that interacts with our NFT minting policy(((NFT minting policy))).
 
 [source,typescript]
 ----
@@ -4912,8 +4831,8 @@ and define our provider and wallet. After that we set our wallet
 address and read out the first UTXO sitting at our wallet address.
 We will use this UTXO to parameterize our minting policy and also
 spend it when creating the minting transaction. Next we define our
-NFT minting policy(((NFT minting policy
-))). We again shorted the compiled code and parameterize
+NFT minting policy(((NFT minting policy))). We again shorted the
+compiled code and parameterize
 the code with the transaction hash and output index of the UTXO we
 selected. We also provide the name of our NFT we want to mint. Now
 we can look at the function that mints the NFT.
@@ -5033,9 +4952,8 @@ Bitwise primitives allow for the manipulation of data at the lowest
 level of bits. Those operations are the fundamental building blocks of
 many algorithms and data structures. There are numerous applications,
 ranging from efficient representation and manipulation of sets of
-integers to the implementation of cryptographic primitives(((cryptographic primitives
-))) and fast
-searches. In particular, PlutusV3 enables converting integers to byte
+integers to the implementation of cryptographic primitives(((cryptographic primitives)))
+and fast searches. In particular, PlutusV3 enables converting integers to byte
 strings, which allows, for example, to hash arbitrary data, which hasn't
 been possible in the past.
 
@@ -5047,28 +4965,18 @@ interoperability is checking Ethereum signatures in Plutus, which is
 possible with PlutusV3. There are three groups of new cryptographic
 primitives in PlutusV3:
 
-* BLS12-381(((BLS12-381
-))) is about elliptic curve pairing and including 17 primitives
-that support cryptographic curves. Use cases include sidechains(((sidechains
-))), ZKP(((ZKP))),
-Hydra(((Hydra
-))), Mithril(((Mithril
-))) and ATALA
-* Blake2b_224(((Blake2b_224
-))) is a cryptographic hash function(((cryptographic hash function
-))) that enables hashing of
-public keys and scripts within Plutus, facilitating various interesting
+* BLS12-381(((BLS12-381))) is about elliptic curve pairing and including 17 primitives
+that support cryptographic curves. Use cases include sidechains(((sidechains))),
+ZKP(((ZKP))), Hydra(((Hydra))), Mithril(((Mithril))) and ATALA
+* Blake2b_224(((Blake2b_224))) is a cryptographic hash function(((cryptographic hash function)))
+that enables hashing of public keys and scripts within Plutus, facilitating various interesting
 applications
-* Keccak-256(((Keccak-256
-))) is another cryptographic hash function(((cryptographic hash function
-))) that supports
-Ethereum signature verification within Plutus scripts.
+* Keccak-256(((Keccak-256))) is another cryptographic hash function(((cryptographic hash function))) that supports Ethereum signature verification within Plutus scripts.
 
-These cryptographic primitives(((cryptographic primitives
-))) bring new possibilities, unlock better
-ways to achieve scalability, and allow for better interoperability with
-Ethereum and EVM-based blockchains(((EVM-based blockchains
-))). The https://www.youtube.com/watch?v=oFgJg_DulKw&t=69s[PlutusV3
+These cryptographic primitives(((cryptographic primitives))) bring new possibilities,
+unlock better ways to achieve scalability, and allow for better interoperability with
+Ethereum and EVM-based blockchains(((EVM-based blockchains))).
+The https://www.youtube.com/watch?v=oFgJg_DulKw&t=69s[PlutusV3
 Overview] video demonstrates how to lock ada in a Plutus validator that
 can only be unlocked by the owner of an ETH wallet. The demonstration
 starts at 4:10. You can also read more about PlutusV3 and the features
@@ -5079,30 +4987,25 @@ further information on the
 https://docs.cardano.org/about-cardano/evolution/upgrades/chang/[Chang
 hard fork] that enables PlutusV3.
 
-The last feature PlutusV3 brings is sums of products(((sums of products))). One common method
-for encoding data types in Plutus Core(((Plutus Core
-))) is the Scott approach(((Scott approach
-))). With the
+The last feature PlutusV3 brings is sums of products(((sums of products))).
+One common method for encoding data types in Plutus Core(((Plutus Core)))
+is the Scott approach(((Scott approach))). With the
 introduction of PlutusV3, sums of products allow for encoding data types
 more compactly and cost-effectively than Scott encoding, so the latter
 is no longer required. The sums of products method is designed to enhance
-script efficiency and optimize code generation for Plutus Core(((Plutus Core
-))) compilers.
+script efficiency and optimize code generation for Plutus Core(((Plutus Core))) compilers.
 This involves implementing new term constructors for packing fields into
 constructor values and enabling efficient tag inspection for case branches.
 As a result, programs may experience a performance increase of up to 30%,
 marking a significant optimization that streamlines operations and
 ensures faster execution of smart contracts. For further details, refer
-to https://cips.cardano.org/cip/CIP-0085[CIP-85(((CIP-85
-)))]. Sums of products do
+to https://cips.cardano.org/cip/CIP-0085[CIP-85(((CIP-85)))]. Sums of products do
 not change built-in functions available in Plutus, but change the Plutus
 language itself. Also Plutus now provides a way to deal directly with the
 [purple]#Data# type for all Plutus script versions (V1, V2 and V3) that
 allows for better code optimization. This is discussed further in section
 <<Simple validation scripts>>. The
-https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/optimizing-scripts-with-asData[Plinth user guide(((Plinth user guide
-)))]
-also provides information on that.
+https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/optimizing-scripts-with-asData[Plinth user guide(((Plinth user guide)))] also provides information on that.
 
 === Smart contract security
 
