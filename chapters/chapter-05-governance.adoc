@@ -69,7 +69,7 @@ Each funding(((funding))) round, operates cyclically, typically lasting several 
 
 1. *Proposal submission(((Proposal submission)))*: innovators submit their project proposals on the https://cardano.ideascale.com/[IdeaScale platform]. Each proposal must align with the thematic goals set for that particular fund.
 2. *Community review(((Community review)))*: during this phase, the community reviews and provides feedback on the submitted proposals. 
-3. *Voting*: any ada holder can vote on proposals using the https://cardano.ideascale.com/[Catalyst voting application(((Catalyst, voting application)))]. Voting power is proportional to the amount of ada held, incentivizing ada holders to participate actively in the governance process.
+3. *Voting*: any ada holder can vote on proposals using the Catalyst voting application(((Catalyst, voting application))). Voting power is proportional to the amount of ada held, incentivizing ada holders to participate actively in the governance process.
 4. *Funding allocation(((Funding allocation)))*: based on the voting results, funds are allocated to the awarded proposals. Proposals with the highest votes receive funding until the budget for that fund is exhausted.
 
 For more information about how Project Catalyst(((Project Catalyst))) works, read the https://projectcatalyst.io/how-it-works[‘How it works’ section] on Project Catalyst(((Project Catalyst)))’s website.
@@ -145,7 +145,7 @@ https://cips.cardano.org/cip/CIP-1694[CIP-1694] was named after the philosopher 
 
 When Cardano was formed, there was a tripartite structure with EMURGO, the Cardano Foundation (CF), and IOG with remits for ecosystem growth, governance, and engineering, respectively. The intention was always to move to a a stake based governance model(((stake based governance model))), where ada holders determine the future of the protocol.
 
-CIP-1694 is the fruit of years of research. IOG has been working on a decentralized update system(((decentralized update system))) for some time. For example, they wrote a paper _Updateable Blockchains_footnote:[Ciampi, Karayannidis, Kiayias and Zindros (2020), 'Updatable Blockchains', iohk.io/en/research/library/papers/updatable-blockchains/] with the European Union, with a Horizon 2020 grant, to explore ways to implement this vision.
+CIP-1694 is the fruit of years of research. IOG has been working on a decentralized update system(((decentralized update system))) for some time. For example, they wrote a paper _Updateable Blockchains_footnote:[Ciampi, Karayannidis, Kiayias and Zindros (2020), 'Updatable Blockchains', iohk.io/en/research/library/papers/updatable-blockchains/] to explore ways to implement this vision.
 
 Early in 2022, IOG and the CF held workshops to hammer out a way forward for the Voltaire development phase. The first question was ‘What is good governance?’. Charles Hoskinson(((Hoskinson, Charles))) explained in his ScotFest keynote that the answer was based on three different categories:
 
@@ -320,7 +320,7 @@ The TSC leads in guiding the development of Cardano’s ongoing technical founda
 
 ==== The parameters committee (PC)
 
-The PC is a subcommittee within the TSC that focuses on optimizing Cardano’s settings(((optimizing Cardano’s settings))). They ensure these parameters are set based on the best technical knowledge available. They consider factors like economics, security, and network performance when recommending updates to Cardano’s core settings. Regular meetings discuss updates and consider proposals from the community to adjust parameters. There advisory groups within the PC, such as:
+The PC is a subcommittee within the TSC that focuses on optimizing Cardano’s settings(((optimizing Cardano’s settings))). They ensure these parameters are set based on the best technical knowledge available. They consider factors like economics, security, and network performance when recommending updates to Cardano’s core settings. Regular meetings discuss updates and consider proposals from the community to adjust parameters. There are advisory groups within the PC, such as:
 
 * economic parameters advisory group
 * network parameters advisory group
@@ -526,7 +526,7 @@ SanchoNet has proven itself robust to adversarial behavior. Mike Hornan of Able 
 
 Cardano’s vision is a truly decentralized blockchain(((truly decentralized blockchain))) fueled by collaborative decision-making. Effective governance requires more than just principles and processes. It needs the right tools to empower the community and enable consensus across the Cardano ecosystem.
 
-These tools will equip the Cardano community to actively participate in on-chain governance actions(((on-chain governance actions))). Intersect has already issued grants to develop key components of this toolset. Find out more about these https://docs.intersectmbo.org/intersect-community-grants/open-grants[grants] here. 
+These tools will equip the Cardano community to actively participate in on-chain governance actions(((on-chain governance actions))). Intersect has already issued grants to develop key components of this toolset. Find out more about these https://docs.intersectmbo.org/archive/cardano-budget-archive/intersect-operational-services[grants] here. 
 
 The https://gov.tools/[GovTool] is a central hub for interacting with Cardano’s on-chain governance system(((interacting with Cardano’s on-chain governance system))), and testing upcoming features. GovTool is fully open sourced and maintained by Intersect members WeDeliver, Byron, Lido Nation, and Bloxico. It enables users to connect their wallets to mainnet to participate in governance. They can also connect to SanchoNet, the testnet environment where CIP-1694’s ideas are tested.
 
@@ -647,7 +647,7 @@ To align with the Cardano Constitution(((Cardano, Constitution))), there needs t
 * safeguards to ensure no single entity can act alone when moving funds
 * independent verification from any oversight body to allay concerns and build trust.
 
-As part of the changes to the budget process, a Smart Contract working group was set up under the Budget committee to oversee the automation of treasury fund management with smart contracts. The solution was delivered through Intersect by Input Output | Global, SundaeLabs, and Xerberus. The implementation of smart contract satisfies Article 4, section 2 of the Cardano Constitution(((Article 4, section 2 of the Cardano Constitution))):
+As part of the changes to the budget process, a Smart Contract working group was set up under the Budget committee to oversee the automation of treasury fund management with smart contracts. The solution was delivered through Intersect by Input Output | Global, SundaeLabs, and Xerberus. The implementation of smart contracts to automate treasury fund management satisfies Article 4, section 2 of the Cardano Constitution(((Article 4, section 2 of the Cardano Constitution))):
 
 _“Development of Cardano Blockchain ecosystem budgets and the administration of such budgets shall utilize, to the extent possible and beneficial, smart contracts(((utilize, to the extent possible and beneficial, smart contracts))) and other blockchain based tools to facilitate decision-making and ensure transparency.”_
 
