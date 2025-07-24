@@ -10,15 +10,15 @@ The Cardano network is a distributed infrastructure of interconnected Cardano no
 
 Since its inception, the Cardano network has evolved and continues to change with the purposes of facilitating increased decentralization while meeting the growing demands of the Cardano blockchain(((Cardano, blockchain))).
 
-* *The Federated Network:* Introduced in the Byron era in 2017, the network was maintained by IOG, Emurgo, and the Cardano Foundation. Nodes relied on static topologies to connect with one-another.
+* *The Federated Network:* Introduced in the Byron era in 2017, the network was maintained by IOG, Emurgo, and the Cardano Foundation. Nodes relied on static topologies to connect with one another.
 
 image::network_revised_federatednetwork.png[title="Federated Network"]
 
-* *The Hybrid Network:* When the Shelley development phase began in 2020, the network was handed over to stake pool operators resulting in further decentralization of Cardano network. While nodes still required statically configured topologies to connect with one-another, the community-made https://cardano-community.github.io/guild-operators/Scripts/topologyupdater/[Topology Updater] script helped automate this process. The script lists peers based on geographical distance. It selects, skips, and again selects the peers to the end of the list to ensure that each node connects to a well-distributed variety of peers.
+* *The Hybrid Network:* When the Shelley development phase began in 2020, the network was handed over to stake pool operators resulting in further decentralization of Cardano network. While nodes still required statically configured topologies to connect with one another, the community-made https://cardano-community.github.io/guild-operators/Scripts/topologyupdater/[Topology Updater] script helped automate this process. The script lists peers based on geographical distance. It selects, skips, and again selects the peers to the end of the list to ensure that each node connects to a well-distributed variety of peers.
 
 image::network_revised_hybridnetwork.png[title="Hybrid Network"]
 
-* *Dynamic Peer to Peer(P2P):* This evolution of the Cardano network allowed nodes to automatically connect with other peers. However, trusted peers or relays are still required to be statically configured in order to bootstrap and synchronize to the network.
+* *Dynamic Peer to Peer (P2P):* This evolution of the Cardano network allowed nodes to automatically connect with other peers. However, trusted peers or relays are still required to be statically configured in order to bootstrap and synchronize to the network.
 
 image::network_revised_dynamicp2p.png[title="Dynamic P2P"]
 
@@ -33,7 +33,7 @@ image::network_revised_peersharing.png[title="Peer Sharing"]
 
 ==== Protocol Overview
 
-The Ouroboros network is currently designed to work over the Transmission Control Protocol/Internet Protocol(((Transmission Control Protocol/Internet Protocol)))(TCP/IP), the set of communication protocol standards the internet and most networks are shaped around. TCP/IP gives the Cardano networking protocols access to two-way communication between nodes. The guaranteed ordered delivery of network packets makes the TCP/IP protocols well suited for blockchain networks.
+The Ouroboros network is currently designed to work over the Transmission Control Protocol/Internet Protocol(((Transmission Control Protocol/Internet Protocol))) (TCP/IP), the set of communication protocol standards the internet and most networks are shaped around. TCP/IP gives the Cardano networking protocols access to two-way communication between nodes. The guaranteed ordered delivery of network packets makes the TCP/IP protocols well suited for blockchain networks.
 
 ==== Mini Protocols
 
@@ -53,7 +53,7 @@ The _networking layer_ of the Cardano node consists of smaller building-blocks c
 
 ==== Inter-Process Communication(IPC) Protocols
 
-The Cardano node IPC protocols are best described as protocol suites(((protocol, suites))) containing a number of mini protocols that allow communication between Cardano node processes. These protocol suites(((protocol, suites))) come in two flavors: Node-to-Node(NtN) and Node-to-Client(NtC).
+The Cardano node IPC protocols are best described as protocol suites(((protocol, suites))) containing a number of mini protocols that allow communication between Cardano node processes. These protocol suites(((protocol, suites))) come in two flavors: Node-to-Node (NtN) and Node-to-Client (NtC).
 
 ===== Node-to-Node(NtN) IPC
 
