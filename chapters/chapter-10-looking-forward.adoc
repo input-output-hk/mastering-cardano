@@ -1,6 +1,6 @@
 [[looking-forward]]
 == Looking forward
 
-include::chapter-11-looking-forward/hydra.adoc[]
+include::chapter-10-looking-forward/hydra.adoc[]
 
-include::chapter-11-looking-forward/mithril.adoc[]
+include::chapter-10-looking-forward/mithril.adoc[]
