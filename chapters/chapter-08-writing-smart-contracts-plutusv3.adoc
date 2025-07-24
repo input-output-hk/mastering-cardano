@@ -1980,48 +1980,34 @@ Greene provides comprehensive information and learning examples.
 For your development environment, you can use one of the following
 options:
 
-* Run a Nix(((Nix
-))) shell that contains all the dependencies
-* Run a local Docker(((Docker
-))) container inside VSCode
+* Run a Nix(((Nix))) shell that contains all the dependencies
+* Run a local Docker(((Docker))) container inside VSCode
 * Use an online platform such as https://demeter.run/[Demeter.run]
 * Install system dependencies manually.
 
-The _plinth-dev-env_ GitHub repository provides instructions for setting
-up the development environment for the first three options. A link to the
-repository can be found in the
-https://github.com/input-output-hk/mastering-cardano/tree/main/resources[resources]
-folder of the mastering cardano repository. It aims to provide up-to-date
-instructions for the latest stable Plinth development environment(((Plinth development environment
-))). The smart
-contract code presented throughout section <<Plutus smart contracts>> uses features
-introduced in the Chang hard fork(((Chang hard fork
-))), which enabled PlutusV3. The development
-environment you will use to run and test this code needs to support these
-features. The smart contract code presented in this section was compiled
-with a Nix(((Nix
-))) shell that was set up with Nix(((Nix
-))) instructions provided in the _plinth-dev-env_
-repository. Nix(((Nix
-))) version `2.25.3` was used and a Nix(((Nix
-))) shell provided by
+The https://github.com/IntersectMBO/plinth-template/tree/main[plinth-template]
+GitHub repository provides instructions for the above mentioned options.
+The smart contract code presented throughout section <<Plutus smart contracts>>
+uses features introduced in the Chang hard fork(((Chang hard fork))), which
+enabled PlutusV3. The development environment you will use to run and test
+this code needs to support these features. The smart contract code was compiled
+with a Nix shell. Nix version `2.25.3` was used and a Nix shell provided by
 the https://github.com/IntersectMBO/plinth-template[plinth-template]
-repository, commit `4adea2ef260a99ec9d36de609579ae5208ac8c10`.
+repository, commit `b9460088985331bb050f1782a32e4f92c4c00e67`.
 
-The https://demeter.run/[Demeter.Run(((Demeter.Run
-)))] online platform offers various
+The https://demeter.run/[Demeter.Run(((Demeter.Run)))] online platform offers various
 tools and development environments for the Cardano ecosystem. One can
 set up development environments for smart contract languages such as
-Plinth and Aiken, as well as programming languages like Rust or Python, come with useful Cardano tools and libraries written in those
+Plinth and Aiken, as well as programming languages like Rust or Python,
+come with useful Cardano tools and libraries written in those
 languages. The platform offers backend hosting for DApps and allows
 integration testing within its environments. It manages monitoring,
 security, and version upgrades. Depending on development needs, the
 platform provides various starter kits, including example code
 repositories from the community for learning or project initiation. Its
 pricing model is based on service usage, with users also able to access
-some free working time. Explore _Developer Tools_ and
-_Infrastructure_ sections on the
-https://www.cardanocube.com/cardano-ecosystem-interactive-map[Cardano
+some free working time. Explore _Developer Tools_ and _Infrastructure_ sections
+on the https://www.cardanocube.com/cardano-ecosystem-interactive-map[Cardano
 developer map] for more options.
 
 To query various Plutus types, one can use the official
