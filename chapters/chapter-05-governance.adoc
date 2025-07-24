@@ -79,12 +79,12 @@ For more information about how Project Catalyst(((Project Catalyst))) works, rea
 
 Voting is a critical component of Project Catalyst(((Project Catalyst))), as it empowers the Cardano community to have a direct say in which proposals receive funding. This process ensures that decisions are decentralized and reflective of the community's collective priorities. Here’s an in-depth look at how the voting process works:
 
-1. *Download* the https://projectcatalyst.io/get-involved/become-a-voter[Catalyst Voting App(((Catalyst, Voting App)))] -- available on mobile devices.
+1. *Download* the https://projectcatalyst.io/get-involved/become-a-voter[Catalyst Voting App] -- available on mobile devices.
 2. *Registration*. The registration process involves taking a snapshot of the participant’s ada holdings at a specific point in time. This snapshot determines the voting power(((voting power))) of each participant.
-3. *Reviewing proposals(((Reviewing proposals)))*. All proposals are publicly accessible on the _IdeaScale_ platform and the voting application. Detailed information about each proposal, including the problem statement, proposed solution, team details, and budget, is available for discussion and feedback.
+3. *Reviewing proposals*. All proposals are publicly accessible on the _IdeaScale_ platform and the voting application. Detailed information about each proposal, including the problem statement, proposed solution, team details, and budget, is available for discussion and feedback.
 4. *Voting begins*. For each proposal, voters typically have multiple options to express their support or opposition. Once you’ve cast a vote on the blockchain(((blockchain))), you cannot change it.
-5. *Counting votes(((Counting votes)))*. After the voting period ends, votes are tallied.
-6. The *results are announced(((results are announced)))* publicly, detailing which proposals have been selected for funding.
+5. *Counting votes*. After the voting period ends, votes are tallied.
+6. The *results are announced* publicly, detailing which proposals have been selected for funding.
 
 After each funding round, feedback from the community is collected to identify areas for improvement in the voting process. Based on community feedback, enhancements are made to the voting process, such as improving the user interface of the voting application, increasing security measures, and refining the proposal evaluation criteria(((proposal evaluation criteria))).
 
@@ -119,11 +119,11 @@ Catalyst continues to improve and evolve with shared learnings. For example, fun
 * Smart Contract Legal Advice  
 * Token Classification Support.
 
-The Catalyst team released their http://projectcatalyst.io/reports/horizons.pdf[Catalyst Horizons report(((Catalyst, Horizons report)))] documenting various milestones. To dig deeper into the stats and trends, visit the https://projectcatalyst.io/reports[Reports] section of projectcatalyst.io for the latest data.
+The Catalyst team released their http://projectcatalyst.io/reports/horizons.pdf[Catalyst Horizons report] documenting various milestones. To dig deeper into the stats and trends, visit the https://projectcatalyst.io/reports[Reports] section of projectcatalyst.io for the latest data.
 
 === The age of Voltaire
 
-As Catalyst took a ‘tactical pause’ after Fund9, there was a timely _Systemization of Knowledge (SoK)_ research paperfootnote:[Kiayias, Lazos (2022), 'SoK: Blockchain Governance(((Blockchain Governance)))', arxiv.org/pdf/2201.07188.pdf] published, reflecting on the state of governance in ten blockchains, including Bitcoin, Ethereum, and Cardano.
+As Catalyst took a ‘tactical pause’ after Fund9, there was a timely _Systemization of Knowledge (SoK)_ research paperfootnote:[Kiayias, Lazos (2022), 'SoK: Blockchain Governance', arxiv.org/pdf/2201.07188.pdf] published, reflecting on the state of governance in ten blockchains, including Bitcoin, Ethereum, and Cardano.
 
 The paper lists *seven properties* to assess different requirements for effective blockchain(((blockchain))) governance:
 
@@ -165,7 +165,7 @@ image::../images/5.3_gov_concepts.png[]
 
 The MBO, later christened _Intersect_, is Voltaire's anchor institution, but it is not the only one. IOG has been steadily building out its presence in universities all over the globe, as well as opening the Hoskinson Center for Formal Mathematics(((Hoskinson Center for Formal Mathematics))), the Zero-Knowledge Lab, and -- not forgetting -- the Edinburgh Decentralization Index (EDI).  Other institutions and MBOs will follow with different focuses and priorities.
 
-_"Institutions(((Institutions)))… their only job is to take complexity and turn it into simplicity"_
+_"Institutions… their only job is to take complexity and turn it into simplicity"_
 -- Charles Hoskinson footnote:[Charles Hoskinson: Crypto regulations & policy, Importance of stablecoins & the future of Cardano, youtu.be/uEV8tQ6z87k?si=iVazdagl5JWZez3q&t=1983]
 
 CIP-1694 could fill a book on its own and, like all CIPs, is a living document that evolves with feedback. It aims to bootstrap the Voltaire development phase, integrating on-chain and off-chain components for ecosystem self-governance. The ultimate aim is a fully end-to-end, on-chain governance layer(((on-chain governance layer))) for Cardano.
@@ -187,9 +187,9 @@ The CIP-1694 proposal encompasses two new ledger eras. The first era is called C
 
 For CIP-1694 to succeed, it is essential to realize the vision presented in the _Road to a Polyglot Ecosystem for Cardano_ whiteboard http://youtube.com/watch?v=skcCg1WaedA[video]. The new governance mechanisms will support multiple clients, enabling different development teams to employ different approaches, programming languages, and commercial unique selling propositions(((commercial unique selling propositions))) (USPs).
 
-Charles Hoskinson(((Hoskinson, Charles)))’s keynote at ScotFest 2022:footnote:[ IO ScotFest Keynote with Charles Hoskinson(((Hoskinson, Charles))), youtu.be/tbtkClr3Y3I]
+Charles Hoskinson(((Hoskinson, Charles)))’s keynote at ScotFest 2022:footnote:[ IO ScotFest Keynote with Charles Hoskinson, youtu.be/tbtkClr3Y3I]
 
-_"So that's Voltaire(((Voltaire))) …it’s deeply philosophical, it's the hardest thing I've ever done in my life, it's the hardest thing you're ever going to do in your life, and we're going to get it done, because it needs to get done and I'm damn tired of our industry failing, and it's about time we can point to something and say ‘you know what, we did it the right way’. We have to tend to our own gardens first. That was a lesson of Candide. So we have to fix Cardano's governance before we have the right to complain about any other person's governance."_
+_"So that's Voltaire …it’s deeply philosophical, it's the hardest thing I've ever done in my life, it's the hardest thing you're ever going to do in your life, and we're going to get it done, because it needs to get done and I'm damn tired of our industry failing, and it's about time we can point to something and say ‘you know what, we did it the right way’. We have to tend to our own gardens first. That was a lesson of Candide. So we have to fix Cardano's governance before we have the right to complain about any other person's governance."_
 
 2023 was all about debating how to implement CIP-1694. The CIP was written in a deliberately high-level, approachable format to stimulate discussion and feedback. The community(((community))) did not disappoint with 50 http://cip1694.intersectmbo.org/[workshops], 30 in-person and 20 online, with over 1,000 participants from 20+ countries.
 
@@ -513,7 +513,7 @@ Ideally, the outcome should be communicated through the same off-chain channels(
 
 === SanchoNet: testing ground for Cardano's future
 
-SanchoNet was named after the character Sancho Panza, Don Quixote’s companion in Miguel de Cervantes’ literary classic. SanchoNet is ultimately about transforming an aspirational digital Barataria into an on-chain governance reality on Cardano mainnet. Note that SanchoNet is not another incentivized testnet (ITN), but a testnet where test ada is used to stress test experimental features. SanchoNet was rolled out in six phases, with each Cardano node (cardano-cli) release(((Cardano node (cardano-cli) release))) enabling new governance capabilities.
+SanchoNet was named after the character Sancho Panza, Don Quixote’s companion in Miguel de Cervantes’ literary classic. SanchoNet is ultimately about transforming an aspirational digital Barataria into an on-chain governance reality on Cardano mainnet. Note that SanchoNet is not another incentivized testnet (ITN), but a testnet where test ada is used to stress test experimental features. SanchoNet was rolled out in six phases, with each Cardano node (cardano-cli) release enabling new governance capabilities.
 
 image::../images/5.6_sanchonet_roadmap.png[]
 *Figure 5.7:* SanchoNet roadmap
@@ -566,7 +566,7 @@ The Intersect governance parameters working group(((Intersect, governance parame
 
 To ensure adherence to the constitution, a smart contract acts as the technical guardrail. This contract translates key constitutional provisions into code, wherever possible. For example, it might define acceptable ranges for parameters or treasury withdrawals so the blockchain will automatically reject any governance actions(((automatically reject any governance actions))) that violate these guardrails, preventing actions deemed unconstitutional. This adds an extra layer of security and stability to Cardano's governance process.
 
-_"I see the constitution as a living document, evolving with the Cardano community(((evolving with the Cardano community))). Cardano shines as a model of strong blockchain governance"_ – https://x.com/F_Gregaard/status/1780924566971326951[Frederik Gregaard, the Cardano Foundation CEO]
+_"I see the constitution as a living document, evolving with the Cardano community. Cardano shines as a model of strong blockchain governance"_ – https://x.com/F_Gregaard/status/1780924566971326951[Frederik Gregaard, the Cardano Foundation CEO]
 
 The Chang upgrade followed a similar deployment strategy to the Vasil upgrade. The final decision to initiate the upgrade(((final decision to initiate the upgrade))) was based on three key factors:
 
@@ -654,7 +654,7 @@ To align with the Cardano Constitution(((Cardano, Constitution))), there needs t
 
 As part of the changes to the budget process, a Smart Contract working group was set up under the Budget committee to oversee the automation of treasury fund management with smart contracts. The solution was delivered through Intersect by Input Output | Global, SundaeLabs, and Xerberus. The implementation of smart contracts to automate treasury fund management satisfies Article 4, section 2 of the Cardano Constitution(((Article 4, section 2 of the Cardano Constitution))):
 
-_“Development of Cardano Blockchain ecosystem budgets and the administration of such budgets shall utilize, to the extent possible and beneficial, smart contracts(((utilize, to the extent possible and beneficial, smart contracts))) and other blockchain based tools to facilitate decision-making and ensure transparency.”_
+_“Development of Cardano Blockchain ecosystem budgets and the administration of such budgets shall utilize, to the extent possible and beneficial, smart contracts and other blockchain based tools to facilitate decision-making and ensure transparency.”_
 
 *Two types of smart contracts*
 
