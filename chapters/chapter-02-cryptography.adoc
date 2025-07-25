@@ -153,7 +153,7 @@ Having introduced the main cryptographic building blocks used in blockchain syst
 
 === Its role in securing the blockchain
 
-In this section we'll now briefly mention where the techniques discussed above are used within the blockhain systems.
+In this section we'll now briefly mention where the techniques discussed above are used within the blockchain systems.
 
 ==== Hashing functions
 
