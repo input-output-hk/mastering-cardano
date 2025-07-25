@@ -32,7 +32,7 @@ The fundamental reasons boil down to simple facts of nature:
 
 For example, imagine setting up a financial system that settles transactions worldwide, with a server located on every continent.
 
-image::ouroboros_distributed_system.svg[A global distributed system]
+image::ouroboros_distributed_system.png[A global distributed system]
 
 You would want to ensure:
 
@@ -65,7 +65,7 @@ Else,
   choose between low latency or consistency.
 ---
 
-image::ouroboros_PCAELC_Theorem.svg[PCAELC theorem]
+image::ouroboros_PCAELC_Theorem.png[PCAELC theorem]
 
 
 In our example of a global financial system,
