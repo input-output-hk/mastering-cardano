@@ -1,6 +1,7 @@
 
 :imagesdir: ../../images
 
+[[FormalMethodsAndTheImportanceOfProgramCorrectness]]
 === Formal methods and the importance of program correctness for cryptocurrency ledgers
 
 Guaranteeing correct behavior of cryptocurrency ledgers(((cryptocurrency ledgers))) implemented on

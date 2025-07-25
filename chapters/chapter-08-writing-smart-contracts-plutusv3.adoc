@@ -334,7 +334,7 @@ interactive map]: presents projects in a visually engaging, interactive
 format. For each selected project, the page provides a description and links to an official
 webpage, white paper, social media pages, and GitHub repository.
 * https://cardanospot.io/project-library/all[CardanoSpot project
-library]: offers a category filter to list projects by category. 
+library]: offers a category filter to list projects by category.
 For each selected project, a description is provided along
 with links to the official page and a white paper.
 * https://developers.cardano.org/showcase[Cardano developers
@@ -3694,7 +3694,7 @@ this chapter was tested with Deno version `2.1.9` and
 MeshSDK packages version `1.9.0-beta.3`. To install the MeshSDK packages
 that are needed by the off-chain code, the
 https://docs.npmjs.com/downloading-and-installing-node-js-and-npm[npm]
-package manager for the Node.js(((NodeJS))) JavaScript runtime environment 
+package manager for the Node.js(((NodeJS))) JavaScript runtime environment
 can be used. To specify a package version, one can create the `package.json`
 file before installing the packages. Below is an example of this file.
 
@@ -5042,7 +5042,7 @@ Some of the important research areas that IO targets are cryptography,
 software engineering, distributed systems(((distributed system))),
 networks, formal verification, and programming languages. Ouroboros(((Ouroboros))),
 Cardano's consensus protocol, is explained in detail in section
-<<Ouroboros Consensus>>. Ouroboros represents the outcome of long
+<<OuroborosConsensus>>. Ouroboros represents the outcome of long
 research presented in multiple papers. It is the first blockchain
 consensus protocol developed through peer-reviewed research with
 mathematically proven security features that guarantee the protocol is
@@ -5434,7 +5434,7 @@ implementation. The https://github.com/IntersectMBO/plutus[Plutus]
 repository contains the formalization of Plutus in Agda. The project is
 located in the _plutus-metatheory_ folder. You can read more about
 formal methods and functional programming(((programming, functional))) in section
-<<The importance of program correctness for cryptocurrency ledgers>>.
+<<FormalMethodsAndTheImportanceOfProgramCorrectness>>.
 
 Besides formal methods, property-based testing is also used to deliver
 high-assurance software for Cardano. For Haskell code, property-based

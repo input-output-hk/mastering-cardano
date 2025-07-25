@@ -1,6 +1,7 @@
 
 :imagesdir: ../../images
 
+[[OuroborosConsensus]]
 === Ouroboros consensus
 
 Ouroboros(((Ouroboros))) is a family of proof of stake protocols powering the Cardano blockchain, among others. It is backed by years of research and numerous peer-reviewed publications <<OurborosClassicPaper>>.
@@ -80,7 +81,7 @@ So, what do we do?
 
 ==== Nakamoto consensus (longest chain rule)
 
-Satoshi Nakamoto introduced a solution to the problem of decentralized consensus, 
+Satoshi Nakamoto introduced a solution to the problem of decentralized consensus,
 by inventing the *blockchain* data structure and the *longest chain rule(((longest chain rule)))*,
 forming what is now known as the _Nakamoto consensus_.
 
@@ -107,7 +108,7 @@ The process then repeats.
 
 If the network becomes partitioned, or two miners [SPOs(((SPO)))] solve the puzzle at nearly the same time,
 *temporary forks* may occur, i.e. for a moment in time there will be two versions of what could eventually be in the canonincal blockchain.
-It is for this reason, that it is often advised to wait a certain number of blocks (e.g. 6 blocks in Bitcoin), 
+It is for this reason, that it is often advised to wait a certain number of blocks (e.g. 6 blocks in Bitcoin),
 until it is assumed that a block has been immutably added to the blockchain forever.
 Eventually, one branch of the fork becomes longer as more blocks are added,
 and it is that longer branch that will be adopted by all nodes.
@@ -158,10 +159,10 @@ However, this approach comes with some disadvantages.
 
 ===== Proof of work disadvantages
 
-* Wasting electricity. 
+* Wasting electricity.
   Bitcoin is famously known for consuming as much electricity as a small country.
   Returning to our analogy, the fact that all runners must run every race (each hoping to win the single reward) results in a significant waste of energy.
-  
+
 * It leads to centralization in mining pools.
   A mining pool is a group of miners who collaborate by combining their computing power to calculate the hash and share the resulting rewards.
   In our analogy, it’s as if marathon runners formed teams and ran together.
@@ -170,7 +171,7 @@ However, this approach comes with some disadvantages.
 * It also leads to manufacturing centralization and electronic waste.
   Since mining equipment in proof of work systems performs only one task (calculating a hash) this has driven the development of specialized hardware known as ‘miners’.
   However, once these miners become obsolete, they serve no other purpose, contributing to growing levels of electronic waste(((electronic waste))).
-  
+
 
 And although these disadvantages make headlines today,
 a group of visionaries, led by Professor Aggelos Kiayias(((Kiayias, Aggelos))), chief scientist at IO Research, forsaw them early on.
@@ -299,7 +300,7 @@ This was a significant step forward, but not yet practical.
 Used during the Cardano Byron reboot.
 Enabled a federated blockchain,
 where trusted parties (Input|Output, Emurgo, and the Cardano Foundation) ran their own nodes.
- 
+
 
 ===== Ouroboros Praos (2018) used in Cardano today
 
