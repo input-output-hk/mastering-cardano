@@ -4,7 +4,7 @@
 [[wallets-in-the-world-of-cardano]]
 == Cardano Digital Wallets
 
-=== Fundamentals of crypto wallets
+=== Fundamentals of digital wallets
 
 A digital wallet(((digital wallet))), also referred to as a crypto wallet, or cryptocurrency wallet, is a digital version of a regular wallet. However, instead of holding cash, personal identification, or cards, it stores special digital keys that enable interaction with various blockchains, allowing users to manage digital assets such as cryptocurrencies, tokens, or non-fungible tokens (NFTs).
 
