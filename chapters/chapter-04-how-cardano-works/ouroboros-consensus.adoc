@@ -280,7 +280,7 @@ The version of Ouroboros described here is best understood as Ouroboros Praos;
 however, other versions exist that relax different underlying assumptions.
 
 * Ouroboros Classic<<OurborosClassicPaper>> (2017): first proof of stake protocol with a security proof, but required synchronous communication and used a public deterministic schedule
-* Ouroboros BFT<<OurborosBftPaper>> (2018): interim federated version used during the Cardano Byron reboot
+* Ouroboros Byzantine Fault Tolerant (BFT)<<OurborosBftPaper>> (2018): interim federated version used during the Cardano Byron reboot
 * Ouroboros Praos<<OuroborosPraosPaper>> (2018): introduced private VRF-based leader selection and supported semi-synchronous networks
 * Ouroboros Genesis<<OuroborosGenesisPaper>> (2018): improved fork-choice rule enabling trustless bootstrapping and dynamic availability
 * Ouroboros Chronos<<OuroborosChronosPaper>> (2019): added secure time synchronization to Ouroboros (not yet implemented)
@@ -294,7 +294,7 @@ provided that at least 51% of the stake is controlled by honest participants.
 However, it assumed a synchronous network, where all nodes are online and messages are delivered within a known, fixed delay.
 This was a significant step forward, but not yet practical.
 
-===== Ouroboros BFT (2018)
+===== Ouroboros BFT (Byzantine Fault Tolerant, 2018)
 
 Used during the Cardano Byron reboot.
 Enabled a federated blockchain,
@@ -331,7 +331,7 @@ Chronos is a more recent development in the Ouroboros family, focusing on an oft
 
 Chronos addresses this by introducing a mechanism for nodes to securely synchronize their clocks using the blockchain itself as a reference. It effectively transforms the blockchain into a decentralized time oracle.
 
-Chronos removes the need for external time sources such as NTP servers, which can act as single points of failure or attack. Instead, nodes periodically run an internal protocol embedded in the blockchain process to agree on the current time, detecting and correcting any clock drift or malicious manipulation.
+Chronos removes the need for external time sources such as Network Time Protocol (NTP) servers, which can act as single points of failure or attack. Instead, nodes periodically run an internal protocol embedded in the blockchain process to agree on the current time, detecting and correcting any clock drift or malicious manipulation.
 
 This makes the system more resilient to time-based attacks.
 For example, it becomes much harder for an attacker to isolate a node by feeding it a false clock and disrupting its slot scheduling.
@@ -346,8 +346,8 @@ and how varying certain assumptions allows for tuned versions of the protocol su
 [bibliography]
 ==== References
 
-* [[[OurborosClassicPaper]]] Kiayias, A. et al. (2017) ‘Ouroboros: A provably secure proof of stake Blockchain Protocol’, Lecture Notes in Computer Science, pp. 357–388. doi:10.1007/978-3-319-63688-7_12.
-* [[[OurborosBftPaper]]] Kiayias, A., & Russell, A. (2018). Ouroboros-bft: A simple byzantine fault tolerant consensus protocol. Cryptology ePrint Archive.
-* [[[OuroborosPraosPaper]]] David, B., Gaži, P., Kiayias, A., & Russell, A. (2018, March). Ouroboros praos: An adaptively-secure, semi-synchronous proof of stake blockchain. In Annual International Conference on the Theory and Applications of Cryptographic Techniques (pp. 66-98). Cham: Springer International Publishing.
-* [[[OuroborosGenesisPaper]]] Badertscher, C., Gaži, P., Kiayias, A., Russell, A., & Zikas, V. (2018, October). Ouroboros genesis: Composable proof of stake blockchains with dynamic availability. In Proceedings of the 2018 ACM SIGSAC Conference on Computer and Communications Security (pp. 913-930).
-* [[[OuroborosChronosPaper]]] Badertscher, C., Gazi, P., Kiayias, A., Russell, A., & Zikas, V. (2019). Ouroboros chronos: Permissionless clock synchronization via proof of stake. Cryptology ePrint Archive.
+* [[[OurborosClassicPaper]]] Kiayias, A. et al (2017) ‘Ouroboros: A provably secure proof of stake Blockchain Protocol’, Lecture Notes in Computer Science, pp. 357–388. doi:10.1007/978-3-319-63688-7_12
+* [[[OurborosBftPaper]]] Kiayias, A., & Russell, A. (2018). Ouroboros-bft: A simple byzantine fault tolerant consensus protocol. Cryptology ePrint Archive
+* [[[OuroborosPraosPaper]]] David, B., Gaži, P., Kiayias, A., & Russell, A. (2018, March). Ouroboros praos: An adaptively-secure, semi-synchronous proof of stake blockchain. In Annual International Conference on the Theory and Applications of Cryptographic Techniques (pp. 66-98). Cham: Springer International Publishing
+* [[[OuroborosGenesisPaper]]] Badertscher, C., Gaži, P., Kiayias, A., Russell, A., & Zikas, V. (2018, October). Ouroboros genesis: Composable proof of stake blockchains with dynamic availability. In Proceedings of the 2018 ACM SIGSAC Conference on Computer and Communications Security (pp. 913-930)
+* [[[OuroborosChronosPaper]]] Badertscher, C., Gazi, P., Kiayias, A., Russell, A., & Zikas, V. (2019). Ouroboros chronos: Permissionless clock synchronization via proof of stake. Cryptology ePrint Archive
