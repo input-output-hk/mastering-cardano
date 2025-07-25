@@ -33,7 +33,7 @@ image::network_revised_peersharing.png[title="Peer Sharing"]
 
 ==== Protocol Overview
 
-The Ouroboros network is currently designed to work over the Transmission Control Protocol/Internet Protocol(((Transmission Control Protocol/Internet Protocol))) (TCP/IP), the set of communication protocol standards the internet and most networks are shaped around. TCP/IP gives the Cardano networking protocols access to two-way communication between nodes. The guaranteed ordered delivery of network packets makes the TCP/IP protocols well suited for blockchain networks.
+The Ouroboros network is currently designed to work over the Transmission Control Protocol/Internet Protocol(((TCP/IP))) (TCP/IP), the set of communication protocol standards the internet and most networks are shaped around. TCP/IP gives the Cardano networking protocols access to two-way communication between nodes. The guaranteed ordered delivery of network packets makes the TCP/IP protocols well suited for blockchain networks.
 
 ==== Mini Protocols
 

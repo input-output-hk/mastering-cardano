@@ -101,7 +101,7 @@ aspect of software development, from design to maintenance.
 
 Haskell employs a static type system(((static type system))), which means that type checking is
 performed at compile time(((compile time))) rather than at runtime. It is also _strongly
-typed_, preventing the misuse of data types(((types))) without explicit
+typed_, preventing the misuse of data types(((type))) without explicit
 conversions. More impressively, it supports advanced features like _type
 inference_, where the compiler(((compiler))) can automatically deduce the types of
 expressions without explicit annotations. It also includes _algebraic
@@ -110,7 +110,7 @@ can be checked at compile time(((compile time))).
 
 Another powerful aspect of Haskell's type system(((type system))) is its support for
 _type classes_ and _generics_. Type classes allow for the definition of
-generic interfaces that different types(((types))) can implement, facilitating
+generic interfaces that different types(((type))) can implement, facilitating
 polymorphic functions(((polymorphic functions))) that can operate on any data type that supports a
 certain set of operations. This feature significantly enhances code
 reusability and flexibility(((flexibility))).
@@ -143,7 +143,7 @@ code continues to compile. This confidence is crucial for the long-term
 maintenance and evolution of software projects.
 . *Aid in design*. The type system in Haskell not only checks code but
 also aids in its design by enforcing a level of thoughtfulness about
-data types(((types))) and their interactions. This enforced rigor leads to
+data types(((type))) and their interactions. This enforced rigor leads to
 better-designed, more robust, and maintainable systems.
 
 ==== Lazy evaluation
@@ -207,7 +207,7 @@ programs.
 *Haskell's concurrency model*
 
 Haskell(((Haskell)))'s concurrency model is built on the concept of lightweight
-threads, which are managed by the Haskell runtime system(((Haskell runtime system))) rather than the
+threads, which are managed by the Haskell runtime system(((Haskell, runtime system))) rather than the
 underlying operating system(((operating system))). This model allows for the creation of a
 large number of threads with minimal overhead, making concurrent
 programming in Haskell both efficient and scalable(((scalable))).
@@ -264,7 +264,7 @@ abstract syntax trees(((abstract syntax trees))) (ASTs), and automatically gener
 code.
 . *Type-level programming*. Haskell allows for computations and logic to
 be embedded within types, leveraging its powerful type system(((type system))).
-Type-level programming(((Type-level programming))) in Haskell can involve creating and using kinds
+Type-level programming(((type-level programming))) in Haskell can involve creating and using kinds
 like type-level natural numbers or lists, and even performing type-level
 computations. This capability is enhanced by extensions such as
 [purple]#DataKinds# and [purple]#TypeFamilies#, which allow types to carry
@@ -294,7 +294,7 @@ runtime(((runtime))) checks and computations, the resulting program can run more
 efficiently.
 . *Dynamic behavior with static guarantee*. Metaprogramming in Haskell
 allows for a mix of dynamic-like behavior (eg generating different
-types(((types))) of functions and structures based on external inputs) while still
+types(((type))) of functions and structures based on external inputs) while still
 retaining the guarantees of a static type system(((static type system))). This
 best-of-both-worlds approach offers flexibility(((flexibility))) without sacrificing the
 benefits of static typing.

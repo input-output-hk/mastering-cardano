@@ -73,7 +73,7 @@ separate specifications for networking(((networking))), consensus, ledger, and s
 contract layers. The scope(((scope))) may be further limited by omitting certain
 functionality(((functionality))). For example, the ledger specification may leave the
 details of the signing algorithm(((signing algorithm))) abstract, giving only an API, or leave
-out the specifics of transaction serialization(((transaction serialization))) entirely. It is essential
+out the specifics of transaction serialization(((transaction, serialization))) entirely. It is essential
 to be clear about the scope(((scope))) of what is being specified. A reasonable
 scope is one where there are no unpredictable external side-effects(((external side-effects))),
 constraints(((constraints))), or inputs that are not accounted for in the specification.
@@ -82,7 +82,7 @@ constraints(((constraints))), or inputs that are not accounted for in the specif
 hard about what they want the program to be doing, sometimes starting by
 analyzing an informal specification(((informal specification))) or a requirements list. For example,
 when a transaction is applied to the ledger(((ledger))), its validity is checked.
-The definition of transaction validity(((transaction validity))) must be given using a formal
+The definition of transaction validity(((transaction, validity))) must be given using a formal
 specification. This includes details such as 'does the validity interval(((validity interval)))
 `[a, b]` of a transaction include the endpoints `a` or `b`?', or ‘does a
 transaction need to specify the exact set of keys that must sign for it
@@ -96,7 +96,7 @@ are not an obvious outcome(((outcome))) of the specification. They are the resul
 FM engineers(((engineers))) thinking 'what do we want to guarantee about this program's
 behavior?'. For example, 'the cost and outcome(((outcome))) of smart contract
 execution is predictable locally' is a unique and cherished property of
-Cardano smart contract execution(((smart contract execution))), and is not necessarily shared by other
+Cardano smart contract execution(((smart contract, execution))), and is not necessarily shared by other
 blockchains. Upon formulating the desired properties(((properties))) of the program,
 they need to be either proved or demonstrated with a high degree of
 assurance, if possible. If it turns out that the specification does not,
@@ -172,8 +172,8 @@ optimization(((optimization))).
 
 _Semi-formal_, or non-machine-checked, techniques are also in use for
 building Cardano, including specification and proofs in the form of text
-documents. For example, for a given UTXO state(((UTXO state))) and transaction, symbolic
-logic can express: 
+documents. For example, for a given UTXO state(((UTXO, state))) and transaction, symbolic
+logic can express:
 
 * How the UTXO state will be updated by this transaction, and
 * What properties a valid transaction has.
@@ -193,7 +193,7 @@ dependently typed(((dependently typed))), functional, and treats propositions an
 reasoning as first class citizens. They support constructing and proving
 propositions(((propositions))), sometimes also supporting some degree of automation for
 this purpose. They can be used to provide stronger guarantees about the
-behavior of a given program as compared to type systems(((type systems))) that do not
+behavior of a given program as compared to type systems(((type system))) that do not
 support proof construction. Lean, Agda, Coq, and Isabelle(((Isabelle))) are all proof
 assistants used for different purposes within Cardano. The choice of
 assistant depends on a number of factors, such as available expertise(((expertise)))
@@ -257,7 +257,7 @@ connections that are faster than the speed of light(((speed of light))).
 Overall, developing new tools, such as the one described above, as well
 as improving existing ones, is an important component of formal methods
 application in Cardano, and in industrial contexts(((industrial contexts))) in general. Other
-examples of tool development(((tool development))) work done as part of the Cardano
+examples of tool development(((tool, development))) work done as part of the Cardano
 engineering include contributions to both Haskell(((Haskell))) and Agda
 implementations.
 
@@ -287,7 +287,7 @@ property-based testing(((property-based testing))). However, because it is leani
 concurrency for efficient operations, even testing(((testing))) proved challenging.
 Dedicated packages, including a special concurrency control mechanism(((concurrency control mechanism))),
 were developed to provide an additional layer of abstraction on top of
-parts of the Haskell runtime system(((Haskell runtime system))) (RTS). The same code can then be
+parts of the Haskell runtime system(((Haskell, runtime system))) (RTS). The same code can then be
 executed either by the Haskell(((Haskell))) RTS, or via a pure and fast
 implementation(((implementation))) that deterministically simulates it, enabling excellent
 testing(((testing))).
@@ -307,15 +307,15 @@ maintaining the same level of scientific rigor(((scientific rigor))) as in the o
 research(((research))) work. There are also some downsides to the use of FM, so let us
 list the pros and cons of formal methods:
 
-PROS: 
+PROS:
 
 * Provide very strong guarantees about program behavior, such as the
 absence (or a very low probability) of certain kinds of errors in all
 program executions
 * Multiple implementations built in accordance with a single formal model
-are guaranteed to have the same functionality(((functionality))). 
+are guaranteed to have the same functionality(((functionality))).
 
-CONS: 
+CONS:
 
 * Requires a lot of time, resources, effort, and expertise
 * May be difficult for non-experts to understand
@@ -351,7 +351,7 @@ development practices and standards, and (iv) modified to include a
 broader scope of application of formal methods, e.g. cryptography(((cryptography))).
 
 However, more work remains to be done in all of these areas. Further
-verification of cryptographic protocols(((cryptographic protocols))) would be extremely valuable.
+verification of cryptographic protocols(((cryptographic, protocols))) would be extremely valuable.
 Work is ongoing on the application of formal methods in additional areas
 of Cardano development, including compilation certification(((compilation certification))), running
 verified code on-chain(((verified code on-chain))), and additional performance and security

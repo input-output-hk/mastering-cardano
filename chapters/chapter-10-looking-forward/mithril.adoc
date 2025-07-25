@@ -23,7 +23,7 @@ The Mithril protocol(((Mithril, protocol))) design is based on the following cor
 * Leveraging stake to efficiently certify data within a large committee of
 signers(((signers)))
 * Ensuring a transparent setup without increasing trust requirements.
-Security is guaranteed through a trusted Genesis phase(((Genesis, phase))) for Mithril,
+Security is guaranteed through a trusted Genesis phase(((genesis, phase))) for Mithril,
 similar to Cardano’s.
 
 Mithril achieves its goals using a stake-based threshold multi-signature(((multi-signature, stake-based threshold)))
@@ -50,12 +50,12 @@ provides the multi-signature(((multi-signature))).
 The Mithril network(((Mithril, network))) is the practical implementation of the Mithril
 protocol. Network nodes take the aforementioned roles: _signer_,
 _aggregator_, and _verifier_ (also known as the client), as well as
-other security-related roles such as the relay(((relay))).
+other security-related roles such as the relay(((relay node))).
 
 ==== The Mithril protocol (advanced)
 
 Mithril enables a multi-party signing process(((multi-party, signing process))) by holding a pre-defined
-number of lotteries(((lotteries))) (*m*) run by all signers when signing a message. A
+number of lotteries(((lottery))) (*m*) run by all signers when signing a message. A
 multi-signature(((multi-signature))) is generated once the number of unique winning lottery
 indices from the signers(((signers))) reaches a threshold (*k*) – the quorum. The
 probability of a signer(((signer))) winning a lottery is proportional to their
@@ -136,7 +136,7 @@ transaction set(((transaction, set))) or UTXO set of the chain, signed every 20 
 this beacon, each signer computes the associated message(((message))), which includes
 the aggregate verification key(((aggregate, verification key))), and attempts to sign it.
 
-To do so, signers participate in a series of lotteries(((lotteries))) (*m*) against the
+To do so, signers participate in a series of lotteries(((lottery))) (*m*) against the
 message(((message))) to be signed and their stake (conducted in parallel), creating a
 list of winning indices. If this list is not empty, signers(((signers))) combine it
 with the cryptographic signature(((cryptographic, signature))) of the message (generated using their
@@ -206,7 +206,7 @@ certified at the transition to a new epoch(((epoch))). This enables the
 verification of validator node stake(((validator node, stake))) in a bridge without running a full
 Cardano node(((Cardano, node))) to access this data.
 * *Mithril stake distribution*: the Mithril stake distribution (the stake
-of the stake pool operators(((stake pool, operators))) (SPOs) involved in the protocol and their
+of the stake pool operators(((stake pool, operator))) (SPOs) involved in the protocol and their
 verification keys) is certified at the transition to a new Cardano
 epoch(((epoch))). This mandatory information must be signed at each epoch(((epoch))) to secure
 the Mithril protocol, and is achieved through the *Mithril certificate(((Mithril, certificate)))

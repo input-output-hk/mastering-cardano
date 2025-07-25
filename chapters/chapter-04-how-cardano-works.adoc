@@ -68,3 +68,5 @@ include::chapter-04-how-cardano-works/chapter-incentives.adoc[]
 include::chapter-04-how-cardano-works/ouroboros-consensus.adoc[]
 
 include::chapter-04-how-cardano-works/network-protocols.adoc[]
+
+include::chapter-04-how-cardano-works/native-assets.adoc[]

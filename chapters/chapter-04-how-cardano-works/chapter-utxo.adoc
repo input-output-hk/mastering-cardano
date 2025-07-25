@@ -15,23 +15,24 @@ For instance, if Alice initially holds 100 ETH and Bob holds 10 ETH, and Alice s
 .Alice sends 30 ETH to Bob in the account-based model(((account-based model)))
 image::Alice_sends_30_ETH_to_Bob.png[]
 
-==== The UTXO(((unspent transaction output (UTXO)))) Model
+==== The UTXO Model(((UTXO, model)))
 
-The account-based model(((account-based model))) is not the only option, nor is it used by Cardano. Instead, Cardano follows Bitcoin(((Bitcoin)))'s _UTXO model_ and extends it to the _extended UTXO(((unspent transaction output (UTXO)))) model (EUTXO)_.
+The account-based model(((account-based model))) is not the only option, nor is it used by Cardano. Instead, Cardano follows Bitcoin(((Bitcoin)))'s _UTXO model_ and extends it to the _extended UTXO model(((UTXO, model))) (EUTXO)_.
 
-The term 'UTXO(((unspent transaction output (UTXO))))' is an acronym for _unspent transaction(((transaction))) output_ and denotes just that: the output of a transaction(((transaction))) that has not yet been spent.
+The term 'UTXO(((UTXO)))' is an acronym for _unspent transaction(((transaction))) output_ and denotes just that: the output of a transaction(((transaction))) that has not yet been spent.
 
-_Transactions_ are the fundamental building blocks of all blockchains, regardless of the accounting model(((accounting model))) they employ. Transactions(((transaction))) trigger changes and facilitate actions. However, while the account-based model(((account-based model))) updates balances, the UTXO(((unspent transaction output (UTXO)))) model spends previously unspent outputs(((transaction, output))) from past transactions and generates new unspent outputs(((transaction, output))).
+_Transactions_ are the fundamental building blocks of all blockchains, regardless of the accounting model(((accounting model))) they employ. Transactions(((transaction))) trigger changes and facilitate actions. However, while the account-based model(((account-based model))) updates balances,
+the UTXO model(((UTXO, model))) spends previously unspent outputs(((transaction, output))) from past transactions and generates new unspent outputs(((transaction, output))).
 
-Transactions(((transaction))) in the UTXO(((unspent transaction output (UTXO)))) model have one or more _inputs_ and one or more _outputs_. Each input spends an existing UTXO(((unspent transaction output (UTXO)))) (thereby rendering it ‘spent’), while each output creates a new UTXO(((unspent transaction output (UTXO)))), which can later be used as input for another transaction(((transaction))).
+Transactions(((transaction))) in the UTXO model(((UTXO, model))) have one or more _inputs_ and one or more _outputs_. Each input spends an existing UTXO(((UTXO))) (thereby rendering it ‘spent’), while each output creates a new UTXO(((UTXO))), which can later be used as input for another transaction(((transaction))).
 
 You can think of unspent transaction(((transaction))) outputs(((transaction, output))) as ‘coins’ or ‘banknotes’ that can be spent in future transactions. When you receive a payment, you receive a new coin or banknote, which you can use in a future transaction(((transaction))). When you spend money, you hand over coins or banknotes you received in the past.
 
-In a sense, the UTXO(((unspent transaction output (UTXO)))) model is finer-grained than the account-based model(((account-based model))) – it tracks each ‘coin or banknote’ rather than just total balances.
+In a sense, the UTXO model(((UTXO, model))) is finer-grained than the account-based model(((account-based model))) – it tracks each ‘coin or banknote’ rather than just total balances.
 
-The UTXO(((unspent transaction output (UTXO)))) model resembles cash, whereas the account-based model(((account-based model))) is more like a bank account. When paying with cash, you hand over whole banknotes or coins, which are unspent outputs(((transaction, output))) from past transactions (when someone paid you). UTXOs work the same way – they must be spent in full, just like coins or banknotes. If you don’t have the exact amount, you hand over more and receive change(((change))) in return.
+The UTXO model(((UTXO, model))) resembles cash, whereas the account-based model(((account-based model))) is more like a bank account. When paying with cash, you hand over whole banknotes or coins, which are unspent outputs(((transaction, output))) from past transactions (when someone paid you). UTXOs work the same way – they must be spent in full, just like coins or banknotes. If you don’t have the exact amount, you hand over more and receive change(((change))) in return.
 
-In the UTXO(((unspent transaction output (UTXO)))) model, this change(((change))) is called a _change output_, where one or more outputs(((transaction, output))) from a transaction(((transaction))) typically return to yourself.
+In the UTXO model(((UTXO, model))), this change(((change))) is called a _change output_, where one or more outputs(((transaction, output))) from a transaction(((transaction))) typically return to yourself.
 
 However, the analogy with cash is not perfect. While you must spend entire UTXOs, you can create new UTXOs with arbitrary values, provided the total value(((value))) of the new UTXOs does not exceed the value(((value))) of the UTXOs being spent. This differs from cash transactions, where you cannot simply create new banknotes or coins.
 
@@ -42,11 +43,11 @@ For example, if you have an input ‘coin’ worth 100 ada(((ADA))), you can cre
 
 [example]
 ======
-Let’s reconsider the example of Alice and Bob using the UTXO(((unspent transaction output (UTXO)))) model: Alice has 100 ada(((ADA))) split between two UTXOs – one worth 60 ada(((ADA))) and the other worth 40 ada(((ADA))). Bob has a single UTXO(((unspent transaction output (UTXO)))) worth 10 ada(((ADA))).
+Let’s reconsider the example of Alice and Bob using the UTXO model(((UTXO, model))): Alice has 100 ada(((ADA))) split between two UTXOs – one worth 60 ada(((ADA))) and the other worth 40 ada(((ADA))). Bob has a single UTXO(((UTXO))) worth 10 ada(((ADA))).
 
-If Alice wants to send 30 ada(((ADA))) to Bob, she can create a transaction(((transaction))) using one of her UTXOs, for instance, the 40 ada(((ADA))) UTXO(((unspent transaction output (UTXO)))). The transaction(((transaction))) will have two outputs(((transaction, output))): one output worth 30 ada(((ADA))) to Bob and another worth 10 ada(((ADA))) as change(((change))) back to Alice.
+If Alice wants to send 30 ada(((ADA))) to Bob, she can create a transaction(((transaction))) using one of her UTXOs, for instance, the 40 ada(((ADA))) UTXO(((UTXO))). The transaction(((transaction))) will have two outputs(((transaction, output))): one output worth 30 ada(((ADA))) to Bob and another worth 10 ada(((ADA))) as change(((change))) back to Alice.
 
-Alternatively, Alice could use her 60 ada(((ADA))) UTXO(((unspent transaction output (UTXO)))) and send 30 ada(((ADA))) back to herself. She could also combine both her UTXOs (60 ada(((ADA))) and 40 ada(((ADA)))) as inputs(((transaction, input))) and create one or more change(((change))) outputs(((transaction, output))), such as 70 ada(((ADA))) total, or even split it into two outputs(((transaction, output))) like 50 ada(((ADA))) and 20 ada(((ADA))), as long as they sum up to 70 ada(((ADA))).
+Alternatively, Alice could use her 60 ada(((ADA))) UTXO(((UTXO))) and send 30 ada(((ADA))) back to herself. She could also combine both her UTXOs (60 ada(((ADA))) and 40 ada) as inputs(((transaction, input))) and create one or more change(((change))) outputs(((transaction, output))), such as 70 ada(((ADA))) total, or even split it into two outputs(((transaction, output))) like 50 ada(((ADA))) and 20 ada(((ADA))), as long as they sum up to 70 ada(((ADA))).
 
 Even with this simple example, Alice has numerous ways to structure her transaction(((transaction))). The key is that the sum of the output values must match the sum of the input values, with the outputs(((transaction, output))) to Bob adding up to 30 ada(((ADA))) and the change(((change))) outputs(((transaction, output))) reflecting the remaining balance.
 
@@ -56,12 +57,12 @@ While this process sounds complex, in practice, users don't need to worry about 
 
 Coin selection works similarly to choosing the right coins and banknotes from a physical wallet when paying with cash – you don't want too many coins cluttering your wallet, you avoid receiving too many small coinsfootnote:[In the cryptocurrency context(((context))), small-value(((value))) UTXOs are known as _dust_. ] as change(((change))), but you also don’t want to use up all your small change(((change))). Wallets aim to strike a balance between these competing objectives.
 
-.Alice sends 30 ada(((ADA))) to Bob in the UTXO(((unspent transaction output (UTXO)))) model
+.Alice sends 30 ada(((ADA))) to Bob in the UTXO model(((UTXO, model)))
 image::Alice_sends_30_ADA_to_Bob.png[]
 
 It is important to note that this example is simplified. In reality, Alice would also need to account for _transaction fees_(((transaction, fees))), which means the change(((change))) outputs(((transaction, output))) returning to her would be slightly less than the difference between her inputs(((transaction, input))) and the 30 ada(((ADA))) sent to Bob.
 
-In the pure UTXO(((unspent transaction output (UTXO)))) model, outputs(((transaction, output))) consist of an _address_ and a _value_. The address(((address))) – which, in Cardano’s case, includes a _PubKey Hash_ (the hash of a verification key)(((verification key))) – specifies who is allowed to spend the output later. To spend this output, transactions must be _signed_ using the corresponding signing key(((signing key))), and multiple signing keys can be used.
+In the pure UTXO(((UTXO))) model, outputs(((transaction, output))) consist of an _address_ and a _value_. The address(((address))) – which, in Cardano’s case, includes a _PubKey Hash_ (the hash of a verification key)(((verification, key))) – specifies who is allowed to spend the output later. To spend this output, transactions must be _signed_ using the corresponding signing key(((signing key))), and multiple signing keys can be used.
 
 The _value_ represents an arbitraryfootnote:[A certain minimum amount of ada(((ADA))) – _minimum deposit_, which always needs to be included.] combination of ada(((ADA))) and native tokens(((Cardno, native tokens))).
 
@@ -71,43 +72,43 @@ Cardano transactions must be _balanced_ – roughly speaking, the sum of input v
       which get subtracted from the input values before being compared to the output values
     * Cardano native tokens(((Cardano, native tokens))) (i.e. other tokens besides ada) can be _minted_ (created) or _burnt_ (destroyed) in a transaction(((transaction)))
     * Staking rewards can be withdrawn, getting added to the outputs(((transaction, output))) without having compensating
-      inputsfootnote:[These staking(((staking))) rewards come from an internal reward account, not a regular UTXO(((unspent transaction output (UTXO)))).].
+      inputsfootnote:[These staking(((staking))) rewards come from an internal reward account, not a regular UTXO(((UTXO))).].
 
 ===== About change
 
-Change is essential for a transaction(((transaction))) to have any real-world effect. Without it, a transaction(((transaction))) serves no purpose. In the account-based model(((account-based model))), change is in the account balances. For those familiar with imperative programming, account balances in this model are like _global_ variables(((global variables))) that get updated by transactions. In the UTXO(((unspent transaction output (UTXO)))) model, change happens within the set of UTXOs – some UTXOs are spent, and new ones are created. However, no output is ever modified. Once created, an output remains unchanged permanently. The transaction(((transaction)))’s effect lies solely in consuming existing outputs(((transaction, output))) and generating new ones. For those familiar with functional programming, UTXOs are comparable to _immutable_ data structures(((immutable data structures))), which are _consumed_ but never modified by transactions.
+Change is essential for a transaction(((transaction))) to have any real-world effect. Without it, a transaction(((transaction))) serves no purpose. In the account-based model(((account-based model))), change is in the account balances. For those familiar with imperative programming, account balances in this model are like _global_ variables(((global variables))) that get updated by transactions. In the UTXO(((UTXO))) model, change happens within the set of UTXOs – some UTXOs are spent, and new ones are created. However, no output is ever modified. Once created, an output remains unchanged permanently. The transaction(((transaction)))’s effect lies solely in consuming existing outputs(((transaction, output))) and generating new ones. For those familiar with functional programming, UTXOs are comparable to _immutable_ data structures(((immutable data structures))), which are _consumed_ but never modified by transactions.
 
-In the example above, before Alice sends 30 ada(((ADA))) to Bob, the UTXO(((unspent transaction output (UTXO)))) set consists of Alice's two UTXOs (60 ada(((ADA))) and 40 ada(((ADA)))) and Bob's UTXO(((unspent transaction output (UTXO)))) of 10 ada(((ADA))).
+In the example above, before Alice sends 30 ada(((ADA))) to Bob, the UTXO(((UTXO))) set consists of Alice's two UTXOs (60 ada(((ADA))) and 40 ada) and Bob's UTXO(((UTXO))) of 10 ada(((ADA))).
 
-.The old UTXO(((unspent transaction output (UTXO)))) set before Alice's transaction(((transaction)))
+.The old UTXO(((UTXO))) set before Alice's transaction(((transaction)))
 image::change_before_utxo.png[]
 
-Alice’s transaction(((transaction))) consumes her UTXO(((unspent transaction output (UTXO)))) worth 40 ada(((ADA))) and generates two new UTXOs – one worth 30 ada(((ADA))) sent to Bob and another worth 10 ada(((ADA))) returned to Alice.
+Alice’s transaction(((transaction))) consumes her UTXO(((UTXO))) worth 40 ada(((ADA))) and generates two new UTXOs – one worth 30 ada(((ADA))) sent to Bob and another worth 10 ada(((ADA))) returned to Alice.
 
 So while no individual output changes, the _set_ of unspent outputs(((transaction, output))) changes – one output is removed from the set (because it is now _spent_), and two new ones are added.
 
-.The new UTXO(((unspent transaction output (UTXO)))) set after Alice's transaction(((transaction)))
+.The new UTXO(((UTXO))) set after Alice's transaction(((transaction)))
 image::change_after_utxo.png[]
 
 Of course, there may be many more UTXOs on the blockchain that are not considered here, but they have no impact on the specific transaction(((transaction))) examined here.
 
 ==== Extending it: the EUTXO model(((EUTXO model)))
 
-The UTXO(((unspent transaction output (UTXO)))) model is simple and elegant, allowing users to send and receive funds without restriction.
+The UTXO(((UTXO))) model is simple and elegant, allowing users to send and receive funds without restriction.
 
-​​​​These days, however, users expect more from a blockchain than just the ability to send and receive funds. They want to create smart contracts(((smart contract))) that can do more than merely move funds; they seek the ability to implement arbitrary logic and enforce complex rules. They also want to create fungible(((fungible))) or non-fungible(((non-fungible))) tokens (NFTs)(((non-fungible, token (NFT)))) and trade them on decentralized exchanges(((decentralized exchanges))) or sell them on decentralized marketplaces(((decentralized marketplaces))).
+​​​​These days, however, users expect more from a blockchain than just the ability to send and receive funds. They want to create smart contracts(((smart contract))) that can do more than merely move funds; they seek the ability to implement arbitrary logic and enforce complex rules. They also want to create fungible(((fungible))) or non-fungible(((non-fungible))) tokens (NFTs)(((non-fungible, token (NFT)))) and trade them on decentralized exchanges(((decentralized, exchange))) or sell them on decentralized marketplaces(((decentralized, marketplace))).
 
-In the UTXO(((unspent transaction output (UTXO)))) model, a transaction(((transaction))) can spend inputs(((transaction, input))) locked at a specific address(((address))) if it is signed(((signed))) by the corresponding signing key(((signing key))).
+In the UTXO model(((UTXO, model))), a transaction(((transaction))) can spend inputs(((transaction, input))) locked at a specific address(((address))) if it is signed(((signed))) by the corresponding signing key(((signing key))).
 
-In the extended UTXO(((unspent transaction output (UTXO)))) model(((EUTXO model))), this concept is generalized by replacing the requirement for specific signatures with arbitrary logic.
+In the extended UTXO model(((EUTXO, model))), this concept is generalized by replacing the requirement for specific signatures with arbitrary logic.
 
 In addition to using hashed public keys as part of addresses, the EUTXO model(((EUTXO model))) introduces addresses that contain hashed _scripts_, written in a programming language (_Plutus Core_ in the case of Cardano).
 
-During validation(((validation))), when a transaction(((transaction))) has an input at a script(((script))) address(((address))), the corresponding script(((script))) (also referred to as a _validator_ in this context(((context)))) is executed. If the script(((script))) execution completes without error, spending the input is considered valid; otherwise, it is deemed invalid.
+During validation(((validation))), when a transaction(((transaction))) has an input at a script(((script))) address(((address))), the corresponding script(((script))) (also referred to as a _validator_ in this context) is executed. If the script(((script))) execution completes without error, spending the input is considered valid; otherwise, it is deemed invalid.
 
 To make this idea work, three additional components are needed:
 
-* In the UTXO(((unspent transaction output (UTXO)))) model, a transaction(((transaction))) output consists of an address(((address))) and a value(((value))). The EUTXO model(((EUTXO model))) adds a third component – a piece of data called a datum(((datum))).footnote:[Adding a datum(((datum))) to an output is optional, but outputs(((transaction, output))) at script(((script))) addresses without a datum(((datum))) are unspendable. Datums can also be added to public key addresses.]
+* In the UTXO model(((UTXO, model))), a transaction(((transaction))) output consists of an address(((address))) and a value(((value))). The EUTXO model(((EUTXO model))) adds a third component – a piece of data called a datum(((datum))).footnote:[Adding a datum(((datum))) to an output is optional, but outputs(((transaction, output))) at script(((script))) addresses without a datum(((datum))) are unspendable. Datums can also be added to public key addresses.]
 
 * A transaction(((transaction))) attempting to spend an output at a script(((script))) address(((address))) must include another piece of data in the input, known as the _redeemer_. The redeemer(((redeemer))) acts as a ‘key’ to ‘unlock’ an input – a generalization of the signature used to unlock outputs(((transaction, output))) at public key addresses.
 
@@ -149,13 +150,13 @@ She doesn't necessarily trust Bob, so she doesn't just want to send her NFT to B
 
 Likewise, Bob doesn't trust Alice and doesn't want to send her 100 ada(((ADA))), hoping she will send him the NFT afterward.
 
-This problem can be addressed using the UTXO(((unspent transaction output (UTXO)))) model, even without smart contracts(((smart contract))). For instance, Alice or Bob can create a transaction(((transaction))) with two inputs(((transaction, input))): Alice's NFT and Bob's 100 ada(((ADA))). The outputs(((transaction, output))) would be 100 ada(((ADA))) for Alice and the NFT for Bob. Alice can then partially sign the transaction(((transaction))) and send it to Bob off-chain (for example, via email). Bob can subsequently add his signature and submit the transaction(((transaction))) to the blockchain.
+This problem can be addressed using the UTXO model(((UTXO, model))), even without smart contracts(((smart contract))). For instance, Alice or Bob can create a transaction(((transaction))) with two inputs(((transaction, input))): Alice's NFT and Bob's 100 ada(((ADA))). The outputs(((transaction, output))) would be 100 ada(((ADA))) for Alice and the NFT for Bob. Alice can then partially sign the transaction(((transaction))) and send it to Bob off-chain (for example, via email). Bob can subsequently add his signature and submit the transaction(((transaction))) to the blockchain.
 
 This approach is secure because neither party can submit the transaction(((transaction))) without the other's signature. Additionally, Bob cannot manipulate the transaction(((transaction))) to his advantage prior to signing, as doing so would invalidate Alice's signature.
 
 This transaction(((transaction))) exemplifies an _atomic swap_ – it facilitates the exchange of Alice's NFT and Bob's 100 ada(((ADA))) ‘atomically,’ without requiring trust. Either Alice receives her 100 ada(((ADA))), and Bob receives the NFT, or neither party completes the transaction(((transaction))).
 
-.Alice and Bob perform an atomic swap(((atomic swap))) in the UTXO(((unspent transaction output (UTXO)))) model
+.Alice and Bob perform an atomic swap(((atomic swap))) in the UTXO model(((UTXO, model)))
 image::atomic_swap_utxo.png[]
 
 This approach has at least two issues: first, the partially signed(((signed))) transaction(((transaction))) must be sent off-chain, which is not ideal and can be cumbersome for users. Second, Alice must find Bob and agree on the terms of the swap, which again requires an off-chain process.
@@ -167,21 +168,21 @@ So how does this work?
 .Alice has an NFT she wants to sell
 image::atomic_swap_eutxo_1.png[]
 
-Alice creates an atomic-swap script(((script))), sends her NFT to the corresponding _script address_ (given by the hash of the script(((script)))), and sets the price (100 ada(((ADA))) in our example) within the _datum_ of the output.
+Alice creates an atomic-swap script(((script))), sends her NFT to the corresponding _script address_ (given by the hash(((script, hash))) of the script), and sets the price (100 ada(((ADA))) in our example) within the _datum_ of the output.
 
 .Alice locks her NFT in a script(((script))) output guarded by the atomic-swap script(((script)))
 image::atomic_swap_eutxo_2.png[]
 
-To unlock that UTXO(((unspent transaction output (UTXO)))) and spend it, the script(((script))) will verify that the spending transaction(((transaction))) includes an output of 100 ada(((ADA))) directed to Alice. The script(((script))) can 'see' the entire spending transaction(((transaction))) (but nothing beyond that), allowing it to check for an output of 100 ada(((ADA))) to Alice.
+To unlock that UTXO(((UTXO))) and spend it, the script(((script))) will verify that the spending transaction(((transaction))) includes an output of 100 ada(((ADA))) directed to Alice. The script(((script))) can 'see' the entire spending transaction(((transaction))) (but nothing beyond that), allowing it to check for an output of 100 ada(((ADA))) to Alice.
 
 In practice, the script(((script))) will likely also enable Alice to reclaim her NFT at any time(((time))). Without this functionality, she might encounter difficulties retrieving her NFT if no one expresses interest in purchasing it.
 
-Anyone will be able to spend this UTXO(((unspent transaction output (UTXO)))) and obtain Alice's NFT, provided they also send 100 ada(((ADA))) to Alice.
+Anyone will be able to spend this UTXO(((UTXO))) and obtain Alice's NFT, provided they also send 100 ada(((ADA))) to Alice.
 
 .Alice and Bob perform an atomic swap(((atomic swap))) in the EUTXO model(((EUTXO model)))
 image::atomic_swap_eutxo_3.png[]
 
-In this example, Alice ceases control of her NFT by sending it to a script(((script))) address(((address))) while ensuring that she will receive 100 ada(((ADA))) if someone other than herself wishes to spend that UTXO(((unspent transaction output (UTXO)))).
+In this example, Alice ceases control of her NFT by sending it to a script(((script))) address(((address))) while ensuring that she will receive 100 ada(((ADA))) if someone other than herself wishes to spend that UTXO(((UTXO))).
 
 Note that in this case, the second transaction(((transaction))) only requires a signature from Bob to authorize the spending of the 100 ada(((ADA))) that belongs to him. Spending the NFT is permitted by executing the script(((script))), rather than requiring anyone to sign the transaction(((transaction))).
 
@@ -275,14 +276,14 @@ In the account-based model(((account-based model))), while smart contracts(((sma
 
 In the EUTXO model(((EUTXO model))), each script(((script))) output is protected by its validator(((validator))). Although different outputs(((transaction, output))) can be governed by the same script(((script))), they can also have separate validators. Each validator(((validator))) independently decides whether the transaction(((transaction))) meets the conditions to spend the input it protects without depending on other validators. As a result, well-constructed scripts(((script))) can easily be combined in a transaction(((transaction))) without concerns about unforeseen interactions.
 
-Let’s recall the <<atomic-swaps, atomic swaps(((atomic swaps)))>> example:
+Let’s recall the <<atomic-swaps, atomic swaps(((atomic swap)))>> example:
 
 Suppose Alice has several NFTs she wants to sell and creates a script(((script))) output secured by the atomic-swap script(((script))) for each of them. Bob can then create a transaction(((transaction))) that spends all the outputs(((transaction, output))) containing the NFTs he wishes to purchase and generates payment outputs(((transaction, output))) for each of them.
 
 .Bob buys two NFTs from Alice in a single transaction(((transaction)))
 image::atomic_swap_combined.png[]
 
-Combining multiple atomic swaps(((atomic swaps))) into one transaction(((transaction))) does not require explicit implementation in the atomic-swap script(((script))); it is a natural consequence of how the EUTXO model(((EUTXO model))) works.
+Combining multiple atomic swaps(((atomic swap))) into one transaction(((transaction))) does not require explicit implementation in the atomic-swap script(((script))); it is a natural consequence of how the EUTXO model(((EUTXO model))) works.
 
 ====== The double satisfaction problem(((double satisfaction problem)))
 
@@ -319,10 +320,10 @@ Bob cannot cheat because he must include the invoice number with his payment, bu
 
 Fortunately, we can apply the same principle to fix the atomic-swap contract and secure it against the double satisfaction problem(((double satisfaction problem))).footnote:[The solution to the double satisfaction problem(((double satisfaction problem))) presented here is not the only option. For example, one could modify the atomic-swap script(((script))) to allow only one input from the corresponding script(((script))) address(((address))). However, this would hinder composability(((composability))).]
 
-Instead of merely searching for a payment output to Alice with the correct price, the script(((script))) can look for such an output that also includes the _UTXO reference_ footnote:[On Cardano, the UTXO(((unspent transaction output (UTXO)))) reference is represented by a pair consisting of the hash of the transaction(((transaction))) that created the output and the index of that output in the list of all outputs(((transaction, output))) of that transaction(((transaction))). The first output has index #0, the second output has index #1, and so on.] of the NFT output in its datum(((datum))).
+Instead of merely searching for a payment output to Alice with the correct price, the script(((script))) can look for such an output that also includes the _UTXO reference_ footnote:[On Cardano, the UTXO reference(((UTXO, reference))) is represented by a pair consisting of the hash of the transaction(((transaction))) that created the output and the index of that output in the list of all outputs(((transaction, output))) of that transaction(((transaction))). The first output has index #0, the second output has index #1, and so on.] of the NFT output in its datum(((datum))).
 Remember that any output can carry a datum(((datum))), not just script(((script))) outputs(((transaction, output))).
 
-UTXO(((unspent transaction output (UTXO)))) references are unique on the blockchain; no two different UTXOs can have the same reference. In our example, the output containing NFT B will have a reference distinct from the one for NFT C. To satisfy validation(((validation))) for spending the output containing NFT B, Bob must include a payment output to Alice that contains the UTXO(((unspent transaction output (UTXO)))) reference of the output for NFT B in its datum(((datum))). The same requirement applies to the output for NFT C. Since these two references differ, Bob can no longer cheat by providing only a single payment output to Alice.
+UTXO references(((UTXO, reference))) are unique on the blockchain; no two different UTXOs can have the same reference. In our example, the output containing NFT B will have a reference distinct from the one for NFT C. To satisfy validation(((validation))) for spending the output containing NFT B, Bob must include a payment output to Alice that contains the UTXO reference(((UTXO, reference))) of the output for NFT B in its datum(((datum))). The same requirement applies to the output for NFT C. Since these two references differ, Bob can no longer cheat by providing only a single payment output to Alice.
 
 .Bob buys two NFTs from Alice with no way of cheating
 image::double_satisfaction_3.png[]
@@ -331,7 +332,7 @@ image::double_satisfaction_3.png[]
 
 The composability(((composability))) of smart contracts(((smart contract))) in the EUTXO model(((EUTXO model))) often results in unexpected features ‘for free’ that would need to be explicitly implemented in other models.
 
-As discussed earlier, one example is the ability to combine atomic swaps(((atomic swaps))) into a single transaction(((transaction))).
+As discussed earlier, one example is the ability to combine atomic swaps(((atomic swap))) into a single transaction(((transaction))).
 
 Another example is _flash loans_. A flash loan(((flash loan))) is a loan taken out and repaid within the same transaction(((transaction))). On Ethereum(((Ethereum))), the popular decentralized exchange (DEX) Uniswap(((Uniswap))) offers flash loans(((flash loans))) as a special feature that required explicit implementation in its smart contract code.
 
@@ -339,7 +340,7 @@ Our simple atomic-swap script(((script))) enables flash loans(((flash loans))) �
 
 For instance, suppose Alice wants to sell 100 ada(((ADA))) for 45 DJED(((DJED))), and Bob wants to sell 50 DJED(((DJED))) for 100 ada(((ADA))). Both Alice and Bob use the simple atomic-swap script(((script))) to list their offers on the Cardano blockchain.
 
-.Alice and Bob offer atomic swaps(((atomic swaps)))
+.Alice and Bob offer atomic swaps(((atomic swap)))
 image::flash_loan_1.png[]
 
 Charlie notices both offers and realizes he could make a profit by temporarily borrowing 45 DJED(((DJED))):
@@ -362,25 +363,27 @@ The transaction(((transaction))) is balanced(((transaction, balanced))) (100 ada
 
 ==== Beyond validation(((validation))): other uses of smart contracts(((smart contract)))
 
-One way to understand the transition from the UTXO(((unspent transaction output (UTXO)))) model to the EUTXO model(((EUTXO model))) is by examining addresses. In the UTXO(((unspent transaction output (UTXO)))) model, whenever a transaction(((transaction))) tries to spend a UTXO(((unspent transaction output (UTXO)))), it must be signed(((signed))) using the signing key(((signing key))) corresponding to the address(((address))). The EUTXO model(((EUTXO model))) introduces script(((script))) addresses, meaning that transactions trying to spend outputs(((transaction, output))) from script(((script))) addresses must be validated by the corresponding script(((script))).
+One way to understand the transition from the UTXO model (((UTXO, model))) to the EUTXO model(((EUTXO model))) is by examining addresses.
+In the UTXO model(((UTXO, model))), whenever a transaction(((transaction))) tries to spend a UTXO(((UTXO))), it must be signed(((signed))) using the signing key(((signing key))) corresponding to the address(((address))). The EUTXO model(((EUTXO model))) introduces script(((script))) addresses, meaning that transactions trying to spend outputs(((transaction, output))) from script(((script))) addresses must be validated by the corresponding script(((script))).
 
-The address(((address))) of a UTXO(((unspent transaction output (UTXO)))) determines how spending it is validated. By moving from the UTXO(((unspent transaction output (UTXO)))) model to the EUTXO model(((EUTXO model))), a new method for validating inputs(((transaction, input))) is added – by executing scripts(((script))).
+The address(((address))) of a UTXO(((UTXO))) determines how spending it is validated. By moving from the UTXO(((UTXO))) model to the EUTXO model(((EUTXO model))), a new method for validating inputs(((transaction, input))) is added – by executing scripts(((script))).
 
-On Cardano, however, addresses not only define how UTXOs are _spent_ but also determine if and how the UTXO(((unspent transaction output (UTXO)))) is _staked_.
+On Cardano, however, addresses not only define how UTXOs are _spent_ but also determine if and how the UTXO(((UTXO))) is _staked_.
 
-To better understand this, we need to look closely at the ‘anatomy’ of Cardano Shelleyfootnote:[There is an older type of address(((address))) on Cardano, known as a _Byron address_, introduced during the first era of Cardano, the Byron era(((Byron, era))). Shelley addresses(((Shelley, address))) were introduced in the Shelley era(((Shelley, era))). In the Byron era(((Byron, era))), Cardano used the plain UTXO(((unspent transaction output (UTXO)))) model without staking(((staking))), so Byron addresses are not discussed in this chapter.] addresses and their relation to staking(((staking))).
+To better understand this, we need to look closely at the ‘anatomy’ of Cardano Shelleyfootnote:[There is an older type of address(((address))) on Cardano, known as a _Byron address_, introduced during the first era of Cardano, the Byron era(((Byron, era))). Shelley addresses(((Shelley, address))) were introduced in the Shelley era(((Shelley, era))). In the Byron era(((Byron, era))), Cardano used the plain UTXO model(((UTXO, model))) without staking(((staking))), so Byron addresses are not discussed in this chapter.] addresses and their relation to staking(((staking))).
 
 ===== The anatomy of a Cardano address(((address)))
 
-Every address(((address))) contains a _spending_ or _payment_ part(((address, spending part))), which dictates the conditions under which a UTXO(((unspent transaction output (UTXO)))) at that address(((address))) can be spent:
+Every address(((address))) contains a _spending_ or _payment_ part(((address, payment))),
+which dictates the conditions under which a UTXO(((UTXO))) at that address(((address))) can be spent:
 
-* If the payment part(((address, payment part))) of an address(((address))) is represented by a _payment public key hash_ – the hash of a _payment verification key_ – then any transaction(((transaction))) attempting to spend a UTXO(((unspent transaction output (UTXO)))) from that address(((address))) must be signed(((signed))) by the corresponding _payment signing key_.
+* If the payment part(((address, payment))) of an address(((address))) is represented by a _payment public key hash_ – the hash of a _payment verification key_ – then any transaction(((transaction))) attempting to spend a UTXO(((UTXO))) from that address(((address))) must be signed(((signed))) by the corresponding _payment signing key_.
 
-* Alternatively, the payment part(((address, payment part))) of an address(((address))) can be represented by the hash of a _script_, in which case the script(((script))) is executed when validating a transaction(((transaction))) attempting to spend a UTXO(((unspent transaction output (UTXO)))) at that address(((address))).
+* Alternatively, the payment part(((address, payment))) of an address(((address))) can be represented by the hash of a _script_, in which case the script(((script))) is executed when validating a transaction(((transaction))) attempting to spend a UTXO(((UTXO))) at that address(((address))).
 
-So far in this chapter, we have focused only on this mandatory payment part(((address, payment part))) of an address(((address))).
+So far in this chapter, we have focused only on this mandatory payment part(((address, payment))) of an address(((address))).
 
-On Cardano, however, every (Shelley) address(((address))) may also include an optional _staking_ part, known as _staking credentials_. Like the payment part(((address, payment part))), the staking(((staking))) part can either be a _staking public key hash_ – the hash of a _staking verification key_ – or a _script hash_.
+On Cardano, however, every (Shelley) address(((address))) may also include an optional _staking_ part, known as _staking credentials_. Like the payment part(((address, payment))), the staking part(((address, staking))) can either be a _staking public key hash_ – the hash of a _staking verification key_ – or a _script hash_.
 
 As a result, Cardano supports six different types of addresses:
 
@@ -407,13 +410,13 @@ As a result, Cardano supports six different types of addresses:
 |Script hash
 |===
 
-While the payment part(((address, payment part))) of an address(((address))) defines the conditions under which a UTXO(((unspent transaction output (UTXO)))) at that address(((address))) can be spent, the staking(((staking))) part determines whether the ada(((ADA))) in a UTXO(((unspent transaction output (UTXO)))) is _staked_ to a stake pool and, if so, to which one. Staked ada(((ADA))) earns staking rewards(((staking, rewards))).
+While the payment part(((address, payment))) of an address(((address))) defines the conditions under which a UTXO(((UTXO))) at that address(((address))) can be spent, the staking(((staking))) part determines whether the ada(((ADA))) in a UTXO(((UTXO))) is _staked_ to a stake pool and, if so, to which one. Staked ada(((ADA))) earns staking rewards(((staking, rewards))).
 
 Beyond consuming inputs(((transaction, input))) and producing outputs(((transaction, output))), Cardano transactions can also handle _staking certificates_, _delegation certificates_, and _withdraw rewards_.
 
 Once a staking(((staking))) certificate is registered for specific staking(((staking))) credentials and a delegation certificate is created for a stake pool, staking(((staking))) rewards accumulate and can be withdrawn later.
 
-All staking(((staking)))-related actions must be validated, similar to UTXO(((unspent transaction output (UTXO)))) spending:
+All staking(((staking)))-related actions must be validated, similar to UTXO(((UTXO))) spending:
 
 - A transaction(((transaction))) that performs a staking(((staking)))-related action for staking(((staking))) credentials given by a staking public key hash(((staking, public key hash))) must be signed(((signed))) by the corresponding staking signing key(((staking, signing key))).
 
@@ -423,7 +426,7 @@ All staking(((staking)))-related actions must be validated, similar to UTXO(((un
 
 Finally, scripts(((script))) play a crucial role in the minting and burning of _Cardano native tokens_.
 
-While ada(((ADA))) is the native currency of the Cardano blockchain, Cardano also supports the creation of _custom tokens_, which can be either _fungible_ (like ada(((ADA)))) or _non-fungible_ (like NFTs).
+While ada(((ADA))) is the native currency of the Cardano blockchain, Cardano also supports the creation of _custom tokens_, which can be either _fungible_ (like ada)(((ADA))) or _non-fungible_ (like NFTs).
 
 Minting and burning custom tokens(((token, custom))) must have restrictions, otherwise, they would be pointless if allowed freely. Therefore, these actions are also governed by scripts(((script))).
 

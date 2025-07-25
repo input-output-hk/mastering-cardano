@@ -8,7 +8,7 @@
 
 A wallet, also known as a crypto wallet, digital wallet, or cryptocurrency wallet, is like a digital version of a regular wallet. However, instead of holding cash, personal identification, or cards, it stores special digital keys that enable interaction with various blockchains, allowing users to manage digital assets such as cryptocurrencies, tokens, or non-fungible tokens (NFTs).
 
-These keys allow you to access and manage your digital assets. Just like a key opens a safety box lock, you use these digital keys to do the same.
+These keys allow you to access and manage your digital assets. Just like a key that opens a safe's lock, these digital keys do the same -- but give you access to funds and assets stored in the digital wallet.
 
 At its core, a wallet serves two primary purposes:
 
@@ -24,7 +24,7 @@ In the blockchain realm, maintaining the security and accessibility of your digi
 
 Each type offers a different balance of security and convenience, catering to various needs and preferences. Let's explore these three main types of wallets before diving into the specifics:
 
-* *Hardware wallets.* Imagine a hardware wallet as a secure USB stick that stores your cryptocurrency and other digital assets offline. These physical devices are considered one of the safest options because they keep your private keys completely disconnected from the internet, reducing the risk of hacking. They are ideal for long-term investors who want to keep their assets secure for an extended period.
+* *Hardware wallets.* Imagine a hardware wallet as a secure USB stick that stores your cryptocurrency and other digital assets offline (i.e. on a device that is not connected to the Internet). These physical devices are considered one of the safest options because they keep your private keys completely disconnected from the internet, reducing the risk of hacking. They are ideal for long-term investors who want to keep their assets secure for an extended period.
 
 * *Software wallets.* Software wallets are applications that can be installed on your computer or smartphone. They are more convenient for daily transactions, striking a balance between security and accessibility. Since they are connected to the internet, they are considered “hot wallets.” While they are generally secure, they are more vulnerable to online threats than hardware wallets. Software wallets are ideal for active trading users who require frequent access to cryptocurrencies.
 
@@ -64,15 +64,15 @@ Let’s examine the pros and cons of using hardware wallets and some common mode
 
 *Common hardware wallets in the market*
 
-This section presents a list of hardware wallets to illustrate some available options. Please note that the authors are not involved in the development of these wallets and do not endorse any specific products.
+This section presents a list of hardware wallets to illustrate some available options. Please note that the authors are not involved in the development of these wallets and do not endorse any specific products -- and we recommend that you do your own research to find other hardware wallets and decide which one best suits your needs.
 
 * *Ledger.* This is one of the most popular hardware wallets, known for its security and support for many cryptocurrencies. You can learn more about it on its link:https://www.ledger.com/[website].
 
-* *Trezor.* Trezor is another leading brand in the hardware wallet space, offering high-security levels and an intuitive interface. You can learn more about it on its link:https://trezor.io/[website].
+* *Trezor.* Trezor is another popular brand in the hardware wallet space, offering high-security levels and an intuitive interface. You can learn more about it on its link:https://trezor.io/[website].
 
 * *Keystone.* This hardware wallet is open-source and provides an extra layer of security by keeping your private keys entirely offline. You can learn more about it on its link:https://keyst.one/[website].
 
-For a more extensive list of hardware wallets, you can review link:https://github.com/INTERPOL-Innovation-Centre/HardwareWallets_DF_List[this compilation] provided by Interpol for digital forensics detection.
+For a more extensive list of hardware wallets, you can review link:https://github.com/INTERPOL-Innovation-Centre/HardwareWallets_DF_List[this compilation] provided by Interpol (for digital forensics detection).
 
 ==== Software wallets
 
@@ -88,11 +88,11 @@ Let's explore the pros and cons of software wallets, along with a review of some
 
 * *Cost-effective.* Unlike hardware wallets, software wallets are generally free to download and use, making them appealing to those new to cryptocurrencies or with smaller holdings.
 
-* *Exchanges integration and other features.* Many software wallets offer additional features such as integrated exchanges, staking, and support for multiple cryptocurrencies, enhancing their functionality beyond mere storage.
+* *Integration with exchanges and other features.* Many software wallets offer additional features such as integrated exchanges, staking, and support for multiple cryptocurrencies, enhancing their functionality beyond mere storage.
 
 *Cons of software wallets*
 
-* *Security risks.* An internet connection makes software wallets more vulnerable to online threats, including hacking, phishing attacks, and malware. Users must ensure their devices and networks are secure..
+* *Security risks.* An internet connection makes software wallets more vulnerable to online threats, including hacking, phishing attacks, and malware. Users must ensure their devices and networks are secure.
 
 * *Device dependence*. If the device hosting the wallet is damaged, lost, or compromised, accessing the wallet can be challenging without proper backup and recovery measures.
 
@@ -114,7 +114,7 @@ These software wallets cater to a broad spectrum of needs and preferences, from 
 
 ==== Paper wallets
 
-Paper wallets are a form of cold storage for cryptocurrencies and digital assets, as they remain offline and are not vulnerable to online hacking attacks. A paper wallet is a physical document containing all the necessary data for accessing and managing digital assets. This document typically includes a public address (used by others to send funds) and a private key, which allows the owner to access and transfer their funds.
+Paper wallets are a form of cold storage for cryptocurrencies and digital assets -- i.e. they remain disconnected from the Internet and therefore are not vulnerable to online hacking attacks. A paper wallet is a physical document containing all the necessary data for accessing and managing digital assets. This document typically includes a public address (used by others that want to send funds to the wallet) and a private key, which allows the owner to access and transfer funds in the specific wallet.
 
 Let's explore the advantages and disadvantages of paper wallets, along with some standard practices in the blockchain realm for effective management.
 
@@ -130,7 +130,7 @@ Let's explore the advantages and disadvantages of paper wallets, along with some
 
 * *User-friendliness.* Paper wallets can be less user-friendly, particularly for individuals unfamiliar with blockchain technology. The process of transferring funds to and from a paper wallet is more cumbersome than using software or hardware wallets.
 
-* *Durability and loss risk.* Paper is prone to wear, tear, damage, and loss. If the paper wallet is damaged or lost without a backup, the funds stored on it become irretrievable.
+* *Durability and loss risk.* Paper is prone to wear, tear, damage, and loss. If the paper wallet is damaged or lost without a backup, the funds stored on it become irretrievable. Remember, if someone steals your paper wallet they can then withdraw all assets stored in the digital wallet!
 
 * *Lack of flexibility.* Paper wallets offer a different level of convenience compared to other wallet types. They're best suited for long-term storage rather than for frequent trading or spending.
 
@@ -164,13 +164,13 @@ Understanding the role of public and private keys is fundamental when using a wa
 
 Think of the public key as your home address. Just like you can share your address with friends so they can send you letters or packages, you can share your public key with others to receive cryptocurrency or any other digital assets. It's a string of letters and numbers derived from your private key, but it's safe to share with others because, while it can receive funds, it can't be used to withdraw any.
 
-Imagine selling lemonade and asking people to leave money in a locked box at your front door (your public key). They can deposit money, but only you can unlock the box to retrieve it because you have the key – your private key..
+Imagine selling lemonade and asking people to leave money in a locked box at your front door (your public key). They can deposit money, but only you can unlock the box to retrieve it because you have the key – your private key.
 
 The wallet private key is like the key to that locked box. Like a public key, it consists of a string of letters and numbers, but should always be kept secret since it allows you to access and control your assets. With your private key, you can send your cryptocurrency and digital assets to others, sign transactions to prove you own the assets, and even access your funds if you switch to a new wallet.
 
-Following the example of selling lemonade, you only hold the key to the padlock, allowing you to open it and retrieve the money left by customers. If someone else gains access of your key, they can take all the money, just as obtaining your private key enables unauthorized access to your cryptocurrency.
+Following the example of selling lemonade, you only hold the key to the padlock, allowing you to open it and retrieve the money left by customers. If someone else gains access to your key, they can take all the money, just as obtaining your private key enables unauthorized access to your cryptocurrency.
 
-Blockchainkeys facilitate transaction processing and approval. The public key serves as the address for sending or receiving funds, while the private key is the secret that controls access to personal assets. Securing your private key is crucial because anyone with it can access your assets. Just like you wouldn't share the key to your safe with strangers, you should never share your private key with anyone.
+Public/private key pairs facilitate transaction processing and approval. The public key serves as the address for sending or receiving funds, while the private key is the secret that controls access to personal assets. Securing your private key is crucial because anyone with it can access your assets. Just like you wouldn't share the key to your safe with strangers, you should never share your private key with anyone.
 
 ==== Wallet addresses
 
@@ -178,7 +178,7 @@ A wallet address is similar to an email address or a home address – it's a uni
 
 A wallet address is a string of letters and numbers that represents the destination for a blockchain transaction, involving the transfer of assets from one address to another. It's generated based on the public key and, depending on the blockchain, goes through a series of cryptographic transformations to create a shorter, more user-friendly address.
 
-These are examples of what wallet addresses look like for Cardano, Ethereum, and Bitcoin. Each of these addresses is a string of characters that includes numbers and letters, both uppercase and lowercase, specific to the blockchain they belong to:
+Below are examples of what wallet addresses look like for Cardano, Ethereum, and Bitcoin. Each of these addresses is a string of characters that includes numbers and letters, both uppercase and lowercase, specific to the blockchain they belong to:
 
 *Cardano (ADA) address:*
 
@@ -209,14 +209,14 @@ Ethereum addresses typically begin with _0x_, a common prefix denoting hexadecim
 
 Bitcoin addresses can start with _1_, _3_, or _bc1_ for different address formats; the example shows one of the most common types, beginning with _1_.
 
-Please note that these addresses are provided as examples only and should not be used for actual transactions. Each cryptocurrency wallet generates a unique set of addresses for an individual user, ensuring the security and privacy of the assets.
+Please note that these addresses are provided as examples only and should not be used for actual transactions. Each cryptocurrency wallet generates a unique set of addresses for the specific user, ensuring the security and privacy of the assets.
 
 [[create-wallet]]
 ==== Creating a wallet address
 
 The process of creating a wallet address may vary depending on the blockchain, but the following steps are generally followed.
 
-. *Key pair creation.* A private key is first generated using cryptographic algorithms. This private key is a random, long string of numbers and letters that's virtually impossible to guess. Next, a public key is derived from this private key using another set of cryptographic rules.
+. *Key pair creation.* A private key is first generated using cryptographic algorithms. This private key is a random, long string of numbers and letters that's (virtually) impossible to guess. Next, a public key is derived from this private key using another set of cryptographic rules.
 
 . *Hashing.* The public key is then passed through a hashing algorithm – a cryptographic function that converts data into a fixed-size string of characters. This process helps enhance security and privacy.
 
@@ -248,7 +248,7 @@ The Cardano ecosystem has two types of wallets: full-node and light wallets. Let
 
 *Full-node wallets*
 
-These wallets download the entire Cardano blockchain to your device, offering high security and privacy since they don't rely on a third party to fetch blockchain data. Using a full-node wallet is like having a detailed map of an entire city. You can see every street and building, or, in this case, every transaction on the Cardano network.
+These wallets download the entire Cardano blockchain to your device, offering high security and privacy since they do not rely on a third party to fetch blockchain data. Using a full-node wallet is like having a detailed map of an entire city. You can see every street and building, or, in this case, every transaction on the Cardano network.
 
 A full-node wallet performs several key functions:
 
@@ -293,7 +293,7 @@ Security is a top priority for Cardano wallets. They are equipped with various s
 
 * _Password protection._ Users can set a password to access the wallet application, adding an additional layer of security.
 
-* _Cold storage:_ Some wallets offer the ability to store funds offline, which is known as cold storage. This dramatically reduces the risk of online hacking attempts.
+* _Cold storage._ Some wallets offer the ability to store funds offline, which is known as cold storage. This dramatically reduces the risk of online hacking attempts.
 
 * _Multi-signature support._ Specific wallets support multi-signature configurations, which require multiple parties to sign a transaction before it can be executed. This enhances security for larger funds or organizational use.
 
@@ -351,7 +351,7 @@ The main features of Daedalus are:
 
 * _Maximum security and completely trustless operation._ With full-node synchronization, you achieve maximum security and completely trustless operation, eliminating the need for centrally hosted third-party servers.
 
-* _Unlimited accounting._ With Dedalus's hierarchical deterministic (HD) wallet implementation, you can manage any number of wallets. You can also have more control over how your funds are organized and use its robust backup and restoration features to recover your funds if necessary.
+* _Unlimited accounting._ With Daedalus's hierarchical deterministic (HD) wallet implementation, you can manage any number of wallets. You can also have more control over how your funds are organized and use its robust backup and restoration features to recover your funds if necessary.
 
 * _Availability for any desktop operating system._ Daedalus runs on Windows, macOS, and Linux, supporting all major desktop operating systems. It is built with web technologies on top of Electron, a battle-proven open-source platform for writing cross-platform desktop applications.
 
@@ -365,7 +365,7 @@ While full-node wallets keep a copy of the entire Cardano node, a light wallet d
 
 This section explores some of the most prominent light wallets in the Cardano space. As this is not a tutorial, the section only offers an overview of key features. However, links and learning resources are provided for each light wallet to explore further.
 
-Let’s start our journey through the Cardano light wallet space\!
+Let’s start our journey through the Cardano light wallet space!
 
 *Lace*
 
@@ -393,7 +393,7 @@ Below is a quick tour of what the new Lace can do for you:
 
 * *Vote on the future:* Through link:https://tempo.vote/[Tempo.vote] and link:https://gov.tools/[GovTools], you can delegate voting power or cast ballots without leaving walletlink:https://www.lace.io/blog/lace-1-24-0-release?utm_source=chatgpt.com[lace.io].
 
-* *Swap to Nami Mode:* Lace now includes an optional Nami compatibility mode. Flip it on in settings, and Lace exposes the same API that older Cardano dApps expect from Nami—perfect for users migrating from the original Nami wallet and for sites that haven’t yet updated their code. It also serves as a beginner-friendly view while the ecosystem transitions to Lace as the default wallet
+* *Swap to Nami Mode:* Lace now includes an optional Nami compatibility mode. Flip it on in settings, and Lace exposes the same API that older Cardano dApps expect from Nami—perfect for users migrating from the original Nami wallet and for sites that haven’t yet updated their code. It also serves as a beginner-friendly view while the ecosystem transitions to Lace as the default wallet.
 
 You can get started with Lace by clicking the “Add to browser” button on link:https://www.lace.io/[its website].
 
@@ -435,11 +435,11 @@ Nami is available on Chrome and Brave browsers. To install it, link:https://www.
 .Nami wallet’s website.
 image::w-nami-page.png[]
 
-Nami is open-source software released under the Apache-2.0 license that joined the Input Output Global product family in November 2023\. If you are a software developer and want to contribute to this project and propose new features, you can review the code on the link:https://github.com/input-output-hk/nami[Nami repository] on GitHub and learn more about contributing to Nami’s development.
+Nami is open-source software released under the Apache-2.0 license that joined the Input Output Global product family in November 2023. If you are a software developer and want to contribute to this project and propose new features, you can review the code on the link:https://github.com/input-output-hk/nami[Nami repository] on GitHub and learn more about contributing to Nami’s development.
 
 *Eternl*
 
-Eternl, previously known as CCVault, is a wallet for the Cardano blockchain. It is designed to be user-friendly and provides features that allow users to manage their ada and other Cardano native tokens. A team of community stake pool developers develops Eternl. Here are some of Eternl main features:
+Eternl, previously known as CCVault, is a wallet for the Cardano blockchain. It is designed to be user-friendly and provides features that allow users to manage their ada and other Cardano native tokens. A team of community stake pool developers develops Eternl. Here are some of Eternl's main features:
 
 * _Multi-platform support._ Eternl Wallet is accessible on various platforms, including web browsers (as a web application or browser extension) and mobile devices (as a mobile application for iOS or Android). This allows users to manage their Cardano assets across different devices.
 
@@ -477,7 +477,7 @@ Yoroi is an open-source light wallet for daily use on Cardano, developed by Emur
 
 * _Yoroi is available as a browser extension and mobile app_ for Chrome, Firefox, and Edge, as well as iOS and Android, offering flexibility in how users access their wallets.
 
-* _User-friendly interface:_ Yoroi's clean, straightforward interface is designed with simplicity in mind, making it accessible for beginners while still offering features for advanced users.
+* _User-friendly interface._ Yoroi's clean, straightforward interface is designed with simplicity in mind, making it accessible for beginners while still offering features for advanced users.
 
 * _Secure transactions._ Yoroi emphasizes security by encrypting users’ private keys locally on their devices, allowing transactions to be signed without exposing the keys.
 
@@ -549,7 +549,7 @@ No matter your experience with wallets, it's essential to keep them safe. Here a
 
 * Never share your private keys or recovery phrase with anyone. These are the only ways to access your funds.
 
-* Create strong and unique passwords. Use a combination of letters, numbers, and special characters. Avoid easily guessable passwords
+* Create strong and unique passwords. Use a combination of letters, numbers, and special characters. Avoid easily guessable passwords.
 
 * Enable two-factor authentication (2FA) where available. This adds an extra layer of security by requiring a second form of verification.
 
@@ -581,7 +581,7 @@ We will provide step-by-step instructions to ensure that even new users can navi
 
 *Leveraging advanced wallet features*
 
-Beyond basic transactions, Cardano wallets offer advanced features leveraging the unique strengths of the Cardano blockchain. You will learn about:
+Beyond basic transactions, Cardano wallets offer advanced features leveraging the unique strengths of the Cardano blockchain. In this section, you will learn about:
 
 * Staking ada. Discover how you can participate in staking ada directly from your wallet, securing the network while earning rewards. This section will explain the mechanics of staking, how to choose a stake pool, and the dual benefits of contributing to network security while receiving regular staking rewards.
 
@@ -665,7 +665,7 @@ Staking ada using a Cardano wallet involves a few straightforward steps that all
 
 *Step 1: choose a compatible wallet*
 
-First, you need a Cardano wallet that supports staking, such as Dedalus, Yoroi, or Lace. The example wallets are provided for informational purposes only and are not endorsed by the authors. Their use is strictly at your responsibility.
+First, you need a Cardano wallet that supports staking, such as Daedalus, Yoroi, or Lace. The example wallets are provided for informational purposes only and are not endorsed by the authors. Their use is strictly at your responsibility.
 
 *Step 2: set up your wallet*
 
