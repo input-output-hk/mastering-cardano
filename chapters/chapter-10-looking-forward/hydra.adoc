@@ -80,7 +80,7 @@ The idea of the basic Hydra Head network involves multiple hydra nodes connected
 
 image::hydra_delegatedhydrahead.png[]
 
-The Delegated Hydra Head model involves a separation of the Operator and Client nodes. In this scenario, Operators possess the Hydra keys used by the protocol to sign snapshots on the Head as well as the keys used to progress the Head state machine(((Head, state machine))) on the main chain. The Clients will still still be in possession of the payment keys associated with any of the client UTxOs submitted to the head, but in this scenario it will be possible for hundreds or even thousands of clients to interact with a single state channel. A downside here is that the clients will have to trust at least a single operator, with the upside being many clients directly interacting with the state channel. This model could be best explained as running Hydra Head as a side-chain.
+The Delegated Hydra Head model involves a separation of the Operator and Client nodes. In this scenario, Operators possess the Hydra keys used by the protocol to sign snapshots on the Head as well as the keys used to progress the Head state machine(((Hydra head, state machine))) on the main chain. The Clients will still still be in possession of the payment keys associated with any of the client UTxOs submitted to the head, but in this scenario it will be possible for hundreds or even thousands of clients to interact with a single state channel. A downside here is that the clients will have to trust at least a single operator, with the upside being many clients directly interacting with the state channel. This model could be best explained as running Hydra Head as a side-chain.
 
 ==== Managed Hydra Head Network
 
@@ -92,7 +92,7 @@ Rather than each Hydra Head requiring each participant to host an instance of Hy
 
 image::hydra_hydraheadnetwork.png[]
 
-The Hydra Head Network(((Hydra Head, Network))) gives Basic Hydra Head Networks the ability to connect with each other through individual Hydra nodes. This will require Hydra nodes to be able to manage more than one Head per node, and HTLCs (Hash Time Locked Contracts) or adaptor signatures may be used to perform swaps between networks and forward payments of fungible assets. This is very similar to how the Lightning Network works on Bitcoin.
+The Hydra Head Network(((Hydra head, network))) gives Basic Hydra Head Networks the ability to connect with each other through individual Hydra nodes. This will require Hydra nodes to be able to manage more than one Head per node, and HTLCs (Hash Time Locked Contracts) or adaptor signatures may be used to perform swaps between networks and forward payments of fungible assets. This is very similar to how the Lightning Network works on Bitcoin.
 
 Hydra Head networks can also be assembled in arrangements resembling other network topologies(((network, topologies))).
 

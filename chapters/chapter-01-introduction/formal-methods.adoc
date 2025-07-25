@@ -172,7 +172,7 @@ optimization(((optimization))).
 
 _Semi-formal_, or non-machine-checked, techniques are also in use for
 building Cardano, including specification and proofs in the form of text
-documents. For example, for a given UTXO state(((UTXO state))) and transaction, symbolic
+documents. For example, for a given UTXO state(((UTXO, state))) and transaction, symbolic
 logic can express:
 
 * How the UTXO state will be updated by this transaction, and
@@ -257,7 +257,7 @@ connections that are faster than the speed of light(((speed of light))).
 Overall, developing new tools, such as the one described above, as well
 as improving existing ones, is an important component of formal methods
 application in Cardano, and in industrial contexts(((industrial contexts))) in general. Other
-examples of tool development(((tool development))) work done as part of the Cardano
+examples of tool development(((tool, development))) work done as part of the Cardano
 engineering include contributions to both Haskell(((Haskell))) and Agda
 implementations.
 
@@ -287,7 +287,7 @@ property-based testing(((property-based testing))). However, because it is leani
 concurrency for efficient operations, even testing(((testing))) proved challenging.
 Dedicated packages, including a special concurrency control mechanism(((concurrency control mechanism))),
 were developed to provide an additional layer of abstraction on top of
-parts of the Haskell runtime system(((Haskell runtime system))) (RTS). The same code can then be
+parts of the Haskell runtime system(((Haskell, runtime system))) (RTS). The same code can then be
 executed either by the Haskell(((Haskell))) RTS, or via a pure and fast
 implementation(((implementation))) that deterministically simulates it, enabling excellent
 testing(((testing))).
@@ -351,7 +351,7 @@ development practices and standards, and (iv) modified to include a
 broader scope of application of formal methods, e.g. cryptography(((cryptography))).
 
 However, more work remains to be done in all of these areas. Further
-verification of cryptographic protocols(((cryptographic protocols))) would be extremely valuable.
+verification of cryptographic protocols(((cryptographic, protocols))) would be extremely valuable.
 Work is ongoing on the application of formal methods in additional areas
 of Cardano development, including compilation certification(((compilation certification))), running
 verified code on-chain(((verified code on-chain))), and additional performance and security

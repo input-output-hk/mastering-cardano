@@ -34,9 +34,9 @@ image::hashing.png[]
 * You should see that you end up with the following output hash: 185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969
 * Both the tools should output the exact same hash for the exact same input text. In fact, any tool that implements the "SHA-256(((SHA-256)))" hashing algorithm should output the exact same hash for the exact same input.
 
-Looking back at <<img_hashing>>, comparing the hashes from the first and second depictions (from the left), it can be seen that even the smallest change in text leads to a drastically different generated hash -- try it out for yourself in the hashing tools (provided above). Yet if the exact same text is inputted into a hashing algorithm, even if over larger periods of time and in different locations, the exact same hash will be generated for the same input. For example if you input the text "Hello" 20 years ago in the USA (the leftmost depiction in <<img_hashing>>), and I also input "Hello" now (20 years later), then the exact same hash will be generated. 
+Looking back at <<img_hashing>>, comparing the hashes from the first and second depictions (from the left), it can be seen that even the smallest change in text leads to a drastically different generated hash -- try it out for yourself in the hashing tools (provided above). Yet if the exact same text is inputted into a hashing algorithm, even if over larger periods of time and in different locations, the exact same hash will be generated for the same input. For example if you input the text "Hello" 20 years ago in the USA (the leftmost depiction in <<img_hashing>>), and I also input "Hello" now (20 years later), then the exact same hash will be generated.
 
-// Once a hash is generated, potentially sent, and ultimately stored, anyone with a copy of the hash can be assured that the associated data used to generate the hash has not been altered. 
+// Once a hash is generated, potentially sent, and ultimately stored, anyone with a copy of the hash can be assured that the associated data used to generate the hash has not been altered.
 
 To summarise, hash functions(((hash functions))) can guarantee that data remains unchanged by storing the generated hash of the respective data. As long as the hash remains unchanged, it can be verified that the respective data has not been modified. However, if someone alters the data and adjusts the hash to match the new data, the receiver would be unable to detect this change. We will discuss a solution to this issue later in this chapter.
 
@@ -47,9 +47,9 @@ While hash functions(((hash functions))) solve a significant problem for communi
 
 Though blockchain platforms do not primarily utilize encryption(((encryption))) techniques to guarantee data privacy in the traditional sense, they do employ these techniques to provide other essential guarantees, which we will discuss later in this chapter. We now provide an overview of encryption(((encryption))) techniques to help readers appreciate the content presented later.
 
-// Yet encryption and decryption are fundamental for digital signatures. 
+// Yet encryption and decryption are fundamental for digital signatures.
 
-Encryption techniques were originally proposed to enable secure communication between parties, preventing eavesdroppers from deciphering or understanding the exchanged information. These techniques are classified into *symmetric* and *asymmetric* encryption(((encryption))). 
+Encryption techniques were originally proposed to enable secure communication between parties, preventing eavesdroppers from deciphering or understanding the exchanged information. These techniques are classified into *symmetric* and *asymmetric* encryption(((encryption))).
 
 ==== Symmetric encryption
 
@@ -58,7 +58,7 @@ Encryption uses keys to both encrypt (secure) and decrypt (unlock) data. _Symmet
 If an eavesdropper listens to the initial communication where the key is shared, they can decrypt future messages and inject encrypted messages without either party being aware. This occurs because the eavesdropper would have access to the encryption(((encryption)))/decryption key. Therefore, it is crucial to share such keys securely, ensuring that an eavesdropper cannot intercept them.
 
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
-.An overview of typical communication using symmetric encryption. 
+.An overview of typical communication using symmetric encryption.
 [#img_sym]
 image::symmetricenc.png[]
 
@@ -70,7 +70,7 @@ image::symmetricenc.png[]
 - the dotted lines represent actions that the parties (or their computers) undertake themselves.
 
 The steps involved in the process are as follows:
-    
+
     * Step 0 typically occurs before the parties communicate over the medium used to transmit encrypted data. The parties must agree on a shared encryption(((encryption)))/decryption key, which will be used for both encryption(((encryption))) and decryption. This key could be generated by _Party A_, _Party B_, or even generated together -- it does not matter as long as both parties have access to the same shared key. It is important to note that any party possessing the specific key can both decrypt and encrypt messages.
 
     * Once the sending party (in this case, _Party A_) has the key, they can encrypt the data intended for the other party by applying the symmetric encryption(((encryption))) algorithm using the key, as depicted in step 1. The algorithm will output the encrypted data.
@@ -172,14 +172,14 @@ Hashing functions are fundamental to blockchains. Some examples of where hashing
 
 . *Merkleization(((Merkleization)))* allows for large collections of data items to be compacted into a smaller structure i.e. a merkle tree, and still be able to prove that a particular data item is represented within the merkle tree without having to store the full data items. Merkleization(((Merkleization))) is discussed later in the <<marlowe-security>> section.
 
-. *Content-Addressed Storage(((Content-Addressed Storage)))*. When other information or files are required to be referenced (for example from a smart contract) it is often useful to refer to the specific file (or information) using Content-Addressed Storage(((Content-Addressed Storage))) which refers to such information/files using a hash of their content. By doing so, it is immediately possible to determine whether the contents have been changed, since the reference to find the information/file is a hash that should match the computed hash of the content -- which can be done at any point. Furthermore, such a referencing scheme allows for deduplication of information, e.g. if the same image data is referred to twice, only one version of the file needs to be stored since both references will be computed to be the same hash.
+. *Content-Addressed Storage(((content-addressed storage)))*. When other information or files are required to be referenced (for example from a smart contract) it is often useful to refer to the specific file (or information) using Content-Addressed Storage(((content-addressed storage))) which refers to such information/files using a hash of their content. By doing so, it is immediately possible to determine whether the contents have been changed, since the reference to find the information/file is a hash that should match the computed hash of the content -- which can be done at any point. Furthermore, such a referencing scheme allows for deduplication of information, e.g. if the same image data is referred to twice, only one version of the file needs to be stored since both references will be computed to be the same hash.
 
 
 ==== Digital Signatures and Encryption Techniques
 
 . *Wallet Generation*. Public/private key(((private key)))-pairs are generated using asymmetric encryption(((asymmetric encryption))) algorithms which provide the basis for identities/wallets that can be generated on-the-fly in a decentralized manner.
 
-. *Signing/Proving and Verification of Transactions*. Once a user has a wallet (by generating a public/private key(((private key)))-pair), they can thereafter create and sign transactions that are provable to anyone that the transaction is valid and was really generated using the respective wallet. For example, when someone wants to transfer funds from their wallet to someone else, the transfer's transaction details are digitally signed using the wallet's private key(((private key))). Thereafter, anyone else can verify that the transaction was really initiated by the respective wallet since they can check the digital signature against the wallet's public key(((public key))). 
+. *Signing/Proving and Verification of Transactions*. Once a user has a wallet (by generating a public/private key(((private key)))-pair), they can thereafter create and sign transactions that are provable to anyone that the transaction is valid and was really generated using the respective wallet. For example, when someone wants to transfer funds from their wallet to someone else, the transfer's transaction details are digitally signed using the wallet's private key(((private key))). Thereafter, anyone else can verify that the transaction was really initiated by the respective wallet since they can check the digital signature against the wallet's public key(((public key))).
 
 
 === Pointers to cryptography resources

@@ -11,15 +11,15 @@ Due to its permissionless nature, everyone with the necessary enthusiasm and tec
 
 Running a Cardano node comes with costs, however. Even though Cardano's proof-of-stake(((proof-of-stake))) consensus mechanism(((Cardano, consensus mechanism))) ensures that the energy consumption of the network is many orders of magnitude lower than that of a proof-of-work(((proof-of-work))) blockchain(((blockchain))) like Bitcoin(((Bitcoin))), running a Cardano node still requires a certain amount of computational power, computer memory, and bandwidth.
 
-These resources are not free, a node operator(((node operator))) either has to buy appropriate hardware or rent it from a cloud provider.
+These resources are not free, a node operator(((node, operator))) either has to buy appropriate hardware or rent it from a cloud provider.
 
-In addition, the node operator(((node operator))) has to spend a lot of time setting up and maintaining the node, monitoring its performance, and performing necessary software updates.
+In addition, the node operator(((node, operator))) has to spend a lot of time setting up and maintaining the node, monitoring its performance, and performing necessary software updates.
 
 So while decentralization(((decentralization))) is great, it comes with costs, and it is important to properly incentivize people to participate in the network and to do so in a way that is beneficial for the network as a whole.
 
 For Cardano in particular, people need to be incentivized to become node operators and ensure their node is online when needed, participate in the election process of slot leaders(((slot leader))) and create a block when they themselves are elected.
 
-Not every user on Cardano has the necessary technical skills, the time or the desire to run a node, however. Most users will simply delegate their ADA(((ADA))) to a stake pool(((stake pool))), earn staking rewards(((staking rewards))), and let the pool operator(((pool operator))) do the work. It is important to set the right incentives for this majority of people as well, so that they delegate to stake pools that are online when needed and faithfully follow the protocol. The more delegation(((delegation))) a stake pool(((stake pool))) receives, the more blocks it will be able to produce, so delegating wisely is important for the security and efficiency of the network.
+Not every user on Cardano has the necessary technical skills, the time or the desire to run a node, however. Most users will simply delegate their ADA(((ADA))) to a stake pool(((stake pool))), earn staking rewards(((staking, rewards))), and let the pool operator(((pool operator))) do the work. It is important to set the right incentives for this majority of people as well, so that they delegate to stake pools that are online when needed and faithfully follow the protocol. The more delegation(((delegation))) a stake pool(((stake pool))) receives, the more blocks it will be able to produce, so delegating wisely is important for the security and efficiency of the network.
 
 ==== Types of Incentives
 
@@ -57,13 +57,14 @@ The security of the Cardano blockchain(((blockchain))) is guaranteed as long as 
 
 The more such stake pools there are, the more decentralized the network becomes. And ideally, those stake pools each should control a roughly equal amount of stake, so that none of them become too big and powerful.
 
-On the other hand, the more stake pools there are, the less _efficient_ the network becomes, both in a technical sense and from a financial point of view. More stake pools imply more network traffic and more redundant copies of data, and the operators of all those stake pools need to be incentivized with ADA(((ADA))), which means those funds are no longer available for other purposes like the treasury(((treasury))) or staking rewards(((staking rewards))) for ADA(((ADA))) holders.
+On the other hand, the more stake pools there are, the less _efficient_ the network becomes, both in a technical sense and from a financial point of view. More stake pools imply more network traffic and more redundant copies of data, and the operators of all those stake pools need to be incentivized with ADA(((ADA))), which means those funds are no longer available for other purposes like the treasury(((treasury))) or
+staking rewards(((staking, rewards))) for ADA(((ADA))) holders.
 
 So there is a trade-off between security and decentralization(((decentralization))) on the one hand and efficiency on the other.
 
 For this reason, the Cardano incentives mechanism(((Cardano, incentives mechanism))) is parameterized by a parameter k(((k (parameter)))) which denotes the desired number of (roughly equally sized) stake pools.
 
-The goal of the incentives mechanism is to lead to a configuration where a solid majority of stake is delegated to a number of k(((k (parameter)))) stake pools of roughly equal size, whose operators' nodes are online when needed and provide additional infrastructure (like relay nodes)(((relay nodes))).
+The goal of the incentives mechanism is to lead to a configuration where a solid majority of stake is delegated to a number of k(((k (parameter)))) stake pools of roughly equal size, whose operators' nodes are online when needed and provide additional infrastructure (like relay nodes)(((node, relay))).
 
 ==== Sources of Incentives
 
