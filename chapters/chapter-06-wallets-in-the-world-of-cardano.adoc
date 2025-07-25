@@ -6,31 +6,31 @@
 
 === Fundamentals of crypto wallets
 
-A wallet, also known as a crypto wallet, digital wallet, or cryptocurrency wallet, is like a digital version of a regular wallet. However, instead of holding cash, personal identification, or cards, it stores special digital keys that enable interaction with various blockchains, allowing users to manage digital assets such as cryptocurrencies, tokens, or non-fungible tokens (NFTs).
+A wallet, also referred to as a crypto wallet, digital wallet, or cryptocurrency wallet, is a digital version of a regular wallet. However, instead of holding cash, personal identification, or cards, it stores special digital keys that enable interaction with various blockchains, allowing users to manage digital assets such as cryptocurrencies, tokens, or non-fungible tokens (NFTs).
 
-These keys allow you to access and manage your digital assets. Just like a key that opens a safe's lock, these digital keys do the same -- but give you access to funds and assets stored in the digital wallet.
+These keys allow you to access and manage your digital assets. Just like a key that opens the lock of a safe, these digital keys do the same -- but give you access to funds and assets stored in the digital wallet.
 
-At its core, a wallet serves two primary purposes:
+At its core, a digital wallet serves two primary purposes:
 
-* *Secure storage of keys.* Your wallet securely stores your “keys,” which are unique, sophisticated digital codes known as “public keys” and “private keys.” The public key is like your email address; you share it with others to receive cryptocurrency. The private key, akin to your email password, must be kept secret. It's what allows you to send or spend your cryptocurrency.
+* *Secure storage of keys* — your wallet securely stores your keys, which are unique, sophisticated digital codes known as public keys and private keys. The public key is like your email address; you share it with others to receive cryptocurrency. The private key, akin to your email password, allows you to send or spend your cryptocurrency, and must be kept secret.
 
-* *Transaction management.* A wallet enables you to send and receive digital currencies, such as ada, Cardano's native currency. When you send cryptocurrency, you essentially sign off ownership to the receiver's wallet. Your private key validates this transaction, acting as a digital signature that provides mathematical proof of your authorization.
+* *Transaction management* — a wallet enables you to send and receive digital currencies, such as ada, Cardano's native currency. When you send cryptocurrency, you essentially sign off ownership to the receiver's wallet. Your private key validates this transaction, acting as a digital signature that provides mathematical proof of your authorization.
 
-It’s crucial to understand that a wallet doesn't physically store your cryptocurrency. Instead, it holds the cryptographic information required to access and transact with your digital assets on the blockchain, the underlying technology of cryptocurrencies. This makes your wallet a crucial tool for managing your digital assets securely and efficiently. In this section, you will learn the generalities of wallets before going into the details of how wallets work in Cardano.
+It is crucial to understand that a wallet does not physically store your cryptocurrency. Instead, it holds the cryptographic information required to access and transact with your digital assets on the blockchain, the underlying technology of cryptocurrencies. This makes your wallet a crucial tool for managing your digital assets securely and efficiently. In this section, you will learn about the types of wallets as well as details of how wallets work in Cardano.
 
 ==== Types of wallets
 
-In the blockchain realm, maintaining the security and accessibility of your digital assets is crucial. This is where the choice of a wallet comes into play. Crypto wallets can be broadly categorized into three types: _hardware_, _software_, and _paper_.
+Maintaining the security and accessibility of your digital assets is crucial. This is where the choice of a wallet comes into play. Crypto wallets can be broadly categorized into three types: _hardware_, _software_, and _paper_.
 
 Each type offers a different balance of security and convenience, catering to various needs and preferences. Let's explore these three main types of wallets before diving into the specifics:
 
-* *Hardware wallets.* Imagine a hardware wallet as a secure USB stick that stores your cryptocurrency and other digital assets offline (i.e. on a device that is not connected to the Internet). These physical devices are considered one of the safest options because they keep your private keys completely disconnected from the internet, reducing the risk of hacking. They are ideal for long-term investors who want to keep their assets secure for an extended period.
+* *Hardware wallets* — imagine a hardware wallet as a secure USB stick that stores your cryptocurrency and other digital assets offline (i.e. on a device that is not connected to the Internet). These physical devices are considered one of the safest options because they keep your private keys completely disconnected from the internet, reducing the risk of hacking. They are ideal for long-term investors who want to keep their assets secure for an extended period.
 
 * *Software wallets.* Software wallets are applications that can be installed on your computer or smartphone. They are more convenient for daily transactions, striking a balance between security and accessibility. Since they are connected to the internet, they are considered “hot wallets.” While they are generally secure, they are more vulnerable to online threats than hardware wallets. Software wallets are ideal for active trading users who require frequent access to cryptocurrencies.
 
 * *Paper wallets.* A paper wallet is a physical document that contains a public address for receiving cryptocurrencies and a private key for spending or transferring them. It's a piece of paper with public and private keys, printed as QR codes.. Paper wallets offer a highly secure method for storing cryptocurrencies since they are entirely offline. However, they can be easily damaged or lost, and they are not as convenient for quick or frequent transactions.
 
-It’s also important to note that paper and hardware wallets are also known as “cold wallets” or “cold storage” wallets, as they always keep private keys offline.
+It is also important to note that paper and hardware wallets are also known as “cold wallets” or “cold storage” wallets, as they always keep private keys offline.
 
 Each type of wallet has unique features, advantages, and considerations. Your choice depends on your specific needs, such as the level of security you require, how frequently you plan to access your cryptocurrency, and your comfort level with technology. The following sections provide an in-depth exploration of each type, helping you determine which wallet best suits your journey into the world of Cardano and the blockchain.
 
@@ -48,29 +48,29 @@ Let’s examine the pros and cons of using hardware wallets and some common mode
 
 * *Enhanced security.* The primary advantage of hardware wallets is their ability to store private keys offline, thereby reducing their vulnerability to online hacking attacks. Transactions are signed within the device, meaning the private keys never leave the device.
 
-* *Portability.* Despite their robust security features, hardware wallets are small and portable, allowing you to manage your cryptocurrencies and digital assets from anywhere with access to a computer or smartphone.
+* *Portability* — despite their robust security features, hardware wallets are small and portable, allowing you to manage your cryptocurrencies and digital assets from anywhere with access to a computer or smartphone.
 
-* *Multi-currency support.* Most hardware wallets are designed to support multiple cryptocurrencies and blockchains, making them a versatile choice for users holding a variety of digital assets.
+* *Multi-currency support* — most hardware wallets are designed to support multiple cryptocurrencies and blockchains, making them a versatile choice for users holding a variety of digital assets.
 
-* *User-friendly.* Modern hardware wallets feature user-friendly interfaces, making it straightforward for users, including newcomers, to manage their holdings.
+* *User-friendly* — modern hardware wallets feature user-friendly interfaces, making it straightforward for users, including newcomers, to manage their holdings.
 
 *Cons of hardware wallets*
 
-* *Cost.* Unlike software or paper wallets, hardware wallets come with a price tag. The cost can be a barrier for people just starting with cryptocurrencies or those with a small amount of digital assets.
+* *Cost* — unlike software or paper wallets, hardware wallets come with a price tag. The cost can be a barrier for people just starting with cryptocurrencies or those with a small amount of digital assets.
 
-* *Physical damage or loss.* While they are less prone to online threats, hardware wallets are physical devices that can be damaged, lost, or stolen. Users must take precautions to protect their devices and back up their recovery phrases.
+* *Physical damage or loss* — while they are less prone to online threats, hardware wallets are physical devices that can be damaged, lost, or stolen. Users must take precautions to protect their devices and back up their recovery phrases.
 
-* *Less convenient for quick transactions.* For users who frequently trade or access their cryptocurrencies or digital assets, hardware wallets may be less convenient than software wallets due to the need to connect the device to a computer or mobile device for transactions.
+* *Less convenient for quick transactions* — for users who frequently trade or access their cryptocurrencies or digital assets, hardware wallets may be less convenient than software wallets due to the need to connect the device to a computer or mobile device for transactions.
 
 *Common hardware wallets in the market*
 
 This section presents a list of hardware wallets to illustrate some available options. Please note that the authors are not involved in the development of these wallets and do not endorse any specific products -- and we recommend that you do your own research to find other hardware wallets and decide which one best suits your needs.
 
-* *Ledger.* This is one of the most popular hardware wallets, known for its security and support for many cryptocurrencies. You can learn more about it on its link:https://www.ledger.com/[website].
+* *Ledger* — this is one of the most popular hardware wallets, known for its security and support for many cryptocurrencies. You can learn more about it on its link:https://www.ledger.com/[website].
 
-* *Trezor.* Trezor is another popular brand in the hardware wallet space, offering high-security levels and an intuitive interface. You can learn more about it on its link:https://trezor.io/[website].
+* *Trezor* — Trezor is another popular brand in the hardware wallet space, offering high-security levels and an intuitive interface. You can learn more about it on its link:https://trezor.io/[website].
 
-* *Keystone.* This hardware wallet is open-source and provides an extra layer of security by keeping your private keys entirely offline. You can learn more about it on its link:https://keyst.one/[website].
+* *Keystone* — this hardware wallet is open-source and provides an extra layer of security by keeping your private keys entirely offline. You can learn more about it on its link:https://keyst.one/[website].
 
 For a more extensive list of hardware wallets, you can review link:https://github.com/INTERPOL-Innovation-Centre/HardwareWallets_DF_List[this compilation] provided by Interpol (for digital forensics detection).
 
@@ -82,33 +82,33 @@ Let's explore the pros and cons of software wallets, along with a review of some
 
 *Pros of software wallets*
 
-* *Accessible.* Software wallets provide easy access, allowing users to manage cryptocurrencies and other digital assets, perform transactions, and check balances quickly from any location with internet connectivity.
+* *Accessible*  — software wallets provide easy access, allowing users to manage cryptocurrencies and other digital assets, perform transactions, and check balances quickly from any location with internet connectivity.
 
-* *User-friendly.* These wallets typically feature intuitive interfaces, making it straightforward for users to navigate, conduct transactions, and monitor their holdings, catering to beginners and experienced users.
+* *User-friendly* — these wallets typically feature intuitive interfaces, making it straightforward for users to navigate, conduct transactions, and monitor their holdings, catering to beginners and experienced users.
 
-* *Cost-effective.* Unlike hardware wallets, software wallets are generally free to download and use, making them appealing to those new to cryptocurrencies or with smaller holdings.
+* *Cost-effective*  — unlike hardware wallets, software wallets are generally free to download and use, making them appealing to those new to cryptocurrencies or with smaller holdings.
 
-* *Integration with exchanges and other features.* Many software wallets offer additional features such as integrated exchanges, staking, and support for multiple cryptocurrencies, enhancing their functionality beyond mere storage.
+* *Integration with exchanges and other features* — many software wallets offer additional features such as integrated exchanges, staking, and support for multiple cryptocurrencies, enhancing their functionality beyond mere storage.
 
 *Cons of software wallets*
 
-* *Security risks.* An internet connection makes software wallets more vulnerable to online threats, including hacking, phishing attacks, and malware. Users must ensure their devices and networks are secure.
+* *Security risks*  — an internet connection makes software wallets more vulnerable to online threats, including hacking, phishing attacks, and malware. Users must ensure their devices and networks are secure.
 
-* *Device dependence*. If the device hosting the wallet is damaged, lost, or compromised, accessing the wallet can be challenging without proper backup and recovery measures.
+* *Device dependence*  — if the device hosting the wallet is damaged, lost, or compromised, accessing the wallet can be challenging without proper backup and recovery measures.
 
-* *Vulnerability to malware.* Devices infected with malware pose a significant risk to software wallets, potentially leading to unauthorized access and theft of digital assets.
+* *Vulnerability to malware* — devices infected with malware pose a significant risk to software wallets, potentially leading to unauthorized access and theft of digital assets.
 
 *Common software wallets in the market*
 
 Please note that the software wallet examples provided below are for informational purposes only and do not imply any endorsement or recommendation of a specific option.
 
-* *MetaMask.* Primarily known for its integration with the Ethereum network, MetaMask is a popular software wallet that also supports a variety of Ethereum-compatible tokens. It's available as a browser extension and a mobile app, providing flexibility in how users access their digital assets. You can learn more about it on its link:https://metamask.io/[website].
+* *MetaMask* — primarily known for its integration with the Ethereum network, MetaMask is a popular software wallet that also supports a variety of Ethereum-compatible tokens. It's available as a browser extension and a mobile app, providing flexibility in how users access their digital assets. You can learn more about it on its link:https://metamask.io/[website].
 
-* *Exodus.* A multi-currency wallet known for its attractive user interface and ease of use. Exodus supports various cryptocurrencies, including Cardano, and offers features like an integrated exchange and live charts. Exodus is available as a mobile app, a Web3 wallet browser extension, and a desktop application for most popular operating systems. You can learn more about it on its link:https://www.exodus.com/[website].
+* *Exodus* — a multi-currency wallet known for its attractive user interface and ease of use. Exodus supports various cryptocurrencies, including Cardano, and offers features like an integrated exchange and live charts. Exodus is available as a mobile app, a Web3 wallet browser extension, and a desktop application for most popular operating systems. You can learn more about it on its link:https://www.exodus.com/[website].
 
-* *Coinomi.* A multi-currency wallet available on desktop and mobile platforms; it supports many cryptocurrencies and allows purchasing cryptocurrency through integration with some partners. It's known for its robust privacy features and its ability to swap coins within the wallet. You can learn more about it on its link:https://www.coinomi.com/[website].
+* *Coinomi*  — a multi-currency wallet available on desktop and mobile platforms; it supports many cryptocurrencies and allows purchasing cryptocurrency through integration with some partners. It's known for its robust privacy features and its ability to swap coins within the wallet. You can learn more about it on its link:https://www.coinomi.com/[website].
 
-* *Atomic Wallet.* An open-source, multi-currency wallet that supports over 300 cryptocurrencies. It offers features such as atomic swaps, a built-in exchange, strong encryption, and robust security measures. It’s available as a mobile app and a desktop application for major operating systems. You can learn more about it on its link:https://atomicwallet.io/[website].
+* *Atomic Wallet* — an open-source, multi-currency wallet that supports over 300 cryptocurrencies. It offers features such as atomic swaps, a built-in exchange, strong encryption, and robust security measures. It’s available as a mobile app and a desktop application for major operating systems. You can learn more about it on its link:https://atomicwallet.io/[website].
 
 These software wallets cater to a broad spectrum of needs and preferences, from casual users to more privacy-focused individuals. When choosing a software wallet, consider factors like supported currencies, security features, ease of use, and any specific functionalities that align with your cryptocurrency usage habits.
 
@@ -120,11 +120,11 @@ Let's explore the advantages and disadvantages of paper wallets, along with some
 
 *Pros of paper wallets*
 
-* *High security.* Since they are offline, paper wallets are immune to online hacking attacks, malware, and other digital threats, making them one of the most secure methods of storing cryptocurrency.
+* *High security*  — since they are offline, paper wallets are immune to online hacking attacks, malware, and other digital threats, making them one of the most secure methods of storing cryptocurrency.
 
-* *Ownership control.* With a paper wallet, you have complete control over your private keys and, consequently, your cryptocurrency and digital assets. There's no reliance on third-party services or risks associated with online wallet providers.
+* *Ownership control* — with a paper wallet, you have complete control over your private keys and, consequently, your cryptocurrency and digital assets. There's no reliance on third-party services or risks associated with online wallet providers.
 
-* *Cost-effectiveness.* Creating a paper wallet is free, requiring only paper and a printer, unlike hardware wallets, which can be expensive.
+* *Cost-effectiveness* — creating a paper wallet is free, requiring only paper and a printer, unlike hardware wallets, which can be expensive.
 
 *Cons of paper wallets*
 
