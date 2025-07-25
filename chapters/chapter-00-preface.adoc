@@ -61,15 +61,6 @@ Understand Cardano's unique functional programming and EUTXO model, then dive di
 - Chapter 8: Writing Smart Contracts: Smart contract programming languages, Marlowe Smart Contracts, Plutus Smart Contracts, Smart Contract Security and Best Practices
 - Chapter 9: Decentralized Applications: Overview of Decentralized Applications, Onchain vs Off Chain Code
 
-==== Stake Pool Operators Path
-Begin by understanding the core components of the Cardano network, delve into how consensus is reached and incentives work, and then focus on the specifics of setting up and operating a stake pool.
-
-===== Suggested Chapters & Sections:
-- Preface: How to Navigate, How to Contribute
-- Chapter 4: How Cardano Works: Overview of Cardano Network Protocols, Reaching Consensus using proof of stake, About the Ouroboros Protocol, Incentives in Cardano, Cardano Node and system layers (Introduction to the Cardano node, Cardano Node Layers), Components of the Cardano Ecosystem (Node, CLI, Db sync)
-- Chapter 6: Wallets in the Cardano Ecosystem: Fundamentals of Wallets (Public and private keys: What they are and how they work), Common operations in a Cardano Wallet (Staking ADA: How it works and its benefits)
-- Chapter 7: Stake Pools and Stake Pool Operations: Introduction, What is a Stake Pool?, SPO Requirements, Leadership Selection, Slot Conflict, Cardano CLI, Node Operations, Glossary
-
 ==== Cardano User Path
 Learn the foundational blockchain concepts, then discover how to interact with the network using wallets, manage your digital assets, and understand native tokens and NFTs.
 
@@ -79,6 +70,15 @@ Learn the foundational blockchain concepts, then discover how to interact with t
 - Chapter 3: Learn About Cardano: What is Cardano?, Cardano Community and Growth of the Ecosystem, IO Education
 - Chapter 4: How Cardano Works: UTXO and EUTXO Models, Multi-assets, Native Tokens (fungible and non-fungible)
 - Chapter 6: Digital Cardano Wallets: Fundamentals of Wallets, Wallets in the Cardano Ecosystem, Setting Up a Cardano Light Wallet, Common operations in a Cardano Wallet (Sending and receiving ada, Staking ada)
+
+==== Stake Pool Operators Path
+Begin by understanding the core components of the Cardano network, delve into how consensus is reached and incentives work, and then focus on the specifics of setting up and operating a stake pool.
+
+===== Suggested Chapters & Sections:
+- Preface: How to Navigate, How to Contribute
+- Chapter 4: How Cardano Works: Overview of Cardano Network Protocols, Reaching Consensus using proof of stake, About the Ouroboros Protocol, Incentives in Cardano, Cardano Node and system layers (Introduction to the Cardano node, Cardano Node Layers), Components of the Cardano Ecosystem (Node, CLI, Db sync)
+- Chapter 6: Wallets in the Cardano Ecosystem: Fundamentals of Wallets (Public and private keys: What they are and how they work), Common operations in a Cardano Wallet (Staking ADA: How it works and its benefits)
+- Chapter 7: Stake Pools and Stake Pool Operations: Introduction, What is a Stake Pool?, SPO Requirements, Leadership Selection, Slot Conflict, Cardano CLI, Node Operations, Glossary
 
 ==== Cardano Governance & Future Path
 Understand how Cardano's governance model operates, explore key initiatives like Project Catalyst and CIPs, and look ahead to future advancements and the Cardano 2.0 vision.
