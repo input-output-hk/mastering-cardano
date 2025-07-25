@@ -41,10 +41,16 @@ jobs:
       - name: Build EPUB and PDF
         run: make all
 
-      # 6. Uploads the generated files from the 'dist' directory as a build artifact.
-      #    This allows you to download the epub and pdf from the workflow run's summary page.
-      - name: Upload Artifacts
+      # 6. Uploads the generated PDF from the 'dist' directory as a build artifact.
+      - name: Upload PDF Artifact 📄
         uses: actions/upload-artifact@v4
         with:
-          name: Mastering-Cardano-Book
-          path: dist/
+          name: Book-PDF
+          path: dist/mastering-cardano-v1.0.0.pdf
+
+      # 7. Uploads the generated EPUB from the 'dist' directory as a build artifact.
+      - name: Upload EPUB Artifact 📱
+        uses: actions/upload-artifact@v4
+        with:
+          name: Book-EPUB
+          path: dist/mastering-cardano-v1.0.0.epub
