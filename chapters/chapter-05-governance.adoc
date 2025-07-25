@@ -100,15 +100,15 @@ Project Catalyst(((Project Catalyst))) places a strong emphasis on transparency 
 
 Measuring the success of Project Catalyst is essential to ensure that the initiative effectively fosters innovation and contributes to the growth of the Cardano ecosystem(((Cardano, ecosystem))). The following metrics provide a comprehensive evaluation of its impact and effectiveness:
 
-1. Number of proposals submitted(((number of proposals submitted)))
-2. Number of proposals funded(((number of proposals funded)))
-3. Community participation in voting(((community, participation in voting)))
-4. Diversity of funded projects(((diversity of funded projects)))
-5. Impact of funded projects(((impact of funded projects)))
-6. Budget utilization and efficiency(((budget utilization and efficiency)))
-7. Community feedback and satisfaction(((community, feedback and satisfaction)))
-8. Growth in Project Catalyst participation(((growth in Project Catalyst participation)))
-9. Long-term sustainability(((long-term sustainability))) and scalability.
+1. Number of proposals submitted
+2. Number of proposals funded
+3. Community participation in voting
+4. Diversity of funded projects
+5. Impact of funded projects
+6. Budget utilization and efficiency
+7. Community feedback and satisfaction
+8. Growth in Project Catalyst participation
+9. Long-term sustainability and scalability.
 
 Catalyst continues to improve and evolve with shared learnings. For example, funded projects(((projects))) from Funds 9–13 can now avail themselves of legal support from _Storm Partners_. This may include:
 
@@ -125,28 +125,28 @@ The Catalyst team released their http://projectcatalyst.io/reports/horizons.pdf[
 
 As Catalyst took a ‘tactical pause’ after Fund9, there was a timely _Systemization of Knowledge (SoK)_ research paperfootnote:[Kiayias, Lazos (2022), 'SoK: Blockchain Governance', arxiv.org/pdf/2201.07188.pdf] published, reflecting on the state of governance in ten blockchains, including Bitcoin, Ethereum, and Cardano.
 
-The paper lists *seven properties* to assess different requirements for effective blockchain(((blockchain))) governance:
+The paper lists *seven properties* to assess different requirements for effective blockchain governance:
 
 1. *Suffrage*: this property deals with participation eligibility. How inclusive(((inclusive))) is the governance mechanism?
-2. *Confidentiality(((confidentiality)))*: are decision-makers’ inputs protected from ‘external influences’?
-3. *Verifiability(((verifiability)))*: can decision-makers confirm their input has been considered in the output?
-4. *Accountability(((accountability)))*: are decision-makers held accountable for their input?
-5. *Sustainability(((sustainability)))*: are decision-makers suitably incentivized?
+2. *Confidentiality*: are decision-makers’ inputs protected from ‘external influences’?
+3. *Verifiability*: can decision-makers confirm their input has been considered in the output?
+4. *Accountability*: are decision-makers held accountable for their input?
+5. *Sustainability*: are decision-makers suitably incentivized?
 6. *Pareto efficiency(((Pareto efficiency)))*: how effectively can decision-makers' intentions be turned into actions?
-7. *Liveness*: how quickly can a blockchain(((blockchain)))’s governance mechanism produce outputs efficiently?
+7. *Liveness*: how quickly can a blockchain’s governance mechanism produce outputs efficiently?
 
 image::../images/5.2_governance_properties.png[]
 *Figure 5.2:* The partition map of governance properties from the ‘SoK: Blockchain Governance’ paper
 
-The paper concludes that while each blockchain(((blockchain))) displays some of the properties, no blockchain(((blockchain))) meets all the requirements for effective governance. It was food for thought just before the dawn of the _age of Voltaire_.
+The paper concludes that while each blockchain displays some of the properties, no blockchain meets all the requirements for effective governance. It was food for thought just before the dawn of the _age of Voltaire_.
 
 *CIP-1694*
 
 https://cips.cardano.org/cip/CIP-1694[CIP-1694] was named after the philosopher Voltaire’s year of birth. It is arguably the most important CIP to date, as it is a proposal to bootstrap the age of Voltaire. Co-authored by Charles Hoskinson(((Hoskinson, Charles))), it is the first CIP he has gotten directly involved with. It’s clear a lot of thought went into it, and it was intentionally written as a transitional, living document.
 
-When Cardano was formed, there was a tripartite structure with EMURGO, the Cardano Foundation (CF), and IOG with remits for ecosystem growth, governance, and engineering, respectively. The intention was always to move to a stake-based governance model(((stake based governance model))), where ada holders determine the future of the protocol.
+When Cardano was formed, there was a tripartite structure with EMURGO, the Cardano Foundation (CF), and IOG with remits for ecosystem growth, governance, and engineering, respectively. The intention was always to move to a stake-based governance model(((stake-based governance model))), where ada holders determine the future of the protocol.
 
-CIP-1694 is the fruit of years of research. IOG has been working on a decentralized update system(((decentralized, update system))) for some time. For example, they wrote a paper _Updateable Blockchains_footnote:[Ciampi, Karayannidis, Kiayias and Zindros (2020), 'Updatable Blockchains', iohk.io/en/research/library/papers/updatable-blockchains/] to explore ways to implement this vision.
+CIP-1694 is the fruit of years of research. IO has been working on a decentralized update system(((decentralized, update system))) for some time. For example, they wrote a paper _Updateable Blockchains_footnote:[Ciampi, Karayannidis, Kiayias and Zindros (2020), 'Updatable Blockchains', iohk.io/en/research/library/papers/updatable-blockchains/] to explore ways to implement this vision.
 
 Early in 2022, IOG and the CF held workshops to hammer out a way forward for the Voltaire development phase. The first question was ‘What is good governance?’. Charles Hoskinson(((Hoskinson, Charles))) explained in his ScotFest keynote that the answer was based on three different categories:
 
@@ -158,7 +158,7 @@ Early in 2022, IOG and the CF held workshops to hammer out a way forward for the
 
 *What is an MBO?*
 
-The MBO is a central hub that unites different groups, including thousands of stake pool operators(((stake pool, operator))), Cardano ambassadors, open-source projects running on Cardano, IOG, CF, EMURGO, and all ada holders. Members will own and run the MBO, staffing the steering committees.
+The MBO is a central hub that unites different groups, including thousands of stake pool operators(((stake pool, operator))), Cardano ambassadors, open-source projects running on Cardano, IO, CF, EMURGO, and all ada holders. Members will own and run the MBO, staffing the steering committees.
 
 image::../images/5.3_gov_concepts.png[]
 *Figure 5.3:* Governance concepts defined, based on the slide from ScotFest 2022
@@ -172,7 +172,7 @@ CIP-1694 could fill a book on its own and, like all CIPs, is a living document t
 
 *Where we came from – the five out of seven system*
 
-Before the Chang hard fork, governance transactions(((governance, transactions))) (eg, hard forks, parameter changes, etc) required a signature from at least five out of the seven Cardano governance (genesis) keys, currently held by the three founding entities. This process was always intended to be an ephemeral form of governance as we got through the earlier phases of the roadmap before Voltaire. There have traditionally been just two types of governance transactions(((governance, transactions))):
+Before the Chang hard fork, governance transactions(((governance, transactions))) (eg, hard forks, parameter changes, etc) required a signature from at least five out of the seven Cardano governance (genesis) keys, currently held by the three founding entities. This process was always intended to be an ephemeral form of governance as we got through the earlier phases of the roadmap before Voltaire. There have traditionally been just two types of governance transactions:
 
 * protocol parameter updates using transaction http://github.com/input-output-hk/cardano-ledger/blob/8884d921c8c3c6e216a659fca46caf729282058b/eras/babbage/test-suite/cddl-files/babbage.cddl#L56[field nº6 of the transaction body]
 * movements of the treasury and the reserves using Move Instantaneous Rewards (MIR) certificates.
@@ -185,15 +185,15 @@ The CIP-1694 proposal encompasses two new ledger eras. The first era is called C
 * Provided an on-chain mechanism for rotating the governance keys
 * Rewired the ledger rules involving governance as outlined in CIP-1694.
 
-For CIP-1694 to succeed, it is essential to realize the vision presented in the _Road to a Polyglot Ecosystem for Cardano_ whiteboard http://youtube.com/watch?v=skcCg1WaedA[video]. The new governance mechanisms will support multiple clients, enabling different development teams to employ different approaches, programming languages, and commercial unique selling propositions(((commercial unique selling propositions))) (USPs).
+For CIP-1694 to succeed, it is essential to realize the vision presented in the _Road to a Polyglot Ecosystem for Cardano_ whiteboard http://youtube.com/watch?v=skcCg1WaedA[video]. The new governance mechanisms will support multiple clients, enabling different development teams to employ different approaches, programming languages, and commercial unique selling propositions (USPs).
 
 Charles Hoskinson(((Hoskinson, Charles)))’s keynote at ScotFest 2022:footnote:[ IO ScotFest Keynote with Charles Hoskinson, youtu.be/tbtkClr3Y3I]
 
 _"So that's Voltaire …it’s deeply philosophical, it's the hardest thing I've ever done in my life, it's the hardest thing you're ever going to do in your life, and we're going to get it done, because it needs to get done and I'm damn tired of our industry failing, and it's about time we can point to something and say ‘you know what, we did it the right way’. We have to tend to our own gardens first. That was a lesson of Candide. So we have to fix Cardano's governance before we have the right to complain about any other person's governance."_
 
-2023 was all about debating how to implement CIP-1694. The CIP was written in a deliberately high-level, approachable format to stimulate discussion and feedback. The community(((community))) did not disappoint with 50 http://cip1694.intersectmbo.org/[workshops], 30 in-person and 20 online, with over 1,000 participants from 20+ countries.
+2023 was all about debating how to implement CIP-1694. The CIP was written in a deliberately high-level, approachable format to stimulate discussion and feedback. The community did not disappoint with 50 http://cip1694.intersectmbo.org/[workshops], 30 in-person and 20 online, with over 1,000 participants from 20+ countries.
 
-In addition to community-led workshops(((workshops, community-led))), IOG, EMURGO, and the Cardano Foundation co-hosted three governance workshops. The CF workshop took place in Zug, Switzerland, followed by EMURGO’s workshop in Tokyo, Japan. The final workshop, hosted by IOG in Edinburgh in July 2023, marked the conclusion of the CIP-1694 design feedback loop.
+In addition to community-led workshops(((workshops, community-led))), IO, EMURGO, and the Cardano Foundation co-hosted three governance workshops. The CF workshop took place in Zug, Switzerland, followed by EMURGO’s workshop in Tokyo, Japan. The final workshop, hosted by IOG in Edinburgh in July 2023, marked the conclusion of the CIP-1694 design feedback loop.
 
 Dozens of blogs have been written, and contentious issues have been debated on Reddit, X (formerly Twitter), and Telegram. It is impossible to acknowledge every voice here, but you can dig into the finer detail by following Nicolas Cerny(((Cerny, Nicolas)))’s
  http://forum.cardano.org/t/cardano-governance-updates-community-input-voltaire-phase-and-CIP1694-updates/115878[diary of events] on the Cardano Forum(((Cardano, Forum))).
@@ -202,9 +202,9 @@ Governance on Cardano hit a milestone on Friday, June 30, 2023, when the https:/
 
 As almost everything in Cardano takes the form of a transaction, getting the metadata standard correct is critical. Metadata allows developers to embed information specific to the context of the transaction. For example, the NFT standard (see https://cips.cardano.org/cip/CIP-0025[CIP-25], https://cips.cardano.org/cip/CIP-0068[CIP-68], https://cips.cardano.org/cip/CIP-0060[CIP-60]) on Cardano has evolved with new capabilities, unlocking with each roadmap release. Pi Lanningham authored http://github.com/cardano-foundation/CIPs/pull/556[CIP-0100] to clear up what metadata standards need to be introduced to enable the on-chain governance(((governance, on-chain layer))) mechanisms proposed in CIP-1694.
 
-http://cips.cardano.org/cip/CIP-0095[CIP-95] is a crucial CIP, which extends CIP-30 and describes the interface between webpage/web-based stacks(((webpage/web-based stacks))) and Cardano wallets. More specifically, it is a specification that defines the API of the JavaScript object that is injected into web applications. The CIP enables voting capabilities for governance tools. At the Edinburgh hackathon, decisions were made around open http://github.com/Ryun1/CIPs/blob/governance-wallet-connector/CIP-0095/README.md#open-questions[questions], and the base design was approved.
+http://cips.cardano.org/cip/CIP-0095[CIP-95] is a crucial CIP, which extends CIP-30 and describes the interface between webpage/web-based stacks and Cardano wallets. More specifically, it is a specification that defines the API of the JavaScript object that is injected into web applications. The CIP enables voting capabilities for governance tools. At the Edinburgh hackathon, decisions were made around open http://github.com/Ryun1/CIPs/blob/governance-wallet-connector/CIP-0095/README.md#open-questions[questions], and the base design was approved.
 
-As governance can be subjective, it's best you read CIP-1694 yourself, especially the Rationale(((Rationale))) and Changelog sections, which add context. If 2023 was the year we discussed governance, 2024 was all about implementation with Intersect as the main driving force.
+As governance can be subjective, it's best you read CIP-1694 yourself, especially the Rationale and Changelog sections, which add context. If 2023 was the year we discussed governance, 2024 was all about implementation with Intersect as the main driving force.
 
 === Intersect: shaping Cardano's future
 
@@ -216,7 +216,7 @@ https://www.intersectmbo.org/[Intersect] empowers a distributed network of build
 
 ==== How Intersect operates
 
-Intersect aims to administer the governing processes(((governing processes))) for Cardano’s continued roadmap and development of the Cardano protocol. Intersect is currently facilitating the rollout of Cardano’s governance features. Visit the Intersect latest https://www.intersectmbo.org/news[news] page to keep up to speed with the latest developments.
+Intersect ((((Intersect))) aims to administer the governing processes(((governing processes))) for Cardano’s continued roadmap and development of the Cardano protocol. Intersect is currently facilitating the rollout of Cardano’s governance features. Visit the Intersect latest https://www.intersectmbo.org/news[news] page to keep up to speed with the latest developments.
 
 All Cardano ecosystem participants are welcome to become Intersect members. Made up of a distributed group of participants, including the foremost experts on Cardano and current ecosystem contributors(((current ecosystem contributors))), Intersect aims to facilitate healthy discussions and sound decision-making amongst its members and the community to uncover pain points and champion successes.
 
@@ -224,11 +224,11 @@ All Cardano ecosystem participants are welcome to become Intersect members. Made
 
 1. Community support(((community, support))): hosts events, hackathons, and conferences designed explicitly for developers within the Cardano ecosystem
 2. Governance: champions and oversees Cardano’s community-driven governance system(((community, -driven governance system))), implemented through CIP-1694
-3. Technical roadmap(((technical roadmap))): helps orchestrate the delivery of the Cardano technical roadmap
+3. Technical roadmap: helps orchestrate the delivery of the Cardano technical roadmap
 4. Continuity: ensures system stability(((system stability))), Intersect facilitates Cardano’s ongoing continuity
 5. Open-source development(((Open-source development))): plays a role in coordinating the open-source development of Cardano’s core technologies.
 
-Intersect has a central governing board(((central governing board))), similar to a city council, chosen and managed by its members. This board is supported by various committees and working groups, each focusing on specific areas or interests within the Cardano ecosystem.
+Intersect has a central governing board, similar to a city council, chosen and managed by its members. This board is supported by various committees and working groups, each focusing on specific areas or interests within the Cardano ecosystem.
 
 Intersect’s governing board started with five seats. Three were filled by founding members (seed funders, Input Output Global, and EMURGO), with the Intersect chief operating officer (COO) holding a temporary seat. Another seat was offered to the University of Wyoming’s Blockchain Center(((University of Wyoming’s Blockchain Center))) for a one-year term.
 
@@ -236,7 +236,7 @@ The remaining two permanent seats were filled later in 2024 through an election 
 
 *Intersect's funding*
 
-Input Output Global(((Input Output Global))) and EMURGO initially funded Intersect to get things running. For future funding, the community will be asked to vote on using funds from the Cardano treasury.
+Input Output ((((Input Output))) and EMURGO initially funded Intersect to get things running. For future funding, the community will be asked to vote on using funds from the Cardano treasury.
 
 The Cardano Development Holdings(((Cardano Development Holdings))) (CDH), established in the crypto-friendly Cayman Islands, funds and facilitates the maintenance, development, and growth of the Cardano ecosystem. It may receive direct funding from the Cardano treasury, but it can also receive donations from external sources for Cardano’s development. All CDH funds are administered by Intersect. This structure was chosen for reasons related to accounting, legal clarity, and liability management.
 
