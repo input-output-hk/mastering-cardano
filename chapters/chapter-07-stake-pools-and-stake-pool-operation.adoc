@@ -20,7 +20,7 @@ A list of tools and guides is provided at the end of this chapter to assist with
 
 A Cardano stake pool is a collection of server-based infrastructure(((infrastructure, server-based))) that maintains and runs the Cardano blockchain by validating transactions and adding blocks. While a stake pool can run on a single node, it is more common for it to utilize a collection of nodes connected to the broader Cardano network – a distributed network of interconnected stake pools and full nodes. Typically, a stake pool includes a block-producing node and multiple relay nodes (relays).
 
-To become an active block producer, a node requires the following cryptographic files(((cryptographic file))):
+To become an active block producer, a node requires the following cryptographic files(((cryptographic, file))):
 
 * the __verified random function (VRF) signing key__ (vrf.skey)
 * the __operational certificate__ (op.cert)
@@ -50,15 +50,15 @@ Cardano cryptographic keys are made up of ed25519 key pairs(((ed25519, key pairs
 
 ==== Wallet Keys
 
-``root.skey`` -  the most sensitive private key of any wallet. An attacker can use this key to derive the Cardano wallet payment.skey and stake.skey . In case of a hardware wallet(((hardware wallet))) malfunction, the wallet’s 12 or 24 word seed phrase can be converted to a root.skey., The payment and stake keys can be recovered by using the CLI and root.skey. A root.skey can thus not only be used to generate private keys for Cardano, but also for other blockchains such as Bitcoin.
+``root.skey`` -  the most sensitive private key of any wallet. An attacker can use this key to derive the Cardano wallet payment.skey and stake.skey . In case of a hardware wallet(((hardware, wallet))) malfunction, the wallet’s 12 or 24 word seed phrase can be converted to a root.skey., The payment and stake keys can be recovered by using the CLI and root.skey. A root.skey can thus not only be used to generate private keys for Cardano, but also for other blockchains such as Bitcoin.
 
-``payment.skey`` - a highly sensitive Cardano payment address(((payment address))) private signing key file. This file provides access to tokens in the payment address(((payment address))) and should be kept safe at all times.
+``payment.skey`` - a highly sensitive Cardano payment address(((address, payment))) private signing key file. This file provides access to tokens in the payment address(((address, payment))) and should be kept safe at all times.
 
-``payment.vkey`` - the public verification key(((verification key))) file for the payment address. It is not sensitive and can be shared publicly.
+``payment.vkey`` - the public verification key(((verification, key))) file for the payment address. It is not sensitive and can be shared publicly.
 
-``stake.skey`` - a sensitive Cardano stake address private signing key file(((stake address, private signing key file))). This file gives you access to any rewards held in the stake address, as well as the ability to delegate the wallet to a pool.
+``stake.skey`` - a sensitive Cardano stake address private signing key file(((address, staking))). This file gives you access to any rewards held in the stake address, as well as the ability to delegate the wallet to a pool.
 
-``stake.vkey`` - stake address public verification key(((verification key))) file, which is not sensitive and can be shared publicly.
+``stake.vkey`` - stake address public verification key(((verification, key))) file, which is not sensitive and can be shared publicly.
 
 ==== VRF Hot Keys
 
@@ -66,7 +66,7 @@ VRF keys control participation in the slot leader selection process(((slot leade
 
 ``vrf.skey`` -  a private signing key file for a Cardano stake pool(((stake pool)))’s VRF key. This key is required to start a stake pool(((stake pool)))’s block producing node. It is sensitive but must be placed on a hot node to start a stake pool(((stake pool))).
 
-``vrf.vkey`` - a public verification key(((verification key))) file for a Cardano stake pool’s vrf.skey. It is not sensitive and is not required to start a stake pool’s block producing node.
+``vrf.vkey`` - a public verification key(((verification, key))) file for a Cardano stake pool’s vrf.skey. It is not sensitive and is not required to start a stake pool’s block producing node.
 
 ==== KES Hot Keys
 
@@ -87,7 +87,7 @@ Stake pool(((pool))) keys and some supporting files include:
 * rotate stake pool KES keys
 * retire a stake pool
 
-``cold.vkey`` - a public verification key(((verification key))) file for a stake pool’s cold.skey private signing key file. It is not sensitive and can be shared publicly.
+``cold.vkey`` - a public verification key(((verification, key))) file for a stake pool’s cold.skey private signing key file. It is not sensitive and can be shared publicly.
 
 ``cold.counter`` -  a counter file that tracks the number of times an operational certificate(((operational certificate))) has been generated for the relevant stake pool.
 
@@ -97,11 +97,11 @@ Stake pool(((pool))) keys and some supporting files include:
 
 ==== Addresses
 
-Current Cardano wallet addresses are encoded in bech32 format and consist of two parts: a payment address and a staking address(((staking address))). The payment address, along with its associated key pairs, is used to store, receive, and send funds. The staking address(((staking address))) and its related keys manage staking-related activities, such as storing and withdrawing rewards, defining the stake pool owner, managing reward accounts, and setting the wallet’s target stake pool delegation.
+Current Cardano wallet addresses are encoded in bech32 format and consist of two parts: a payment address and a staking address(((address, staking))). The payment address, along with its associated key pairs, is used to store, receive, and send funds. The staking address(((address, staking))) and its related keys manage staking-related activities, such as storing and withdrawing rewards, defining the stake pool owner, managing reward accounts, and setting the wallet’s target stake pool delegation.
 
-An enterprise address(((enterprise address))) is a specific type of Cardano wallet address without the ability to participate in staking. Enterprise addresses might be used by exchanges that wish to comply with regulations or in cases where staking is not desired.
+An enterprise address(((address, enterprise))) is a specific type of Cardano wallet address without the ability to participate in staking. Enterprise addresses might be used by exchanges that wish to comply with regulations or in cases where staking is not desired.
 
-``payment.addr `` -   a payment address is usually generated using both a payment.vkey and a stake.vkey, associating the resulting address with both keys. Usually the payment.vkey and stake.vkey are derived from the same cryptographic entropy(((cryptographic entropy))) or root.skey, which refers to the same original secret or seed phrase. The first payment address of any wallet is known as the base address. Cardano supports HD wallets, so any number of payment addresses can be derived from the same secret phrase.
+``payment.addr `` -   a payment address is usually generated using both a payment.vkey and a stake.vkey, associating the resulting address with both keys. Usually the payment.vkey and stake.vkey are derived from the same cryptographic entropy(((cryptographic, entropy))) or root.skey, which refers to the same original secret or seed phrase. The first payment address of any wallet is known as the base address. Cardano supports HD wallets, so any number of payment addresses can be derived from the same secret phrase.
 
 ``stake.addr`` - a stake address for a Cardano wallet is generated using the stake.vkey file. It controls protocol participation, enables stake pool creation, and facilitates delegation and receiving rewards. This address cannot receive payments but is used to receive rewards from participating in the protocol. Only one stake address can be derived from a single original secret, thus all payment.addr(((payment.addr))) associated with the same secret share the same stake address component.
 
@@ -117,7 +117,7 @@ The SPO can also open additional pools, leveraging the popularity of the first p
 
 ==== Pledge vs Stake
 
-Pledge is a specific type of delegation registered on-chain as part of the pool registration process. This means that the pool’s owner/s permanently delegate a certain amount of ada to the pool, registering a pledge commitment. If the pool fails to meet the pledge commitment – meaning the amount pledged on-chain exceeds the total ada in the pool’s pledge wallets at the epoch transition snapshot(((epoch transition snapshot))) – no rewards will be paid. To resolve this, the pool must either adjust the registration to lower the pledge so it becomes valid again or return the pledge to the designated owner addresses, fulfilling the original commitment.
+Pledge is a specific type of delegation registered on-chain as part of the pool registration process. This means that the pool’s owner/s permanently delegate a certain amount of ada to the pool, registering a pledge commitment. If the pool fails to meet the pledge commitment – meaning the amount pledged on-chain exceeds the total ada in the pool’s pledge wallets at the epoch transition snapshot(((epoch, transition snapshot))) – no rewards will be paid. To resolve this, the pool must either adjust the registration to lower the pledge so it becomes valid again or return the pledge to the designated owner addresses, fulfilling the original commitment.
 
 To prevent Sybil attacks, Cardano uses a well-designed incentive model that encourages stake pool owners to associate as much pledge as possible with their pools. A higher pledge makes the stake pool more financially attractive to potential delegators. Staking rewards increase linearly with the amount of pledge, reaching maximum rewards when the pool is fully saturated.  Such a pool earns nearly 30% more rewards than a pool with no pledge. Saturated pools are often referred to as private stake pools(((private stake pool))), as the incentive to add delegation diminishes once the saturation threshold is met.
 
@@ -148,7 +148,7 @@ Cardano stake pool(((stake pool))) operators set two types of fees:
 
 As an open protocol, Cardano allows anyone to create and operate a stake pool using the free and open-source software(((free and open-source software))) (FOSS) – `cardano-node` and `cardano-cli`. However, it is essential for stake pool operators to possess the technical expertise required to operate a pool reliably and securely. While the requirements outlined in this section are not authoritative, they are generally recognized as critical for successful stake pool operation.
 
-It is also important to note that many community-made tools(((community-made tools))) and scripts are available, which significantly lower the technical barrier to entry for operating a stake pool. These tools assist with operational tasks but are not a substitute for the necessary technical knowledge or skills required for effective stake pool management.
+It is also important to note that many community-made tools(((tool, community-made))) and scripts are available, which significantly lower the technical barrier to entry for operating a stake pool. These tools assist with operational tasks but are not a substitute for the necessary technical knowledge or skills required for effective stake pool management.
 
 ==== *Linux*
 
@@ -198,7 +198,7 @@ Here are a few useful guides and courses for setting up a stake pool(((stake poo
 
 ==== *Putting it all together, long time maintenance*
 
-The stability of the Haskell node has significantly improved, making basic node operation less challenging than during the early days of the Incentivized Testnet (ITN). This is especially true when using community tools mentioned in the ‘Getting started’ section, such as https://cardano-community.github.io/guild-operators/[CNTools], https://bitbucket.org/muamw10/jormanager/src/develop/[JorManager], https://github.com/gitmachtl/scripts[StakePool Operator Scripts(((StakePool Operator Scripts)))], and others.
+The stability of the Haskell node has significantly improved, making basic node operation less challenging than during the early days of the Incentivized Testnet (ITN). This is especially true when using community tools mentioned in the ‘Getting started’ section, such as https://cardano-community.github.io/guild-operators/[CNTools], https://bitbucket.org/muamw10/jormanager/src/develop/[JorManager], https://github.com/gitmachtl/scripts[StakePool Operator Scripts], and others.
 
 Prior to mainnet(((mainnet))) operations, prospective SPOs should master such key areas:
 
@@ -215,12 +215,12 @@ Prior to mainnet(((mainnet))) operations, prospective SPOs should master such ke
 === Assigning Leadership Slots to Stake Pools
 
 ==== Overview
-On proof-of-work blockchains like Bitcoin, miners generate blocks by solving cryptographic puzzles, which is highly resource-intensive. In contrast, Cardano, a proof-of-stake blockchain, selects stake pools to create blocks using a stake-weighted lottery system(((stake-weighted lottery system))). This system is detailed in the https://eprint.iacr.org/2016/889.pdf[Ouroboros paper], and this section offers a simplified overview.
+On proof-of-work blockchains like Bitcoin, miners generate blocks by solving cryptographic puzzles, which is highly resource-intensive. In contrast, Cardano, a proof-of-stake blockchain, selects stake pools to create blocks using a stake-weighted lottery system(((lottery))). This system is detailed in the https://eprint.iacr.org/2016/889.pdf[Ouroboros paper], and this section offers a simplified overview.
 
 ==== Epochs, Blocks, and Slots
 The leadership schedule on Cardano is divided into epochs and slots, with epochs being longer than slots. On the Cardano mainnet, each epoch lasts five days and begins at 21:44:51 UTC. Every epoch contains 432,000 one-second slots (five days). While different configurations may exist for other Cardano-based test networks(((test network))) or sidechains, this section focuses on the Cardano mainnet.
 
-There is a chance for block creation(((block creation))) in each slot. To ensure a secure process, each stake pool node must determine if the pool is:
+There is a chance for block creation(((block, creation))) in each slot. To ensure a secure process, each stake pool node must determine if the pool is:
 
 * Allowed to create a block in a specific slot
 * Able to prove to other nodes that it was permitted to create the block
@@ -228,13 +228,13 @@ There is a chance for block creation(((block creation))) in each slot. To ensure
 
 image::limbo.png[width=100%,title="Limbo"]
 ==== Playing Limbo
-To simplify how a pool is chosen to create a block, imagine it as a game of Limbo. To win, a person (the stake pool) must go under the bar (a threshold value(((threshold value)))). For each slot, the bar is set at a unique height for each stake pool, determined by the pool’s stake. Larger pools have a higher bar, making it easier for them to win (create blocks), while smaller pools have a lower bar. The bar’s height isn’t fixed but is randomly adjusted for each participating pool based on its stake.
+To simplify how a pool is chosen to create a block, imagine it as a game of Limbo. To win, a person (the stake pool) must go under the bar (a threshold value)(((threshold, value))). For each slot, the bar is set at a unique height for each stake pool, determined by the pool’s stake. Larger pools have a higher bar, making it easier for them to win (create blocks), while smaller pools have a lower bar. The bar’s height isn’t fixed but is randomly adjusted for each participating pool based on its stake.
 
 To determine if a stake pool(((stake pool))) can create a block in a given slot, several factors are assessed.
 
 First, the epoch nonce is considered. This is a random number formed from two key components: the rolling nonce(((rolling nonce))) (which updates with every block) and a block hash. The rolling nonce(((rolling nonce))) is selected from the block just before the stability window of the previous epoch, which lasts 1.5 days. As a result, leadership information for the next epoch can only be calculated 1.5 days before it begins.
 
-The second value used in the epoch nonce(((epoch nonce))) is the hash of the last block from the previous epoch. These values are concatenated and hashed to produce the epoch nonce(((epoch nonce))), which is the same for all pools.
+The second value used in the epoch nonce(((epoch, nonce))) is the hash of the last block from the previous epoch. These values are concatenated and hashed to produce the epoch nonce(((epoch, nonce))), which is the same for all pools.
 
 The epoch nonce, the absolute slot number, and the pool’s VRF secret key are then combined to generate a random output for each slot. This output is weighted by the pool’s stake relative to the total ada staked in the system. If the weighted value(((weighted value))) is below a certain threshold, the pool is permitted to create a block – winning the game of Limbo for that slot!
 
@@ -444,7 +444,7 @@ Three things to note:
 
 ==== Staking key pair
 
-Using the address generated above has one significant drawback: it can receive and send ada but has no staking rights associated with it, making it what we call an enterprise address(((enterprise address))). To enable staking rights, we need to add a staking key to the address.
+Using the address generated above has one significant drawback: it can receive and send ada but has no staking rights associated with it, making it what we call an enterprise address(((address, enterprise))). To enable staking rights, we need to add a staking key to the address.
 
 In the same folder where the payment key(((payment key))) pair is located, let’s generate a *staking* key pair. Following convention, we will call them `stake.vk` and `stake.sk`:
 
@@ -462,7 +462,7 @@ Both files have the following structure:
 }
 ----
 
-Similarly, we can build the corresponding staking address(((staking address))) using the `stake.vk`.
+Similarly, we can build the corresponding staking address(((address, staking))) using the `stake.vk`.
 
 ----
 cardano-cli stake-address build --stake-verification-key-file ./stake.vk --mainnet > stake.addr
@@ -476,7 +476,7 @@ stake1uy4hlpcmhd026m4ny9y9uxl94rez479g8h0sqalljf9zehguqnhcm
 
 ==== Building an address
 
-As noted, both the payment key pair and the staking key pair can be used to generate addresses. While the payment address (or enterprise address(((enterprise address)))) can be used to receive or send ada, the staking address serves a different purpose. A staking address is not functional on its own; it only becomes active when linked to ada residing within a payment address.
+As noted, both the payment key pair and the staking key pair can be used to generate addresses. While the payment address (or enterprise address)(((address, enterprise))) can be used to receive or send ada, the staking address serves a different purpose. A staking address is not functional on its own; it only becomes active when linked to ada residing within a payment address.
 
 ----
 cardano-cli address build  --payment-verification-key-file ./payment.vk --stake-verification-key-file ./stake.vk --mainnet > base.addr
@@ -484,14 +484,14 @@ cardano-cli address build  --payment-verification-key-file ./payment.vk --stake-
 
 The newly created  `base.addr(((base.addr)))`  file contains an address that enables:
 
-1) sending and receiving ada(((ada)))
+1) sending and receiving ada(((ADA)))
 2) delegating and receiving rewards(((reward)))
 
 ----
 addr1q9m8pcfxszyvx7gytqc2s9l400aund8z7sazfs2jtfy4h3ft07r3hw6744htxg2gtcd7t28j9tu2s0wlqpmllyj29nwssucyxn
 ----
 
-Note that this address is longer than an `enterprise address(((enterprise address)))`.
+Note that this address is longer than an `enterprise address(((address, enterprise)))`.
 
 ==== File Summary #1
 
@@ -722,7 +722,7 @@ Certificates(((Certificate))) are actions performed on the ledger allowing to:
 [discrete]
 ==== Address registration (and deregistration)
 
-The stake component within a base address(((base address))) (base.addr) must be registered on the ledger before it can be used to delegate ada, receive staking rewards, or declare the pool's pledge or receive pool rewards. This is accomplished by submitting a registration certificate for the corresponding stake address (stake.addr) on the blockchain.
+The stake component within a base address(((address, base))) (base.addr) must be registered on the ledger before it can be used to delegate ada, receive staking rewards, or declare the pool's pledge or receive pool rewards. This is accomplished by submitting a registration certificate for the corresponding stake address (stake.addr) on the blockchain.
 
 For now, let’s create the registration certificate with the following command:
 
@@ -784,7 +784,7 @@ _The reward address will not be required to sign the transaction sending the cer
 
 *The address(es) declared as pool’s pledge must all be delegated to the pool being registered.*
 
-`--pool-relay-ipv4`: the IP address of the relay node(((relay node))) used to shield the block produced from connections to the wider network. Note that an ipv6 option exists.
+`--pool-relay-ipv4`: the IP address of the relay node(((node, relay))) used to shield the block produced from connections to the wider network. Note that an ipv6 option exists.
 
 `--pool-relay-port`: specifies the port on which the relay cardano-node(((cardano-node))) will be listening.
 

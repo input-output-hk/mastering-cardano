@@ -207,7 +207,7 @@ programs.
 *Haskell's concurrency model*
 
 Haskell(((Haskell)))'s concurrency model is built on the concept of lightweight
-threads, which are managed by the Haskell runtime system(((Haskell runtime system))) rather than the
+threads, which are managed by the Haskell runtime system(((Haskell, runtime system))) rather than the
 underlying operating system(((operating system))). This model allows for the creation of a
 large number of threads with minimal overhead, making concurrent
 programming in Haskell both efficient and scalable(((scalable))).

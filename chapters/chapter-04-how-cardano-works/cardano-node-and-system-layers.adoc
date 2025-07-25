@@ -28,8 +28,8 @@ alternative peers(((peers))) and persistently attempt connections until the desi
 target is reached.
 * *Elimination of static configurations.* The dynamic P2P system
 eliminates the need for static configurations(((static configurations))) and manual input from
-stake pool operators(((stake pool operators))) (SPOs). This simplifies the process of running
-relay and block-producing nodes(((block-producing nodes))).
+stake pool operators(((stake pool, operator))) (SPOs). This simplifies the process of running
+relay and block-producing nodes(((node, block-producing))).
 * *Enhanced communication.* By automating the peer selection process,
 dynamic P2P enables enhanced communication between distributed nodes(((distributed nodes))),
 ensuring better data synchronization(((data synchronization))) and consensus among participants.
@@ -62,7 +62,7 @@ dive into its key aspects and functionalities.
 The cardano-node(((cardano-node))) software was originally developed by IO, one of the
 companies that pioneered Cardano. This software is designed to run on
 computers (nodes) and allows them to interact with the Cardano
-blockchain. It is written in the Haskell programming language(((Haskell programming language))), known for
+blockchain. It is written in the Haskell programming language(((Haskell))), known for
 its robustness and security features.
 
 The relationship between the cardano-node(((cardano-node))) software and Cardano nodes can
@@ -78,7 +78,7 @@ transactions(((transaction))) and blocks between nodes, ensuring the network rem
 synchronized.
 * *Block-producing nodes.* These nodes are responsible for producing new
 blocks and adding them to the blockchain. They are typically operated by
-stake pools(((stake pools))), which are groups of stakeholders who combine their
+stake pools(((stake pool))), which are groups of stakeholders who combine their
 resources to increase their chances of being selected to produce a
 block.
 * *Edge nodes.* These nodes interact with end-users and applications.
@@ -114,12 +114,12 @@ Cardano network(((network))).
 * *Transaction validation.* One of the primary roles of
 cardano-node is to validate transactions(((transaction))). When a user initiates a
 transaction, the node software checks the transaction's validity. This
-involves verifying that the sender has enough ada(((ada))) to cover the
+involves verifying that the sender has enough ada(((ADA))) to cover the
 transaction and ensuring that the transaction follows the network(((network)))'s
 rules.
 * *Block production and validation.* The
 cardano-node(((cardano-node))) software creates new blocks for nodes participating in
-block production(((block production))) (such as stake pool nodes). It compiles validated
+block production(((block, production))) (such as stake pool nodes). It compiles validated
 transactions(((transaction))) into blocks and adds them to the blockchain. Additionally,
 it validates new blocks produced by other nodes to ensure they are
 legitimate.
@@ -164,8 +164,8 @@ overload a node, force it to accept bad data, or block its interactions
 with other nodes. These attacks might target a single node during
 network synchronization(((network synchronization))) or block production. Additionally, the design
 aims to mitigate distributed attacks aimed at a significant portion of
-block-producing nodes(((block-producing nodes))). Each version of the Cardano node comes as a
-single package, usable by both stake pool operators(((stake pool operators))) for block production
+block-producing nodes(((node, block-producing))). Each version of the Cardano node comes as a
+single package, usable by both stake pool operators(((stake pool, operator))) for block production
 and by users running the node for other purposes, such as network(((network)))
 synchronization and transaction management(((transaction, management))). This approach ensures that
 security features are consistent across both block-producing and
@@ -215,7 +215,7 @@ manages various functions surrounding the node, namely:
 The network layer(((network layer))) maintains the connections between all the distributed
 nodes in the Cardano network. It handles communication protocol details(((communication protocol details)))
 and peer selection, obtaining new blocks from the network(((network))) as they are
-produced by block-producing nodes(((block-producing nodes))) and transmitting them between nodes.
+produced by block-producing nodes(((node, block-producing))) and transmitting them between nodes.
 This layer is a P2P system, with Cardano nodes maintaining connections
 with peers chosen via a custom peer selection process(((peer selection process))). Specifically
 designed for proof-of-stake systems, the network layer(((network layer))) includes a
@@ -260,9 +260,9 @@ competing chains(((competing chains)))
 * direct access to blocks, facilitating efficient streaming to clients.
 
 *Block production* occurs within the consensus layer, and to produce
-blocks, this layer must also maintain a memory pool(((memory pool))) (mempool) of
+blocks, this layer must also maintain a memory pool(((mempool))) (mempool) of
 transactions(((transaction))) to be inserted into those blocks. For more details about
-block production(((block production))), read sections <<Reaching Consensus using Proof-of-Stake>>,
+block production(((block, production))), read sections <<Reaching Consensus using Proof-of-Stake>>,
 and <<Ouroboros Consensus>>.
 
 The problem of *chain selection(((chain selection)))* arises when two or more nodes extend
@@ -328,10 +328,10 @@ triggered, and the mechanism to do this will change from the
 genesis-key-based mechanism to the one defined in
 https://cips.cardano.org/cip/CIP-1694[CIP-1694]. The genesis key
 mechanism requires that 70% of all SPOs(((SPOs))) first upgrade to the new node
-version, and then a consensus of five out of seven genesis keys(((genesis keys))) needs to
-be reached to trigger the hard fork. The genesis keys(((genesis keys))) were distributed
+version, and then a consensus of five out of seven genesis keys(((genesis, keys))) needs to
+be reached to trigger the hard fork. The genesis keys(((genesis, keys))) were distributed
 such that three belong to IO, two to Emurgo(((Emurgo))), and two to the Cardano
-Foundation. After CIP-1694 will be fully implemented, those genesis keys(((genesis keys))) won’t be used
+Foundation. After CIP-1694 will be fully implemented, those genesis keys(((genesis, keys))) won’t be used
 anymore. SPOs will still play a crucial role in Cardano upgrades(((Cardano upgrades))), and
 will always be free to decide whether they want to upgrade their nodes
 to a new version that would signal the acceptance of a proposed hard
@@ -394,7 +394,7 @@ It provides Turing-complete
 smart-contract capabilities to Cardano and can be processed by Cardano
 nodes. Plutus is based on untyped lambda calculus(((untyped lambda calculus))) and acts as low-level
 interpreted assembly code(((interpreted assembly code))). The compilation pipeline from the
-Haskell-based Plinth(((Haskell-based Plinth))) (formerly Plutus TX) smart contract language to
+Haskell-based Plinth(((Plinth))) (formerly Plutus TX) smart contract language to
 Plutus(((Plutus))) is explained in section <<Plutus security>>.
 
 Chapter <<Writing smart contracts>>, besides providing an overview of
