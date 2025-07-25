@@ -119,7 +119,7 @@ and run complete DApps on Cardano, leveraging the guarantees of Marlowe
 smart contracts(((smart contract))) and integrating with Web3(((Web3)))
 workflows through a TypeScript SDK. The platform includes:
 
-* *The Marlowe Runtime(((Marlowe, runtime)))* supports all the necessary on- and
+* *The Marlowe Runtime(((Marlowe runtime)))* supports all the necessary on- and
 off-chain contract actions, including the tedious work of transaction
 construction and tracking contract activity by other participants.
 
@@ -127,7 +127,7 @@ construction and tracking contract activity by other participants.
 within a complete DApp, including contract creation and initialization,
 as well as execution.
 
-* *The Marlowe Playground(((Marlowe, playground)))* provides the environment for learning Marlowe
+* *The Marlowe Playground(((Marlowe playground)))* provides the environment for learning Marlowe
 through its Blockly(((Blockly))) representation, as well as simulation and analysis
 of contracts as they are developed.
 
@@ -136,13 +136,13 @@ with Catalyst Fund12(((Catalyst Fund12))) support, and are designed to make acce
 Platform as straightforward as possible.
 
 * *Other components* support free-standing execution of Marlowe smart
-contracts, including the Marlowe Runner(((Marlowe, runner))) and the
-Marlowe CLI(((Marlowe, CLI))).
+contracts, including the Marlowe Runner(((Marlowe runner))) and the
+Marlowe CLI(((Marlowe CLI))).
 
 The platform simplifies development for the developer community and
 provides key components, such as oracles(((oracles))), used in many DApps. Individual
 end users can also execute Marlowe contracts directly on the Cardano
-blockchain, using the facilities that the Marlowe Runner(((Marlowe, runner))) and the CLI provide.
+blockchain, using the facilities that the Marlowe Runner(((Marlowe runner))) and the CLI provide.
 These features directly support decentralized finance (DeFi) interactions,
 including peer-to-peer loans and escrow facilities.
 
@@ -750,18 +750,18 @@ features are available:
 
 * *Marlowe language* – a DSL that includes a web-based platform to build
 and run smart contracts
-* *Marlowe Playground(((Marlowe, playground)))* – a simulator that allows
+* *Marlowe Playground(((Marlowe playground)))* – a simulator that allows
 testing Marlowe smart contracts before deployment to ensure intended code behavior
-* *Marlowe Runner(((Marlowe, runner)))* – an easy-to-use DApp that can be used to deploy,
+* *Marlowe Runner(((Marlowe runner)))* – an easy-to-use DApp that can be used to deploy,
 execute, and interact with Marlowe smart contracts
-* *Marlowe Scan(((Marlowe, scan)))* – a tool for visualizing Marlowe contracts on the
+* *Marlowe Scan(((Marlowe scan)))* – a tool for visualizing Marlowe contracts on the
 Cardano blockchain
-* *Marlowe Runtime(((Marlowe, runtime)))* – the application backend for managing Marlowe
+* *Marlowe Runtime(((Marlowe runtime)))* – the application backend for managing Marlowe
 contracts on Cardano, which includes easy-to-use, higher-level APIs for
 developers to build and deploy enterprise and Web3(((Web3))) DApp solutions
-* *Marlowe CLI(((Marlowe, CLI)))* – provides capabilities to work with Marlowe's Plutus
+* *Marlowe CLI(((Marlowe CLI)))* – provides capabilities to work with Marlowe's Plutus
 validators and run Marlowe contracts manually
-* *Marlowe starter kit(((Marlowe, starter kit)))* – provides tutorials for developers to learn and
+* *Marlowe starter kit(((Marlowe starter kit)))* – provides tutorials for developers to learn and
 run simple Marlowe contracts on Cardano
 * *Marlowe TypeScript SDK(((TS-SDK)))* (currently in beta) – a suite of
 TypeScript/JavaScript libraries for developing web DApps on Cardano
@@ -803,7 +803,7 @@ https://www.youtube.com/watch?v=EgCqG0hPmwc[video tutorial].
 https://docs.marlowe-lang.org/docs/getting-started/runner[Marlowe
 Runner] is an online tool that facilitates the deployment and execution
 of Marlowe contracts on the blockchain, eliminating the need for
-command-line expertise. With Marlowe Runner(((Marlowe, runner))), users can deploy contracts
+command-line expertise. With Marlowe Runner(((Marlowe runner))), users can deploy contracts
 created in the Marlowe playground, test them, and interact with them in
 a simulated environment before mainnet deployment. For this, users need
 to connect to the Runner using a Cardano wallet such as https://www.lace.io/[Lace]
@@ -816,7 +816,7 @@ role-token contract with the Runner. In such a case, one can use the
 https://docs.marlowe-lang.org/docs/developer-tools/ts-sdk/payouts-dapp-prototype[Payout
 DApp prototype]. A
 https://www.youtube.com/watch?v=B5XcH0j7Y7w&list=PLNEK_Ejlx3x2ukxS8Xd0Z-cq24-1jP9G9[video
-tutorial] about using Marlowe Runner(((Marlowe, runner))) can be found on the IO YouTube channel.
+tutorial] about using Marlowe Runner(((Marlowe runner))) can be found on the IO YouTube channel.
 
 https://github.com/marlowe-lang/marlowe-scan[Marlowe Scan] is a tool
 that allows users to query information about Marlowe contracts and view
@@ -833,13 +833,13 @@ DApp solutions using Marlowe. Users don't need to assemble the
 Marlowe-based application. Runtime takes commands relevant to the
 Marlowe ledger and maps them to the Cardano ledger. It consists of a
 series of services that can be divided into frontend and backend
-components. Marlowe Runtime(((Marlowe, runtime))) backend services are off-chain components
+components. Marlowe Runtime backend services are off-chain components
 largely responsible for interfacing with a Cardano node. They offer
 abstractions to hide many implementation details of Plutus and the
 Cardano node directly. There are two ways to interface with Marlowe
 Runtime:
 
-* Using Marlowe Runtime(((Marlowe, runtime))) web REST API
+* Using Marlowe Runtime(((Marlowe runtime))) web REST API
 * Using `marlowe-runtime-cli` command line tool.
 
 The role of Runtime is to facilitate the mapping between the Marlowe
@@ -870,28 +870,26 @@ CLI] is a command-line tool that provides access to Marlowe
 capabilities on testnet and mainnet. It is specifically built to run
 Marlowe contracts directly without needing a web browser or a mobile
 app. Just as the `cardano-cli` tool enables plain transactions, simple
-scripts, and Plutus scripts, the Marlowe CLI(((Marlowe, CLI))) tool provides the
+scripts, and Plutus scripts, the Marlowe CLI(((Marlowe CLI))) tool provides the
 ability to interact with and develop Marlowe contracts. Users can
 measure transaction size, submit transactions, test wallet integration,
 and debug validators. The tool provides a concrete representation of
 Marlowe contracts that are quite close to what is occurring on-chain.
 Users can also create their own workflows that operate with Marlowe or
-develop custom tool sets. This allows them to wrap the Marlowe CLI(((Marlowe, CLI))) tool
+develop custom tool sets. This allows them to wrap the Marlowe CLI(((Marlowe CLI))) tool
 similarly to how developers have wrapped the cardano-cli to create
 services such as libraries, faucets, and marketplaces.
 
-The image below offers an overview and description of the Marlowe CLI(((Marlowe, CLI)))
-and Marlowe Runtime(((Marlowe, runtime))) tools for running and querying Marlowe contracts:
+The image below offers an overview and description of the Marlowe CLI(((Marlowe CLI)))
+and Marlowe Runtime(((Marlowe runtime))) tools for running and querying Marlowe contracts:
 
 image::sc_marlowe_tools.png[width=806,height=560,title="Marlowe tools, source: https://docs.marlowe-lang.org/docs/developer-tools/overview[Marlowe docs]"]
 
 The https://github.com/marlowe-lang/marlowe-starter-kit[Marlowe
 starter kit] is a GitHub repository that contains Jupyter notebook(((Jupyter notebook)))
-lessons demonstrating the use of the Marlowe CLI(((Marlowe, CLI))) and
-Marlowe Runtime(((Marlowe, runtime)))
+lessons demonstrating the use of the Marlowe CLI(((Marlowe CLI))) and Marlowe Runtime
 tools through concrete examples. It can be used with Demeter Run, a
-Docker(((Docker))) deployment of Marlowe Runtime(((Marlowe, runtime))),
-and Nix(((Nix))) to run the Jupyter
+Docker(((Docker))) deployment of Marlowe Runtime, and Nix(((Nix))) to run the Jupyter
 notebooks. The repository provides instructions for setting up various
 environments. Additionally, the Jupyter notebooks offer guidance on
 interacting with Marlowe smart contracts, covering different approaches
@@ -909,7 +907,7 @@ created during the beta stage, function names may change in the official
 release. The TS-SDK offers the following features:
 
 * Smart contract toolkit
-* Integration with Marlowe Playground(((Marlowe, playground)))
+* Integration with Marlowe Playground(((Marlowe playground)))
 * Wallet connectivity
 * Integration with Runtime
 * Coordination between wallets and Runtime
@@ -939,11 +937,11 @@ bar.
 
 ==== Marlowe Runtime architecture
 
-Below is the Marlowe Runtime(((Marlowe, runtime))) architecture:
+Below is the Marlowe Runtime(((Marlowe runtime))) architecture:
 
 image::sc_marlowe_runtime_architecture.png[width=900,height=540,title="Marlowe runtime architecture, source: https://github.com/marlowe-lang/marlowe-cardano/blob/main/marlowe-runtime/doc/ReadMe.md#architecture[Marlowe GitHub]"]
 
-The Marlowe Runtime(((Marlowe, runtime))) backend consists of a chain-indexing and query
+The Marlowe Runtime backend consists of a chain-indexing and query
 service (marlowe-chain-indexer / marlowe-chain-sync), a
 contract-indexing and query service for Marlowe contracts
 (marlowe-indexer / marlowe-sync), and a transaction-creation service for
@@ -972,7 +970,7 @@ various Cardano packages for ledger, node, and Plutus, resulting in a
 Haskell client for Runtime having minimal dependencies in its `.cabal`
 file.
 
-Please note that the Marlowe Runtime(((Marlowe, runtime))) architecture may evolve. Refer to
+Please note that the Marlowe Runtime architecture may evolve. Refer to
 the https://docs.marlowe-lang.org/docs/platform-and-architecture/architecture[Marlowe
 documentation] for the latest version.
 
@@ -1068,7 +1066,7 @@ deposit 10 lovelaces. Then, Charlie decides whether Alice or Bob
 receives the total amount. If any of the three parties fails to
 participate, the contract ensures that all deposited funds are
 reimbursed. You can see a demonstration of this contract's design using
-Blockly(((Blockly))) in the Marlowe Playground(((Marlowe, playground)))
+Blockly(((Blockly))) in the Marlowe Playground(((Marlowe playground)))
 in the following https://youtu.be/fldaBHmYfqk[Plutus Pioneer
 program] video.
 
@@ -1132,7 +1130,7 @@ When
     1682553111000 Close
 ----
 
-Next is a flowchart generated with the Marlowe Runner(((Marlowe, runner))) that indicates
+Next is a flowchart generated with the Marlowe Runner(((Marlowe runner))) that indicates
 possible actions and outcomes of the above contract. The highlighted
 block is the start of the contract, and the greyed-out blocks show
 possible execution paths:
@@ -1363,7 +1361,7 @@ before users interact with it. When the user initiates an action, like a
 deposit or choice, the smart contract assigns them the appropriate role
 and distributes the role token from the validator script. The developer
 simply needs to specify the `OpenRoles` type when setting contract
-participants, while Marlowe Runtime(((Marlowe, runtime))) manages the rest. The
+participants, while Marlowe Runtime manages the rest. The
 https://github.com/marlowe-lang/marlowe-cardano/blob/main/marlowe-runtime/doc/open-roles.md[Open
 roles in Marlowe] GitHub documentation page explains this process in
 more detail.
@@ -1412,7 +1410,7 @@ a broader audience. Marlowe can be particularly attractive to businesses
 looking to use Cardano because it reduces the risks and costs of initial
 blockchain onboarding. The application aims to unlock Marlowe's
 potential by implementing critical updates to its validator and tech
-stack, transforming the Marlowe Runtime(((Marlowe, runtime))), protocols, and contracts into
+stack, transforming the Marlowe Runtime, protocols, and contracts into
 competitive products. These updates will create new business
 opportunities by making Marlowe tools essential for small and medium
 businesses, developers, infrastructure providers, and stake pool operators(((SPOs)))
@@ -1498,7 +1496,7 @@ the complexities of the UTXO model(((UTXO, model))) through a user-friendly yet 
 programming language, but also drastically lowers costs, reduces risks,
 and shortens prototyping time for traditional Web2 businesses looking to
 integrate blockchain functionality. The introduction of marlowe-ts-sdk
-and the Marlowe Runtime(((Marlowe, runtime))), which integrates with familiar REST APIs, make
+and the Marlowe Runtime, which integrates with familiar REST APIs, make
 it straightforward to build end-to-end DApps incorporating Marlowe on-
 and off-chain together with traditional web frameworks.
 
@@ -5010,20 +5008,18 @@ https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/optimizing-scr
 ==== Cardano security
 
 The security of smart contracts is an important topic, since these programs
-can manage significant amounts of funds. Coindesk(((Coindesk
-)))'s estimate of the loss of funds due
-to various attacks and hacks, including scams, was over $3.2bn in 2021 and over $3.7bn in 2022 (source:
+can manage significant amounts of funds. Coindesk(((Coindesk)))'s estimate of
+the loss of funds due to various attacks and hacks, including scams, was over
+$3.2bn in 2021 and over $3.7bn in 2022 (source:
 https://www.coindesk.com/tech/2023/05/24/attackers-left-empty-handed-as-crypto-hacks-drop-70-in-q1-2023/[CoinDesk]).
 If we look at hacks to blockchain smart contracts and bridges only, up to
 October 2023 they have totaled $4.28bn (source:
 https://www.emurgo.io/press-news/why-your-web3-dapp-needs-a-smart-contract-audit/[Emurgo]).
 The graph below displays the cumulative amount of lost funds in audited
-and unaudited codebases for Web3(((Web3
-))) projects in a three-year period (data
+and unaudited codebases for Web3(((Web3))) projects in a three-year period (data
 taken from the https://rekt.news/leaderboard/[Rekt leaderboard]). Out
 of 137 compromised projects, 58 were audited, and 79 were not, meaning
-that unaudited Web3(((Web3
-))) projects account for a substantially larger
+that unaudited Web3(((Web3))) projects account for a substantially larger
 cumulative loss of funds, even though their number is not significantly
 higher than the number of audited projects.
 
@@ -5045,10 +5041,8 @@ It involves code revision to ensure no hidden or unwanted design flaws
 or bugs that may lead to production issues. Beside security guarantees,
 an audit can also prove compliance with industry standards and best
 practices and increase trust and credibility. Audits can be grouped into
-manual auditing(((manual auditing
-))), where each line of code is analyzed by the auditors,
-and automated auditing(((automated auditing
-))), where auditors use software auditing tools. A
+manual auditing(((manual auditing))), where each line of code is analyzed by the auditors,
+and automated auditing(((automated auditing))), where auditors use software auditing tools. A
 combination of both is also possible. Auditing of smart contracts is
 further discussed in the <<Plutus security>> section.
 
@@ -5056,15 +5050,11 @@ Cardano(((Cardano))) was designed with security in mind from the beginning.
 Input | Output (IO) has invested much effort into academic research, and its
 research team has written and collaborated on more than
 https://iohk.io/en/research/library/[250 scientific papers].
-Some of the important research areas that IO
-targets are cryptography, software engineering, distributed systems(((distributed systems
-))),
-networks, formal verification, and programming languages. Ouroboros(((Ouroboros
-))),
+Some of the important research areas that IO targets are cryptography,
+software engineering, distributed systems(((distributed systems))),
+networks, formal verification, and programming languages. Ouroboros(((Ouroboros))),
 Cardano's consensus protocol, is explained in detail in section
-<<Ouroboros Consensus>>.
-Ouroboros(((Ouroboros
-))) represents the outcome of long
+<<Ouroboros Consensus>>. Ouroboros represents the outcome of long
 research presented in multiple papers. It is the first blockchain
 consensus protocol developed through peer-reviewed research with
 mathematically proven security features that guarantee the protocol is
@@ -5075,10 +5065,10 @@ developed through extensive research and is well-tested by the
 community. There have been no major security breaches, and the Cardano
 mainnet has not experienced any downtime. An event happened in January
 2023 that affected the functionality of around half of all Cardano
-nodes(((Cardano nodes))). During this event, the network was still processing transactions,
-and within minutes, nodes started to recover by being manually restarted
-by stake pool operators(((SPOs
-))) or by system management software. After the
+nodes(((Cardano nodes))). During this event, the network was still
+processing transactions, and within minutes, nodes started to recover
+by being manually restarted by stake pool operators(((SPOs))) or by
+system management software. After the
 restart, the nodes that were down managed to continue growing the chain
 and producing blocks. The consensus algorithm worked, and the network
 never split, which was due to Cardano's robust design. The issue was
@@ -5098,16 +5088,14 @@ redeemer, all inputs and outputs and other transaction information. Section
 transactions are deterministic in EUTXO since their effect on the ledger is
 predictable. If the inputs to a valid transaction are not present at the
 time of submission, the submitted transaction will not be processed, and
-the user will not be charged any fees. Because of determinism(((determinism
-))) in EUTXO,
+the user will not be charged any fees. Because of determinism(((determinism))) in EUTXO,
 multiple transactions that target the same validator can be processed inside
 the same block if the transactions consume different inputs. Beside this,
 https://iohk.io/en/blog/posts/2022/04/13/boosting-cardano-s-throughput-with-script-referencing/[reference
 inputs] enable multiple transactions referencing the same UTXO, which
 is possible because none of those transactions consumes the referenced
-UTXO. These things make Cardano suitable for parallelism and concurrency(((concurrency
-))).
-One can read more about these topics in this
+UTXO. These things make Cardano suitable for parallelism and
+concurrency(((concurrency))). One can read more about these topics in this
 https://iohk.io/en/blog/posts/2021/09/10/concurrency-and-all-that-cardano-smart-contracts-and-the-eutxo-model/[IO blog].
 
 In Ethereum(((Ethereum))), transactions that target the same validator can be processed
@@ -5122,8 +5110,7 @@ to flood the network with invalid transactions to congest it, and the fees
 make such an attack very expensive.
 
 This https://iohk.io/en/blog/posts/2021/09/06/no-surprises-transaction-validation-on-cardano/[IO
-blog] explains in more detail the determinism(((determinism
-))) of transaction and script
+blog] explains in more detail the determinism(((determinism))) of transaction and script
 validation in Cardano. The blog states that account-based blockchains
 like Ethereum are in-deterministic, which means that they cannot guarantee
 the predictability of the transaction's effect on-chain. It further explains
@@ -5144,8 +5131,7 @@ altered by an adversary in a way that causes scripts to fail
 Also, transaction fees are deterministic in Cardano. A user knows how much a
 transaction will cost before they submit it. The reason for this is that protocol
 parameters, rather than network traffic, govern pricing on Cardano.
-Determinism of fees and transactions can also be advantageous in Web3(((Web3
-)))
+Determinism of fees and transactions can also be advantageous in Web3(((Web3)))
 applications, such as decentralized exchanges (DEXs). On DEXs users trade
 with the help of smart contracts that eliminate the need for a central entity
 which is in centralized exchanges holding custody of traders tokens.
@@ -5156,8 +5142,8 @@ market maker] (AMM) design model. In an AMM-style DEX, smart contracts
 enable automated trading of cryptocurrency pairs, which are often a
 fungible token or a native cryptocurrency together with a stablecoin.
 
-To explain how impermanent loss(((impermanent loss))) works, let us consider an example of
-an AMM DEX where the deposited token pair is ETH and USDT (Tether),
+To explain how impermanent loss(((impermanent loss))) works, let us consider
+an example of an AMM DEX where the deposited token pair is ETH and USDT (Tether),
 a stablecoin pegged to the value of the USD. If the price of 1 ETH is
 1,000 USD and a liquidity provider wants to add 1 ETH to the pool,
 he must also add 1,000 USDT. Then, over time, the price of ETH rises
@@ -5177,31 +5163,30 @@ meaning, his impermanent loss was around 536 USD. The reason it pays
 off to be a DEX liquidity provider is that they get a percentage of
 the trading fees. Arbitrage and normal traders that both use the pool
 pay for every transaction they make. The percentage of trading fees that
-liquidity providers(((liquidity providers
-))) get can be larger than the amount of impermanent loss. This
+liquidity providers(((liquidity providers))) get can be larger than the
+amount of impermanent loss. This
 https://iohk.io/en/blog/posts/2022/05/27/everything-you-always-wanted-to-know-about-impermanent-loss-and-were-afraid-to-ask/[IO
 blog] states that the EUTXO accounting model is a suitable
-environment for DEXs using the order book model(((order book model
-))). An order book model(((order book model
-)))
+environment for DEXs using the order book model(((order book model))).
+An order book model(((order book model)))
 simply lists the buy/sell orders, and if there is supply and demand, the
 asset can be traded. An advantage of this design is concentrated
 liquidity (liquidity allocated within a custom price range). This
 minimizes the effects of impermanent loss, creating a more stable
-environment for liquidity providers(((liquidity providers
-))). The blog explains in more
-detail how impermanent loss affects DEXs built on the account-based
-accounting models compared to EUTXO.
+environment for liquidity providers(((liquidity providers))).
+The blog explains in more detail how impermanent loss affects DEXs
+built on the account-based accounting models compared to EUTXO.
 
-Cardano's design also makes front-running invasion attacks(((front-running invasion attacks
-))) that could target transactions on a decentralized exchange harder to
+Cardano's design also makes front-running invasion 
+attacks(((front-running invasion attacks))) that could
+target transactions on a decentralized exchange harder to
 carry out. The Cardano node is designed such that it processes transactions in the
 same order as they arrive into the mempol independent of the transaction
 fees associated with them. This is not the case for all blockchains where
 a node might favor transactions that carry higher fees. It is still
 possible for an adversary that operates a stake pool to inspect transactions
-that arrive in the mempool(((mempool
-))) since they are not encrypted. They could then create their own
+that arrive in the mempool(((mempool))) since they are not encrypted.
+They could then create their own
 transaction with similar parameters and insert it in front of the transaction
 that was received in the pool. In reality, this is hard to achieve because
 Cardano's mainnet has a high number of block producing nodes (around 3000
@@ -5212,9 +5197,7 @@ this topic in chapter
 We also note that for transactions that interact with the same validator and spend
 different UTXOs, rearranging them is inconsequential because there is no
 global state that would affect both of the transaction. You can read more
-about the mempool(((mempool
-))) and front-running invasion attacks(((front-running invasion attacks
-))) on Cardano in the following
+about the mempool(((mempool))) and front-running invasion attacks on Cardano in the following
 https://cexplorer.io/article/understanding-the-cardano-mem-pool[Cexplorer blog].
 
 Since Cardano transactions are deterministic, their interaction with
@@ -5223,20 +5206,17 @@ logic is predictable. In Ethereum, a smart contract function could, in
 the short term, give up control of a transaction when it calls another
 contract. This other contract could then make recursive withdrawal calls
 to the first contract and drain its funds before the first contract
-updates its state. This is known as a reentrancy attack(((reentrancy attack
-))). The following
+updates its state. This is known as a reentrancy attack(((reentrancy attack))). The following
 https://www.geeksforgeeks.org/reentrancy-attack-in-smart-contracts/[geeksforgeeks post]
 provides more information on such types of attacks and lists also
 examples of such attacks. Because such attacks are possible in Ethereum,
 the interaction of transactions with smart contracts is sometimes hard to
-predict. A reentrancy attack(((reentrancy attack
-))) happened to the
+predict. A reentrancy attack(((reentrancy attack))) happened to the
 https://en.wikipedia.org/wiki/The_DAO[DAO smart contract] that was
 https://www.coindesk.com/learn/understanding-the-dao-attack/[hacked in
 2016]. On that occasion, 3.6m ETH (worth around 50 million USD at the time)
 was affected. Such attacks are not possible in Cardano due to the design
-of the EUTXO accounting model. EUTXO's determinism(((determinism
-))) doesn't allow the
+of the EUTXO accounting model. EUTXO's determinism(((determinism))) doesn't allow the
 outputs to be different from what the user signed. Even if a validator
 is dependent on the decision of another validator, that is predetermined
 and known in advanced before submitting a transaction. Such a case is
@@ -5307,7 +5287,8 @@ allows Cardano nodes to run multiple protocol versions and enables
 smooth transitions during hard forks. If a hard fork upgrades the Plutus
 language to a new major version, smart contracts using an older version
 of Plutus can still be processed. You can read more about the HFC in
-<<cardano-node-layers, Cardano node layers>> section, subsection **Consensus and storage layer**.
+<<cardano-node-layers, Cardano node layers>> section, subsection
+**Consensus and storage layer**.
 
 Cardano smart contracts see a predictable number of inputs and can only
 produce a set number of outputs that are always the same given the same
@@ -5346,10 +5327,8 @@ with a strong type system. You can
 read more about the characteristics and advantages of the Haskell
 programming language in section <<Features and benefits of Haskell>>.
 The Glasgow Haskell Compiler (GHC), that is the most well-established Haskell
-compiler(((compiler
-))), is used to compile Plinth code. On-chain code is compiled into
-Untyped Plutus Core(((Plutus Core
-))) (known simply as Plutus), which is the scripting
+compiler(((compiler))), is used to compile Plinth code. On-chain code is compiled into
+Untyped Plutus Core(((Plutus Core))) (known simply as Plutus), which is the scripting
 language used by Cardano to implement the EUTXO model. Cardano nodes execute
 the compiled Plutus scripts during transaction validation with the help
 of the Plutus virtual machine (VM). A VM(((VM))) is a virtual environment that
@@ -5371,10 +5350,8 @@ https://en.wikipedia.org/wiki/Lambda_calculus[lambda calculus],
 specifically, https://en.wikipedia.org/wiki/System_F[System F]. Lambda
 calculus is a formal system in mathematical logic for expressing
 computation based on function abstraction. GHC's internal language (GHC
-Core) is also based on System F(((System F
-))), but it does differ from Plutus in some
-ways. The Plutus language was designed with the following requirements
-in mind:
+Core) is also based on System F(((System F))), but it does differ from Plutus in some
+ways. The Plutus language was designed with the following requirements in mind:
 
 * minimalism
 * safety
@@ -5383,14 +5360,12 @@ in mind:
 * extensibility
 * multiple source languages.
 
-You can read a short explanation of each of the above requirements in
-the
+You can read a short explanation of each of the above requirements in the
 https://ci.iog.io/job/input-output-hk-plutus/master/x86_64-linux.packages.plutus-report/latest/download/1[Plutus Platform] technical report, and you can read more about the design
 details of the Plutus language in its
 https://ci.iog.io/job/input-output-hk-plutus/master/x86_64-linux.packages.plutus-core-spec/latest/download/1[formal
-specification] document. The
-https://github.com/IntersectMBO/plutus[Plutus] GitHub page features
-links to related materials.
+specification] document. The https://github.com/IntersectMBO/plutus[Plutus]
+GitHub page features links to related materials.
 
 Plutus scripts can be generated using Plinth, a GHC plug-in that runs
 during the GHC compilation process. It modifies the program that GHC is
@@ -5404,21 +5379,16 @@ We start with Plinth, a subset of Haskell representing the high-level
 language developers use to code the smart contract. Compiling this code
 goes through several steps:
 
-* First, it transforms into the GHC core(((GHC core
-))), part of the GHC compilation
+* First, it transforms into the GHC core(((GHC core))), part of the GHC compilation
 pipeline.
-* Second, it gets compiled into the Plutus Intermediate Representation(((PIR
-)))
+* Second, it gets compiled into the Plutus Intermediate Representation(((PIR)))
 (PIR). From now on, it will be independent of GHC and Haskell and have
 total control of the compilation pipeline.
-* Third, it transforms it into Plutus Core(((Plutus Core
-))) (Plutus). This is an
-intermediate form that the compiler(((compiler
-))) uses to statically check the
+* Third, it transforms it into Plutus Core(((Plutus Core))) (Plutus). This is an
+intermediate form that the compiler(((compiler))) uses to statically check the
 program.
-* Fourth, we get to Untyped Plutus Core(((Plutus Core
-))), which the Cardano node runs to
-validate the transaction. This language is hard to code directly, and it
+* Fourth, we get to Untyped Plutus Core(((Plutus Core))), which the Cardano node
+runs to validate the transaction. This language is hard to code directly, and it
 is usually stored in binary representation.
 
 It is wise to break down compilation pipelines by introducing intermediate
@@ -5427,10 +5397,8 @@ For more information about the compilation process, refer to this
 https://iohk.io/en/blog/posts/2021/02/02/plutus-tx-compiling-haskell-into-plutus-core/[IO
 blog].
 
-You can also use a different high-level language if you have a compiler(((compiler
-)))
-that compiles to Untyped Plutus Core(((Plutus Core
-))). Some projects are doing this by
+You can also use a different high-level language if you have a compiler(((compiler)))
+that compiles to Untyped Plutus Core(((Plutus Core))). Some projects are doing this by
 replacing parts -or all- of the compilation pipeline. Validators can be
 coded in pre-existing languages like Typescript
 (https://github.com/HarmonicLabs/plu-ts[Plu-ts]) and Python
@@ -5440,8 +5408,7 @@ is the most used smart contract language in the Cardano ecosystem as of 2023,
 and Plinth is presented in section <<Plinth in comparison to Aiken>>.
 
 Haskell was also chosen as a programming language to implement the
-Cardano node which contains the ledger, consensus and network layer(((network layer
-)))
+Cardano node which contains the ledger, consensus and network layer(((network layer)))
 protocols that define Cardano. You can read more about these protocols
 in chapter <<how-cardano-works, How Cardano works>>.
 The choice of Haskell enabled the research and engineering teams that
@@ -5449,8 +5416,7 @@ work on Cardano to reuse the existing Haskell infrastructure, libraries,
 and tools that enable developers to build high-assurance software. To
 assess the security of the Plutus language, formal methods were used
 that are the most stringent form of reasoning about code correctness.
-Formal methods(((Formal methods
-))) are mathematically rigorous techniques for
+Formal methods(((Formal methods))) are mathematically rigorous techniques for
 the https://en.wikipedia.org/wiki/Formal_specification[specification],
 development, https://en.wikipedia.org/wiki/Program_analysis[analysis],
 and https://en.wikipedia.org/wiki/Formal_verification[verification] of
@@ -5503,18 +5469,17 @@ order. Running tests in such a simulation allows developers to reliably find and
 fix a class of bugs in testing that would otherwise only occur
 randomly in production.
 
-Formal verification(((Formal verification
-))) and property-based testing can also be used to
+Formal verification(((Formal verification))) and property-based testing can also be used to
 secure the development of smart contracts. While Haskell is a great
 programming language for implementing reliable software, it cannot
 catch all possible mistakes a programmer can make, so the code still
 needs to be tested. One can write property-based tests for PlutusV3
 Plinth smart contracts by combining the following tools:
 
-* https://atlas-app.io/[Atlas] a Plutus application backend developed by GeniusYield(((GeniusYield
-)))
-* https://mlabs-haskell.github.io/clb-docs[Cardano ledger backend] (CLB) library developed by MLabs(((MLabs
-)))
+* https://atlas-app.io/[Atlas] a Plutus application backend developed by
+GeniusYield(((GeniusYield)))
+* https://mlabs-haskell.github.io/clb-docs[Cardano ledger backend] (CLB) library
+developed by MLabs(((MLabs)))
 * https://hackage.haskell.org/package/QuickCheck[QuickCheck] Haskell library.
 
 This https://www.mlabs.city/blog/testing-dapps-on-cardano-with-clb-emulator[MLabs
@@ -5523,12 +5488,9 @@ The Atlas application backend is an open-source tool that covers all
 functionalities needed to work with
 Plinth smart contracts and enables writing the complete server side code
 in Haskell. It is the Haskell alternative to TypeScript off-chain tools such
-as MeshJS and Evolution-SDK(((Evolution-SDK
-))). It was developed by the company
+as MeshJS and Evolution-SDK(((Evolution-SDK))). It was developed by the company
 https://www.geniusyield.co/[GeniusYield] in collaboration with other
-companies such as MLabs(((MLabs
-))), Well-Typed(((Well-Typed
-))), and Plank. It significantly
+companies such as MLabs(((MLabs))), Well-Typed(((Well-Typed))), and Plank. It significantly
 abstracts away the complexity of building Cardano transactions and
 interacting with Plinth smart contracts. Different data providers can be
 configured to power the Atlas framework. It streamlines the process of
@@ -5536,21 +5498,18 @@ building transactions and executing smart contracts. One can read more
 about the benefits that the Atlas application backend provides at their
 https://atlas-app.io/introduction#features[documentation page].
 Another tool one can use for testing Plinth smart contracts or any other
-smart contract language that compiles to Untyped Plutus Core(((Plutus Core
-))) is the
+smart contract language that compiles to Untyped Plutus Core(((Plutus Core))) is the
 https://github.com/tweag/cooked-validators[Cooked validators] library
-developed by Tweag(((Tweag
-))). Aiken, that is a standalone smart contract language
+developed by Tweag(((Tweag))). Aiken, that is a standalone smart contract language
 comes with its own build-in toolkit for testing. You can read more
 about it at the https://aiken-lang.org/language-tour/tests[Aiken documentation].
 
 For testing smart contracts, third-party auditing companies can write
 the tests as part of their auditing process of DApp smart contracts and
 server-side code. Their auditing services may also include formal
-verification. For Cardano DApps, companies such as Tweag(((Tweag
-))), MLabs(((MLabs
-))), Runtime
-Verification, Hachi, Vacuumlabs, FYEO Inc., Anastasia Labs, TxPipe, and
+verification. For Cardano DApps, companies such as Tweag(((Tweag))),
+MLabs(((MLabs))), Runtime Verification, Hachi, Vacuumlabs, FYEO Inc.,
+Anastasia Labs, TxPipe, and
 some others, offer Cardano auditing services. IO is also working with
 some of these companies on a certification program for DApps running on
 Cardano. The program creates three levels of certification for DApps in
@@ -5576,11 +5535,9 @@ being produced. It involves a manual audit and verification of smart
 contracts within the DApp itself. The testing is performed at a much
 deeper level and involves more manual effort than can address a DApp in
 its entirety, even if it is written in a variety of languages.
-* *Formal verification(((Formal verification
-)))* is more specialized, where the auditor aims to
-provide full assurance of critical aspects of applications through
-formal verification of smart contracts. Formal verification(((Formal verification
-))) involves
+* *Formal verification(((Formal verification)))* is more specialized,
+where the auditor aims to provide full assurance of critical aspects of applications through
+formal verification of smart contracts. Formal verification(((Formal verification))) involves
 ensuring that a smart contract serves the specific business or technical
 requirements defined at the outset.
 
@@ -5673,8 +5630,7 @@ guide] describes each vulnerability by a property statement, test, impact,
 and provides an explanation of it. Audit reports are often made publicly
 available for the community to read because they are a great tool for
 learning what mistakes not to make when developing a DApp. Below are links
-to repositories from the auditing companies Tweag(((Tweag
-))) and Vacuumlabs that
+to repositories from the auditing companies Tweag(((Tweag))) and Vacuumlabs that
 made some of their audit reports freely available to the public:
 
 * https://github.com/tweag/tweag-audit-reports[Tweag audit reports]
@@ -5692,8 +5648,7 @@ In the design process of the Marlowe(((Marlowe))) smart contract language, trade
 were made in regard to how powerful the language should be. In computer
 science, the https://en.wikipedia.org/wiki/Halting_problem[Halting
 problem] states that it is impossible to write a program that takes as
-input another program written in a Turing-complete(((Turing-complete
-))) programming language,
+input another program written in a Turing-complete(((Turing-complete))) programming language,
 and decides whether that program will stop or not. Such programming
 languages are so powerful that it is difficult or impossible to
 automatically analyze programs written in them. You always have to write
@@ -5706,13 +5661,10 @@ program need to be checked and it must be proven that the program behaves as
 expected. On the other hand, if you are willing to give up
 Turing-completeness, you can have simple but powerful program analysis
 tools and program language built-in security features. Powerful analysis
-tools also exist for Turing-complete(((Turing-complete
-))) programs; they are just more
-complex to build, and such programs have fewer built-in security
-features.
+tools also exist for Turing-complete(((Turing-complete))) programs; they are just more
+complex to build, and such programs have fewer built-in security features.
 
-Marlowe is not a Turing-complete(((Turing-complete
-))) language, so you cannot express
+Marlowe is not a Turing-complete(((Turing-complete))) language, so you cannot express
 arbitrary logic in it. This gives the option to statically analyze how
 long a contract will run. All Marlowe contracts are guaranteed to have a
 finite lifetime. There are other things Marlowe contracts take care of,
@@ -5756,11 +5708,9 @@ Marlowe's safety:
 * Looping is not supported.
 * Functions or macros may not be defined.
 * Timeouts must be numeric constants.
-* Only *Case* continuations may be Merkleized. The Faustus(((Faustus
-))) programming
+* Only *Case* continuations may be Merkleized. The Faustus(((Faustus))) programming
 language relaxes some of the limitations above, yet it compiles to safe
-Marlowe. Besides Faustus(((Faustus
-))), you can "relax" the above limitations if you
+Marlowe. Besides Faustus(((Faustus))), you can "relax" the above limitations if you
 embed Marlowe into another language (JavaScript, for example). By using
 the TS-SDK, you can have JavaScript functions and loops that unfold a
 larger Marlowe contract.
@@ -5780,8 +5730,7 @@ https://github.com/marlowe-lang/marlowe-cardano/blob/main/marlowe-object/doc/obj
 Object Format] is a way to describe a Marlowe contract as a set of
 labeled objects that reference one another, which can be linked to
 create a Marlowe contract. The term comes from the object files produced
-by a compiler(((compiler
-))), which can be linked to create an executable program.
+by a compiler(((compiler))), which can be linked to create an executable program.
 
 Marlowe also contains additional constraints imposed by Cardano:
 
@@ -5812,7 +5761,7 @@ on-chain if the contract violates the
 https://cardano-ledger.readthedocs.io/en/latest/[Cardano ledger
 restrictions]. You can check a Marlowe contract for compatibility with
 the Cardano ledger rules by using the _marlowe-cli run analyze_ command.
-The Marlowe CLI(((Marlowe, CLI)))
+The Marlowe CLI(((Marlowe CLI)))
 https://github.com/marlowe-lang/marlowe-cardano/blob/main/marlowe-cli/ReadMe.md[GitHub
 page] provides additional information about this topic.
 
@@ -5827,9 +5776,9 @@ using formal methods:
 * Composition of inputs.
 
 The formal specification and proofs for the Marlowe language were made
-using the Isabelle proof assistant(((Isabelle proof assistant
-))), which can be used for formal
-software verification. The proofs were audited and can be found in the
+using the Isabelle proof assistant(((Isabelle proof assistant))),
+which can be used for formal verification of software.
+The proofs were audited and can be found in the
 https://github.com/marlowe-lang/marlowe[Marlowe GitHub repository].
 This repository also contains the
 https://github.com/marlowe-lang/marlowe/tree/master/marlowe-spec-test[marlowe-spec]
@@ -5845,8 +5794,7 @@ marlowe-plutus https://github.com/marlowe-lang/marlowe-plutus[GitHub
 repository], which also provides instructions on how to compile the
 scripts.
 
-The auditing company Tweag(((Tweag
-))) performed an audit of the Marlowe high-level
+The auditing company Tweag(((Tweag))) performed an audit of the Marlowe high-level
 language and the implementation of Marlowe on Cardano before Marlowe's
 deployment on mainnet. The audit discovered significant issues,
 including handling of negative deposits, prevention of "double
@@ -5855,8 +5803,7 @@ difference between formal specification versus the Plinth
 implementation, and the proof of money preservation theorem. The issues
 were addressed before deploying Marlowe on mainnet. The full
 https://github.com/tweag/tweag-audit-reports/blob/main/Marlowe-2023-03.pdf[audit
-report] can be found at Tweag's GitHub page. IO also issued a report on
-the
+report] can be found at Tweag's GitHub page. IO also issued a report on the
 https://github.com/marlowe-lang/marlowe/blob/master/response-to-audit-report.md[Marlowe
 GitHub page] explaining the actions taken. You can read a short
 description of the issues and how they were addressed in this
@@ -5868,8 +5815,7 @@ blog], which also talks about the security of Marlowe and Cardano.
 Marlowe contracts can be designed in many ways. Once you have designed
 your contract, it is good practice to simulate it on the Playground
 first and create a walkthrough of all possible execution paths. The
-Playground also offers a set of tools that can perform a static analysis(((static analysis
-)))
+Playground also offers a set of tools that can perform a static analysis(((static analysis)))
 of the contract. No matter the Playground programming language you
 choose, the tools can be accessed from the bottom bar in the Static
 Analysis tab. Once you click on it, the analysis console opens up,
@@ -5901,22 +5847,22 @@ Besides being a smart contract programming language, Marlowe is also an
 ecosystem of tools to enable the deployment, interaction, and analysis
 of Marlowe smart contracts. Formal proofs, extensive testing, and
 analysis tools provide strong assurances for the safety of Marlowe
-contracts. Marlowe Runtime(((Marlowe, runtime))), which is used under the hood by the TS-SDK,
+contracts. Marlowe Runtime(((Marlowe runtime))), which is used under the hood by the TS-SDK,
 provides off-chain services that discover Marlowe's contract history and
 build transactions that apply input to Marlowe's contracts. If a project
-using the TS-SDK decides to deploy its own instance of Marlowe Runtime(((Marlowe, runtime))),
+using the TS-SDK decides to deploy its own instance of Marlowe Runtime(((Marlowe runtime))),
 precautions should be taken if there is an interest in examining the
-Marlowe transactions produced by the Runtime. If Marlowe Runtime(((Marlowe, runtime))) is
+Marlowe transactions produced by the Runtime. If Marlowe Runtime is
 deployed as part of a web service, then one must be aware of the
 possibility of person-in-the-middle, cross-site scripting, and other
-attacks. Marlowe Runtime(((Marlowe, runtime))) contains a registry of known Marlowe script
+attacks. Marlowe Runtime contains a registry of known Marlowe script
 versions that it uses to create new Marlowe transactions. One should
-only use Marlowe Runtime(((Marlowe, runtime))) to create contracts if one trusts the script
+only use Marlowe Runtime to create contracts if one trusts the script
 hashes in that registry. The Marlowe test suite verifies that the script
 registry has not been inadvertently or maliciously altered. Of course,
 this does not guarantee that the test itself has not been altered.
 
-Another Marlowe tool is the Marlowe CLI(((Marlowe, CLI))), which includes capabilities for
+Another Marlowe tool is the Marlowe CLI(((Marlowe CLI))), which includes capabilities for
 analyzing the suitability of a Marlowe contract for execution on the
 Cardano blockchain. As mentioned in the previous section, the
 _marlowe-cli run analyze_ command enables a smart contract designer to
@@ -5936,8 +5882,7 @@ designing Marlowe contracts in the following cases:
 [arabic, start=1]
 . Choose role and token names that are no longer than 32 bytes
 . Ensure that the contract's initial state is valid
-. Ensure that the initial value in the contract contains sufficient
-lovelace
+. Ensure that the initial value in the contract contains sufficient lovelace
 . Avoid contracts that use an excessive number of native token types
 . Avoid or break up complex logic in the contract
 . Use reference scripts and merkleization to reduce on-chain size
@@ -5976,15 +5921,13 @@ security guide] answers all these questions in detail. As a conclusion,
 when developing a Marlowe smart contract, one should:
 
 * Use the https://playground.marlowe-lang.org/#/[Marlowe Playground] to
-simulate the contract and perform static analysis(((static analysis
-)))
+simulate the contract and perform static analysis(((static analysis)))
 * Use the _marlowe-cli run analyze_ tool to check if the contract can
 run on the Cardano network and does not violate any of the Cardano
 ledger rules
 * Read and understand the Marlowe guides referenced in this section and
 check if the Marlowe smart contract satisfies all criteria
 * Test off-chain code by running all execution paths of the contract on
-a Cardano testnet(((Cardano testnet
-))). You can read more about the Cardano testnet(((Cardano testnet
-))) at
+a Cardano testnet(((Cardano testnet))). You can read more about the
+Cardano testnet(((Cardano testnet))) at
 https://docs.cardano.org/cardano-testnet/overview[Cardano docs].
