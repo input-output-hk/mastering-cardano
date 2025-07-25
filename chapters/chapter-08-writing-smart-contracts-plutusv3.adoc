@@ -3680,9 +3680,7 @@ Another way for constructing off-chain transactions is by using the
 https://github.com/IntersectMBO/cardano-cli[Cardano CLI]. You can
 find examples and read more about the Cardano CLI(((Cardano CLI))) at the
 https://developers.cardano.org/docs/get-started/cardano-cli/get-started/[Cardano developers]
-webpage.
-
-There are several community-built tools for writing off-chain code in
+webpage. There are also several community-built tools for writing off-chain code in
 various programming languages. Some of them are listed at the end of
 section <<Smart contract programming languages>>, where
 off-chain code is briefly covered. For those using Plinth and interested
@@ -3698,7 +3696,7 @@ to construct and submit transactions interacting with a smart contract by
 writing JavaScript or TypeScript code. To run the off-chain code in this and
 other sections you can use https://deno.com/[Deno] that is a runtime
 environment for JavaScript and TypeScript. All off-chain code presented in
-this and other sections was tested with Deno version `2.1.9` and
+this chapter was tested with Deno version `2.1.9` and
 MeshSDK packages version `1.9.0-beta.3`. To install the MeshSDK packages
 that are needed by the off-chain code, the
 https://docs.npmjs.com/downloading-and-installing-node-js-and-npm[npm]
@@ -3731,8 +3729,7 @@ npm install @meshsdk/core
 
 If no `package.json` file is present `npm(((npm)))` will create one and install
 the latest version of MeshSDK packages. For more information on how to
-install npm(((npm))) packages locally or globally and manage the `package.json`
-file one can read the
+install npm(((npm))) packages and manage the `package.json` file one can read the
 https://docs.npmjs.com/packages-and-modules/getting-packages-from-the-registry[Getting
 packages from the registry] and
 https://docs.npmjs.com/creating-a-package-json-file[Creating
@@ -5177,7 +5174,7 @@ environment for liquidity providers(((liquidity providers))).
 The blog explains in more detail how impermanent loss affects DEXs
 built on the account-based accounting models compared to EUTXO.
 
-Cardano's design also makes front-running invasion 
+Cardano's design also makes front-running invasion
 attacks(((front-running invasion attacks))) that could
 target transactions on a decentralized exchange harder to
 carry out. The Cardano node is designed such that it processes transactions in the
