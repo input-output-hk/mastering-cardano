@@ -6,23 +6,23 @@ Native assets are a label to describe an extension to the Cardano extended unspe
 
 Because native assets on Cardano are treated similarly to the layer 1 currency, they share many of the same properties as lovelace. An unspent transaction output(((unspent transaction output))) (UTXO) may contain one or more native assets that may be transacted in any quantities between members (addresses) of the network at any time, with no restrictions (permissionless).
 
-The unique properties of Cardano(((Cardano))) native assets necessitate additional considerations for projects seeking to leverage them, compared to other standards such as ERC-20/721/1155. However, these native assets also offer benefits over these other standards.
+The unique properties of Cardano(((Cardano))) native assets necessitate additional considerations for projects seeking to leverage them, compared to other standards such as ERC-20/721/1155. However, Cardano native assets also offer benefits over the other blockchain standards.
 
 Native assets are cryptographically identified by the ‘minting policy script(((minting policy script)))’ hash, in addition to a ‘token identifier’, allowing for multiple tokens to be minted under the same ‘minting policy script(((minting policy script)))’ and to be uniquely identified within the context of the blockchain ledger.
 
 ==== Minting policy scripts
 
-All Cardano native assets must be controlled by a script dictating the rules for when and by whom tokens may be minted. The two types of scripts currently available to projects on Cardano are simple (native) scripts or Plutus (smart contract(((smart contract)))) scripts. Again, each has its individual complexities, benefits, and drawbacks, so it is important for a project considering the use of Cardano native assets to review these features and benefits prior to issuing tokens, as it is difficult to migrate from one type of token to another.
+All Cardano native assets must be controlled by a script dictating the rules for when and by whom tokens may be minted. The two types of scripts currently available to projects on Cardano are _simple (native)_ scripts or _Plutus (smart contract)_ scripts. Again, each has its individual complexities, benefits, and drawbacks, so it is important for a project considering the use of Cardano native assets to review these features and benefits prior to issuing tokens, as it is difficult to migrate from one type of token to another.
 
 ==== Simple/native scripts
 
-Simple (or native) scripts are a type of simplistic ledger control language first introduced to Cardano with the Mary hard fork(((Mary hard fork))) in March 2021 during Cardano’s Shelley era, which also brought native assets to the ledger. As the name implies, these are rudimentary scripts that utilize blockchain primitives to control behavior on the ledger. Simple scripts can be composed of one or more scripts controlled by either a time (absolute on-chain slot) or a required signature locking mechanism.
+Simple (or native) scripts are a type of simplistic ledger control language first introduced to Cardano with the Mary hard fork(((Mary hard fork))) in March 2021 during Cardano’s Shelley era, which also brought native assets to the ledger. As the name implies, simple scripts are rudimentary scripts that utilize blockchain primitives to control behavior on the ledger. Simple scripts can be composed of one or more scripts controlled by either a time (absolute on-chain slot) or a required signature locking mechanism.
 
-Simple scripts are written in a JSON schema(((JSON schema))) using basic AND, OR, and ANY control language to combine one or more scripts, creating a policy of greater or lesser complexity depending on the script author's needs. This simple scripting language enables models such as a straightforward, verifiable burn address, where all contents are unspendable due to a time lock, or complex multi-signatory structures required for bridges and distributed autonomous organizations (DAOs).
+Simple scripts are written in a JSON schema(((JSON schema))) using basic AND, OR, and ANY control language to combine one or more scripts, creating a policy of varying complexity depending on the script author's needs. This simple scripting language supports a range of use cases, from a verifiable burn address – where funds are permanently locked by a time constraint – to more complex setups like multi-signatory structures used in bridges and decentralized autonomous organizations (DAOs)
 
 ==== Key signature scripts
 
-The most rudimentary of simple scripts locks interaction with token minting or address spending via the use of a single key signature script(((single key signature script))). This type of script declares the public key hash of the signing key required to create (mint) or destroy (burn) tokens from the ledger.
+The simplest form of script locks interaction with token minting or address spending via the use of a single key signature script(((single key signature script))). This type of script declares the public key hash of the signing key required to create (mint) or destroy (burn) tokens from the ledger.
 
 _Single-signature simple script example:_
 
@@ -96,7 +96,7 @@ _(AT LEAST) Two out of three required signatures (atLeast type) simple multi-sig
 
 ==== Time/slot lock scripts
 
-Where a sig type simple script declares one or more required key signatures to validate the transaction, a time lock script(((time lock script))) can refer to an absolute slot in the blockchain ledger where the script is invalid either before or after the specified slot (or both). In this way we can “lock” a Native Asset minting policy before, after, or both before and after certain slots on the blockchain, providing immutable proof that the token supply is “locked”.
+Where a signature type simple script declares one or more required key signatures to validate the transaction, a time lock script(((time lock script))) can refer to an absolute slot in the blockchain ledger where the script is invalid either before or after the specified slot (or both). In this way, we can ‘lock’ a native asset minting policy before, after, or both before and after certain slots on the blockchain, providing immutable proof that the token supply is ‘locked’.
 
 _Policy is valid UNTIL slot #1000000_
 
@@ -136,7 +136,7 @@ _Policy is valid AFTER slot #1 and valid UNTIL slot #1000000_
 
 ==== Combining simple scripts
 
-When minting Native Assets(((Native Assets))) on Cardano we want to use a combination of required signing key(s) as well as designating the slot after which tokens and token supplies cannot be modified. In this case we can combine multiple scripts of multiple types in order to accomplish the desired effect.
+When minting native assets(((native assets))) on Cardano, we want to use a combination of required signing key(s) and designate the slot after which tokens and token supplies cannot be modified. In this case, we can combine multiple scripts of multiple types to accomplish the desired effect.
 
 _Common time-locked (before slot #1000000), signature required minting policy script(((minting policy script))) example:_
 
@@ -196,29 +196,29 @@ _Time locked script (after Slot #1 but before Slot #1000000) requiring any one o
 
 ==== Plutus/smart contract scripts
 
-The alternative to native scripts for token minting or burning is Smart contract (Plutus script)-controlled scripts. Smart contract scripts(((Smart contract scripts))) provide much greater programmability and flexibility of rule sets regarding tokens but come at the expense of more complicated development, testing, and deployment.
+Smart contract–controlled scripts, such as Plutus scripts, are an alternative to native scripts for minting or burning tokens. Smart contract scripts offer significantly greater programmability and flexibility in rule sets regarding tokens, but come at the expense of more complex development, testing, and deployment.
 
-Writing Cardano smart contracts is beyond the scope of this chapter, however it is important to note that the hash of the smart contract(((smart contract))) script will be used as the policy_id of native assets minted using the smart contract(((smart contract))).
+Writing Cardano smart contracts is beyond the scope of this chapter; however, it is important to note that the hash of the smart contract(((smart contract))) script will be used as the policy_id of native assets minted using the smart contract.
 
-==== *To funge or not to funge, that is the question*
+==== To funge or not to funge, that is the question
 
-When considering the use of Cardano Native Assets(((Cardano, Native Assets))) for a project, an important consideration is the _fungibility_ of the token. An asset is said to be fungible if there is a supply of more than one tokens that are indistinguishable and interchangeable with one another.
+When considering the use of Cardano native assets(((Cardano native assets))) for a project, an important consideration is the _fungibility_ of the token. An asset is considered fungible when multiple tokens exist that are indistinguishable and interchangeable with one another.
 
-When a token supply is greater than one it is considered a _Fungible Token (FT)_. When a token has a supply of precisely one, it is a _Non Fungible Token (NFT)_. Some real world examples of fungible tokens might be: casino chips, arcade tokens, public stocks, voting shares, etc. Some real world examples of non-fungible tokens might be: deeds or titles to real property, original works of art, etc.
+When a token supply is greater than one, it is considered a _fungible token (FT)_. When a token has a supply of precisely one, it is a _non-fungible token (NFT)_. Some real-world examples of fungible tokens include casino chips, arcade tokens, public stocks, and voting shares. Some real-world examples of non-fungible tokens include deeds or titles to real property, as well as original works of art.
 
-==== Fungible tokens (FTs)
+==== Fungible tokens
 
-Fungible tokens, as mentioned previously, are tokens with a quantity greater than one. Fungible tokens always represent the lowest denomination of a currency. For this reason, it is important to keep in mind the number of decimal places a fungible token should have (zero or more) when determining the total supply and how many of a token to mint. In the Cardano blockchain(((blockchain))) the native currency ada is actually represented by a unit of lovelace where 1 ada = 1,000,000 lovelaces. Many FT projects choose to design their token with one or more decimal places in order to increase fractionalization during transactions.
+Fungible tokens, as mentioned previously, are tokens with a quantity greater than one. Fungible tokens always represent the lowest denomination of a currency. For this reason, it is essential to consider the number of decimal places a fungible token should have (zero or more) when determining the total supply and the number of tokens to mint. In the Cardano blockchain, the native currency ada is actually represented by a unit of lovelace, where 1 ada = 1,000,000 lovelaces. Many FT projects opt to design their token with one or more decimal places to increase fractionalization during transactions.
 
-==== Non-fungible tokens (NFTs)
+==== Non-fungible tokens
 
-While fungible tokens are freely interchangeable with one another, non-fungible tokens are globally unique and cannot be exchanged on a one-to-one basis. This uniqueness makes NFTs particularly valuable for representing ownership of digital art(((digital art))), collectibles, and other one-of-a-kind items. While they may have the same or similar spending power, each “token” is technically and traceably unique from all others in existence.
+While fungible tokens are freely interchangeable with one another, non-fungible tokens are globally unique and cannot be exchanged on a one-to-one basis. This uniqueness makes NFTs particularly valuable for representing ownership of digital art(((digital art))), collectibles, and other one-of-a-kind items.
 
 ==== Native assets are boring
 
-By themselves, native assets on Cardano are rather inert and boring. They can be minted and burned, as controlled by the issuing native script or smart contract(((smart contract))), and they can be transacted on the ledger in a nearly identical way to the native lovelace currency on Cardano. An important caveat when dealing with Native Assets is that each native asset transacted requires some minimum amount of lovelaces to be sent along with it (this is referred to as minUTxO).
+By themselves, native assets on Cardano are rather inert and boring. They can be minted and burned, as controlled by the issuing native script or smart contract(((smart contract))), and they can be transacted on the ledger in a nearly identical way to the native lovelace currency on Cardano. An important caveat when dealing with native assets is that each native asset transacted requires some minimum amount of lovelaces to be sent along with it (this is referred to as `minUTxO`).
 
-Native tokens become more interesting and gain additional use cases through the use of both on and off-chain metadata(((metadata))) standards that enable participants and integrators of the ecosystem to do things like: add monetary policy information to fungible tokens, show images and other multimedia information for NFTs, unlock access to services and events and more!
+Native tokens become more interesting and gain additional use cases through the use of both on- and off-chain metadata(((metadata))) standards that enable participants and integrators of the ecosystem to do things like: add monetary policy information to fungible tokens, show images and other multimedia information for NFTs, unlock access to services and events, and more!
 
 ==== Overview of token standards
 
@@ -228,23 +228,23 @@ CIP-10 defines a registry of metadata(((metadata))) indexes that have been reser
 
 *CIP-25:* https://cips.cardano.org/cips/cip25/[Media NFT Metadata Standard]
 
-CIP-25 is the first accepted metadata standard for Cardano Multimedia NFTs. CIP-25 is preferred for more static assets that are not subject to frequent updates or changes to the metadata and do not require smart contract(((smart contract))) programmability.
+CIP-25 is the first accepted metadata standard for Cardano multimedia NFTs. CIP-25 is preferred for more static assets that are not subject to frequent updates or changes to the metadata and do not require smart contract(((smart contract))) programmability.
 
 *CIP-26:* https://cips.cardano.org/cips/cip26/[Off-Chain Metadata Standard]
 
-CIP-26 is currently the primary means of registering information about fungible tokens. Data is signed and submitted to the Cardano Token Registry(((Cardano, Token Registry))) where it can be consumed by wallet providers and other integrators to properly show information related to fungible tokens including: decimals, ticker and display name, and a logo or icon.
+CIP-26 is currently the primary means of registering information about fungible tokens. Data is signed and submitted to the Cardano token registry(((Cardano, Token Registry))), where it can be consumed by wallet providers and other integrators to properly show information related to fungible tokens, including: decimals, ticker and display name, and a logo or icon.
 
 *CIP-27:* https://cips.cardano.org/cips/cip27/[NFT Royalty Standard]
 
-CIP-27 describes a standard to publish information on-chain regarding royalties that should be associated with CIP-25 format NFTs. This information should be consumed and used by marketplaces when handling royalty payments for secondary sales(((secondary sales))).
+CIP-27 describes a standard to publish information on-chain regarding royalties that should be associated with CIP-25 format NFTs. This information should be utilized by marketplaces when processing royalty payments for secondary sales.
 
 *CIP-54:* https://cips.cardano.org/cips/cip54/[Smart NFTs]
 
-CIP-54 describes a method to create “smart”, programmable NFTs using JavaScript embedded in the metadata of one or more tokens and a structure whereby individual tokens may ‘request’ specific data or information from the blockchain(((blockchain))) in order to provide an ability to evolve or change over time.
+CIP-54 describes a method for creating ‘smart’, programmable NFTs using JavaScript embedded in the metadata of one or more tokens, along with a structure that allows individual tokens to ‘request’ specific data or information from the blockchain, thereby enabling them to evolve or change over time.
 
 *CIP-60:* https://cips.cardano.org/cips/cip60/[Music Token Metadata]
 
-CIP-60 describes an extension to both CIP-25 and CIP-68(((CIP, 68))) to provide a specific structure for music NFTs. These tokens may represent a single song, entire album, or other “piece” of an overall music composition and are used by a variety of music licensing, streaming, and distribution platforms in the ecosystem.
+CIP-60 describes an extension to both CIP-25 and CIP-68(((CIP, 68))), providing a specific structure for music NFTs. These tokens may represent a single song, an entire album, or other pieces of an overall music composition and are used by a variety of music licensing, streaming, and distribution platforms in the ecosystem.
 
 *CIP-67:* https://cips.cardano.org/cips/cip67/[Asset Name Label Registry]
 
@@ -252,8 +252,8 @@ CIP-67 serves as a repository for token naming identification tags related to th
 
 *CIP-68:* https://cips.cardano.org/cips/cip68/[Datum Metadata Standard]
 
-Whereas earlier token metadata standards relied on metadata that was submitted statically to the blockchain during a mint operation for a token, CIP-68 introduces the concept of storing token metadata in an inline datum attached to a reference token allowing for easy updating of token metadata and smart contract(((smart contract))) visibility of metadata.
+Whereas earlier token metadata standards relied on metadata submitted statically to the blockchain during a token mint operation, CIP-68 introduces the concept of storing token metadata in an inline datum attached to a reference token, allowing for easy updates to token metadata and providing smart contract visibility of metadata.
 
 *CIP-86:* https://cips.cardano.org/cips/cip86/[NFT Metadata Update Oracles]
 
-CIP-86 describes a solution for projects to publish updates relating to token metadata(((metadata))) in bulk and through a combination of complex regular expression pattern matching.
+CIP-86 describes a solution for projects to publish updates related to token metadata(((metadata))) in bulk, utilizing a combination of complex regular expression pattern matching.
