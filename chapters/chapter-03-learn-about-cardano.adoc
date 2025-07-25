@@ -111,7 +111,7 @@ As Dr. Lars Brünjes(((Brünjes, Lars))), Director of Education at IO, emphasize
 
 IO offers various education streams:
 
-image::mc_education_ pillars.png
+image::mc_education_ pillars.png[title="Education pillars"]
 
 ===== Mission-based education
 
