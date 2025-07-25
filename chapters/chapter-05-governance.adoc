@@ -225,22 +225,22 @@ All Cardano ecosystem participants are welcome to become Intersect members. Made
 1. Community support(((community, support))): hosts events, hackathons, and conferences designed explicitly for developers within the Cardano ecosystem
 2. Governance: champions and oversees Cardano’s community-driven governance system(((community, -driven governance system))), implemented through CIP-1694
 3. Technical roadmap: helps orchestrate the delivery of the Cardano technical roadmap
-4. Continuity: ensures system stability(((system stability))), Intersect facilitates Cardano’s ongoing continuity
+4. Continuity: ensures system stability, Intersect facilitates Cardano’s ongoing continuity
 5. Open-source development(((open-source development))): plays a role in coordinating the open-source development of Cardano’s core technologies.
 
 Intersect has a central governing board, similar to a city council, chosen and managed by its members. This board is supported by various committees and working groups, each focusing on specific areas or interests within the Cardano ecosystem.
 
 Intersect’s governing board started with five seats. Three were filled by founding members (seed funders, Input | Output, and EMURGO), with the Intersect chief operating officer (COO) holding a temporary seat. Another seat was offered to the University of Wyoming’s Blockchain Center(((University of Wyoming’s Blockchain Center))) for a one-year term.
 
-The remaining two permanent seats were filled later in 2024 through an election process, with Kavinda Kariyapperuma and Adam Rusch voted in by Intersect members. The board now plans to expand from five to seven, with the number of seats elected by Intersect members rising from two to four. This doubles the community representation, which will make up the majority of the seats at the board leadership level(((board leadership level))). The board meets monthly and publishes agendas and https://intersect.gitbook.io/intersect-board[minutes] for transparency, and can be contacted at board@intersectmbo.org.
+The remaining two permanent seats were filled later in 2024 through an election process, with Kavinda Kariyapperuma and Adam Rusch voted in by Intersect members. The board now plans to expand from five to seven, with the number of seats elected by Intersect members rising from two to four. This doubles the community representation, which will make up the majority of the seats at the board leadership level. The board meets monthly and publishes agendas and https://intersect.gitbook.io/intersect-board[minutes] for transparency, and can be contacted at board@intersectmbo.org.
 
 *Intersect's funding*
 
-Input Output ((((Input Output))) and EMURGO initially funded Intersect to get things running. For future funding, the community will be asked to vote on using funds from the Cardano treasury.
+ ((((Input Output))) and EMURGO initially funded Intersect to get things running. For future funding, the community will be asked to vote on using funds from the Cardano treasury.
 
 The Cardano Development Holdings(((Cardano Development Holdings))) (CDH), established in the crypto-friendly Cayman Islands, funds and facilitates the maintenance, development, and growth of the Cardano ecosystem. It may receive direct funding from the Cardano treasury, but it can also receive donations from external sources for Cardano’s development. All CDH funds are administered by Intersect. This structure was chosen for reasons related to accounting, legal clarity, and liability management.
 
-Becoming a founding member(((founding member))) comes with the following benefits:
+Becoming a founding member comes with the following benefits:
 
 - Participate in steering groups, committees, and advisory boards, with the potential to establish new committees that will define Cardano's future governance
 - Access grants and contribute to developing Cardano's codebase while guiding a grant program to strengthen the Cardano protocol and ecosystem
@@ -275,18 +275,18 @@ The OSO manages Cardano’s open-source program and community. They ensure open 
 
 Intersect operates on the principle of community leadership(((community, leadership))) for Cardano’s development. This is achieved through standing committees formed and led by its members. At present, seven standing committees report to the ISC (Intersect Steering Committee).
 
-Standing committees are permanent committees covering various functions critical to guiding Cardano’s ‘continuity’ (ongoing maintenance and development), shaping Cardano’s constitution, and supporting internal membership needs(((supporting internal membership needs))). While changes can be made as the committees and their goals evolve, they are intended to be long-lasting.
+Standing committees are permanent committees covering various functions critical to guiding Cardano’s ‘continuity’ (ongoing maintenance and development), shaping Cardano’s constitution, and supporting internal membership needs. While changes can be made as the committees and their goals evolve, they are intended to be long-lasting.
 
 Working groups are temporary and typically support the broader objectives of a standing committee. They may also be formed to tap into expertise outside of Intersect’s membership(((Intersect, membership))). Flexible and less formal than committees, working groups can address diverse topics relevant to Cardano’s development.
 
 ==== The civics committee
-The civics committee acts as a guide and supervisor(((guide and supervisor))) for the Cardano community on governance issues:
+The civics committee((civics committee))) acts as a guide and supervisor(for the Cardano community on governance issues:
 
 - Develop and manage ways for the community to actively participate in Cardano's governance
 - Collaborate with subject matter experts when needed
 - Assist the Cardano constitutional committee as requested.
 
-This committee is crucial for ensuring Cardano’s governance system is accessible, fair, inclusive, and transparent. The civics committee(((civics committee))) addresses topics like:
+This committee is crucial for ensuring Cardano’s governance system is accessible, fair, inclusive, and transparent. The civics committee addresses topics like:
 
 - Ratifying the constitution: facilitating a period for community approval
 - Off-chain discussions: tracking and maintaining a record of informal discussions about proposals before they are formally presented
@@ -297,14 +297,14 @@ This committee is crucial for ensuring Cardano’s governance system is accessib
 
 ==== Membership and community committee (MCC)
 
-The MCC helps build a strong Cardano community(((strong Cardano community))) within Intersect. They achieve this by:
+The MCC helps build a strong Cardano community within Intersect. They achieve this by:
 
 * Attracting new members through effective sales and account management
 * Supporting existing members with helpful resources and events
 * Offering https://www.intersectmbo.org/grants[grants] to create useful community tools
 * Providing education and hosting engaging events.
 
-This committee creates a space for Cardano enthusiasts to connect, share knowledge, and collaborate on projects. For example, a grant was awarded to Ryan Wiley (Cerkoryn) for his _changwatch.com_ dashboard. This tool displays real-time governance action data through donut charts, breaking down participation in governance actions(((participation in governance actions))) by DReps, SPOs, the CC, and an aggregated total of all groups. This highlights which entities sway over each proposal type based on stake-weighted delegation and voting thresholds. Anyone in the Cardano ecosystem can flag specific concerns about centralization using this user-friendly dashboard.
+This committee creates a space for Cardano enthusiasts to connect, share knowledge, and collaborate on projects. For example, a grant was awarded to Ryan Wiley (Cerkoryn) for his _changwatch.com_ dashboard. This tool displays real-time governance action data through donut charts, breaking down participation in governance actions(((governance actions, participation))) by DReps(((DRep))), SPOs, the CC, and an aggregated total of all groups. This highlights which entities sway over each proposal type based on stake-weighted delegation and voting thresholds. Anyone in the Cardano ecosystem can flag specific concerns about centralization using this user-friendly dashboard.
 
 The MCC manages Intersect memberships, ensuring everyone gets the most out of the program and can contribute to Cardano’s development. They also review proposals for community working groups(((community, working groups))). Public meetings are held every four weeks, and the minutes are https://intersect.gitbook.io/community-and-membership-committee/[public].
 
@@ -313,22 +313,22 @@ This committee serves as a strategic planning body, focusing on impactful market
 
 ==== The technical steering committee (TSC)
 
-The TSC oversees Cardano’s technical health(((Cardano, technical health))), ensuring that decisions are based on solid technical knowledge and best practices.
+The TSC oversees Cardano’s technical health, ensuring that decisions are based on solid technical knowledge and best practices.
 
-This committee brings together key players to ensure Cardano’s development runs smoothly. They handle contracts with developers, create technical proposals, and review ideas from the Cardano community(((ideas from the Cardano community))), like updates or major changes to the network.
+This committee brings together key players to ensure Cardano’s development runs smoothly. They handle contracts with developers, create technical proposals, and review ideas from the Cardano community, like updates or major changes to the network.
 
-The TSC leads in guiding the development of Cardano’s ongoing technical foundation. They provide in-depth technical analysis and advice for everything from development projects to network settings. Think of them as the guardians of Cardano’s technical well-being(((guardians of Cardano’s technical well-being))). The minutes from their meetings are https://intersect.gitbook.io/technical-steering-committee/tsc-meeting-minutes[public].
+The TSC leads in guiding the development of Cardano’s ongoing technical foundation. They provide in-depth technical analysis and advice for everything from development projects to network settings. Think of them as the guardians of Cardano’s technical well-being. The minutes from their meetings are https://intersect.gitbook.io/technical-steering-committee/tsc-meeting-minutes[public].
 
 ==== The parameters committee (PC)
 
-The PC is a subcommittee within the TSC that focuses on optimizing Cardano’s settings(((optimizing Cardano’s settings))). They ensure that these parameters are set based on the best available technical knowledge. They consider factors like economics, security, and network performance when recommending updates to Cardano’s core settings. Regular meetings discuss updates and consider proposals from the community to adjust parameters. There are advisory groups within the PC, such as:
+The PC is a subcommittee within the TSC that focuses on optimizing Cardano’s settings. They ensure that these parameters are set based on the best available technical knowledge. They consider factors like economics, security, and network performance when recommending updates to Cardano’s core settings. Regular meetings discuss updates and consider proposals from the community to adjust parameters. There are advisory groups within the PC, such as:
 
 * Economic parameters advisory group
 * Network parameters advisory group
 * Technical parameters advisory group
 * Governance parameters advisory group.
 
-Membership in this technical group is by invitation only. However, anyone can submit suggestions for parameter changes(((suggestions for parameter changes))) on the Cardano Forum. The PC also participates in monthly calls with Cardano’s stake pool operators to share updates and answer questions.
+Membership in this technical group is by invitation only. However, anyone can submit suggestions for parameter changes(((parameter changes, suggestions))) on the Cardano Forum. The PC also participates in monthly calls with Cardano’s stake pool operators to share updates and answer questions.
 
 Matthew Capps’ http://twitter.com/cryptstitution/status/1725745468821344432?s=46[X thread], _Protocol Change Proposal-001: Chronology of Documented Events_, provides insight into the careful consideration and deliberation involved in a parameter change(((parameter change))).
 
@@ -337,7 +337,7 @@ Matthew Capps’ http://twitter.com/cryptstitution/status/1725745468821344432?s=
 The OSC owns the roadmap (strategy) for Cardano’s open-source projects(((Cardano, open-source projects))), advising others on open-source best practices, and acts as a central point for anyone building within Cardano’s open-source environment.
 This committee helps developers navigate the world of open-source development(((open-source development))) on Cardano.
 
-The OSC tackles several key areas(((key areas))):
+The OSC tackles several key areas:
 
 * Defining what ‘open source’ means for Cardano projects
 * Developing and maintaining Cardano’s open-source strategy
@@ -380,7 +380,7 @@ Intersect forms temporary groups called working groups to address specific needs
 Intersect's *hard fork working group* was one of the busiest as it oversaw the Chang and Plomin upgrades. It began as just three attendees on the first call in February 2024. As the working group has met at least weekly, often more frequently, the attendee list has grown to over sixty. The group’s last call was almost a year later on Tuesday, February 11, 2025, fulfilling its remit to oversee all aspects of the Chang and Plomin hard forks(((Plomin hard forks))) to a successful conclusion.
 
 To learn more, head over to the Intersect https://intersect.gitbook.io/intersect-working-groups/[working groups(((working groups)))] space for a complete list and further details.
-Committees are elected by Intersect members only, using a one-member, one-vote system(((one-member, one-vote system))). Elections take place twice yearly. Half of each committee’s members were elected in the first elections in October 2024, and the remaining members were elected in 2025. The official final numbers for newly elected committees were made up of a 'Who’s Who' of Cardano’s brains trust:
+Committees are elected by Intersect members only, using a one-member, one-vote system. Elections take place twice yearly. Half of each committee’s members were elected in the first elections in October 2024, and the remaining members were elected in 2025. The official final numbers for newly elected committees were made up of a 'Who’s Who' of Cardano’s brains trust:
 
 image::../images/5.5_committee_election_results.png[]
 *Figure 5.5:* Committee Election results
@@ -389,40 +389,40 @@ image::../images/5.5_committee_election_results.png[]
 
 Cardano(((Cardano)))'s future governance leans on three key pillars:
 
-1. *On-chain decisions(((on-chain, decision)))*: this system (detailed in CIP-1694) allows ada holders to directly influence Cardano's development through proposed governance actions voted on-chain.
-2. *Cardano constitution*: this evolving document outlines core rules to guide Cardano's growth during its transitional governance phase. A fully-fledged constitution will be drafted with community input throughout the year, culminating in a final version ratified by both delegates and ada holders. https://github.com/Ryun1/CIPs/tree/cip-constitution-tech/CIP-0120[CIP-0120 (constitution specification)] proposes a standardized technical format to make the document accessible for tools to read, render, and write(((tools to read, render, and write))).
-3. *Institutions*: these provide spaces for discussion, collaboration, and recommendations that ultimately feed into on-chain decision-making(((on-chain, decision))).
+1. *On-chain decisions*: this system (detailed in CIP-1694) allows ada holders to directly influence Cardano's development through proposed governance actions voted on-chain.
+2. *Cardano constitution*: this evolving document outlines core rules to guide Cardano's growth during its transitional governance phase. A fully-fledged constitution will be drafted with community input throughout the year, culminating in a final version ratified by both delegates and ada holders. https://github.com/Ryun1/CIPs/tree/cip-constitution-tech/CIP-0120[CIP-0120 (constitution specification)] proposes a standardized technical format to make the document accessible for tools to read, render, and write.
+3. *Institutions*: these provide spaces for discussion, collaboration, and recommendations that ultimately feed into on-chain decision-making.
 
-These three elements work together to create a robust governance system(((robust governance system))) that can adapt and improve over time, driven by the Cardano community. The age of Voltaire is still in its infancy, and four key roles will be pivotal as CIP-1694 becomes a reality.
+These three elements work together to create a robust governance system that can adapt and improve over time, driven by the Cardano community. The age of Voltaire is still in its infancy, and four key roles will be pivotal as CIP-1694 becomes a reality.
 
 *Ada holders*
 
-Ada holders play a crucial role(((crucial role))) in Cardano's governance. They can:
+Ada holders play a crucial role in Cardano's governance. They can:
 
 * Delegate their vote: choose representatives (DReps) to cast votes on their behalf
 * Become a DRep: represent themselves or others in on-chain voting
 * Shape Cardano's future: propose changes to the network by submitting on-chain governance actions
 * Stay informed: review submitted governance actions and cast their vote on them.
 
-By actively participating, ada holders collectively drive Cardano's development(((collectively drive Cardano's development))).
+By actively participating, ada holders collectively drive Cardano's development.
 
 *DReps*
 
 The _age of Voltaire_ introduced delegated representatives(((DRep))) (DReps), a new concept central to Cardano’s governance as defined in CIP-1694. DReps, alongside stake pool operators and the constitutional committee, will vote on proposals that shape Cardano's future.
 
-Any ada holder can become a DRep. This means ada holders can choose to directly participate in voting or delegate their voting power to DReps they trust. There are two predefined DReps: the _abstain_ and the _no confidence_ DReps. These options allow ada holders to either not participate in governance or automatically express a yes vote on any _no confidence_ action, providing a directly auditable measure of confidence(((directly auditable measure of confidence))) in the constitutional committee.
+Any ada holder can become a DRep. This means ada holders can choose to directly participate in voting or delegate their voting power to DReps they trust. There are two predefined DReps: the _abstain_ and the _no confidence_ DReps. These options allow ada holders to either not participate in governance or automatically express a yes vote on any _no confidence_ action, providing a directly auditable measure of confidence in the constitutional committee.
 
 *Why delegate?*
 
 Delegation allows ada holders to empower representatives who are potentially better equipped to make informed decisions on their behalf. This fosters a more democratic system where everyone has a say, even if they don’t have the time or expertise to delve into every proposal(((delegation))).
 
-The first community DRep workshop(((DRep, workshop))) took place on January 20, 2024, in Oslo. This initiative was funded by a Catalyst Fund10 https://projectcatalyst.io/funds/10/f10-drep-improvement-and-onboarding/drep-recruitment-training-and-ethical-code-development-workshops[proposal] from Eyetein Hansen, Adam Rusch, Ekow Harding, Jose De Gamboa, Thomas Lindseth, and Yuki Oishi. Many more workshops followed.
+The first community DRep workshop(((DRep, workshops))) took place on January 20, 2024, in Oslo. This initiative was funded by a Catalyst Fund10 https://projectcatalyst.io/funds/10/f10-drep-improvement-and-onboarding/drep-recruitment-training-and-ethical-code-development-workshops[proposal] from Eyetein Hansen, Adam Rusch, Ekow Harding, Jose De Gamboa, Thomas Lindseth, and Yuki Oishi. Many more workshops followed.
 
-Intersect collaborated with the IOG education team on the https://sancho.network/drep-pioneer-program/drep-pp/overview[DRep Pioneer program], an online interactive training course for nominated delegate representatives (DReps) involved in Cardano’s proposed governance structure(((Cardano, proposed governance structure))).
+Intersect collaborated with the IO education team on the https://sancho.network/drep-pioneer-program/drep-pp/overview[DRep Pioneer program], an online interactive training course for nominated delegate representatives (DReps) involved in Cardano’s proposed governance structure(((Cardano, proposed governance structure))).
 
 *Stake pool operators (SPOs)*
 
-Think of SPOs as the caretakers of Cardano's network(((caretakers of Cardano's network))). They run stake pools, which are essentially servers that keep the blockchain running smoothly. These operators typically:
+Think of SPOs as the caretakers of Cardano's network. They run stake pools, which are essentially servers that keep the blockchain running smoothly. These operators typically:
 
 * Own or rent servers running the Cardano node (both block-producing and relay nodes)
 * Hold the pool's key
@@ -435,43 +435,43 @@ SPOs play a vital part in Cardano's on-chain voting(((on-chain, voting))) govern
 
 *The constitutional committee (CC)*
 
-Unlike other Cardano governance bodies, the CC operates independently and entirely outside of Intersect. It is one of three key groups (alongside SPOs and DReps) that vote on proposals to change Cardano’s core systems through governance actions. The CC’s primary function is to review proposed changes with a limited focus -- ensuring that they align with the principles outlined in Cardano’s constitution(((principles outlined in Cardano’s constitution))).
+Unlike other Cardano governance bodies, the CC operates independently and entirely outside of Intersect. It is one of three key groups (alongside SPOs and DReps) that vote on proposals to change Cardano’s core systems through governance actions. The CC’s primary function is to review proposed changes with a limited focus -- ensuring that they align with the principles outlined in Cardano’s constitution(((Cardano constitution, principles))).
 
 === Cardano governance flow
 
-CIP-1694 outlines Cardano's on-chain governance process, but it's also important to consider the supporting off-chain activities(((supporting off-chain activities))).
+CIP-1694 outlines Cardano's on-chain governance process, but it's also important to consider the supporting off-chain activities.
 
 *Off-chain proposal discussions*
 
-Before proposals are submitted to the blockchain for official votes, there is a crucial off-chain stage for discussion and refinement(((discussion and refinement))). Off-chain debate allows for:
+Before proposals are submitted to the blockchain for official votes, there is a crucial off-chain stage for discussion and refinement. Off-chain debate allows for:
 
 * Clearer proposals: proposers can share more details, rationale, and supporting evidence to ensure everyone understands the idea
 * Community input: reviews, comments, and feedback help improve the proposal and gauge overall sentiment
 * Informed voters: off-chain discussions generate valuable context, which becomes part of the official proposal (metadata) on-chain, aiding voters in making informed decisions
 * Reduced burden: filtering and refining proposals off-chain minimizes the number of votes submitted on-chain, reducing stress on the blockchain.
 
-Without a strong off-chain process, governance could falter, as ideas may not undergo thorough discussion or refinement. On-chain proposals might lack the necessary context(((lack the necessary context))), making informed voting difficult.
+Without a strong off-chain process, governance could falter, as ideas may not undergo thorough discussion or refinement. On-chain proposals might lack the necessary context, making informed voting difficult.
 
-Intersect recognizes the importance of off-chain discussions and has issued a grant to establish a dedicated proposal discussion forum(((dedicated proposal discussion forum))). More information about the grant can be found in https://intersect.gitbook.io/intersect-community-grants/cohort-2/proposal-discussion-forum[Intersect's GitBook].
+Intersect recognizes the importance of off-chain discussions and has issued a grant to establish a dedicated proposal discussion forum. More information about the grant can be found in https://intersect.gitbook.io/intersect-community-grants/cohort-2/proposal-discussion-forum[Intersect's GitBook].
 
 *Submitting on-chain governance actions*
 
 Once a proposal has been thoroughly discussed and refined off-chain, it is ready for the official vote on the blockchain. This is known as on-chain governance action submission(((governance, action))). Proposals can be submitted on-chain through the Cardano command-line interface (CLI) or via GovTool’s user-friendly interface. The specific content required for an on-chain proposal depends on the type of governance action being submitted. Proposers can optionally add metadata to provide additional context and information alongside the proposal.
 
 === Governance actions
-What are governance actions? Imagine them as proposals submitted on the Cardano blockchain(((proposals submitted on the Cardano blockchain))) for voting. These proposals trigger events on the blockchain through transactions and have a set timeframe for voting before they expire and can’t be enacted. Any ada holder can submit a governance action for on-chain voting. Once a proposal is submitted and recorded on the ledger, voters can vote through separate voting transactions. Note that a governance action requires a refundable deposit of 100,000 ADA to prevent spam and demonstrate commitment. The deposit is returned after the action is finalized.
+What are governance actions? Imagine them as proposals submitted on the Cardano blockchain for voting. These proposals trigger events on the blockchain through transactions and have a set timeframe for voting before they expire and can’t be enacted. Any ada holder can submit a governance action for on-chain voting. Once a proposal is submitted and recorded on the ledger, voters can vote through separate voting transactions. Note that a governance action requires a refundable deposit of 100,000 ADA to prevent spam and demonstrate commitment. The deposit is returned after the action is finalized.
 
-CIP-1694 defines seven categories of governance actions(((seven categories of governance actions))):
+CIP-1694 defines seven categories of governance actions(((governance actions, categories))):
 
-1. Motion of no-confidence: creates a state of no-confidence in the current constitutional committee(((constitutional, committee))).
+1. Motion of no-confidence: creates a state of no-confidence in the current constitutional committee.
 2. New constitutional committee or quorum size: proposes a change to the members of the constitutional committee and/or to its signature threshold and/or terms.
-3. Updates to the constitution: proposes a change to the off-chain constitution, recorded as an on-chain hash of the text document(((on-chain, hash))).
-4. Hard fork initiation: triggers a non-backward compatible upgrade(((non-backward compatible upgrade))) of the network.
-5. Protocol parameter changes: proposes a change to one or more updatable protocol parameters(((updatable protocol parameters))).
-6. Treasury withdrawals(((treasury, withdrawal))): proposals for how to spend funds from the Cardano treasury.
-7. Info(((Info))): simply provide information and don’t require enactment.
+3. Updates to the constitution: proposes a change to the off-chain constitution, recorded as an on-chain hash of the text document.
+4. Hard fork initiation: triggers a non-backward compatible upgrade of the network.
+5. Protocol parameter changes: proposes a change to one or more updatable protocol parameters.
+6. Treasury withdrawals(((treasury, withdrawals))): proposals for how to spend funds from the Cardano treasury.
+7. Info: simply provide information and don’t require enactment.
 
-Governance actions vary in complexity. Info Actions and Treasury Withdrawals are relatively straightforward, but Constitutional updates require metadata, a constitution hash, a URL, and a proposal policy script. Protocol Parameter Changes(((Protocol Parameter Changes))) and Hard Fork Initiation are non-trivial to implement, requiring technical expertise. To demystify some of the processes, the CF published https://cardanofoundation.org/blog/understanding-cardano-governance-actions[flow charts] to encourage wider participation.
+Governance actions vary in complexity. Info Actions and Treasury Withdrawals are relatively straightforward, but Constitutional updates require metadata, a constitution hash, a URL, and a proposal policy script. Protocol Parameter Changes(((protocol parameters, changes))) and Hard Fork Initiation are non-trivial to implement, requiring technical expertise. To demystify some of the processes, the CF published https://cardanofoundation.org/blog/understanding-cardano-governance-actions[flow charts] to encourage wider participation.
 
 === Registering as a DRep on-chain
 
@@ -479,11 +479,11 @@ DRep registration(((DRep, registration))) occurs on the blockchain and can be do
 
 *On-chain DRep delegation*
 
-On-chain delegation allows ada holders to give their voting power to a DRep of their choice. These DReps then cast votes on their behalf regarding active governance actions(((active governance actions))).
+On-chain delegation allows ada holders to give their voting power to a DRep of their choice. These DReps then cast votes on their behalf regarding active governance actions(((governance actions))).
 
-To make an informed decision, individuals should review the metadata submitted by DReps during registration. This metadata might include details like their expertise, areas of interest, and even past voting history(((past voting history))).
+To make an informed decision, individuals should review the metadata submitted by DReps during registration. This metadata might include details like their expertise, areas of interest, and even past voting history.
 
-The delegation process happens on the blockchain and can be done through the Cardano CLI(((Cardano, CLI))) or GovTool.
+The delegation process happens on the blockchain and can be done through the Cardano CLI or GovTool (((GovTool))).
 
 *On-chain voting process*
 
