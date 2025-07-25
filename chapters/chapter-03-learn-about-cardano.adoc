@@ -54,9 +54,9 @@ Cardano’s governance model reflects a *liquid and representative democracy*. T
 
 Designing a proof-of-stake blockchain necessitates self-sustainability. *Cardano Improvement Proposals (CIPs)* foster and formalize discussions around new features and development within the community. The Cardano governance(((governance))) https://www.intersectmbo.org/roadmap[roadmap], particularly under *CIP-1694*, guides the community through a structured transition to a decentralized, community-driven governance model, allowing for extensive community feedback and refinement.
 
-https://www.intersectmbo.org/news/cardano-cip-1694-explained[CIP-1694], named after Voltaire's birth year, was community-written to discuss the future of on-chain governance. It aims to give everyone a voice in Cardano's direction by advancing the current governance system. The proposal outlines a trilateral model consisting of stake pool operators (SPOs), delegate representatives (DReps), and a constitutional committee (CC), each with distinct responsibilities.
+https://www.intersectmbo.org/news/cardano-cip-1694-explained[CIP-1694], named after Voltaire's birth year, was community-written to discuss the future of on-chain governance. It aims to give everyone a voice in Cardano's direction by advancing the current governance system. The proposal outlines a trilateral model consisting of stake pool operators (stake pool operator), delegate representatives (DReps), and a constitutional committee (CC), each with distinct responsibilities.
 
-Central to the treasury(((treasury))) is a *democratized voting mechanism* where ada(((ADA))) holders decide fund allocation by voting on proposals. This ensures democratic decision-making for funding initiatives, protocol updates, and constitutional changes.
+Central to the treasury(((treasury))) is a *democratized voting mechanism* where ada(((ada))) holders decide fund allocation by voting on proposals. This ensures democratic decision-making for funding initiatives, protocol updates, and constitutional changes.
 
 Launched in 2023, https://www.intersectmbo.org/[Intersect] is a member-based organization for the Cardano ecosystem, placing the community at the core of Cardano’s future development.
 
@@ -107,7 +107,7 @@ The IO education team possesses extensive experience in curriculum design, proje
 
 As Dr. Lars Brünjes(((Brünjes, Lars))), Director of Education at IO, emphasizes:
 
- ‘Education is a cornerstone of our approach at Cardano. By equipping individuals with the knowledge and skills to navigate and innovate within the blockchain ecosystem, we empower them to build a more decentralized and inclusive future. My greatest fulfillment came from teaching the all-female Haskell(((Haskell))) course in Ethiopia, witnessing firsthand the transformative power of education. That experience reaffirmed my belief in the potential of education to create substantive, lasting change.’
+ ‘Education is a cornerstone of our approach at Cardano. By equipping individuals with the knowledge and skills to navigate and innovate within the blockchain ecosystem, we empower them to build a more decentralized and inclusive future. My greatest fulfillment came from teaching the all-female Haskell course in Ethiopia, witnessing firsthand the transformative power of education. That experience reaffirmed my belief in the potential of education to create substantive, lasting change.’
 
 IO offers various education streams:
 
@@ -117,18 +117,18 @@ image::mc_education_ pillars.png[title="Education pillars"]
 
 This education stream aligns with the mission to provide free education to the Cardano community, including:
 
-- Haskell(((Haskell))) Course: Aimed at those looking to master the functional programming language(((functional programming language))) Haskell(((Haskell))), which is integral to Cardano's development.
+- Haskell(((Haskell))) Course: Aimed at those looking to master the functional programming language(((functional programming language))) Haskell, which is integral to Cardano's development.
 - Cardano Days: Interactive events that provide a deep dive into the Cardano platform, covering its unique features and applications.
 - Blockchain Workshops: In-person or virtual workshops and lectures on the fundamentals of blockchain and Cardano.
 - Essential Cardano(((Essential Cardano))): The https://www.essentialcardano.io/[Essential Cardano website] was launched in 2022 and has since become a thriving community resource. It serves as a resource for understanding Cardano, identifying its partners, learning about its mission and roadmap(((roadmap))), and getting started with building on Cardano. This was preceded by the original https://github.com/IntersectMBO/essential-cardano[Essential Cardano List repository] which was created in 2021 as a central canonical guide to the Cardano ecosystem.
 
-As part of this stream, IO offers comprehensive in-person courses in Haskell(((Haskell))) that run for 10-12 weeks (depending on the curriculum). https://iohk.io/en/research/library/authors/lars-brunjes/[Dr. Lars Brünjes] and his team have delivered several of these Haskell(((Haskell))) courses, including:
+As part of this stream, IO offers comprehensive in-person courses in Haskell that run for 10-12 weeks (depending on the curriculum). https://iohk.io/en/research/library/authors/lars-brunjes/[Dr. Lars Brünjes] and his team have delivered several of these Haskell(((Haskell))) courses, including:
 
-- Haskell(((Haskell))) and cryptocurrency course 2017, which ran for eight weeks at the https://www.ntua.gr/en/[National Technical University of Athens].
+- Haskell and cryptocurrency course 2017, which ran for eight weeks at the https://www.ntua.gr/en/[National Technical University of Athens].
 - https://iohk.io/en/blog/posts/2018/04/07/iohk-haskell-and-cryptocurrency-course-in-barbados/[Haskell and cryptocurrency course 2018], which ran for eight weeks at the University of West Indies in Barbados.
 - https://iohk.io/en/blog/posts/2019/04/04/training-blockchain-developers-in-africa/[Haskell course 2019 Ethiopia]: this three-month course was delivered in Addis Ababa, Ethiopia, in conjunction with the Ethiopian Ministry of Innovation and Technology. It was delivered to an all-female audience of Ethiopian and Ugandan students.
-- Online Haskell(((Haskell))) course 2020: This course was originally planned for Mongolia, but due to COVID-19 it was migrated to an online course.
-- Haskell(((Haskell))) course 2023: Delivered with additional Marlowe(((Marlowe))) and Plutus(((Plutus))) components. This comprehensive blended learning course was taught in conjunction with https://www.theafricablockchaincenter.com/[the African Blockchain Center] and taught at their offices in Nairobi, Kenya. The team adopted a train-the-trainer approach for this course and produced a train-the-trainer kit for professors in the group. The course blended in-person and virtual interactions, allowing us to connect with attendees and understand their perspectives on the topics covered during the session
+- Online Haskell course 2020: This course was originally planned for Mongolia, but due to COVID-19 it was migrated to an online course.
+- Haskell course 2023: Delivered with additional Marlowe(((Marlowe))) and Plutus(((Plutus))) components. This comprehensive blended learning course was taught in conjunction with https://www.theafricablockchaincenter.com/[the African Blockchain Center] and taught at their offices in Nairobi, Kenya. The team adopted a train-the-trainer approach for this course and produced a train-the-trainer kit for professors in the group. The course blended in-person and virtual interactions, allowing us to connect with attendees and understand their perspectives on the topics covered during the session
 
 ===== Cardano Days events
 
