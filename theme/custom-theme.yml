@@ -9,6 +9,7 @@ heading:
 code:
   font-family: Roboto
   highlight-background-color: #32302f
+  font-size: 9
 font:
   catalog:
     merge: true
