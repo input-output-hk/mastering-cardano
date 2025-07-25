@@ -39,11 +39,11 @@ image::../images/5.1_cip_workflow.png[]
 
 *Figure 5.1:* CIP workflow from CIP-0001
 
-CIPs are processed in a semi-formal manner. Editors of CIP proposals(((proposals))) meet regularly to discuss and evaluate ideas. The fortnightly meeting http://github.com/cardano-foundation/CIPs/tree/master/BiweeklyMeetings[minutes] are publicly available.
+CIPs are processed in a semi-formal manner. Editors of CIP proposals(((CIP proposals))) meet regularly to discuss and evaluate ideas. The fortnightly meeting http://github.com/cardano-foundation/CIPs/tree/master/BiweeklyMeetings[minutes] are publicly available.
 
 === Project Catalyst: democratizing innovation in Cardano
 
-https://projectcatalyst.io/[Project Catalyst], one of the world’s largest decentralized innovation funds(((decentralized, innovation fund))), is a key component of the Cardano ecosystem. It aims to drive Cardano's evolution through community-driven funding and development initiatives to address real-world challenges. Catalyst empowers the Cardano community to propose, vote on, and fund proposals to foster innovation and growth within the ecosystem.
+https://projectcatalyst.io/[Project Catalyst],  one of the world’s largest decentralized innovation funds, is a key component of the Cardano ecosystem. It aims to drive Cardano's evolution through community-driven funding and development initiatives to address real-world challenges. Catalyst empowers the Cardano community to propose, vote on, and fund proposals to foster innovation and growth within the ecosystem.
 
 Launched in 2020, Project Catalyst represents a significant milestone in the Cardano roadmap. It reflects the project's commitment to decentralized governance(((decentralized, governance))) and community empowerment and marks the transition from a research-driven initiative to a community-led innovation hub.
 
@@ -57,40 +57,40 @@ The primary goals of Project Catalyst(((Project Catalyst))) are to:
 
 *The funding mechanism*
 
-Project Catalyst's funding mechanism is designed to support various innovative projects within the Cardano ecosystem(((Cardano, ecosystem))). It operates through a series of iterative funding rounds, known as funds, each with its own budget, themes, and goals.
+Project Catalyst's funding mechanism is designed to support various innovative projects within the Cardano ecosystem. It operates through a series of iterative funding rounds, known as funds, each with its own budget, themes, and goals.
 
-The funds for Project Catalyst(((Project Catalyst))) are sourced from the Cardano treasury, which is replenished through a combination of:
+The funds for Project Catalyst are sourced from the Cardano treasury, which is replenished through a combination of:
 
 - Transaction fees, which are small fees collected from each transaction processed on the Cardano network
 - Reserve funds, which come from a portion of Cardano’s initial supply allocated to a reserve for long-term ecosystem development funding.
 
 *Structure of funding rounds*
 
-Each funding(((funding))) round operates cyclically, typically lasting several weeks to a few months. Each fund is identified numerically (eg, Fund1, Fund2) and has a defined budget. The structure of a funding(((funding))) round generally includes the following phases:
+Each funding round operates cyclically, typically lasting several weeks to a few months. Each fund is identified numerically (eg, Fund1, Fund2) and has a defined budget. The structure of a funding round generally includes the following phases:
 
 1. *Proposal submission(((proposal submission)))*: innovators submit their project proposals on the https://cardano.ideascale.com/[IdeaScale platform]. Each proposal must align with the thematic goals set for that particular fund.
 2. *Community review(((community, review)))*: during this phase, the community reviews and provides feedback on the submitted proposals.
 3. *Voting*: any ada holder can vote on proposals using the Catalyst voting application(((Catalyst, voting application))). Voting power is proportional to the amount of ada held, incentivizing ada holders to participate actively in the governance process.
 4. *Funding allocation(((funding allocation)))*: based on the voting results, funds are allocated to the awarded proposals. Proposals with the highest votes receive funding until the budget for that fund is exhausted.
 
-For more information about how Project Catalyst(((Project Catalyst))) works, read the https://projectcatalyst.io/how-it-works[‘How it works’ section] on Project Catalyst(((Project Catalyst)))’s website.
+For more information about how Project Catalyst works, read the https://projectcatalyst.io/how-it-works[‘How it works’ section] on Project Catalyst’s website.
 
 *Voting process*
 
-Voting is a critical component of Project Catalyst(((Project Catalyst))), as it empowers the Cardano community to have a direct say in which proposals receive funding. This process ensures that decisions are decentralized and reflective of the community's collective priorities. Here’s an in-depth look at how the voting process works:
+Voting is a critical component of Project Catalyst, as it empowers the Cardano community to have a direct say in which proposals receive funding. This process ensures that decisions are decentralized and reflective of the community's collective priorities. Here’s an in-depth look at how the voting process works:
 
 1. *Download* the https://projectcatalyst.io/get-involved/become-a-voter[Catalyst Voting App] -- available on mobile devices.
 2. *Registration*. The registration process involves taking a snapshot of the participant’s ada holdings at a specific point in time. This snapshot determines the voting power(((voting power))) of each participant.
 3. *Reviewing proposals*. All proposals are publicly accessible on the _IdeaScale_ platform and the voting application. Detailed information about each proposal, including the problem statement, proposed solution, team details, and budget, is available for discussion and feedback.
-4. *Voting begins*. For each proposal, voters typically have multiple options to express their support or opposition. Once you’ve cast a vote on the blockchain(((blockchain))), you cannot change it.
+4. *Voting begins*. For each proposal, voters typically have multiple options to express their support or opposition. Once you’ve cast a vote on the blockchain, you cannot change it.
 5. *Counting votes*. After the voting period ends, votes are tallied.
 6. The *results are announced* publicly, detailing which proposals have been selected for funding.
 
-After each funding round, feedback from the community is collected to identify areas for improvement in the voting process. Based on community feedback, enhancements are made to the voting process, such as improving the user interface of the voting application, increasing security measures, and refining the proposal evaluation criteria(((proposal evaluation criteria))).
+After each funding round, feedback from the community is collected to identify areas for improvement in the voting process. Based on community feedback, enhancements are made to the voting process, such as improving the user interface of the voting application, increasing security measures, and refining the proposal evaluation criteria.
 
 *Transparency and accountability*
 
-Project Catalyst(((Project Catalyst))) places a strong emphasis on transparency and accountability through the following measures:
+Project Catalyst places a strong emphasis on transparency and accountability through the following measures:
 
 * Publicly accessible proposals: all proposals and their progress are publicly accessible on the IdeaScale platform, allowing the community to track their development
 * Regular updates: funded projects are required to provide regular updates on their progress, including milestones achieved and funds spent
@@ -110,7 +110,7 @@ Measuring the success of Project Catalyst is essential to ensure that the initia
 8. Growth in Project Catalyst participation
 9. Long-term sustainability and scalability.
 
-Catalyst continues to improve and evolve with shared learnings. For example, funded projects(((projects))) from Funds 9–13 can now avail themselves of legal support from _Storm Partners_. This may include:
+Catalyst continues to improve and evolve with shared learnings. For example, funded projects from Funds 9–13 can now avail themselves of legal support from _Storm Partners_. This may include:
 
 * Contract review and protection
 * Global DApp compliance
@@ -152,18 +152,18 @@ Early in 2022, IOG and the CF held workshops to hammer out a way forward for the
 
 1. The *concept of representation* involves consent regarding decision-making authority(((decision-making authority))). There are two types: *direct representation*, where individuals vote personally, and *delegated authority*, where individuals hand their vote to someone else. In CIP-1694, this role is called a delegate representative (DRep). This concept was discussed, but as yet not implemented, in Project Catalyst.
 
-2. Governance requires a set of rules, often called a constitution, which serves as guardrails to provide stability. In a blockchain context, a constitution can be machine-readable. Formal specifications(((Formal specifications))) can act as blueprints for Cardano, enabling integration with an update system. Once a voting system is established, the constitution can be ratified, hashed, and embedded in a transaction. This allows users to sign a type of ‘end user agreement’ by signing the transaction.
+2. Governance requires a set of rules, often called a constitution, which serves as guardrails to provide stability. In a blockchain context, a constitution can be machine-readable. Formal specifications(((formal specifications))) can act as blueprints for Cardano, enabling integration with an update system. Once a voting system is established, the constitution can be ratified, hashed, and embedded in a transaction. This allows users to sign a type of ‘end user agreement’ by signing the transaction.
 
 3. *Institutions* are often seen as targets for decentralization. If the goal is to ‘kill the middleman’, why do institutions matter? At their best, institutions set standards and provide a review process conducted by domain experts. Institutions are essential for good governance as they are the custodians of knowledge and best practices. People can be biased, so objective, neutral bodies are sometimes necessary for guidance. After careful consideration, it was determined that the most important ‘anchor’ institution would be a *members-based organization* (MBO) which should operate similarly to other open-source initiatives like the Linux Foundation, or the Cloud Native Computing Foundation(((Cloud Native Computing Foundation))) (CNCF).
 
 *What is an MBO?*
 
-The MBO is a central hub that unites different groups, including thousands of stake pool operators(((stake pool, operator))), Cardano ambassadors, open-source projects running on Cardano, IO, CF, EMURGO, and all ada holders. Members will own and run the MBO, staffing the steering committees.
+The MBO is a central hub that unites different groups, including thousands of stake pool operators(((stake pool operator))), Cardano ambassadors(((Cardano ambassador))), open-source projects running on Cardano, IO, CF, EMURGO, and all ada holders. Members will own and run the MBO, staffing the steering committees.
 
 image::../images/5.3_gov_concepts.png[]
 *Figure 5.3:* Governance concepts defined, based on the slide from ScotFest 2022
 
-The MBO, later christened _Intersect_, is Voltaire's anchor institution, but it is not the only one. IOG has been steadily building out its presence in universities all over the globe, as well as opening the Hoskinson Center for Formal Mathematics(((Hoskinson, Center for Formal Mathematics))), the Zero-Knowledge Lab, and -- not forgetting -- the Edinburgh Decentralization Index (EDI).  Other institutions and MBOs will follow with different focuses and priorities.
+The MBO, later christened _Intersect_, is Voltaire's anchor institution, but it is not the only one. IOG has been steadily building out its presence in universities all over the globe, as well as opening the Hoskinson Center for Formal Mathematics(((Hoskinson, Center for Formal Mathematics))), the Zero-Knowledge Lab, and -- not forgetting -- the https://informatics.ed.ac.uk/blockchain/edi[Edinburgh Decentralization Index (EDI)].  Other institutions and MBOs will follow with different focuses and priorities.
 
 _"Institutions… their only job is to take complexity and turn it into simplicity"_
 -- Charles Hoskinson footnote:[Charles Hoskinson: Crypto regulations & policy, Importance of stablecoins & the future of Cardano, youtu.be/uEV8tQ6z87k?si=iVazdagl5JWZez3q&t=1983]
@@ -208,11 +208,11 @@ As governance can be subjective, it's best you read CIP-1694 yourself, especiall
 
 === Intersect: shaping Cardano's future
 
-Intersect is a member-based organization for the Cardano ecosystem, founded in 2023. It serves as an aggregation point for the entire Cardano community, placing the community at the heart of Cardano’s future development and harnessing the untapped potential of collective wisdom and economic energy. Intersect brings together companies, developers, individuals, institutions, and other ecosystem participants to shape and drive the future development of Cardano. It acts as a steward of the underlying blueprints and technology for the community, beginning with the Cardano node, core technology libraries(((core technology libraries))), and components required to operate the protocol, along with all of its accompanying documentation, knowledge, and contributors.
+Intersect is a member-based organization for the Cardano ecosystem, founded in 2023. It serves as an aggregation point for the entire Cardano community, placing the community at the heart of Cardano’s future development and harnessing the untapped potential of collective wisdom and economic energy. Intersect brings together companies, developers, individuals, institutions, and other ecosystem participants to shape and drive the future development of Cardano. It acts as a steward of the underlying blueprints and technology for the community, beginning with the Cardano node, core technology libraries((( technology libraries))), and components required to operate the protocol, along with all of its accompanying documentation, knowledge, and contributors.
 
-This governance structure is designed to enhance decentralized growth within the Cardano ecosystem. It seeks to enable community-driven decision-making through democratic voting, defines clear roles and responsibilities, and ensures accountability. Intersect, as an MBO, manages funds for ecosystem projects, aligns efforts with long-term strategic goals, and fosters inclusive community participation. It also improves coordination, increases accountability, and supports sustainable growth by providing a structured yet decentralized framework(((structured yet decentralized framework))). Implementation involves community consensus, framework development, regulatory compliance, securing funding, and ongoing management. This model empowers the Cardano community and aligns with its vision of decentralization and transparency.
+This governance structure is designed to enhance decentralized growth within the Cardano ecosystem. It seeks to enable community-driven decision-making through democratic voting, defines clear roles and responsibilities, and ensures accountability. Intersect, as an MBO, manages funds for ecosystem projects, aligns efforts with long-term strategic goals, and fosters inclusive community participation. It also improves coordination, increases accountability, and supports sustainable growth by providing a structured yet decentralized framework. Implementation involves community consensus, framework development, regulatory compliance, securing funding, and ongoing management. This model empowers the Cardano community and aligns with its vision of decentralization and transparency.
 
-https://www.intersectmbo.org/[Intersect] empowers a distributed network of builders and contributors(((distributed network of builders and contributors))) who believe that every voice holds value and that collaboration leads to stronger outcomes. Members forge a secure, collaborative ecosystem to ensure Cardano's sustained growth and evolution in a safe space.
+https://www.intersectmbo.org/[Intersect] empowers a distributed network of builders and contributors who believe that every voice holds value and that collaboration leads to stronger outcomes. Members forge a secure, collaborative ecosystem to ensure Cardano's sustained growth and evolution in a safe space.
 
 ==== How Intersect operates
 
@@ -226,11 +226,11 @@ All Cardano ecosystem participants are welcome to become Intersect members. Made
 2. Governance: champions and oversees Cardano’s community-driven governance system(((community, -driven governance system))), implemented through CIP-1694
 3. Technical roadmap: helps orchestrate the delivery of the Cardano technical roadmap
 4. Continuity: ensures system stability(((system stability))), Intersect facilitates Cardano’s ongoing continuity
-5. Open-source development(((Open-source development))): plays a role in coordinating the open-source development of Cardano’s core technologies.
+5. Open-source development(((open-source development))): plays a role in coordinating the open-source development of Cardano’s core technologies.
 
 Intersect has a central governing board, similar to a city council, chosen and managed by its members. This board is supported by various committees and working groups, each focusing on specific areas or interests within the Cardano ecosystem.
 
-Intersect’s governing board started with five seats. Three were filled by founding members (seed funders, Input Output Global, and EMURGO), with the Intersect chief operating officer (COO) holding a temporary seat. Another seat was offered to the University of Wyoming’s Blockchain Center(((University of Wyoming’s Blockchain Center))) for a one-year term.
+Intersect’s governing board started with five seats. Three were filled by founding members (seed funders, Input | Output, and EMURGO), with the Intersect chief operating officer (COO) holding a temporary seat. Another seat was offered to the University of Wyoming’s Blockchain Center(((University of Wyoming’s Blockchain Center))) for a one-year term.
 
 The remaining two permanent seats were filled later in 2024 through an election process, with Kavinda Kariyapperuma and Adam Rusch voted in by Intersect members. The board now plans to expand from five to seven, with the number of seats elected by Intersect members rising from two to four. This doubles the community representation, which will make up the majority of the seats at the board leadership level(((board leadership level))). The board meets monthly and publishes agendas and https://intersect.gitbook.io/intersect-board[minutes] for transparency, and can be contacted at board@intersectmbo.org.
 
