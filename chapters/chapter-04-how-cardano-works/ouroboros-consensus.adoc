@@ -5,6 +5,9 @@
 
 Ouroboros(((Ouroboros))) is a family of proof-of-stake protocols powering the Cardano blockchain, among others. It is backed by years of research and numerous peer-reviewed publications <<OurborosClassicPaper>>.
 
+
+TODO: Insert References to the papers#
+
 This chapter builds an intuitive understanding of how Ouroboros(((Ouroboros))) works, providing the foundation needed to make sense of the formal papers that describe the algorithm in mathematical detail.
 
 Let's start with a definition:
