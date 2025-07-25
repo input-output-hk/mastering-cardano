@@ -77,8 +77,8 @@ Begin by understanding the core components of the Cardano network, delve into ho
 ===== Suggested Chapters & Sections:
 - Preface: How to Navigate, How to Contribute
 - Chapter 4: How Cardano Works: Overview of Cardano Network Protocols, Reaching Consensus using proof of stake, About the Ouroboros Protocol, Incentives in Cardano, Cardano Node and system layers (Introduction to the Cardano node, Cardano Node Layers), Components of the Cardano Ecosystem (Node, CLI, Db sync)
-- Chapter 6: Wallets in the Cardano Ecosystem: Fundamentals of Wallets (Public and private keys: What they are and how they work), Common operations in a Cardano Wallet (Staking ADA: How it works and its benefits)
-- Chapter 7: Stake Pools and Stake Pool Operations: Introduction, What is a Stake Pool?, SPO Requirements, Leadership Selection, Slot Conflict, Cardano CLI, Node Operations, Glossary
+- Chapter 6: Wallets in the Cardano Ecosystem: Fundamentals of Wallets (Public and private keys: What they are and how they work), Common operations in a Cardano Wallet (Staking ada: How it works and its benefits)
+- Chapter 7: Stake Pools and Stake Pool Operations: Introduction, What is a Stake Pool?, SPO Requirements, Leadership Selection, Slot Conflict, Cardano CLI, Node Operations
 
 ==== Cardano Governance & Future Path
 Understand how Cardano's governance model operates, explore key initiatives like Project Catalyst and CIPs, and look ahead to future advancements and the Cardano 2.0 vision.
