@@ -26,7 +26,7 @@ To become an active block producer, a node requires the following cryptographic 
 * the __operational certificate__ (op.cert)
 * the __key evolving signature (KES) signing key__ (kes.skey)
 
-When a full node is not started with these files, it is referred to as a passive node, or when connected to a block producer, a __relay__. A relay sits between the open Cardano network and block producing node(s) of a stake pool. Its purpose is to allow a block producing node to interact with the network securely as the block producing node should only be connected and known to the specific relays the stake pool operator (SPO) controls. This separation of concerns reduces the attack surface of a stake pool and allows the block producing node to focus on minting blocks and propagating these to a small set of well-known relays, which will in turn propagate the blocks to the wider network. Relays are typically publicly known as they are registered with the pool, so other relays can find them in a peer-to-peer manner. Relays may also be run privately with static topologies(((static topologies))) listing other relays.
+When a full node is not started with these files, it is referred to as a passive node, or when connected to a block producer, a __relay__. A relay sits between the open Cardano network and block producing node of a stake pool. Its purpose is to allow a block producing node to interact with the network securely as the block producing node should only be connected and known to the specific relays the stake pool operator (SPO) controls. This separation of concerns reduces the attack surface of a stake pool and allows the block producing node to focus on minting blocks and propagating these to a small set of well-known relays, which will in turn propagate the blocks to the wider network. Relays are typically publicly known as they are registered with the pool, so other relays can find them in a peer-to-peer manner. Relays may also be run privately with static topologies(((static topologies))) listing other relays.
 
 Cardano uses a proof of stake (PoS) consensus mechanism(((consensus mechanism))). Network participants holding ada (Cardano’s native token) can delegate their stake to a stake pool, effectively pooling their resources and increasing the pool’s chances of being selected to validate a block and earn rewards.
 
@@ -189,7 +189,7 @@ Instead of rushing directly to mainnet operation, SPOs should take the time to l
 
 Here are a few useful guides and courses for setting up a stake pool:
 
-* https://docs.cardano.org/development-guidelines/operating-a-stake-pool/creating-a-stake-pool/[Cardano Docs: Creating a stake pool]
+* https://docs.cardano.org/developer-resources/cardano-node-course[Cardano Docs: Creating a stake pool]
 * https://cardano-course.gitbook.io/cardano-course/handbook[Cardano Course: Handbook]
 * https://developers.cardano.org/docs/operate-a-stake-pool/[Cardano Developer Portal: Operate a Stake Pool]
 * https://www.coincashew.com/coins/overview-ada/guide-how-to-build-a-haskell-stakepool-node[Concashew’s Stake Pool Guide]
@@ -203,11 +203,11 @@ The stability of the Haskell node has significantly improved, making basic node 
 Prior to mainnet(((mainnet))) operations, prospective SPOs should master such key areas:
 
 * *Monitor node health*: set up alerting systems for issues such as missed blocks, node crashes, or stuck block height.
-* *Read and interpret logs*: analyze cardano-node logs to troubleshoot potential issues and investigate each missed block. Long-term luck should approximate 100%. Although block collisions (where multiple pools are assigned the same slot) do occur, they are uncommon. More details are covered in the https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/making_blocks.adoc[*Slot Battles, Height Battles, Forkers and Propagation*].
+* *Read and interpret logs*: analyze cardano-node logs to troubleshoot potential issues and investigate each missed block. Long-term luck should approximate 100%. Although block collisions (where multiple pools are assigned the same slot) do occur, they are uncommon.
 * *Collaborate on GitHub*: help other SPOs analyze, contribute to, and create cardano-node issues for testnets or mainnet.
 * *Maintain infrastructure*: execute node or infrastructure updates seamlessly, ensuring no service interruption.
-* https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/server_security_and_hardening.adoc[*Harden the pool environment*:] strengthen security around the pool infrastructure.
-* https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/timesync.adoc[*Sync to universal time*:] keep both the node and server synchronized with universal time to prevent operational issues.
+* *Harden the pool environment*: strengthen security around the pool infrastructure.
+* *Sync to universal time*: keep both the node and server synchronized with universal time to prevent operational issues.
 * *Handle pool registration securely*: perform updates without exposing sensitive keys.
 * *Expand node resources*: increase resource provisioning for cardano-node without interrupting services.
 * *Plan for failover*: prepare and configure systems to handle critical node failures.
@@ -228,7 +228,7 @@ There is a chance for block creation in each slot. To ensure a secure process, e
 
 image::limbo.png[width=100%,title="Limbo"]
 ==== Playing Limbo
-To simplify how a pool is chosen to create a block, imagine it as a game of Limbo. To win, a person (the stake pool) must go under the bar (a threshold value)(((threshold, value))). For each slot, the bar is set at a unique height for each stake pool, determined by the pool’s stake. Larger pools have a higher bar, making it easier for them to win (create blocks), while smaller pools have a lower bar. The bar’s height isn’t fixed but is randomly adjusted for each participating pool based on its stake.
+To simplify how a pool is chosen to create a block, imagine it as a game of Limbo. To win, a person (the stake pool) must go under the bar (a threshold value). For each slot, the bar is set at a unique height for each stake pool, determined by the pool’s stake. Larger pools have a higher bar, making it easier for them to win (create blocks), while smaller pools have a lower bar. The bar’s height isn’t fixed but is randomly adjusted for each participating pool based on its stake.
 
 To determine if a stake pool can create a block in a given slot, several factors are assessed.
 
@@ -276,7 +276,7 @@ The following table summarizes the types of contention we can have on the Cardan
 |===
 
 ==== Resolution of battles and forks
-When a battle or fork occurs on the network, all nodes must reach consensus on which block to add to the chain and which one(s) to discard. In the Praos era (post-Vasil hard fork(((Vasil hard fork)))), two primary rules guide this decision:
+When a battle or fork occurs on the network, all nodes must reach consensus on which block to add to the chain and which one(s) to discard. In the Praos era (post-Vasil hard fork), two primary rules guide this decision:
 
 .  Chain Length, the longest chain length is always preferred.
 .  If the chain length is the same, we choose the block with the lowest block vrf.
@@ -294,9 +294,8 @@ image::nittygritty-illustration-5.png[width=50%,title="propagation time"]
 ==== Tying it all together: Some real examples
 
 ===== The typical situation:
-In the typical situation, over 90% of the blocks on the chain are created smoothly, without issues. The illustration below depicts a normal scenario where one pool creates a block, followed by another pool building a block on top of it. In this example, the first pool creates a block in slot 10, and the second pool creates a block in slot 15. The second pool’s block is built on top of the first pool’s block, allowing the chain to continue growing.
+In the typical situation, over 90% of the blocks on the chain are created smoothly, without issues. The example below depicts a normal scenario where one pool creates a block, followed by another pool building a block on top of it. In this example, the first pool creates a block in slot 10, and the second pool creates a block in slot 15. The second pool’s block is built on top of the first pool’s block, allowing the chain to continue growing.
 
-<need illustration>
 
 1.  Pool A creates a block in slot 10
 2.  Pool A sends a block to all of its peers on the network
@@ -343,7 +342,7 @@ To walk through these steps, let’s assume you have:
 * `cardano-cli` installed in your machine
 * `cardano-node` installed, running, and synced to a publicly available Cardano network (eg, preview, pre-production, or mainnet)
 * the `CARDANO_NODE_SOCKET_PATH` properly set in your environment so that `cardano-cli` can communicate with your running instance of `cardano-node`
-+
+
 _Note that the last two points are only necessary when submitting a transaction or querying the ledger. A running node is essential for interacting with or accessing the current state of the blockchain. However, generating keys, addresses, or certificates only requires cardano-cli and should often be done entirely offline for security reasons._
 
 Before starting, check that both cardano-node and cardano-cli are up to date. Paste the following code snippet into your terminal:
@@ -373,6 +372,7 @@ git rev 07b0c71d2e6662aec4389ec282a7e91f68c3d85f
 This indicates that both tools are running the same version (1.35.6) and originate from the same code branch (git rev 07b0c7…3d85f). Perfect!
 
 ____
+
 Notice how we access the version command of cardano-cli (or cardano-node) using a single space character to navigate through the available commands. The version command takes no extra parameters. As you will see later, parameters are passed using a double hyphen (`--`).
 ____
 
@@ -476,7 +476,7 @@ stake1uy4hlpcmhd026m4ny9y9uxl94rez479g8h0sqalljf9zehguqnhcm
 
 ==== Building an address
 
-As noted, both the payment key pair and the staking key pair can be used to generate addresses. While the payment address (or enterprise address)(((address, enterprise))) can be used to receive or send ada, the staking address serves a different purpose. A staking address is not functional on its own; it only becomes active when linked to ada residing within a payment address.
+As noted, both the payment key pair and the staking key pair can be used to generate addresses. While the payment address (or enterprise address) can be used to receive or send ada, the staking address serves a different purpose. A staking address is not functional on its own; it only becomes active when linked to ada residing within a payment address.
 
 ----
 cardano-cli address build  --payment-verification-key-file ./payment.vk --stake-verification-key-file ./stake.vk --mainnet > base.addr
@@ -602,7 +602,7 @@ cardano-cli node issue-op-cert --kes-verification-key-file ./kes.vk --cold-signi
 *Some explanations are in order:*
 
 * The `counter` will automatically be incremented by exactly *one* after running the above command. You can check this:
-+
+
 ----
 {
     "type": "NodeOperationalCertificateIssueCounter",
@@ -611,36 +611,36 @@ cardano-cli node issue-op-cert --kes-verification-key-file ./kes.vk --cold-signi
 }
 ----
 
-The `--kes-period `defines the *starting point* of a validity range for the `kes.sk` referenced in the operational certificate. One way to calculate the `current-kes-period` of the network on Cardano mainnet is to use the formula below. We assume here that `byron_slots`, `byron_end_time` and `slots_per_kes_period` are constant values:
-+
+The `--kes-period` defines the *starting point* of a validity range for the `kes.sk` referenced in the operational certificate. One way to calculate the `current-kes-period` of the network on Cardano mainnet is to use the formula below. We assume here that `byron_slots`, `byron_end_time` and `slots_per_kes_period` are constant values:
+
 ----
 current-kes-period = (byron_slots+(CurrentTime - byron_end_time))/slots_per_kes_period
 current-kes-period = (4492800+(CurrentTime-1596059091))/129600
 ----
-+
+
 `CurrenTime` on your machine can be obtained like this:
-+
+
 ----
 printf '%(%s)T\n' -1
 ----
-+
+
 Some noteworthy Cardano community members have developed fully parameterized methods to calculate the current KES period for any given network, such as https://github.com/gitmachtl/scripts/blob/master/cardano/mainnet/0x_showCurrentEpochKES.sh[this one]. Their contributions are invaluable.
 
-* *You must generate a new KES key pair and a new `operational certificate` before the end of the validity period, which lasts exactly 62 KES periods*. Your block-producing node will need to be restarted using a new `kes.sk` and a new `operational certificate`. This process is called ‘KES rotation’. *One period corresponds to 1.5 days. That is why KES rotation must occur every 93 days at most.* However, you can perform this rotation earlier if it is more convenient.
-+
+*You must generate a new KES key pair and a new `operational certificate` before the end of the validity period, which lasts exactly 62 KES periods*. Your block-producing node will need to be restarted using a new `kes.sk` and a new `operational certificate`. This process is called `KES rotation`. *One period corresponds to 1.5 days. That is why KES rotation must occur every 93 days at most.* However, you can perform this rotation earlier if it is more convenient.
+
 
 In the example above using `--kes-period 694` , the `operational certificate(((operational certificate)))` will certify that the `kes.sk` is valid until the network reaches the `kes-period 756`.
 
 Since the Babbage era (September 2022), it is important to know that an operational certificate *must be rotated using a +1 counter* (previously, it could be any value higher than the last counter) and *only if the pool has produced at least one block during the interval of 93 days*. If the pool has not produced any blocks during this period of 93 days (or 62 kes-periods), the counter must be reset to its previous value before generating a new operational certificate. An example is shown at the end of this section.
-+
+
 `cardano-cli` offers a query that recapitulates all that:
-+
+
 ----
 cardano-cli query kes-period-info --op-cert-file ./op.cert --mainnet
 ----
-+
+
 and replies
-+
+
 ----
 ✓ Operational certificate's KES period is within the correct KES period interval
 ✗ No blocks minted so far with the operational certificate at: ./op.cert
@@ -657,7 +657,7 @@ and replies
     "qKesStartKesInterval": 694
 }
 ----
-+
+
 Notice here that by the time we generated our first `operational certificate`, 1 kes-period passed. See the difference between `"qKesCurrentKesPeriod": 695` and `"qKesStartKesInterval": 694` !
 
 *Rotation example with a `counter` reset:*
@@ -769,7 +769,7 @@ cardano-cli stake-pool registration-certificate \
 `--pool-reward-account-verification-key-file`: specifies the stake.vk of the base.addr that will  receive the rewards for running the pool. Only one reward account can be assigned to a stake pool(((stake pool))).
 
 
-_The reward address will not be required to sign the transaction sending the certificate on-chain._
+*The reward address will not be required to sign the transaction sending the certificate on-chain.*
 
 
 `--pool-cost`: the fixed cost(((fixed cost))) the pool will charge before calculating the margin fee. It cannot be set lower than 340 ada or 340000000 lovelaces at this time on mainnet.
@@ -910,7 +910,7 @@ cardano-cli query protocol-parameters --mainnet > pparameters.json
 [discrete]
 ==== UTxOs in an address
 
-To manually build the transaction that will post the previously created certificates, we must identify which UTXO to use. A UTXO is uniquely identified on-chain by the combination of a transaction hash (TxHash)(((transaction, hash))) and a transaction index (TxIx)(((transaction, index))). An address can hold multiple UTXOs, making it essential to determine the specific UTXO for this transaction.
+To manually build the transaction that will post the previously created certificates, we must identify which UTXO to use. A UTXO is uniquely identified on-chain by the combination of a transaction hash (TxHash) and a transaction index (TxIx)(((transaction, index))). An address can hold multiple UTXOs, making it essential to determine the specific UTXO for this transaction.
 
 We can access the UTxO(s) of an address as follows:
 
@@ -1018,21 +1018,20 @@ cardano-cli transaction build-raw \
 
 * `--tx-in UTxO_TxHash#TxIx`: `TxHash`#`TxIx` of the UTxO you want to consume!
 * `--tx-out $(cat base.addr)+value`
-+
+
 [IMPORTANT]
 ====
 
-*`--tx-out` value is expressed in lovelaces.*
-* Registering an address requires a deposit of 2 ada (2000000 lovelaces).
-* Registering a pool requires a deposit of 500 ada (500000000 lovelaces).
-* This means that the change to the `base.addr` will be : *_value = input - (502 deposit + transaction fee)_*
-* Deregistration of an address or a pool will be accounted for by adding 2 ada or 500 ada, respectively, to the ada change value one must calculate to correctly balance a transaction! For example, to deregister simultaneously a base address and a pool: *_value = (input + 502 deposit) - transaction fee_*
+*`--tx-out` value is expressed in lovelaces.
+Registering an address requires a deposit of 2 ada (2000000 lovelaces).
+Registering a pool requires a deposit of 500 ada (500000000 lovelaces).
+This means that the change to the `base.addr` will be : *_value = input - (502 deposit + transaction fee)_* Deregistration of an address or a pool will be accounted for by adding 2 ada or 500 ada, respectively, to the ada change value one must calculate to correctly balance a transaction! For example, to deregister simultaneously a base address and a pool: *_value = (input + 502 deposit) - transaction fee_*.
 ====
 
 * `--invalid-hereafter`: The slot tip of the network plus some slots to give your transaction time to get accepted by the network. Here, 1000 slots (seconds on mainnet) or ~ 15 minutes in the future, from the last query we made at `"slot": 90368116`.
 * `--fee`: the exact value we calculated earlier.
 * `--certificate-file`: adding a certificate to the transaction.
-+
+
 
 *Note:*  The order in which the certificates are declared will matter in the final transaction. You cannot delegate to a pool that does not exist yet. You cannot register a pool with an owner’s address that is not registered yet. Hence, we register the `base.addr` (its staking part) first, then the pool and finally delegate to it.
 
@@ -1223,7 +1222,7 @@ With that out of the way in a fairly short time (pun intended), a stake pool ope
 
 === Server Security and Hardening
 
-``Security is a state characterized by the absence of fear or anxiety regarding one’s physical, economic, technological, or social well-being, or that of those under one’s care. In information technology (IT), achieving this requires implementing preventive measures, enforcing security policies and procedures, and conducting regular security assessments to identify and address vulnerabilities. IT security is critical today, with the widespread use of electronic communication, by protecting systems, networks, and the data they handle, and preventing data breaches.``
+_Security is a state characterized by the absence of fear or anxiety regarding one’s physical, economic, technological, or social well-being, or that of those under one’s care. In information technology (IT), achieving this requires implementing preventive measures, enforcing security policies and procedures, and conducting regular security assessments to identify and address vulnerabilities. IT security is critical today, with the widespread use of electronic communication, by protecting systems, networks, and the data they handle, and preventing data breaches._
 
 '''''
 
@@ -1339,7 +1338,7 @@ For Cardano Stake Pools these are typical targets to scrape for Prometheus:
 The Prometheus scrape targets are defined via a ``.yml`` configuration file (typically named ``prometheus.yml``). To double check syntax, you can run ``./promtool check config prometheus.yml ``.
 Before adding a visualization layer to Prometheus like Grafana it is recommended to connect to the Prometheus web portal (by default on localhost:9090) to double check that scraping targets are reachable. Check that the status is green and ``up`` on all configured endpoints in ``Status -> Targets``. This status page is very helpful to debug scrape endpoint connections.
 
-To scrape remote servers securely various techniques exist, see also https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-stake-pools-and-stake-pool-operation/server_security_and_hardening.adoc[Server Hardening].
+To scrape remote servers securely various techniques exist, see also Server Hardening.
 For example, one could use a web server such as Nginx and configure it as a Reverse Proxy for the endpoint metrics to be scraped by Prometheus with Transport Layer Security (TLS) encryption in place. You can use TLS for IPs. You can also scrape Prometheus over a WireGuard VPN or other VPN service. Firewall rules should ensure that only the Prometheus monitoring server may access the remote endpoint.
 
 *_Note:_*  Prometheus and Grafana server should be run separately from the block producing node, to avoid competition of compute resources, and disruption of block production. Ideally, a separate monitoring host should be set up. If a separate host is not available, a passive relay host may be used.
