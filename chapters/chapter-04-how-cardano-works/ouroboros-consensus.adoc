@@ -3,30 +3,29 @@
 
 === Ouroboros consensus
 
-Ouroboros(((Ouroboros))) is a family of proof-of-stake protocols powering the Cardano blockchain, among others. It is backed by years of research and numerous peer-reviewed publications <<OurborosClassicPaper>>.
+Ouroboros(((Ouroboros))) is a family of proof of stake protocols powering the Cardano blockchain, among others. It is backed by years of research and numerous peer-reviewed publications <<OurborosClassicPaper>>.
 
-
-TODO: Insert References to the papers#
-
-This chapter builds an intuitive understanding of how Ouroboros(((Ouroboros))) works, providing the foundation needed to make sense of the formal papers that describe the algorithm in mathematical detail.
+This chapter builds an intuitive understanding of how Ouroboros works, providing the foundation needed to make sense of the formal papers that describe the algorithm in mathematical detail.
 
 Let's start with a definition:
 
 [quote, Intersect MBO]
 ____
-Ouroboros is the name of a family of proof-of-stake consensus protocols that provides the foundation for Cardano and other blockchains.
+Ouroboros is the name of a family of proof of stake consensus protocols that provides the foundation for Cardano and other blockchains.
 Distributed consensus is the mechanism through which a single, linear, eventually consistent chain of blocks is established among all participants of the network.
 ____
 
-This brief definition represents hundreds of years of combined engineering effort. The rest of the chapter will unpack each part of it to make sense of its full meaning.
+This brief definition represents hundreds of years of combined engineering effort.
+The rest of the chapter will unpack each part of it to make sense of its full meaning.
 
 ==== Why do we need consensus algorithms?
 
-All blockchains have a consensus algorithm: Bitcoin uses proof of work, Filecoin uses proof of storage, and Cardano uses Ouroboros(((Ouroboros))) proof of stake. But before we go any further, let’s ask ourselves: why are consensus(((consensus))) algorithms necessary?
+All blockchains have a consensus algorithm: Bitcoin uses proof of work, Filecoin uses proof of storage, and Cardano uses Ouroboros(((Ouroboros))) proof of stake.
+But before we go any further, let’s ask ourselves: why are consensus(((consensus))) algorithms necessary?
 
 The fundamental reasons boil down to simple facts of nature:
 
-* the *CAP theorem*
+* The *CAP* theorem
 * The speed light is not instantaneous, so there is always *latency*.
 
 
@@ -36,9 +35,9 @@ image::ouroboros_distributed_system.svg[A global distributed system]
 
 You would want to ensure:
 
-* Partition tolerance — so that if a tsunami hits the Atlantic, the system can keep operating.
-* Strong consistency — so that transactions across all continents are properly recorded, preventing double spending (when someone tries to use the same money in two different transactions).
-* Low latency — so transactions on each continent are processed quickly, speeding up the payment system.
+* Partition tolerance: so that if a tsunami hits the Atlantic, the system can keep operating.
+* Strong consistency: so that transactions across all continents are properly recorded, preventing double spending (when someone tries to use the same money in two different transactions).
+* Low latency: so transactions on each continent are processed quickly, speeding up the payment system.
 
 But as it is explained in the CAP and PCAELC theorems, _we can't have what we want, but [using a consensus algorithm] we might get what we need_.
 
@@ -50,30 +49,30 @@ Professor Eric A. Brewer defined the CAP theorem, and paraphrasing it means:
 ---
 When having a distributed [data store] system, you can only have two out of the three properties:
 
-* Partition tolerance: the system continues to operate even in the presence of network errors
-* Availability: every request to a server receives a response
 * Consistency: every read receives the most recent write or an error.
-
+* Availability: every request to a server receives a response
+* Partition tolerance: the system continues to operate even in the presence of network errors
 ---
 
-Later, Dr. Danil Abadi extended the CAP theorem with the PACELC theorem(((PACELC Theorem))), paraphrased thus:
+Later, Dr. Danil Abadi extended the CAP theorem with the PACELC theorem(((PACELC))), paraphrased thus:
 
 [quote]
 ---
-If there is a partition(((Partition))),
+If there is a partition,
   decide between consistency or availability.
 Else,
   choose between low latency or consistency.
 ---
 
-image::ouroboros_PCAELC_Theorem.svg[PCAELC Theorem]
+image::ouroboros_PCAELC_Theorem.svg[PCAELC theorem]
 
 
-In our example of a global financial system, a partition(((Partition))) would be like a tsunami severing the interoceanic cables, leaving continents separated into isolated regions.
+In our example of a global financial system,
+a partition would be like a tsunami severing the interoceanic cables, leaving continents separated into isolated regions.
 If we want to maintain consistency, then new transactions would be forbidden on both sides of the Atlantic, ensuring we always respond with the most up-to-date information.
 Alternatively, if we want to keep transactions flowing (availability), then the different servers’ records would slowly drift apart and lose consistency.
 
-Even without a tsunami, the fact that the speed of light takes several seconds to travel across the planet means that if we want a consistent system, we have to give up on low latency(((Low Latency))) and wait for every transaction to be synchronized.
+Even without a tsunami, the fact that the speed of light takes several seconds to travel across the planet means that if we want a consistent system, we have to give up on low latency and wait for every transaction to be synchronized.
 
 But despite what the CAP theorem says, we **must** deliver high consistency, low latency, and partition tolerance.
 
@@ -81,8 +80,8 @@ So, what do we do?
 
 ==== Nakamoto consensus (longest chain rule)
 
-Satoshi Nakamoto introduced a solution to the problem of decentralized consensus(((decentralized consensus)))
-by inventing the *blockchain* data structure and the *longest chain rule(((Longest Chain Rule)))*,
+Satoshi Nakamoto introduced a solution to the problem of decentralized consensus, 
+by inventing the *blockchain* data structure and the *longest chain rule(((longest chain rule)))*,
 forming what is now known as the _Nakamoto consensus_.
 
 Transactions are collected into *blocks*, each of which references the hash of the previous block,
@@ -90,45 +89,47 @@ forming a cryptographically linked chain. Participants in the network propagate 
 using a *gossip protocol*, so that each node has a (roughly) consistent view of pending transactions.
 
 These pending transactions are stored in each node’s local *mempool(((mempool)))* (short for 'memory pool').
-The mempool(((mempool))) is a temporary buffer of unconfirmed transactions waiting to be included in a block.
-Each node maintains its own version of the mempool(((mempool))), and while they are usually similar,
+The mempool is a temporary buffer of unconfirmed transactions waiting to be included in a block.
+Each node maintains its own version of the mempool, and while they are usually similar,
 they can differ slightly due to network latency and topology, or policy differences (eg, minimum fee requirements).
-Miners select transactions from their mempool(((mempool))) when building a new block,
+Miners select transactions from their mempool when building a new block,
 often prioritizing those with higher transaction fees.
 
 image::ouroboros_mempool.svg[Each validator (miner/SPO) has its own mempool]
 
-Network participants (*miners*) [in Cardano – stake pool operators (SPOs)] independently assemble candidate blocks from their mempool(((mempool)))
-and *compete* to solve a cryptographic puzzle (proof of work) [in Cardano – proof of stake(((Proof-of-Stake)))].
+Network participants (miners) [in Cardano, stake pool operators (SPOs)] independently assemble candidate blocks from their mempool
+and *compete* to solve a cryptographic puzzle (proof of work) [in Cardano, proof of stake(((proof of stake)))].
 The first miner to find a valid solution broadcasts the block to the rest of the network.
 
 Once the new block is verified, it is appended to each node’s local copy of the blockchain,
-and the transactions it contains are removed from the mempool(((mempool))).
+and the transactions it contains are removed from the mempool.
 The process then repeats.
 
-If the network becomes partitioned, or two miners [SPOs(((SPOs)))] solve the puzzle at nearly the same time,
-*temporary forks* may occur -- i.e. for a moment in time there will be two versions of what could eventually be in the canonincal blockchain.
+If the network becomes partitioned, or two miners [SPOs(((SPO)))] solve the puzzle at nearly the same time,
+*temporary forks* may occur, i.e. for a moment in time there will be two versions of what could eventually be in the canonincal blockchain.
 It is for this reason, that it is often advised to wait a certain number of blocks (e.g. 6 blocks in Bitcoin), 
 until it is assumed that a block has been immutably added to the blockchain forever.
-Eventually, one branch of the fork becomes longer as more blocks are added -- and it is that longer branch that will be adopted by all nodes.
+Eventually, one branch of the fork becomes longer as more blocks are added,
+and it is that longer branch that will be adopted by all nodes.
 
 image::ouroboros_longest_chain.svg[Longest chain]
 
-All honest nodes converge on this *longest valid chain*, discarding blocks from shorter forks.
-Transactions in the discarded blocks may be re-added to the mempool(((mempool))) if they haven’t already been confirmed in some block in the longest chain.
+All honest nodes converge on this *longest chain*, discarding blocks from shorter forks.
+Transactions in the discarded blocks may be re-added to the mempool if they haven’t already been confirmed in some block in the longest chain.
 
 image::ouroboros_longest_chain_consensus.svg[validators continue in the longest chain]
 
-At this point, it is important to mention how similar the original Nakamoto consensus(((Nakamoto, Consensus))) and the Ouroboros consensus are.
-In fact, Ouroboros uses Nakamoto consensus(((Nakamoto, Consensus))).
-The main difference is how they select the network participant (i.e. the miner in Bitcoin or the SPO in Cardano) -- Bitcoin uses proof of work to select the miner, and Cardano uses proof of stake, or more precisely, a verifiable random function(((Verifiable Random Function))).
+At this point, it is important to mention how similar the original Nakamoto consensus(((Nakamoto, consensus))) and the Ouroboros consensus are.
+In fact, Ouroboros uses Nakamoto consensus.
+The main difference is how they select the network participant (i.e. the miner in Bitcoin or the SPO in Cardano).
+Bitcoin uses proof of work to select the miner, and Cardano uses proof of stake, or more precisely, a verifiable random function(((verifiable random function))).
 
 ==== How does proof of work select a validator (miner)?
 
-In proof of work, the network participants (miners) *compete* with each other to find a 'magic number' (a.k.a. nonce) that makes the block fulfill a rule ('complexity').
+In proof of work, the network participants (miners) *compete* with each other to find a 'magic number' (nonce) that makes the block fulfill a rule (complexity).
 So proof of work is like a *race* where all the *miners* have to jump through hoops to be rewarded.
 
-Proof of work(((Proof-of-Work))) is then like a hurdle race, where there is only one winner.
+Proof of work(((proof of work))) is then like a hurdle race, where there is only one winner.
 
 
 ===== What is the 'race' about?
@@ -137,43 +138,44 @@ We can see a block of the Bitcoin network as a data structure with the following
 
 image::ouroboros_basic_block_structure.svg[Basic block structure]
 
-And then, the 'race' is about trying to calculate the hash function that given the data and the nonce(((Nonce))),
-returns a current block hash(((Current Block Hash))) that has the desired number of trailing zeros ('0000') -- this can also be thought about as finding a current block hash that is less than a desired threshold.
+And then, the 'race' is about trying to calculate the hash function that given the data and the nonce(((nonce))),
+returns a current block hash(((current block hash))) that has the desired number of leading zeros ('0000') -- this can also be thought about as finding a current block hash that is less than a desired threshold.
 
-But in order to calculate the current block hash(((Current Block Hash))), the only way is to try nonce numbers at random.
+But in order to calculate the current block hash(((current block hash))), the only way is to try nonce numbers at random.
 Like in this image, we try with 0, 17... and so on.
 
-image::ouroboros_trying_with_nonce.svg[Different attempts to find a Nonce]
+image::ouroboros_trying_with_nonce.svg[Different attempts to find a nonce]
 
-Until, finally, we find the nonce that produces the correct current block hash(((Current Block Hash))):
+Until, finally, we find the nonce that produces the correct current block hash:
 
-image::ouroboros_valid_nonce.svg[Found a Nonce that Works]
+image::ouroboros_valid_nonce.svg[Found a nonce that Works]
 
-As you can imagine, this approach of randomly generating a nonce(((Nonce))) and testing whether the resulting hash meets the desired difficulty is very computationally intensive.
+As you can imagine, this approach of randomly generating a nonce(((nonce))) and testing whether the resulting hash meets the desired difficulty is very computationally intensive.
 
-That’s the ‘work’ in ‘proof-of-work’.
+That’s the ‘work’ in ‘proof of work’.
 
 However, this approach comes with some disadvantages.
 
-===== Proof-of-work disadvantages
+===== Proof of work disadvantages
 
 * Wasting electricity. 
   Bitcoin is famously known for consuming as much electricity as a small country.
-  Returning to our analogy, the fact that all marathon runners must run every race (each hoping to win the single reward) results in a significant waste of energy.
+  Returning to our analogy, the fact that all runners must run every race (each hoping to win the single reward) results in a significant waste of energy.
   
 * It leads to centralization in mining pools.
-  A mining pool is a group of miners who collaborate by combining their computing power to calculate the hash and share the resulting rewards(((rewards))).
-  In our analogy, it’s as if marathon runners formed teams and ran together — if one team member wins the race, the reward(((reward))) is shared among the entire team.
+  A mining pool is a group of miners who collaborate by combining their computing power to calculate the hash and share the resulting rewards.
+  In our analogy, it’s as if marathon runners formed teams and ran together.
+  If one team member wins the race, the reward is shared among the entire team.
 
 * It also leads to manufacturing centralization and electronic waste.
-  Since mining equipment in proof-of-work systems performs only one task — calculating a hash — this has driven the development of specialized hardware known as ‘miners’.
-  However, once these miners become obsolete, they serve no other purpose, contributing to growing levels of e-waste(((e-waste))).
+  Since mining equipment in proof of work systems performs only one task (calculating a hash) this has driven the development of specialized hardware known as ‘miners’.
+  However, once these miners become obsolete, they serve no other purpose, contributing to growing levels of electronic waste(((electronic waste))).
   
 
 And although these disadvantages make headlines today,
-a group of visionaries — led by Professor Aggelos Kiayias(((Kiayias, Aggelos))), chief scientist at IO Research — recognized them early on.
+a group of visionaries, led by Professor Aggelos Kiayias(((Kiayias, Aggelos))), chief scientist at IO Research, forsaw them early on.
 They began developing an alternative to proof of work,
-centered on the idea of proof of stake and Ouroboros(((Ouroboros))) in particular.
+centered on the idea of proof of stake and Ouroboros in particular.
 
 ==== Proof of stake as an alternative to proof of work
 
@@ -194,8 +196,8 @@ From this perspective, the benefits of proof of stake become clear:
 ===== How does Ouroboros (Praos) work?
 
 Time in Cardano is divided into *epochs*, and each epoch(((epoch))) is further subdivided into *slots*.
-Currently (2025), one epoch(((epoch))) has 432000 slots, and each slot lasts one second.
-So each epoch(((epoch))) is approximately five days.
+Currently (2025), one epoch has 432000 slots, and each slot lasts one second.
+So each epoch is approximately five days.
 
 During each slot:
 
@@ -212,24 +214,26 @@ A block is produced at the end of a slot only if that slot is one of the 5% desi
 
 If a block is generated, a cryptographic lottery takes place.
 
-All SPOs compute a verifiable random function(((Verifiable Random Function))) (VRF).
-This VRF(((VRF))) takes the following inputs:
+All SPOs compute a verifiable random function(((verifiable random function))) (VRF).
+This VRF takes the following inputs:
 
 * a *random seed* that is updated each epoch
 * the SPO's private key
 * and a label to distinguish repeated uses of the VRF.
 
-The random seed(((random seed))) is derived from data in the previous blocks.
+The random seed is derived from data in the previous blocks.
 
-The VRF(((VRF))) produces a random output and a proof.
-The beauty of a VRF(((VRF))) is that others can later verify that the output was computed correctly from the given inputs without being able to guess it beforehand.
-Each node’s VRF(((VRF))) output is essentially that node’s 'lottery number' for the slot, and the proof is like a signed ticket.
+The VRF produces a random output and a proof.
+The beauty of a VRF is that others can later verify that the output was computed correctly from the given inputs without being able to guess it beforehand.
+Each node’s VRF output is essentially that node’s 'lottery number' for the slot, and the proof is like a signed ticket.
 
 On each slot, each SPO effectively asks themselves:
 
     'Am I the slot leader for this slot?'
 
-If the output of the VRF (((VRF))) falls below a threshold — set based on the amount of stake the operator controls — then the SPO becomes the slot leader(((slot leader))) for that slot.
+If the output of the VRF  falls below a threshold,
+set based on the amount of stake the operator controls,
+then the SPO becomes the slot leader(((slot leader))) for that slot.
 
 That slot leader(((slot leader))):
 
@@ -238,30 +242,33 @@ That slot leader(((slot leader))):
 - Signs the block
 - Broadcasts the signed block to the network.
 
-Cardano accumulates rewards (from block minting and fees) and distributes them to stake pools and delegators at the end of each epoch according to an incentive formula(((incentive formula))).
+Cardano accumulates rewards (from block minting and fees) and distributes them to stake pools and delegators at the end of each epoch according to an incentive formula.
 
 Then, all stake pool operators(((stake pool operators))) verify the validity of the previous block during the next slot by:
 
 * Checking the block’s signature to ensure it was signed by a registered pool’s key.
-* Verifying the VRF(((VRF))) proof included in the block, which confirms the slot leader’s output, was below the threshold. This allows any node to confirm, 'Yes, the creator of this block had the right to do so for slot N.' This prevents malicious nodes from falsifying leadership. The Ouroboros Praos(((Ouroboros, Praos))) specification calls this the 'proof of leadership' included in each block. If the proof is invalid or the node was not eligible, the block is rejected.
+* Verifying the VRF proof included in the block, which confirms the slot leader’s output, was below the threshold.
+  So any node can confirm, 'Yes, the creator of this block had the right to do so for slot N.'
+  Preventing malicious nodes from falsifying leadership. The Ouroboros Praos(((Ouroboros, Praos))) specification calls this the 'proof of leadership' included in each block.
+  If the proof is invalid or the node was not eligible, the block is rejected.
 * Validating all transactions within the block, including signatures and UTXOs, as with any blockchain.
-* Once validated, appending the block to their local copy of the chain.
 
+Once validated, SPOs append the block to their local copy of the chain.
 
 In Cardano, rewards are paid to SPOs and delegators at the end of each epoch, but with a delay of one full epoch after the one in which the rewards were earned.
 
 The delay allows the network to:
 
-* Finalize the stake snapshot(((stake snapshot))) used to calculate each delegator's share
-* Calculate the actual rewards(((rewards))) based on the number of blocks produced, the active stake, fees collected, and the pool’s parameters (margin, fixed cost).
+* Finalize the stake snapshot used to calculate each delegator's share
+* Calculate the actual rewards based on the number of blocks produced, the active stake, fees collected, and the pool’s parameters (margin, fixed cost).
 
 Then, the process restarts for the next epoch.
 
 ===== Why is it called 'Ouroboros'?
 
-The name *Ouroboros(((Ouroboros)))* — the ancient symbol of a snake eating its own tail — reflects how each epoch feeds into the next.
+The name *Ouroboros*,the ancient symbol of a snake eating its own tail, reflects how each epoch feeds into the next.
 
-In Ouroboros(((Ouroboros))), each slot’s randomness (used to determine slot leaders) is derived from
+In Ouroboros, each slot’s randomness (used to determine slot leaders) is derived from
 the data of previous epochs. The blockchain uses its *own past* to seed its *own future*,
 creating a secure, self-referential cycle.
 
@@ -269,67 +276,78 @@ That is how the snake eats its own tail.
 
 ==== Different versions of Ouroboros
 
-The version of Ouroboros described here is best understood as Ouroboros Praos(((Ouroboros, Praos))); however, other versions exist that relax different underlying assumptions.
+The version of Ouroboros described here is best understood as Ouroboros Praos;
+however, other versions exist that relax different underlying assumptions.
 
-* **Ouroboros Classic** (2017): first proof-of-stake protocol with a security proof, but required synchronous communication and used a public deterministic schedule
-* **Ouroboros BFT** (2018): interim federated version used during the Cardano Byron reboot
-* **Ouroboros Praos** (2018): introduced private VRF-based leader selection and supported semi-synchronous networks
-* **Ouroboros Genesis** (2018): improved fork-choice rule enabling trustless bootstrapping and dynamic availability
-* **Ouroboros Chronos** (2019): added secure time synchronization to Ouroboros (not yet implemented)
-* **Ouroboros Crypsinous**: privacy-preserving variant of the protocol
-* **Ouroboros Leios**: designed for throughput scaling through parallel chains and role separation.
+* Ouroboros Classic<<OurborosClassicPaper>> (2017): first proof of stake protocol with a security proof, but required synchronous communication and used a public deterministic schedule
+* Ouroboros BFT<<OurborosBftPaper>> (2018): interim federated version used during the Cardano Byron reboot
+* Ouroboros Praos<<OuroborosPraosPaper>> (2018): introduced private VRF-based leader selection and supported semi-synchronous networks
+* Ouroboros Genesis<<OuroborosGenesisPaper>> (2018): improved fork-choice rule enabling trustless bootstrapping and dynamic availability
+* Ouroboros Chronos<<OuroborosChronosPaper>> (2019): added secure time synchronization to Ouroboros (not yet implemented)
+* Ouroboros Leios: designed for throughput scaling through parallel chains and role separation.
 
 
-===== Ouroboros Classic (2017) <<OurborosClassicPaper>>
+===== Ouroboros Classic (2017)
 
-The first version of Ouroboros(((Ouroboros))) demonstrated that a proof-of-stake protocol could match the security guarantees of proof of work, provided that at least 51% of the stake is controlled by honest participants. However, it assumed a synchronous network(((synchronous network))) — where all nodes are online and messages are delivered within a known, fixed delay. This was a significant step forward, but not yet practical.
+The first version of Ouroboros demonstrated that a proof of stake protocol could match the security guarantees of proof of work,
+provided that at least 51% of the stake is controlled by honest participants.
+However, it assumed a synchronous network, where all nodes are online and messages are delivered within a known, fixed delay.
+This was a significant step forward, but not yet practical.
 
-===== Ouroboros BFT (2018) <<OurborosBftPaper>>
+===== Ouroboros BFT (2018)
 
 Used during the Cardano Byron reboot.
-Enabled a federated blockchain, where trusted parties — IOG, Emurgo, and the Cardano Foundation — ran their own nodes.
+Enabled a federated blockchain,
+where trusted parties (Input|Output, Emurgo, and the Cardano Foundation) ran their own nodes.
  
 
-===== Ouroboros Praos (2018 – used in Cardano today) <<OuroborosPraosPaper>>
+===== Ouroboros Praos (2018) used in Cardano today
 
-The problem with Ouroboros(((Ouroboros))) Classic was that it required a random and distributed way to select the next stake pool operator.
+The problem with Ouroboros Classic was that it required a random and distributed way to select the next stake pool operator.
 However, in traditional computing, nothing is truly random.
 To address this, Ouroboros Praos(((Ouroboros, Praos))) introduced the concept of a verifiable random function(((verifiable random function))), which uses inputs that cannot be controlled or predicted by any party as seeds for randomness:
 
-* The block number
-* The signing key of the stake pool operator that had to be submitted in advance
-* The amount of stake delegated to the stake pool operator
-* The contents of the transaction in the block
-* Included hash of the previous block.
+* block number
+* signing key of the stake pool operator that had to be submitted in advance
+* amount of stake delegated to the stake pool operator
+* contents of the transaction in the block
+* included hash of the previous block.
 
 As you can see, no single entity can predict or control any of those values that create the randomness.
 
-===== Ouroboros Genesis (2018 – improved chain selection and bootstrap) <<OuroborosGenesisPaper>>
 
-With Ouroboros Praos(((Ouroboros, Praos))), the main hurdles to establishing a secure proof-of-stake system were overcome. The next challenge was performance.
-One major issue was that starting a new Cardano node from scratch was very slow — up to 36 hours — as it had to catch up with the tip of the blockchain.
-A naive solution would be to use snapshots(((snapshots))) of the blockchain’s state at a specific point in time: download a single large file, verify its correctness, and then synchronize from that point onward.
+===== Ouroboros Genesis (2018) improved chain selection and bootstrap
+
+With Ouroboros Praos(((Ouroboros, Praos))), the main hurdles to establishing a secure proof of stake system were overcome.
+The next challenge was performance.
+One major issue was that starting a new Cardano node from scratch was very slow (up to 36 hours) as it had to catch up with the tip of the blockchain.
+A naive solution would be to use snapshots of the blockchain’s state at a specific point in time: download a single large file, verify its correctness, and then synchronize from that point onward.
 Ouroboros Genesis(((Ouroboros, Genesis))) improves on this. In Genesis, multiple points in the chain can be considered reliable, allowing nodes to begin syncing with the tip immediately, without needing to download the full history.
 
-===== Ouroboros Chronos (2020/2021 – decentralized time synchronization) <<OuroborosChronosPaper>>
 
-Chronos is a more recent development in the Ouroboros(((Ouroboros))) family, focusing on an often-overlooked aspect: time synchronization(((time synchronization))) in distributed systems. Ouroboros assumes a global notion of time, where each slot corresponds to a one-second interval. In practice, however, nodes rely on their local system clocks to determine slot boundaries. If an adversary could significantly skew these clocks, or if there were no shared time reference, consensus could break, for example, if nodes disagreed on slot numbers.
+===== Ouroboros Chronos (2019) decentralized time synchronization
 
-Chronos addresses this by introducing a mechanism for nodes to securely synchronize their clocks using the blockchain itself as a reference. It effectively transforms the blockchain into a decentralized time oracle(((decentralized time oracle))).
+Chronos is a more recent development in the Ouroboros family, focusing on an often-overlooked aspect: time synchronization in distributed systems. Ouroboros assumes a global notion of time, where each slot corresponds to a one-second interval. In practice, however, nodes rely on their local system clocks to determine slot boundaries. If an adversary could significantly skew these clocks, or if there were no shared time reference, consensus could break, for example, if nodes disagreed on slot numbers.
 
-Chronos removes the need for external time sources such as NTP servers(((NTP servers))), which can act as single points of failure or attack. Instead, nodes periodically run an internal protocol embedded in the blockchain process to agree on the current time, detecting and correcting any clock drift or malicious manipulation.
+Chronos addresses this by introducing a mechanism for nodes to securely synchronize their clocks using the blockchain itself as a reference. It effectively transforms the blockchain into a decentralized time oracle.
 
-This makes the system more resilient to time-based attacks — for example, it becomes much harder for an attacker to isolate a node by feeding it a false clock and disrupting its slot scheduling.
+Chronos removes the need for external time sources such as NTP servers, which can act as single points of failure or attack. Instead, nodes periodically run an internal protocol embedded in the blockchain process to agree on the current time, detecting and correcting any clock drift or malicious manipulation.
+
+This makes the system more resilient to time-based attacks.
+For example, it becomes much harder for an attacker to isolate a node by feeding it a false clock and disrupting its slot scheduling.
 
 ==== In conclusion
 
-At this point, it becomes clear how the development of the first practical proof-of-stake consensus algorithm in Ouroboros(((Ouroboros))) was made possible — how each iteration improved on the limitations and assumptions of the previous one, how the algorithm’s security is grounded in mathematical probability defined by blockchain parameters, and how varying certain assumptions allows for tuned versions of the protocol suited to specific applications.
+At this point, it becomes clear how the development of the first practical proof of stake consensus algorithm in Ouroboros was made possible.
+How each iteration improved on the limitations and assumptions of the previous one,
+how the algorithm’s security is grounded in mathematical probability defined by blockchain parameters,
+and how varying certain assumptions allows for tuned versions of the protocol suited to specific applications.
 
 [bibliography]
 ==== References
 
-* [[[OurborosClassicPaper]]] Kiayias, A. et al. (2017) ‘Ouroboros: A provably secure proof-of-stake Blockchain Protocol’, Lecture Notes in Computer Science, pp. 357–388. doi:10.1007/978-3-319-63688-7_12.
+* [[[OurborosClassicPaper]]] Kiayias, A. et al. (2017) ‘Ouroboros: A provably secure proof of stake Blockchain Protocol’, Lecture Notes in Computer Science, pp. 357–388. doi:10.1007/978-3-319-63688-7_12.
 * [[[OurborosBftPaper]]] Kiayias, A., & Russell, A. (2018). Ouroboros-bft: A simple byzantine fault tolerant consensus protocol. Cryptology ePrint Archive.
-* [[[OuroborosPraosPaper]]] David, B., Gaži, P., Kiayias, A., & Russell, A. (2018, March). Ouroboros praos: An adaptively-secure, semi-synchronous proof-of-stake blockchain. In Annual International Conference on the Theory and Applications of Cryptographic Techniques (pp. 66-98). Cham: Springer International Publishing.
-* [[[OuroborosGenesisPaper]]] Badertscher, C., Gaži, P., Kiayias, A., Russell, A., & Zikas, V. (2018, October). Ouroboros genesis: Composable proof-of-stake blockchains with dynamic availability. In Proceedings of the 2018 ACM SIGSAC Conference on Computer and Communications Security (pp. 913-930).
-* [[[OuroborosChronosPaper]]] Badertscher, C., Gazi, P., Kiayias, A., Russell, A., & Zikas, V. (2019). Ouroboros chronos: Permissionless clock synchronization via proof-of-stake. Cryptology ePrint Archive.
+* [[[OuroborosPraosPaper]]] David, B., Gaži, P., Kiayias, A., & Russell, A. (2018, March). Ouroboros praos: An adaptively-secure, semi-synchronous proof of stake blockchain. In Annual International Conference on the Theory and Applications of Cryptographic Techniques (pp. 66-98). Cham: Springer International Publishing.
+* [[[OuroborosGenesisPaper]]] Badertscher, C., Gaži, P., Kiayias, A., Russell, A., & Zikas, V. (2018, October). Ouroboros genesis: Composable proof of stake blockchains with dynamic availability. In Proceedings of the 2018 ACM SIGSAC Conference on Computer and Communications Security (pp. 913-930).
+* [[[OuroborosChronosPaper]]] Badertscher, C., Gazi, P., Kiayias, A., Russell, A., & Zikas, V. (2019). Ouroboros chronos: Permissionless clock synchronization via proof of stake. Cryptology ePrint Archive.
