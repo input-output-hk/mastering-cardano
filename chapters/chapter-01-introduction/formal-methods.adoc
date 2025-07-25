@@ -31,7 +31,7 @@ with a focus on their usage in Cardano.
 The formal methods approach provides guarantees of program behavior
 correctness. It involves the application of symbolic logic(((symbolic logic))) to construct
 behavior specifications(((behavior specifications))), define their properties, then verify, prove, or
-property-test(((property-test))) those properties. There are many different FM techniques,
+property-test those properties. There are many different FM techniques,
 and a variety of tools.
 
 A formal specification(((formal specification))) is a description of what a given program (or a
@@ -44,9 +44,9 @@ non-blockchain example, a _counter_ program may have a state that is a
 natural number, and to apply an incoming increment request, the counter
 is incremented.
 
-A property is a statement about program behavior(((program behavior))), for example, 'when two
+A property is a statement about program behavior, for example, 'when two
 increment requests arrive, the counter must be incremented twice'. A
-proof is indisputable logical evidence(((logical evidence))) of the truth of a given property,
+proof is indisputable logical evidence of the truth of a given property,
 regardless of all external circumstances. Whenever these symbolic logic(((symbolic logic)))
 formalisms (specifications, properties, proofs, etc) are programmed and
 checked using software, they are _mechanized_.
@@ -124,14 +124,14 @@ To answer each of the questions posed above, different techniques are
 applied in Cardano, tuning the level of formal rigor to the particular
 use case. The most prevalent FM technique within Cardano is the use
 of _type systems_. A type system is a set of rules that assigns a
-symbolic property of _type_ to each term, e.g. `5` is an `Integer(((integer)))`, `[1 ; 2]` is
+symbolic property of _type_ to each term, e.g. `5` is an `Integer`, `[1 ; 2]` is
 a List Integer(((list integer)))`, `True` is a `Boolean`, etc. A type system can provide such
 guarantees as 'all items in this list are integers', or 'it is not
 possible to add an integer and an error'. A strong type(((type))) system can
 provide strong formal guarantees, so, to quote Simon Peyton Jones(((Peyton Jones, Simon))), type
 systems are 'the most successful formal method'.
 
-Strong type systems are famously helpful in refactoring code(((refactoring code))). This
+Strong type systems are famously helpful in refactoring code. This
 is because changing the type of a variable or a function's input or
 output often results in compilation errors(((compilation errors))) that will prompt the
 developer to 'follow the types', i.e. to refactor all relevant parts of
@@ -154,9 +154,9 @@ programs consist of functions, in the mathematical or logical sense, i.e.
 ----
 
 where the input type is `A`, the output type(((output type))) is `B`, and `f` associates to
-each term `a` of type(((type))) `A` a term `b` of type(((type))) `B`. For example, if `A = B`, we can
+each term `a` of type `A` a term `b` of type `B`. For example, if `A = B`, we can
 define `f(a) = a`, the identity function(((identity function))). In _pure_ functional programs,
-there is no extra underlying state or input, such as user IO(((user IO))), or
+there is no extra underlying state or input, such as user IO, or
 variable bindings(((variable bindings))), available to `f` within the computation. This
 significantly simplifies reasoning about the outputs of the function
 given a certain input (or set of inputs).
@@ -196,12 +196,12 @@ this purpose. They can be used to provide stronger guarantees about the
 behavior of a given program as compared to type systems(((type system))) that do not
 support proof construction. Lean, Agda, Coq, and Isabelle(((Isabelle))) are all proof
 assistants used for different purposes within Cardano. The choice of
-assistant depends on a number of factors, such as available expertise(((expertise)))
+assistant depends on a number of factors, such as available expertise
 across engineers, interoperability with other system components, and
 support for automation.
 
 For example, compare a simple data structure(((data structure))) implemented in both Haskell
-and Agda. *Set* is a data structure(((data structure))) that contains a collection of
+and Agda. *Set* is a data structure that contains a collection of
 elements of the same type, and each element is unique in this
 collection. In Haskell, uniqueness of elements is ensured by defining an
 insertion procedure(((insertion procedure))) of an element `e` into a set `S` that does nothing
@@ -214,10 +214,10 @@ that collection. This makes it impossible to define a bad insertion
 procedure that allows accidental element duplication(((element duplication))), which is a
 stronger guarantee than provided by the Haskell implementation.
 
-The use of proof assistants(((proof assistants))) in building Cardano has a good track record
+The use of proof assistants(((proof assistant))) in building Cardano has a good track record
 for locating potential bugs before they cause problems in production.
 For example, in the process of encoding the preservation of value
-calculation into a proof(((proof assistant))) assistant, an engineer was not able to complete
+calculation into a proof assistant, an engineer was not able to complete
 the proof(((proof construction))) construction. The engineer then realized that it was due to an
 incorrect assumption made about certain functions, and they were able to
 fix the specification and the implementation accordingly.
@@ -226,8 +226,8 @@ Guarantees obtained via testing alone are not as strong as those of
 formal verification(((formal verification))), such as proofs. Specialized kinds of testing are,
 nevertheless, integral to the impactful application of FM. The behavior
 of a specification is defined by constructing _properties_. If we have
-defined the specification correctly, these properties(((properties))) will be true for
-any execution of the program. The approach of using a proof(((proof))) assistant
+defined the specification correctly, these properties will be true for
+any execution of the program. The approach of using a proof assistant
 might be too heavy-handed for certain applications, i.e. too difficult or
 time consuming. Instead, special software called _generators_ is used
 for generating extremely large numbers of random valid execution traces(((random valid execution traces))),
@@ -266,7 +266,7 @@ implementations.
 Not all techniques listed above are suitable for all Cardano components.
 The idea is to tune the approach to each component and apply heavier
 techniques with a greater emphasis on verification to the more tractable
-inner components, and apply a more lightweight approach (type-safety(((type-safety))), at
+inner components, and apply a more lightweight approach (type-safety, at
 minimum) with a greater emphasis on testing the impure outer components(((impure outer components))).
 
 The strongest formal guarantees can be specified and proved about the
@@ -288,7 +288,7 @@ concurrency for efficient operations, even testing proved challenging.
 Dedicated packages, including a special concurrency control mechanism(((concurrency control mechanism))),
 were developed to provide an additional layer of abstraction on top of
 parts of the Haskell runtime system(((Haskell, runtime system))) (RTS). The same code can then be
-executed either by the Haskell(((Haskell))) RTS, or via a pure and fast
+executed either by the Haskell RTS, or via a pure and fast
 implementation that deterministically simulates it, enabling excellent
 testing.
 
@@ -341,7 +341,7 @@ adding new features, and serves as valuable reference material for
 future development.
 
 A lot of FM research and even application is done in an academic
-setting. Making such work possible in an industry setting(((industry setting))) presents some
+setting. Making such work possible in an industry setting presents some
 challenges, as mentioned in the CONS list above. To achieve optimal FM
 usage in Cardano, FM work has been (i) mechanized, e.g. including Agda
 specifications and conformance testing(((conformance testing))), (ii) democratized, i.e. made more
@@ -354,5 +354,5 @@ However, more work remains to be done in all of these areas. Further
 verification of cryptographic protocols(((cryptographic, protocols))) would be extremely valuable.
 Work is ongoing on the application of formal methods in additional areas
 of Cardano development, including compilation certification(((compilation certification))), running
-verified code on-chain(((verified code on-chain))), and additional performance and security
+verified code on-chain, and additional performance and security
 modeling. Further work is also being done on tool improvement.
