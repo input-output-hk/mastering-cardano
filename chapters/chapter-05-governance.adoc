@@ -8,7 +8,7 @@ TO DO:
 
 == Cardano governance
 
-IO has been researching on-chain governance for some time, focusing on this crucial area since the original https://why.cardano.org/en/introduction/motivation[Why Cardano] essay. Research papers dating back to 2017 have proposed a treasury for Ethereum Classic.footnote:disclaimer[Kaidalov, Kovalchuk, Nastenko, Rodinko, Shevtzov, Oliynykov (2017), ‘A proposal for an Ethereum Classic Treasury System’, iohk.io/en/research/library/papers/a-proposal-for-an-ethereum-classic-treasury-system/] Another paper, authored at Lancaster University(((Lancaster University))),footnote:[Zhang, Oliynykov and Balogun (2019), ‘A Treasury System for Cryptocurrencies: Enabling Better Collaborative Intelligence’, eprint.iacr.org/2018/435.pdf] explored the concept of a treasury system and a viable, democratic approach to long-term development financing for Cardano.
+Input | Output (IO) has been researching on-chain governance for some time, focusing on this crucial area since the original https://why.cardano.org/en/introduction/motivation[Why Cardano] essay. Research papers dating back to 2017 have proposed a treasury for Ethereum Classic.footnote:disclaimer[Kaidalov, Kovalchuk, Nastenko, Rodinko, Shevtzov, Oliynykov (2017), ‘A proposal for an Ethereum Classic Treasury System’, iohk.io/en/research/library/papers/a-proposal-for-an-ethereum-classic-treasury-system/] Another paper, authored at Lancaster University(((Lancaster University))),footnote:[Zhang, Oliynykov and Balogun (2019), ‘A Treasury System for Cryptocurrencies: Enabling Better Collaborative Intelligence’, eprint.iacr.org/2018/435.pdf] explored the concept of a treasury system and a viable, democratic approach to long-term development financing for Cardano.
 
 Formal methods, machine-comprehensible specifications(((machine-comprehensible specifications))), and integrating a treasury system with this process for financial incentives are just some of the solutions pursued. Let’s discuss some of the mechanisms used thus far to enable governance on Cardano. Each component complements the others, contributing valuable lessons and experience as the age of Voltaire unfolds.
 
@@ -21,7 +21,7 @@ Anyone with ideas for enhancing Cardano can create CIPs. While CIPs are not a fo
 
 The first CIP, created in October 2019 and later named https://cips.cardano.org(((cips.cardano.org)))/cip/CIP-1852[CIP-1852], extends http://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki[BIP44] and documents how Cardano wallets manage keys and addresses. This document predates the formal CIP process. The CIP was named CIP-1852 by Sebastien Guillemot after the year Ada Lovelace passed away, with her birth year, 1815, used in the cointype field.
 
-A CIP follows a standard format with a templated proposal structure that facilitates debate and evaluation. This structure allows community members to provide feedback on improvement recommendations or issues within a proposal. CIPs are stored as text files in a versioned http://github.com/cardano-foundation/CIPs[GitHub repository], where their revision history provides the proposal’s historical record. For those not on GitHub, the auto-generated sister site, cips.cardano.org, serves as a user-friendly resource maintained by the Cardano Foundation(((Cardano, Foundation))).
+A CIP follows a standard format with a templated proposal structure that facilitates debate and evaluation. This structure allows community members to provide feedback on improvement recommendations or issues within a proposal. CIPs are stored as text files in a versioned http://github.com/cardano-foundation/CIPs[GitHub repository], where their revision history provides the proposal’s historical record. For those not on GitHub, the auto-generated sister site, cips.cardano.org, serves as a user-friendly resource maintained by the Cardano Foundation(((Cardano Foundation))).
 
 Every CIP has the following format:
 
@@ -33,7 +33,7 @@ Every CIP has the following format:
 * Path to active
 * Copyright.
 
-The concept is developed as a written proposal and submitted as a pull request(((pull request))) to the CIP repository after initial discussion and feedback. The CIP editors then publicly process the updated draft CIP as follows:
+The concept is developed as a written proposal and submitted as a pull request to the CIP repository after initial discussion and feedback. The CIP editors then publicly process the updated draft CIP as follows:
 
 image::../images/5.1_cip_workflow.png[]
 
@@ -69,7 +69,7 @@ The funds for Project Catalyst are sourced from the Cardano treasury, which is r
 Each funding round operates cyclically, typically lasting several weeks to a few months. Each fund is identified numerically (eg, Fund1, Fund2) and has a defined budget. The structure of a funding round generally includes the following phases:
 
 1. *Proposal submission(((proposal submission)))*: innovators submit their project proposals on the https://cardano.ideascale.com/[IdeaScale platform]. Each proposal must align with the thematic goals set for that particular fund.
-2. *Community review(((community, review)))*: during this phase, the community reviews and provides feedback on the submitted proposals.
+2. *Community review(((community, reviews)))*: during this phase, the community reviews and provides feedback on the submitted proposals.
 3. *Voting*: any ada holder can vote on proposals using the Catalyst voting application(((Catalyst, voting application))). Voting power is proportional to the amount of ada held, incentivizing ada holders to participate actively in the governance process.
 4. *Funding allocation(((funding allocation)))*: based on the voting results, funds are allocated to the awarded proposals. Proposals with the highest votes receive funding until the budget for that fund is exhausted.
 
@@ -127,7 +127,7 @@ As Catalyst took a ‘tactical pause’ after Fund9, there was a timely _Systemi
 
 The paper lists *seven properties* to assess different requirements for effective blockchain governance:
 
-1. *Suffrage*: this property deals with participation eligibility. How inclusive(((inclusive))) is the governance mechanism?
+1. *Suffrage*: this property deals with participation eligibility. How inclusive is the governance mechanism?
 2. *Confidentiality*: are decision-makers’ inputs protected from ‘external influences’?
 3. *Verifiability*: can decision-makers confirm their input has been considered in the output?
 4. *Accountability*: are decision-makers held accountable for their input?
@@ -146,7 +146,7 @@ https://cips.cardano.org/cip/CIP-1694[CIP-1694] was named after the philosopher 
 
 When Cardano was formed, there was a tripartite structure with EMURGO, the Cardano Foundation (CF), and IOG with remits for ecosystem growth, governance, and engineering, respectively. The intention was always to move to a stake-based governance model(((stake-based governance model))), where ada holders determine the future of the protocol.
 
-CIP-1694 is the fruit of years of research. IO has been working on a decentralized update system(((decentralized, update system))) for some time. For example, they wrote a paper _Updateable Blockchains_footnote:[Ciampi, Karayannidis, Kiayias and Zindros (2020), 'Updatable Blockchains', iohk.io/en/research/library/papers/updatable-blockchains/] to explore ways to implement this vision.
+CIP-1694 is the fruit of years of research. IO has been working on a decentralized update system for some time. For example, they wrote a paper _Updateable Blockchains_footnote:[Ciampi, Karayannidis, Kiayias and Zindros (2020), 'Updatable Blockchains', iohk.io/en/research/library/papers/updatable-blockchains/] to explore ways to implement this vision.
 
 Early in 2022, IOG and the CF held workshops to hammer out a way forward for the Voltaire development phase. The first question was ‘What is good governance?’. Charles Hoskinson(((Hoskinson, Charles))) explained in his ScotFest keynote that the answer was based on three different categories:
 
@@ -158,7 +158,7 @@ Early in 2022, IOG and the CF held workshops to hammer out a way forward for the
 
 *What is an MBO?*
 
-The MBO is a central hub that unites different groups, including thousands of stake pool operators(((stake pool operator))), Cardano ambassadors(((Cardano ambassador))), open-source projects running on Cardano, IO, CF, EMURGO, and all ada holders. Members will own and run the MBO, staffing the steering committees.
+The MBO is a central hub that unites different groups, including thousands of stake pool operators(((stake pool operator))), Cardano ambassadors(((Cardano ambassadors))), open-source projects running on Cardano, IO, CF, EMURGO, and all ada holders. Members will own and run the MBO, staffing the steering committees.
 
 image::../images/5.3_gov_concepts.png[]
 *Figure 5.3:* Governance concepts defined, based on the slide from ScotFest 2022
@@ -346,7 +346,7 @@ The OSC tackles several key areas:
 * Creating a model for future open-source projects within Intersect
 * Running the _Developer Advocate Program_.
 
-An open-source strategy can incur risks if it relies on unpaid contributors to regularly contribute. With this in mind, Christian Taylor proposed a solution called the https://493748844-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FLBdnzp0eZpGri9sVpseI%2Fuploads%2FvuisqFT8uCyKSDgpNmyW%2FPaid%20Open%20Source%20Model-%20LIVE.pdf?alt=media&token=577c8bd1-c9df-43a0-8b57-e883ddb1254a[paid open source model], which can be adapted to other projects, offering hope for a more sustainable and secure open source ecosystem(((secure open source ecosystem))).
+An open-source strategy can incur risks if it relies on unpaid contributors to regularly contribute. With this in mind, Christian Taylor proposed a solution called the https://493748844-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FLBdnzp0eZpGri9sVpseI%2Fuploads%2FvuisqFT8uCyKSDgpNmyW%2FPaid%20Open%20Source%20Model-%20LIVE.pdf?alt=media&token=577c8bd1-c9df-43a0-8b57-e883ddb1254a[paid open source model], which can be adapted to other projects, offering hope for a more sustainable and secure open source ecosystem.
 
 ==== Cardano budget committee
 
@@ -365,11 +365,11 @@ image::../images/5.4_budget_roadmap.png[]
 
 *Product committee*
 
-The product committee manages and tracks the roadmap for development items(((roadmap for development items))). Their responsibilities include facilitating processes to converge on a shared vision and roadmap. The committee encouraged the community to submit projects for consideration for the 2025 roadmap, with an https://committees.docs.intersectmbo.org/intersect-technical-steering-committee/technical-roadmap/how-to-participate-in-shaping-the-technical-roadmap[explainer] to guide them through the process.
+The product committee manages and tracks the roadmap for development items(((development roadmap))). Their responsibilities include facilitating processes to converge on a shared vision and roadmap. The committee encouraged the community to submit projects for consideration for the 2025 roadmap, with an https://committees.docs.intersectmbo.org/intersect-technical-steering-committee/technical-roadmap/how-to-participate-in-shaping-the-technical-roadmap[explainer] to guide them through the process.
 
 *Working groups*
 
-Intersect forms temporary groups called working groups to address specific needs as they arise. These groups can focus on any topic and operate less formally than the permanent committees(((permanent committees))). Each working group has the following specifications:
+Intersect forms temporary groups called working groups to address specific needs as they arise. These groups can focus on any topic and operate less formally than the permanent committees. Each working group has the following specifications:
 
 * Defines its purpose, operating procedures, and member roles and responsibilities in a terms-of-reference document
 * Observes that participation limitations, like application processes or elections, are set with board approval
