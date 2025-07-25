@@ -172,7 +172,7 @@ protocol:
 * The *Mithril signer* is responsible for producing individual signatures
 * The *Mithril aggregator* collects individual signatures from the
 *signers* and aggregates them into a multi-signature
-* The *Mithril client,* both a library and a node, retrieves artifacts (eg
+* The *Mithril client,* both a library and a node, retrieves artifacts (e.g.
 a Merkle proof(((Merkle proof))) or an archive file) and verifies that they are genuinely
 signed by a Mithril multi-signature(((Mithril, multi-signature))). The node version runs in a
 WASM-compatible browser(((WASM-compatible, browser))) or as a standalone binary with a command-line
@@ -224,7 +224,7 @@ A malicious actor(((malicious, actor))) could relatively easily create a fake st
 distribution and use it to produce a valid multi-signature(((multi-signature))), which would
 be embedded in a valid but non-genuine certificate(((certificate))). This certificate(((certificate)))
 could be served by a dishonest Mithril aggregator node(((dishonest Mithril, aggregator node))), leading an
-honest Mithril client(((honest Mithril, client))) to trust a non-genuine information.
+honest Mithril client(((honest Mithril, client))) to trust non-genuine information.
 
 To certify the Mithril stake distribution(((Mithril, stake distribution))) used to create a
 multi-signature(((multi-signature))), the distribution must be verified as having been
@@ -278,7 +278,7 @@ Mithril security(((Mithril, security))) relies on the underlying security of the
 The protocol leverages threshold multi-signatures(((threshold, multi-signatures))), which enable the
 aggregation of multiple individual signatures into a single compact
 signature, depending on the distribution and control of stake(((stake))) among the
-participants. The Mithri protocol relies on the following:
+participants. The Mithril protocol relies on the following:
 
 * *Threshold multi-signature*: a scheme in which individual signatures
 from multiple participants are aggregated into a single signature if the
@@ -328,7 +328,7 @@ to create an alternate certificate chain(((certificate chain))) capable of overw
 current one.
 
 To ensure robust security and efficiency of the Mithril protocol(((Mithril, protocol))),
-*protocol parameters* must be cautiously selected - the choice of these
+*protocol parameters* must be cautiously selected -- the choice of these
 parameters directly influences the trade-offs between security and
 efficiency:
 
