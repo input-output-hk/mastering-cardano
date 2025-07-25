@@ -9,9 +9,9 @@ include::chapter-04-how-cardano-works/cardano-node-and-system-layers.adoc[]
 
 include::chapter-04-how-cardano-works/chapter-utxo.adoc[]
 
-=== Reaching Consensus using Proof-of-Stake
+=== Reaching Consensus using Proof-of-Stake (PoS)
 
-This section explores the concept of proof of stake (PoS) and discusses its importance for blockchain technology. It also compares and contrasts it to other consensus mechanisms.
+This section explores the concept of proof-of-stake (PoS) (((proof-of-stake))) and discusses its importance for blockchain technology. It also compares and contrasts it to other consensus mechanisms.
 
 Introduction to proof of stake
 PoS is a type of https://docs.cardano.org/about-cardano/learn/consensus-explained[consensus mechanism] that uses the amount of stake (or value) held in the system to determine consensus among protocol participants. Essentially, a consensus protocol determines the rules and parameters governing the behavior of blockchains. Other examples of consensus mechanisms include proof of work (PoW), proof of useful work (PoUW), and proof of burn (PoB). A PoS consensus protocol ensures distributed consensus by determining whether transactions are legitimate. Transactions are the data elements generated within the blockchain, such as cryptocurrency, contracts, or records.
@@ -22,29 +22,29 @@ Let’s exemplify how consensus works with an everyday example. Imagine you and 
 
 Here’s how you might use a consensus algorithm:
 
-- Proposal. They propose it to the group whenever someone wants to add an entry (like ‘Alice owes Bob $10’).
-- Validation. Everyone checks the proposed entry to ensure it's correct (eg, Alice agreed to owe Bob $10).
-- Agreement. If most of the group agrees that the entry is valid, it gets added to the notebook.
+- Proposal — individuals make a proposal to the group whenever someone wants to add an entry (like ‘Alice owes Bob $10’).
+- Validation — everyone checks the proposed entry to ensure it is correct (eg, Alice agreed to owe Bob $10).
+- Agreement — the entry is added to the notebook, if most of the group agrees that the entry is valid.
 
-Similarly, a consensus algorithm ensures that all participants in a network agree on the same data, keeping the system accurate and reliable, even when many different people are involved.
+Similarly, a consensus algorithm (((consensus algorithm))) ensures that all participants in a network agree on the same data, keeping the system accurate and reliable, even when many different people are involved.
 
-PoS works in a synchronous and partially asynchronous network topography. It ensures that during the generation of these transactions, a temporary authority is required to determine the data used and shared within the collection. This authority's job is to make and broadcast that call to the rest of the network. This is where the PoS protocol operates to determine authority for these transactions during the mining process. Proof refers to proving that the transactions are legitimate, while stake is the value held by the various addresses on individual nodes. The value refers to the amount of individual value elements, or coins, in operation within a slot ledger at any time.
+PoS works in a synchronous and partially asynchronous network topology. It ensures that during the generation of these transactions, a temporary authority is required to determine the data used and shared within the collection. This authority's job is to make and broadcast that call to the rest of the network. This is where the PoS protocol operates to determine authority for these transactions during the mining process. Proof refers to proving that the transactions are legitimate, while stake is the value held by the various addresses on individual nodes. The value refers to the amount of individual value elements, or coins, in operation within a slot ledger at any time.
 
 We can illustrate how PoS works with the following example. Imagine a community garden where you and your neighbors decide what to plant each season. Instead of having everyone vote equally, the neighbors decide that the more time and effort someone has invested in the garden, the more their vote should count.
 
 Using PoS to decide what to plant may work as follows:
 
-- Stake. In the community garden, your ‘stake’ is the time and effort you’ve put into maintaining the garden. The more hours you've worked or the more plants you've contributed, the more influence you have in deciding what gets planted next.
-- Selection. When it's time to decide on new plants, instead of everyone voting, the decision is made by a random selection process that favors those with a larger stake. So, if you’ve spent a lot of time and effort in the garden, you have a higher chance of being selected to make the decision.
-- Responsibility. If you're chosen, you get to decide which plants to add. Because you’ve invested a lot in the garden, you’re motivated to make good decisions to benefit the whole garden and ensure it thrives.
-- Rewards. As a reward for your effort and good decisions, you might get some of the produce or extra benefits from the garden, encouraging you to keep contributing.
+- Stake —  in the community garden, your stakeis the time and effort you have put into maintaining the garden. The more hours you've worked or the more plants you've contributed, the more influence you have in deciding what gets planted next.
+- Selection —  when it is time to decide on new plants, instead of everyone voting, the decision is made by a random selection process that favors those with a larger stake. So, if you have spent a lot of time and effort in the garden, you have a higher chance of being selected to make the decision.
+- Responsibility —  if you are chosen, you get to decide which plants to add. Because you have invested a lot in the garden, you are motivated to make good decisions to benefit the whole garden and ensure it thrives.
+- Rewards —  as a reward for your effort and good decisions, you might get some of the produce or extra benefits from the garden, encouraging you to keep contributing.
 
 In terms of a blockchain network, PoS works as follows:
 
-- Stake. Every ada holder has a stake in the network that they can delegate to a pool from their wallet. The process is safe because no ada leaves the user’s wallet.
-- Selection. The network randomly selects a pool to validate new transactions and create a new block. The chances of being selected increase with the amount of cryptocurrency staked.
-- Responsibility. The selected pool validates transactions, ensuring they are legitimate, and adds them to the blockchain.
-- Rewards. In return for validating transactions and securing the network, the pool earns rewards.
+- Stake —  every ada holder has a stake (((stake))) in the network that they can delegate to a pool from their wallet. The process is safe because no ada leaves the user’s wallet.
+- Selection —  the network randomly selects a pool to validate new transactions and create a new block. The chances of being selected increase with the amount of cryptocurrency staked.
+- Responsibility — the selected pool validates transactions, ensuring they are legitimate, and adds them to the blockchain.
+- Rewards —  in return for validating transactions and securing the network, the pool earns rewards (((rewards))).
 
 ==== PoS features and advantages
 
@@ -52,7 +52,7 @@ One of the key features of proof of stake is that as a user's value increases, s
 
 It is worth remembering that participants accumulate the transaction fees within a PoS protocol, thereby adding to their wealth as they go. This encourages steady and stable growth of the blockchain and reduces the instances of stalled transactions that can prevent chain growth.
 
-Some of the primary advantages of proof of stake include:
+Some of the primary advantages of proof of stake (((proof-of-stake, advantages))) include:
 
 - Rigorous security protocols – are incorporated into a PoS protocol
 - Decentralization – the network is fully decentralized and not controlled by a single party or group
