@@ -4,11 +4,11 @@
 
 Native assets are a label to describe an extension to the Cardano extended unspent transaction output(((extended unspent transaction output))) (EUTXO) model of accounting, allowing anyone to create an asset that is treated similarly to the underlying currency (ada/lovelace) in terms of ledger.
 
-Because native assets on Cardano are treated similarly to the layer 1 currency, they share many of the same properties as lovelace. An unspent transaction output(((unspent transaction output))) (UTXO) may contain one or more native assets that may be transacted in any quantities between members (addresses) of the network at any time, with no restrictions (permissionless).
+Because native assets on Cardano are treated similarly to the layer 1 currency, they share many of the same properties as lovelace. An unspent transaction output (UTXO) may contain one or more native assets that may be transacted in any quantities between members (addresses) of the network at any time, with no restrictions (permissionless).
 
 The unique properties of Cardano(((Cardano))) native assets necessitate additional considerations for projects seeking to leverage them, compared to other standards such as ERC-20/721/1155. However, Cardano native assets also offer benefits over the other blockchain standards.
 
-Native assets are cryptographically identified by the ‘minting policy script(((minting policy script)))’ hash, in addition to a ‘token identifier’, allowing for multiple tokens to be minted under the same ‘minting policy script(((minting policy script)))’ and to be uniquely identified within the context of the blockchain ledger.
+Native assets are cryptographically identified by the ‘minting policy script(((minting policy script)))’ hash, in addition to a ‘token identifier’, allowing for multiple tokens to be minted under the same ‘minting policy script’ and to be uniquely identified within the context of the blockchain ledger.
 
 ==== Minting policy scripts
 
@@ -138,7 +138,7 @@ _Policy is valid AFTER slot #1 and valid UNTIL slot #1000000_
 
 When minting native assets(((native assets))) on Cardano, we want to use a combination of required signing key(s) and designate the slot after which tokens and token supplies cannot be modified. In this case, we can combine multiple scripts of multiple types to accomplish the desired effect.
 
-_Common time-locked (before slot #1000000), signature required minting policy script(((minting policy script))) example:_
+_Common time-locked (before slot #1000000), signature required minting policy script example:_
 
 ----
 {
@@ -202,7 +202,7 @@ Writing Cardano smart contracts is beyond the scope of this chapter; however, it
 
 ==== To funge or not to funge, that is the question
 
-When considering the use of Cardano native assets(((Cardano native assets))) for a project, an important consideration is the _fungibility_ of the token. An asset is considered fungible when multiple tokens exist that are indistinguishable and interchangeable with one another.
+When considering the use of Cardano native assets for a project, an important consideration is the _fungibility_ of the token. An asset is considered fungible when multiple tokens exist that are indistinguishable and interchangeable with one another.
 
 When a token supply is greater than one, it is considered a _fungible token (FT)_. When a token has a supply of precisely one, it is a _non-fungible token (NFT)_. Some real-world examples of fungible tokens include casino chips, arcade tokens, public stocks, and voting shares. Some real-world examples of non-fungible tokens include deeds or titles to real property, as well as original works of art.
 
@@ -212,7 +212,7 @@ Fungible tokens, as mentioned previously, are tokens with a quantity greater tha
 
 ==== Non-fungible tokens
 
-While fungible tokens are freely interchangeable with one another, non-fungible tokens are globally unique and cannot be exchanged on a one-to-one basis. This uniqueness makes NFTs particularly valuable for representing ownership of digital art(((digital art))), collectibles, and other one-of-a-kind items.
+While fungible tokens are freely interchangeable with one another, non-fungible tokens are globally unique and cannot be exchanged on a one-to-one basis. This uniqueness makes NFTs particularly valuable for representing ownership of digital art, collectibles, and other one-of-a-kind items.
 
 ==== Native assets are boring
 
@@ -224,36 +224,36 @@ Native tokens become more interesting and gain additional use cases through the 
 
 *CIP-10:* https://cips.cardano.org/cips/cip10/[Transaction Metadata Label Registry]
 
-CIP-10 defines a registry of metadata(((metadata))) indexes that have been reserved for a specific use case.
+CIP-10(((CIP-10))) defines a registry of metadata indexes that have been reserved for a specific use case.
 
 *CIP-25:* https://cips.cardano.org/cips/cip25/[Media NFT Metadata Standard]
 
-CIP-25 is the first accepted metadata standard for Cardano multimedia NFTs. CIP-25 is preferred for more static assets that are not subject to frequent updates or changes to the metadata and do not require smart contract(((smart contract))) programmability.
+CIP-25(((CIP-25))) is the first accepted metadata standard for Cardano multimedia NFTs. CIP-25 is preferred for more static assets that are not subject to frequent updates or changes to the metadata and do not require smart contract programmability.
 
 *CIP-26:* https://cips.cardano.org/cips/cip26/[Off-Chain Metadata Standard]
 
-CIP-26 is currently the primary means of registering information about fungible tokens. Data is signed and submitted to the Cardano token registry(((Cardano, Token Registry))), where it can be consumed by wallet providers and other integrators to properly show information related to fungible tokens, including: decimals, ticker and display name, and a logo or icon.
+CIP-26(((CIP-26))) is currently the primary means of registering information about fungible tokens. Data is signed and submitted to the Cardano token registry(((Cardano, Token Registry))), where it can be consumed by wallet providers and other integrators to properly show information related to fungible tokens, including: decimals, ticker and display name, and a logo or icon.
 
 *CIP-27:* https://cips.cardano.org/cips/cip27/[NFT Royalty Standard]
 
-CIP-27 describes a standard to publish information on-chain regarding royalties that should be associated with CIP-25 format NFTs. This information should be utilized by marketplaces when processing royalty payments for secondary sales.
+CIP-27(((CIP-27))) describes a standard to publish information on-chain regarding royalties that should be associated with CIP-25 format NFTs. This information should be utilized by marketplaces when processing royalty payments for secondary sales.
 
 *CIP-54:* https://cips.cardano.org/cips/cip54/[Smart NFTs]
 
-CIP-54 describes a method for creating ‘smart’, programmable NFTs using JavaScript embedded in the metadata of one or more tokens, along with a structure that allows individual tokens to ‘request’ specific data or information from the blockchain, thereby enabling them to evolve or change over time.
+CIP-54(((CIP-54))) describes a method for creating ‘smart’, programmable NFTs using JavaScript embedded in the metadata of one or more tokens, along with a structure that allows individual tokens to ‘request’ specific data or information from the blockchain, thereby enabling them to evolve or change over time.
 
 *CIP-60:* https://cips.cardano.org/cips/cip60/[Music Token Metadata]
 
-CIP-60 describes an extension to both CIP-25 and CIP-68(((CIP, 68))), providing a specific structure for music NFTs. These tokens may represent a single song, an entire album, or other pieces of an overall music composition and are used by a variety of music licensing, streaming, and distribution platforms in the ecosystem.
+CIP-60(((CIP-60))) describes an extension to both CIP-25 and CIP-68, providing a specific structure for music NFTs. These tokens may represent a single song, an entire album, or other pieces of an overall music composition and are used by a variety of music licensing, streaming, and distribution platforms in the ecosystem.
 
 *CIP-67:* https://cips.cardano.org/cips/cip67/[Asset Name Label Registry]
 
-CIP-67 serves as a repository for token naming identification tags related to the CIP-68(((CIP, 68))) standard.
+CIP-67(((CIP-67))) serves as a repository for token naming identification tags related to the CIP-68 standard.
 
 *CIP-68:* https://cips.cardano.org/cips/cip68/[Datum Metadata Standard]
 
-Whereas earlier token metadata standards relied on metadata submitted statically to the blockchain during a token mint operation, CIP-68 introduces the concept of storing token metadata in an inline datum attached to a reference token, allowing for easy updates to token metadata and providing smart contract visibility of metadata.
+Whereas earlier token metadata standards relied on metadata submitted statically to the blockchain during a token mint operation, CIP-68(((CIP-68))) introduces the concept of storing token metadata in an inline datum attached to a reference token, allowing for easy updates to token metadata and providing smart contract visibility of metadata.
 
 *CIP-86:* https://cips.cardano.org/cips/cip86/[NFT Metadata Update Oracles]
 
-CIP-86 describes a solution for projects to publish updates related to token metadata(((metadata))) in bulk, utilizing a combination of complex regular expression pattern matching.
+CIP-86(((CIP-86))) describes a solution for projects to publish updates related to token metadata in bulk, utilizing a combination of complex regular expression pattern matching.
