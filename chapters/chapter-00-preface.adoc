@@ -78,7 +78,7 @@ Learn the foundational blockchain concepts, then discover how to interact with t
 - Chapter 1: Introduction: Overview of a Blockchain Network, Blockchain Generations (Cardano, Bitcoin, and Ethereum)
 - Chapter 3: Learn About Cardano: What is Cardano?, Cardano Community and Growth of the Ecosystem, IO Education
 - Chapter 4: How Cardano Works: UTXO and EUTXO Models, Multi-assets, Native Tokens (fungible and non-fungible)
-- Chapter 6: Wallets in the Cardano Ecosystem: Fundamentals of Wallets, Wallets in the Cardano Ecosystem, Setting Up a Cardano Light Wallet, Common operations in a Cardano Wallet (Sending and receiving ada, Staking ada)
+- Chapter 6: Digital Cardano Wallets: Fundamentals of Wallets, Wallets in the Cardano Ecosystem, Setting Up a Cardano Light Wallet, Common operations in a Cardano Wallet (Sending and receiving ada, Staking ada)
 
 ==== Cardano Governance & Future Path
 Understand how Cardano's governance model operates, explore key initiatives like Project Catalyst and CIPs, and look ahead to future advancements and the Cardano 2.0 vision.
