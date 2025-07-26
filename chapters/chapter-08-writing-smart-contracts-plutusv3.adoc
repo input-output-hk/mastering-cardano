@@ -3036,7 +3036,7 @@ As we have already explained in the previous section, we need to define the
 [blue]#constrArgs# helper function that helps us to convert the [purple]#BuiltinData#
 to the [purple]#BuiltinList# type. The script information(((script, information)))
 is contained in the third place in the script context. To exctract an element from
-the third place in the list, we can use two times the [blue]#tail# function
+the third place in the list, we can apply two times the [blue]#tail# function
 and one time the [blue]#head# function.
 
 Since we are working with a spending script the script info contains the spending
@@ -3949,7 +3949,8 @@ vestingValMix ctx =
   info = scriptContextTxInfo ctx
 ----
 
-We now have two options in our off-chain code how to define the datum. In the
+If we construct a transaction that creates a UTXO at the script address
+of the above script, we now have two options to attach the datum. In the
 case of the [purple]#VestingDatum1# data constructor, we would attach
 the datum the same way as we have shown in the [blue]#sendFunds# function. For
 the second case, if we would want to provide the datum as the second option where
