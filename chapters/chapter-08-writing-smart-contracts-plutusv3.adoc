@@ -5044,7 +5044,7 @@ Some of the important research areas that IO targets are cryptography,
 software engineering, distributed systems(((distributed system))),
 networks, formal verification, and programming languages. Ouroboros(((Ouroboros))),
 Cardano's consensus protocol, is explained in detail in section
-<<OuroborosConsensus>>. Ouroboros represents the outcome of long
+<<OuroborosConsensus, Ouroboros consensus>>. Ouroboros represents the outcome of long
 research presented in multiple papers. It is the first blockchain
 consensus protocol developed through peer-reviewed research with
 mathematically proven security features that guarantee the protocol is
@@ -5436,7 +5436,8 @@ implementation. The https://github.com/IntersectMBO/plutus[Plutus]
 repository contains the formalization of Plutus in Agda. The project is
 located in the _plutus-metatheory_ folder. You can read more about
 formal methods and functional programming(((programming, functional))) in section
-<<FormalMethodsAndTheImportanceOfProgramCorrectness>>.
+<<FormalMethodsAndTheImportanceOfProgramCorrectness,
+Formal methods and the importance of program correctness for cryptocurrency ledgers>>.
 
 Besides formal methods, property-based testing is also used to deliver
 high-assurance software for Cardano. For Haskell code, property-based
