@@ -500,8 +500,8 @@ the https://worldmobiletoken.com/[World Mobile Token] (WMT) as the
 primary currency for transactions and reward distribution within its
 ecosystem. The primary purpose of a WMT is to incentivize both token
 holders and node operators. Token holders support network operations by
-delegating their WMTs to node operators (stakers) who manage nodes to
-support the network. There is a finite supply of two billion WMTs, with
+delegating their WMTs to node operators (stakers) who manage nodes.
+There is a finite supply of two billion WMTs, with
 only a portion initially circulating.
 
 Additionally, there exists another currency within the World Mobile
@@ -660,7 +660,7 @@ on the blockchain. As a special-purpose DSL, it offers a higher-level model of
 contracts in a more restricted domain than other Cardano languages
 compiling directly to Plutus. This means that Marlowe can provide
 safety guarantees, such as ensuring that no assets are held in a script
-indefinitely, by the design of the language. Additionally, it offers
+indefinitely, by design. Additionally, it offers
 tools for a full analysis of potential contract faults before contract
 execution.
 
@@ -694,8 +694,7 @@ commit to a contract
 * Formally proves properties of Marlowe contracts, delivering the
 highest level of assurance regarding intended behavior through logic
 tools
-* Prevents certain flawed programs from being written by the design of
-the language
+* Prevents certain flawed programs from being written by design
 * Mitigates some unanticipated exploits that have affected existing
 blockchains.
 
@@ -774,10 +773,9 @@ projects without installing any software
 integrated into the updated Marlowe website.
 
 *IMPORTANT:*
-In the transition phase of Marlowe, where some GitHub repositories
-of the above-mentioned tools may not be actively maintained by the
-Marlowe Foundation, some of these tools might have issues when using
-them with the latest test or main network due to Cardano updates.
+During Marlowe's transition phase some tools may have issues when used
+with the latest test or main network due to Cardano updates — especially
+for respositories that are not actively maintained by the Marlowe Foundation.
 
 The
 https://docs.marlowe-lang.org/docs/platform-and-architecture/marlowe-language-guide[Marlowe
@@ -1418,6 +1416,12 @@ opportunities by making Marlowe tools essential for small and medium
 businesses, developers, infrastructure providers, and stake pool operators(((SPOs)))
 (SPOs). The Marlowe 2025 application targets the following areas:
 
+* Marlowe DApp starter kit
+* Validator enhancements
+* Configurable runtime fee mechanism
+* Marlowe oracle protocol
+* Outreach
+
 *Marlowe DApp starter kit(((DSK)))*
 
 The Marlowe DApp starter kit(((DSK))) (DSK) will consolidate the documentation,
@@ -1480,7 +1484,7 @@ The Marlowe 2025 proposal marks the first step in launching Marlowe as
 an independent project. The Marlowe Foundation(((Marlowe, Foundation)))
 will make further bids to
 Catalyst and other funding bodies, engaging with the community through
-the special Interest group and potentially collaborating with other
+the Special Interest Group and potentially collaborating with other
 partners. A key focus will be the development of Marlowe V2 – a separate
 conceptual track aimed at fundamental language modifications. This track
 will be organized through the creation of Marlowe improvement proposals
@@ -1585,6 +1589,8 @@ https://docs.cardano.org/about-cardano/evolution/upgrades/chang/[Cardano
 docs] page, we get a short description of what PlutusV3(((PlutusV3))) brings to
 Cardano:
 
+[quote, Cardano docs]
+____
 With the introduction of PlutusV3, Plutus scripts are available for use
 as part of the governance system, enabling sophisticated voting
 possibilities like supporting DAOs, for example. Chang also brings
@@ -1593,6 +1599,7 @@ performance enhancements to the platform. These additions provide
 developers with a richer smart contract creation toolkit, enhancing both
 developer and user experiences, and unlocking new possibilities for
 decentralized applications (DApps) on Cardano.
+____
 
 Section <<PlutusV3 features>> explains some of the PlutusV3 features
 that are not covered in the coding sections, and highlights the advantages
@@ -1634,7 +1641,7 @@ their GitHub repositories.
 * https://github.com/johnnygreeney/cardanoforthemasses[Cardano for the Masses]
 online book written by John Greene(((Greene, John))) that is available
 under an open-source license.
-* Cardano foundation's free online https://academy.cardanofoundation.org/[Cardano academy]
+* Cardano foundation's free online https://cardanofoundation.org/academy[Cardano academy]
 course, that teaches the basics of blockchain and Cardano.
 
 Cardano's hard fork combinator(((HFC))) technology, briefly introduced in section
@@ -1907,9 +1914,9 @@ repository, commit `b9460088985331bb050f1782a32e4f92c4c00e67`.
 The https://demeter.run/[Demeter.Run] online platform offers various
 tools and development environments for the Cardano ecosystem. One can
 set up development environments for smart contract languages such as
-Plinth and Aiken, as well as programming languages like Rust or Python,
-come with useful Cardano tools and libraries written in those
-languages. The platform offers backend hosting for DApps and allows
+Plinth and Aiken. Also, programming languages like Rust or Python, that
+come with useful Cardano tools and libraries are available. The platform
+offers backend hosting for DApps and allows
 integration testing within its environments. It manages monitoring,
 security, and version upgrades. Depending on development needs, the
 platform provides various starter kits, including example code
@@ -2501,7 +2508,7 @@ paying a fee, or claiming a reward
 to unlock funds held at a script address
 * Supplying a value that modifies the current datum data.
 
-At the end, we show the code for generating Plutus blueprints for two of the
+Finally, we show the code for generating Plutus blueprints for two of the
 six validators we have defined in this section to shorten the code. We choose
 the gift validator and the untyped 42 validator that generates a small CBOR(((CBOR))).
 
@@ -2845,7 +2852,7 @@ In the previous code examples, the validation logic did not use the transaction 
 information. However, in most validator scripts, they are
 used. First, we look at the script information data type.
 
-*Script information*
+===== Script information
 
 The [purple]#ScriptInfo# data type is defined as:
 
@@ -2983,7 +2990,7 @@ following script purposes:
 In the <<Plutus smart contracts>> section, we will focus on the spending
 and minting script purposes.
 
-*Decoding the script information(((script, information))) in untyped form*
+===== Decoding the script information in untyped form
 
 Before we move on to explaining the transaction information data type we look
 at another validator example that shows how to decode the [purple]#ScriptInfo#
@@ -3028,9 +3035,9 @@ serializedDatum42Validator = serialiseCompiledCode compiledDatum42Validator
 As we have already explained in the previous section, we need to define the
 [blue]#constrArgs# helper function that helps us to convert the [purple]#BuiltinData#
 to the [purple]#BuiltinList# type. The script information(((script, information)))
-is contained in the
-third place in the script context, so we use two time the [blue]#tail# function
-and one time the [blue]#head# function to extract it.
+is contained in the third place in the script context. To exctract an element from
+the third place in the list, we can use two times the [blue]#tail# function
+and one time the [blue]#head# function.
 
 Since we are working with a spending script the script info contains the spending
 constructor followed by the transaction output
@@ -3056,7 +3063,7 @@ in smart contracts:
 * Representing the current state of the UTXO
 * Defining metadata and/or configurations.
 
-*Transaction information*
+===== Transaction information
 
 Let us look at the transaction information(((transaction, information)))
 [purple]#TxInfo# data type.
@@ -3114,7 +3121,7 @@ data TxInInfo = TxInInfo
   deriving anyclass (HasBlueprintDefinition)
 ----
 
-A transaction input information(((transaction, input information)))
+The transaction input information(((transaction, input information)))
 contains a transaction output reference(((transaction, output reference)))
 that we have previously explained. It defines the input UTXO, and it also
 contains resolved transaction input information
@@ -3147,10 +3154,10 @@ data Address = Address
 ----
 
 As explained in section <<Cardano addresses>>, an address is composed of
-two parts: the payment part and the optional staking part.
-The payment part,
+two parts: the payment part and the optional staking part. The payment part,
 defined with the [purple]#Credential# data type, contains either a public
-key hash or a script hash as we have explained when talking about rewarding.
+key hash or a script hash as we have explained when talking about rewarding
+in the <<Script information>> section.
 
 The optional staking part is defined with the [purple]#StakingCredential#
 data type that can be either a staking hash or a staking pointer.
@@ -3280,7 +3287,7 @@ following certificates:
 . Resign committee member's cold credential.
 
 After certificates comes the data that manages withdrawals of staking rewards.
-The data is contained in a [purple]#Map# of credentials and lovelace. Next follows
+The data is contained in a [purple]#Map# of credentials to lovelace. Next follows
 the transaction validity range, which is defined with the [purple]#POSIXTimeRange#
 data type.
 
@@ -3547,8 +3554,7 @@ hash and checks whether this transaction has been signed with the correct key
 that belongs to the hash. In the second variable, we access the transaction
 validity range and check whether it is contained inside the interval
 starting with the deadline and going to infinity. As a side note we state
-when the validity range for a transaction is being defined, that we construct
-either with off-chain code libraries or with the use of the Cardano CLI(((Cardano, CLI))),
+when the validity range for a transaction is being defined,
 the transaction gets submitted by a node only if the time of submission
 for this transaction falls into the validity range of the transaction.
 
@@ -4073,8 +4079,8 @@ with the command below.
 deno run -A vesting.ts
 ----
 
-After completing the transactions, the transaction hashes output to the
-console can be used to check transaction details on the
+After the transactions completes, the transaction hash is shown in the
+console and can be used to check transaction details on the
 http://preview.cardanoscan.io/[preview.cardanoscan.io] webpage.
 
 Now that we have seen the off-chain code for the vesting validator,
@@ -4464,8 +4470,7 @@ Prelude PlutusLedgerApi.V1.Value> assetClassValueOf combined myAssetClass
 ----
 
 We can also extract information from a value type variable as a list of
-triples using the [blue]#flattenValue# function, which takes a value type and
-returns a list of triples.
+triples using the [blue]#flattenValue# function.
 
 [source,console]
 ----
@@ -5123,8 +5128,7 @@ transaction will cost before they submit it. The reason for this is that protoco
 parameters, rather than network traffic, govern pricing on Cardano.
 Determinism of fees and transactions can also be advantageous in Web3(((Web3)))
 applications, such as decentralized exchanges (DEXs). On DEXs, users trade
-with the help of smart contracts that eliminate the need for a central entity
-which is in centralized exchanges holding custody of traders tokens.
+with the help of smart contracts that eliminate the need for a central entity.
 Liquidity providers that provide token pairs to DEXs, such that normal
 users can trade those tokens, face the issue of impermanent loss on DEXs
 that use the https://www.coindesk.com/learn/what-is-an-automated-market-maker/[Automated
@@ -5350,9 +5354,10 @@ ways. The Plutus language was designed with the following requirements in mind:
 * multiple source languages.
 
 You can read a short explanation of each of the above requirements in the
-https://ci.iog.io/job/input-output-hk-plutus/master/x86_64-linux.packages.plutus-report/latest/download/1[Plutus Platform] technical report, and you can read more about the design
+https://plutus.cardano.intersectmbo.org/resources/plutus-report.pdf[Plutus
+Platform] technical report, and you can read more about the design
 details of the Plutus language in its
-https://ci.iog.io/job/input-output-hk-plutus/master/x86_64-linux.packages.plutus-core-spec/latest/download/1[formal
+https://plutus.cardano.intersectmbo.org/resources/plutus-core-spec.pdf[formal
 specification] document. The https://github.com/IntersectMBO/plutus[Plutus]
 GitHub page features links to related materials.
 
