@@ -55,7 +55,7 @@ We now list a number of prerequisite steps required in order to follow upcoming 
 
 ==== Installing a Wallet
 
-Prior to building a DApp, we need to ensure that we have a wallet installed in a browser that will allow for the client web-page to communicate with the blockchain directly. We'll use the Lace wallet (introduced in #Chapter 6#) in the rest of this chapter, but you may use any other wallet that supports the Cardano blockchain.
+Prior to building a DApp, we need to ensure that we have a wallet installed in a browser that will allow for the client web-page to communicate with the blockchain directly. We'll use the Lace wallet (introduced in the <<wallets-in-the-world-of-cardano>> Chapter) in the rest of this chapter, but you may use any other wallet that supports the Cardano blockchain.
 
 
 ==== Configuring Wallet to Connect To Testnet
@@ -183,7 +183,7 @@ We'll now create the following aspects of a DApp:
 * Server-side code: A NodeJS(((NodeJS))) server that will send a page's HTML(((HTML)))/JavaScript to the end-user.
 * Client-side code: This is the code that will be sent from the server (discussed above), but will execute in the client-side browser. This code will connect to the wallet and communicate with a deployed on-chain script.
 
-We will not create on-chain script code in this section (since that is handled in #Chapter 8#). Indeed, DApps can be created that communicate with existing deployed on-chain scripts that may not necessarily be written by the same developers/teams -- just as we demonstrate now below.
+We will not create on-chain script code in this section (since that is handled in the <<writing-smart-contracts>> chapter). Indeed, DApps can be created that communicate with existing deployed on-chain scripts that may not necessarily be written by the same developers/teams -- just as we demonstrate now below.
 
 ==== Creating a Server (with NodeJS)
 
@@ -228,7 +228,8 @@ app.listen(port, () => {
 [#node-hello-world]
 image::node-hello-world.png[pdfwidth=45%]
 
-[[para-csc, Creating Client-Side Code]]_Creating the Client-Side Code to Connect to the Wallet_
+[[para-csc, Creating Client-Side Code]]
+==== Creating the Client-Side Code to Connect to the Wallet
 
 Now that we have a server able to send HTML/JavaScript to end-users, let's write the client-side code to connect to a user's wallet and interact with the underlying on-chain scripts. We'll only provide the bare minimal code that is needed. Indeed, you may want to look into implementing a full HTML page (including html, head and body tags), but we'll only provide the necessities for the sake of simplicity.
 
@@ -445,7 +446,7 @@ async function connectWallet() {
 
 ==== Interacting with the Redeemer 42 On-Chain Script Code
 
-To demonstrate DApp interaction, we'll write client-side JavaScript code to interact with the Redeemer 42 on-chain script code (discussed in #Chapter 8#).footnote:[Also see https://github.com/LukaKurnjek/ppp-plutusV3-plinth/blob/main/off-chain/meshjs/Week02/redeemer42-ref-script.ts] You can read Section <<Simple validation scripts>> to get a better understanding of the Redeemer 42 Script (if you have not already done so). We'll send funds, deploy a reference script and then claim back the funds sent.
+To demonstrate DApp interaction, we'll write client-side JavaScript code to interact with the Redeemer 42 on-chain script code (discussed in the <<writing-smart-contracts>> chapter).footnote:[Also see https://github.com/LukaKurnjek/ppp-plutusV3-plinth/blob/main/off-chain/meshjs/Week02/redeemer42-ref-script.ts] You can read Section <<Simple validation scripts>> to get a better understanding of the Redeemer 42 Script (if you have not already done so). We'll send funds, deploy a reference script and then claim back the funds sent.
 
 The Redeemer 42's reference script that the DApp will interact with has already been deployed to the preprod network. Its transaction hash is: ac43f379762d68839a75d95146c332e6025e5a305fffc071308d138849109bfc
 
@@ -603,7 +604,7 @@ Upon clicking 'Send Funds' the wallet should pop-up asking that you confirm to s
 
 ===== Deploying a reference script for the Redeemer 42 example
 
-To add functionality that deploys a reference script (discussed in #Chapter 8#) for the Redeemer 42 example follow these steps:
+To add functionality that deploys a reference script (discussed in the <<writing-smart-contracts>> chapter) for the Redeemer 42 example follow these steps:
 
 . We will make use of an RPC provider, which allows for querying of parameters from the blockchain. We'll make use of the BlockfrostProvider provided by mesh SDK, but you could also look into using other providers:
 
