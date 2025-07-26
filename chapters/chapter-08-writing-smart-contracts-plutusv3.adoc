@@ -1,6 +1,7 @@
 
 :imagesdir: ../images
 
+[[writing-smart-contracts]]
 == Writing smart contracts
 
 === Prefaces
@@ -181,6 +182,7 @@ plans to enhance the developer experience on the Marlowe platform and
 refine the core language evolution to better support its aim of
 providing a high-level, chain-agnostic language for blockchain financial
 smart contracts. Please join us on this journey!
+
 
 === Smart contract programming languages
 
