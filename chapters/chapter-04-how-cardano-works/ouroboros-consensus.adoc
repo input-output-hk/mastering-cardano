@@ -336,6 +336,77 @@ Chronos removes the need for external time sources such as Network Time Protocol
 This makes the system more resilient to time-based attacks.
 For example, it becomes much harder for an attacker to isolate a node by feeding it a false clock and disrupting its slot scheduling.
 
+===== Ouroboros Leios (2022 <<OuroborosLeiosDiscussion>>, 2025 <<OuroborosLeiosPaper>>) a high throughput and parallel processing consensus protocol
+
+The previous variants of Ouroboros have shown that a proof of stake consensus is practical, secure and resilient.
+However, challenges remain. The biggest one of them is throughput.
+
+Throughput((throughput)), the number of transactions that a blockchain can process per second,
+is still low, compared to centralized systems.
+
+====== Why is throughput 'low' in blockchains in general, and in Praos in particular?
+
+As you remember from our description, there is one slot per second,
+but only 5% (one in twenty) slots produce a block.
+This means that for 19 seconds the SPO is 'idle'.
+The reality is more complicated:
+the block density must remain low to allow sufficient time for transactions to propagate through the network (currently around 5 seconds)
+However, this idle time is essential to maintain the blockchain’s security properties
+
+These limitations led to a discussion paper<<OurborosLeiosDiscussion>>,
+where Input Output engineers began brainstorming a better version of Ouroboros: Leios.
+
+Leios would mix two architectures: first, a streaming architecture; later, a pipeline architecture.
+It also aims to exploit idle resource time and approach the theoretical throughput limit of network bandwidth.
+
+In the streaming phase, all transactions would be stored in Input Blocks (IBs).
+Which will allow it to create IBs close to network capacity.
+
+In the pipeline phase, each IB would be sent through a seven-stage pipeline:
+Propose, Deliver1, Link, Deliver2, Vote1, Endorse and Vote2.
+IBs are referenced in later stages to create Endorsement Blocks (EBs).
+
+.Table: Summary of the different block types, their purpose and relationships
+.Summary of Leios Block Types and Their Properties
+[cols="h,2,2", options="header"]
+|===
+| | Input Blocks (IBs) | Endorsement Blocks (EBs)
+
+| Purpose
+| Carries transaction payload
+| Certifies the existence/availability of IBs and links protocol history together
+
+| Contains
+| A list of ledger transactions
+| References (hashes or identifiers) to IBs and other EBs.
+
+| Frequency
+| High rate, set to be a fraction of the network capacity (eg 1 per 0.2 to 2 seconds)
+| Lower rate, independent of the IB rate, determined by protocol security parameters. (eg 1 per 5 to 10 seconds)
+
+| Generated at pipeline stage
+| Propose (1st stage)
+| Link (3rd stage)  and Endorse (6th stage) to reference other EBs.
+|===
+
+With the combined streaming and pipeline processing architecture, Leios can achieve significantly higher throughput.
+
+===== Queueing delays and Equivocations
+
+Most blockchains that provide formal specifications for their properties rely on the so-called $$\Delta delay model$$.
+This model assumes that all messages sent by honest parties are delivered within time $$\Delta$$.
+As a result, the model doesn't match how a real gossip network protocol works.
+
+In response, IO Research developed a more realistic network model in 2025, called:
+Queueing delays and Equivocations(((Queueing delays and Equivocations,QUEQ))) (QUEQ)
+
+Then they tested the design of Ouroboros Leios, against it.
+To prove that it still satisfied, the same security warranties as Ouroboros Praos.
+
+Leios inherits its core security properties, like persistence, from its base protocol.
+By paying a small penalty in finality (because of the delays introduced by the pipeline),
+It gets a lot more throughput.
+
 ==== In conclusion
 
 At this point, it becomes clear how the development of the first practical proof of stake consensus algorithm in Ouroboros was made possible.
