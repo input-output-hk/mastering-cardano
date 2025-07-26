@@ -49,16 +49,16 @@ While the server is responsible for delivery of the initial HTML and JavaScript 
 
 To further exemplify how guarantees can be provided through on-chain scripts (in spite of initial HTML/JavaScript code being delivered by centralized infrastructure), we'll now introduce how to use a DApp, and then later how to build a DApp.
 
-==== Prerequisites
+=== Prerequisites to Create a DApp
 
 We now list a number of prerequisite steps required in order to follow upcoming sections on how to use a DApp and how to build a DApp.
 
-_Installing a Wallet_
+==== Installing a Wallet
 
 Prior to building a DApp, we need to ensure that we have a wallet installed in a browser that will allow for the client web-page to communicate with the blockchain directly. We'll use the Lace wallet (introduced in #Chapter 6#) in the rest of this chapter, but you may use any other wallet that supports the Cardano blockchain.
 
 
-_Configuring Wallet to Connect To Testnet_
+==== Configuring Wallet to Connect To Testnet
 
 We'll configure the Wallet to connect to the Cardano test network so that we can test without having to spend real cryptocurrency. In Lace, you can do this by:
 
@@ -81,7 +81,7 @@ You can check whether you are connected to a test network in Lace to see if the 
 [#fig-wallet-preprod]
 image::wallet-preprod.png[pdfwidth=50%]
 
-_Receiving Test Cryptocurrency_
+==== Receiving Test Cryptocurrency
 
 In order to interact with the blockchain, users must spend some cryptocurrency. Since we want to avoid spending real cryptocurrency whilst testing we've switched to the Preprod test network (as discussed above), and need to obtain some test cryptocurrency. To do so we'll request some test Ada (Cardano's cryptocurrency) from a faucet.footnote:[Faucets are the term typically used for services that send test cryptocurrency.] One such faucet can be found here: +
 https://docs.cardano.org/cardano-testnets/tools/faucet[_https://docs.cardano.org/cardano-testnets/tools/faucet_]
@@ -112,7 +112,7 @@ Note: The public address of the wallet is hidden, since all transactions are pub
 image::faucet.png[]
 
 
-==== Using a DApp
+=== Using a DApp
 
 Now that we have some test cryptocurrency in our wallet, let's try to use a DApp. We'll use a decentralized exchange(((decentralized exchange))) (DEX) to swap some of our testnet Ada for some other token. More specifically we'll use a preprod test network version of the Minswap(((minswap))) DEX as follows:
 
@@ -176,7 +176,7 @@ And that's it! You have used your first DApp (if you haven't already done so, of
 
 Having explored using a DApp, let's now delve into aspects of internal workings of a DApp by re-creating parts of a DApp.
 
-==== Creating a DApp
+=== Creating a DApp
 
 We'll now create the following aspects of a DApp:
 
@@ -185,7 +185,7 @@ We'll now create the following aspects of a DApp:
 
 We will not create on-chain script code in this section (since that is handled in #Chapter 8#). Indeed, DApps can be created that communicate with existing deployed on-chain scripts that may not necessarily be written by the same developers/teams -- just as we demonstrate now below.
 
-_Creating a Server (with NodeJS)_
+==== Creating a Server (with NodeJS)
 
 We now discuss creating a NodeJS server that will be used to serve content to requesting users. You can use any other framework to create server-side code if you wish (such as Python, PHP, .NET, Java, or any other framework you may prefer). We'll use NodeJS' express package. Follow these steps to create the server:
 
@@ -265,7 +265,7 @@ image::dapp-connect-to-lace.png[]
 
 Now that we have connected the client-side code to the wallet, we'll write some code that will interact with an on-chain script. Just before we do this though, we'll now package some libraries that we need to use in the client-side JavaScript.
 
-_Packaging Libraries for use in Client-Side JavaScript_
+==== Packaging Libraries for use in Client-Side JavaScript
 
 In the client-side JavaScript code, we'll use Mesh -- a library that will provide an easier-to-use interface to interact with the on-chain script code deployed on the blockchain. To do so, we'll package the Mesh library using webpack(((webpack))) and serve it to the client-side JavaScript code. Indeed, you can use a different method to package and serve the library. The code we provide here may require changes (especially when considering different versions of SDKs used, e.g. NodeJS). If the code does not work out-of-the-box you may need to investigate how to package and deploy libraries and/or fix this code as required for your environment. We will not delve into the intricacies of this code but you may want to read up on how to package and serve libraries for client-side JavaScript code.
 
@@ -377,7 +377,7 @@ app.listen(port, () => {
 ----
 
 
-_Using the Bundled Mesh Library in the Client-Side JavaScript_
+==== Using the Bundled Mesh Library in the Client-Side JavaScript
 
 Now, we'll use the bundled mesh library in the client-side JavaScript to communicate with on-chain script.
 
@@ -451,7 +451,7 @@ The Redeemer 42's reference script that the DApp will interact with has already 
 
 
 
-_Sending Funds to the Redeemer 42 On-chain Scripts_
+===== Sending Funds to the Redeemer 42 On-chain Scripts
 
 To add functionality that sends funds to the Redeemer 42 on-chain script code follow these steps:
 
@@ -601,7 +601,7 @@ image::redeemer42-sendFunds.png[pdfwidth=50%]
 
 Upon clicking 'Send Funds' the wallet should pop-up asking that you confirm to sending 3 Ada. It may take a while until the transaction is part of a block -- you can check your wallet's transaction history and also search in a Cardano preprod network block explorer for your wallet's address for a successful transaction (at the associated date/time).
 
-_Deploying a reference script for the Redeemer 42 example_
+===== Deploying a reference script for the Redeemer 42 example
 
 To add functionality that deploys a reference script (discussed in #Chapter 8#) for the Redeemer 42 example follow these steps:
 
@@ -766,7 +766,7 @@ After re-running the NodeJS server and refreshing the page (i.e. refreshing loca
 [#fig-deployReference]
 image::dapp-deploy-reference-script.png[pdfwidth=50%]
 
-_Claiming back funds from the Redeemer 42 example_
+===== Claiming back funds from the Redeemer 42 example
 
 To claim back funds follow these steps:
 
