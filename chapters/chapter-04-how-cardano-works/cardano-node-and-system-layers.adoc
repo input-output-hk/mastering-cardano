@@ -262,8 +262,8 @@ competing chains(((competing chains)))
 *Block production* occurs within the consensus layer, and to produce
 blocks, this layer must also maintain a memory pool(((mempool))) (mempool) of
 transactions(((transaction))) to be inserted into those blocks. For more details about
-block production(((block, production))), read sections <<Reaching Consensus using Proof-of-Stake>>,
-and <<Ouroboros Consensus>>.
+block production(((block, production))), read sections <<ReachingConsensusUsingProofOfStake>>,
+and <<OuroborosConsensus, Ouroboros consensus>>.
 
 The problem of *chain selection(((chain selection)))* arises when two or more nodes extend
 the chain(((chain))) with different blocks. This can happen when nodes are unaware

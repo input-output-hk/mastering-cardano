@@ -2,13 +2,14 @@
 [[how-cardano-works]]
 == How Cardano Works
 
-This chapter explains how the Cardano platform works and outlines the core components of the system. 
+This chapter explains how the Cardano platform works and outlines the core components of the system.
 Cardano has been designed in modules, with linked components that can be used in various ways. These components of the Cardano platform stack work together under the hood to support the construction and use of the live Cardano blockchain. Let's take a closer look at the software running Cardano.
 
 include::chapter-04-how-cardano-works/cardano-node-and-system-layers.adoc[]
 
 include::chapter-04-how-cardano-works/chapter-utxo.adoc[]
 
+[[ReachingConsensusUsingProofOfStake]]
 === Reaching Consensus using Proof-of-Stake (PoS)
 
 This section explores the concept of proof-of-stake (PoS) (((proof-of-stake))) and discusses its importance for blockchain technology. It also compares and contrasts it to other consensus mechanisms.
