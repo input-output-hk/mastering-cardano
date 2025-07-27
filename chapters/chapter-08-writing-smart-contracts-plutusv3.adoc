@@ -192,7 +192,7 @@ Cardano(((Cardano))) smart contract languages can be grouped into three categori
 * Compiled languages(((language, compiled))) that can be compiled to a native language
 * Interpreted languages(((language, interpreted))) that are interpreted by a compiled language.
 
-*Native languages(((Native languages)))*
+==== Native languages
 
 The Cardano node can only process native languages. Currently, there are
 two available: simple scripts(((simple scripts))) and Plutus(((Plutus))).
@@ -225,7 +225,7 @@ Solidity(((Solidity))) languages is presented in section
 The security advantages of Cardano's EUTXO model over Ethereum's account-based
 model are discussed in section <<Cardano security>>.
 
-*Compiled languages*
+==== Compiled languages
 
 Smart contract developers do not write code directly in Plutus. Instead,
 they use compiled or interpreted languages that are compiled into
@@ -343,7 +343,7 @@ with links to the official page and a white paper.
 showcase] page: tags projects by groups
 and adds a short description to each.
 
-*Interpreted languages*
+==== Interpreted languages
 
 The third category of smart contract languages in Cardano consists of
 interpreted languages that are interpreted by a compiled language.
@@ -376,7 +376,7 @@ following domains:
 Section <<Marlowe security and best practices>> explores the security
 and best practices of Marlowe in more detail.
 
-*On-chain and off-chain code*
+==== On-chain and off-chain code
 
 Sometimes, smart contract code is referred to as on-chain code(((on-chain, code))) because
 it runs in the node during the inclusion of new transactions that aim to
@@ -433,7 +433,7 @@ examples and also contains Lucid Evolution code examples.
 
 === Smart contract case studies
 
-*World Mobile Token(((World Mobile, Token))) smart contracts*
+==== World Mobile Token smart contracts
 
 The https://worldmobile.io/en[World Mobile] company offers an
 interesting case study of a solution that can change the current state
@@ -588,7 +588,7 @@ Cardano, as opposed to standard hexadecimal notation
 represent the addresses users perceive, though they are distinct from
 the underlying byte sequences. Shelley addresses(((address, Shelley))), which include staking
 addresses, use Bech32(((Bech32))) encoding without a character length limit. In
-contrast, Byron addresses((address, (Byron))) are encoded in Base58(((Base58))),
+contrast, Byron addresses(((address, Byron))) are encoded in Base58(((Base58))),
 allowing for easy differentiation from Shelley-era addresses. Below are examples
 of the different address types:
 
@@ -640,7 +640,7 @@ NETWORK-TAG  = %b0000 ; Testnet
              \ %b0001 ; Mainnet
 ----
 
-For _Bech32_-encoded addresses (used for all Shelly addresses), the last
+For _Bech32_-encoded addresses (used for all Shelley addresses), the last
 six characters of the data part form a checksum of the previous address
 data and contain no information. This allows for quick offline validity
 checks and provides an additional safety measure for wallets. For an
@@ -775,7 +775,7 @@ integrated into the updated Marlowe website.
 *IMPORTANT:*
 During Marlowe's transition phase some tools may have issues when used
 with the latest test or main network due to Cardano updates — especially
-for respositories that are not actively maintained by the Marlowe Foundation.
+for repositories that are not actively maintained by the Marlowe Foundation.
 
 The
 https://docs.marlowe-lang.org/docs/platform-and-architecture/marlowe-language-guide[Marlowe
@@ -1422,7 +1422,7 @@ businesses, developers, infrastructure providers, and stake pool operators(((SPO
 * Marlowe oracle protocol
 * Outreach
 
-*Marlowe DApp starter kit(((DSK)))*
+===== Marlowe DApp starter kit
 
 The Marlowe DApp starter kit(((DSK))) (DSK) will consolidate the documentation,
 examples, and tutorials into an end-to-end guide for designing,
@@ -1433,7 +1433,7 @@ pre-built binaries to ensure ease of implementation. The initial DSK
 will be delivered early in the project, with incremental enhancements
 added as new technologies are developed.
 
-*Validator enhancements*
+===== Validator enhancements
 
 Targeted changes will be implemented to the current validator to
 significantly reduce on-chain execution costs for specific contracts and
@@ -1447,7 +1447,7 @@ their real-world application potential, will be demonstrated through
 DApp prototypes, fully documented and accessible via the marlowe-ts-sdk
 for developers to build upon.
 
-*Configurable runtime fee mechanism*
+===== Configurable runtime fee mechanism
 
 To encourage infrastructure providers and SPOs to adopt Marlowe, a
 configurable fee mechanism will be introduced within the Marlowe
@@ -1457,7 +1457,7 @@ validation layer in the TypeScript client library. This layer will
 ensure secure interactions, even with untrusted backends, facilitating a
 wider distribution and adoption of Marlowe technology.
 
-*Marlowe oracle protocol*
+===== Marlowe oracle protocol
 
 The Marlowe oracle protocol will be formalized and expanded with a
 detailed CIP specification, building on the oracle scanner MVP. This
@@ -1471,7 +1471,7 @@ Aiken or Plinth, allowing scripts to efficiently manage oracle data.
 This enhancement will not only ensure compatibility with current
 technologies but also open up numerous new applications on Cardano.
 
-*Outreach*
+===== Outreach
 
 The Marlowe 2025 project aims to enhance community engagement through a
 series of live online presentations, leveraging the previous experience
@@ -1516,7 +1516,7 @@ the initial onboarding process to a single npm(((npm))) install command, a surge
 in Marlowe's usage is anticipated. In doing this, it will benefit a
 range of different stakeholders in different ways.
 
-*Stakeholder beneficiaries*
+===== Stakeholder beneficiaries
 
 Marlowe is essential for the Cardano infrastructure. The addition of
 oracles(((oracles))) and micro-payments in the Marlowe product will benefit
@@ -1550,7 +1550,7 @@ cornerstone of the Cardano economy.
 
 The _Plutus smart contracts(((smart contract)))_ section presents the rules
 of the Plutus language by demonstrating how to write and interact with Plinth(((Plinth)))
-smart contracts (formerly known as PlutusTx). Plinth is a high-level smart
+smart contracts (previously known as PlutusTx). Plinth is a high-level smart
 contract language embedded in Haskell that compiles to Untyped Plutus Core(((Plutus core)))
 (UPLC). Because these rules also apply to other compiled
 languages(((language, compiled))) such as Aiken, Plu-Ts, and OpShin, learning
@@ -5547,7 +5547,7 @@ prove the correctness of the defined assumptions. In the end, the results
 of the verification process are analyzed, and issues are addressed.
 
 IO is also developing a new formal verification tool for Cardano smart
-contracts. Proof assistants such as Agda and Rocq (formerly Coq), offer
+contracts. Proof assistants such as Agda and Rocq (previously Coq), offer
 strong guarantees, but require experienced developers to use. This new tool
 combines the power of the Lean4 proof system and SMT solvers, such as Z3,
 to automatically check that contracts behave as intended. The goal is to
