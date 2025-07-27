@@ -201,22 +201,22 @@ assistant depends on a number of factors, such as available expertise
 across engineers, interoperability with other system components, and
 support for automation.
 
-For example, compare a simple data structure(((data structure))) implemented in both Haskell
+For example, compare a simple data structure implemented in both Haskell
 and Agda. *Set* is a data structure that contains a collection of
 elements of the same type, and each element is unique in this
 collection. In Haskell, uniqueness of elements is ensured by defining an
-insertion procedure(((insertion procedure))) of an element `e` into a set `S` that does nothing
+insertion procedure of an element `e` into a set `S` that does nothing
 whenever `e` is already contained in `S`, guaranteeing that duplicates
 do not exist in the collection. Developers then might either rely on the
 fact that it is easy enough to define insertion correctly or add some
 test cases. A set – as it is defined in Agda – is a pair of (i) a
 collection of elements, and (ii) a proof that there are no duplicates in
 that collection. This makes it impossible to define a bad insertion
-procedure that allows accidental element duplication(((element duplication))), which is a
+procedure that allows accidental element duplication, which is a
 stronger guarantee than provided by the Haskell implementation.
 
 The use of proof assistants(((proof assistant))) in building Cardano has a good track record
-for locating potential bugs before they cause problems in production.
+for locating potential issues before they cause problems in production.
 For example, in the process of encoding the preservation of value
 calculation into a proof assistant, an engineer was not able to complete
 the proof(((proof construction))) construction. The engineer then realized that it was due to an
@@ -231,12 +231,12 @@ defined the specification correctly, these properties will be true for
 any execution of the program. The approach of using a proof assistant
 might be too heavy-handed for certain applications, i.e. too difficult or
 time consuming. Instead, special software called _generators_ is used
-for generating extremely large numbers of random valid execution traces(((random valid execution traces))),
+for generating extremely large numbers of random valid execution traces,
 and the desired property is then checked to hold for the generated
 traces. Generators are tuned to provide better, more realistic coverage.
 This approach is called _property testing_.
 
-_Conformance testing_ is a specific type of property testing(((property testing))). It
+_Conformance testing_ is a specific type of property testing. It
 provides high-assurance guarantees(((high-assurance guarantees))) that the behavior of the
 implementation for an arbitrary state and input matches the behavior of
 the specification for the same state and input. Formally proving
@@ -249,7 +249,7 @@ indisputable) evidence to support these claims.
 Finally, _specialized formal models_, such as DELTA-Q Systems
 Development, have been developed to simulate reasoning about real
 systems before they are implemented and tested. DELTA-Q enables up-front
-performance modeling(((performance modeling))). Analysis using this tool can be carried out before
+performance modeling. Analysis using this tool can be carried out before
 creating a prototype to rule out infeasibility early on, and to give
 realistic performance constraints. For example, it has been used for
 excluding models that presume the existence of transatlantic network
@@ -268,7 +268,7 @@ Not all techniques listed above are suitable for all Cardano components.
 The idea is to tune the approach to each component and apply heavier
 techniques with a greater emphasis on verification to the more tractable
 inner components, and apply a more lightweight approach (type-safety, at
-minimum) with a greater emphasis on testing the impure outer components(((impure outer components))).
+minimum) with a greater emphasis on testing the impure outer components.
 
 The strongest formal guarantees can be specified and proved about the
 _ledger_ and _smart contracts_ executed on it. This is because both of
