@@ -19,7 +19,7 @@ Similar concepts exist for other blockchains, such as the Bitcoin Improvement Pr
 
 Anyone with ideas for enhancing Cardano can create CIPs. While CIPs are not a formal component of Cardano governance(((Cardano, governance))), they help steer the protocol and tooling in the right direction, benefiting the entire ecosystem.
 
-The first CIP, created in October 2019 and later named https://cips.cardano.org(((cips.cardano.org)))/cip/CIP-1852[CIP-1852], extends http://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki[BIP44] and documents how Cardano wallets manage keys and addresses. This document predates the formal CIP process. The CIP was named CIP-1852 by Sebastien Guillemot after the year Ada Lovelace passed away, with her birth year, 1815, used in the cointype field.
+The first CIP, created in October 2019 and later named https://cips.cardano.org/cip/CIP-1852[CIP-1852], extends http://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki[BIP44] and documents how Cardano wallets manage keys and addresses. This document predates the formal CIP process. The CIP was named CIP-1852 by Sebastien Guillemot after the year Ada Lovelace passed away, with her birth year, 1815, used in the cointype field.
 
 A CIP follows a standard format with a templated proposal structure that facilitates debate and evaluation. This structure allows community members to provide feedback on improvement recommendations or issues within a proposal. CIPs are stored as text files in a versioned http://github.com/cardano-foundation/CIPs[GitHub repository], where their revision history provides the proposal’s historical record. For those not on GitHub, the auto-generated sister site, cips.cardano.org, serves as a user-friendly resource maintained by the Cardano Foundation(((Cardano Foundation))).
 
@@ -68,7 +68,7 @@ The funds for Project Catalyst are sourced from the Cardano treasury, which is r
 
 Each funding round operates cyclically, typically lasting several weeks to a few months. Each fund is identified numerically (eg, Fund1, Fund2) and has a defined budget. The structure of a funding round generally includes the following phases:
 
-1. *Proposal submission(((proposal submission)))*: innovators submit their project proposals on the https://cardano.ideascale.com/[IdeaScale platform]. Each proposal must align with the thematic goals set for that particular fund.
+1. *Proposal submission*: innovators submit their project proposals on the https://cardano.ideascale.com/[IdeaScale platform]. Each proposal must align with the thematic goals set for that particular fund.
 2. *Community review(((community, reviews)))*: during this phase, the community reviews and provides feedback on the submitted proposals.
 3. *Voting*: any ada holder can vote on proposals using the Catalyst voting application(((Catalyst, voting application))). Voting power is proportional to the amount of ada held, incentivizing ada holders to participate actively in the governance process.
 4. *Funding allocation(((funding allocation)))*: based on the voting results, funds are allocated to the awarded proposals. Proposals with the highest votes receive funding until the budget for that fund is exhausted.
@@ -150,7 +150,7 @@ CIP-1694 is the fruit of years of research. IO has been working on a decentraliz
 
 Early in 2022, IOG and the CF held workshops to hammer out a way forward for the Voltaire development phase. The first question was ‘What is good governance?’. Charles Hoskinson(((Hoskinson, Charles))) explained in his ScotFest keynote that the answer was based on three different categories:
 
-1. The *concept of representation* involves consent regarding decision-making authority(((decision-making authority))). There are two types: *direct representation*, where individuals vote personally, and *delegated authority*, where individuals hand their vote to someone else. In CIP-1694, this role is called a delegate representative (DRep). This concept was discussed, but as yet not implemented, in Project Catalyst.
+1. The *concept of representation* involves consent regarding decision-making authority. There are two types: *direct representation*, where individuals vote personally, and *delegated authority*, where individuals hand their vote to someone else. In CIP-1694, this role is called a delegate representative (DRep). This concept was discussed, but as yet not implemented, in Project Catalyst.
 
 2. Governance requires a set of rules, often called a constitution, which serves as guardrails to provide stability. In a blockchain context, a constitution can be machine-readable. Formal specifications(((formal specifications))) can act as blueprints for Cardano, enabling integration with an update system. Once a voting system is established, the constitution can be ratified, hashed, and embedded in a transaction. This allows users to sign a type of ‘end user agreement’ by signing the transaction.
 
@@ -196,7 +196,7 @@ _"So that's Voltaire …it’s deeply philosophical, it's the hardest thing I've
 In addition to community-led workshops(((workshops, community-led))), IO, EMURGO, and the Cardano Foundation co-hosted three governance workshops. The CF workshop took place in Zug, Switzerland, followed by EMURGO’s workshop in Tokyo, Japan. The final workshop, hosted by IOG in Edinburgh in July 2023, marked the conclusion of the CIP-1694 design feedback loop.
 
 Dozens of blogs have been written, and contentious issues have been debated on Reddit, X (formerly Twitter), and Telegram. It is impossible to acknowledge every voice here, but you can dig into the finer detail by following Nicolas Cerny(((Cerny, Nicolas)))’s
- http://forum.cardano.org/t/cardano-governance-updates-community-input-voltaire-phase-and-CIP1694-updates/115878[diary of events] on the Cardano Forum(((Cardano, Forum))).
+ http://forum.cardano.org/t/cardano-governance-updates-community-input-voltaire-phase-and-CIP1694-updates/115878[diary of events] on the Cardano Forum(((Cardano Forum))).
 
 Governance on Cardano hit a milestone on Friday, June 30, 2023, when the https://github.com/cardano-foundation/CIPs/pull/380[CIP-1694 pull request] was merged into the main branch of the Cardano Foundation CIP repository(((Cardano Foundation, CIP repository))). The proposal’s status advanced to the ‘Proposed’ stage.
 
@@ -216,7 +216,7 @@ https://www.intersectmbo.org/[Intersect] empowers a distributed network of build
 
 ==== How Intersect operates
 
-Intersect ((((Intersect))) aims to administer the governing processes(((governing processes))) for Cardano’s continued roadmap and development of the Cardano protocol. Intersect is currently facilitating the rollout of Cardano’s governance features. Visit the Intersect latest https://www.intersectmbo.org/news[news] page to keep up to speed with the latest developments.
+Intersect ((((Intersect))) aims to administer the governing processes for Cardano’s continued roadmap and development of the Cardano protocol. Intersect is currently facilitating the rollout of Cardano’s governance features. Visit the Intersect latest https://www.intersectmbo.org/news[news] page to keep up to speed with the latest developments.
 
 All Cardano ecosystem participants are welcome to become Intersect members. Made up of a distributed group of participants, including the foremost experts on Cardano and current ecosystem contributors(((current ecosystem contributors))), Intersect aims to facilitate healthy discussions and sound decision-making amongst its members and the community to uncover pain points and champion successes.
 
