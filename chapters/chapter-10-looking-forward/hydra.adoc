@@ -45,7 +45,7 @@ Horizontal scaling refers to increasing the performance and potential throughput
 ** *Optimistic:* Verification of the rolled up transactions are performed on-chain by independent validators. Validations disputes may occur and must be resolved on-chain.
 ** *Validity (Zero Knowledge):* Proofs are generated off-chain alongside the processing of transactions and are used on-chain to verify correct computation
 
-=== Enter Hydra
+==== Enter Hydra
 
 Hydra is a family of state channel scaling solutions(((state channel))) on Cardano that provides the network and applications running on it with the ability to do significant amounts of work off-chain in a secure manner.
 
