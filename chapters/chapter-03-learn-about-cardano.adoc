@@ -27,9 +27,9 @@ At its heart, Cardano is a thriving _open-source project_ with a healthy and vib
 ==== Decentralization and proof-of-stake consensus
 Cardano achieves full _decentralization_ through over 3,000 community-operated _stake pools_. Over 1.3 million wallets delegate their ada to these pools, representing approximately 64% of the total active ada supply. Network participants validate all blocks and transactions without reliance on a centralized authority, sharing decisions and ownership of information amongst all users. Every ada holder holds a stake in the network, allowing them to delegate their ada to a stake pool to earn rewards and participate in network operations. Stake pool operators can also pledge ada to increase their pool's likelihood of receiving rewards.
 
-Cardano utilizes https://iohk.io/en/blog/posts/2020/06/23/the-ouroboros-path-to-decentralization[Ouroboros], a _proof-of-stake (PoS)_ consensus protocol. Ouroboros has been rigorously proven to provide the same security guarantees as proof-of-work protocols, while being significantly more _energy-efficient_. You can learn more about Ouroboros in the dedicated chapter.
+Cardano utilizes https://iohk.io/en/blog/posts/2020/06/23/the-ouroboros-path-to-decentralization[Ouroboros], a _proof-of-stake (PoS)_ consensus protocol. Ouroboros has been rigorously proven to provide the same security guarantees as proof-of-work protocols, while being significantly more _energy-efficient_. You can learn more about Ouroboros in <<OuroborosConsensus>>.
 
-Cardano extends Bitcoin's UTXO model with an _extended UTXO (EUTXO) accounting model_, which enables smart contracts. For more details on EUTXO, refer to the relevant chapter.
+Cardano extends Bitcoin's UTXO model with an _extended UTXO (EUTXO) accounting model_, which enables smart contracts. For more details on EUTXO, refer to <<chapter4-the-eutxo-model>>.
 
 ==== Seamless upgrades
 
@@ -41,7 +41,7 @@ As a third-generation blockchain, Cardano combines the strengths of earlier gene
 
 - _Security_(((security))) — Cardano is developed using _formal methods_, which involve mathematical specifications and proofs to guarantee the functional correctness of its core components, providing the highest level of assurance for digital fund management. The Cardano node is primarily written in _Haskell_, a secure functional programming language that promotes building systems with pure functions, leading to isolated and testable components. Haskell's advanced features enable rigorous code correctness checks, including formal and executable specifications, extensive property-based testing, and simulation. The Ouroboros protocol further establishes rigorous security guarantees, backed by numerous peer-reviewed papers presented at top-tier conferences in cybersecurity and cryptography.
 
-- _Scalability_(((scalibility))) — Cardano is designed to _scale with user demand_, processing an increasing number of transactions and enhancing network bandwidth to manage significant supportive data efficiently. Cardano employs techniques like data compression and offers Hydra, a Layer 2 scalability solution. It also uses input endorsers to improve block propagation times and throughput, supporting higher transaction rates.
+- _Scalability_(((scalability))) — Cardano is designed to _scale with user demand_, processing an increasing number of transactions and enhancing network bandwidth to manage significant supportive data efficiently. Cardano employs techniques like data compression and offers Hydra, a Layer 2 scalability solution. It also uses input endorsers to improve block propagation times and throughput, supporting higher transaction rates.
 
 - _Interoperability_(((interoperability))) — this is a fundamental design feature, enabling interaction with other systems. A key innovation is _partner chain support_, facilitating asset transfers between parallel blockchains with different rules, mechanisms, languages, or network utilization methods. Work is ongoing to support cross-chain transfers, multiple token types, and commonly used smart contract languages, with the _partner chains toolkit_ marking the initial step.
 
@@ -73,7 +73,7 @@ Cardano's (((Cardano, advantages))) unique strengths stem from its foundational 
 
 - _Energy efficiency_ — As a proof-of-stake blockchain, Cardano is significantly more energy-efficient and requires less computational power than proof-of-work systems, like Bitcoin, which consume substantial electricity.
 
-- -Seamless upgrades_ — Cardano's _hard fork combinator technology_ enables smooth protocol transitions, preserving historical data and preventing disruptions for end-users.
+- _Seamless upgrades_ — Cardano's _hard fork combinator technology_ enables smooth protocol transitions, preserving historical data and preventing disruptions for end-users.
 
 - _Decentralization_ — Maintained by over 3,000 community-operated stake pools, Cardano is fully decentralized, with all blocks and transactions validated by network participants without central authority.
 
@@ -205,7 +205,6 @@ The content of this developer portal is intended to practically demonstrate and 
 This portal provides resources to https://developers.cardano.org/docs/integrate-cardano/[integrate Cardano], https://developers.cardano.org/docs/transaction-metadata/[build with transaction metadata], https://developers.cardano.org/docs/native-tokens/[explore native tokens], https://developers.cardano.org/docs/smart-contracts/[create smart contracts(((smart contract)))], https://developers.cardano.org/docs/governance/[participate in governance(((governance)))], and https://developers.cardano.org/docs/operate-a-stake-pool/[operate a stake pool].
 
 Contributions from all individuals, including non-developers, are encouraged to foster continuous evolution by the community. Contributing to the portal can boost reputation and visibility, or serve as a good learning experience in the GitHub open-source and knowledge-focused contribution process. Each contribution acts as a valuable addition to your resume, potentially leading to career opportunities within the Cardano ecosystem. Ways to contribute include spreading awareness, creating issues on GitHub or the Cardano Forum, improving the copy by fixing errors or enhancing writing, and creating explanatory graphics.
-There is a dedicated section that describes https://developers.cardano.org/docs/portal-contribute/[how best to contribute].
 
 The https://developers.cardano.org/docs/portal-contribute/[Builder Tools] section of the portal encourages the addition of valuable tools that benefit Cardano developers. Guidelines for adding tools include being an actual builder tool, having a stable domain name, and using a GitHub account with a history or presence in the Cardano community.
 
