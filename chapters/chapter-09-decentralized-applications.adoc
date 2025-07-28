@@ -83,15 +83,15 @@ image::wallet-preprod.png[pdfwidth=50%]
 
 ==== Receiving test cryptocurrency
 
-In order to interact with the blockchain, users must spend some cryptocurrency. Since we want to avoid spending real cryptocurrency whilst testing we've switched to the Preprod test network (as discussed above), and need to obtain some test cryptocurrency. To do so we'll request some test Ada (Cardano's cryptocurrency) from a faucet.footnote:[Faucets are the term typically used for services that send test cryptocurrency.] One such faucet can be found here: +
+In order to interact with the blockchain, users must spend some cryptocurrency. Since we want to avoid spending real cryptocurrency whilst testing we've switched to the Preprod test network (as discussed above), and need to obtain some test cryptocurrency. To do so we'll request some test ada (Cardano's cryptocurrency) from a faucet.footnote:[Faucets are the term typically used for services that send test cryptocurrency.] One such faucet can be found here: +
 https://docs.cardano.org/cardano-testnets/tools/faucet[_https://docs.cardano.org/cardano-testnets/tools/faucet_]
 
-To retrieve test Ada, configure the fields as follows:
+To retrieve test ada, configure the fields as follows:
 
 * Environment: Preprod Testnet
-* Action: Receive test ADA
+* Action: Receive test ada
 
-Then, copy your wallet address. In Lace this can be done by clicking on 'Copy address' located at the bottom of the main screen of the wallet as depicted in <<fig-wallet-copy-address>>. Then paste the address in the address field. Ensure to click on "I'm not a robot" and press 'Request Funds'. A success message should appear shortly, and the test Ada should appear in your wallet within a few minutes.
+Then, copy your wallet address. In Lace this can be done by clicking on 'Copy address' located at the bottom of the main screen of the wallet as depicted in <<fig-wallet-copy-address>>. Then paste the address in the address field. Ensure to click on "I'm not a robot" and press 'Request Funds'. A success message should appear shortly, and the test ada should appear in your wallet within a few minutes.
 
 [[fig-wallet-copy-address]]
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
@@ -107,14 +107,14 @@ Note: The public address of the wallet is hidden, since all transactions are pub
 
 [[fig-faucet]]
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
-.Requesting test Ada from a faucet.
+.Requesting test ada from a faucet.
 [#fig-faucet]
 image::faucet.png[]
 
 
 === Using a DApp
 
-Now that we have some test cryptocurrency in our wallet, let's try to use a DApp. We'll use a decentralized exchange(((decentralized exchange))) (DEX) to swap some of our testnet Ada for some other token. More specifically we'll use a preprod test network version of the Minswap(((minswap))) DEX as follows:
+Now that we have some test cryptocurrency in our wallet, let's try to use a DApp. We'll use a decentralized exchange(((decentralized exchange))) (DEX) to swap some of our testnet ada for some other token. More specifically we'll use a preprod test network version of the Minswap(((minswap))) DEX as follows:
 
 . Go to https://testnet-preprod.minswap.org/[_https://testnet-preprod.minswap.org/_]
 . Connect your wallet by clicking 'Connect Wallet', then choosing 'Lace' (or a different wallet if you are not using Lace).
@@ -136,7 +136,7 @@ image::minswap-close.png[]
 image::minswap-trade.png[]
 
 [start=5]
-. The DApp is likely automatically loaded with details to swap from Ada (which you should have in your wallet) to Min (Minswap's own token). The testnet version of Minswap only supports swapping between Ada and Min. When you use the mainnet's version though you can choose to swap to other tokens as well. Enter an amount of Ada that you will swap in from your wallet, and the amount of Min that will be swapped out will be displayed (<<fig-minswap-review-trade>> depicts a swap of 123 test Ada to the relevant amount of test Min at the time of writing).
+. The DApp is likely automatically loaded with details to swap from ada (which you should have in your wallet) to Min (Minswap's own token). The testnet version of Minswap only supports swapping between ada and Min. When you use the mainnet's version though you can choose to swap to other tokens as well. Enter an amount of ada that you will swap in from your wallet, and the amount of Min that will be swapped out will be displayed (<<fig-minswap-review-trade>> depicts a swap of 123 test ada to the relevant amount of test Min at the time of writing).
 
 [[fig-minswap-review-trade]]
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
@@ -164,7 +164,7 @@ image::lace-confirm.png[pdfwidth=45%]
 image::lace-done.png[pdfwidth=45%]
 
 [start=9]
-. Once the transaction is confirmed on the blockchain, and the Minswap interface updates, you should see your balance of Min has increased (and Ada decreased) as depicted in <<fig-minswap-balances-updated>>.
+. Once the transaction is confirmed on the blockchain, and the Minswap interface updates, you should see your balance of Min has increased (and ada decreased) as depicted in <<fig-minswap-balances-updated>>.
 
 [[fig-minswap-balances-updated]]
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
@@ -528,7 +528,7 @@ Line numbers 3-6 sets the required parameters for the transaction including: pas
 In line number 9, 11, and 13, we build the transaction, sign it and submit the transaction respectively.
 
 [start=5]
-. We also add a 'Send Funds' button to call the added functionality to send 3,000,000 Lovelace (3 Ada).
+. We also add a 'Send Funds' button to call the added functionality to send 3,000,000 Lovelace (3 ADA).
 
 For reference, the full updated index.html file follows:
 
@@ -600,7 +600,7 @@ After running the NodeJS server and refreshing the page (i.e., refreshing localh
 [#fig-sendFunds]
 image::redeemer42-sendFunds.png[pdfwidth=50%]
 
-Upon clicking 'Send Funds' the wallet should pop-up asking that you confirm to sending 3 Ada. It may take a while until the transaction is part of a block--you can check your wallet's transaction history and also search in a Cardano preprod network block explorer for your wallet's address for a successful transaction (at the associated date/time).
+Upon clicking 'Send Funds' the wallet should pop-up asking that you confirm to sending 3 ADA. It may take a while until the transaction is part of a block--you can check your wallet's transaction history and also search in a Cardano preprod network block explorer for your wallet's address for a successful transaction (at the associated date/time).
 
 ===== Deploying a reference script for the Redeemer 42 example
 

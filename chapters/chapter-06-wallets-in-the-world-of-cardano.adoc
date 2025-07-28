@@ -182,7 +182,7 @@ A wallet address is a string of letters and numbers that represents the destinat
 
 Below are examples of what wallet addresses look like for Cardano, Ethereum, and Bitcoin. Each of these addresses is a string of characters that includes numbers and letters, both uppercase and lowercase, specific to the blockchain they belong to:
 
-*Cardano (ADA) address:*
+*Cardano (ada) address:*
 
 [source]
 ----
@@ -369,19 +369,19 @@ Let’s start our journey through the Cardano light wallet space!
 
 *Lace*
 
-Lace began life as a slim, browser-based wallet for Cardano, designed to make holding and sending ADA as simple as opening a new tab. Fast-forward to its latest release, and Lace has evolved into a full-featured Web3 launchpad: it now supports main-net Bitcoin alongside ADA and Cardano native tokens, integrates NFT management and one-click staking into the same clean interface, and replaces long wallet addresses with short, human-readable Handles. All of this is wrapped in an intuitive extension that installs on Chrome, Brave, Edge, or Firefox in seconds.
+Lace began life as a slim, browser-based wallet for Cardano, designed to make holding and sending ada as simple as opening a new tab. Fast-forward to its latest release, and Lace has evolved into a full-featured Web3 launchpad: it now supports main-net Bitcoin alongside ada and Cardano native tokens, integrates NFT management and one-click staking into the same clean interface, and replaces long wallet addresses with short, human-readable Handles. All of this is wrapped in an intuitive extension that installs on Chrome, Brave, Edge, or Firefox in seconds.
 
 But Lace is more than a place to park your coins. Built-in governance tools enable you to cast votes or delegate voting power directly from your wallet. At the same time, a DApp connector drops you straight into DeFi, games, and marketplaces across the Cardano ecosystem. Add a fiat on-ramp, bundled transactions to save on fees, and optional Nami-mode compatibility for older dApps, and Lace becomes a single, lightweight gateway to staking, trading, collecting, and shaping the future of Cardano, as well as Bitcoin and Web3.
 
 Below is a quick tour of what the new Lace can do for you:
 
-* *Move value with ease* — send and receive ADA, Cardano native tokens, NFTs, and BTC. A built-in gallery shows your collectibles in full colour.
+* *Move value with ease* — send and receive ada, Cardano native tokens, NFTs, and BTC. A built-in gallery shows your collectibles in full colour.
 
 * *Skip address anxiety* — use short _Handles_ (e.g. +\1+) instead of long cryptographic strings when paying friends or businesses.
 
-* *Buy ADA in seconds* — a fiat on-ramp powered by *Banxa* lets you top up with a debit card or Apple Pay right inside the wallet.
+* *Buy ada in seconds* — a fiat on-ramp powered by *Banxa* lets you top up with a debit card or Apple Pay right inside the wallet.
 
-* *Earn rewards automatically* — one-click staking, plus a visual stake-pool explorer, helps you delegate ADA and start earning in minutes.
+* *Earn rewards automatically* — one-click staking, plus a visual stake-pool explorer, helps you delegate ada and start earning in minutes.
 
 * *Tap into Cardano dApps* — the _DApp connector_ links you to DeFi, games, and marketplaces with one confirmation.
 
