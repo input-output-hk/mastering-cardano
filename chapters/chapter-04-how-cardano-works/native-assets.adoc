@@ -28,8 +28,8 @@ _Single-signature simple script example:_
 
 ----
 {
-  "keyHash": "972f5c7fddb3c4ac1a0fc2c9ebe3d9f8f8231cdccffbf013f3030c05",
-  "type": "sig"
+  "type": "sig",
+  "keyHash": "972f5c7fddb3c4ac1a0fc2c9ebe3d9f8f8231cdccffbf013f3030c05"
 }
 ----
 
@@ -180,7 +180,7 @@ _Time locked script (after Slot #1 but before Slot #1000000) requiring any one o
     {
       “type”: “all”,
       “scripts”: [
-        {
+       {
          “type”: “after”,
          “slot”: 1
        },
@@ -224,36 +224,36 @@ Native tokens become more interesting and gain additional use cases through the 
 
 *CIP-10:* https://cips.cardano.org/cips/cip10/[Transaction Metadata Label Registry]
 
-CIP-10(((CIP-10))) defines a registry of metadata indexes that have been reserved for a specific use case.
+CIP-10 defines a registry of metadata indexes that have been reserved for a specific use case.
 
 *CIP-25:* https://cips.cardano.org/cips/cip25/[Media NFT Metadata Standard]
 
-CIP-25(((CIP-25))) is the first accepted metadata standard for Cardano multimedia NFTs. CIP-25 is preferred for more static assets that are not subject to frequent updates or changes to the metadata and do not require smart contract programmability.
+CIP-25 is the first accepted metadata standard for Cardano multimedia NFTs. CIP-25 is preferred for more static assets that are not subject to frequent updates or changes to the metadata and do not require smart contract programmability.
 
 *CIP-26:* https://cips.cardano.org/cips/cip26/[Off-Chain Metadata Standard]
 
-CIP-26(((CIP-26))) is currently the primary means of registering information about fungible tokens. Data is signed and submitted to the Cardano token registry(((Cardano, Token Registry))), where it can be consumed by wallet providers and other integrators to properly show information related to fungible tokens, including: decimals, ticker and display name, and a logo or icon.
+CIP-26 is currently the primary means of registering information about fungible tokens. Data is signed and submitted to the Cardano token registry(((Cardano, Token Registry))), where it can be consumed by wallet providers and other integrators to properly show information related to fungible tokens, including: decimals, ticker and display name, and a logo or icon.
 
 *CIP-27:* https://cips.cardano.org/cips/cip27/[NFT Royalty Standard]
 
-CIP-27(((CIP-27))) describes a standard to publish information on-chain regarding royalties that should be associated with CIP-25 format NFTs. This information should be utilized by marketplaces when processing royalty payments for secondary sales.
+CIP-27 describes a standard to publish information on-chain regarding royalties that should be associated with CIP-25 format NFTs. This information should be utilized by marketplaces when processing royalty payments for secondary sales.
 
 *CIP-54:* https://cips.cardano.org/cips/cip54/[Smart NFTs]
 
-CIP-54(((CIP-54))) describes a method for creating ‘smart’, programmable NFTs using JavaScript embedded in the metadata of one or more tokens, along with a structure that allows individual tokens to ‘request’ specific data or information from the blockchain, thereby enabling them to evolve or change over time.
+CIP-54 describes a method for creating ‘smart’, programmable NFTs using JavaScript embedded in the metadata of one or more tokens, along with a structure that allows individual tokens to ‘request’ specific data or information from the blockchain, thereby enabling them to evolve or change over time.
 
 *CIP-60:* https://cips.cardano.org/cips/cip60/[Music Token Metadata]
 
-CIP-60(((CIP-60))) describes an extension to both CIP-25 and CIP-68, providing a specific structure for music NFTs. These tokens may represent a single song, an entire album, or other pieces of an overall music composition and are used by a variety of music licensing, streaming, and distribution platforms in the ecosystem.
+CIP-60 describes an extension to both CIP-25 and CIP-68, providing a specific structure for music NFTs. These tokens may represent a single song, an entire album, or other pieces of an overall music composition and are used by a variety of music licensing, streaming, and distribution platforms in the ecosystem.
 
 *CIP-67:* https://cips.cardano.org/cips/cip67/[Asset Name Label Registry]
 
-CIP-67(((CIP-67))) serves as a repository for token naming identification tags related to the CIP-68 standard.
+CIP-67 serves as a repository for token naming identification tags related to the CIP-68 standard.
 
 *CIP-68:* https://cips.cardano.org/cips/cip68/[Datum Metadata Standard]
 
-Whereas earlier token metadata standards relied on metadata submitted statically to the blockchain during a token mint operation, CIP-68(((CIP-68))) introduces the concept of storing token metadata in an inline datum attached to a reference token, allowing for easy updates to token metadata and providing smart contract visibility of metadata.
+Whereas earlier token metadata standards relied on metadata submitted statically to the blockchain during a token mint operation, CIP-68 introduces the concept of storing token metadata in an inline datum attached to a reference token, allowing for easy updates to token metadata and providing smart contract visibility of metadata.
 
 *CIP-86:* https://cips.cardano.org/cips/cip86/[NFT Metadata Update Oracles]
 
-CIP-86(((CIP-86))) describes a solution for projects to publish updates related to token metadata in bulk, utilizing a combination of complex regular expression pattern matching.
+CIP-86 describes a solution for projects to publish updates related to token metadata in bulk, utilizing a combination of complex regular expression pattern matching.
