@@ -105,7 +105,7 @@ Cardano's educational offerings cater to developers, academics, and business pro
 ==== Input | Output education
 The IO education team (((IO, education team))) possesses extensive experience in curriculum design, project management, blockchain technology, Haskell, Cardano expertise, and smart contract languages like Plutus, Aiken, and Marlowe. This ensures comprehensive and practical programs for diverse learners. The team aims to enhance understanding of Cardano technologies for various audiences, including enterprise decision-makers, and to foster a supportive learning environment. IO is committed to improving developer experience and smart contract adoption through education.
 
-As Dr. Lars Brünjes(((Brünjes, Lars))), Director of Education at IO, emphasizes:
+As Dr. Lars Brünjes(((Brünjes, Lars))), director of education at IO, emphasizes:
 
  ‘Education is a cornerstone of our approach at Cardano. By equipping individuals with the knowledge and skills to navigate and innovate within the blockchain ecosystem, we empower them to build a more decentralized and inclusive future. My greatest fulfillment came from teaching the all-female Haskell course in Ethiopia, witnessing firsthand the transformative power of education. That experience reaffirmed my belief in the potential of education to create substantive, lasting change.’
 
@@ -176,14 +176,13 @@ A self-paced Cardano Education Program (CEP) is currently being developed where 
 
 IO collaborates with esteemed universities and educational institutions worldwide to deliver high-quality education and is partnered with various universities and educational institutions, including:
 
-- https://www.ed.ac.uk/[University of Edinburgh], where there is a blockchain laboratory run by IOG’s chief scientist https://iohk.io/en/leadership/aggelos-kiayias[Prof Aggelos Kiayias(((Kiayias, Aggelos)))] and his research team
+- https://www.ed.ac.uk/[University of Edinburgh], where there is a blockchain laboratory run by IOG’s chief scientist https://iohk.io/en/leadership/aggelos-kiayias[Prof. Aggelos Kiayias(((Kiayias, Aggelos)))] and his research team
 - https://en.uoa.gr/[University of Athens]
 - https://www.uwi.edu/[University of West Indies]
 - https://www.uwyo.edu/index.html[University of Wyoming]
 - https://www.cmu.edu/[Carnegie Mellon University]
 - https://ebulux.lu/[European Business University of Luxembourg]
 - https://www.um.edu.mt/[University of Malta]
-- https://www.uwyo.edu/index.html[University of Wyoming]
 - https://web.unican.es/[University of Cantabria]
 
 Additionally, IO worked with https://www.yeovil.ac.uk/[Yeovil College] in the UK and https://za.linkedin.com/company/consilium-academy[Consilium Academy] in South Africa on curriculum design for their blockchain programs.
@@ -198,13 +197,13 @@ The https://developers.cardano.org/[Cardano developer portal](((Cardano develope
 
 Guided by the principle of community involvement, all content is contributed openly and transparently using a GitHub process (branch, pull request, review, merge). This approach allows anyone to submit proposals with new or updated Markdown-formatted content and thus contribute actively and constructively.
 
-Under the hood, https://docusaurus.io/[Docusaurus] (an open-source(((open-source))) project for building, deploying, and maintaining websites) works as a generator of web pages with extensive search functions.
+Under the hood, https://docusaurus.io/[Docusaurus] (an open-source project for building, deploying, and maintaining websites) works as a generator of web pages with extensive search functions.
 
 The content of this developer portal is intended to practically demonstrate and exemplify how certain functions and operations can be implemented on Cardano, as well as showcase existing projects. A basic requirement for including projects is that they must be functioning and usable on the mainnet (see the guideline for https://developers.cardano.org/docs/portal-contribute/#add-a-project-to-showcase[adding new projects]).
 
 This portal provides resources to https://developers.cardano.org/docs/integrate-cardano/[integrate Cardano], https://developers.cardano.org/docs/transaction-metadata/[build with transaction metadata], https://developers.cardano.org/docs/native-tokens/[explore native tokens], https://developers.cardano.org/docs/smart-contracts/[create smart contracts(((smart contract)))], https://developers.cardano.org/docs/governance/[participate in governance(((governance)))], and https://developers.cardano.org/docs/operate-a-stake-pool/[operate a stake pool].
 
-Contributions from all individuals, including non-developers, are encouraged to foster continuous evolution by the community. Contributing to the portal can boost reputation and visibility, or serve as a good learning experience in the GitHub open-source(((open-source))) and knowledge-minded contribution process. Each contribution acts as a valuable addition to your resume, potentially leading to career opportunities within the Cardano ecosystem. Ways to contribute include spreading awareness, creating issues on GitHub or the Cardano Forum, improving the copy by fixing errors or enhancing writing, and creating explanatory graphics.
+Contributions from all individuals, including non-developers, are encouraged to foster continuous evolution by the community. Contributing to the portal can boost reputation and visibility, or serve as a good learning experience in the GitHub open-source and knowledge-focused contribution process. Each contribution acts as a valuable addition to your resume, potentially leading to career opportunities within the Cardano ecosystem. Ways to contribute include spreading awareness, creating issues on GitHub or the Cardano Forum, improving the copy by fixing errors or enhancing writing, and creating explanatory graphics.
 There is a dedicated section that describes https://developers.cardano.org/docs/portal-contribute/[how best to contribute].
 
 The https://developers.cardano.org/docs/portal-contribute/[Builder Tools] section of the portal encourages the addition of valuable tools that benefit Cardano developers. Guidelines for adding tools include being an actual builder tool, having a stable domain name, and using a GitHub account with a history or presence in the Cardano community.
