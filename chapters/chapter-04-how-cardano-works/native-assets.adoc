@@ -1,4 +1,4 @@
-=== *Native assets on Cardano*
+=== Native assets on Cardano
 
 ==== What are native assets?
 
