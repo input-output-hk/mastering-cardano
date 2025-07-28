@@ -17,14 +17,14 @@ https://www.um.edu.mt/profile/joshuaellul[Prof. Joshua Ellul](((Joshua Ellul))) 
 
 His research interests include:
 
-- All things blockchain, smart contracts, and cryptocurrency-Related
+- All things blockchain, smart contracts, and cryptocurrency-related topics
 - Applying AI in cryptocurrency applications
 - Virtual machines
 - Technology regulatory, policy, and societal issues
 
 He has given and taken part in over 150 invited talks and panels, and has published over 75 papers that have been cited over 2,000 — with a main focus on cryptocurrencies and blockchain since 2018. He was responsible for the setting up of the Centre for DLT at the University of Malta and a multidisciplinary Master’s programme in Blockchain and DLT. He has lectured core computer science topics including Operating Systems and Systems Programming, to Blockchain and Smart Contract specific topics including DLT implementation and internals, and Smart Contract and DApp programming amongst many other topics. The book is intended for, and targeted to, a very broad range of readers. Essentially, anyone with an interest in the Cardano blockchain will be able to get something useful out of it.
 
-=== Contributuing Writers
+=== Contributing Writers
 We would like to thank the following people who have contributed to the writing of Mastering Cardano. We also welcome https://github.com/input-output-hk/mastering-cardano/blob/main/chapters/chapter-00-preface.adoc#join-the-community-contribute-to-mastering-cardano[contributions] from the community to improve and enhance this book.
 
 ==== Input | Output
