@@ -1743,7 +1743,7 @@ in the script context of a transaction. The information in the redeemer can be u
 paying a fee, or claiming a reward
 * Providing information known only to a specific party, which can be used
 to unlock funds held at a script address
-* Supplying a value that modifies the current datum data.
+* Supplying a value that modifies the current datum value.
 
 Section <<Script context explained>> details the information
 contained in the script context that a transaction interacting with a script
@@ -1928,36 +1928,31 @@ developer map] for more options.
 
 To query various Plutus types, one can use the official
 https://plutus.cardano.intersectmbo.org/haddock/latest/[Plutus Haddock
-documentation], which presents types
-in Haskell syntax. Press CTRL + S
+documentation], which presents types in Haskell syntax. Press CTRL + S
 to search for a keyword, such as a specific data type or function name.
 The search engine might provide more options for a single data type, function
 or type class you are querying. This is because implementations
 of types, functions, and type classes can change with a new Plutus version
 and the Haddock documentation keeps track of all of them.
 After locating the desired item, click the _Source_ icon next to its
-name to open the corresponding Haskell source code. The software
-packages for the libraries hosted on the Plutus haddock documentation
-are contained in the
-https://github.com/IntersectMBO/cardano-haskell-packages[Haskell
-packages for Cardano] repository. It contains all Haskell packages used
-by Cardano that are not hosted on
-https://hackage.haskell.org/[Hackage] – the central archive for
-Haskell packages. Other compiled languages(((language, compiled)))
-provide their own libraries
-that implement Plutus types. One example is the official
-https://aiken-lang.github.io/stdlib/[standard library]
-for the Aiken language.
+name to open the corresponding Haskell source code.
+The software packages for the libraries documented in the Plutus Haddock
+documentation are distributed via the
+https://github.com/IntersectMBO/cardano-haskell-packages[Cardano
+Haskell package repository] (CHaP), which contains packages not hosted
+on https://hackage.haskell.org/[Hackage] – the central archive for Haskell packages.
+Other compiled languages(((language, compiled))) provide their own libraries
+that implement Plutus types. One example is the Aiken
+https://aiken-lang.github.io/stdlib/[standard library].
 
-Plinth data types cannot be explored in the standard GHCi REPL because the
-GHC compiler(((compiler))) pipeline first compiles Plinth code to an intermediate
-language called Haskell Core(((Haskell, core))). The Plutus compiler then takes this
-Haskell Core and compiles it to the Plutus script language. This means
-that GHC is unaware of Plinth data types. Additionally, the Plinth
-libraries are not hosted on Hackage, which means the only way to query
-Plinth types from a REPL is to build it with a Cabal file that imports
-those libraries. There are some intermediate steps in the compilation
-pipeline which are explained in detail in section <<Plutus security>>.
+Plinth data types cannot be explored in the standard GHCi REPL. The
+GHC compiler(((GHC, compiler))) pipeline first compiles Plinth code to an intermediate
+language called GHC Core(((GHC, core))). The Plutus compiler then takes this
+GHC Core and with some intermediate steps compiles it to Untyped Plutus Core
+(UPLC). The compilation pipeline is further explained in section <<Plutus security>>.
+Additionally, the Plinth libraries are not hosted on Hackage, which means the only way
+to query Plinth types from a REPL is to build it with a Cabal file that imports
+those libraries.
 
 ==== Simple validation scripts
 
@@ -1970,16 +1965,16 @@ validator is the smart contract program that checks whether funds at a
 script address(((script, address))) are allowed to be spent by a given transaction. As stated
 previously, a validation script in EUTXO cannot see the entire state of
 the blockchain; instead, it can view the entire transaction being validated.
-The script uses a single parameter: the script context. It returns a parameter
+The script uses a single parameter: the script context. It returns a value
 that indicates whether the validation logic has passed or not. Depending on
 the type of the script context, there are two possible implementations of
 a Plinth validation script:
 
 * In the low-level implementation, the script context is represented
-using the [purple]#BuiltinData# type, and the return parameter is of type
+using the [purple]#BuiltinData# type, and the return value is of type
 [purple]#BuiltinUnit#.
 * In the high-level implementation, the script context is represented as
-a predefined Haskell type, and the return parameter is of type [purple]#Bool#.
+a predefined Haskell type, and the return value is of type [purple]#Bool#.
 
 Below you can see two example validation script type signatures, one
 low-level and one high-level:
@@ -2000,7 +1995,7 @@ _typed validation scripts(((validation script, typed)))_.
 The [purple]#BuiltinData# doesn't have its constructors exposed. The module
 that defines [purple]#BuiltinData# contains two conversion functions:
 [blue]#builtinDataToData# and [blue]#dataToBuiltinData#, that can
-convert [purple]#BuiltinData# back and forth to the [purple]#Data# type. They
+convert [purple]#BuiltinData# back and forth to the [purple]#Data# type. These functions
 can be used in off-chain code, but not in on-chain code. The [purple]#Data# type has
 its constructor exposed, as illustrated in the code below:
 
@@ -2016,9 +2011,8 @@ data Data
     deriving anyclass (Hashable, NFData, NoThunks)
 ----
 
-It is a recursive data type that contains integers and byte strings, which can
-be packed into lists and maps. Next, we show the Haskell implementation
-of the script context data type:
+It is a recursive algebraic data type that can represent integers, byte strings,
+lists, and maps. Next, we show the Haskell implementation of the script context data type:
 
 [source,haskell]
 ----
@@ -2035,8 +2029,8 @@ The script context contains:
 
 * transaction information (inputs, outputs, validity interval, etc.)
 * redeemer (arbitrary data defined by the user)
-* script info (defines the purpose of the script; if the purpose is
-a spending script, it potentially contains a datum).
+* script information (defines the purpose of the script, such as spending or minting;
+for a spending script, the script information potentially contains a datum).
 
 We will look into those data types in more detail in section
 <<Script context explained>>. If a transaction tries to spend multiple UTXOs
@@ -2137,7 +2131,7 @@ Next, the on-chain validator code follows. We name the validator function
 [blue]#mkGiftValidator# -- which means _make gift validator_. It is an untyped validator
 that always succeeds. It takes in the script context as the only argument, which is
 of type [purple]#BuiltinData#, and returns something of type [purple]#BuiltinUnit#.
-In the body of the function, all input values are ignored, and we use the [blue]#check#
+In the body of the function, the script context is ignored, and we use the [blue]#check#
 function which takes a value of type [purple]#Bool#, and returns a value of type
 [purple]#BuiltinUnit# if the input argument is true, or raises an error if it is false.
 
@@ -2153,9 +2147,9 @@ data BuiltinUnit = BuiltinUnit ~() deriving stock Data
 ----
 
 The [blue]#check# function returns the [blue]#unitval# variable that is a
-wrapper around the unit (empty tuple) type. The unit type in Haskell can be
-viewed as an analogy to the Void type used in other programming languages like
-Java or C++. If an untyped validator returns the [purple]#BuiltinUnit#
+wrapper around the unit (empty tuple) type. The unit type in Haskell (`()`)
+indicates that a function returns no specific meaningful value, similar to `void`
+in languages like Java or C++. If an untyped validator returns the [purple]#BuiltinUnit#
 type the validation logic passes, and if an error is raised, the validation
 logic fails. It is now clear why this validator is called `Gift` – anyone can
 claim funds from this address, since the validation will always succeed.
@@ -2179,9 +2173,9 @@ in the Oxford brackets with the actual function body.
 
 This completes the on-chain code. Next, we use the [blue]#serialiseCompiledCode#
 helper function that returns something of type [purple]#ShortByteString#, which
-is a compact representation of a [purple]#Word8# vector. At the end of this section,
-we present the code that lets us generate https://cips.cardano.org/cip/CIP-57[Plutus
-blueprints]
+is a compact representation of a [purple]#Word8# vector (8-bit unsigned integer type).
+At the end of this section, we present the code that lets us generate
+https://cips.cardano.org/cip/CIP-57[Plutus blueprints]
 for all the validators presented in this section. Plutus blueprints allow documenting
 Plutus validators in `JSON` format and include the compiled validator code that is
 represented as a `CBORHEX(((CBORHEX)))`. The https://en.wikipedia.org/wiki/CBOR[Concise Binary
@@ -2220,8 +2214,8 @@ the contract once sent. The [blue]#traceError# function can produce an
 error and log a message displayed by the failed off-chain code transaction
 that tries to claim any funds from this script address. Also, in this case, we ignore
 the entire script context. Then we compile the validator and serialize it. We could
-also use the [blue]#check# function with a `False` argument, but in that case,
-no error message would be logged.
+also use the [blue]#check# function with a `False` argument; in that scenario, the
+validation would still fail, but no custom error message would be logged.
 
 Next, we show an example where we make use of the redeemer(((redeemer))) in the validation logic.
 The redeemer type is defined as a wrapper around the [purple]#BuiltinData# data type:
@@ -2299,7 +2293,7 @@ converting the script context into a typed form is a costly operation and produc
 a large CBOR. Next, let us look at the same validator in untyped form, where
 we decode the script by keeping it in the form of the [purple]#BuiltinData# type.
 At the end of this section, we will compare `CBORHEX(((CBORHEX)))` lengths for
-all 42 validators presented in this section.
+all validators presented in this section that check if the redeemer equals 42.
 
 [source,haskell]
 ----
@@ -2335,8 +2329,8 @@ serializedMk42ValidatorSmall = serialiseCompiledCode compiledMk42ValidatorSmall
 
 First, we define a function called [blue]#constrArgs# that helps us to
 convert the [purple]#BuiltinData# to the [purple]#BuiltinList# type. We
-recall that the script context is an algebraic data type that combines
-the transaction info, redeemer, and script info types with a logical `AND`.
+recall that the script context is an algebraic product data type that
+combines the transaction information, redeemer, and script information types.
 Once we have converted the script context to a built-in list, we can use the
 [blue]#tail# and [blue]#head# functions to extract the needed element.
 In the case of the script context, the redeemer is in the second place, so
@@ -2381,15 +2375,16 @@ The type signature now changes to `ScriptContext -> Bool`, which means
 the validator succeeds if the logic returns `True` and fails if it returns
 `False`. We can now access the redeemer directly from the script context
 in its typed form and then try to convert the data inside the redeemer from
-[purple]#BuiltinData# to [purple]#Integer#. The issue we have now is that
-we can no longer compile our validator because it is in typed form. So we wrap
-it such that we use the [blue]#unsafeFromBuiltinData# that converts the
+[purple]#BuiltinData# to [purple]#Integer#. To compile this typed validator,
+we need to wrap it with a function that accepts [purple]#BuiltinData# for its
+argument. We use the [blue]#unsafeFromBuiltinData# that converts the
 script context from its untyped form to typed, and then apply the
 [blue]#mk42TypedValidator# and [blue]#check# functions. After that, we can
 compile the wrapped validator and serialize it.
 
-At the end, we can look at one final 42 validator example where we define
+At the end, we can look at one final validator example where we define
 a custom redeemer type that is a wrapper around an [purple]#Integer# type.
+In the body of the validator we again match the integer number to 42.
 
 [source,haskell]
 ----
@@ -2429,14 +2424,16 @@ which is a wrapper around the [purple]#Integer# type. Then we use the
 [purple]#FromData#, [purple]#UnsafeFromData# and [purple]#HasBlueprintSchema#
 instances for our custom type, which contain functions for converting our custom
 data type to the [purple]#Data# type back and forth. We use template Haskell,
-which requires adding two single quotes in front of the type that returns the
-type's name. After we have defined our redeemer type, we write the
+which requires adding two single quotes in front of the type to refer to the
+type itself, allowing Template Haskell to generate the necessary instances.
+After we have defined our redeemer type, we write the
 validator logic in the same way as in the previous example, just that we now
 convert the redeemer from [purple]#BuiltinData# to the [purple]#MySillyRedeemer#
 type. We compile and serialize the validator in the same way as in the previous example.
 
-Altogether, we have defined four different variants for the 42 validator. We
-note that if we were to import the [purple]#ScriptContext# data type from the
+Altogether, we have defined four different variants for the validator that 
+matches the redeemer to the number 42. We note that if we were to import the
+[purple]#ScriptContext# data type from the
 `PlutusLedgerApi.Data.V3` module instead of the `PlutusLedgerApi.V3` module,
 the `CBORHEX(((CBORHEX)))` lengths decrease by around 10%. The table below shows compiled
 code lengths for the four validators and for the two different `PlutusLedgerApi`
@@ -2473,10 +2470,10 @@ modules we can use.
 We see that we get, by far, the most compact compiled code if we decode the
 [purple]#ScriptContext# in its untyped form and then convert the part we need
 to typed form. We call that lazy decoding. This also brings an on-chain code
-performance advantage. The largest `CBORHEX(((CBORHEX)))` is the one for the untyped
-validator, where we convert the entire [purple]#ScriptContext# into typed form.
-The reason is this type carries much information and converting the whole type
-into typed form is a costly operation.
+performance advantage. We get the largest `CBORHEX(((CBORHEX)))` for the untyped
+validator, where we convert the entire [purple]#ScriptContext# into typed form
+in the body of the validator. The reason is this type carries much information
+and converting the whole type into typed form is a costly operation.
 
 The reason the compiled code is shorter if we import the [purple]#ScriptContext#
 from the `PlutusLedgerApi.Data.V3` module is that module provides an alternative
@@ -2506,7 +2503,7 @@ in smart contracts:
 paying a fee, or claiming a reward
 * Providing information known only to a specific party, which can be used
 to unlock funds held at a script address
-* Supplying a value that modifies the current datum data.
+* Supplying a value that modifies the current datum value.
 
 Finally, we show the code for generating Plutus blueprints for two of the
 six validators we have defined in this section to shorten the code. We choose
@@ -3899,8 +3896,8 @@ makeIsDataSchemaIndexed ''VestingDatum [('VestingDatum, 0)]
 ----
 
 We imagine for a moment that we define the above data type as an algebraic
-data type that also uses a logical `OR` such that it flips the order of the
-arguments for the second data constructor.
+sum data type such that it flips the order of the arguments for the second
+data constructor.
 
 [source,haskell]
 ----
