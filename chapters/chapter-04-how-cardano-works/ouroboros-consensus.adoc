@@ -12,8 +12,7 @@ Let's start with a definition:
 
 [quote, Intersect MBO]
 ____
-Ouroboros is the name of a family of proof of stake consensus protocols that provides the foundation for Cardano and other blockchains.
-Distributed consensus is the mechanism through which a single, linear, eventually consistent chain of blocks is established among all participants of the network.
+Ouroboros is the name of a family of proof of stake consensus protocols that provides the foundation for Cardano and other blockchains. Distributed consensus is the mechanism through which a single, linear, eventually consistent chain of blocks is established among all participants of the network.
 ____
 
 This brief definition represents hundreds of years of combined engineering effort.
@@ -47,23 +46,23 @@ But as it is explained in the CAP and PCAELC theorems, _we can't have what we wa
 Professor Eric A. Brewer defined the CAP theorem, and paraphrasing it means:
 
 [quote]
----
+----
 When having a distributed [data store] system, you can only have two out of the three properties:
 
 * Consistency: every read receives the most recent write or an error.
 * Availability: every request to a server receives a response
 * Partition tolerance: the system continues to operate even in the presence of network errors
----
+----
 
 Later, Dr. Danil Abadi extended the CAP theorem with the PACELC theorem(((PACELC))), paraphrased thus:
 
 [quote]
----
+----
 If there is a partition,
   decide between consistency or availability.
 Else,
   choose between low latency or consistency.
----
+----
 
 image::ouroboros_PCAELC_Theorem.png[PCAELC theorem]
 
