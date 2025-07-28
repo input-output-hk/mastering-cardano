@@ -4,8 +4,10 @@
 [[writing-smart-contracts]]
 == Writing smart contracts
 
+[[chapter8-prefaces]]
 === Prefaces
 
+[[chapter8-plutus-preface]]
 ==== Plutus preface
 
 _Prof Philip Wadler(((Wadler, Philip))), FRS_ +
@@ -93,6 +95,7 @@ experience – it's not often that you can suggest a practical
 application of a fifty-year-old theory and have people take you
 seriously!
 
+[[chapter8-marlowe-preface]]
 ==== Marlowe preface
 
 _Prof Simon Thompson(((Thompson, Simon)))_ +
@@ -183,7 +186,7 @@ refine the core language evolution to better support its aim of
 providing a high-level, chain-agnostic language for blockchain financial
 smart contracts. Please join us on this journey!
 
-
+[[chapter8-smart-contract-programming-languages]]
 === Smart contract programming languages
 
 Cardano(((Cardano))) smart contract languages can be grouped into three categories:
@@ -192,6 +195,7 @@ Cardano(((Cardano))) smart contract languages can be grouped into three categori
 * Compiled languages(((language, compiled))) that can be compiled to a native language
 * Interpreted languages(((language, interpreted))) that are interpreted by a compiled language.
 
+[[chapter8-native-languages]]
 ==== Native languages
 
 The Cardano node can only process native languages. Currently, there are
@@ -225,6 +229,7 @@ Solidity(((Solidity))) languages is presented in section
 The security advantages of Cardano's EUTXO model over Ethereum's account-based
 model are discussed in section <<Cardano security>>.
 
+[[chapter8-compiled-languages]]
 ==== Compiled languages
 
 Smart contract developers do not write code directly in Plutus. Instead,
@@ -343,6 +348,7 @@ with links to the official page and a white paper.
 showcase] page: tags projects by groups
 and adds a short description to each.
 
+[[chapter8-interpreted-languages]]
 ==== Interpreted languages
 
 The third category of smart contract languages in Cardano consists of
@@ -376,6 +382,7 @@ following domains:
 Section <<Marlowe security and best practices>> explores the security
 and best practices of Marlowe in more detail.
 
+[[chapter8-on-chain-and-off-chain-code]]
 ==== On-chain and off-chain code
 
 Sometimes, smart contract code is referred to as on-chain code(((on-chain, code))) because
@@ -431,8 +438,10 @@ showcases how to write off-chain code for smart contracts in subsections
 We provide a link to a repository that contains the presented MeshJS code
 examples and also contains Lucid Evolution code examples.
 
+[[chapter8-smart-contract-case-studies]]
 === Smart contract case studies
 
+[[chapter8-world-mobile-token-smart-contracts]]
 ==== World Mobile Token smart contracts
 
 The https://worldmobile.io/en[World Mobile] company offers an
@@ -528,6 +537,7 @@ encryption(((encryption, private/public))) provided by Cardano
 and restricts spending to only unspent transaction outputs(((transaction, output))),
 making the reward system more deterministic.
 
+[[chapter8-cardano-addresses]]
 === Cardano addresses
 
 A blockchain address serves as a communication link between the
@@ -576,6 +586,7 @@ _bootstrap addresses_ and _script addresses_. The
 https://docs.cardano.org/learn/cardano-addresses/[Cardano addresses]
 documentation page provides more information about address categories.
 
+[[chapter8-binary-format]]
 ==== Binary format
 
 Under the hood, a Cardano address is a sequence of bytes that conforms
@@ -649,8 +660,10 @@ https://cips.cardano.org/cips/cip19/#binaryformat[Cardano Improvement Proposal 1
 (CIP-19), which defines the technical details of Cardano
 addresses.
 
+[[chapter8-marlowe-smart-contracts]]
 === Marlowe smart contracts
 
+[[chapter8-about-marlowe]]
 ==== About Marlowe
 
 Marlowe(((Marlowe))) is a domain-specific language (DSL) for building
@@ -741,6 +754,7 @@ ecosystem as a community-based project. The Marlowe repositories will be
 transferred to the https://github.com/marlowe-lang[marlowe-lang]
 GitHub, and continued development will take place there.
 
+[[chapter8-developer-tools-and-services]]
 ==== Developer tools and services
 
 Marlowe provides a set of open-source tools that help create, test, and
@@ -934,6 +948,7 @@ documentation] provides extensive explanations, links to learning
 resources, and access to tutorials and community resources from the top
 bar.
 
+[[chapter8-marlowe-runtime-architecture]]
 ==== Marlowe Runtime architecture
 
 Below is the Marlowe Runtime(((Marlowe, runtime))) architecture:
@@ -973,6 +988,7 @@ Please note that the Marlowe Runtime architecture may evolve. Refer to
 the https://docs.marlowe-lang.org/docs/platform-and-architecture/architecture[Marlowe
 documentation] for the latest version.
 
+[[chapter8-contract-examples]]
 ==== Contract examples
 
 Marlowe is designed to create the following building blocks of financial
@@ -1345,6 +1361,7 @@ Swap Prototype] – a decentralized platform for users to list tokens for
 swap, specifying the desired return. Interested parties can accept
 offers, resulting in a token swap.
 
+[[chapter8-integrating-with-plinth]]
 ==== Integrating with Plinth
 
 Marlowe contracts can be integrated with Plinth smart contracts or other
@@ -1379,6 +1396,7 @@ Plinth script does not interfere with Marlowe validation
 * The Marlowe validators do not need to be modified to run alongside a
 Plinth script that holds the role token.
 
+[[chapter8-future-of-marlowe]]
 ==== Future of Marlowe
 
 The Marlowe Foundation(((Marlowe, Foundation))) will continue supporting
@@ -1421,6 +1439,7 @@ businesses, developers, infrastructure providers, and stake pool operators(((SPO
 * Marlowe oracle protocol
 * Outreach
 
+[[chapter8-marlowe-dapp-starter-kit]]
 ===== Marlowe DApp starter kit
 
 The Marlowe DApp starter kit(((DSK))) (DSK) will consolidate the documentation,
@@ -1432,6 +1451,7 @@ pre-built binaries to ensure ease of implementation. The initial DSK
 will be delivered early in the project, with incremental enhancements
 added as new technologies are developed.
 
+[[chapter8-validator-enhancements]]
 ===== Validator enhancements
 
 Targeted changes will be implemented to the current validator to
@@ -1446,6 +1466,7 @@ their real-world application potential, will be demonstrated through
 DApp prototypes, fully documented and accessible via the marlowe-ts-sdk
 for developers to build upon.
 
+[[chapter8-configurable-runtime-fee-mechanism]]
 ===== Configurable runtime fee mechanism
 
 To encourage infrastructure providers and SPOs to adopt Marlowe, a
@@ -1456,6 +1477,7 @@ validation layer in the TypeScript client library. This layer will
 ensure secure interactions, even with untrusted backends, facilitating a
 wider distribution and adoption of Marlowe technology.
 
+[[chapter8-marlowe-oracle-protocol]]
 ===== Marlowe oracle protocol
 
 The Marlowe oracle protocol will be formalized and expanded with a
@@ -1470,6 +1492,7 @@ Aiken or Plinth, allowing scripts to efficiently manage oracle data.
 This enhancement will not only ensure compatibility with current
 technologies but also open up numerous new applications on Cardano.
 
+[[chapter8-outreach]]
 ===== Outreach
 
 The Marlowe 2025 project aims to enhance community engagement through a
@@ -1489,6 +1512,7 @@ conceptual track aimed at fundamental language modifications. This track
 will be organized through the creation of Marlowe improvement proposals
 (MIPs), in collaboration with the wider community.
 
+[[chapter8-impact-of-marlowe]]
 ==== Impact of Marlowe
 
 Marlowe has the potential to evolve into a smart contract technology
@@ -1515,6 +1539,7 @@ the initial onboarding process to a single npm(((npm))) install command, a surge
 in Marlowe's usage is anticipated. In doing this, it will benefit a
 range of different stakeholders in different ways.
 
+[[chapter8-stakeholder-beneficiaries]]
 ===== Stakeholder beneficiaries
 
 Marlowe is essential for the Cardano infrastructure. The addition of
@@ -1543,8 +1568,10 @@ the Marlowe special interest group and existing forums, will help forge
 a vibrant and sustainable ecosystem, positioning Marlowe as a
 cornerstone of the Cardano economy.
 
+[[chapter8-plutus-smart-contracts]]
 === Plutus smart contracts
 
+[[chapter8-overview-and-learning-resources]]
 ==== Overview and learning resources
 
 The _Plutus smart contracts(((smart contract)))_ section presents the rules
@@ -1644,7 +1671,7 @@ under an open-source license.
 course, that teaches the basics of blockchain and Cardano.
 
 Cardano's hard fork combinator(((HFC))) technology, briefly introduced in section
-<<cardano-node-layers, Cardano node layers>>, subsection *Consensus and storage layer*,
+<<cardano-node-layers, Cardano node layers>>, subsection _Consensus and storage layer_,
 enables the Cardano node(((Cardano node))) to continue processing scripts written in earlier
 versions of Plutus even after a hard fork introduces a new Plutus version.
 If you encounter smart contract code examples written in PlutusV1(((PlutusV1)))
@@ -1654,6 +1681,7 @@ previous Plutus Pioneer program iterations:
 * https://github.com/input-output-hk/plutus-pioneer-program/tree/third-iteration[third-iteration] - PlutusV1 examples
 * https://github.com/input-output-hk/plutus-pioneer-program/tree/fourth-iteration[fourth-iteration] - PlutusV2 examples.
 
+[[chapter8-plutus-in-comparison-to-bitcoin-script-and-solidity]]
 ==== Plutus in comparison to Bitcoin Script and Solidity
 
 This section compares the basic characteristics of smart contracts in
@@ -1782,6 +1810,7 @@ resources. The https://github.com/IntersectMBO/plutus[Plutus]
 GitHub repository also provides links to specifications, design documents,
 academic papers, and talks.
 
+[[chapter8-plinth-in-comparison-to-aiken]]
 ==== Plinth in comparison to Aiken
 
 Plinth(((Plinth))) enables developers to write and compile their on-chain
@@ -1890,6 +1919,7 @@ For those who prefer to learn from a book, the
 https://book.io/book/i-can-aiken/[I can Aiken] book, written by John
 Greene provides comprehensive information and learning examples.
 
+[[chapter8-setting-up-a-plinth-development-environment]]
 ==== Setting up a Plinth development environment
 
 For your development environment, you can use one of the following
@@ -1953,6 +1983,7 @@ Additionally, the Plinth libraries are not hosted on Hackage, which means the on
 to query Plinth types from a REPL is to build it with a Cabal file that imports
 those libraries.
 
+[[chapter8-simple-validation-scripts]]
 ==== Simple validation scripts
 
 In this section, we will look at basic Plinth validation scripts. All
@@ -2821,6 +2852,7 @@ chapter, including blueprint and cabal configuration files, can be found at the
 https://github.com/input-output-hk/plutus-pioneer-program/tree/plinth-plutusV3[plinth-plutusV3]
 branch of the Plutus pioneer program.
 
+[[chapter8-script-context-explained]]
 ==== Script context explained
 
 In this section, we will examine the [purple]#ScriptContext# data type in more detail.
@@ -2848,6 +2880,7 @@ In the previous code examples, the validation logic did not use the transaction 
 information. However, in most validator scripts, they are
 used. First, we look at the script information data type.
 
+[[chapter8-script-information]]
 ===== Script information
 
 The [purple]#ScriptInfo# data type is defined as:
@@ -2986,6 +3019,7 @@ following script purposes:
 In the <<Plutus smart contracts>> section, we will focus on the spending
 and minting script purposes.
 
+[[chapter8-decoding-the-script-information-in-untyped-form]]
 ===== Decoding the script information in untyped form
 
 Before we move on to explaining the transaction information data type we look
@@ -3059,6 +3093,7 @@ in smart contracts:
 * Representing the current state of the UTXO
 * Defining metadata and/or configurations.
 
+[[chapter8-transaction-information]]
 ===== Transaction information
 
 Let us look at the transaction information(((transaction, information)))
@@ -3405,6 +3440,7 @@ donation. Both are of type [purple]#Maybe V2.Lovelace#. Learn more about
 governance features, including the topics of voting and proposal submission
 in chapter <<Cardano governance>>.
 
+[[chapter8-time-dependent-and-parameterized-validators]]
 ==== Time-dependent and parameterized validators
 
 This section demonstrates a smart contract representing a vesting
@@ -3656,6 +3692,7 @@ function to the vesting parameter in order to wrap the validator before compilin
 This concludes the procedure of writing a parameterized contract. Next, we look at
 off-chain code that interacts with the validators presented in this section.
 
+[[chapter8-off-chain-code-with-meshjs]]
 ==== Off-chain code with MeshJS
 
 The blockchain is passive – it only acts when a user interacts with it.
@@ -4335,6 +4372,7 @@ More information about MeshJS is available at:
 In the next section, we show how to write a minting policy and off-chain code
 that interacts with the policy.
 
+[[chapter8-minting-policies-and-native-tokens]]
 ==== Minting policies and native tokens
 
 In Plutus, a minting policy(((minting policy))) or minting script defines the
@@ -4926,6 +4964,7 @@ explanations] page, which also covers native tokens
 * https://iohk.io/en/research/library/papers/native-custom-tokens-in-the-extended-utxo-model/[Native
 Custom Tokens in the Extended UTXO Model] scientific paper.
 
+[[chapter8-plutusv3-features]]
 ==== PlutusV3 features
 
 PlutusV3(((PlutusV3))) focuses on performance throughput, smart contract size,
@@ -4995,8 +5034,10 @@ allows for better code optimization. This is discussed further in section
 <<Simple validation scripts>>. The
 https://plutus.cardano.intersectmbo.org/docs/working-with-scripts/optimizing-scripts-with-asData[Plinth user guide] also provides information on that.
 
+[[chapter8-smart-contract-security]]
 === Smart contract security
 
+[[chapter8-cardano-security]]
 ==== Cardano security
 
 The security of smart contracts is an important topic, since these programs
@@ -5279,7 +5320,7 @@ smooth transitions during hard forks. If a hard fork upgrades the Plutus
 language to a new major version, smart contracts using an older version
 of Plutus can still be processed. You can read more about the HFC in
 <<cardano-node-layers, Cardano node layers>> section, subsection
-**Consensus and storage layer**.
+_Consensus and storage layer_.
 
 Cardano smart contracts see a predictable number of inputs and can only
 produce a set number of outputs that are always the same given the same
@@ -5307,6 +5348,7 @@ security features of the Plutus and Marlowe smart contract languages are
 further discussed in the remaining sections of the <<Smart contract security>>
 section.
 
+[[chapter8-plutus security]]
 ==== Plutus security
 
 Cardano offers Plinth(((Plinth))), previously called PlutusTx, which is a
@@ -5631,7 +5673,7 @@ made some of their audit reports freely available to the public:
 Other auditing companies that might not have their auditing reports grouped
 into a single repository, are also worth exploring.
 
-[[marlowe-security]]
+[[chapter8-marlowe-security]]
 ==== Marlowe security and best practices
 
 *Marlowe security*
