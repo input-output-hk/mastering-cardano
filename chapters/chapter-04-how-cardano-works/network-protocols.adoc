@@ -6,7 +6,7 @@
 
 The Cardano network is a distributed infrastructure of interconnected Cardano nodes that communicate with each other to maintain distributed consensus(((distributed, consensus))) of the Cardano ledger at a global scale. Contained within the node is a stack of protocols and mini protocols that form the network layer or data diffusion layer, which is responsible for opening and maintaining connections between nodes, diffusing transaction data, informing peers of new blocks, and sharing those blocks throughout the rest of the network.
 
-=== A Brief History of Cardano Networking
+==== A Brief History of Cardano Networking
 
 Since its inception, the Cardano network has evolved and continues to change with the purposes of facilitating increased decentralization while meeting the growing demands of the Cardano blockchain(((Cardano, blockchain))).
 
