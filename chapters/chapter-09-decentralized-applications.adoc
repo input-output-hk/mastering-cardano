@@ -180,8 +180,8 @@ Having explored using a DApp, let's now delve into aspects of internal workings 
 
 We'll now create the following aspects of a DApp:
 
-* Server-side code: A NodeJS(((NodeJS))) server that will send a page's HTML(((HTML)))/JavaScript to the end-user.
-* Client-side code: This is the code that will be sent from the server (discussed above), but will execute in the client-side browser. This code will connect to the wallet and communicate with a deployed on-chain script.
+* *Server-side code* -- A NodeJS(((NodeJS))) server that will send a page's HTML(((HTML)))/JavaScript to the end-user.
+* *Client-side code* -- This is the code that will be sent from the server (discussed above), but will execute in the client-side browser. This code will connect to the wallet and communicate with a deployed on-chain script.
 
 We will not create on-chain script code in this section (since that is handled in the <<writing-smart-contracts>> chapter). Indeed, DApps can be created that communicate with existing deployed on-chain scripts that may not necessarily be written by the same developers/teams--just as we demonstrate now below.
 
@@ -1004,13 +1004,13 @@ Different solutions have been proposed for decentralized web storage (including 
 
 While DApps promise to decentralize many multi-party digital services, without a doubt there are still several challenges that must be overcome for their mass-adoption--particularly for the non-tech-savvy. We now discuss some challenges (that DApps on all blockchains face) and potential future directions to overcome such challenges:
 
-* *Wallet setup woes*: New users may find it daunting to install a wallet and store the wallet's seed phrase. Various directions to circumvent some of these issues have been proposed including "account abstraction", use of "ephemeral keys", and use of "passkeys".
+* *Wallet setup woes* -- New users may find it daunting to install a wallet and store the wallet's seed phrase. Various directions to circumvent some of these issues have been proposed including "account abstraction", use of "ephemeral keys", and use of "passkeys".
 
-* *Switching between user interfaces*: Users may find it hard to deal with switching between DApp web pages, wallet pop-ups, and block explorers. That being said, confirming actions in wallets is akin to how users confirm online purchases with internet banking apps. As wallets become more integrated into browsers and mobiles, and as wallets provide users with information that is more digestible (without having to use a block explorer), user experience should also reach similar levels to internet banking apps.
+* *Switching between user interfaces* -- Users may find it hard to deal with switching between DApp web pages, wallet pop-ups, and block explorers. That being said, confirming actions in wallets is akin to how users confirm online purchases with internet banking apps. As wallets become more integrated into browsers and mobiles, and as wallets provide users with information that is more digestible (without having to use a block explorer), user experience should also reach similar levels to internet banking apps.
 
-* *Gas costs*: for non-cryptocurrency related DApps, esppecially those that a user may not interact with often, users may find it troublesome to both purchase and cover required gas costs. Solutions to this may include feeless/gasless transaction models.
+* *Gas costs* -- For non-cryptocurrency related DApps, esppecially those that a user may not interact with often, users may find it troublesome to both purchase and cover required gas costs. Solutions to this may include feeless/gasless transaction models.
 
-* *Smart contract/on-chain script code and errors may be opaque*: Even though on-chain code is available for all to see, and some may be able to viewed in an intuitive visual block format, understanding code logic is often beyond what many non-tech users are capable of. Furthermore, errors that are often displayed to users require technical knowledge to understand. Different avenues are being investigated that may eventually help non-tech users to understand both the scripts they are confirming to interact with and any errors reported.
+* *Smart contract/on-chain script code and errors may be opaque* -- Even though on-chain code is available for all to see, and some may be able to viewed in an intuitive visual block format, understanding code logic is often beyond what many non-tech users are capable of. Furthermore, errors that are often displayed to users require technical knowledge to understand. Different avenues are being investigated that may eventually help non-tech users to understand both the scripts they are confirming to interact with and any errors reported.
 
-* *Losing access to keys*: Whilst not exactly a barrier to using DApps, some users may not feel comfortable using DApps associated with a private key/seed phrase that they may lose. Different approaches are being investigated to circumvent users taking full responsibility on keeping their keys safe including: social recovery, shared wallets, and multi-sig wallets.
+* *Losing access to keys* -- Whilst not exactly a barrier to using DApps, some users may not feel comfortable using DApps associated with a private key/seed phrase that they may lose. Different approaches are being investigated to circumvent users taking full responsibility on keeping their keys safe including: social recovery, shared wallets, and multi-sig wallets.
 
