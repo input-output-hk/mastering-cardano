@@ -75,18 +75,18 @@ Learn the foundational blockchain concepts, then discover how to interact with t
 Begin by understanding the core components of the Cardano network, delve into how consensus is reached and incentives work, and then focus on the specifics of setting up and operating a stake pool.
 
 ===== Suggested chapters & sections:
-- Preface: How to Navigate, How to Contribute
-- Chapter 4: How Cardano Works: Overview of Cardano Network Protocols, Reaching Consensus using proof of stake, About the Ouroboros Protocol, Incentives in Cardano, Cardano Node and system layers (Introduction to the Cardano node, Cardano Node Layers), Components of the Cardano Ecosystem (Node, CLI, Db sync)
-- Chapter 6: Wallets in the Cardano Ecosystem: Fundamentals of Wallets (Public and private keys: What they are and how they work), Common operations in a Cardano Wallet (Staking ada: How it works and its benefits)
-- Chapter 7: Stake Pools and Stake Pool Operations: Introduction, What is a Stake Pool?, SPO Requirements, Leadership Selection, Slot Conflict, Cardano CLI, Node Operations
+- Preface: How to navigate, How to contribute
+- Chapter 4: How Cardano works: Overview of Cardano network protocols, Reaching consensus using proof of stake, About the Ouroboros protocol, Incentives in Cardano, Cardano node and system layers (Introduction to the Cardano node, Cardano node layers), Components of the Cardano ecosystem (Node, CLI, Db sync)
+- Chapter 6: Wallets in the Cardano ecosystem: Fundamentals of wallets (Public and private keys: What they are and how they work), Common operations in a Cardano wallet (Staking ada: How it works and its benefits)
+- Chapter 7: Stake pools and stake pool operations: Introduction, What is a stake pool?, SPO requirements, Leadership selection, Slot conflict, Cardano CLI, Node operations
 
 ==== Cardano governance & future path
 Understand how Cardano's governance model operates, explore key initiatives like Project Catalyst and CIPs, and look ahead to future advancements and the Cardano 2.0 vision.
 
 ===== Suggested chapters & sections:
-- Preface: How to Navigate, How to Contribute
+- Preface: How to navigate, How to contribute
 - Chapter 5: Governance
-- Chapter 10: Looking Forward: Mithril, Hydra
+- Chapter 10: Looking forward: Mithril, Hydra
 
 === Join the community: cntribute to Mastering Cardano
 _Mastering Cardano_ is more than just a book; it's intended to be a community-driven resource that grows and improves with the collective knowledge of the Cardano ecosystem. The world of blockchain is dynamic, and we believe the best way to keep this resource current, accurate, and truly comprehensive is through your valuable contributions.

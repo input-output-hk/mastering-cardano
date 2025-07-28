@@ -1,6 +1,6 @@
 :imagesdir: ../images
 
-== Learn About Cardano
+== Learn about Cardano
 
 === What is Cardano?
 Cardano is a _third-generation_, _open-source_, _proof-of-stake_ blockchain platform designed to provide a secure, scalable, and interoperable infrastructure for developing smart contracts(((smart contract))) and decentralized applications (DApps). Its primary goal is to address the limitations of earlier blockchain platforms by prioritizing these core tenets. As a fully https://informatics.ed.ac.uk/blockchain/edi[decentralized] network, Cardano supports a diverse range of applications, from financial services to supply chain management. Recent advancements, including the https://iohk.io/en/blog/posts/2024/08/30/chang-upgrade-a-big-step-in-changing-the-world-with-cardano/[Chang] and https://www.intersectmbo.org/news/plomin-hard-fork-ratified[Plomin] hard forks(((hard fork))), have further enhanced its decentralization, establishing it as a leading decentralized blockchain.
@@ -211,7 +211,7 @@ The https://developers.cardano.org/docs/portal-contribute/[Builder Tools] sectio
 
 The documentation in the portal can always be improved, and users are encouraged to contribute by creating and enhancing tutorials. Reviewing pull requests is another way to contribute, requiring technical understanding and prior contributions. The FAQs cover topics such as the pull request review process, becoming a reviewer, getting added to the contributor list, and connecting with the developer community through Discord and the forum.
 
-=== Suggested Reading
+=== Suggested reading
 - https://docs.cardano.org/introduction/[Cardano Docs]
 - https://www.youtube.com/channel/UCX9j__vYOJu00iqBrCzecVw[IO Academy]
 - https://www.essentialcardano.io/[Essential Cardano(((Essential Cardano)))]
