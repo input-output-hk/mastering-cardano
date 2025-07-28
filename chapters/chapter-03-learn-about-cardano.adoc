@@ -10,10 +10,11 @@ Cardano boasts a https://cardanoupdates.com/[thriving ecosystem] of builders, de
 === Who built Cardano?
 The Cardano project began in 2015 and is based on _peer-reviewed research_ and developed through _evidence-based methods_. It was built by leading scientists, expert developers, and the extended team at https://iohk.io/[Input | Output (IO)] (initially IOHK), under the leadership of https://iohk.io/en/leadership/charles-hoskinson[Charles Hoskinson]. IO is a renowned blockchain infrastructure research and engineering company with a global presence, fostering a focused innovation ecosystem.
 
-The project is pioneered by https://iohk.io/[IO], the https://www.cardanofoundation.org/[Cardano Foundation], https://www.emurgo.io/[Emurgo], and other third parties. The platform is named after https://www.britannica.com/biography/Girolamo-Cardano[Girolamo Cardano], a 16th-century Italian physician and mathematician, while its native cryptocurrency, ada(((ADA))), honors https://www.britannica.com/biography/Ada-Lovelace[Ada Lovelace], the 19th-century English mathematician credited with publishing the first computer program.
+The project is pioneered by https://iohk.io/[IO], the https://www.cardanofoundation.org/[Cardano Foundation], https://www.emurgo.io/[Emurgo], and other third parties. The platform is named after https://www.britannica.com/biography/Girolamo-Cardano[Girolamo Cardano], a 16th-century Italian physician and mathematician, while its native cryptocurrency, ada(((ada))), honors https://www.britannica.com/biography/Ada-Lovelace[Ada Lovelace], the 19th-century English mathematician credited with publishing the first computer program.
 
-Cardano's development adheres to an _evidence-based engineering approach_, applying formal logic to the software development cycle. This rigorous process, starting with published research papers and progressing to formal specifications and reference implementations, ensures correctness, safety, and code reliability. Prof. Aggelos Kiayias(((Kiayias, Aggelos))), chief scientist at IO, states:
-_‘When you go about designing a system, you have to present the system in the context of the research domain in which it belongs, why the system has the benefits it claims to have, and what exactly is the problem that the system is solving. There are a lot of benefits in taking such a first principles approach.’_
+Cardano's development adheres to an _evidence-based engineering approach_, applying formal logic to the software development cycle. This rigorous process, starting with published research papers and progressing to formal specifications and reference implementations, ensures correctness, safety, and code reliability. 
+
+Prof. Aggelos Kiayias(((Kiayias, Aggelos))), chief scientist at IO, states: _"When you go about designing a system, you have to present the system in the context of the research domain in which it belongs, why the system has the benefits it claims to have, and what exactly is the problem that the system is solving. There are a lot of benefits in taking such a first principles approach."_
 
 === Core principles of Cardano
 
@@ -38,17 +39,17 @@ One of the features of Cardano is seamless upgrades. Traditionally, blockchains 
 
 As a third-generation blockchain, Cardano combines the strengths of earlier generations like Bitcoin and Ethereum, built on the fundamental principles of security, scalability, and interoperability. These three core pillars have defined the design rationale of Cardano, as follows:
 
-- *Security*(((security))): Cardano is developed using _formal methods_, which involve mathematical specifications and proofs to guarantee the functional correctness of its core components, providing the highest level of assurance for digital fund management. The Cardano node is primarily written in *Haskell*, a secure functional programming language that promotes building systems with pure functions, leading to isolated and testable components. Haskell's advanced features enable rigorous code correctness checks, including formal and executable specifications, extensive property-based testing, and simulation. The Ouroboros protocol further establishes rigorous security guarantees, backed by numerous peer-reviewed papers presented at top-tier conferences in cybersecurity and cryptography.
+- _Security_(((security))) — Cardano is developed using _formal methods_, which involve mathematical specifications and proofs to guarantee the functional correctness of its core components, providing the highest level of assurance for digital fund management. The Cardano node is primarily written in *Haskell*, a secure functional programming language that promotes building systems with pure functions, leading to isolated and testable components. Haskell's advanced features enable rigorous code correctness checks, including formal and executable specifications, extensive property-based testing, and simulation. The Ouroboros protocol further establishes rigorous security guarantees, backed by numerous peer-reviewed papers presented at top-tier conferences in cybersecurity and cryptography.
 
-- *Scalability*(((scalibility))): The Cardano network is designed to _scale with user demand_, processing an increasing number of transactions and enhancing network bandwidth to manage significant supportive data efficiently. Cardano employs techniques like data compression and offers Hydra, a Layer 2 scalability solution. It also uses input endorsers to improve block propagation times and throughput, supporting higher transaction rates.
+- _Scalability_(((scalibility))) — Cardano is designed to _scale with user demand_, processing an increasing number of transactions and enhancing network bandwidth to manage significant supportive data efficiently. Cardano employs techniques like data compression and offers Hydra, a Layer 2 scalability solution. It also uses input endorsers to improve block propagation times and throughput, supporting higher transaction rates.
 
-- *Interoperability*(((interoperability))): This is a fundamental design feature, enabling interaction with other systems. A key innovation is _partner chain support_, facilitating asset transfers between parallel blockchains with different rules, mechanisms, languages, or network utilization methods. Work is ongoing to support cross-chain transfers, multiple token types, and commonly used smart contract languages, with the *partner chains toolkit* marking the initial step.
+- _Interoperability_(((interoperability))) — this is a fundamental design feature, enabling interaction with other systems. A key innovation is _partner chain support_, facilitating asset transfers between parallel blockchains with different rules, mechanisms, languages, or network utilization methods. Work is ongoing to support cross-chain transfers, multiple token types, and commonly used smart contract languages, with the *partner chains toolkit* marking the initial step.
 
 ==== Sustainability and governance
-*Governance* is central to Cardano's design, ensuring system sustainability and adaptability. A well-developed governance strategy promotes effective, democratic funding for long-term development and organic growth in a decentralized manner. Decentralized governance empowers all users with a voice and control over the protocol’s future.
+_Governance_ is central to Cardano's design, ensuring system sustainability and adaptability. A well-developed governance strategy promotes effective, democratic funding for long-term development and organic growth in a decentralized manner. Decentralized governance empowers all users with a voice and control over the protocol’s future.
 
 As Charles Hoskinson (((Hoskinson, Charles)))stated:
-_‘Governance is not optional. No matter who you are, what you do, when you create something that other people use, the first question is how do we upgrade, maintain, and change it to meet our needs?’_
+_"Governance is not optional. No matter who you are, what you do, when you create something that other people use, the first question is how do we upgrade, maintain, and change it to meet our needs?"_
 
 Cardano’s governance model (((Cardano, governance model))) reflects a _liquid and representative democracy_. Through individual participation and immutable vote recording, ada(((ADA))) holders can decide on the distribution of treasury(((treasury))) funds and the platform's future development.
 
@@ -107,7 +108,7 @@ The IO education team (((IO, education team))) possesses extensive experience in
 
 As Dr. Lars Brünjes(((Brünjes, Lars))), director of education at IO, emphasizes:
 
- ‘Education is a cornerstone of our approach at Cardano. By equipping individuals with the knowledge and skills to navigate and innovate within the blockchain ecosystem, we empower them to build a more decentralized and inclusive future. My greatest fulfillment came from teaching the all-female Haskell course in Ethiopia, witnessing firsthand the transformative power of education. That experience reaffirmed my belief in the potential of education to create substantive, lasting change.’
+‘Education is a cornerstone of our approach at Cardano. By equipping individuals with the knowledge and skills to navigate and innovate within the blockchain ecosystem, we empower them to build a more decentralized and inclusive future. My greatest fulfillment came from teaching the all-female Haskell course in Ethiopia, witnessing firsthand the transformative power of education. That experience reaffirmed my belief in the potential of education to create substantive, lasting change.’
 
 IO offers various education streams:
 
@@ -155,14 +156,14 @@ These two-day events cover the basics of blockchain technology, Cardano, and sma
 
 The Cardano education program (CEP) (((Cardano education program))) for developers consists of a set of courses that cover all aspects of Cardano. This program includes a set of courses and flexible modules that can be tailored to the needs of each audience.
 
-- Cardano Developer course(((Cardano developer course))): a blended learning course that teaches Haskell(((Haskell))) and smart contract development to aspiring blockchain developers.
-- https://github.com/input-output-hk/haskell-course[Haskell Bootcamp]: an immersive self-paced Haskell(((Haskell))) course. This course provides a stepping stone for people to upskill on Haskell(((Haskell))) before enrolling in the Plutus(((Plutus))) Pioneer program. It consists of videos and interactive lessons and has received very positive feedback and engagement.
-- https://docs.cardano.org/pioneer-programs/plutus-pioneers[Plutus Pioneer program]: focuses on Plutus(((Plutus))), Cardano’s smart contract platform, offering hands-on experience in writing and deploying smart contracts(((smart contract))).
-- https://sancho.network/drep-pioneer-program/drep-pp/overview[DRep Pioneer program]: prepares participants to become decentralized representatives, playing a crucial role in Cardano’s governance(((governance))).
-- https://github.com/input-output-hk/marlowe-pioneer-program[Marlowe Pioneer program]: specializes in Marlowe(((Marlowe))), a domain-specific language for financial contracts on Cardano, and is aimed at both developers and financial professionals.
-- Tutorials: technical tutorials that describe features of Cardano and how to work with them.
-- Educational videos: introduce technical aspects, new features, hard fork events, and so on.
-- Hackathon support: writing hackathon challenges and attending the event to support the participants.
+- Cardano Developer course(((Cardano developer course))) — a blended learning course that teaches Haskell(((Haskell))) and smart contract development to aspiring blockchain developers.
+- https://github.com/input-output-hk/haskell-course[Haskell Bootcamp] — an immersive self-paced Haskell(((Haskell))) course. This course provides a stepping stone for people to upskill on Haskell(((Haskell))) before enrolling in the Plutus(((Plutus))) Pioneer program. It consists of videos and interactive lessons and has received very positive feedback and engagement.
+- https://docs.cardano.org/pioneer-programs/plutus-pioneers[Plutus Pioneer program] — focuses on Plutus(((Plutus))), Cardano’s smart contract platform, offering hands-on experience in writing and deploying smart contracts(((smart contract))).
+- https://sancho.network/drep-pioneer-program/drep-pp/overview[DRep Pioneer program] — prepares participants to become decentralized representatives, playing a crucial role in Cardano’s governance(((governance))).
+- https://github.com/input-output-hk/marlowe-pioneer-program[Marlowe Pioneer program] — specializes in Marlowe(((Marlowe))), a domain-specific language for financial contracts on Cardano, and is aimed at both developers and financial professionals.
+- Tutorials — technical tutorials that describe features of Cardano and how to work with them.
+- Educational videos — introduce technical aspects, new features, hard fork events, and so on.
+- Hackathon support — writing hackathon challenges and attending the event to support the participants.
 
 The first Cardano developer course was delivered online in conjunction with https://www.theafricablockchaincenter.com/[the African Blockchain Center] to participants from the African region and covered the core modules of Haskell(((Haskell))) fundamentals and smart contract development languages, including Aiken(((Aiken))), Plutus(((Plutus))), and Marlowe(((Marlowe))). This course evolved from the original Haskell(((Haskell))) course and was expanded to include lectures on Aiken(((Aiken))). A further iteration of the course was delivered in person at the https://utn.edu.ar/es/[Universidad Technológica Nacional] in Buenos Aires, Argentina.
 
