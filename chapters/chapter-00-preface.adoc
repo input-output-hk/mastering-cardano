@@ -49,7 +49,7 @@ Explore the vision and challenges of blockchain, delve into the cryptography sec
 - Chapter 1: Introduction: What is the Vision of Blockchain?, Blockchain Generations (Cardano, Bitcoin, and Ethereum), Using Functional Programming and Formal Methods, Features and Benefits of Haskell
 - Chapter 2: Cryptography: The Role of Cryptography in Security and Privacy, How Cryptography Works in Cardano, What Users Need to Know
 - Chapter 3: Learn About Cardano: What is Cardano?, History of Cardano, Design Rationale, Cardano Community and Growth of the Ecosystem
-- Chapter 4: How Cardano Works: Overview of Cardano Network Protocols, Reaching Consensus using Proof of Stake, About the Ouroboros Protocol, UTXO and EUTXO Models, Components of the Cardano Ecosystem (Node, CLI, Wallet)
+- Chapter 4: How Cardano Works: Overview of Cardano network protocols, Reaching Consensus using Proof of Stake, About the Ouroboros Protocol, UTXO and EUTXO Models, Components of the Cardano Ecosystem (Node, CLI, Wallet)
 
 ==== Smart contracts developer path
 Understand Cardano's unique functional programming and EUTXO model, then dive directly into the specifics of writing smart contracts and decentralized applications.
