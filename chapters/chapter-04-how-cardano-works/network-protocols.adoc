@@ -44,18 +44,18 @@ The _networking layer_ of the Cardano node consists of smaller building-blocks c
 * *Ping pong protocol:* A simple protocol used between a client and server to check responsiveness. A ping is sent to the server at regular intervals, and if the server is connected and responsive it will reply with a pong message.
 * *Request response protocol:* Functions similar to the ping pong protocol, but further allows data exchange between server and client.
 * *Handshake mini protocol:* Used to negotiate protocol version and parameters between client and server. It runs once upon connection initiation and consists of a single request from the client and a single response from the server.
-* *Keep alive mini protocol(keep-alive):* A member of the Node-to-Node(NtN) protocol suite, this protocol provides keep alive messages and measures the round trip times of these messages.
-* *Chain synchronization protocol(chain-sync):* Allows for local synchronization of the blockchain via communication with several upstream and downstream nodes. This protocol is responsible for the transfer of full blocks when used as part of the Node to Client(NtC) protocol, whereas instances used as part of the Node to Node(NtN) protocol only transfers block headers.
-* *Block fetch protocol(block-fetch):* Enables a node to request and download blocks from other nodes.
-* *Node-to-node transaction submission protocol(tx-submission):* A protocol used to transfer transactions between nodes, where the initiator requests new transactions and the responder returns them. In this protocol, the server acts as the initiator while the client acts as the responder, making it well suited for a trustless setting.
-* *Local transaction submission protocol(local-tx-submission):* Used by local clients (typically wallets or CLI tools) for the purpose of submitting transactions to the local node. The client sends a request with a single transaction and the server either accepts the transaction (returning a confirmation) or rejects it (returning the reason).
-* *Local state query protocol(local-state-query):* As part of the NtC protocol suite, the local state query mini-protocol allows querying of the consensus and ledger state. Queries depend on the era (Byron, Shelley, etc.) and basic operations include acquiring and releasing the ledger state or running queries against the acquired ledger state.
+* *Keep alive mini protocol (keep-alive):* A member of the Node-to-Node (NtN) protocol suite, this protocol provides keep alive messages and measures the round trip times of these messages.
+* *Chain synchronization protocol (chain-sync):* Allows for local synchronization of the blockchain via communication with several upstream and downstream nodes. This protocol is responsible for the transfer of full blocks when used as part of the Node to Client (NtC) protocol, whereas instances used as part of the Node to Node(NtN) protocol only transfers block headers.
+* *Block fetch protocol (block-fetch):* Enables a node to request and download blocks from other nodes.
+* *Node-to-node transaction submission protocol (tx-submission):* A protocol used to transfer transactions between nodes, where the initiator requests new transactions and the responder returns them. In this protocol, the server acts as the initiator while the client acts as the responder, making it well suited for a trustless setting.
+* *Local transaction submission protocol (local-tx-submission):* Used by local clients (typically wallets or CLI tools) for the purpose of submitting transactions to the local node. The client sends a request with a single transaction and the server either accepts the transaction (returning a confirmation) or rejects it (returning the reason).
+* *Local state query protocol (local-state-query):* As part of the NtC protocol suite, the local state query mini-protocol allows querying of the consensus and ledger state. Queries depend on the era (Byron, Shelley, etc.) and basic operations include acquiring and releasing the ledger state or running queries against the acquired ledger state.
 
-==== Inter-process communication(IPC) protocols
+==== Inter-process communication (IPC) protocols
 
-The Cardano node IPC protocols are best described as protocol suites(((protocol, suites))) containing a number of mini protocols that allow communication between Cardano node processes. These protocol suites(((protocol, suites))) come in two flavors: Node-to-Node (NtN) and Node-to-Client (NtC).
+The Cardano node IPC protocols are best described as protocol suites(((protocol, suites))) containing a number of mini protocols that allow communication between Cardano node processes. These protocol suites come in two flavors: Node-to-Node (NtN) and Node-to-Client (NtC).
 
-===== Node-to-node(NtN) IPC
+===== Node-to-node (NtN) IPC
 
 The NtN IPC is responsible for transferring transactions, block header transfers, and fetching blocks between TCP connected nodes. This IPC uses the following mini protocols(((mini, protocols))):
 
@@ -66,7 +66,7 @@ The NtN IPC is responsible for transferring transactions, block header transfers
 
 image::network_ntn.png[title="Node-to-Node"]
 
-===== Node-to-client(NtC) IPC
+===== Node-to-client (NtC) IPC
 
 The NtC IPC facilitates the connection between a local full node and a local client that consumes data but does not actively participate in consensus, such as a wallet. The NtC allows local applications(((local, applications))) to interact with the blockchain through the connected full node. Much like the NtN IPC, the NtC IPC uses a similar design but rather than using TCP to connect to other nodes over a public network, the NtC uses local pipes. This IPC uses the following mini protocols:
 
@@ -82,7 +82,7 @@ Within the _network layer_ of the Cardano node is a _multiplexing layer_, which 
 
 image::network_mux.png[title="mux"]
 
-==== Peer to peer(P2P) networking
+==== Peer to peer (P2P) networking
 
 The Cardano network benefits from the capabilities of a dynamic P2P system where nodes may automatically search for, connect with, and actively manage connections with other nodes allowing the network to be robust, decentralized, and flexible. The P2P stack is under continual development with regular increases in functionality. Through active peer selection and policy based exclusively on local information of the node, Cardano’s P2P system significantly reduces data diffusion times(((data diffusion, times))) across the network.
 
@@ -126,7 +126,7 @@ Research found 2-20 to be ideal for hot peers since block headers(((block, heade
 
 Warm peers can be quickly promoted to hot peers as candidates during the hot peer churn. The promotions and demotions between warm and hot rely on upstream measurements(((upstream, measurements))), while the churn between warm and cold is intended to discover network distances with the purpose of continually searching for better peers in a constantly changing network, where nodes may join and leave the network at any time.
 
-For those wishing to further research the mechanisms behind Cardnao networking protocols, please refer to the following sources:
+For those wishing to further research the mechanisms behind Cardano networking protocols, please refer to the following sources:
 
 * https://docs.cardano.org/about-cardano/explore-more/cardano-network/[Cardano Docs Networking Page]
 * https://ouroboros-network.cardano.intersectmbo.org/pdfs/network-spec/network-spec.pdf[The Shelley Networking Protocol Spec]
