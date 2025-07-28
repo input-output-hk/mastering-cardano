@@ -13,7 +13,7 @@ As one of the creators of the Cardano "Incentives" mechanism, Dr. Brünjes has m
 As the author of "Mastering Cardano," Dr. Brünjes brings a wealth of firsthand experience and intimate knowledge of the platform's intricacies. His extensive background in mathematics and computer science, coupled with his deep understanding of blockchain technology, ensures that this book will provide readers with a comprehensive and authoritative guide to Cardano's powerful features and capabilities.
 
 === Prof. Joshua Ellul
-https://www.um.edu.mt/profile/joshuaellul[Prof. Joshua Ellul](((Prof. Joshua Ellul))) is an Associate Professor within the Centre for DLT and the Department of Computer Science at the University of Malta.
+https://www.um.edu.mt/profile/joshuaellul[Prof. Joshua Ellul](((Joshua Ellul))) is an Associate Professor within the Centre for DLT and the Department of Computer Science at the University of Malta.
 
 His research interests include:
 
