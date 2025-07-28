@@ -4,11 +4,11 @@
 :figure-numbered:
 
 [[decentralized-applications]]
-== Decentralized Applications
+== Decentralized applications
 
 Decentralized Applications(((decentralized application (DApp)))) (DApps) aim to empower end-users through ensuring that the encoded digital processes and data stored are not centrally controlled (as discussed in previous chapters). So far in the previous chapters, we have covered some of the components that support decentralized applications including the blockchain network, smart contract/on-chain scripts and wallets. In this chapter we focus on those technological components that support user interaction and bridge the gap between foundational blockchain and on-chain script infrastructure and users.
 
-=== Traditional Web Application Architecture
+=== Traditional web application architecture
 
 To be able to appreciate the novelty that decentralized applications bring, we first provide an overview of traditional web applications(((web application))). <<fig-tradweb>> depicts an abstract overview of traditional web application interaction.
 
@@ -33,7 +33,7 @@ The actual 'response' that the web server sends back to your web browser most ty
 The HTML and JavaScript code described above is sent to your browser on your computer, and is executed in your browser (on your computer). Really this means that you could manipulate the HTML and JavaScript code, which means you can change what a web page you interact with looks like, and also its functionality.footnote:[ Most web browsers allow users to use 'Developer Tools' that are built into the web browsers themselves, that allow you to manipulate web pages once they are in your browser.] This code received from the web browser, which is executed in your browser, is what we call "client-side"--i.e., code that executes in the client'sfootnote:[ It may help to consider that when using a web site you are the client, and this is why it is referred to as client-side code, since the code is executing on your laptop. Really though the terminology comes from ;'client-server' architectures (which has resemblances to the analogy provided).] browser. Since the code can be manipulated by yourself (the client), web site operators cannot just trust any interactions or code that take place on your device, and it is for this reason that some functionality is not encoded into the 'client-side' HTML and JavaScript but encoded into 'server-side(((server-side)))' code which executes on the web server owned by the particular entity the original web page was received from. For the code that is executed on the web server, the website operator has full control over that logic and as users of that website we must trust the operator. To exemplify this further consider an online shopping platform. Whilst end-users are displayed with products and prices on screen and are able to select which products they would like to purchase, the site operator cannot trust end-users to calculate the total cost due after selecting products. Since as described above, end-users would be able to manipulate the total calculation taking place within their browser. Therefore, the web site is built in such a way that code concerned with total calculation is ultimately done on the web server ('server-side'). Once a total is calculated and a client is ready to pay, clients' are typically sent to a payment page where they enter their bank card details. Again, processing of card transactions is typically done 'server-side' for the same reasons. Yet, in this scenario, clients that are making purchases need to trust the operator and the code that is handling the total calculation (and executing on the web server) to not overcharge after entering their card details. Traditional web applications and their architectures heavily support keeping site operators in a position of power, i.e., where platform providers are in full control and end-users are reliant on the platforms, and must trust that the platforms do their job properly--and when they do not must try to seek recourse in some other manner if possible (e.g., through contacting the operator, or seeking legal recourse if necessary and possible).
 
 [[dapp-architecture]]
-=== Decentralized Application Architecture
+=== Decentralized application architecture
 
 The advent of blockchain platforms and smart contracts built on them, provided a new place where code could be executed, i.e., in smart contracts on a blockchain. Executing code in smart contracts, unlike code executed in client browsers or server-side, provides guarantees that the code cannot be manipulated or altered--not even by the programmer that created the code! Furthermore the code executed in smart contracts is publicly available, and therefore users can look into the smart contract logic prior to interacting with them. Through the availability of smart contract code, a new architecture was possible that enabled for Decentralized Applications(((decentralized application (DApp)))) (DApps). DApps build on traditional web applications, in that they also make use of client-side and server-side code, yet smart contracts can be utilized to provide guarantees to all stakeholders. Consider the example discussed in the section above, regarding the calculation of the total due for an online shopping platform. If the calculation of the total is done on the client-side, then users could manipulate the amount due, therefore service providers calculate totals on the server-side. While this makes complete sense, server operators could manipulate the logic to calculate a higher total due--though end-users are likely to notice this before payment. Yet in a similar vein server operators could display one amount, and process a transaction for a different amount. This is really the status quo of traditional web architecture. Using a DApp, instead such logic could be delegated into a smart contract that would provide guarantees to both the service provider as well as to end-users, since the code is transparent and publicly available for everyone to see. Furthermore, the code is immutable, it cannot be changed--not even by the developer that wrote it. We will now provide an overview of typical DApp architecture, followed by a walkthrough on how to use a DApp, and then close off with code snippets demonstrating how a DApp can be built. <<fig-dapp>> depicts an abstract overview of typical DApp interaction.
 
@@ -49,16 +49,16 @@ While the server is responsible for delivery of the initial HTML and JavaScript 
 
 To further exemplify how guarantees can be provided through on-chain scripts (in spite of initial HTML/JavaScript code being delivered by centralized infrastructure), we'll now introduce how to use a DApp, and then later how to build a DApp.
 
-=== Prerequisites to Create a DApp
+=== Prerequisites to create a DApp
 
 We now list a number of prerequisite steps required in order to follow upcoming sections on how to use a DApp and how to build a DApp.
 
-==== Installing a Wallet
+==== Installing a wallet
 
 Prior to building a DApp, we need to ensure that we have a wallet installed in a browser that will allow for the client web-page to communicate with the blockchain directly. We'll use the Lace wallet (introduced in the <<wallets-in-the-world-of-cardano>> Chapter) in the rest of this chapter, but you may use any other wallet that supports Cardano.
 
 
-==== Configuring Wallet to Connect To Testnet
+==== Configuring wallet to connect to testnet
 
 We'll configure the Wallet to connect to the Cardano test network so that we can test without having to spend real cryptocurrency. In Lace, you can do this by:
 
@@ -81,7 +81,7 @@ You can check whether you are connected to a test network in Lace to see if the 
 [#fig-wallet-preprod]
 image::wallet-preprod.png[pdfwidth=50%]
 
-==== Receiving Test Cryptocurrency
+==== Receiving test cryptocurrency
 
 In order to interact with the blockchain, users must spend some cryptocurrency. Since we want to avoid spending real cryptocurrency whilst testing we've switched to the Preprod test network (as discussed above), and need to obtain some test cryptocurrency. To do so we'll request some test Ada (Cardano's cryptocurrency) from a faucet.footnote:[Faucets are the term typically used for services that send test cryptocurrency.] One such faucet can be found here: +
 https://docs.cardano.org/cardano-testnets/tools/faucet[_https://docs.cardano.org/cardano-testnets/tools/faucet_]
@@ -185,7 +185,7 @@ We'll now create the following aspects of a DApp:
 
 We will not create on-chain script code in this section (since that is handled in the <<writing-smart-contracts>> chapter). Indeed, DApps can be created that communicate with existing deployed on-chain scripts that may not necessarily be written by the same developers/teams--just as we demonstrate now below.
 
-==== Creating a Server (with NodeJS)
+==== Creating a server (with NodeJS)
 
 We now discuss creating a NodeJS server that will be used to serve content to requesting users. You can use any other framework to create server-side code if you wish (such as Python, PHP, .NET, Java, or any other framework you may prefer). We'll use NodeJS' express package. Follow these steps to create the server:
 
@@ -229,7 +229,7 @@ app.listen(port, () => {
 image::node-hello-world.png[pdfwidth=45%]
 
 [[para-csc, Creating Client-Side Code]]
-==== Creating the Client-Side Code to Connect to the Wallet
+==== Creating the client-side code to connect to the wallet
 
 Now that we have a server able to send HTML/JavaScript to end-users, let's write the client-side code to connect to a user's wallet and interact with the underlying on-chain scripts. We'll only provide the bare minimal code that is needed. Indeed, you may want to look into implementing a full HTML page (including html, head, and body tags), but we'll only provide the necessities for the sake of simplicity.
 
@@ -266,7 +266,7 @@ image::dapp-connect-to-lace.png[]
 
 Now that we have connected the client-side code to the wallet, we'll write some code that will interact with an on-chain script. Just before we do this though, we'll now package some libraries that we need to use in the client-side JavaScript.
 
-==== Packaging Libraries for use in Client-Side JavaScript
+==== Packaging libraries for use in client-side JavaScript
 
 In the client-side JavaScript code, we'll use Mesh--a library that will provide an easier-to-use interface to interact with the on-chain script code deployed on the blockchain. To do so, we'll package the Mesh library using webpack(((webpack))) and serve it to the client-side JavaScript code. Indeed, you can use a different method to package and serve the library. The code we provide here may require changes (especially when considering different versions of SDKs used, e.g., NodeJS). If the code does not work out-of-the-box you may need to investigate how to package and deploy libraries and/or fix this code as required for your environment. We will not delve into the intricacies of this code but you may want to read up on how to package and serve libraries for client-side JavaScript code.
 
@@ -378,7 +378,7 @@ app.listen(port, () => {
 ----
 
 
-==== Using the Bundled Mesh Library in the Client-Side JavaScript
+==== Using the bundled Mesh library in the client-side JavaScript
 
 Now, we'll use the bundled mesh library in the client-side JavaScript to communicate with on-chain script.
 
@@ -444,7 +444,7 @@ async function connectWallet() {
 . To test this code, the Node server will need to be started (potentially restarted), and the page loaded by opening the url `localhost:3000` in a browser. Then check to make sure that loading of the library and loading of the Mesh library objects and functions do not raise any errors (though you might see an error relating to not being able to load favicon.ico).
 
 
-==== Interacting with the Redeemer 42 On-Chain Script Code
+==== Interacting with the Redeemer 42 on-chain script code
 
 To demonstrate DApp interaction, we'll write client-side JavaScript code to interact with the Redeemer 42 on-chain script code (discussed in the <<writing-smart-contracts>> chapter).footnote:[Also see https://github.com/LukaKurnjek/ppp-plutusV3-plinth/blob/main/off-chain/meshjs/Week02/redeemer42-ref-script.ts] You can read Section <<Simple validation scripts>> to get a better understanding of the Redeemer 42 Script (if you have not already done so). We'll send funds, deploy a reference script and then claim back the funds sent.
 
@@ -452,7 +452,7 @@ The Redeemer 42's reference script that the DApp will interact with has already 
 
 
 
-===== Sending Funds to the Redeemer 42 On-chain Scripts
+===== Sending funds to the Redeemer 42 on-Chain scripts
 
 To add functionality that sends funds to the Redeemer 42 on-chain script code follow these steps:
 
@@ -989,7 +989,7 @@ The above provides the full DApp implementation. To run through the example DApp
 
 Indeed, the DApp is barebones, and serves the purpose to demonstrate of how we to interact from client-side JavaScript with Cardano on-chain scripts.
 
-=== Decentralized Web Storage
+=== Decentralized web storage
 
 
 The DApp architecture introduced in Section <<dapp-architecture>> relies on a traditional centralized web server to deliver the initial HTML/JS web-page content, and then provides guarantees to users through the interaction with on-chain scripts (smart contracts). Yet, relying on a centralized web server to deliver the initial HTML/JS web-content may not be suitable for certain applications and/or it may be desirable that some web content is not dependent on a centralized web server.
@@ -1000,7 +1000,7 @@ Different solutions have been proposed for decentralized web storage (including 
 * minimises data storage requirements for resources with same content;
 * allows for decentralizing from relying on a single specific server to host and serve the specific resource--any peer in the network that hosts the resource can serve it.
 
-=== DApps and UI/UX Issues
+=== DApps and UI/UX issues
 
 While DApps promise to decentralize many multi-party digital services, without a doubt there are still several challenges that must be overcome for their mass-adoption--particularly for the non-tech-savvy. We now discuss some challenges (that DApps on all blockchains face) and potential future directions to overcome such challenges:
 
