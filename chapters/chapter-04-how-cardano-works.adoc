@@ -14,7 +14,8 @@ include::chapter-04-how-cardano-works/chapter-utxo.adoc[]
 
 This section explores the concept of proof-of-stake (PoS) (((proof-of-stake))) and discusses its importance for blockchain technology. It also compares and contrasts it to other consensus mechanisms.
 
-Introduction to proof of stake
+==== Introduction to proof of stake
+
 PoS is a type of https://docs.cardano.org/about-cardano/learn/consensus-explained[consensus mechanism] that uses the amount of stake (or value) held in the system to determine consensus among protocol participants. Essentially, a consensus protocol determines the rules and parameters governing the behavior of blockchains. Other examples of consensus mechanisms include proof of work (PoW), proof of useful work (PoUW), and proof of burn (PoB). A PoS consensus protocol ensures distributed consensus by determining whether transactions are legitimate. Transactions are the data elements generated within the blockchain, such as cryptocurrency, contracts, or records.
 
 Think of consensus as a ruleset that each network participant adheres to. Since blockchains operate without a central authority, a consensus protocol enables distributed network participants to agree on the history recorded on the blockchain. This agreement allows them to reach a consensus on what has happened and continue from a single source of truth.
