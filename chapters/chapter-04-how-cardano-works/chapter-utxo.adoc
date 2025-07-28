@@ -97,7 +97,7 @@ Of course, there may be many more UTXOs on the blockchain that are not considere
 
 The UTXO model is simple and elegant, allowing users to send and receive funds without restriction.
 
-​​​​These days, however, users expect more from a blockchain than just the ability to send and receive funds. They want to create smart contracts(((smart contract))) that can do more than merely move funds; they seek the ability to implement arbitrary logic and enforce complex rules. They also want to create fungible(((fungible))) or non-fungible(((non-fungible))) tokens (NFTs) and trade them on decentralized exchanges(((decentralized, exchange))) or sell them on decentralized marketplaces(((decentralized, marketplace))).
+These days, however, users expect more from a blockchain than just the ability to send and receive funds. They want to create smart contracts(((smart contract))) that can do more than merely move funds; they seek the ability to implement arbitrary logic and enforce complex rules. They also want to create fungible(((fungible))) or non-fungible(((non-fungible))) tokens (NFTs) and trade them on decentralized exchanges(((decentralized, exchange))) or sell them on decentralized marketplaces(((decentralized, marketplace))).
 
 In the UTXO model(((UTXO, model))), a transaction can spend inputs(((transaction, input))) locked at a specific address if it is signed by the corresponding signing key(((signing key))).
 
@@ -167,7 +167,7 @@ Within the EUTXO model(((EUTXO model))), this can be enhanced by employing a scr
 So how does this work?
 
 .Alice has an NFT she wants to sell
-image::atomic_swap_eutxo_1.png[]
+image::atomic_swap_eutxo_1.png[scaledwidth=15%]
 
 Alice creates an atomic-swap script, sends her NFT to the corresponding _script address_ (given by the hash(((script, hash))) of the script), and sets the price (100 ada in our example) within the _datum_ of the output.
 
