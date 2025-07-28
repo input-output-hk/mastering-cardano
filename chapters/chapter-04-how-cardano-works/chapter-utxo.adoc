@@ -1,6 +1,7 @@
 
 :imagesdir: ../../images
 
+[[chapter4-the-eutxo-model]]
 === The EUTXO model
 
 ==== Accounting models
