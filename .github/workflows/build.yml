@@ -36,20 +36,20 @@ jobs:
       - name: Build EPUB
         run: make epub
 
-      # 5. Copies the downsized images into the images folder to make the pdf build faster.
-      - name: Copy downsized images
-        run: cp images-downscaled/* images/
-
-      # 6. Runs the 'make pdf' command which builds the pdf file.
-      - name: Build PDF
-        run: make pdf
-
-      # 7. Uploads the generated EPUB from the 'dist' directory as a build artifact.
+      # 5. Uploads the generated EPUB from the 'dist' directory as a build artifact.
       - name: Upload EPUB Artifact 📱
         uses: actions/upload-artifact@v4
         with:
           name: Book-EPUB
           path: dist/mastering-cardano-v1.0.0.epub
+
+      # 6. Copies the downsized images into the images folder to make the pdf build faster.
+      - name: Copy downsized images
+        run: cp images-downscaled/* images/
+
+      # 7. Runs the 'make pdf' command which builds the pdf file.
+      - name: Build PDF
+        run: make pdf
 
       # 8. Uploads the generated PDF from the 'dist' directory as a build artifact.
       - name: Upload PDF Artifact 📄
