@@ -58,7 +58,7 @@ Understand Cardano's unique functional programming and EUTXO model, then dive di
 - Preface: How to Navigate, How to Contribute
 - Chapter 1: Introduction: Using Functional Programming and Formal Methods, Features and Benefits of Haskell
 - Chapter 4: How Cardano Works: UTXO and EUTXO Models, Multi-assets, Native Tokens
-- Chapter 8: Writing Smart Contracts: Smart contract programming languages, Marlowe Smart Contracts, Plutus Smart Contracts, Smart Contract Security and Best Practices
+- Chapter 8: Writing Smart Contracts: Smart contract programming languages, Marlowe Smart Contracts, Plutus Smart Contracts, Smart Contract Security
 - Chapter 9: Decentralized Applications: Overview of Decentralized Applications, Onchain vs Off Chain Code
 
 ==== Cardano User Path
