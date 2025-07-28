@@ -229,10 +229,6 @@ The VRF produces a random output and a proof.
 The beauty of a VRF is that others can later verify that the output was computed correctly from the given inputs without being able to guess it beforehand.
 Each node’s VRF output is essentially that node’s 'lottery number' for the slot, and the proof is like a signed ticket.
 
-The VRF(((VRF))) produces a random output and a proof.
-The beauty of a VRF(((VRF))) is that others can later verify that the output was computed correctly from the given inputs without being able to guess it beforehand.
-Each node’s VRF(((VRF))) output is essentially that node’s 'lottery number' for the slot, and the proof is like a signed ticket.
-
 On each slot, each SPO effectively asks themselves:
 
 [quote]
