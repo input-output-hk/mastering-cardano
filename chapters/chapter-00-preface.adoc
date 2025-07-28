@@ -96,6 +96,6 @@ We encourage you to become an active participant in shaping the future editions 
 ==== How can you contribute?
 _Mastering Cardano_ is an evolving community resource which will improve with contributions and corrections from the Cardano community. Please raise a pull request in our https://github.com/input-output-hk/mastering-cardano[Mastering Cardano repository] with your suggested improvements.
 
-- Suggest Enhancements: Have an idea for a new section, a better example, or a more efficient way to explain something? Share it!
-- Propose Updates: As Cardano evolves, so too should this book. Help us keep the content fresh and relevant.
-- Report Issues: Found a bug, a broken link, or a typo? Let us know!
+- Suggest enhancements — have an idea for a new section, a better example, or a more efficient way to explain something? Share it!
+- Propose updates — as Cardano evolves, so too should this book. Help us keep the content fresh and relevant.
+- Report issues — found an issue, broken link, or typo? Let us know!
