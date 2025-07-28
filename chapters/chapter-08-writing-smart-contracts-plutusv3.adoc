@@ -437,7 +437,7 @@ examples and also contains Lucid Evolution code examples.
 
 The https://worldmobile.io/en[World Mobile] company offers an
 interesting case study of a solution that can change the current state
-of internet networks. With the help of the Cardano blockchain and smart
+of internet networks. With the help of Cardano and smart
 contracts(((smart contract))), the company provides a sharing economy model to deliver
 network infrastructure and enable connectivity in a more distributed and
 decentralized manner.
@@ -702,7 +702,7 @@ Marlowe is modeled after special-purpose financial contract languages
 popularized over the past decade by academics and enterprises, such as
 LexiFi, which provides contract software for the financial sector. In
 developing Marlowe, these languages have been adapted to work on
-blockchain. Although it is implemented on the Cardano blockchain,
+blockchain. Although it is implemented on Cardano,
 Marlowe could also be implemented on Ethereum or other blockchain
 platforms, making it 'platform-agnostic', similar to modern
 programming languages like Java and C++. Designed as an industry-scale
@@ -755,8 +755,7 @@ and run smart contracts
 testing Marlowe smart contracts before deployment to ensure intended code behavior
 * *Marlowe Runner(((Marlowe, runner)))* – an easy-to-use DApp that can be used to deploy,
 execute, and interact with Marlowe smart contracts
-* *Marlowe Scan(((Marlowe, scan)))* – a tool for visualizing Marlowe contracts on the
-Cardano blockchain
+* *Marlowe Scan(((Marlowe, scan)))* – a tool for visualizing Marlowe contracts on Cardano
 * *Marlowe Runtime(((Marlowe, runtime)))* – the application backend for managing Marlowe
 contracts on Cardano, which includes easy-to-use, higher-level APIs for
 developers to build and deploy enterprise and Web3(((Web3))) DApp solutions
@@ -1147,7 +1146,7 @@ that we specify in square brackets. If this external action does not
 happen, we will close the contract. We do this by specifying a timeout
 in POSIX time(((POSIX time))) (measured as milliseconds after UNIX epoch –
 00:00:00 https://en.wikipedia.org/wiki/Coordinated_Universal_Time[UTC] on
-January 1, 1970) after the closing square bracket of the `When`
+1 January, 1970) after the closing square bracket of the `When`
 constructor and add the `Close` constructor at the end. If the
 external action does not happen before this timeout, the contract
 terminates. Our external action will be a deposit by Alice, and we say
@@ -1330,13 +1329,13 @@ interacting with contracts. Additionally, a
 https://github.com/marlowe-lang/marlowe-cardano/tree/main/marlowe-actus[Marlowe
 Actus implementation] is available for https://actusfrf.org[Actus].
 
-Marlowe DApps can be discovered by searching the keyword "Marlowe" in
+Marlowe DApps can be discovered by searching the keyword _Marlowe_ in
 various https://projectcatalyst.io/search?q=marlowe[Project Catalyst] proposals.
 The Marlowe team at IO has also developed the following Marlowe DApps:
 
 * https://github.com/marlowe-lang/marlowe-payouts[Marlowe Payouts]
-– helps users discover available payouts from Marlowe contracts on the
-Cardano blockchain, simplifying the tracking and withdrawal process
+– helps users discover available payouts from Marlowe contracts on
+Cardano, simplifying the tracking and withdrawal process
 * https://github.com/marlowe-lang/marlowe-token-plans[Token Plan
 Prototype] – allows token providers to create token plans, where they
 deposit ada, and release funds over time to a claimer, based on a
@@ -3328,7 +3327,7 @@ newtype POSIXTime = POSIXTime {getPOSIXTime :: Integer}
 ----
 
 [purple]#POSIXTime# is a wrapper for an integer, representing the number of
-milliseconds that have passed since January 1, 1970, at 00:00.
+milliseconds that have passed since 1 January, 1970, at 00:00.
 
 The module `PlutusLedgerApi.V1.Interval` defines the following helper functions
 that work with time intervals:
@@ -4690,7 +4689,7 @@ meaning each unit has the same value as any other unit.
 
 Plutus also allows the minting of non-fungible tokens (NFTs), which are
 unique tokens that can only be minted once. The key to writing such a
-minting policy is referencing something unique on the Cardano blockchain,
+minting policy is referencing something unique on the blockchain,
 and for that, we use UTXOs. UTXOs can exist only once, and once consumed
 as input to a transaction, they can never exist again. UTXOs are defined
 by transaction hashes, which are unique, and by output indices. The reason
@@ -5703,7 +5702,7 @@ Marlowe's safety:
 * Timeouts must be numeric constants.
 * Only *Case* continuations may be Merkleized. The Faustus(((Faustus))) programming
 language relaxes some of the limitations above, yet it compiles to safe
-Marlowe. Besides, you can "relax" the above limitations if you
+Marlowe. Besides, you can 'relax' the above limitations if you
 embed Marlowe into another language (JavaScript, for example). By using
 the TS-SDK, you can have JavaScript functions and loops that unfold a
 larger Marlowe contract.
@@ -5744,7 +5743,7 @@ number of different types of tokens that can be held in a single UTXO
 rule specified by the protocol parameter maxTxSize
 . If a Marlowe contract does too much computation or uses too much
 memory in a transaction, it may violate the rule that execution costs in
-Plutus are limited to specific usage of "memory" and CPU "steps".
+Plutus are limited to specific usage of 'memory' and CPU 'steps'.
 
 You can look up the Marlowe
 https://github.com/marlowe-lang/marlowe-cardano/blob/main/marlowe/best-practices.md[best
@@ -5790,8 +5789,8 @@ scripts.
 The auditing company Tweag(((Tweag))) performed an audit of the Marlowe high-level
 language and the implementation of Marlowe on Cardano before Marlowe's
 deployment on mainnet. The audit discovered significant issues,
-including handling of negative deposits, prevention of "double
-satisfaction", enforcement of state invariants, an implementation
+including handling of negative deposits, prevention of 'double
+satisfaction', enforcement of state invariants, an implementation
 difference between formal specification versus the Plinth
 implementation, and the proof of money preservation theorem. The issues
 were addressed before deploying Marlowe on mainnet. The full
@@ -5855,9 +5854,9 @@ hashes in that registry. The Marlowe test suite verifies that the script
 registry has not been inadvertently or maliciously altered. Of course,
 this does not guarantee that the test itself has not been altered.
 
-Another Marlowe tool is the Marlowe CLI(((Marlowe, CLI))), which includes capabilities for
-analyzing the suitability of a Marlowe contract for execution on the
-Cardano blockchain. As mentioned in the previous section, the
+Another Marlowe tool is the Marlowe CLI(((Marlowe, CLI))), which includes
+capabilities for analyzing the suitability of a Marlowe contract for
+execution on Cardano. As mentioned in the previous section, the
 _marlowe-cli run analyze_ command enables a smart contract designer to
 check that his contract does not violate any of the
 https://cardano-ledger.readthedocs.io/en/latest/[Cardano ledger
@@ -5885,7 +5884,7 @@ Look up the
 https://github.com/marlowe-lang/marlowe-cardano/blob/main/marlowe/debugging-cookbook.md[Marlowe
 debugging cookbook] for technical approaches on how to debug Marlowe
 contracts on Cardano. Some types of contracts are not well suited for
-using Marlowe on the Cardano blockchain, including:
+using Marlowe on Cardano, including:
 
 * Contracts that contain timeouts spaced close to the Cardano block
 production rate
