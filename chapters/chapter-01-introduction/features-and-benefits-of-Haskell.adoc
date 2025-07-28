@@ -1,6 +1,7 @@
 
 :imagesdir: ../../images
 
+[[chapter1-features-and-benefits-of-haskell]]
 === Features and benefits of Haskell
 
 Haskell(((Haskell))) is a general-purpose, advanced, purely functional programming
@@ -76,7 +77,7 @@ code.
 
 *Benefits of purity and immutability*
 
-[arabic]
+
 . *Simplified reasoning*. With pure functions and immutable data,
 understanding the flow and outcome of a program becomes more
 straightforward. Each part of the program can be examined in isolation,
@@ -122,7 +123,6 @@ precision as you need to define your domain and invariants.
 
 *Benefits of Haskell's type system*
 
-[arabic]
 . *Early error detection*. Haskell performs type checks at compile time,
 identifying many errors that other languages might only catch during
 runtime. This early detection saves significant debugging and testing
@@ -169,7 +169,7 @@ declarative programming(((declarative programming))).
 
 *Benefits of lazy evaluation*
 
-[arabic]
+
 . *Efficient memory use and reduced computation*. By evaluating
 expressions only when their values are needed, Haskell can be more
 efficient with memory usage and avoid unnecessary computations. This
@@ -222,7 +222,7 @@ modularity(((modularity))).
 
 *Benefits of Haskell's approach to concurrency*
 
-[arabic]
+
 . *Simplicity and safety*. Haskell's pure functional nature significantly
 reduces the complexity associated with concurrent programming. Since
 most data in Haskell(((Haskell))) is immutable, many common concurrency problems,
@@ -255,7 +255,7 @@ Metaprogramming primarily revolves around two powerful features:
 template Haskell and type-level programming(((type-level programming))). Each serves distinct
 purposes and offers unique advantages.
 
-[arabic]
+
 . *Template Haskell*. This is Haskell's facility for compile-time
 metaprogramming. With template Haskell, programmers can write code that
 generates other Haskell code during compilation. It provides the ability
@@ -267,12 +267,12 @@ be embedded within types, leveraging its powerful type system(((type system))).
 Type-level programming in Haskell can involve creating and using kinds
 like type-level natural numbers or lists, and even performing type-level
 computations. This capability is enhanced by extensions such as
-[purple]#DataKinds# and [purple]#TypeFamilies#, which allow types to carry
+`DataKinds` and `TypeFamilies`, which allow types to carry
 more complex structures and behaviors.
 
 *Benefits of metaprogramming in Haskell*
 
-[arabic]
+
 . *Code generation*. Template Haskell allows for the automatic generation
 of code, which can significantly reduce the amount of manual coding
 required and help avoid repetitive boilerplate. This is particularly

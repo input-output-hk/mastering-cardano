@@ -4,17 +4,17 @@
 [[chap-crypto]]
 == Cryptography
 
-Cryptography is a fundamental building block of blockchain systems, distributed ledger technologies (DLT), smart contracts, and cryptocurrencies. This chapter offers an overview of cryptography(((cryptography))) and its role in blockchain, focusing on hash functions(((hash functions))), encryption(((encryption))) techniques, and digital signatures(((digital signatures))), along with their contributions to securing these systems. While technical details are beyond the scope of this book, resources for further exploration are provided at the end of the chapter.
+Cryptography is a fundamental building block of blockchain systems, distributed ledger technologies (DLT), smart contracts, and cryptocurrencies. This chapter offers an overview of cryptography(((cryptography))) and its role in blockchain, focusing on hash functions(((hash functions))), encryption(((encryption))) techniques, and digital signatures(((digital signatures))). While in-depth technical details are beyond the scope of this chapter, resources for further exploration are provided at the end of the chapter.
 
 === Hashing functions
 
-When digital systems communicate, messages sent between them may be altered during transmission due to issues with the physical communication medium. Early in computing history, the need for a solution to this problem became evident. An initial solution involved adding an extra 'parity bit' to data sent between devices, serving as a safety guarantee to determine whether data changed between a sender and receiver. A computer bit can either be 0 or 1. For a naive implementation of a parity bit, if the total number of bits set to 1 in a data packet being sent is odd, then the parity bit is set to 1; if even, it is set to 0. However, since the parity bit can only store a single 0 or 1, there is a high chance that errors could occur undetected. For example, if two bits that were originally 0s were altered to 1s, the naive parity bit would still appear valid. Although better parity schemes exist, they remain insufficient for the large amounts of data being transmitted.
+When digital systems communicate, messages sent between them may be altered during transmission due to issues with the physical communication medium. Early in computing history, the need for a solution to this problem became evident. An initial solution involved adding an extra 'parity bit' to data sent between devices--serving as a safety guarantee to determine whether data changed between a sender and receiver. A computer bit can either be 0 or 1. For a naive implementation of a parity bit, if the total number of bits set to 1 in a data packet being sent is odd, then the parity bit is set to 1; if even, it is set to 0. However, since the parity bit can only store a single 0 or 1, there is a high chance that errors could occur undetected. For example, if two bits that were originally 0s were altered to 1s, the naive parity bit would still appear valid. Although better parity schemes exist, they remain insufficient for the large amounts of data being transmitted.
 
 Building on this concept, 'checksums(((checksum)))' were introduced. Unlike parity bits, which encode sanity check information into a single bit, checksums use larger data sizes for encoding such checks, ranging from single to multiple bytes.
 
 In fact, sanity checks are not only essential for ensuring data integrity during transmission between computers but also for verifying that data has not been altered when stored on the same device. While checksums are effective for providing these sanity checks, there remains a risk of undetected errors. This risk arises because two different pieces of data can yield the same checksum value.
 
-A more effective sanity check was needed, which is where hashes came into play. Hashes serve as sanity checks similar to checksums but are designed to make it (nearly) impossible for an original piece of data and its altered version to produce the same hash value. They can be thought of as unique digital fingerprints that identify specific data. Given any arbitrary input, a hash algorithm(((hash algorithm))) will output a unique fingerprint, or hash. The same input will consistently yield the same hash output.
+A more effective sanity check was needed, which is where hashes came into play. Hashes serve as sanity checks similar to checksums but are designed to make it (nearly) impossible for an original piece of data and an altered version to produce the same hash value. They can be thought of as unique digital fingerprints that identify specific data. Given any arbitrary input, a hash algorithm(((hash algorithm))) will output a unique fingerprint, or hash. The same input will consistently yield the same hash output.
 
 To reiterate the point, the algorithm will produce a unique fingerprint in a manner where it is (nearly) impossible for two different inputs of data to generate the same hash. If even a single bit of the input data changes, the outputted hash will change drastically. By storing or sending the fingerprint with the original data, it is possible to verify whether the original data has been altered; if it has been altered, then the fingerprint will not match. Additionally, the algorithms used to generate hashes must ensure that it is (nearly) impossible for an altered piece of data and its associated fingerprint (hash) to result in a match. In summary, hash functions(((hash functions))) provide a solution that guarantees a piece of data has not changed over time and space.
 
@@ -27,14 +27,14 @@ To reiterate the point, the algorithm will produce a unique fingerprint in a man
 [#img_hashing]
 image::hashing.png[]
 
-<<img_hashing>> depicts different inputs and outputs for a hashing algorithm (specifically the SHA-256 hashing algorithm). In the first leftmost depiction, the text "Hello" is passed into the hashing algorithm that generates a hash (i.e. a unique fingerprint of the text "Hello") that starts with the characters "185f" and ends with the characters "1969". You can test generating hashes using online tools:
+<<img_hashing>> depicts different inputs and outputs for a hashing algorithm (specifically the SHA-256 hashing algorithm). In the first leftmost depiction, the text 'Hello' is passed into the hashing algorithm that generates a hash (i.e., a unique fingerprint of the text 'Hello') that starts with the characters '185f' and ends with the characters '1969'. You can test generating hashes using online tools:
 
-* Such as by using either of these online tools: https://emn178.github.io/online-tools/sha256.html or https://codebeautify.org/sha256-hash-generator
+* Such as by using either of these tools: https://emn178.github.io/online-tools/sha256.html or https://codebeautify.org/sha256-hash-generator
 * In fact, if you type in the text: Hello
 * You should see that you end up with the following output hash: 185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969
-* Both the tools should output the exact same hash for the exact same input text. In fact, any tool that implements the "SHA-256" hashing algorithm should output the exact same hash for the exact same input.
+* Both the tools should output the exact same hash for the exact same input text. In fact, any tool that implements the SHA-256 hashing algorithm should output the exact same hash for the exact same input.
 
-Looking back at <<img_hashing>>, comparing the hashes from the first and second depictions (from the left), it can be seen that even the smallest change in text leads to a drastically different generated hash -- try it out for yourself in the hashing tools (provided above). Yet if the exact same text is inputted into a hashing algorithm, even if over larger periods of time and in different locations, the exact same hash will be generated for the same input. For example if you input the text "Hello" 20 years ago in the USA (the leftmost depiction in <<img_hashing>>), and I also input "Hello" now (20 years later), then the exact same hash will be generated.
+Looking back at <<img_hashing>>, comparing the hashes from the first and second depictions (from the left), it can be seen that even the smallest change in text leads to a drastically different generated hash--try it out for yourself in the hashing tools (provided above). Yet if the exact same text is inputted into a hashing algorithm, even if over larger periods of time and in different locations, the exact same hash will be generated for the same input. For example if you input the text 'Hello' 20 years ago in the USA (the leftmost depiction in <<img_hashing>>), and I also input 'Hello' now (20 years later), then the exact same hash will be generated.
 
 // Once a hash is generated, potentially sent, and ultimately stored, anyone with a copy of the hash can be assured that the associated data used to generate the hash has not been altered.
 
@@ -71,7 +71,7 @@ image::symmetricenc.png[]
 
 The steps involved in the process are as follows:
 
-    * Step 0 typically occurs before the parties communicate over the medium used to transmit encrypted data. The parties must agree on a shared encryption(((encryption)))/decryption key, which will be used for both encryption and decryption. This key could be generated by _Party A_, _Party B_, or even generated together -- it does not matter as long as both parties have access to the same shared key. It is important to note that any party possessing the specific key can both decrypt and encrypt messages.
+    * Step 0 typically occurs before the parties communicate over the medium used to transmit encrypted data. The parties must agree on a shared encryption(((encryption)))/decryption key, which will be used for both encryption and decryption. This key could be generated by _Party A_, _Party B_, or even generated together--it does not matter as long as both parties have access to the same shared key. It is important to note that any party possessing the specific key can both decrypt and encrypt messages.
 
     * Once the sending party (in this case, _Party A_) has the key, they can encrypt the data intended for the other party by applying the symmetric encryption algorithm using the key, as depicted in step 1. The algorithm will output the encrypted data.
 
@@ -83,9 +83,9 @@ The same key can be used by both _Party A_ and _Party B_ to encrypt and decrypt 
 
 Symmetric encryption(((encryption))) is straightforward to understand and implement, as it relies on a single encryption/decryption key. However, it does not offer guarantees regarding:
 
-- **Provenance of messages**: any party with access to the shared key can encrypt data, making it impossible to determine the sender of the encrypted message.
+- *Provenance of messages* -- any party with access to the shared key can encrypt data, making it impossible to determine the sender of the encrypted message.
 
-- **Confidentiality of communication**: there is no assurance that messages intended for a specific party will be viewed exclusively by that party.
+- *Confidentiality of communication* -- there is no assurance that messages intended for a specific party will be viewed exclusively by that party.
 
 ==== Asymmetric encryption
 
@@ -128,9 +128,9 @@ image::create_signature.png[]
 
 We now walk through the steps involved to create a digital signature as follows:
 
-* The content of the message (e.g. "Hello") is hashed by passing it through a hashing algorithm, creating a unique fingerprint (hash) of the original data (e.g. 185f...1969). This fingerprint uniquely identifies the original content.
+* The content of the message (e.g., 'Hello') is hashed by passing it through a hashing algorithm, creating a unique fingerprint (hash) of the original data (e.g., 185f...1969). This fingerprint uniquely identifies the original content.
 
-* The hash created in the previous step is then encrypted using public key(((public key))) encryption(((encryption))) with the sender's private key(((private key))). The resulting encrypted hash is the digital signature (e.g. c1f3...691c).
+* The hash created in the previous step is then encrypted using public key(((public key))) encryption(((encryption))) with the sender's private key(((private key))). The resulting encrypted hash is the digital signature (e.g., c1f3...691c).
 
 * The sender can then transmit the message content along with the generated digital signature. Thereafter, any recipient can verify that the sender created the message and that it has not been altered.
 
@@ -143,9 +143,9 @@ image::verify_signature.png[]
 
 We now walk through the process to verify a digitally signed message as follows:
 
-* The recipient should first have received the message (e.g. "Hello") and the associated digital signature (e.g. c1f3...691c).
+* The recipient should first have received the message (e.g., 'Hello') and the associated digital signature (e.g., c1f3...691c).
 
-* The recipient then decrypts the digital signature using the sender's public key(((public key))). The decrypted value should be the hash (unique fingerprint) of the original message (e.g. 185f...1969 depicted in the bottom right of <<img_verify_signature>>).
+* The recipient then decrypts the digital signature using the sender's public key(((public key))). The decrypted value should be the hash (unique fingerprint) of the original message (e.g., 185f...1969 depicted in the bottom right of <<img_verify_signature>>).
 
 * The recipient computes the hash of the received message and compares it to the decrypted hash obtained in the previous step. If the two match, the recipient can be certain that the sender created the message. Specifically, the recipient can guarantee that the sender's private/public key(((public key))) pair(((key pair))) was used to generate the digital signature. Since the digital signature is the encrypted hash, and the hash uniquely identifies the specific piece of data, it can be confirmed that the data has not been altered since the digital signature was created and that it originated from the sender (using their public/private key pair).
 
@@ -159,27 +159,26 @@ In this section we'll now briefly mention where the techniques discussed above a
 
 Hashing functions are fundamental to blockchains. Some examples of where hashing functions are used in blockchains are listed below, but indeed other uses exist beyond those listed here.
 
-[arabic]
-. *Unique block identifier*. Blockchains consist of blocks of transactions (and other information). Each block is associated with a unique identifier, which is derived using a hashing function on the block's data.
+. *Unique block identifier* -- Blockchains consist of blocks of transactions (and other information). Each block is associated with a unique identifier, which is derived using a hashing function on the block's data.
 
-. *Unique transaction identifier*. Transactions are typically associated with a transaction hash -- which is a unique identifier of the specific transaction generated by hashing the specific transaction's data. Various examples of this can be seen throughout the book.
+. *Unique transaction identifier* -- Transactions are typically associated with a transaction hash--which is a unique identifier of the specific transaction generated by hashing the specific transaction's data. Various examples of this can be seen throughout the book.
 
-. *Script identifier*. Hashes are often used to identify specific smart contract code/scripts -- as will be seen in various parts of the book.
+. *Script identifier* -- Hashes are often used to identify specific smart contract code/scripts--as will be seen in various parts of the book.
 
-. *To chain blocks together*. Blocks are immutably chained together by having the most recent block make reference to the previous block's hash. By doing so if any information is changed in the previous block, it would be immediately noticeable since the previous block's hash would no longer match the hash that had since been stored in the most recent block. In fact, it is not just the previous block that this technique provides a solution for, but if any of the history of older blocks is changed, even slightly, then its hash would be invalidated and all blocks that were generated after the respective block and their hashes would also be invalidated.
+. *To chain blocks together* -- Blocks are immutably chained together by having the most recent block make reference to the previous block's hash. By doing so if any information is changed in the previous block, it would be immediately noticeable since the previous block's hash would no longer match the hash that had since been stored in the most recent block. In fact, it is not just the previous block that this technique provides a solution for, but if any of the history of older blocks is changed, even slightly, then its hash would be invalidated and all blocks that were generated after the respective block and their hashes would also be invalidated.
 
-. *Address derivation*. Hashing algorithms are often used in blockchains as a means of deriving wallet addresses -- e.g. as discussed in Section <<create-wallet>>.
+. *Address derivation* -- Hashing algorithms are often used in blockchains as a means of deriving wallet addresses--e.g., as discussed in <<create-wallet>>.
 
-. *Merkleization(((merkle)))* allows for large collections of data items to be compacted into a smaller structure i.e. a merkle tree, and still be able to prove that a particular data item is represented within the merkle tree without having to store the full data items. Merkleization is discussed later in the <<marlowe-security>> section.
+. *Merkleization(((merkle)))* allows for large collections of data items to be compacted into a smaller structure i.e., a merkle tree, and still be able to prove that a particular data item is represented within the merkle tree without having to store the full data items. Merkleization is discussed later in the <<chapter8-marlowe-security>> section.
 
-. *Content-Addressed Storage(((content-addressed storage)))*. When other information or files are required to be referenced (for example from a smart contract) it is often useful to refer to the specific file (or information) using Content-Addressed Storage which refers to such information/files using a hash of their content. By doing so, it is immediately possible to determine whether the contents have been changed, since the reference to find the information/file is a hash that should match the computed hash of the content -- which can be done at any point. Furthermore, such a referencing scheme allows for deduplication of information, e.g. if the same image data is referred to twice, only one version of the file needs to be stored since both references will be computed to be the same hash.
+. *Content-Addressed Storage(((content-addressed storage)))* -- When other information or files are required to be referenced (for example from a smart contract) it is often useful to refer to the specific file (or information) using Content-Addressed Storage which refers to such information/files using a hash of their content. By doing so, it is immediately possible to determine whether the contents have been changed, since the reference to find the information/file is a hash that should match the computed hash of the content--which can be done at any point. Furthermore, such a referencing scheme allows for deduplication of information, e.g., if the same image data is referred to twice, only one version of the file needs to be stored since both references will be computed to be the same hash.
 
 
 ==== Digital Signatures and Encryption Techniques
 
-. *Wallet Generation*. Public/private key(((private key)))-pairs are generated using asymmetric encryption(((asymmetric encryption))) algorithms which provide the basis for identities/wallets that can be generated on-the-fly in a decentralized manner.
+. *Wallet Generation* -- Public/private key(((private key)))-pairs are generated using asymmetric encryption(((asymmetric encryption))) algorithms which provide the basis for identities/wallets that can be generated on-the-fly in a decentralized manner.
 
-. *Signing/Proving and Verification of Transactions*. Once a user has a wallet (by generating a public/private key-pair), they can thereafter create and sign transactions that are provable to anyone that the transaction is valid and was really generated using the respective wallet. For example, when someone wants to transfer funds from their wallet to someone else, the transfer's transaction details are digitally signed using the wallet's private key. Thereafter, anyone else can verify that the transaction was really initiated by the respective wallet since they can check the digital signature against the wallet's public key.
+. *Signing/Proving and Verification of Transactions* -- Once a user has a wallet (by generating a public/private key-pair), they can thereafter create and sign transactions that are provable to anyone that the transaction is valid and was really generated using the respective wallet. For example, when someone wants to transfer funds from their wallet to someone else, the transfer's transaction details are digitally signed using the wallet's private key. Thereafter, anyone else can verify that the transaction was really initiated by the respective wallet since they can check the digital signature against the wallet's public key.
 
 
 === Pointers to cryptography resources
@@ -191,6 +190,5 @@ In this chapter we only provided a cursory overview of cryptographic primitives 
 * Cryptography Made Simple, by Nigel Smart: https://link.springer.com/book/10.1007/978-3-319-21936-3
 
 * Handbook of Applied Cryptography, by Alfred J. Menezes, Paul C. van Oorschot and Scott A. Vanstone: https://cacr.uwaterloo.ca/hac/
-
 
 

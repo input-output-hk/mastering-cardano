@@ -32,25 +32,28 @@ jobs:
       - name: Install Graphviz
         run: sudo apt-get update && sudo apt-get install -y graphviz
 
-      # 4. Copies the downsized images into the images folder to make the pdf build faster.
-      - name: Copy downsized images
-        run: cp images-downscaled/* images/
+      # 4. Runs the 'make epub' command which builds the epub.
+      - name: Build EPUB
+        run: make epub
 
-      # 5. Runs the 'make all' command which builds both the epub and pdf files.
-      #    This executes the targets defined in your Makefile.
-      - name: Build EPUB and PDF
-        run: make all
-
-      # 6. Uploads the generated PDF from the 'dist' directory as a build artifact.
-      - name: Upload PDF Artifact 📄
-        uses: actions/upload-artifact@v4
-        with:
-          name: Book-PDF
-          path: dist/mastering-cardano-v1.0.0.pdf
-
-      # 7. Uploads the generated EPUB from the 'dist' directory as a build artifact.
+      # 5. Uploads the generated EPUB from the 'dist' directory as a build artifact.
       - name: Upload EPUB Artifact 📱
         uses: actions/upload-artifact@v4
         with:
           name: Book-EPUB
           path: dist/mastering-cardano-v1.0.0.epub
+
+      # 6. Copies the downsized images into the images folder to make the pdf build faster.
+      - name: Copy downsized images
+        run: cp images-downscaled/* images/
+
+      # 7. Runs the 'make pdf' command which builds the pdf file.
+      - name: Build PDF
+        run: make pdf
+
+      # 8. Uploads the generated PDF from the 'dist' directory as a build artifact.
+      - name: Upload PDF Artifact 📄
+        uses: actions/upload-artifact@v4
+        with:
+          name: Book-PDF
+          path: dist/mastering-cardano-v1.0.0.pdf

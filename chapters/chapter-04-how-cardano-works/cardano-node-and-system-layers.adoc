@@ -13,18 +13,18 @@ secure the system.
 Nodes connect to each other within the networking layer(((networking layer))), which is the
 driving force for delivering information exchange requirements(((information exchange requirements))). Cardano
 nodes maintain connections with peers(((peers))) that have been chosen via a custom
-peer-selection process(((peer-selection process))). By running a Cardano node, you are participating
+peer-selection process. By running a Cardano node, you are participating
 in and contributing to the network(((network))).
 
-The custom peer-selection process(((peer-selection process))) in Cardano nodes is designed to
-enhance the network(((network)))'s decentralization, security, and resilience. Here's
+The custom peer-selection process in Cardano nodes is designed to
+enhance the network's decentralization, security, and resilience. Here's
 a brief overview of how it works:
 
 * *Dynamic peer-to-peer (P2P) networking.* Cardano nodes use a dynamic
 P2P networking system. This system automates the peer selection process(((peer selection process))),
 allowing nodes to maintain a specific number of active peer connections(((active peer connections))).
 If a connection with a peer is lost, the node will automatically select
-alternative peers(((peers))) and persistently attempt connections until the desired
+alternative peers and persistently attempt connections until the desired
 target is reached.
 * *Elimination of static configurations.* The dynamic P2P system
 eliminates the need for static configurations(((static configurations))) and manual input from
@@ -39,36 +39,36 @@ of the Cardano network. As a critical piece of the Cardano blockchain(((Cardano 
 node performs several essential functions:
 
 * *Validating transactions.* Whenever a transaction, such as sending
-ada, occurs on the Cardano blockchain(((Cardano blockchain))), nodes are responsible for
+ada, occurs on the Cardano blockchain, nodes are responsible for
 verifying and validating it. This process ensures that all transactions(((transaction)))
 are legitimate and prevents double-spending(((double-spending))).
 * *Maintaining the blockchain.* The blockchain is a distributed ledger
-that records all transactions(((transaction))) on the network. Nodes maintain an
+that records all transactions on the network. Nodes maintain an
 up-to-date and accurate copy of this ledger, continuously adding new
-blocks of transactions(((blocks of transactions))), which explains the term "blockchain".
+blocks containing transactions, which explains the term "blockchain".
 * *Propagating information.* Nodes communicate with each other to share
-information about transactions(((transaction))) and blocks. When a new transaction or
+information about transactions and blocks. When a new transaction or
 block is verified, nodes propagate (or share) this information across
-the network, ensuring consistency(((consistency))) and synchronization among all nodes.
+the network, ensuring consistency and synchronization among all nodes.
 
 A node in the Cardano blockchain(((Cardano blockchain))) is implemented in the
 https://github.com/IntersectMBO/cardano-node[cardano-node] software executable. The
-cardano-node software is the backbone of the Cardano blockchain(((Cardano blockchain))) network.
+cardano-node software is the backbone of the Cardano blockchain network.
 It is a crucial piece of software that runs on each node, enabling them
 to perform their essential functions. To fully understand the role of
 the cardano-node(((cardano-node))) software and its relationship with Cardano nodes, let's
 dive into its key aspects and functionalities.
 
-The cardano-node(((cardano-node))) software was originally developed by IO, one of the
+The cardano-node software was originally developed by IO, one of the
 companies that pioneered Cardano. This software is designed to run on
 computers (nodes) and allows them to interact with the Cardano
 blockchain. It is written in the Haskell programming language(((Haskell))), known for
 its robustness and security features.
 
-The relationship between the cardano-node(((cardano-node))) software and Cardano nodes can
+The relationship between the cardano-node software and Cardano nodes can
 be compared to the relationship between an operating system(((operating system))) and a
-computer. Just as an operating system(((operating system))) enables a computer to perform its
-functions, the cardano-node(((cardano-node))) software allows nodes to interact with other
+computer. Just as an operating system enables a computer to perform its
+functions, the cardano-node software allows nodes to interact with other
 nodes and perform their roles. There are several types of nodes, each
 with specific roles and responsibilities:
 
@@ -82,11 +82,11 @@ stake pools(((stake pool))), which are groups of stakeholders who combine their
 resources to increase their chances of being selected to produce a
 block.
 * *Edge nodes.* These nodes interact with end-users and applications.
-They provide interfaces for users to submit transactions(((transaction))) and query the
+They provide interfaces for users to submit transactions and query the
 blockchain. Edge nodes(((Edge nodes))) do not produce blocks but play a crucial role in
 facilitating user interactions(((user interactions))) with the blockchain.
 * *Stake pool nodes.* These are specialized block-producing nodes that
-are part of a stake pool. They validate transactions(((transaction))), produce blocks,
+are part of a stake pool. They validate transactions, produce blocks,
 and maintain the combined stake(((stake))) of various stakeholders in a single
 entity.
 
@@ -95,13 +95,13 @@ stability, and efficiency of the Cardano blockchain(((Cardano blockchain))).
 
 *Key features of the cardano-node software*
 
-The cardano-node(((cardano-node))) software undergoes constant development and updates, so
+The cardano-node software undergoes constant development and updates, so
 the key features presented here provide an overview of its capabilities.
 For the latest information, please refer to the
 https://developers.cardano.org/[Cardano developers' website].
 
 * *Blockchain synchronization.* Blockchain
-synchronization in Cardano uses the cardano-node(((cardano-node))) software and involves a
+synchronization in Cardano uses the cardano-node software and involves a
 series of protocols(((protocols))) and processes to ensure that all nodes maintain an
 up-to-date copy of the blockchain. Synchronization relies on
 mini-protocols(((mini-protocols))) like chain-sync, block-fetch, and tx-submission for data
@@ -114,25 +114,25 @@ Cardano network(((network))).
 * *Transaction validation.* One of the primary roles of
 cardano-node is to validate transactions(((transaction))). When a user initiates a
 transaction, the node software checks the transaction's validity. This
-involves verifying that the sender has enough ada(((ADA))) to cover the
-transaction and ensuring that the transaction follows the network(((network)))'s
+involves verifying that the sender has enough ada(((ada))) to cover the
+transaction and ensuring that the transaction follows the network's
 rules.
 * *Block production and validation.* The
 cardano-node(((cardano-node))) software creates new blocks for nodes participating in
-block production(((block, production))) (such as stake pool nodes). It compiles validated
-transactions(((transaction))) into blocks and adds them to the blockchain. Additionally,
+block production(((block production))) (such as stake pool nodes). It compiles validated
+transactions into blocks and adds them to the blockchain. Additionally,
 it validates new blocks produced by other nodes to ensure they are
 legitimate.
 * *Network communication.* The cardano-node facilitates
 communication between nodes. It propagates information about new
-transactions(((transaction))) and blocks across the network, ensuring all nodes remain
+transactions and blocks across the network, ensuring all nodes remain
 synchronized. This P2P communication(((P2P communication))) is vital for maintaining the
-network(((network)))'s decentralized nature.
+network's decentralized nature.
 * *Consensus participation.* Cardano uses a
 proof-of-stake consensus mechanism(((proof-of-stake consensus mechanism))) called Ouroboros. The cardano-node
 software enables nodes to participate in this consensus(((consensus))) process. Stake
 pool nodes, in particular, play a significant role in producing new
-blocks and validating transactions(((transaction))) based on their stake in the network.
+blocks and validating transactions based on their stake in the network.
 * *Monitoring and reporting.* The cardano-node software
 provides various monitoring(((monitoring))) and reporting tools that allow node
 operators to track the performance and health of their nodes. This
@@ -185,22 +185,22 @@ three layers:
 * consensus and storage layer
 * settlement and scripting layer.
 
-A Cardano node(((Cardano node))) layer is represented by a set of libraries that target
+A Cardano node layer is represented by a set of libraries that target
 specific functionalities, such as networking, consensus(((consensus))), or settlement.
 The consensus and storage layer(((consensus and storage layer))), often referred to as the consensus
 layer, and the settlement and scripting layer(((settlement and scripting layer))), known as the ledger
 layer, are two distinct components that do not depend on each other.
-These layers are integrated through a consensus(((consensus)))/ledger integration
+These layers are integrated through a consensus/ledger integration
 layer, which configures how the consensus protocol(((consensus protocol))) interacts with the
 ledger rules. On the other hand, the network layer(((network layer))) is more closely
 integrated with the consensus layer(((consensus layer))), with the boundary between these two
 being less distinct compared to the clear separation between the
-consensus(((consensus))) and ledger layers. A simple diagram below represents these
+consensus and ledger layers. A simple diagram below represents these
 node layers:
 
 image::node_internals.png[width=700,height=340,title="Cardano node layers"]
 
-The Cardano node(((Cardano node))) also contains an additional layer called the
+The Cardano node also contains an additional layer called the
 https://github.com/input-output-hk/cardano-shell[node shell], which
 manages various functions surrounding the node, namely:
 
@@ -218,7 +218,7 @@ and peer selection, obtaining new blocks from the network(((network))) as they a
 produced by block-producing nodes(((node, block-producing))) and transmitting them between nodes.
 This layer is a P2P system, with Cardano nodes maintaining connections
 with peers chosen via a custom peer selection process(((peer selection process))). Specifically
-designed for proof-of-stake systems, the network layer(((network layer))) includes a
+designed for proof-of-stake systems, the network layer includes a
 framework for writing typed protocols(((typed protocols))), supporting pipelining,
 multiplexing, and various protections against adversarial peers(((adversarial peers))).
 
@@ -231,16 +231,16 @@ https://docs.cardano.org/about-cardano/explore-more/cardano-network/[network
 documentation] explains the data flow(((data flow))) between and within Cardano nodes
 and the network constraints(((network constraints))), such as congestion control and real-time
 coordination. It also lists types of mini-protocols(((mini-protocols))) that are used to
-communicate between multiple nodes participating in the Cardano network(((network))).
-You can read more about network protocols(((network protocols))) in section
+communicate between multiple nodes participating in the Cardano network.
+You can read more about network protocols in section
 <<overview-of-cardano-network-protocols, Overview of Cardano network protocols>>.
 
 *Consensus and storage layer*
 
 The consensus and storage layer(((consensus and storage layer))) operates the Ouroboros blockchain
 consensus protocol(((consensus protocol))). In a blockchain context, consensus ensures that all
-participants agree on the one true version of the chain. The consensus(((consensus)))
-layer is responsible for making key decisions about the chain(((chain))),
+participants agree on the one true version of the chain. The consensus
+layer is responsible for making key decisions about the chain,
 including:
 
 * adopting blocks and determining when to produce new blocks
@@ -250,7 +250,7 @@ including:
 
 The consensus layer(((consensus layer))) also maintains all the necessary state to perform
 these tasks. The Ouroboros(((Ouroboros))) consensus algorithm, embedded in the
-consensus layer(((consensus layer))), sets block adoption and production rules. To adopt a
+consensus layer, sets block adoption and production rules. To adopt a
 block, the protocol must validate it against the current state of the
 ledger. The storage layer provides efficient access to:
 
@@ -266,12 +266,12 @@ block production(((block, production))), read sections <<ReachingConsensusUsingP
 and <<OuroborosConsensus, Ouroboros consensus>>.
 
 The problem of *chain selection(((chain selection)))* arises when two or more nodes extend
-the chain(((chain))) with different blocks. This can happen when nodes are unaware
+the chain with different blocks. This can happen when nodes are unaware
 of each other’s blocks due to temporary network delays(((network delays))) or partitioning.
 This situation can also occur under normal conditions depending on the
 consensus algorithm. When it does, the consensus protocol(((consensus protocol))) is responsible
 for choosing between these competing chains(((competing chains))). If the protocol switches to
-a different chain(((chain))) (a different tine of a fork), it must retain enough
+a different chain (a different tine of a fork), it must retain enough
 history to reconstruct the ledger state(((reconstruct the ledger state))) on that chain.
 
 An important task of the consensus layer is *selecting slot leaders(((selecting slot leaders)))*. In
@@ -290,11 +290,11 @@ layer when making some block-specific decisions. The ledger layer(((ledger layer
 only with high-level concerns(((high-level concerns))), meaning it describes how the ledger state
 is transformed by valid blocks. It only sees a linear history(((linear history))) and is
 unaware of multiple competing chains(((competing chains))) or the rollbacks required when
-switching from one chain to another. The consensus layer(((consensus layer))) mediates
-between these layers and decides which chain(((chain))) is preferable and should be
+switching from one chain to another. The consensus layer mediates
+between these layers and decides which chain is preferable and should be
 adopted.
 
-The consensus layer(((consensus layer))) was designed not only to perform the above-mentioned
+The consensus layer was designed not only to perform the above-mentioned
 tasks, but also to emphasize the *compositionality*, making it usable
 with many different consensus algorithms(((consensus algorithms))) and ledgers. This enables the
 _hard fork combinator (HFC)_ technology that allows combining multiple
@@ -311,7 +311,7 @@ fork combinator] blog.
 Generally, the term _hard fork_ describes a radical change from one
 protocol to another. In most blockchains, a hard fork(((hard fork))) indicates block
 changes or a change to their interpretation. Traditionally, when a
-blockchain hard fork(((hard fork))) happens, the current protocol stops operating, and
+blockchain hard fork happens, the current protocol stops operating, and
 new rules and changes are implemented, resulting in the chain restart(((chain restart))).
 There is no backward compatibility(((backward compatibility))), and the old version of the protocol
 can not be used in parallel with the new version for the same
@@ -323,15 +323,15 @@ protocols into one, resulting in a sequential combination(((sequential combinati
 protocols(((protocols))). This enables Cardano to integrate blocks from all development
 phases. Furthermore, the entire network(((network))) – comprising all connected
 Cardano nodes – can upgrade gradually, eliminating the need for
-simultaneous upgrades. Nevertheless, a hard fork(((hard fork))) still needs to be
+simultaneous upgrades. Nevertheless, a hard fork still needs to be
 triggered, and the mechanism to do this will change from the
 genesis-key-based mechanism to the one defined in
 https://cips.cardano.org/cip/CIP-1694[CIP-1694]. The genesis key
 mechanism requires that 70% of all SPOs(((SPOs))) first upgrade to the new node
 version, and then a consensus of five out of seven genesis keys(((genesis, keys))) needs to
-be reached to trigger the hard fork. The genesis keys(((genesis, keys))) were distributed
+be reached to trigger the hard fork. The genesis keys were distributed
 such that three belong to IO, two to Emurgo(((Emurgo))), and two to the Cardano
-Foundation. After CIP-1694 will be fully implemented, those genesis keys(((genesis, keys))) won’t be used
+Foundation. After CIP-1694 will be fully implemented, those genesis keys won’t be used
 anymore. SPOs will still play a crucial role in Cardano upgrades(((Cardano upgrades))), and
 will always be free to decide whether they want to upgrade their nodes
 to a new version that would signal the acceptance of a proposed hard
@@ -348,7 +348,7 @@ layer include:
 * delivering predictable performance
 * providing protection against denial-of-service (DoS) attacks.
 
-You can read more about these goals in the Cardano consensus(((consensus))) and storage
+You can read more about these goals in the Cardano consensus and storage
 layer
 https://ouroboros-consensus.cardano.intersectmbo.org/pdfs/report.pdf[technical
 report], which targets more experienced developers.
@@ -365,7 +365,7 @@ the rules governing blockchain data. These rules govern transaction
 logic for ada and other Cardano native assets(((Cardano native assets))). The ledger layer has a
 multi-era ledger implementation(((multi-era ledger implementation))) derived from a set of formal
 specifications. These formal specifications(((formal specifications))) define the core Cardano
-components of the ledger layer(((ledger layer))) and the rules for their use. The
+components of the ledger layer and the rules for their use. The
 https://github.com/IntersectMBO/cardano-ledger[Cardano ledger]
 repository lists all eras and provides the formal ledger specification
 for each. The
@@ -378,7 +378,7 @@ The ledger layer is stateless and consists exclusively of pure functions(((pure 
 that define how the ledger is updated with each new block. These
 functions are derived from the formal ledger rules(((ledger rules))) using the extended
 UTXO accounting model. The scripting layer(((scripting layer))) handles rules for smart
-contract logic, such as spending(((spending))), minting, staking, and certification
+contract logic, such as spending, minting, staking, and certification
 script logic. Transaction logic not involving smart contracts is managed
 by the settlement layer(((settlement layer))), which also provides
 https://developers.cardano.org/docs/get-started/cardano-cli/simple-scripts/[simple
@@ -397,7 +397,7 @@ interpreted assembly code(((interpreted assembly code))). The compilation pipeli
 Haskell-based Plinth(((Plinth))) (formerly Plutus TX) smart contract language to
 Plutus(((Plutus))) is explained in section <<Plutus security>>.
 
-Chapter <<Writing smart contracts>>, besides providing an overview of
+<<Writing smart contracts>>, besides providing an overview of
 smart contract language options, also showcases code examples, security
 features, and learning resources for the Plinth and Marlowe smart
 contract languages.

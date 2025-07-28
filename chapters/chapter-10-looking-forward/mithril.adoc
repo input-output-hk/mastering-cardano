@@ -8,9 +8,9 @@
 Mithril(((Mithril))) is a protocol and a network designed for proof-of-stake
 blockchains that aims to provide lightweight access to blockchain data(((blockchain, data)))
 with high security and decentralization (see the <<Mithril security (advanced)>>
-section). While the Cardano blockchain(((Cardano, blockchain))) offers robust security, starting
+section). While the Cardano blockchain offers robust security, starting
 a new node(((node))), syncing it with the network, or exchanging data can be slow
-and resource intensive – requiring 24GB of RAM(((RAM))), 150GB (and growing) of
+and resource intensive – requiring 24GB of RAM, 150GB (and growing) of
 storage, and over 24 hours for initial synchronization(((synchronization))). Mithril,
 developed for Cardano as part of the Basho development phase(((Basho, development phase))), focuses on
 optimization, scalability, and interoperability(((interoperability))). Practical use cases for
@@ -21,31 +21,29 @@ rollups, and state channels).
 The Mithril protocol(((Mithril, protocol))) design is based on the following core ideas:
 
 * Leveraging stake to efficiently certify data within a large committee of
-signers(((signers)))
+signers(((signer)))
 * Ensuring a transparent setup without increasing trust requirements.
 Security is guaranteed through a trusted Genesis phase(((genesis, phase))) for Mithril,
 similar to Cardano’s.
 
 Mithril achieves its goals using a stake-based threshold multi-signature(((multi-signature, stake-based threshold)))
 (STM) scheme developed by the Input | Output (IO) research and
-engineering teams(((engineering, teams))) and presented in the
+engineering teams and presented in the
 https://iohk.io/en/research/library/papers/mithril-stake-based-threshold-multisignatures/[Mithril
-research paper]. Simply put, the scheme generates a certificate(((certificate))) to
-prove that a minimum representative portion of signers(((signers))) – selected based
+research paper]. Simply put, the scheme generates a certificate to
+prove that a minimum representative portion of signers – selected based
 on their stake(((stake))) – has signed a specific piece of data (here referred to
 as the message).
 
-Unlike other schemes where communication complexity increases
-exponentially with the number of signers(((signers))), Mithril employs a lottery
-mechanism to select a subset of signers(((signers))). The probability of selection is
-proportional to the stakeholders(((stakeholders)))’ stake, ensuring efficient
-participation. The selected signers(((signers))) produce signatures that an
+Other schemes see communication complexity increase exponentially with the number of signers; Mithril, however, employs a lottery mechanism to select a subset of signers. The probability of selection is
+proportional to the stakeholders’ stake, ensuring efficient
+participation. The selected signers produce signatures that an
 aggregator combines into a Mithril multi-signature(((Mithril, multi-signature))), which can only be
 produced when a predefined threshold (quorum) of the total stake has
-contributed. No interaction is required between signers(((signers))), and the
+contributed. No interaction is required between signers, and the
 communication complexity is sublinear. A verifier(((verifier))) can then efficiently
 check the multi-signature(((multi-signature))) without relying on the aggregator that
-provides the multi-signature(((multi-signature))).
+provides the multi-signature.
 
 The Mithril network(((Mithril, network))) is the practical implementation of the Mithril
 protocol. Network nodes take the aforementioned roles: _signer_,
@@ -55,39 +53,39 @@ other security-related roles such as the relay(((relay node))).
 ==== The Mithril protocol (advanced)
 
 Mithril enables a multi-party signing process(((multi-party, signing process))) by holding a pre-defined
-number of lotteries(((lottery))) (*m*) run by all signers when signing a message. A
+number of lotteries (*m*) run by all signers when signing a message. A
 multi-signature(((multi-signature))) is generated once the number of unique winning lottery
-indices from the signers(((signers))) reaches a threshold (*k*) – the quorum. The
-probability of a signer(((signer))) winning a lottery is proportional to their
+indices from the signers reaches a threshold (*k*) – the quorum. The
+probability of a signer winning a lottery is proportional to their
 stake. It is influenced by a tuning parameter(((tuning, parameter))) (*f*), which represents
 the success probability assigned to the maximum stake weight(((stake, weight))) or the
 total protocol stake(((protocol, stake))). Note that this process can lead to a single signer
-winning multiple lottery indices(((lottery, indices))) for the same message.
+winning multiple lottery indices for the same message.
 
 The Mithril protocol(((Mithril, protocol))) has three phases:
 
 * *Protocol establishment*, during which the protocol parameters for all
 the Mithril participants(((Mithril, participants))) (signers and aggregators) are selected
 * *Initialization*, during which the set of participating Mithril
-signers(((signers))) generate and broadcast keys
+signers generate and broadcast keys
 * *Operation*, during which the set of participating Mithril signers
 create and broadcast individual message signatures(((message, signatures))), and Mithril
-aggregators produce message(((message))) multi-signatures.
+aggregators produce message multi-signatures.
 
 *Protocol establishment phase*
 
 In this phase, three important protocol parameters(((protocol, parameters))) are selected:
 
 * *m*, the number of lotteries a single signer can participate in to sign
-a message(((message)))
+a message
 * *k*, the minimum required number of unique lottery indices gathered
 from individual signatures to create a multi-signature(((multi-signature)))
 * *f (or phi_f)*, a tuning parameter that adjusts the probability of
-signers(((signers))) winning a lottery based on their stake.
+signers winning a lottery based on their stake.
 
 The protocol’s security directly depends on the values of these
 parameters, which are carefully chosen to ensure a negligible chance of
-an adversary forging a valid multi-signature(((multi-signature))). Details on the
+an adversary forging a valid multi-signature. Details on the
 relationship between these parameters and protocol security are provided
 in the <<Mithril security (advanced)>> section.
 
@@ -97,64 +95,64 @@ phase is conducted only once.
 
 *Initialization phase*
 
-This phase involves initializing each signer(((signer))) and registering their
-cryptographic keys. First, the signer retrieves the protocol parameters(((protocol, parameters)))
+This phase involves initializing each signer and registering their
+cryptographic keys. First, the signer retrieves the protocol parameters
 to generate a new key pair (verification key and signing key) along with
 a proof of possession(((proof of possession))) (PoP). The PoP proves that the signer owns the
 secret key associated with the verification key(((verification, key))) being registered. The
-verification key(((verification, key))) and PoP are broadcast to all parties for registration,
+verification key and PoP are broadcast to all parties for registration,
 which takes place within a predefined period – one epoch(((epoch))) (five days on
 Cardano). The initialization phase repeats at the start of each new
-epoch(((epoch))). The keys generated during this phase are used for signing two
+epoch. The keys generated during this phase are used for signing two
 epochs later.
 
-For the protocol to work, all signers(((signers))) and aggregators must reach
+For the protocol to work, all signers and aggregators must reach
 consensus on the key registration process(((key, registration process))), which includes the
-verification keys and the associated stake of the signers(((signers))) (referred to
+verification keys and the associated stake of the signers (referred to
 as the Mithril stake distribution). Specifically, consensus must be
-achieved among a subset of signers(((signers))) representing sufficient stake in the
+achieved among a subset of signers representing sufficient stake in the
 protocol to ensure the quorum(((quorum))) of signatures can be met.
 
 Each party then computes a condensed representation of the key
 registration process: the *aggregate verification key* (AVK). The AVK,
 derived as the root of a
 https://en.wikipedia.org/wiki/Merkle_tree[Merkle tree] created from
-the verification keys and stake of the registered signers(((signers))), is used to
+the verification keys and stake of the registered signers, is used to
 create individual signatures and ultimately verify the aggregated
 multi-signature(((multi-signature))).
 
 *Operation phase*
 
-In the operation phase, signers(((signers))) generate individual signatures,
+In the operation phase, signers generate individual signatures,
 aggregators combine individual signatures into multi-signatures, and
 verifiers confirm the validity of these multi-signatures.
 
 During this phase, operations run in cycles triggered deterministically
-on each party by the computation of a beacon(((beacon))), which depends on the type
+on each party by the computation of a beacon, which depends on the type
 of data to be signed. For example, a beacon(((beacon))) might correspond to the
 transaction set(((transaction, set))) or UTXO set of the chain, signed every 20 blocks. Using
-this beacon, each signer computes the associated message(((message))), which includes
+this beacon, each signer computes the associated message, which includes
 the aggregate verification key(((aggregate, verification key))), and attempts to sign it.
 
-To do so, signers participate in a series of lotteries(((lottery))) (*m*) against the
-message(((message))) to be signed and their stake (conducted in parallel), creating a
-list of winning indices. If this list is not empty, signers(((signers))) combine it
+To do so, signers participate in a series of lotteries (*m*) against the
+message to be signed and their stake (conducted in parallel), creating a
+list of winning indices. If this list is not empty, signers combine it
 with the cryptographic signature(((cryptographic, signature))) of the message (generated using their
-signing key) into the individual signature(((individual, signature))). This individual signature(((individual, signature))) is
+signing key) into the individual signature. This individual signature is
 then broadcast to the network for aggregators.
 
 Upon receiving individual signatures from the signers, the aggregator(((aggregator)))
 combines them into a multi-signature(((multi-signature))), provided that the quorum is
 reached. The quorum(((quorum))) is reached when the valid list of winning lottery
 unique indices, extracted from the individual signatures, meets the
-threshold (*k*). Such a multi-signature(((multi-signature))) is then sealed into a Mithril
-certificate(((certificate))) along with the AVK.
+threshold (*k*). Such a multi-signature is then sealed into a Mithril
+certificate(((Mithril certificate))) along with the AVK.
 
-Finally, a verifier can confirm the certificate(((certificate)))’s validity by verifying
-its multi-signature(((multi-signature))) against its AVK. This verification requires a single
+Finally, a verifier can confirm the certificate’s validity by verifying
+its multi-signature against its AVK. This verification requires a single
 cryptographic pairing operation(((cryptographic, pairing operation))), which is fast.
 
-The diagram below illustrates how a signer(((signer))) can create an individual
+The diagram below illustrates how a signer can create an individual
 signature with Mithril(((Mithril))). You can learn more about this process in the
 https://www.essentialcardano.io/article/mithril-a-stronger-and-lighter-blockchain-for-better-efficiency[Mithril:
 a stronger and lighter blockchain for better efficiency] blog post.
@@ -183,19 +181,19 @@ interface.
 *Mithril nodes* are jointly able to sign and create Mithril
 multi-signatures for any information that can be computed
 deterministically by each of them individually (the nodes need to
-compute the same message(((message))) to ensure successful aggregation). A specific
-framework has been implemented for Mithril nodes(((Mithril, nodes))) to support the creation
+compute the same message to ensure successful aggregation). A specific
+framework has been implemented for Mithril nodes(((Mithril, node))) to support the creation
 of new types of certified data without impacting the core protocol code(((core protocol, code))).
 This provides flexibility and enables swift implementation. Below is a
 list of data types currently implemented:
 
 * *Cardano database*: the internal database of the Cardano node is
-certified, enabling fast bootstrapping(((bootstrapping))) (a full node can be restored in
+certified, enabling fast bootstrapping (a full node can be restored in
 20 minutes!).
 * *Cardano transactions*: the Cardano transactions set is certified,
 allowing for the certification of a subset of transactions. This allows
 light wallets to have a certification layer(((certification, layer))) for transactions associated
-with an address, eliminating the need to trust a third-party provider(((third-party, provider))) or
+with an address, eliminating the need to trust a third-party provider or
 run a full Cardano node(((Cardano, node))). The verification can even occur in the browser.
 This also supports the implementation of ‘light clients(((light, clients)))’ for bridges,
 enabling to monitor transactions on layer 1 smart contracts(((layer 1, smart contracts))) without
@@ -208,7 +206,7 @@ Cardano node(((Cardano, node))) to access this data.
 * *Mithril stake distribution*: the Mithril stake distribution (the stake
 of the stake pool operators(((stake pool, operator))) (SPOs) involved in the protocol and their
 verification keys) is certified at the transition to a new Cardano
-epoch(((epoch))). This mandatory information must be signed at each epoch(((epoch))) to secure
+epoch. This mandatory information must be signed at each epoch to secure
 the Mithril protocol, and is achieved through the *Mithril certificate(((Mithril, certificate)))
 chain*.
 
@@ -220,28 +218,28 @@ primary purpose is to prevent adversaries from executing an
 https://academy.binance.com/en/articles/what-is-an-eclipse-attack[eclipse attack].
 
 Without the certificate chain(((certificate chain))), the stake distribution can't be trusted.
-A malicious actor(((malicious, actor))) could relatively easily create a fake stake
+A malicious actor could relatively easily create a fake stake
 distribution and use it to produce a valid multi-signature(((multi-signature))), which would
-be embedded in a valid but non-genuine certificate(((certificate))). This certificate(((certificate)))
-could be served by a dishonest Mithril aggregator node(((dishonest Mithril, aggregator node))), leading an
-honest Mithril client(((honest Mithril, client))) to trust non-genuine information.
+be embedded in a valid but non-genuine certificate. This certificate
+could be served by a dishonest Mithril aggregator node, leading an
+honest Mithril client to trust non-genuine information.
 
 To certify the Mithril stake distribution(((Mithril, stake distribution))) used to create a
 multi-signature(((multi-signature))), the distribution must be verified as having been
-previously signed in a certificate(((certificate))) from the previous epoch. Then, one
-can recursively verify that the earlier certificate(((certificate))) is valid in the same
-manner. The first certificate(((certificate))) in the chain has a special role, which is
+previously signed in a certificate from the previous epoch. Then, one
+can recursively verify that the earlier certificate is valid in the same
+manner. The first certificate in the chain has a special role, which is
 discussed below. Also, the certificates are chained in such a way that
-traversing them results in only one certificate(((certificate))) per epoch, enabling fast
+traversing them results in only one certificate per epoch, enabling fast
 verification.
 
 The first certificate in the certificate chain(((certificate chain))) is known as the *genesis
-certificate(((certificate)))*. Validating the stake distribution embedded in the genesis
+certificate*. Validating the stake distribution embedded in the genesis
 certificate is only possible by manually signing it with a private key(((private, key)))
 linked to a widely accessible public key(((public, key))), called the *genesis
 verification key(((verification, key)))*. The use of these specific keys ensures the integrity
-and security of the initial stake(((stake))) distribution and subsequent
-transitions within the blockchain network(((blockchain, network))). You can read more about the
+and security of the initial stake distribution and subsequent
+transitions within the blockchain network. You can read more about the
 certificate chain(((certificate chain))) design and its verification algorithm in the official
 documentation. A link is provided in the <<Additional resources>> section.
 
@@ -249,11 +247,11 @@ documentation. A link is provided in the <<Additional resources>> section.
 
 Ultimately, the *Mithril network* is designed to be fully decentralized.
 However, the first implementation is centralized, as full
-decentralization(((decentralization))) introduces complex subjects that are currently active
+decentralization introduces complex subjects that are currently active
 areas of research for the Mithril(((Mithril))) team:
 
 * *Signer registration*: this protocol phase requires that a vast majority
-of the signers(((signers))) and aggregators compute the Mithril cryptographic
+of the signers and aggregators compute the Mithril cryptographic
 operations on the same Mithril stake distribution(((Mithril, stake distribution))). Currently, this is
 being achieved with a centralized broadcast mechanism(((centralized broadcast, mechanism))) of signer
 registrations by an aggregator(((aggregator))). In a decentralized setup, an
@@ -262,7 +260,7 @@ reached by block producers(((block, producers))) in a blockchain over a P2P netw
 Implementing this is complex, which is why it is still under
 development.
 * *Signature diffusion*: this protocol phase requires the diffusion of
-signatures from signers(((signers))) to aggregators over a network. This is currently
+signatures from signers to aggregators over a network. This is currently
 achieved with a centralized mechanism on an aggregator(((aggregator))). In a
 decentralized setup, the signature diffusion needs to rely on a P2P
 network layer. https://cips.cardano.org/cip/CIP-0137[CIP-137]
@@ -277,49 +275,49 @@ mini-protocols(((mini-protocols))).
 Mithril security(((Mithril, security))) relies on the underlying security of the STM scheme.
 The protocol leverages threshold multi-signatures(((threshold, multi-signatures))), which enable the
 aggregation of multiple individual signatures into a single compact
-signature, depending on the distribution and control of stake(((stake))) among the
+signature, depending on the distribution and control of stake among the
 participants. The Mithril protocol relies on the following:
 
 * *Threshold multi-signature*: a scheme in which individual signatures
 from multiple participants are aggregated into a single signature if the
-total stake(((stake))) of the participants exceeds a certain threshold.
+total stake of the participants exceeds a certain threshold.
 * *Stake-based eligibility*: the protocol ensures that only participants
-with sufficient stake(((stake))) are eligible to sign messages. This eligibility is
+with sufficient stake are eligible to sign messages. This eligibility is
 determined https://en.wikipedia.org/wiki/Pseudorandomness[pseudorandomly].
 * *Aggregation and verification*: individual signatures are aggregated
-into a single multi-signature(((multi-signature))), which can then be verified efficiently.
+into a single multi-signature, which can then be verified efficiently.
 
 The Mithril protocol(((Mithril, protocol))) realizes the *ideal functionality of a stake-based
 threshold multi-signature(((multi-signature))) scheme*. This means that an adversary cannot
-create a valid multi-signature(((multi-signature))) unless they control a significant portion
-of the total stake(((stake))).
+create a valid multi-signature unless they control a significant portion
+of the total stake.
 
 The Mithril research paper(((Mithril, research paper))) mathematically demonstrates the protocol’s
 security: it formalizes the security guarantee by showing that the
 protocol realizes the ideal functionality under specific conditions,
-relying on a computational hardness assumption(((computational hardness, assumption))) and the collision
+relying on a computational hardness assumption and the collision
 resistance of a hash function(((hash, function))). The proof involves a series of hybrid
 games comparing the real protocol with an idealized version to show that
-the adversary's probability of success(((adversary's, probability of success))) is negligible. The security proof
+the adversary's probability of success is negligible. The security proof
 is supported by some lemmas:
 
 * *Sampling property*: demonstrates that the probability of an adversary
-winning enough lotteries to form a multi-signature(((multi-signature))) is negligible.
+winning enough lotteries to form a multi-signature is negligible.
 * *Individual signature verification failure*: ensures that the
 probability of a non-eligible user producing a valid signature is
 negligible.
 
 The Mithril protocol(((Mithril, protocol))) is designed to be secure against a wide range of
 attacks, including those by adversaries with significant computational
-power, control a significant portion of stake(((stake))), or attempts to manipulate
-the protocol through multiple identities or old stake(((stake))). The security
+power, control a significant portion of stake, or attempts to manipulate
+the protocol through multiple identities or old stake. The security
 goals are as follows:
 
 * *Integrity*: ensure that only valid and legitimate participants can
 generate multi-signatures, and that these multi-signatures accurately
-reflect the consensus of the stakeholders(((stakeholders))).
+reflect the consensus of the stakeholders.
 * *Resistance to Sybil attacks*: ensure that the influence in the protocol
-is proportional to the stake held, making it difficult for an adversary(((adversary)))
+is proportional to the stake held, making it difficult for an adversary
 to gain control through multiple fake identities.
 * *Forgery resistance*: prevent adversaries from creating valid forged
 individual signatures or multi-signatures.
@@ -333,8 +331,8 @@ parameters directly influences the trade-offs between security and
 efficiency:
 
 * *Higher k and m values*: these increase security but require greater
-computational and communication resources(((communication, resources))). This is suitable for
-high-value transactions or networks with significant stake(((stake)))
+computational and communication resources. This is suitable for
+high-value transactions or networks with significant stake
 concentration.
 * *Lower k and m values*: these optimize efficiency and are suitable for
 more distributed networks where the risk of attack is lower.
@@ -347,12 +345,12 @@ together to establish trust. Its primary purpose is to prevent
 adversaries from executing an
 https://academy.binance.com/en/articles/what-is-an-eclipse-attack[eclipse
 attack]. The verification process is recursive, and a chain is
-considered valid if, for each certificate(((certificate))) in the chain (at least one
-certificate(((certificate))) per epoch is required as the stake distribution changes at
+considered valid if, for each certificate in the chain (at least one
+certificate per epoch is required as the stake distribution changes at
 every epoch):
 
 * The certificate itself is valid (the multi-signature is valid, and the
-certificate(((certificate))) hash matches its content).
+certificate hash matches its content).
 * The AVK representing the stake distribution used to create the
 multi-signature(((multi-signature))) is either:
 ** Signed by a Mithril multi-signature in a certificate from the previous
@@ -365,9 +363,9 @@ widely accessible to verifiers.
 *SPOs participation*
 
 Mithril security(((Mithril, security))) relies heavily on the participation level of SPOs and
-the adversarial assumptions of the underlying stake(((stake)))-based Cardano
+the adversarial assumptions of the underlying stake-based Cardano
 network. Achieving the protocol’s full security requires participation
-representing nearly the entire Cardano stake(((stake))).
+representing nearly the entire Cardano stake.
 
 *Threat model*
 
@@ -375,10 +373,9 @@ Mithril security(((Mithril, security))) is also tied to its implementation, whic
 available in the https://github.com/input-output-hk/mithril/[Mithril repository].
 The Mithril(((Mithril))) team has published a
 https://mithril.network/doc/mithril/advanced/threat-model[threat
-model analysis], which assesses the assets involved in the Mithril(((Mithril)))
-network, identifies potential threats(((threats))) to these assets, and outlines
-their mitigations(((mitigations))) to better understand the impact on the SPO
-infrastructure and the Cardano chain(((Cardano, chain))).
+model analysis], which assesses the assets involved in the Mithril network, identifies potential threats to these assets, and outlines
+their mitigations to better understand the impact on the SPO
+infrastructure and Cardano.
 
 ==== The present and future of Mithril
 
@@ -394,8 +391,8 @@ the signing process. Decentralization, increased stake(((stake))) pool
 participation, the addition of certificates for new types of data, and
 porting the Mithril client(((Mithril, client))) to new platforms and programming languages
 are some of the features on the development roadmap. Furthermore, while
-the current implementation targets the Cardano blockchain(((Cardano, blockchain))), it is
-designed to work in any stake(((stake)))-based environment beyond Cardano.
+the current implementation targets Cardano, it is
+designed to work in any stake-based environment beyond the Cardano platform.
 
 ==== Additional resources
 
