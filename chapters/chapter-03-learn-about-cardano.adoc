@@ -12,7 +12,7 @@ The Cardano project began in 2015 and is based on _peer-reviewed research_ and d
 
 The project is pioneered by https://iohk.io/[IO], the https://www.cardanofoundation.org/[Cardano Foundation], https://www.emurgo.io/[Emurgo], and other third parties. The platform is named after https://www.britannica.com/biography/Girolamo-Cardano[Girolamo Cardano], a 16th-century Italian physician and mathematician, while its native cryptocurrency, ada(((ada))), honors https://www.britannica.com/biography/Ada-Lovelace[Ada Lovelace], the 19th-century English mathematician credited with publishing the first computer program.
 
-Cardano's development adheres to an _evidence-based engineering approach_, applying formal logic to the software development cycle. This rigorous process, starting with published research papers and progressing to formal specifications and reference implementations, ensures correctness, safety, and code reliability. 
+Cardano's development adheres to an _evidence-based engineering approach_, applying formal logic to the software development cycle. This rigorous process, starting with published research papers and progressing to formal specifications and reference implementations, ensures correctness, safety, and code reliability.
 
 Prof. Aggelos Kiayias(((Kiayias, Aggelos))), chief scientist at IO, states: _"When you go about designing a system, you have to present the system in the context of the research domain in which it belongs, why the system has the benefits it claims to have, and what exactly is the problem that the system is solving. There are a lot of benefits in taking such a first principles approach."_
 
@@ -97,7 +97,7 @@ The https://cips.cardano.org/[Cardano Improvement Proposal] (CIP) (((Cardano imp
 The https://cardano.org/ambassadors/[Cardano Ambassador program](((Cardano ambassador program))) aims to increase awareness and adoption, fostering relationships and expanding the community. Ambassadors, from diverse backgrounds globally, work diligently as content creators, translators, moderators, and educators to strengthen relationships and educate new members.
 
 === Educating the world about Cardano
-Education (((Cardano, education)))is a gateway for adoption and has always been an integral part of the strategy of Cardano’s pioneering members: https://iohk.io/[Input | Output], the https://cardanofoundation.org/[Cardano Foundation], and https://www.emurgo.io/[Emurgo]. It plays a transformative role in fostering a knowledgeable and engaged global community by equipping them with the expertise, skills, confidence, and opportunities to deepen their understanding and successfully build on Cardano and thrive in the ecosystem.
+Education(((Cardano, education))) is a gateway for adoption and has always been an integral part of the strategy of Cardano’s pioneering members: https://iohk.io/[Input | Output], the https://cardanofoundation.org/[Cardano Foundation], and https://www.emurgo.io/[Emurgo]. It plays a transformative role in fostering a knowledgeable and engaged global community by equipping them with the expertise, skills, confidence, and opportunities to deepen their understanding and successfully build on Cardano and thrive in the ecosystem.
 
 Education is a gift that empowers and enhances Cardano community members through access to knowledge and experience so that they can overcome the complexity of blockchain technology. Pioneering worldwide education on blockchain offers the opportunity to shape the field for generations and leave a lasting legacy.
 
