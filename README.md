@@ -28,4 +28,4 @@ Once you're familiar with the basics of that, you can start adding chapters in t
 
 ## Style
 
-Please refer to the [IOG Style Guide](https://docs.google.com/document/d/1atyPDfwyGJpbZzTHKlQX4NFygaUiuRMMOhC3e1W99sk/edit) for guidance on our writing style. 
+For Input | Output colleagues, please refer to the [IO Style Guide](https://docs.google.com/document/d/1atyPDfwyGJpbZzTHKlQX4NFygaUiuRMMOhC3e1W99sk/edit) for guidance on our writing style. 
