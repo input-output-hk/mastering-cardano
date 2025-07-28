@@ -98,16 +98,16 @@ often prioritizing those with higher transaction fees.
 
 image::ouroboros_mempool.svg[Each validator (miner/SPO) has its own mempool]
 
-Network participants (miners) [in Cardano, stake pool operators (SPOs)] independently assemble candidate blocks from their mempool
-and _compete_ to solve a cryptographic puzzle (proof of work) [in Cardano, proof of stake(((proof of stake)))].
+Network participants (miners) [in Cardano — stake pool operators (SPOs)] independently assemble candidate blocks from their mempool
+and _compete_ to solve a cryptographic puzzle (proof of work) [in Cardano — proof of stake(((proof of stake)))].
 The first miner to find a valid solution broadcasts the block to the rest of the network.
 
-Once the new block is verified, it is appended to each node’s local copy of the blockchain,
-and the transactions it contains are removed from the mempool.
+Once verified, the new block is appended to each node’s local copy of the blockchain,
+and the transactions it contains are removed from the mempool(((mempool))).
 The process then repeats.
 
 If the network becomes partitioned, or two miners [SPOs(((SPO)))] solve the puzzle at nearly the same time,
-_temporary forks_ may occur, i.e. for a moment in time there will be two versions of what could eventually be in the canonincal blockchain.
+_temporary forks_ may occur, ie for a moment in time there will be two versions of what could eventually be in the canonincal blockchain.
 It is for this reason, that it is often advised to wait a certain number of blocks (e.g. six blocks in Bitcoin),
 until it is assumed that a block has been immutably added to the blockchain forever.
 Eventually, one branch of the fork becomes longer as more blocks are added,
@@ -120,10 +120,11 @@ Transactions in the discarded blocks may be re-added to the mempool if they have
 
 image::ouroboros_longest_chain_consensus.svg[validators continue in the longest chain]
 
-At this point, it is important to mention how similar the original Nakamoto consensus(((Nakamoto, consensus))) and the Ouroboros consensus are.
-In fact, Ouroboros uses Nakamoto consensus.
-The main difference is how they select the network participant (i.e. the miner in Bitcoin or the SPO in Cardano).
-Bitcoin uses proof of work to select the miner, and Cardano uses proof of stake, or more precisely, a verifiable random function(((verifiable random function))).
+At this point, it is important to mention how similar the original Nakamoto consensus(((Nakamoto, Consensus))) and the Ouroboros consensus are.
+In fact, Ouroboros is Nakamoto consensus(((Nakamoto, Consensus))).
+The main difference is how they select the network participant (ie, the miner in Bitcoin or the SPO in Cardano).
+
+Bitcoin uses proof of work, and Cardano uses proof of stake, or more precisely, a verifiable random function(((Verifiable Random Function))).
 
 ==== How does proof of work select a validator (miner)?
 
@@ -174,7 +175,7 @@ However, this approach comes with some disadvantages.
 
 
 And although these disadvantages make headlines today,
-a group of visionaries, led by Professor Aggelos Kiayias(((Kiayias, Aggelos))), chief scientist at IO Research, forsaw them early on.
+a group of visionaries — led by Professor Aggelos Kiayias(((Kiayias, Aggelos))), chief scientist at IO Research — recognized them early on.
 They began developing an alternative to proof of work,
 centered on the idea of proof of stake and Ouroboros in particular.
 
@@ -190,7 +191,7 @@ From this perspective, the benefits of proof of stake become clear:
 
 - Only one runner means no wasted electricity
 - The hardware requirements are minimal — any generic computer capable of calculating a cryptographic hash function can participate
-- There is no incentive to form mining pools (teams), since the chance of being selected as the next slot leader is proportional to the amount of stake — i.e., one's _investment_ in the network or the trust of other users that delegate their stake to SPOs
+- There is no incentive to form mining pools (teams) — since the chance of being selected as the next slot leader is proportional to the amount of stake — ie, one's _investment_ in the network or the trust of other users that delegate their stake to SPOs
 - This reduces incentives for centralization
 - The protocol is open — the hardware is not controlled by any one manufacturer, and even the software can be implemented by multiple independent teams.
 
@@ -228,6 +229,9 @@ The VRF produces a random output and a proof.
 The beauty of a VRF is that others can later verify that the output was computed correctly from the given inputs without being able to guess it beforehand.
 Each node’s VRF output is essentially that node’s 'lottery number' for the slot, and the proof is like a signed ticket.
 
+The VRF(((VRF))) produces a random output and a proof.
+The beauty of a VRF(((VRF))) is that others can later verify that the output was computed correctly from the given inputs without being able to guess it beforehand.
+Each node’s VRF(((VRF))) output is essentially that node’s 'lottery number' for the slot, and the proof is like a signed ticket.
 
 On each slot, each SPO effectively asks themselves:
 
@@ -237,9 +241,7 @@ Am I the slot leader for current slot?
 ---
 
 
-If the output of the VRF  falls below a threshold,
-set based on the amount of stake the operator controls,
-then the SPO becomes the slot leader(((slot leader))) for that slot.
+If the output of the VRF (((VRF))) falls below a threshold — set based on the amount of stake the operator controls — then the SPO becomes the slot leader(((slot leader))) for that slot.
 
 That slot leader(((slot leader))):
 
@@ -272,7 +274,7 @@ Then, the process restarts for the next epoch.
 
 ===== Why is it called 'Ouroboros'?
 
-The name _Ouroboros_,the ancient symbol of a snake eating its own tail, reflects how each epoch feeds into the next.
+The name *Ouroboros(((Ouroboros)))* — the ancient symbol of a snake eating its own tail — reflects how each epoch feeds into the next.
 
 In Ouroboros, each slot’s randomness (used to determine slot leaders) is derived from
 the data of previous epochs. The blockchain uses its _own past_ to seed its _own future_,
@@ -303,11 +305,10 @@ This was a significant step forward, but not yet practical.
 ===== Ouroboros BFT (Byzantine Fault Tolerant, 2018)
 
 Used during the Cardano Byron reboot.
-Enabled a federated blockchain,
-where trusted parties (Input|Output, Emurgo, and the Cardano Foundation) ran their own nodes.
+Enabled a federated blockchain, where trusted parties — IOG, Emurgo, and the Cardano Foundation — ran their own nodes.
+ 
 
-
-===== Ouroboros Praos (2018) used in Cardano today
+===== Ouroboros Praos (2018)
 
 To increase the resistance of Ouroboros against fully-adaptive corruption
 (ie where an attaker can corrupt anyone at any time)
