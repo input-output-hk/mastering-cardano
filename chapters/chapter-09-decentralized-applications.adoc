@@ -55,7 +55,7 @@ We now list a number of prerequisite steps required in order to follow upcoming 
 
 ==== Installing a Wallet
 
-Prior to building a DApp, we need to ensure that we have a wallet installed in a browser that will allow for the client web-page to communicate with the blockchain directly. We'll use the Lace wallet (introduced in the <<wallets-in-the-world-of-cardano>> Chapter) in the rest of this chapter, but you may use any other wallet that supports the Cardano blockchain.
+Prior to building a DApp, we need to ensure that we have a wallet installed in a browser that will allow for the client web-page to communicate with the blockchain directly. We'll use the Lace wallet (introduced in the <<wallets-in-the-world-of-cardano>> Chapter) in the rest of this chapter, but you may use any other wallet that supports Cardano.
 
 
 ==== Configuring Wallet to Connect To Testnet
