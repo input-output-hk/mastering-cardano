@@ -1,5 +1,7 @@
 :imagesdir: ../images
 
+[[ch3-learn-about-Cardano]]
+
 == Learn about Cardano
 
 === What is Cardano?
