@@ -38,9 +38,9 @@ In this way, Cardano’s consensus mechanism incentivizes a distributed network 
 
 In the Cardano blockchain network, several roles are essential to stake pool(((stake pool))) operation:
 
-* *SPO*. The individual or organization responsible for running and maintaining the stake pool infrastructure. The SPO determines and sets the pool’s operational parameters, such as the fee structure. While the protocol pays rewards directly, the SPO can influence the amount of rewards by adjusting fee parameters. However, they do not control the reward distribution itself.
-* *Owner*. The owner is defined by the contribution of pledge to the pool – a type of delegation specific to stake pools. This role can be conducted either by the SPO or a separate entity.
-* *Delegator*. A network participant holding ada and delegating their stake to a pool. By doing so, they participate in the validation of transactions and earn rewards.
+* _SPO_ — the individual or organization responsible for running and maintaining the stake pool infrastructure. The SPO determines and sets the pool’s operational parameters, such as the fee structure. While the protocol pays rewards directly, the SPO can influence the amount of rewards by adjusting fee parameters. However, they do not control the reward distribution itself.
+* _Owner_ — the owner is defined by the contribution of pledge to the pool – a type of delegation specific to stake pools. This role can be conducted either by the SPO or a separate entity.
+* _Delegator_ — a network participant holding ada and delegating their stake to a pool. By doing so, they participate in the validation of transactions and earn rewards.
 
 These roles work together to ensure the reliable and secure operation of the Cardano network and its consensus mechanism(((consensus mechanism))).
 
@@ -296,7 +296,6 @@ image::nittygritty-illustration-5.png[width=50%,title="propagation time"]
 ===== The typical situation
 In the typical situation, over 90% of the blocks on the chain are created smoothly, without issues. The example below depicts a normal scenario where one pool creates a block, followed by another pool building a block on top of it. In this example, the first pool creates a block in slot 10, and the second pool creates a block in slot 15. The second pool’s block is built on top of the first pool’s block, allowing the chain to continue growing.
 
-
 1.  Pool A creates a block in slot 10
 2.  Pool A sends a block to all of its peers on the network
 3.  Pool A's peers forward the block further to all of their peers and so on.  Some nodes receive the block in slot 10, some in slot 11, some in slot 12, etc.
@@ -324,7 +323,7 @@ Sometimes, pool operators encounter problems with their nodes that slow down blo
 
 Underpowered nodes can cause pools to lose blocks without justification, resulting in lower chain density and reduced decentralization. This highlights the importance of having a robust block distribution strategy(((block distribution strategy))) for pool operators.
 
-=== `cardano-cli`
+=== The Cardano command line interface
 
 ==== Prologue
 
