@@ -26,7 +26,7 @@ relevant to people of the second group.
 
 ==== Purity and immutability
 
-*Purity in Haskell*
+===== Purity in Haskell
 
 Purely functional programming languages treat all computations as
 evaluations of mathematical functions. In purely functional programming
@@ -57,7 +57,7 @@ isolation simplifies debugging and testing, as each function can be
 considered in isolation without concern for external dependencies or
 hidden contexts.
 
-*Immutability in Haskell*
+===== Immutability in Haskell
 
 Closely related to purity is the concept of immutability – another
 cornerstone of Haskell. Immutability means that once a data structure(((data structure))) is
@@ -75,18 +75,17 @@ data structures are immutable. Each component operates on its own data
 without risk of interference, leading to safer and easier to comprehend
 code.
 
-*Benefits of purity and immutability*
+===== Benefits of purity and immutability
 
-
-. *Simplified reasoning*. With pure functions and immutable data,
+. _Simplified reasoning_. With pure functions and immutable data,
 understanding the flow and outcome of a program becomes more
 straightforward. Each part of the program can be examined in isolation,
 making it easier to model, design, and reason about.
-. *Enhanced testability*. Testing in Haskell is often more straightforward
+. _Enhanced testability_. Testing in Haskell is often more straightforward
 because there is no need to mock a global state or set up and tear down
 test environments. Tests can be run in any order without interfering
 with each other, reducing the chances of brittle tests.
-. *Refactoring confidence*. Combining purity and immutability with a
+. _Refactoring confidence_. Combining purity and immutability with a
 powerful type system(((type system))), refactoring Haskell code is less risky because the
 compiler's type checks(((type check))) ensure that changes do not introduce
 inconsistencies. Additionally, the absence of side effects means that
@@ -121,27 +120,27 @@ programming such as type families, generalized algebraic data types(((algebraic 
 (GADTs), data kinds, and much more. You can have as much flexibility and
 precision as you need to define your domain and invariants.
 
-*Benefits of Haskell's type system*
+===== Benefits of Haskell's type system
 
-. *Early error detection*. Haskell performs type checks at compile time,
+. _Early error detection._ Haskell performs type checks at compile time,
 identifying many errors that other languages might only catch during
 runtime. This early detection saves significant debugging and testing
 time and reduces the risk of runtime failures.
-. *Program correctness and safety*. Haskell's type system enforces
+. _Program correctness and safety._ Haskell's type system enforces
 constraints on how functions and data are used, significantly reducing
 the likelihood of issues, like type mismatches or unintended type
 coercions. This strict enforcement helps ensure program correctness and
 enhances overall software safety.
-. *Documentation through types*. Types in Haskell serve as a form of
+. _Documentation through types._ Types in Haskell serve as a form of
 documentation. They enhance code clarity by defining the data types that
 functions expect and produce. This clarity is invaluable for maintaining
 existing code and onboarding new developers.
-. *Facilitation of refactoring*. The robustness of Haskell's type system
+. _Facilitation of refactoring._ The robustness of Haskell's type system
 makes refactoring a safer process. Developers can make substantial
 changes to the internals of their code with confidence as long as the
 code continues to compile. This confidence is crucial for the long-term
 maintenance and evolution of software projects.
-. *Aid in design*. The type system in Haskell not only checks code but
+. _Aid in design._ The type system in Haskell not only checks code but
 also aids in its design by enforcing a level of thoughtfulness about
 data types and their interactions. This enforced rigor leads to
 better-designed, more robust, and maintainable systems.
@@ -167,30 +166,29 @@ structures the code. It allows developers to better express what they
 want instead of how to obtain it. In other words, it facilitates
 declarative programming(((declarative programming))).
 
-*Benefits of lazy evaluation*
+===== Benefits of lazy evaluation
 
-
-. *Efficient memory use and reduced computation*. By evaluating
+. _Efficient memory use and reduced computation._ By evaluating
 expressions only when their values are needed, Haskell can be more
 efficient with memory usage and avoid unnecessary computations. This
 allows for more efficient data handling(((data handling))), especially with large or
 infinite data structures(((infinite data structures))).
-. *Ability to handle infinite data structures*. One of the most striking
+. _Ability to handle infinite data structures._ One of the most striking
 advantages of lazy evaluation is the capacity to work with infinite data
 structures. For instance, Haskell can effortlessly handle lists that, in
 theory, never end because it only computes the elements as they are
 required.
-. *Increased modularity*. Laziness enhances modularity – the ability to
+. _Increased modularity._ Laziness enhances modularity – the ability to
 separate a program into distinct, interchangeable components. Developers
 can write more general-purpose functions(((general-purpose functions))) and compose them in various
 ways without worrying about performance overheads typical of such
 abstraction in eager languages(((eager languages))).
-. *On-demand computation*. Lazy evaluation fits naturally with scenarios
+. _On-demand computation._ Lazy evaluation fits naturally with scenarios
 where not all the data might be needed. For example, if you're
 processing a large dataset to find just one item or a specific pattern,
 Haskell will stop processing as soon as it finds what it's looking for,
 rather than processing the entire dataset.
-. *Refinement of performance*. While lazy evaluation may sometimes
+. _Refinement of performance._ While lazy evaluation may sometimes
 introduce inefficiencies due to the overhead of managing thunks, it can
 also enhance performance when not all computations results are needed.
 Developers can write clear and natural code, while Haskell's lazy nature
@@ -204,7 +202,7 @@ improving performance and responsiveness. With its unique features,
 Haskell offers a particularly robust environment for building concurrent
 programs.
 
-*Haskell's concurrency model*
+===== Haskell's concurrency model
 
 Haskell's concurrency model is built on the concept of lightweight
 threads, which are managed by the Haskell runtime system(((Haskell, runtime system))) rather than the
@@ -220,24 +218,23 @@ transactions. This helps to avoid deadlocks, race conditions(((race conditions))
 common concurrency issues while facilitating composability(((composability))) and
 modularity(((modularity))).
 
-*Benefits of Haskell's approach to concurrency*
+===== Benefits of Haskell's approach to concurrency
 
-
-. *Simplicity and safety*. Haskell's pure functional nature significantly
+. _Simplicity and safety._ Haskell's pure functional nature significantly
 reduces the complexity associated with concurrent programming. Since
 most data in Haskell(((Haskell))) is immutable, many common concurrency problems,
 such as race conditions and deadlocks, are naturally avoided. This makes
 concurrent Haskell programs easier to write, understand, and maintain.
-. *Efficiency at scale*. The lightweight nature of Haskell threads allows
+. _Efficiency at scale._ The lightweight nature of Haskell threads allows
 programs to scale efficiently with the number of processor cores(((processor cores))). This
 is particularly beneficial in environments where high performance with
 parallel processing(((parallel processing))) is required.
-. *Software transactional memory (STM)*. STM in Haskell abstracts the
+. _Software transactional memory (STM)._ STM in Haskell abstracts the
 complexity of mutexes and locks typically required in other languages.
 It allows developers to write code that modifies shared memory in a
 transactional manner, automatically handling conflicts and retries,
 significantly simplifying concurrent algorithms' design.
-. *Composability*. Concurrency primitives in Haskell are highly
+. _Composability._ Concurrency primitives in Haskell are highly
 composable, meaning they can be combined in various ways to achieve
 complex concurrent behavior. This composability(((composability))) stems from Haskell's
 modular nature and powerful type system(((type system))), ensuring that components
@@ -255,14 +252,13 @@ Metaprogramming primarily revolves around two powerful features:
 template Haskell and type-level programming(((type-level programming))). Each serves distinct
 purposes and offers unique advantages.
 
-
-. *Template Haskell*. This is Haskell's facility for compile-time
+. _Template Haskell_. This is Haskell's facility for compile-time
 metaprogramming. With template Haskell, programmers can write code that
 generates other Haskell code during compilation. It provides the ability
 to perform complex compile-time computations, manipulate Haskell
 abstract syntax trees(((abstract syntax trees))) (ASTs), and automatically generate boilerplate
 code.
-. *Type-level programming*. Haskell allows for computations and logic to
+. _Type-level programming._ Haskell allows for computations and logic to
 be embedded within types, leveraging its powerful type system(((type system))).
 Type-level programming in Haskell can involve creating and using kinds
 like type-level natural numbers or lists, and even performing type-level
@@ -270,29 +266,28 @@ computations. This capability is enhanced by extensions such as
 `DataKinds` and `TypeFamilies`, which allow types to carry
 more complex structures and behaviors.
 
-*Benefits of metaprogramming in Haskell*
+===== Benefits of metaprogramming in Haskell
 
-
-. *Code generation*. Template Haskell allows for the automatic generation
+. _Code generation._ Template Haskell allows for the automatic generation
 of code, which can significantly reduce the amount of manual coding
 required and help avoid repetitive boilerplate. This is particularly
 useful in large projects where consistency and reduction of manual
 overhead are critical.
-. *Sophisticated abstractions*. Type-level programming enables Haskell
+. _Sophisticated abstractions._ Type-level programming enables Haskell
 programmers to define and use abstractions that are checked at compile
 time, leading to safer and more robust applications. These abstractions
 can encapsulate complex behaviors or constraints that the compiler(((compiler)))
 verifies.
-. *Richer type system*. Metaprogramming, especially through type-level
+. _Richer type system._ Metaprogramming, especially through type-level
 programming, enriches Haskell's type system(((type system))) by enabling the expression
 of more nuanced and powerful type constraints and behaviors. This leads
 to more expressive and precise type signatures that enhance code safety
 and clarity.
-. *Improved performance*. Metaprogramming often shifts some computational
+. _Improved performance._ Metaprogramming often shifts some computational
 work to the compile phase, enhancing runtime performance(((runtime performance))). By reducing
 runtime checks and computations, the resulting program can run more
 efficiently.
-. *Dynamic behavior with static guarantee*. Metaprogramming in Haskell
+. _Dynamic behavior with static guarantee._ Metaprogramming in Haskell
 allows for a mix of dynamic-like behavior (eg generating different
 types(((type))) of functions and structures based on external inputs) while still
 retaining the guarantees of a static type system(((static type system))). This
