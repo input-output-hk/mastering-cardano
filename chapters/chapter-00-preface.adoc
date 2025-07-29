@@ -17,7 +17,7 @@ While _Mastering Cardano_ is structured to provide you with a comprehensive and 
 
 Think of these paths as curated journeys designed to help you quickly hone in on the information most relevant to your specific interests. You can choose to read _Mastering Cardano_ cover-to-cover, or you can jump directly to the chapters and sections that you are most interested in and that will accelerate your learning in a particular area.
 
-=== How to use this guide
+=== How to navigtate this book
 
 Before you dive into the chapters, take a moment to review the available reading paths. Each path will suggest a sequence of chapters and sections, along with a brief description of what you'll learn. You might find a path that perfectly aligns with your current goals, or perhaps one that helps you discover new areas of interest within Cardano.
 
@@ -56,8 +56,8 @@ Understand Cardano's unique functional programming and EUTXO model, then dive di
 
 ===== Suggested chapters & sections:
 - Preface: How to navigate, How to contribute
-- Chapter 1: Introduction: Using functional programming and formal methods, Features and benefits of Haskell
-- Chapter 4: How Cardano Works: The EUTXO model, Multi-assets, Native tokens
+- Chapter 1: Introduction: Using formal methods, Features and benefits of Haskell
+- Chapter 4: How Cardano Works: The EUTXO model, Incentives, Ouroboros
 - Chapter 8: Writing smart contracts: Smart contract programming languages, Marlowe smart contract, Plutus smart contracts, Smart contract security
 - Chapter 9: Decentralized Applications: Overview of Decentralized Applications, Onchain vs Off Chain Code
 
@@ -66,9 +66,9 @@ Learn the foundational blockchain concepts, then discover how to interact with t
 
 ===== Suggested chapters & sections:
 - Preface: How to navigate, How to contribute
-- Chapter 1: Introduction: Overview of a blockchain network, Blockchain generations (Cardano, Bitcoin, and Ethereum)
+- Chapter 1: Introduction: Where it all started, Blockchain and smart contracts
 - Chapter 3: Learn about Cardano: What is Cardano?, Cardano community and growth of the ecosystem, IO Education
-- Chapter 4: How Cardano works: The EUTXO model, Multi-assets, Native tokens (fungible and non-fungible)
+- Chapter 4: How Cardano works: The EUTXO model, Incentives, Ouroboros
 - Chapter 6: Digital Cardano wallets: Fundamentals of wallets, Wallets in the Cardano ecosystem, Setting up a Cardano light wallet, Common operations in a Cardano wallet (Sending and receiving ada, Staking ada)
 
 ==== Stake pool operators path
@@ -85,7 +85,7 @@ Understand how Cardano's governance model operates, explore key initiatives like
 
 ===== Suggested chapters & sections:
 - Preface: How to navigate, How to contribute
-- Chapter 5: Governance
+- Chapter 5: Cardano Governance
 - Chapter 10: Looking forward: Mithril, Hydra
 
 === Join the community: cntribute to Mastering Cardano
