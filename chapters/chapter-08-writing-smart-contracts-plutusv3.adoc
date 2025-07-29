@@ -123,23 +123,23 @@ and run complete DApps on Cardano, leveraging the guarantees of Marlowe
 smart contracts(((smart contract))) and integrating with Web3(((Web3)))
 workflows through a TypeScript SDK. The platform includes:
 
-* *The Marlowe Runtime(((Marlowe, runtime)))* supports all the necessary on- and
+* _The Marlowe Runtime(((Marlowe, runtime)))_ supports all the necessary on- and
 off-chain contract actions, including the tedious work of transaction
 construction and tracking contract activity by other participants.
 
-* *The Marlowe TypeScript SDK(((TS-SDK)))* fully integrates Marlowe as a component
+* _The Marlowe TypeScript SDK(((TS-SDK)))_ fully integrates Marlowe as a component
 within a complete DApp, including contract creation and initialization,
 as well as execution.
 
-* *The Marlowe Playground(((Marlowe, playground)))* provides the environment for learning Marlowe
+* _The Marlowe Playground(((Marlowe, playground)))_ provides the environment for learning Marlowe
 through its Blockly(((Blockly))) representation, as well as simulation and analysis
 of contracts as they are developed.
 
-* *End-to-end DApp examples* were developed in collaboration with Gimbalabs(((Gimbalabs)))
+* _End-to-end DApp examples_ were developed in collaboration with Gimbalabs(((Gimbalabs)))
 with Catalyst Fund12(((Catalyst, Fund12))) support, and are designed to make access to the Marlowe
 Platform as straightforward as possible.
 
-* *Other components* support free-standing execution of Marlowe smart
+* _Other components_ support free-standing execution of Marlowe smart
 contracts, including the Marlowe Runner(((Marlowe, runner))) and the
 Marlowe CLI(((Marlowe, CLI))).
 
@@ -768,29 +768,29 @@ to create, utilize, and monetize smart contracts with ease, catering to
 developers of all expertise levels. The following developer tools and
 features are available:
 
-* *Marlowe language* – a DSL that includes a web-based platform to build
+* _Marlowe language_ – a DSL that includes a web-based platform to build
 and run smart contracts
-* *Marlowe Playground(((Marlowe, playground)))* – a simulator that allows
+* _Marlowe Playground(((Marlowe, playground)))_ – a simulator that allows
 testing Marlowe smart contracts before deployment to ensure intended code behavior
-* *Marlowe Runner(((Marlowe, runner)))* – an easy-to-use DApp that can be used to deploy,
+* _Marlowe Runner(((Marlowe, runner)))_ – an easy-to-use DApp that can be used to deploy,
 execute, and interact with Marlowe smart contracts
-* *Marlowe Scan(((Marlowe, scan)))* – a tool for visualizing Marlowe contracts on Cardano
-* *Marlowe Runtime(((Marlowe, runtime)))* – the application backend for managing Marlowe
+* _Marlowe Scan(((Marlowe, scan)))_ – a tool for visualizing Marlowe contracts on Cardano
+* _Marlowe Runtime(((Marlowe, runtime)))_ – the application backend for managing Marlowe
 contracts on Cardano, which includes easy-to-use, higher-level APIs for
 developers to build and deploy enterprise and Web3(((Web3))) DApp solutions
-* *Marlowe CLI(((Marlowe, CLI)))* – provides capabilities to work with Marlowe's Plutus
+* _Marlowe CLI(((Marlowe, CLI)))_ – provides capabilities to work with Marlowe's Plutus
 validators and run Marlowe contracts manually
-* *Marlowe starter kit(((Marlowe, starter kit)))* – provides tutorials for developers to learn and
+* _Marlowe starter kit(((Marlowe, starter kit)))_ – provides tutorials for developers to learn and
 run simple Marlowe contracts on Cardano
-* *Marlowe TypeScript SDK(((TS-SDK)))* (currently in beta) – a suite of
+* _Marlowe TypeScript SDK(((TS-SDK)))_ (currently in beta) – a suite of
 TypeScript/JavaScript libraries for developing web DApps on Cardano
 using Marlowe technologies
-* *Demeter.Run(((Demeter.Run))) integration* – a web service that allows building Marlowe
+* _Demeter.Run(((Demeter.Run))) integration_ – a web service that allows building Marlowe
 projects without installing any software
-* *Documentation website* – significantly expanded, updated, and
+* _Documentation website_ – significantly expanded, updated, and
 integrated into the updated Marlowe website.
 
-*IMPORTANT:*
+_IMPORTANT:_
 During Marlowe's transition phase some tools may have issues when used
 with the latest test or main network due to Cardano updates — especially
 for repositories that are not actively maintained by the Marlowe Foundation.
@@ -5588,19 +5588,19 @@ The below descriptions were originally included in this
 https://iohk.io/en/blog/posts/2021/10/25/new-certification-levels-for-smart-contracts-on-cardano/[IO
 blog]:
 
-* *Automated tooling* will give continual assurance about a range of
+* _Automated tooling_ will give continual assurance about a range of
 properties for smart contracts. It covers the discovery of different
 types of issues or bugs and is characterized as low cost, low effort,
 and accessible to everyone while providing a substantial level of
 assurance. It can be applied repeatedly and automatically, so each time
 there is a release or a sub-release of an application, the application
 can be tested to confirm it still has the properties that we expect.
-* *In-depth audit* looks at the technology and processes that led to it
+* _In-depth audit_ looks at the technology and processes that led to it
 being produced. It involves a manual audit and verification of smart
 contracts within the DApp itself. The testing is performed at a much
 deeper level and involves more manual effort than can address a DApp in
 its entirety, even if it is written in a variety of languages.
-* *Formal verification* is more specialized,
+* _Formal verification_ is more specialized,
 where the auditor aims to provide full assurance of critical aspects of applications through
 formal verification of smart contracts. Formal verification(((formal verification))) involves
 ensuring that a smart contract serves the specific business or technical
@@ -5667,12 +5667,12 @@ auditing smart contracts, other parts of a DApp can be audited as
 the off-chain code. After the audit process, the vulnerabilities
 are usually identified and grouped into categories:
 
-* *Critical vulnerabilities* that pose a big risk for the DApp
-* *High vulnerabilities* that may affect a large portion of the DApp's
+* _Critical vulnerabilities_ that pose a big risk for the DApp
+* _High vulnerabilities_ that may affect a large portion of the DApp's
 security
-* *Medium vulnerabilities* are issues that affect the proper working
+* _Medium vulnerabilities_ are issues that affect the proper working
 of a DApp but are not security threats that would need immediate action
-* *Low vulnerabilities* that may affect things such as performance
+* _Low vulnerabilities_ that may affect things such as performance
 but pose no risk to security.
 
 We state at the end of this section that good practice in writing Plutus
