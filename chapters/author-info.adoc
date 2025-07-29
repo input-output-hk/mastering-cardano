@@ -83,4 +83,4 @@ We would like to thank the following people who have contributed to the writing 
 - Jean-Philippe Raynaud
 
 === Cover Design
-We chose an owl for the cover of this book as it represents the wisdom and deep insight you will unlock by reading this book.
+We chose an owl for the cover of this book as it represents the wisdom and deep insight you will unlock by reading this book. The Cardano logo is displayed on a leaf of a tree, with branches, illustrating the ever-expanding Cardano ecosystem. 
