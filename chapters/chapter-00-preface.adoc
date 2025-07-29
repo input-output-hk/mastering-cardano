@@ -60,7 +60,7 @@ Understand Cardano's unique functional programming and EUTXO model, then dive di
 - <<preface-howtonavigate>>
 - <<preface-howtocontribute>>
 - <<introduction>>
-- <<how-cardano-works>>:
+- <<how-cardano-works>>
 - <<writing-smart-contracts>>
 - <<decentralized-applications>>
 
@@ -81,7 +81,7 @@ Begin by understanding the core components of the Cardano network, delve into ho
 - <<preface-howtonavigate>>
 - <<preface-howtocontribute>>
 - <<how-cardano-works>>
-- <<wallets-in-the-world-of-cardano>>:
+- <<wallets-in-the-world-of-cardano>>
 - <<stake-pools-and-stake-pool-operation>>:
 
 ==== Cardano governance & future path
