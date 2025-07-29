@@ -382,7 +382,7 @@ following domains:
 * Token swaps
 * Airdrops.
 
-Section <<chapter8-marlowe-security, Marlowe security and best practices>>
+Section <<chapter8-marlowe-best-practices-and-security, Marlowe security and best practices>>
 explores the security and best practices of Marlowe in more detail.
 
 [[chapter8-on-chain-and-off-chain-code]]
@@ -5704,7 +5704,7 @@ made some of their audit reports freely available to the public:
 Other auditing companies that might not have their auditing reports grouped
 into a single repository, are also worth exploring.
 
-[[chapter8-marlowe-security-and-best-practices]]
+[[chapter8-marlowe-best-practices-and-security]]
 ==== Marlowe security and best practices
 
 [[chapter8-marlowe-security]]
