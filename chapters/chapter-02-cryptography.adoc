@@ -163,7 +163,7 @@ Hashing functions are fundamental to blockchains. Some examples of where hashing
 
 . *To chain blocks together* — Blocks are immutably chained together by having the most recent block make reference to the previous block's hash. By doing so if any information is changed in the previous block, it would be immediately noticeable since the previous block's hash would no longer match the hash that had since been stored in the most recent block. In fact, it is not just the previous block that this technique provides a solution for, but if any of the history of older blocks is changed, even slightly, then its hash would be invalidated and all blocks that were generated after the respective block and their hashes would also be invalidated.
 
-. *Address derivation* — Hashing algorithms are often used in blockchains as a means of deriving wallet addresses—e.g., as discussed in <<create-wallet>>.
+. *Address derivation* — Hashing algorithms are often used in blockchains as a means of deriving wallet addresses.
 
 . *Merkleization(((merkle)))* allows for large collections of data items to be compacted into a smaller structure i.e., a merkle tree, and still be able to prove that a particular data item is represented within the merkle tree without having to store the full data items. Merkleization is discussed later in the <<chapter8-marlowe-security>> section.
 
