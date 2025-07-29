@@ -1,7 +1,3 @@
-[[preface]]
-== #Preface#
-
-#Message from Charles here#
 
 include::foreword-lars.adoc[]
 
