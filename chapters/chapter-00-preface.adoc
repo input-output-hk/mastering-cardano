@@ -46,19 +46,19 @@ Explore the vision and challenges of blockchain, delve into the cryptography sec
 
 ===== Suggested chapters & sections:
 - Preface: How to navigate, How to contribute
-- Chapter 1 — Introduction: Where it all started, Blockchain and smart contracts, Using formal methods, Features and benefits of Haskell
+- <<introduction, Chapter 1 — Introduction>>: Where it all started, Blockchain and smart contracts, Using formal methods, Features and benefits of Haskell
 - Chapter 2 — Cryptography: The role of cryptography in security and privacy, How cryptography works in Cardano, What users need to know
 - Chapter 3 — Learn about Cardano: What is Cardano?, Cardano community and growth of the ecosystem, IO Education
-- Chapter 4 — How Cardano works: Overview of Cardano network protocols, Reaching consensus using proof of stake, About the Ouroboros protocol, The EUTXO model, Components of the Cardano ecosystem (Node, CLI, Wallet)
+- <<how-cardano-works, Chapter 4 — How Cardano works>>: Overview of Cardano network protocols, Reaching consensus using proof of stake, About the Ouroboros protocol, The EUTXO model, Components of the Cardano ecosystem (Node, CLI, Wallet)
 
 ==== Smart contracts developer path
 Understand Cardano's unique functional programming and EUTXO model, then dive directly into the specifics of writing smart contracts and decentralized applications.
 
 ===== Suggested chapters & sections:
 - Preface: How to navigate, How to contribute
-- Chapter 1 — Introduction: Using formal methods, Features and benefits of Haskell
-- Chapter 4 — How Cardano Works: The EUTXO model, Incentives, Ouroboros
-- Chapter 8 — Writing smart contracts: Smart contract programming languages, Marlowe smart contract, Plutus smart contracts, Smart contract security
+- <<introduction, Chapter 1 — Introduction>>: Using formal methods, Features and benefits of Haskell
+- <<how-cardano-works, Chapter 4 — How Cardano works>>: The EUTXO model, Incentives, Ouroboros
+- <<writing-smart-contracts, Chapter 8 — Writing smart contracts>>: Smart contract programming languages, Marlowe smart contract, Plutus smart contracts, Smart contract security
 - Chapter 9 — Decentralized Applications: Overview of Decentralized Applications, Onchain vs Off Chain Code
 
 ==== Cardano user path
