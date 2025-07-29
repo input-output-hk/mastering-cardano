@@ -48,14 +48,13 @@ Explore the vision and challenges of blockchain, delve into the cryptography sec
 ===== Suggested chapters & sections:
 - <<preface-howtonavigate>>
 - <<preface-howtocontribute>>
-- <<introduction>>: <<where-it-all-started>>, <<blockchain-and-smart-contracts>>, Using formal methods,
+- <<introduction>>: <<where-it-all-started>>, <<blockchain-and-smart-contracts>>,
 <<chapter1-features-and-benefits-of-haskell>>
-- <<chap-crypto>>: The role of cryptography in security and privacy, How cryptography works in Cardano, What users need to know
-- <<chapter3-learn-about-Cardano>>: What is Cardano?, Cardano community and growth of the ecosystem, IO Education
-- <<how-cardano-works>>: Overview of Cardano network protocols, Reaching consensus using proof of stake,
+- <<chap-crypto>>
+- <<chapter3-learn-about-Cardano>>
+- <<how-cardano-works>>
 <<chapter4-the-eutxo-model>>,
 <<OuroborosConsensus>>,
-Components of the Cardano ecosystem (Node, CLI, Wallet)
 
 ==== Smart contracts developer path
 Understand Cardano's unique functional programming and EUTXO model, then dive directly into the specifics of writing smart contracts and decentralized applications.
@@ -63,13 +62,13 @@ Understand Cardano's unique functional programming and EUTXO model, then dive di
 ===== Suggested chapters & sections:
 - <<preface-howtonavigate>>
 - <<preface-howtocontribute>>
-- <<introduction>>: Using formal methods,
+- <<introduction>>
 <<chapter1-features-and-benefits-of-haskell>>
 - <<how-cardano-works>>:
 <<chapter4-the-eutxo-model>>,
 <<chapter4-incentives>>,
 <<OuroborosConsensus>>
-- <<writing-smart-contracts>>: Smart contract programming languages, Marlowe smart contract, Plutus smart contracts, Smart contract security
+- <<writing-smart-contracts>>
 - <<decentralized-applications>>
 
 ==== Cardano user path
@@ -79,14 +78,13 @@ Learn the foundational blockchain concepts, then discover how to interact with t
 - <<preface-howtonavigate>>
 - <<preface-howtocontribute>>
 - <<introduction>>: <<where-it-all-started>>, <<blockchain-and-smart-contracts>>
-- <<chapter3-learn-about-Cardano>>: What is Cardano?, Cardano community and growth of the ecosystem, IO Education
+- <<chapter3-learn-about-Cardano>>
 - <<how-cardano-works>>:
 <<chapter4-the-eutxo-model>>,
 <<chapter4-incentives>>,
 <<OuroborosConsensus>>
 - <<wallets-in-the-world-of-cardano>>:
 <<wallets-fundamentals>>,
-Wallets in the Cardano ecosystem,
 <<wallets-light-wallet>>,
 <<wallets-common-operations>>
 
@@ -96,11 +94,10 @@ Begin by understanding the core components of the Cardano network, delve into ho
 ===== Suggested chapters & sections:
 - <<preface-howtonavigate>>
 - <<preface-howtocontribute>>
-- <<how-cardano-works>>: Overview of Cardano network protocols, Reaching consensus using proof of stake,
+- <<how-cardano-works>>
 <<chapter4-cardano-node-and-system-layers>>,
 <<chapter4-incentives>>,
 <<OuroborosConsensus>>,
-Components of the Cardano ecosystem (Node, CLI, Db sync)
 - <<wallets-in-the-world-of-cardano>>:
 <<wallets-fundamentals>>,
 <<wallets-types>>,
@@ -109,9 +106,7 @@ Components of the Cardano ecosystem (Node, CLI, Db sync)
 <<spo-introduction>>,
 <<spo-what-is-a-stake-pool>>,
 <<spo-requirements>>,
-Leadership selection, Slot conflict,
 <<spo-cardano-cli>>,
-Node operations
 
 ==== Cardano governance & future path
 Understand how Cardano's governance model operates, explore key initiatives like Project Catalyst and CIPs, and look ahead to future advancements and the Cardano 2.0 vision.
