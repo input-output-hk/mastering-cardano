@@ -1,7 +1,7 @@
 
 :imagesdir: ../../images
 
-<<chapter10-hydra>>
+[[chapter10-hydra]]
 
 === A Scaling Vision
 
