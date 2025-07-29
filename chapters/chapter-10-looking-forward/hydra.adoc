@@ -1,6 +1,8 @@
 
 :imagesdir: ../../images
 
+<<chapter10-hydra>>
+
 === A Scaling Vision
 
 ==== The Blockchain Trilemma
