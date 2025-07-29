@@ -1,6 +1,6 @@
 :imagesdir: ../images
 
-[[ch3-learn-about-Cardano]]
+[[chapter3-learn-about-Cardano]]
 
 == Learn about Cardano
 
