@@ -81,3 +81,6 @@ We would like to thank the following people who have contributed to the writing 
 
 ==== PaloIT
 - Jean-Philippe Raynaud
+
+=== Cover Design
+We chose an owl for the cover of this book as it represents the wisdom and deep insight you will unlock by reading this book.
