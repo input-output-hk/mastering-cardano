@@ -17,6 +17,7 @@ While _Mastering Cardano_ is structured to provide you with a comprehensive and 
 
 Think of these paths as curated journeys designed to help you quickly hone in on the information most relevant to your specific interests. You can choose to read _Mastering Cardano_ cover-to-cover, or you can jump directly to the chapters and sections that you are most interested in and that will accelerate your learning in a particular area.
 
+[[preface-howtonavigate]]
 === How to navigtate this book
 
 Before you dive into the chapters, take a moment to review the available reading paths. Each path will suggest a sequence of chapters and sections, along with a brief description of what you'll learn. You might find a path that perfectly aligns with your current goals, or perhaps one that helps you discover new areas of interest within Cardano.
@@ -45,7 +46,8 @@ We believe in continuous learning. Throughout _Mastering Cardano_, you'll find c
 Explore the vision and challenges of blockchain, delve into the cryptography securing the network, and then get a robust introduction to Cardano's unique design, history, and innovative protocols.
 
 ===== Suggested chapters & sections:
-- Preface: How to navigate, How to contribute
+- <<preface-howtonavigate>>
+- <<preface-howtocontribute>>
 - <<introduction, Chapter 1 — Introduction>>: Where it all started, Blockchain and smart contracts, Using formal methods, Features and benefits of Haskell
 - Chapter 2 — Cryptography: The role of cryptography in security and privacy, How cryptography works in Cardano, What users need to know
 - Chapter 3 — Learn about Cardano: What is Cardano?, Cardano community and growth of the ecosystem, IO Education
@@ -55,7 +57,8 @@ Explore the vision and challenges of blockchain, delve into the cryptography sec
 Understand Cardano's unique functional programming and EUTXO model, then dive directly into the specifics of writing smart contracts and decentralized applications.
 
 ===== Suggested chapters & sections:
-- Preface: How to navigate, How to contribute
+- <<preface-howtonavigate>>
+- <<preface-howtocontribute>>
 - <<introduction, Chapter 1 — Introduction>>: Using formal methods, Features and benefits of Haskell
 - <<how-cardano-works, Chapter 4 — How Cardano works>>: The EUTXO model, Incentives, Ouroboros
 - <<writing-smart-contracts, Chapter 8 — Writing smart contracts>>: Smart contract programming languages, Marlowe smart contract, Plutus smart contracts, Smart contract security
@@ -65,7 +68,8 @@ Understand Cardano's unique functional programming and EUTXO model, then dive di
 Learn the foundational blockchain concepts, then discover how to interact with the network using wallets, manage your digital assets, and understand native tokens and NFTs.
 
 ===== Suggested chapters & sections:
-- Preface — How to navigate, How to contribute
+- <<preface-howtonavigate>>
+- <<preface-howtocontribute>>
 - <<introduction, Chapter 1 — Introduction>>: Where it all started, Blockchain and smart contracts
 - Chapter 3 — Learn about Cardano: What is Cardano?, Cardano community and growth of the ecosystem, IO Education
 - <<how-cardano-works, Chapter 4 — How Cardano works>>: The EUTXO model, Incentives, Ouroboros
@@ -75,7 +79,8 @@ Learn the foundational blockchain concepts, then discover how to interact with t
 Begin by understanding the core components of the Cardano network, delve into how consensus is reached and incentives work, and then focus on the specifics of setting up and operating a stake pool.
 
 ===== Suggested chapters & sections:
-- Preface — How to navigate, How to contribute
+- <<preface-howtonavigate>>
+- <<preface-howtocontribute>>
 - <<how-cardano-works, Chapter 4 — How Cardano works>>: Overview of Cardano network protocols, Reaching consensus using proof of stake, About the Ouroboros protocol, Incentives in Cardano, Cardano node and system layers Components of the Cardano ecosystem (Node, CLI, Db sync)
 - Chapter 6 — Wallets in the Cardano ecosystem: Fundamentals of wallets, Types of wallets, Common operations in a Cardano wallet
 - Chapter 7 — Stake pools and stake pool operations: Introduction, What is a stake pool?, SPO requirements, Leadership selection, Slot conflict, Cardano CLI, Node operations
@@ -84,7 +89,8 @@ Begin by understanding the core components of the Cardano network, delve into ho
 Understand how Cardano's governance model operates, explore key initiatives like Project Catalyst and CIPs, and look ahead to future advancements and the Cardano 2.0 vision.
 
 ===== Suggested chapters & sections:
-- Preface — How to navigate, How to contribute
+- <<preface-howtonavigate>>
+- <<preface-howtocontribute>>
 - Chapter 5 — Cardano Governance
 - Chapter 10 — Looking forward: Mithril, Hydra
 
@@ -93,6 +99,7 @@ _Mastering Cardano_ is more than just a book; it's intended to be a community-dr
 
 We encourage you to become an active participant in shaping the future editions of this book. Whether you spot a typo, have a clearer explanation for a complex concept, discover an outdated reference, or identify an area where more depth is needed, your input is incredibly valuable. We kindly ask that you first spend time navigating the book and its content and getting to know its structure and sections, so that your feedback is most valuable.
 
+[[preface-howtocontribute]]
 ==== How can you contribute?
 _Mastering Cardano_ is an evolving community resource which will improve with contributions and corrections from the Cardano community. Please raise a pull request in our https://github.com/input-output-hk/mastering-cardano[Mastering Cardano repository] with your suggested improvements.
 
