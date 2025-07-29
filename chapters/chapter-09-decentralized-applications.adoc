@@ -30,7 +30,7 @@ Some webpages have static content, i.e., their content is always the same (and p
 
 The actual 'response' that the web server sends back to your web browser most typically consists of two parts: (a) HTML(((HTML))) code; and (b) JavaScript code (and some other media assets and style sheets). The HTML code describes what the webpage should look like.footnote:[ The content likely also makes use of CSS(((CSS))) code, but this detail can be ignored unless you want to dig deeper into webpage design.] Your browser uses the HTML code it receives as a means of 'drawing' the visual aspect to the webpage. Consider a webpage that can be used as a calculator. The HTML would describe and provide the instructions for your browser to visualize all aspects of the calculator including the different buttons on the calculator, and the display. Yet with such a visual representation (that HTML provides) only, pressing the buttons would not have any effect. A second component is needed to provide instructions to the browser that describes the functionality of the webpage—i.e., for the calculator use-case, functionality for displaying a '1' when the '1' button is pressed, and for adding two numbers together and displaying their result when required. This functionality is encoded within the JavaScript component of a webpage.
 
-The HTML and JavaScript code described above is sent to your browser on your computer, and is executed in your browser (on your computer). Really this means that you could manipulate the HTML and JavaScript code, which means you can change what a webpage you interact with looks like, and also its functionality.footnote:[ Most web browsers allow users to use 'Developer Tools' that are built into the web browsers themselves, that allow you to manipulate webpages once they are in your browser.] This code received from the web browser, which is executed in your browser, is what we call "client-side"—i.e., code that executes in the client'sfootnote:[ It may help to consider that when using a website you are the client, and this is why it is referred to as client-side code, since the code is executing on your laptop. Really though the terminology comes from ;'client-server' architectures (which has resemblances to the analogy provided).] browser. Since the code can be manipulated by yourself (the client), website operators cannot just trust any interactions or code that take place on your device, and it is for this reason that some functionality is not encoded into the 'client-side' HTML and JavaScript but encoded into 'server-side(((server-side)))' code which executes on the web server owned by the particular entity the original webpage was received from. For the code that is executed on the web server, the website operator has full control over that logic and as users of that website we must trust the operator. To exemplify this further consider an online shopping platform. Whilst end-users are shown products and prices on screen and are able to select which products they would like to purchase, the site operator cannot trust end-users to calculate the total cost due after selecting products. Since as described above, end-users would be able to manipulate the total calculation taking place within their browser. Therefore, the website is built in such a way that code concerned with total calculation is ultimately done on the web server ('server-side'). Once a total is calculated and a client is ready to pay, clients are typically sent to a payment page where they enter their bank card details. Again, processing of card transactions is typically done 'server-side' for the same reasons. Yet, in this scenario, clients that are making purchases need to trust the operator and the code that is handling the total calculation (and executing on the web server) to not overcharge after entering their card details. Traditional web applications and their architectures heavily support keeping site operators in a position of power, i.e., where platform providers are in full control and end-users are reliant on the platforms, and must trust that the platforms do their job properly—and when they do not must try to seek other forms of recourse if possible (e.g., through contacting the operator, or seeking legal recourse if necessary and possible).
+The HTML and JavaScript code described above is sent to your browser on your computer, and is executed in your browser (on your computer). Really this means that you could manipulate the HTML and JavaScript code, which means you can change what a webpage you interact with looks like, and also its functionality.footnote:[ Most web browsers allow users to use 'Developer Tools' that are built into the web browsers themselves, that allow you to manipulate webpages once they are in your browser.] This code received from the web browser, which is executed in your browser, is what we call "client-side"—i.e., code that executes in the client'sfootnote:[ It may help to consider that when using a website you are the client, and this is why it is referred to as client-side code, since the code is executing on your laptop. Really though the terminology comes from ;'client-server' architectures (which has resemblances to the analogy provided).] browser. Since the code can be manipulated by yourself (the client), website operators cannot just trust any interactions or code that take place on your device, and it is for this reason that some functionality is not encoded into the 'client-side' HTML and JavaScript but encoded into 'server-side(((server-side)))' code which executes on the web server owned by the particular entity the original webpage was received from. For the code that is executed on the web server, the website operator has full control over that logic and as users of that website we must trust the operator. To exemplify this further consider an online shopping platform. While end-users are shown products and prices on screen and are able to select which products they would like to purchase, the site operator cannot trust end-users to calculate the total cost due after selecting products. Since as described above, end-users would be able to manipulate the total calculation taking place within their browser. Therefore, the website is built in such a way that code concerned with total calculation is ultimately done on the web server ('server-side'). Once a total is calculated and a client is ready to pay, clients are typically sent to a payment page where they enter their bank card details. Again, processing of card transactions is typically done 'server-side' for the same reasons. Yet, in this scenario, clients that are making purchases need to trust the operator and the code that is handling the total calculation (and executing on the web server) to not overcharge after entering their card details. Traditional web applications and their architectures heavily support keeping site operators in a position of power, i.e., where platform providers are in full control and end-users are reliant on the platforms, and must trust that the platforms do their job properly—and when they do not must try to seek other forms of recourse if possible (e.g., through contacting the operator, or seeking legal recourse if necessary and possible).
 
 [[dapp-architecture]]
 === Decentralized application architecture
@@ -62,7 +62,7 @@ Prior to building a DApp, we need to ensure that we have a wallet installed in a
 
 We'll configure the Wallet to connect to the Cardano test network so that we can test without having to spend real cryptocurrency. In Lace, you can do this by:
 
-. Clicking on the currently selected Wallet (as depicted in <<fig-wallet-settings>>)
+. Clicking on the currently selected wallet (as depicted in <<fig-wallet-settings>>)
 . Then selecting 'Settings'
 . Then click on 'Network' to 'Switch from mainnet to testnet'
 . Click on 'Preprod' which is meant for pre-production testing
@@ -83,7 +83,7 @@ image::wallet-preprod.png[pdfwidth=50%]
 
 ==== Receiving test cryptocurrency
 
-In order to interact with the blockchain, users must spend some cryptocurrency. Since we want to avoid spending real cryptocurrency whilst testing we've switched to the Preprod test network (as discussed above), and need to obtain some test cryptocurrency. To do so we'll request some test ada (Cardano's cryptocurrency) from a faucet.footnote:[Faucets are the term typically used for services that send test cryptocurrency.] One such faucet can be found here: +
+In order to interact with the blockchain, users must spend some cryptocurrency. Since we want to avoid spending real cryptocurrency while testing we've switched to the Preprod test network (as discussed above), and need to obtain some test cryptocurrency. To do so we'll request some test ada (Cardano's cryptocurrency) from a faucet.footnote:[Faucets are the term typically used for services that send test cryptocurrency.] One such faucet can be found here: +
 https://docs.cardano.org/cardano-testnets/tools/faucet[_https://docs.cardano.org/cardano-testnets/tools/faucet_]
 
 To retrieve test ada, configure the fields as follows:
@@ -91,7 +91,7 @@ To retrieve test ada, configure the fields as follows:
 * Environment: Preprod Testnet
 * Action: Receive test ada
 
-Then, copy your wallet address. In Lace this can be done by clicking on 'Copy address' located at the bottom of the main screen of the wallet as depicted in <<fig-wallet-copy-address>>. Then paste the address in the address field. Ensure to click on "I'm not a robot" and press 'Request Funds'. A success message should appear shortly, and the test ada should appear in your wallet within a few minutes.
+Then, copy your wallet address. In Lace, this can be done by clicking on 'Copy address' located at the bottom of the main screen of the wallet as depicted in <<fig-wallet-copy-address>>. Then paste the address in the address field. Ensure to click on "I'm not a robot" and press 'Request Funds'. A success message should appear shortly, and the test ada should appear in your wallet within a few minutes.
 
 [[fig-wallet-copy-address]]
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
@@ -118,7 +118,7 @@ Now that we have some test cryptocurrency in our wallet, let's try to use a DApp
 
 . Go to https://testnet-preprod.minswap.org/[_https://testnet-preprod.minswap.org/_]
 . Connect your wallet by clicking 'Connect Wallet', then choosing 'Lace' (or a different wallet if you are not using Lace).
-. The wallet will popup asking you to confirm that you want to connect your wallet to the minswap.org site. By doing so we'll be able to use our wallet with the minswap.org site and interact directly with the blockchain. So, we'll press "Authorize". You can then choose whether you want to always allow the site to connect to your wallet, or whether it can only connect this time. Once your wallet is connected, go back to the Minswap main screen by pressing the 'X' as depicted in <<fig-minswap-close>>.
+. The wallet will pop up asking you to confirm that you want to connect your wallet to the minswap.org site. By doing so we'll be able to use our wallet with the minswap.org site and interact directly with the blockchain. So, we'll press "Authorize". You can then choose whether you want to always allow the site to connect to your wallet, or whether it can only connect this time. Once your wallet is connected, go back to the Minswap main screen by pressing the 'X' as depicted in <<fig-minswap-close>>.
 
 [[fig-minswap-close]]
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
@@ -145,7 +145,7 @@ image::minswap-trade.png[]
 image::minswap-review-trade.png[pdfwidth=45%]
 
 [start=6]
-. You can then confirm the swap by clicking 'Trade now'. This should initiate your wallet to pop-up prompting you to choose whether you agree to the transaction as depicted in <<fig-lace-confirm>>.
+. You can then confirm the swap by clicking 'Trade now'. This should initiate your wallet to pop up prompting you to choose whether you agree to the transaction as depicted in <<fig-lace-confirm>>.
 
 [[fig-lace-confirm]]
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
@@ -172,9 +172,9 @@ image::lace-done.png[pdfwidth=45%]
 [#fig-minswap-balances-updated]
 image::minswap-balances-updated.png[pdfwidth=45%]
 
-And that's it! You have used your first DApp (if you haven't already done so, of course). To further build on what was discussed in the previous section, it is important to highlight the different interactions that took place from your browser and what it was communicating with. First we requested the DApp by visiting the website (i.e., https://testnet-preprod.minswap.org/[_https://testnet-preprod.minswap.org/_]), through which your browser requested the webpage (i.e., HTML and JavaScript and other images and media-assets) from the centralized Minswap server. We then instructed the DApp to connect to our wallet, and confirmed in the wallet that we agree to it connecting with the DApp. Our wallet runs on our computers and is the interface that we can trust to verify interactions with the underlying blockchain. The DApp fetches swap prices to display on screen by communicating with the centralized server directly—and though this may raise eyebrows in that the centralized server can manipulate prices, the guarantees with respect to actual swap prices used are provided through the final on-chain script call that is used to initiate the swap (discussed next). When the user agrees to the swap in the wallet popup, it is at this point that the wallet directly communicates with the on-chain script code (deployed on the blockchain), within which the swap price is guaranteed to be the current price as defined by the on-chain logic. So, the guarantee provided to the user is that the swap will be performed at the current price (defined with decentralized on-chain script code)—irrespective of whether the centralized server reports a different price. This potential price discrepancy is why such DEXs allow for users to specify a 'slippage' amount and/or minimum/maximum prices for swaps—so that users can express what minimum/maximum swap price they agree to in the case that there is a discrepancy between the prices reported on screen (by the centralized server) and the actual current price that the swap would use. This discrepancy emerges not only from the fact that servers may report different prices, but also given that time passes between user acceptance and the time the actual swap would take place—and within this time it may be the case that other swaps were executed for the specific price-pair that would affect the swap price.
+And that's it! You have used your first DApp (if you haven't already done so, of course). To further build on what was discussed in the previous section, it is important to highlight the different interactions that took place from your browser and what it was communicating with. First we requested the DApp by visiting the website (i.e., https://testnet-preprod.minswap.org/[_https://testnet-preprod.minswap.org/_]), through which your browser requested the webpage (i.e., HTML and JavaScript and other images and media assets) from the centralized Minswap server. We then instructed the DApp to connect to our wallet, and confirmed in the wallet that we agree to it connecting with the DApp. Our wallet runs on our computers and is the interface that we can trust to verify interactions with the underlying blockchain. The DApp fetches swap prices to display on screen by communicating with the centralized server directly—and though this may raise eyebrows in that the centralized server can manipulate prices, the guarantees with respect to actual swap prices used are provided through the final on-chain script call that is used to initiate the swap (discussed next). When the user agrees to the swap in the wallet popup, it is at this point that the wallet directly communicates with the on-chain script code (deployed on the blockchain), within which the swap price is guaranteed to match the current price as defined by the on-chain logic. So, the guarantee provided to the user is that the swap will be performed at the current price (defined with decentralized on-chain script code)—irrespective of whether the centralized server reports a different price. This potential price discrepancy is why such DEXs allow for users to specify a 'slippage' amount and/or minimum/maximum prices for swaps—so that users can express what minimum/maximum swap price they agree to in the case that there is a discrepancy between the prices reported on screen (by the centralized server) and the actual current price that the swap would use. This discrepancy emerges not only from the fact that servers may report different prices, but also given that time passes between user acceptance and the time the actual swap would take place—and within this time it may be the case that other swaps were executed for the specific price-pair that would affect the swap price.
 
-Having explored using a DApp, let's now delve into aspects of internal workings of a DApp by re-creating parts of a DApp.
+Having explored how to use a DApp, let's now delve into aspects of internal workings of a DApp by re-creating parts of a DApp.
 
 === Creating a DApp
 
@@ -183,7 +183,7 @@ We'll now create the following aspects of a DApp:
 * *Server-side code* — A NodeJS(((NodeJS))) server that will send a page's HTML(((HTML)))/JavaScript to the end-user.
 * *Client-side code* — This is the code that will be sent from the server (discussed above), but will execute in the client-side browser. This code will connect to the wallet and communicate with a deployed on-chain script.
 
-We will not create on-chain script code in this section (since that is handled in the <<writing-smart-contracts>> chapter). Indeed, DApps can be created that communicate with existing deployed on-chain scripts that may not necessarily be written by the same developers/teams—just as we demonstrate now below.
+We will not create on-chain script code in this section (since that is handled in the <<writing-smart-contracts>> chapter). Indeed, DApps can be created that communicate with existing deployed on-chain scripts that may not necessarily be written by the same developers/teams—as we demonstrate now below.
 
 ==== Creating a server (with NodeJS)
 
@@ -256,7 +256,7 @@ async function connectWallet() {
 </script>
 ----
 
-After reloading the webpage (i.e., refreshing the url, localhost:3000), you should see the button on screen. If the code is correct, once you press the button, the Lace wallet should pop-up requesting the user to allow for the underlying client-side code to be able to connect to the Lace wallet as depicted in <<dapp-connect-to-lace>>. Upon confirming that the DApp can connect to the wallet, we will not see any changes in the page, since we did not provide any code to do so. However, if you check the developer console in the browser you should see the output messages stating that we successfully managed to connect the wallet to the client-side JavaScript and also the addresses used.
+After reloading the webpage (i.e., refreshing the url, localhost:3000), you should see the button on screen. If the code is correct, once you press the button, the Lace wallet should pop up requesting permission for the client-side code to be able to connect to the Lace wallet as depicted in <<dapp-connect-to-lace>>. Upon confirming that the DApp can connect to the wallet, we will not see any changes in the page, since we did not provide any code to do so. However, if you check the developer console in the browser you should see the output messages stating that we successfully managed to connect the wallet to the client-side JavaScript and also the addresses used.
 
 [[dapp-connect-to-lace]]
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
@@ -441,7 +441,7 @@ async function connectWallet() {
 ----
 
 [start=4]
-. To test this code, the Node server will need to be started (potentially restarted), and the page loaded by opening the url `localhost:3000` in a browser. Then check to make sure that loading of the library and loading of the Mesh library objects and functions do not raise any errors (though you might see an error relating to not being able to load favicon.ico).
+. To test this code, the Node server will need to be started (potentially restarted), and the page loaded by opening the url `localhost:3000` in a browser. Then check to make sure that loading of the library and loading of the Mesh library objects and functions do not raise any errors (though you might see an error relating to being unable to load favicon.ico).
 
 
 ==== Interacting with the Redeemer 42 on-chain script code
@@ -523,9 +523,9 @@ async function sendFunds(amount) {
 }
 ----
 
-Line numbers 3-6 sets the required parameters for the transaction including: passing in a reference to the wallet we're using to send funds, the network (i.e., preprod), the script address and the amount of Lovelace to send, and the change address.
+Lines 3-6 sets the required parameters for the transaction including: passing in a reference to the wallet we're using to send funds, the network (i.e., preprod), the script address and the amount of Lovelace to send, and the change address.
 
-In line number 9, 11, and 13, we build the transaction, sign it and submit the transaction respectively.
+In lines 9, 11, and 13, we build the transaction, sign it and submit the transaction respectively.
 
 [start=5]
 . We also add a 'Send Funds' button to call the added functionality to send 3,000,000 Lovelace (3 ADA).
@@ -600,11 +600,11 @@ After running the NodeJS server and refreshing the page (i.e., refreshing localh
 [#fig-sendFunds]
 image::redeemer42-sendFunds.png[pdfwidth=50%]
 
-Upon clicking 'Send Funds' the wallet should pop-up asking that you confirm to sending 3 ADA. It may take a while until the transaction is part of a block—you can check your wallet's transaction history and also search in a Cardano preprod network block explorer for your wallet's address for a successful transaction (at the associated date/time).
+Upon clicking 'Send Funds' the wallet should pop up asking that you confirm sending 3 ADA. It may take a while until the transaction is part of a block—you can check your wallet's transaction history and also search in a Cardano preprod network block explorer for your wallet's address for a successful transaction (at the associated date/time).
 
 ===== Deploying a reference script for the Redeemer 42 example
 
-To add functionality that deploys a reference script (discussed in the <<writing-smart-contracts>> chapter) for the Redeemer 42 example follow these steps:
+To add functionality that deploys a reference script (discussed in the <<writing-smart-contracts>> chapter) for the Redeemer 42 example, follow these steps:
 
 . We will make use of an RPC provider, which allows for querying of parameters from the blockchain. We'll make use of the BlockfrostProvider provided by mesh SDK, but you could also look into using other providers:
 
@@ -614,7 +614,7 @@ const provider = new BlockfrostProvider('<YOUR API KEY>');
 ----
 
 [start=2]
-. Then we can include the burn address where to associate the reference script to:
+. Then we can define the burn address, to which to associate the reference script to:
 
 [source,javascript]
 ----
@@ -651,11 +651,11 @@ async function deployRefScript() {
 }
 ----
 
-In Line 3-5, we create an instance of a transaction builder that we will use in a few lines.
+In lines 3-5, we create an instance of a transaction builder that we will use in a few lines.
 
 Line 8 gets the wallet's UTXOs (unspent transactions) that could be used (for the transaction that will be submitted).
 
-Lines 11-16 builds the transaction to deploy the reference script, and then the transaction is signed and submitted (on lines 19 and 21).
+Lines 11-16 build the transaction to deploy the reference script, and then the transaction is signed and submitted (on lines 19 and 21).
 
 [start=4]
 . Finally, we'll add a button to test out the deploy reference script functionality:
@@ -779,7 +779,7 @@ To claim back funds follow these steps:
 ----
 
 [start=2]
-. We add a function to help retrieve back UTXOs that we'll make reference to when initiating the transaction to claim back funds, as follows:
+. We add a function to help retrieve UTXOs that we'll make reference to when initiating the transaction to claim back funds, as follows:
 
 [source,javascript]
 ----
@@ -833,9 +833,9 @@ async function claimFunds() {
 }
 ----
 
-In Line 4, we retrieve back the initial asset UTXO in which we sent funds.
+In Line 4, we retrieve the initial asset UTXO in which we sent funds.
 
-In Line 6, we retrieve back the reference script UTXO.
+In Line 6, we retrieve the reference script UTXO.
 
 In Line 7, we define the redeemer value (42) to send to the script.
 
@@ -985,19 +985,19 @@ After re-running the NodeJS server and refreshing the page (i.e., refreshing loc
 [#fig-claimFunds]
 image::dapp-claim-funds.png[pdfwidth=50%]
 
-The above provides the full DApp implementation. To run through the example DApp you should first ensure your wallet is connected by pressing 'Connect Wallet'.  Thereafter, pressing the 'Send Funds' button should send a transaction within which you send funds to the Redeemer 42 script. Once confirming the transaction in your wallet it is ideal to wait to see that the transaction is confirmed. Thereafter, you can press the 'Deploy Reference Script' button to the deploy the reference script—again, after confirming the transaction in your wallet you should wait to see that the transaction is confirmed. Finally, you can claim back funds by pressing the 'Claim Funds' button—and yet again after confirming the transaction in your wallet you should wait to see that the transaction is confirmed. In the final transaction, you should see that funds were received into your wallet (i.e., the initial funds sent into and locked in the redeemer script were sent back to you).
+The above provides the full DApp implementation. To run through the example DApp you should first ensure your wallet is connected by pressing 'Connect Wallet'.  Thereafter, pressing the 'Send Funds' button should send a transaction within which you send funds to the Redeemer 42 script. Once confirming the transaction in your wallet it is ideal to wait to see that the transaction is confirmed. Thereafter, you can press the 'Deploy Reference Script' button to deploy the reference script—again, after confirming the transaction in your wallet you should wait to see that the transaction is confirmed. Finally, you can claim back funds by pressing the 'Claim Funds' button—and yet again after confirming the transaction in your wallet you should wait to see that the transaction is confirmed. In the final transaction, you should see that funds were received into your wallet (i.e., the initial funds sent into and locked in the redeemer script were sent back to you).
 
-Indeed, the DApp is barebones, and serves the purpose to demonstrate of how we to interact from client-side JavaScript with Cardano on-chain scripts.
+Indeed, the DApp is barebones, and serves the purpose of demonstrating how to interact from client-side JavaScript with Cardano on-chain scripts.
 
 === Decentralized web storage
 
 
 The DApp architecture introduced in Section <<dapp-architecture>> relies on a traditional centralized web server to deliver the initial HTML/JS webpage content, and then provides guarantees to users through the interaction with on-chain scripts (smart contracts). Yet, relying on a centralized web server to deliver the initial HTML/JS web-content may not be suitable for certain applications and/or it may be desirable that some web content is not dependent on a centralized web server.
 
-Different solutions have been proposed for decentralized web storage (including IPFS, Arweave, Filecoin, Storj, and others) that vary in cost, persistence, latency and reliability—we therefore suggest that readers interested to make use of decentralized storage to explore different alternatives. Yet one common feature of decentralized web storage is that the resources (e.g., html pages, images, etc) are 'content-addressable'—i.e., the resource's unique identifier directly represents the content. Typically, the hash of the resource's data is used as the unique identifier to refer to the specific resource. Content addressable unique identifiers/references can be thought of as providing a system that allows for resources to be retrieved based on the actual content itself, rather than where it is located (i.e., a filename on a specific server). Using such a system for web resources:
+Different solutions have been proposed for decentralized web storage (including IPFS, Arweave, Filecoin, Storj, and others) that vary in cost, persistence, latency and reliability—we therefore suggest that readers interested in using decentralized storage to explore different alternatives. Yet one common feature of decentralized web storage is that the resources (e.g., html pages, images, etc) are 'content-addressable'—i.e., the resource's unique identifier directly represents the content. Typically, the hash of the resource's data is used as the unique identifier to refer to the specific resource. Content addressable unique identifiers/references provide a system that allows for resources to be retrieved based on the actual content itself, rather than where it is located (i.e., a filename on a specific server). Using such a system for web resources:
 
 * guarantees the integrity of resources (since the hash of the content must match the unique identifier—that can always be checked);
-* minimises data storage requirements for resources with same content;
+* minimizes data storage requirements for resources with same content;
 * allows for decentralizing from relying on a single specific server to host and serve the specific resource—any peer in the network that hosts the resource can serve it.
 
 === DApps and UI/UX issues
@@ -1006,11 +1006,11 @@ While DApps promise to decentralize many multi-party digital services, without a
 
 * *Wallet setup woes* — New users may find it daunting to install a wallet and store the wallet's seed phrase. Various directions to circumvent some of these issues have been proposed including "account abstraction", use of "ephemeral keys", and use of "passkeys".
 
-* *Switching between user interfaces* — Users may find it hard to deal with switching between DApp webpages, wallet pop-ups, and block explorers. That being said, confirming actions in wallets is akin to how users confirm online purchases with internet banking apps. As wallets become more integrated into browsers and mobiles, and as wallets provide users with information that is more digestible (without having to use a block explorer), user experience should also reach similar levels to internet banking apps.
+* *Switching between user interfaces* — Users may find it hard to deal with switching between DApp webpages, wallet popups, and block explorers. That being said, confirming actions in wallets is akin to how users confirm online purchases with internet banking apps. As wallets become more integrated into browsers and mobiles, and as wallets provide users with information that is more digestible (without having to use a block explorer), user experience should also reach similar levels to internet banking apps.
 
-* *Gas costs* — For non-cryptocurrency related DApps, esppecially those that a user may not interact with often, users may find it troublesome to both purchase and cover required gas costs. Solutions to this may include feeless/gasless transaction models.
+* *Gas costs* — For non-cryptocurrency related DApps, especially those that a user may not interact with often, users may find it troublesome to both purchase and cover required gas costs. Solutions to this may include feeless/gasless transaction models.
 
-* *Smart contract/on-chain script code and errors may be opaque* — Even though on-chain code is available for all to see, and some may be able to viewed in an intuitive visual block format, understanding code logic is often beyond what many non-tech users are capable of. Furthermore, errors that are often displayed to users require technical knowledge to understand. Different avenues are being investigated that may eventually help non-tech users to understand both the scripts they are confirming to interact with and any errors reported.
+* *Smart contract/on-chain script code and errors may be opaque* — Even though on-chain code is available for all to see, and some may be able to viewed in an intuitive visual block format, understanding code logic is often beyond what many non-tech users are capable of. Furthermore, errors that are often displayed to users require technical knowledge to understand. Different avenues are being investigated that may eventually help non-tech users to understand both the scripts they are confirming interaction with and any errors reported.
 
-* *Losing access to keys* — Whilst not exactly a barrier to using DApps, some users may not feel comfortable using DApps associated with a private key/seed phrase that they may lose. Different approaches are being investigated to circumvent users taking full responsibility on keeping their keys safe including: social recovery, shared wallets, and multi-sig wallets.
+* *Losing access to keys* — While not exactly a barrier to using DApps, some users may not feel comfortable using DApps associated with a private key/seed phrase that they may lose. Different approaches are being investigated to reduce the burden on users to keep their keys safe, including: social recovery, shared wallets, and multi-sig wallets.
 
