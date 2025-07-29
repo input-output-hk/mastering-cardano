@@ -50,7 +50,7 @@ Explore the vision and challenges of blockchain, delve into the cryptography sec
 - <<preface-howtocontribute>>
 - <<introduction, Chapter 1 — Introduction>>: Where it all started, Blockchain and smart contracts, Using formal methods, Features and benefits of Haskell
 - <<chap-crypto, Chapter 2 — Cryptography>>: The role of cryptography in security and privacy, How cryptography works in Cardano, What users need to know
-- <<ch3-learn-about-Cardano, Chapter 3 — Learn about Cardano>>: What is Cardano?, Cardano community and growth of the ecosystem, IO Education
+- <<chapter3-learn-about-Cardano, Chapter 3 — Learn about Cardano>>: What is Cardano?, Cardano community and growth of the ecosystem, IO Education
 - <<how-cardano-works, Chapter 4 — How Cardano works>>: Overview of Cardano network protocols, Reaching consensus using proof of stake, About the Ouroboros protocol, The EUTXO model, Components of the Cardano ecosystem (Node, CLI, Wallet)
 
 ==== Smart contracts developer path
@@ -71,7 +71,7 @@ Learn the foundational blockchain concepts, then discover how to interact with t
 - <<preface-howtonavigate>>
 - <<preface-howtocontribute>>
 - <<introduction, Chapter 1 — Introduction>>: Where it all started, Blockchain and smart contracts
-- <<ch3-learn-about-Cardano, Chapter 3 — Learn about Cardano>>: What is Cardano?, Cardano community and growth of the ecosystem, IO Education
+- <<chapter3-learn-about-Cardano, Chapter 3 — Learn about Cardano>>: What is Cardano?, Cardano community and growth of the ecosystem, IO Education
 - <<how-cardano-works, Chapter 4 — How Cardano works>>: The EUTXO model, Incentives, Ouroboros
 - <<wallets-in-the-world-of-cardano, Chapter 6 — Cardano digital wallets>>: Fundamentals of wallets, Wallets in the Cardano ecosystem, Setting up a Cardano light wallet, Common operations in a Cardano wallet
 
