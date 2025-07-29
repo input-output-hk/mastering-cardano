@@ -2,7 +2,7 @@
 :imagesdir: ../images
 
 [[wallets-in-the-world-of-cardano]]
-== Cardano Digital Wallets
+== Cardano digital wallets
 
 === Fundamentals of digital wallets
 
