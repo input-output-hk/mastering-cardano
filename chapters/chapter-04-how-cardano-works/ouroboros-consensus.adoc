@@ -45,23 +45,23 @@ But as it is explained in the CAP and PCAELC theorems, _we can't have what we wa
 Professor Eric A. Brewer defined the CAP theorem, and paraphrasing it means:
 
 [quote]
-----
+____
 When having a distributed [data store] system, you can only have two out of the three properties:
 
 * Consistency — every read receives the most recent write or an error.
 * Availability — every request to a server receives a response
 * Partition tolerance — the system continues to operate even in the presence of network errors
----
+____
 
 Later, Dr. Danil Abadi extended the CAP theorem with the PACELC theorem(((PACELC))), paraphrased thus:
 
 [quote]
-----
+____
 If there is a partition,
 decide between consistency or availability.
 Else,
 choose between low latency or consistency.
-----
+____
 
 image::ouroboros_PCAELC_Theorem.png[PCAELC theorem]
 
@@ -371,7 +371,7 @@ ie the backbone of the blockchain.
 
 .Table: Summary of the different block types, their purpose and relationships
 .Summary of Leios Block Types and Their Properties
-[cols="h,2,2", options="header"]
+[cols="h,2,2,2", options="header"]
 |===
 | | Input Blocks (IBs) | Endorsement Blocks (EBs) | Base Protocol Blocks (BB)
 
@@ -422,7 +422,7 @@ How each iteration improved on the limitations and assumptions of the previous o
 how the algorithm’s security is grounded in mathematical probability defined by blockchain parameters,
 and how varying certain assumptions allows for tuned versions of the protocol suited to specific applications.
 
-[OuroborosReferences]
+[[OuroborosReferences]]
 ==== References
 
 * [[[OuroborosClassicPaper,1]]] Kiayias, A. et al (2017) ‘Ouroboros: A provably secure proof of stake Blockchain Protocol’, Lecture Notes in Computer Science, pp. 357–388. doi:10.1007/978-3-319-63688-7_12
