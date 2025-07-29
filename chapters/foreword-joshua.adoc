@@ -1,1 +1,21 @@
 
+[[foreword-joshua]]
+== Foreword by Joshua Ellul
+
+I had the pleasure of being introduced to Dr Lars Brünjes (fellow author of this book and Director of Education at IOG) in 2019. At the time, I was just starting out a role as the Director of the Centre for DLT at the University of Malta and was focusing on programme and curriculum development of a multidisciplinary Master's programme in Blockchain and DLT. I could not have met Lars at a better time—since I wanted to ensure Cardano was covered in the smart contract programming course (so as to ensure that different smart contract programming paradigms were covered), and who better to handle it than someone from the Cardano ecosystem itself. We explored different initiatives to collaborate on—and besides Lars being involved in invited lectures—two notable collaborative efforts emerged: (i) we organised an instance of the Cardano Days workshops at the University of Malta for which we were honoured to have IOG's education team lead the event; and (ii) this book, Mastering Cardano.
+
+Through involvement in Mastering Cardano, I've had the opportunity and pleasure to work with Lars, and others from the IOG education team who I would like to thank for making the experience more than enjoyable including Alejandro (Garcia), Arturo (J. Arturo Mora), Jesse (Smith), Luka (Kurnjek), and Niamh (Ahern), and John (Greene) from the Cardano Foundation. Indeed, as Lars has noted, Mastering Cardano should be a living book that will need updating as progress, development and changes are made in the Cardano ecosystem, and therefore the book should be seen as the community's who we encourage to get involved in keeping this book alive and open source.
+
+Throughout the drafting, writing, and editing of the book, it became clearer to me that Cardano is not just another blockchain. It is a blockchain built with decentralization and scientific philosophy as guiding principles—and it is exactly these principles that have helped shape my career this past decade. As someone who has worked at the intersection of technology, education and the need for (adequate) regulation, I see Cardano as more than a blockchain, but as a living experiment in how critical digital infrastructure can be responsibily developed, governed, and meaningfully applied to real-world applications and global challenges. My hope is that this book equips readers not only to get started with Cardano, but also appreciate why Cardano different (and not just another blockchain). 
+
+Whether you are a new user to Cardano, a developer, a stake-pool operator, interested in Cardano's governance, or are reading this book for another purpose—I invite you to explorer what Cardano has to offer towards a more open, accountable and decentralized future.
+
+_Prof. Joshua Ellul +
+Associate Professor +
+Department of Computer Science, and Centre for DLT,
+University of Malta
+Malta +
+July 2025_
+
+
+
