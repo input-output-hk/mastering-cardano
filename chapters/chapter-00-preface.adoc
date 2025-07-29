@@ -66,9 +66,9 @@ Learn the foundational blockchain concepts, then discover how to interact with t
 
 ===== Suggested chapters & sections:
 - Preface — How to navigate, How to contribute
-- Chapter 1 — Introduction: Where it all started, Blockchain and smart contracts
+- <<introduction, Chapter 1 — Introduction>>: Where it all started, Blockchain and smart contracts
 - Chapter 3 — Learn about Cardano: What is Cardano?, Cardano community and growth of the ecosystem, IO Education
-- Chapter 4 — How Cardano works: The EUTXO model, Incentives, Ouroboros
+- <<how-cardano-works, Chapter 4 — How Cardano works>>: The EUTXO model, Incentives, Ouroboros
 - Chapter 6 — Digital Cardano wallets: Fundamentals of wallets, Wallets in the Cardano ecosystem, Setting up a Cardano light wallet, Common operations in a Cardano wallet (Sending and receiving ada, Staking ada)
 
 ==== Stake pool operators path
@@ -76,7 +76,7 @@ Begin by understanding the core components of the Cardano network, delve into ho
 
 ===== Suggested chapters & sections:
 - Preface — How to navigate, How to contribute
-- Chapter 4 —  How Cardano works: Overview of Cardano network protocols, Reaching consensus using proof of stake, About the Ouroboros protocol, Incentives in Cardano, Cardano node and system layers Components of the Cardano ecosystem (Node, CLI, Db sync)
+- <<how-cardano-works, Chapter 4 — How Cardano works>>: Overview of Cardano network protocols, Reaching consensus using proof of stake, About the Ouroboros protocol, Incentives in Cardano, Cardano node and system layers Components of the Cardano ecosystem (Node, CLI, Db sync)
 - Chapter 6 — Wallets in the Cardano ecosystem: Fundamentals of wallets, Types of wallets, Common operations in a Cardano wallet
 - Chapter 7 — Stake pools and stake pool operations: Introduction, What is a stake pool?, SPO requirements, Leadership selection, Slot conflict, Cardano CLI, Node operations
 
