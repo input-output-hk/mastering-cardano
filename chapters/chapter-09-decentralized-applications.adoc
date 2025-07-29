@@ -55,7 +55,7 @@ We now list a number of prerequisite steps required in order to follow upcoming 
 
 ==== Installing a wallet
 
-Prior to building a DApp, we need to ensure that we have a wallet installed in a browser that will allow for the client webpage to communicate with the blockchain directly. We'll use the Lace wallet (introduced in the <<wallets-in-the-world-of-cardano>> Chapter) in the rest of this chapter, but you may use any other wallet that supports Cardano.
+Prior to building a DApp, we need to ensure that we have a wallet installed in a browser that will allow for the client webpage to communicate with the blockchain directly. We'll use the Lace wallet (introduced in the <<wallets-in-the-world-of-cardano>> chapter) in the rest of this chapter, but you may use any other wallet that supports Cardano.
 
 
 ==== Configuring wallet to connect to testnet
@@ -382,7 +382,7 @@ app.listen(port, () => {
 
 Now, we'll use the bundled mesh library in the client-side JavaScript to communicate with on-chain script.
 
-We'll expand on the HTML file described above (from the <<para-csc>> Section). Again, for simplicity sake we'll encode all HTML and JavaScript into a single file (in index.html). We'll start by adding the boilerplate functionality to use the bundled library:
+We'll expand on the HTML file described above (from the <<para-csc>> section). Again, for simplicity sake we'll encode all HTML and JavaScript into a single file (in index.html). We'll start by adding the boilerplate functionality to use the bundled library:
 
 . Import the bundled library:
 
@@ -446,7 +446,7 @@ async function connectWallet() {
 
 ==== Interacting with the Redeemer 42 on-chain script code
 
-To demonstrate DApp interaction, we'll write client-side JavaScript code to interact with the Redeemer 42 on-chain script code (discussed in the <<writing-smart-contracts>> chapter).footnote:[Also see https://github.com/LukaKurnjek/ppp-plutusV3-plinth/blob/main/off-chain/meshjs/Week02/redeemer42-ref-script.ts] You can read Section <<Simple validation scripts>> to get a better understanding of the Redeemer 42 Script (if you have not already done so). We'll send funds, deploy a reference script and then claim back the funds sent.
+To demonstrate DApp interaction, we'll write client-side JavaScript code to interact with the Redeemer 42 on-chain script code (discussed in the <<writing-smart-contracts>> chapter).footnote:[Also see https://github.com/LukaKurnjek/ppp-plutusV3-plinth/blob/main/off-chain/meshjs/Week02/redeemer42-ref-script.ts] You can read the <<Simple validation scripts>> section to get a better understanding of the Redeemer 42 Script (if you have not already done so). We'll send funds, deploy a reference script and then claim back the funds sent.
 
 The Redeemer 42's reference script that the DApp will interact with has already been deployed to the preprod network. Its transaction hash is: ac43f379762d68839a75d95146c332e6025e5a305fffc071308d138849109bfc
 
@@ -992,7 +992,7 @@ Indeed, the DApp is barebones, and serves the purpose of demonstrating how to in
 === Decentralized web storage
 
 
-The DApp architecture introduced in Section <<dapp-architecture>> relies on a traditional centralized web server to deliver the initial HTML/JS webpage content, and then provides guarantees to users through the interaction with on-chain scripts (smart contracts). Yet, relying on a centralized web server to deliver the initial HTML/JS web-content may not be suitable for certain applications and/or it may be desirable that some web content is not dependent on a centralized web server.
+The DApp architecture introduced in the <<dapp-architecture>> section relies on a traditional centralized web server to deliver the initial HTML/JS webpage content, and then provides guarantees to users through the interaction with on-chain scripts (smart contracts). Yet, relying on a centralized web server to deliver the initial HTML/JS web-content may not be suitable for certain applications and/or it may be desirable that some web content is not dependent on a centralized web server.
 
 Different solutions have been proposed for decentralized web storage (including IPFS, Arweave, Filecoin, Storj, and others) that vary in cost, persistence, latency and reliability—we therefore suggest that readers interested in using decentralized storage to explore different alternatives. Yet one common feature of decentralized web storage is that the resources (e.g., html pages, images, etc) are content-addressable—i.e., the resource's unique identifier directly represents the content. Typically, the hash of the resource's data is used as the unique identifier to refer to the specific resource. Content addressable unique identifiers/references provide a system that allows for resources to be retrieved based on the actual content itself, rather than where it is located (i.e., a filename on a specific server). Using such a system for web resources:
 
