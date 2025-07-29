@@ -91,7 +91,7 @@ The introduction of _asymmetric encryption_ in the 1970s provided a more secure 
 
 - A _private key_ that the recipient keeps confidential. This private key(((private key))) is used to decrypt messages sent to them that have been encrypted with their public key(((public key))).
 
-The public and private keys are intimately linked (hence the term key pair(((key pair)))), and it is impossible footnote:[or rather computationally infeasible] to determine the private key from the public key.
+The public and private keys are intimately linked (hence the term key pair(((key pair))), and it is impossible footnote:[or rather computationally infeasible] to determine the private key from the public key.
 
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
 .An overview of typical communication using asymmetric encryption.
@@ -163,9 +163,9 @@ Hashing functions are fundamental to blockchains. Some examples of where hashing
 
 . *To chain blocks together* — Blocks are immutably chained together by having the most recent block make reference to the previous block's hash. By doing so if any information is changed in the previous block, it would be immediately noticeable since the previous block's hash would no longer match the hash that had since been stored in the most recent block. In fact, it is not just the previous block that this technique provides a solution for, but if any of the history of older blocks is changed, even slightly, then its hash would be invalidated and all blocks that were generated after the respective block and their hashes would also be invalidated.
 
-. *Address derivation* — Hashing algorithms are often used in blockchains as a means of deriving wallet addresses.
+. *Address derivation* — Hashing algorithms are often used in blockchains as a means of deriving wallet addresses—e.g., as discussed in <<create-wallet>>.
 
-. *Merkleization(((merkle)))* allows for large collections of data items to be compacted into a smaller structure i.e., a merkle tree, and still be able to prove that a particular data item is represented within the merkle tree without having to store the full data items.
+. *Merkleization(((merkle)))* allows for large collections of data items to be compacted into a smaller structure i.e., a merkle tree, and still be able to prove that a particular data item is represented within the merkle tree without having to store the full data items. Merkleization is discussed later in the <<chapter8-marlowe-security>> section.
 
 . *Content-Addressed Storage(((content-addressed storage)))* — When other information or files are required to be referenced (for example from a smart contract) it is often useful to refer to the specific file (or information) using Content-Addressed Storage which refers to such information/files using a hash of their content. By doing so, it is immediately possible to determine whether the contents have been changed, since the reference to find the information/file is a hash that should match the computed hash of the content—which can be done at any point. Furthermore, such a referencing scheme allows for deduplication of information, e.g., if the same image data is referred to twice, only one version of the file needs to be stored since both references will be computed to be the same hash.
 

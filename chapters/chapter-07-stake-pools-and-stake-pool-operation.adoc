@@ -14,7 +14,7 @@ This chapter aims to deliver a thorough technical and conceptual overview of sta
 
 It is recommended that prospective SPOs read through this chapter, understand the concepts, and then participate and practice operations on one or more of the publicly available testnets(((testnet))) until they gain sufficient expertise before spinning up on mainnet. Seasoned pool operators can use this guide as a refresher, address potential knowledge gaps, and, best of all, contribute where needed.
 
-A list of tools and guides is provided at the end of this chapter to assist with both learning how to operate stake pools and maintaining efficient long-term operations on mainnet(((mainnet))).
+A list of tools and guides is provided <<spo-guides, here>> to assist with both learning how to operate stake pools and maintaining efficient long-term operations on mainnet(((mainnet))).
 
 === What is a stake pool?
 
@@ -177,7 +177,7 @@ The Cardano node source code is open-source, allowing SPOs to review, clone, for
 
 Suggested reading:
 
-* https://developers.cardano.org/docs/get-started/installing-cardano-node/[Cardano.org guide for installing Cardano node]
+* https://developers.cardano.org/docs/get-started/cardano-node/installing-cardano-node[Cardano.org guide for installing Cardano node]
 
 === Getting started
 
@@ -187,6 +187,7 @@ When considering launching a stake pool, it may be tempting to download and run 
 
 Instead of rushing directly to mainnet operation, SPOs should take the time to learn essential tasks on existing testnets. This includes creating keys, compiling the node and CLI, crafting transactions, and registering signed certificates on the blockchain. Hands-on experience will reduce stress and save time when challenges arise during stake pool operations.
 
+[[spo-guides]]
 Here are a few useful guides and courses for setting up a stake pool:
 
 * https://docs.cardano.org/developer-resources/cardano-node-course[Cardano Docs: Creating a stake pool]
