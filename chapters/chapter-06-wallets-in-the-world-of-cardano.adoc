@@ -4,6 +4,7 @@
 [[wallets-in-the-world-of-cardano]]
 == Cardano digital wallets
 
+[[wallets-fundamentals]]
 === Fundamentals of digital wallets
 
 A digital wallet(((digital wallet))), also referred to as a crypto wallet, or cryptocurrency wallet, is a digital version of a regular wallet. However, instead of holding cash, personal identification, or cards, it stores special digital keys that enable interaction with various blockchains, allowing users to manage digital assets such as cryptocurrencies, tokens, or non-fungible tokens (NFTs).
@@ -18,6 +19,7 @@ At its core, a digital wallet serves two primary purposes:
 
 It is crucial to understand that a wallet does not physically store your cryptocurrency. Instead, it holds the cryptographic information required to access and transact with your digital assets on the blockchain, the underlying technology of cryptocurrencies. This makes your wallet a crucial tool for managing your digital assets securely and efficiently. In this section, you will learn about the types of wallets as well as details of how wallets work in Cardano.
 
+[[wallets-types]]
 ==== Types of wallets
 
 Maintaining the security and accessibility of your digital assets is crucial. This is where the choice of a wallet(((digital wallet, types))) comes into play. Crypto wallets can be broadly categorized into three types: _hardware_, _software_, and _paper_.
@@ -505,6 +507,7 @@ image::w-yoroi-page.png[]
 
 If you are a software developer and want to contribute to Yoroi's development, you can check out the link:https://github.com/Emurgo/yoroi-frontend[Yoroi GitHub repository].
 
+[[wallets-light-wallet]]
 ==== Setting up a Cardano light wallet
 
 Installing a Cardano light wallet as a browser extension, such as Lace, or a mobile app, like Yoroi, is straightforward. While the process may vary between wallets, here are the common steps as a general guide for both methods.
@@ -569,6 +572,7 @@ No matter your experience with wallets(((wallet, best practices))), it is essent
 
 Adhering to these best practices can significantly enhance the security of your digital wallets and protect your investments from potential threats.
 
+[[wallets-common-operations]]
 === Common operations
 
 This section explores the functionalities and advanced features of Cardano wallets. Whether you are new to Cardano or seeking a deeper understanding, this guide will help you manage your ada and reveal Cardano's powerful blockchain capabilities.

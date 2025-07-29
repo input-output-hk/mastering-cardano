@@ -4,6 +4,7 @@
 [[stake-pools-and-stake-pool-operation]]
 == Stake pools and stake pool operation
 
+[[spo-introduction]]
 === Introduction
 
 The strength of the Cardano network lies in its widespread and diverse distribution of stake pools, stake pool operators (SPOs), delegators, builders, and community members at large. The ethos of this well-distributed network(((distributed network))) and broader ecosystem has found its way into the creation of this chapter.
@@ -16,6 +17,7 @@ It is recommended that prospective SPOs read through this chapter, understand th
 
 A list of tools and guides is provided <<spo-guides, here>> to assist with both learning how to operate stake pools and maintaining efficient long-term operations on mainnet(((mainnet))).
 
+[[spo-what-is-a-stake-pool]]
 === What is a stake pool?
 
 A Cardano stake pool is a collection of server-based infrastructure(((infrastructure, server-based))) that maintains and runs the Cardano blockchain by validating transactions and adding blocks. While a stake pool can run on a single node, it is more common for it to utilize a collection of nodes connected to the broader Cardano network – a distributed network of interconnected stake pools and full nodes. Typically, a stake pool includes a block-producing node and multiple relay nodes (relays).
@@ -144,6 +146,7 @@ Cardano stake pool operators set two types of fees:
 
 *_Note:_* While a 5% variable fee may seem significant, it should always be assessed in relation to the expected return on staking (ROS). As of writing, the ROS is approximately 4% per year. A stake pool that sets a 5% variable fee will only reduce the annual ROS by 0.2 percentage points, resulting in a ROS of 3.8% per year.
 
+[[spo-requirements]]
 === SPO requirements
 
 As an open protocol, Cardano allows anyone to create and operate a stake pool using the free and open-source software(((free and open-source software))) (FOSS) – `cardano-node` and `cardano-cli`. However, it is essential for stake pool operators to possess the technical expertise required to operate a pool reliably and securely. While the requirements outlined in this section are not authoritative, they are generally recognized as critical for successful stake pool operation.
@@ -324,6 +327,7 @@ Sometimes, pool operators encounter problems with their nodes that slow down blo
 
 Underpowered nodes can cause pools to lose blocks without justification, resulting in lower chain density and reduced decentralization. This highlights the importance of having a robust block distribution strategy(((block distribution strategy))) for pool operators.
 
+[[spo-cardano-cli]]
 === The Cardano command line interface
 
 ==== Prologue

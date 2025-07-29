@@ -1,6 +1,7 @@
 
 :imagesdir: ../../images
 
+[[chapter4-incentives]]
 === Incentives
 
 ==== What are Incentives?

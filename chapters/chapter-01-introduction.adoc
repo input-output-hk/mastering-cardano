@@ -8,12 +8,14 @@ The past few years have seen many claims that blockchain(((blockchain))), distri
 
 This book aims to demystify these technologies and provide readers with a starting point to use them, develop their own decentralized applications (DApps) and smart contracts/scripts, run infrastructure, or take part in the Cardano ecosystem.
 
+[[where-it-all-started]]
 === Where it all started, Bitcoin.
 
 We start with the first proposal that sprouted this decentralized movement, Bitcoin, the first cryptocurrency(((cryptocurrency))). Bitcoin was proposed by Satoshi Nakamoto(((Nakamoto, Satoshi))) (who remains unknown to date) in a paper released in late 2008. The paper described a novel architecture built using a collection of techniques to solve the double-spending problem(((double-spending)))—a problem which had previously limited digital currency systems to those that required a centralized server or service provider. We now refer to systems that make use of these techniques as blockchains, which are a type of distributed ledger technology.
 
 Bitcoin's aim was to provide a digital currency system that did not rely on a centralized service provider. This would enable individuals to send and receive digital currency without any intermediary, service provider, or authority that could intervene or would be required to approve transactions.
 
+[[blockchain-and-smart-contracts]]
 === Blockchain and smart contracts
 
 Blockchain, the collection of techniques that solves the double-spending problem(((double-spending))), also provides a way of creating digital systems that can execute code in a decentralized manner, where no single administrator, company, entity, owner, or other centralized party has control over the digital system upon which that code executes. Similar to how various software applications can be downloaded and run on computers to allow them to be used for many different tasks, code can be uploaded to a blockchain and run in a decentralized manner for many different purposes. Programs that are uploaded to a blockchain for decentralized execution are called smart contracts or on-chain code/scripts (we’ll cover them in more detail later).

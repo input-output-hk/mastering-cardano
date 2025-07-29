@@ -1,6 +1,7 @@
 
 :imagesdir: ../../images
 
+[[chapter4-cardano-node-and-system-layers]]
 === Cardano node and system layers
 
 ==== Introduction to the Cardano node
