@@ -1,6 +1,8 @@
 
 :imagesdir: ../../images
 
+<<chapter10-mithril>>
+
 === Mithril
 
 ==== Mithril in a nutshell
