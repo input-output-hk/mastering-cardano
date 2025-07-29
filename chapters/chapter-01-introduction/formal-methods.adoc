@@ -88,7 +88,7 @@ specification. This includes details such as 'does the validity interval(((valid
 `[a, b]` of a transaction include the endpoints `a` or `b`?', or ‘does a
 transaction need to specify the exact set of keys that must sign for it
 to be valid?'. There is not necessarily a 'correct' way to fill in these
-details - decisions must be made by the engineers or stakeholders in a
+details – decisions must be made by the engineers or stakeholders in a
 way that is consistent and suitable for the relevant use cases.
 
 (3). Desirable properties of a program are defined to specify how the
@@ -202,7 +202,7 @@ across engineers, interoperability with other system components, and
 support for automation.
 
 For example, compare a simple data structure implemented in both Haskell
-and Agda. *Set* is a data structure that contains a collection of
+and Agda. _Set_ is a data structure that contains a collection of
 elements of the same type, and each element is unique in this
 collection. In Haskell, uniqueness of elements is ensured by defining an
 insertion procedure of an element `e` into a set `S` that does nothing
