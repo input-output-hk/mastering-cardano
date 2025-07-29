@@ -8,9 +8,9 @@ Cryptography is a fundamental building block of blockchain systems, distributed 
 
 === Hashing functions
 
-When digital systems communicate, messages sent between them may be altered during transmission due to issues with the physical communication medium. Early in computing history, the need for a solution to this problem became evident. An initial solution involved adding an extra 'parity bit' to data sent between devices—serving as a safety guarantee to determine whether data changed between a sender and receiver. A computer bit can either be 0 or 1. For a naive implementation of a parity bit, if the total number of bits set to 1 in a data packet being sent is odd, then the parity bit is set to 1; if even, it is set to 0. However, since the parity bit can only store a single 0 or 1, there is a high chance that errors could occur undetected. For example, if two bits that were originally 0s were altered to 1s, the naive parity bit would still appear valid. Although better parity schemes exist, they remain insufficient for the large amounts of data being transmitted.
+When digital systems communicate, messages sent between them may be altered during transmission due to issues with the physical communication medium. Early in computing history, the need for a solution to this problem became evident. An initial solution involved adding an extra parity bit to data sent between devices—serving as a safety guarantee to determine whether data changed between a sender and receiver. A computer bit can either be 0 or 1. For a naive implementation of a parity bit, if the total number of bits set to 1 in a data packet being sent is odd, then the parity bit is set to 1; if even, it is set to 0. However, since the parity bit can only store a single 0 or 1, there is a high chance that errors could occur undetected. For example, if two bits that were originally 0s were altered to 1s, the naive parity bit would still appear valid. Although better parity schemes exist, they remain insufficient for the large amounts of data being transmitted.
 
-Building on this concept, 'checksums(((checksum)))' were introduced. Unlike parity bits, which encode sanity check information into a single bit, checksums use larger data sizes for encoding such checks, ranging from single to multiple bytes.
+Building on this concept, checksums(((checksum))) were introduced. Unlike parity bits, which encode sanity check information into a single bit, checksums use larger data sizes for encoding such checks, ranging from single to multiple bytes.
 
 In fact, sanity checks are not only essential for ensuring data integrity during transmission between computers but also for verifying that data has not been altered when stored on the same device. While checksums are effective for providing these sanity checks, there remains a risk of undetected errors. This risk arises because two different pieces of data can yield the same checksum value.
 
@@ -34,7 +34,7 @@ Looking back at <<img_hashing>>, comparing the hashes from the first and second 
 
 // Once a hash is generated, potentially sent, and ultimately stored, anyone with a copy of the hash can be assured that the associated data used to generate the hash has not been altered.
 
-To summarise, hash functions(((hash function))) can guarantee that data remains unchanged by storing the generated hash of the respective data. As long as the hash remains unchanged, it can be verified that the respective data has not been modified. However, if someone alters the data and adjusts the hash to match the new data, the receiver would be unable to detect this change. We will discuss a solution to this issue later in this chapter.
+To summarize, hash functions(((hash function))) can guarantee that data remains unchanged by storing the generated hash of the respective data. As long as the hash remains unchanged, it can be verified that the respective data has not been modified. However, if someone alters the data and adjusts the hash to match the new data, the receiver would be unable to detect this change. We will discuss a solution to this issue later in this chapter.
 
 While hash functions(((hash function))) solve a significant problem for communicating devices, they do not ensure the privacy of the data being transmitted. We will now explore encryption(((encryption))) techniques designed to provide privacy for data communicated between different parties.
 
@@ -45,7 +45,7 @@ Though blockchain platforms do not primarily utilize encryption(((encryption))) 
 
 // Yet encryption and decryption are fundamental for digital signatures.
 
-Encryption techniques were originally proposed to enable secure communication between parties, preventing eavesdroppers from deciphering or understanding the exchanged information. These techniques are classified into *symmetric* and *asymmetric* encryption.
+Encryption techniques were originally proposed to enable secure communication between parties, preventing eavesdroppers from deciphering or understanding the exchanged information. These techniques are classified into _symmetric_ and _asymmetric_ encryption.
 
 ==== Symmetric encryption
 
@@ -91,7 +91,7 @@ The introduction of _asymmetric encryption_ in the 1970s provided a more secure 
 
 - A _private key_ that the recipient keeps confidential. This private key(((private key))) is used to decrypt messages sent to them that have been encrypted with their public key(((public key))).
 
-The public and private keys are intimately linked (hence the term 'key pair(((key pair)))'), and it is impossible footnote:[or rather computationally infeasible] to determine the private key from the public key.
+The public and private keys are intimately linked (hence the term key pair(((key pair)))), and it is impossible footnote:[or rather computationally infeasible] to determine the private key from the public key.
 
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
 .An overview of typical communication using asymmetric encryption.
@@ -114,7 +114,7 @@ While asymmetric encryption(((asymmetric encryption))) ensures that only the int
 
 === Digital signatures
 
-Digital signatures address the issue of sender impersonation (discussed above) by allowing anyone to verify that a message was created and 'digitally signed' by a specific sending party and that the content remains unchanged. They are established using two fundamental components: _public key encryption_ and _hashing algorithms_. The process to create a digital signature is depicted in <<img_create_signature>>.
+Digital signatures address the issue of sender impersonation (discussed above) by allowing anyone to verify that a message was created and digitally signed by a specific sending party and that the content remains unchanged. They are established using two fundamental components: _public key encryption_ and _hashing algorithms_. The process to create a digital signature is depicted in <<img_create_signature>>.
 
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
 .A depiction of how digital signatures are created.
@@ -179,7 +179,7 @@ Hashing functions are fundamental to blockchains. Some examples of where hashing
 
 === Pointers to cryptography resources
 
-In this chapter we only provided a cursory overview of cryptographic primitives required to appreciate the rest of this book. Some pointers towards resources that will allow for readers to dig deeper into various aspects of cryptography follow:
+In this chapter we only provided a cursory overview of cryptographic primitives required to appreciate the rest of this book. Some pointers towards resources that will allow readers to dig deeper into various aspects of cryptography follow:
 
 * Real-World Cryptography, by David Wong: https://www.manning.com/books/real-world-cryptography
 
