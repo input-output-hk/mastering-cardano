@@ -40,7 +40,7 @@ We believe in continuous learning. Throughout _Mastering Cardano_, you'll find c
 - _Stake pool operator path_ — for readers whose goal is to learn how to run a node and start a stake pool, but are not necessarily interested in programming smart contracts or DApps.
 - _Cardano governance and future path_ — for readers keen on Cardano's long-term vision, this path explores the principles of decentralized governance, the mechanisms for community decision-making, and the exciting future developments shaping the network.
 
-image::mc_learningpaths.png[title="Learning paths"]
+image::mc_learning_paths.png[title="Learning paths"]
 
 ==== Cardano fundamentals path
 Explore the vision and challenges of blockchain, delve into the cryptography securing the network, and then get a robust introduction to Cardano's unique design, history, and innovative protocols.
