@@ -24,7 +24,7 @@ Every CIP has the following format:
 * Specification
 * Rationale
 * Path to active
-* Copyright.
+* Copyright
 
 The concept is developed as a written proposal and submitted as a pull request to the CIP repository after initial discussion and feedback. The CIP editors then publicly process the updated draft CIP as follows:
 
