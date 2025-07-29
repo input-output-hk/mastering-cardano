@@ -10,7 +10,7 @@ This book aims to demystify these technologies and provide readers with a starti
 
 === Where it all started, Bitcoin.
 
-We start with the first proposal that sprouted this decentralized movement, Bitcoin, the first cryptocurrency(((cryptocurrency))). Bitcoin was proposed by Satoshi Nakamoto(((Nakamoto, Satoshi))) (who remains unknown to date) in a paper released in late 2008. The paper described a novel architecture built using a collection of techniques to solve the double-spending problem(((double-spending)))--a problem which had previously limited digital currency systems to those that required a centralized server or service provider. We now refer to systems that make use of these techniques as blockchains, which are a type of distributed ledger technology.
+We start with the first proposal that sprouted this decentralized movement, Bitcoin, the first cryptocurrency(((cryptocurrency))). Bitcoin was proposed by Satoshi Nakamoto(((Nakamoto, Satoshi))) (who remains unknown to date) in a paper released in late 2008. The paper described a novel architecture built using a collection of techniques to solve the double-spending problem(((double-spending)))a--problem which had previously limited digital currency systems to those that required a centralized server or service provider. We now refer to systems that make use of these techniques as blockchains, which are a type of distributed ledger technology.
 
 Bitcoin's aim was to provide a digital currency system that did not rely on a centralized service provider. This would enable individuals to send and receive digital currency without any intermediary, service provider, or authority that could intervene or would be required to approve transactions.
 
