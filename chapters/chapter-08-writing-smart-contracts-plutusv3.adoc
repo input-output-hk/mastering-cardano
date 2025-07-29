@@ -5501,8 +5501,9 @@ machine (the https://en.wikipedia.org/wiki/CEK_Machine[CEK machine])
 are given and shown as equivalent to the SOS. Other properties are also
 shown. For example, the soundness and correctness of the typing system.
 From this formal specification, an executable is produced by compiling
-the specification into Haskell. This executable is a *reference
-implementation(((reference implementation)))* that behaves correctly (by definition), but it's not
+the specification into Haskell. This executable is a
+_reference implementation(((reference implementation)))_
+that behaves correctly (by definition), but it's not
 efficient enough to be used in production. Then, real (efficient)
 implementations can compare their results against those of the reference
 implementation. This is done by automated testing in the conformance
@@ -5774,7 +5775,7 @@ Marlowe's safety:
 * Looping is not supported.
 * Functions or macros may not be defined.
 * Timeouts must be numeric constants.
-* Only *Case* continuations may be Merkleized. The Faustus(((Faustus))) programming
+* Only `Case` continuations may be Merkleized. The Faustus(((Faustus))) programming
 language relaxes some of the limitations above, yet it compiles to safe
 Marlowe. Besides, you can 'relax' the above limitations if you
 embed Marlowe into another language (JavaScript, for example). By using

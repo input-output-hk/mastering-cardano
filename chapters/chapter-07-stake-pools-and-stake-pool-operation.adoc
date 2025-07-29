@@ -48,54 +48,54 @@ These roles work together to ensure the reliable and secure operation of the Car
 
 ==== Keys
 
-Cardano cryptographic keys are made up of ed25519 key pairs(((ed25519, key pairs))), which include a public verification key file and a private key file. The public key filename is commonly formatted as ``public.vkey``, whereas the private key filename is typically formatted as ``private.skey``. The private key file, used to sign transactions, is highly sensitive and must  be properly protected. Under all circumstances, this entails limiting third-party access to your private keys. The most effective way to prevent private key exposure is to ensure that it is never stored on any internet-connected device for any length of time. Please note the key pair file names are examples and may be named differently.
+Cardano cryptographic keys are made up of ed25519 key pairs(((ed25519, key pairs))), which include a public verification key file and a private key file. The public key filename is commonly formatted as `public.vkey`, whereas the private key filename is typically formatted as `private.skey`. The private key file, used to sign transactions, is highly sensitive and must  be properly protected. Under all circumstances, this entails limiting third-party access to your private keys. The most effective way to prevent private key exposure is to ensure that it is never stored on any internet-connected device for any length of time. Please note the key pair file names are examples and may be named differently.
 
 ==== Wallet keys
 
-``root.skey`` -  the most sensitive private key of any wallet. An attacker can use this key to derive the Cardano wallet payment.skey and stake.skey. In case of a hardware wallet(((hardware, wallet))) malfunction, the wallet’s 12 or 24 word seed phrase can be converted to a root.skey. The payment and stake keys can be recovered by using the CLI and root.skey. A root.skey can thus not only be used to generate private keys for Cardano, but also for other blockchains such as Bitcoin.
+`root.skey` -  the most sensitive private key of any wallet. An attacker can use this key to derive the Cardano wallet payment.skey and stake.skey. In case of a hardware wallet(((hardware, wallet))) malfunction, the wallet’s 12 or 24 word seed phrase can be converted to a root.skey. The payment and stake keys can be recovered by using the CLI and root.skey. A root.skey can thus not only be used to generate private keys for Cardano, but also for other blockchains such as Bitcoin.
 
-``payment.skey`` - a highly sensitive Cardano payment address(((address, payment))) private signing key file. This file provides access to tokens in the payment address and should be kept safe at all times.
+`payment.skey` - a highly sensitive Cardano payment address(((address, payment))) private signing key file. This file provides access to tokens in the payment address and should be kept safe at all times.
 
-``payment.vkey`` - the public verification key(((verification, key))) file for the payment address. It is not sensitive and can be shared publicly.
+`payment.vkey` - the public verification key(((verification, key))) file for the payment address. It is not sensitive and can be shared publicly.
 
-``stake.skey`` - a sensitive Cardano stake address private signing key file(((address, staking))). This file gives you access to any rewards held in the stake address, as well as the ability to delegate the wallet to a pool.
+`stake.skey` - a sensitive Cardano stake address private signing key file(((address, staking))). This file gives you access to any rewards held in the stake address, as well as the ability to delegate the wallet to a pool.
 
-``stake.vkey`` - stake address public verification key file, which is not sensitive and can be shared publicly.
+`stake.vkey` - stake address public verification key file, which is not sensitive and can be shared publicly.
 
 ==== VRF hot keys
 
 VRF keys control participation in the slot leader selection process(((slot leader selection process))):
 
-``vrf.skey`` -  a private signing key file for a Cardano stake pool’s VRF key. This key is required to start a stake pool’s block producing node. It is sensitive but must be placed on a hot node to start a stake pool.
+`vrf.skey` -  a private signing key file for a Cardano stake pool’s VRF key. This key is required to start a stake pool’s block producing node. It is sensitive but must be placed on a hot node to start a stake pool.
 
-``vrf.vkey`` - a public verification key(((verification, key))) file for a Cardano stake pool’s vrf.skey. It is not sensitive and is not required to start a stake pool’s block producing node.
+`vrf.vkey` - a public verification key(((verification, key))) file for a Cardano stake pool’s vrf.skey. It is not sensitive and is not required to start a stake pool’s block producing node.
 
 ==== KES hot keys
 
 KES keys are operational node keys(((operational node keys))) that authenticate the rightful operator of a pool:
 
-``kes.skey`` -  a private signature key file(((private signature key file))) for the stake pool’s KES key. It is needed to start the stake pool’s block-producing node. This key is sensitive, however, it must be placed on a hot node to start a stake pool and be rotated regularly. KES keys are required to establish a stake pool’s operational certificate, which expires 90 days after the certificate’s defined KES period has passed. As a result, fresh KES keys must be generated along with a new certificate every 90 days or sooner for a Cardano stake pool to continue minting blocks.
+`kes.skey` -  a private signature key file(((private signature key file))) for the stake pool’s KES key. It is needed to start the stake pool’s block-producing node. This key is sensitive, however, it must be placed on a hot node to start a stake pool and be rotated regularly. KES keys are required to establish a stake pool’s operational certificate, which expires 90 days after the certificate’s defined KES period has passed. As a result, fresh KES keys must be generated along with a new certificate every 90 days or sooner for a Cardano stake pool to continue minting blocks.
 
-``kes.vkey`` - a public verification key file for the pool’s corresponding kes.skey. This key is not sensitive and is not required to start a block-producing node(((block-producing node))).
+`kes.vkey` - a public verification key file for the pool’s corresponding kes.skey. This key is not sensitive and is not required to start a block-producing node(((block-producing node))).
 
 ==== Stake pool keys and supporting files
 
 Stake pool keys and some supporting files include:
 
-``cold.skey`` -  a private, offline signing key file for a Cardano stake pool, which is  very sensitive. The cold.skey is required to:
+`cold.skey` -  a private, offline signing key file for a Cardano stake pool, which is  very sensitive. The cold.skey is required to:
 
 * register a stake pool
 * update stake pool registration parameters
 * rotate stake pool KES keys
 * retire a stake pool
 
-``cold.vkey`` - a public verification key file for a stake pool’s cold.skey private signing key file. It is not sensitive and can be shared publicly.
+`cold.vkey` - a public verification key file for a stake pool’s cold.skey private signing key file. It is not sensitive and can be shared publicly.
 
-``cold.counter`` -  a counter file that tracks the number of times an operational certificate(((operational certificate))) has been generated for the relevant stake pool.
+`cold.counter` -  a counter file that tracks the number of times an operational certificate(((operational certificate))) has been generated for the relevant stake pool.
 
 *_Note:_*  Always rotate KES keys using the latest cold.counter and increment by exactly 1.
 
-``op.cert`` -  an operational certificate that links the operator’s cold.skey and their operational kes.skey. The certificate checks whether the operational key is valid, preventing malicious interference. The certificate identifies the current operational key and is signed by the offline cold.skey. As the operational certificate is sensitive and required to start a stake pool’s block-producing node, it must be placed on a hot node to start a stake pool.
+`op.cert` -  an operational certificate that links the operator’s cold.skey and their operational kes.skey. The certificate checks whether the operational key is valid, preventing malicious interference. The certificate identifies the current operational key and is signed by the offline cold.skey. As the operational certificate is sensitive and required to start a stake pool’s block-producing node, it must be placed on a hot node to start a stake pool.
 
 ==== Addresses
 
@@ -103,15 +103,15 @@ Current Cardano wallet addresses are encoded in bech32 format and consist of two
 
 An enterprise address(((address, enterprise))) is a specific type of Cardano wallet address without the ability to participate in staking. Enterprise addresses might be used by exchanges that wish to comply with regulations or in cases where staking is not desired.
 
-``payment.addr `` -  a payment address is usually generated using both a payment.vkey and a stake.vkey, associating the resulting address with both keys. Usually the payment.vkey and stake.vkey are derived from the same cryptographic entropy(((cryptographic, entropy))) or root.skey, which refers to the same original secret or seed phrase. The first payment address of any wallet is known as the base address. Cardano supports HD wallets, so any number of payment addresses can be derived from the same secret phrase.
+`payment.addr` -  a payment address is usually generated using both a payment.vkey and a stake.vkey, associating the resulting address with both keys. Usually the payment.vkey and stake.vkey are derived from the same cryptographic entropy(((cryptographic, entropy))) or root.skey, which refers to the same original secret or seed phrase. The first payment address of any wallet is known as the base address. Cardano supports HD wallets, so any number of payment addresses can be derived from the same secret phrase.
 
-``stake.addr`` - a stake address for a Cardano wallet is generated using the stake.vkey file. It controls protocol participation, enables stake pool creation, and facilitates delegation and receiving rewards. This address cannot receive payments but is used to receive rewards from participating in the protocol. Only one stake address can be derived from a single original secret, thus all payment.addr(((payment.addr))) associated with the same secret share the same stake address component.
+`stake.addr` - a stake address for a Cardano wallet is generated using the stake.vkey file. It controls protocol participation, enables stake pool creation, and facilitates delegation and receiving rewards. This address cannot receive payments but is used to receive rewards from participating in the protocol. Only one stake address can be derived from a single original secret, thus all payment.addr(((payment.addr))) associated with the same secret share the same stake address component.
 
-It is also possible to combine payment.vkey(((payment.vkey))) and stake.vkey from two different original secrets, creating what is known as a ``mangled`` or https://www.youtube.com/watch?v=KULzovfWn-M[``Franken Address``]. Sending tokens to such an address allows one wallet to spend them, while the other wallet can participate in the protocol and earn rewards using the same tokens.
+It is also possible to combine payment.vkey(((payment.vkey))) and stake.vkey from two different original secrets, creating what is known as a `mangled` or https://www.youtube.com/watch?v=KULzovfWn-M[`Franken Address`]. Sending tokens to such an address allows one wallet to spend them, while the other wallet can participate in the protocol and earn rewards using the same tokens.
 
 ==== Pool saturation
 
-The protocol parameter ``k`` defines the saturation point(((saturation point))) for stake pool rewards. This saturation point is calculated by dividing ``Cardano's total supply by k``. As of this writing, with k set at 500, the saturation point is approximately 70 million ada. A stake pool with total stake above this saturation point will receive more slots and should mint more blocks. However, rewards for the pool are capped at the saturation point. This results in diminishing returns as the same rewards pot is distributed among a larger total delegation. This incentivizes participants to avoid delegating to saturated pools.
+The protocol parameter `k` defines the saturation point(((saturation point))) for stake pool rewards. This saturation point is calculated by dividing `Cardano's total supply by k`. As of this writing, with k set at 500, the saturation point is approximately 70 million ada. A stake pool with total stake above this saturation point will receive more slots and should mint more blocks. However, rewards for the pool are capped at the saturation point. This results in diminishing returns as the same rewards pot is distributed among a larger total delegation. This incentivizes participants to avoid delegating to saturated pools.
 
 Reaching saturation is a positive sign for a pool, as it indicates the pool’s popularity and substantial stake. However, it also means that delegators may have to look for alternative pools if they wish to delegate additional stake. The SPO of the saturated pool can also adjust parameters(((parameter))), such as increasing pool minting fees, to manage the saturation level.
 
@@ -1336,11 +1336,11 @@ Prometheus is an open-source monitoring and alerting toolkit. It is designed for
 For Cardano Stake Pools these are typical targets to scrape for Prometheus:
 
 * The Cardano-node built-in EKG Prometheus exporter with Cardano node metrics on blockheight, missed-slots, KES expiry and more.
-* The open source ``node_exporter``, an open source Prometheus exporter for hardware and OS metrics exposed by *NIX kernels for metrics on CPU, memory, disk usage, timesync and others.
+* The open source `node_exporter`, an open source Prometheus exporter for hardware and OS metrics exposed by *NIX kernels for metrics on CPU, memory, disk usage, timesync and others.
 * https://cardano-community.github.io/guild-operators/[Cardano Guild Operators Koios SPO Tools] to expose `CNCLI` Prometheus metrics on block.db metrics such as number of sequentially missed blocks, adopted blocks, epoch luck, etc.
 
-The Prometheus scrape targets are defined via a ``.yml`` configuration file (typically named ``prometheus.yml``). To double check syntax, you can run ``./promtool check config prometheus.yml ``.
-Before adding a visualization layer to Prometheus like Grafana it is recommended to connect to the Prometheus web portal (by default on localhost:9090) to double check that scraping targets are reachable. Check that the status is green and ``up`` on all configured endpoints in ``Status -> Targets``. This status page is very helpful to debug scrape endpoint connections.
+The Prometheus scrape targets are defined via a `.yml` configuration file (typically named `prometheus.yml`). To double check syntax, you can run `./promtool check config prometheus.yml`.
+Before adding a visualization layer to Prometheus like Grafana it is recommended to connect to the Prometheus web portal (by default on localhost:9090) to double check that scraping targets are reachable. Check that the status is green and `up` on all configured endpoints in `Status -> Targets`. This status page is very helpful to debug scrape endpoint connections.
 
 To scrape remote servers securely various techniques exist, see also Server Hardening.
 For example, one could use a web server such as Nginx and configure it as a Reverse Proxy for the endpoint metrics to be scraped by Prometheus with Transport Layer Security (TLS) encryption in place. You can use TLS for IPs. You can also scrape Prometheus over a WireGuard VPN or other VPN service. Firewall rules should ensure that only the Prometheus monitoring server may access the remote endpoint.
@@ -1355,7 +1355,7 @@ Grafana is an open-source platform for monitoring and observability, specializin
 * Extensibility and Integration: Grafana is highly extensible and supports integration with a vast ecosystem of data sources, plugins, and extensions. It offers a plugin architecture that allows developers to create custom data source plugins, panel visualizations, and integrations with third-party services. This extensibility enables Grafana to adapt to diverse monitoring environments and integrate seamlessly with existing tools and systems. Additionally, Grafana supports features such as annotations, templating, and alerts, enhancing its functionality and making it a versatile platform for monitoring IT services.
 * Community and Adoption: Grafana has a large and active community of users, developers, and contributors, driving innovation and adoption in the monitoring space. The Grafana community has developed a wide range of plugins, dashboards, and integrations, which are freely available through the Grafana Plugin Repository and community forums. This vibrant ecosystem of community-contributed content provides operators with access to a wealth of resources and pre-built solutions for monitoring various technologies, applications, and infrastructure components. Additionally, Grafana’s popularity and widespread adoption make it a de facto standard for visualization and monitoring in many organizations, ensuring long-term support, stability, and continued development of the platform.
 
-Some Prometheus exporters like ``node_exporter`` come with their own pre-configured Grafana dashboard.  ``Cardano-node`` does not have a default Grafana dashboard yet, but the community has created various dashboards and shared those online to copy and adapt or for inspiration.
+Some Prometheus exporters like `node_exporter` come with their own pre-configured Grafana dashboard.  `Cardano-node` does not have a default Grafana dashboard yet, but the community has created various dashboards and shared those online to copy and adapt or for inspiration.
 
 Grafana dashboards can be easily configured with a graphical drag & drop interface or editing the JSON configuration file.
 
