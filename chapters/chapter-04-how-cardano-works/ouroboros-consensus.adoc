@@ -425,10 +425,10 @@ and how varying certain assumptions allows for tuned versions of the protocol su
 [[OuroborosReferences]]
 ==== References
 
-* [[[OuroborosClassicPaper,1]]] Kiayias, A. et al (2017) ‘Ouroboros: A provably secure proof of stake Blockchain Protocol’, Lecture Notes in Computer Science, pp. 357–388. doi:10.1007/978-3-319-63688-7_12
-* [[[OuroborosBftPaper,2]]] Kiayias, A., & Russell, A. (2018). Ouroboros-bft: A simple byzantine fault tolerant consensus protocol. Cryptology ePrint Archive
-* [[[OuroborosPraosPaper,3]]] David, B., Gaži, P., Kiayias, A., & Russell, A. (2018, March). Ouroboros praos: An adaptively-secure, semi-synchronous proof of stake blockchain. In Annual International Conference on the Theory and Applications of Cryptographic Techniques (pp. 66-98). Cham: Springer International Publishing
-* [[[OuroborosGenesisPaper,4]]] Badertscher, C., Gaži, P., Kiayias, A., Russell, A., & Zikas, V. (2019, February). Ouroboros genesis: Composable proof of stake blockchains with dynamic availability. In Proceedings of the 2018 ACM SIGSAC Conference on Computer and Communications Security (pp. 913-930)
-* [[[OuroborosChronosPaper,5]]] Badertscher, C., Gazi, P., Kiayias, A., Russell, A., & Zikas, V. (2019). Ouroboros chronos: Permissionless clock synchronization via proof of stake. Cryptology ePrint Archive
-* [[[OuroborosLeiosDiscussion,6]]] Coutts, D., Panagiotakos, G., & Fitzi, M. (2022). Ouroboros Leios: Design goals and concepts (Version 1.0) [White paper]. Input Output Global
-* [[[OuroborosLeiosPaper,7]]] Coretti, S., Fitzi, M., Kiayias, A., Panagiotakos, G., & Russell, A. (2025). High-Throughput Permissionless Blockchain Consensus under Realistic Network Assumptions. Cryptology ePrint Archive
+* [[OuroborosClassicPaper,1]] Kiayias, A. et al (2017) ‘Ouroboros: A provably secure proof of stake Blockchain Protocol’, Lecture Notes in Computer Science, pp. 357–388. doi:10.1007/978-3-319-63688-7_12
+* [[OuroborosBftPaper,2]] Kiayias, A., & Russell, A. (2018). Ouroboros-bft: A simple byzantine fault tolerant consensus protocol. Cryptology ePrint Archive
+* [[OuroborosPraosPaper,3]] David, B., Gaži, P., Kiayias, A., & Russell, A. (2018, March). Ouroboros praos: An adaptively-secure, semi-synchronous proof of stake blockchain. In Annual International Conference on the Theory and Applications of Cryptographic Techniques (pp. 66-98). Cham: Springer International Publishing
+* [[OuroborosGenesisPaper,4]] Badertscher, C., Gaži, P., Kiayias, A., Russell, A., & Zikas, V. (2019, February). Ouroboros genesis: Composable proof of stake blockchains with dynamic availability. In Proceedings of the 2018 ACM SIGSAC Conference on Computer and Communications Security (pp. 913-930)
+* [[OuroborosChronosPaper,5]] Badertscher, C., Gazi, P., Kiayias, A., Russell, A., & Zikas, V. (2019). Ouroboros chronos: Permissionless clock synchronization via proof of stake. Cryptology ePrint Archive
+* [[OuroborosLeiosDiscussion,6]] Coutts, D., Panagiotakos, G., & Fitzi, M. (2022). Ouroboros Leios: Design goals and concepts (Version 1.0) [White paper]. Input Output Global
+* [[OuroborosLeiosPaper,7]] Coretti, S., Fitzi, M., Kiayias, A., Panagiotakos, G., & Russell, A. (2025). High-Throughput Permissionless Blockchain Consensus under Realistic Network Assumptions. Cryptology ePrint Archive
