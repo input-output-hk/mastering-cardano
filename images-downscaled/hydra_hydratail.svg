@@ -234,9 +234,9 @@
 		<path d="M2007.332,257.305v-201.6h32.48v201.6H2007.332z"/>
 	</g>
 	
-		<rect x="644.368" y="380.404" style="fill:#C68BFF;stroke:#000000;stroke-width:6;stroke-miterlimit:10;" width="185.409" height="100"/>
+		<rect x="644.368" y="380.404" style="fill:none;stroke:#000000;stroke-width:6;stroke-miterlimit:10;" width="185.409" height="100"/>
 	
-		<rect x="1475.81" y="364.996" transform="matrix(0.7071 -0.7071 0.7071 0.7071 147.0709 1215.8679)" style="fill:#9510AC;stroke:#231F20;stroke-width:6;stroke-miterlimit:10;" width="130.815" height="130.815"/>
+		<rect x="1475.81" y="364.996" transform="matrix(0.7071 -0.7071 0.7071 0.7071 147.0709 1215.8679)" style="fill:none;stroke:#231F20;stroke-width:6;stroke-miterlimit:10;" width="130.815" height="130.815"/>
 	<g>
 		<path d="M919.972,451.149v-48.38h-16.81v-7.872h43.788v7.872h-16.81v48.38H919.972z"/>
 		<path d="M962.447,451.969c-2.242,0-4.387-0.356-6.437-1.066c-2.05-0.71-3.731-1.927-5.043-3.649s-1.968-4.059-1.968-7.011
