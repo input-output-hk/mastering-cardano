@@ -53,7 +53,7 @@ _Governance_ is central to Cardano's design, ensuring system sustainability and 
 As Charles Hoskinson (((Hoskinson, Charles)))stated:
 _"Governance is not optional. No matter who you are, what you do, when you create something that other people use, the first question is how do we upgrade, maintain, and change it to meet our needs?"_
 
-Cardano’s governance model (((Cardano, governance model))) reflects a _liquid and representative democracy_. Through individual participation and immutable vote recording, ada(((ADA))) holders can decide on the distribution of treasury(((treasury))) funds and the platform's future development.
+Cardano’s governance model (((Cardano, governance model))) reflects a _liquid and representative democracy_. Through individual participation and immutable vote recording, ada(((ada))) holders can decide on the distribution of treasury(((treasury))) funds and the platform's future development.
 
 Designing a proof-of-stake blockchain necessitates self-sustainability. _Cardano Improvement Proposals (CIPs)_ foster and formalize discussions around new features and development within the community. The Cardano governance(((governance))) https://www.intersectmbo.org/roadmap[roadmap], particularly under _CIP-1694_, guides the community through a structured transition to a decentralized, community-driven governance model, allowing for extensive community feedback and refinement.
 
