@@ -85,7 +85,7 @@ block.
 * _Edge nodes._ These nodes interact with end-users and applications.
 They provide interfaces for users to submit transactions and query the
 blockchain. Edge nodes(((node, edge))) do not produce blocks but play a crucial role in
-facilitating user interactions(((user interactions))) with the blockchain.
+facilitating user interactions with the blockchain.
 * _Stake pool nodes._ These are specialized block-producing nodes that
 are part of a stake pool. They validate transactions, produce blocks,
 and maintain the combined stake(((stake))) of various stakeholders in a single
