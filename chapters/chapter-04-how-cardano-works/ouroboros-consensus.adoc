@@ -122,7 +122,7 @@ At this point, it is important to mention how similar the original Nakamoto cons
 In fact, Ouroboros is Nakamoto consensus(((Nakamoto, Consensus))).
 The main difference is how they select the network participant (ie, the miner in Bitcoin or the SPO in Cardano).
 
-Bitcoin uses proof of work, and Cardano uses proof of stake, or more precisely, a verifiable random function(((Verifiable Random Function))).
+Bitcoin uses proof of work, and Cardano uses proof of stake, or more precisely, a verifiable random function(((verifiable random function))).
 
 ==== How does proof of work select a validator (miner)?
 
