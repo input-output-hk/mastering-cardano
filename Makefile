@@ -8,6 +8,7 @@ epub:
 		-r asciidoctor-diagram \
 		-a imagesdir=images \
 		-a rouge-style=github \
+		--failure-level WARN \
 		main.adoc \
 		-o dist/$(FILENAME)-$(VERSION).epub
 
@@ -20,6 +21,7 @@ pdf:
 		-a pdf-themesdir=theme \
 		-a pdf-fontsdir="theme;GEM_FONTS_DIR" \
 		-a pdf-theme=custom \
+		--failure-level WARN \
 		main.adoc \
 		-o dist/$(FILENAME)-$(VERSION).pdf
 
