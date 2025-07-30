@@ -235,7 +235,7 @@ Am I the slot leader for current slot?
 ---
 
 
-If the output of the VRF (((VRF))) falls below a threshold — set based on the amount of stake the operator controls — then the SPO becomes the slot leader(((slot leader))) for that slot.
+If the output of the VRF (((verifiable random function))) falls below a threshold — set based on the amount of stake the operator controls — then the SPO becomes the slot leader(((slot leader))) for that slot.
 
 That slot leader(((slot leader))):
 
