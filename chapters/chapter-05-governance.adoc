@@ -640,7 +640,7 @@ A non-binding poll was also proposed on Ekklesia asking DReps to signal their pr
 
 Smart contracts can leverage the EUTXO model to enforce deterministic behavior from a limited set of actors, with no single entity acting unilaterally(((no single entity acting unilaterally))). The preference is for a predictable 'can’t be evil' model instead of a hopeful 'don't be evil' setup.
 
-The Cardano constitution mandates that treasury withdrawals include independent audits, on-chain oversight, and separate, auditable accounts that delegate to the auto-abstain voting option(((delegate to the auto-abstain voting option))) (not an SPO).
+The Cardano Constitution mandates that treasury withdrawals include independent audits, on-chain oversight, and separate, auditable accounts that delegate to the auto-abstain voting option(((delegate to the auto-abstain voting option))) (not an SPO).
 
 To align with the Cardano constitution(((Cardano Constitution))), there needs to be:
 
@@ -649,7 +649,7 @@ To align with the Cardano constitution(((Cardano Constitution))), there needs to
 * Safeguards to ensure no single entity can act alone when moving funds
 * Independent verification from any oversight body to allay concerns and build trust.
 
-As part of the changes to the budget process, a _smart contract working group_ was set up under the _budget committee_ to oversee the automation of treasury fund management with smart contracts. The solution was delivered through Intersect by IOG, SundaeLabs, and Xerberus. The implementation of smart contracts to automate treasury fund management satisfies Article 4, section 2 of the Cardano Constitution(((Article 4, section 2 of the Cardano Constitution))):
+As part of the changes to the budget process, a _smart contract working group_ was set up under the _budget committee_ to oversee the automation of treasury fund management with smart contracts. The solution was delivered through Intersect by IOG, SundaeLabs, and Xerberus. The implementation of smart contracts to automate treasury fund management satisfies Article 4, section 2 of the Cardano Constitution:
 
 _“Development of Cardano Blockchain ecosystem budgets and the administration of such budgets shall utilize, to the extent possible and beneficial, smart contracts and other blockchain based tools to facilitate decision-making and ensure transparency.”_
 
