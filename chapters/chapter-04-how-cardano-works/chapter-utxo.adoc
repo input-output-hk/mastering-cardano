@@ -113,7 +113,7 @@ To make this idea work, three additional components are needed:
 
 * A transaction attempting to spend an output at a script address must include another piece of data in the input, known as the _redeemer_. The redeemer(((redeemer))) acts as a ‘key’ to ‘unlock’ an input – a generalization of the signature used to unlock outputs(((transaction, output))) at public key addresses.
 
-* When a Plutus Core(((Plutus Core))) script is executed for validation(((validation))), it receives the datum, redeemer, and  _context_ as arguments. The context contains the transaction being validated along with all its inputs(((transaction, input))) and outputs(((transaction, output))), but no other information.
+* When a Plutus Core(((Plutus core))) script is executed for validation(((validation))), it receives the datum, redeemer, and  _context_ as arguments. The context contains the transaction being validated along with all its inputs(((transaction, input))) and outputs(((transaction, output))), but no other information.
 
 This design strikes a balance between expressiveness and security:
 
