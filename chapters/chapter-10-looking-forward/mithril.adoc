@@ -199,7 +199,7 @@ with an address, eliminating the need to trust a third-party provider or
 run a full Cardano node(((Cardano, node))). The verification can even occur in the browser.
 This also supports the implementation of ‘light clients(((light, clients)))’ for bridges,
 enabling to monitor transactions on layer 1 smart contracts(((layer 1, smart contracts))) without
-running a full Cardano node. It is also applicable to state channels(((state channels)))
+running a full Cardano node. It is also applicable to state channels(((state channel)))
 such as Hydra or rollups(((rollups))).
 * *Cardano stake distribution*: the Cardano stake distribution is
 certified at the transition to a new epoch(((epoch))). This enables the
