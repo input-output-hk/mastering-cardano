@@ -341,7 +341,7 @@ For example, it becomes much harder for an attacker to isolate a node by feeding
 The previous variants of Ouroboros have shown that a proof of stake consensus is practical, secure and resilient.
 However, challenges remain. The biggest one of them is throughput.
 
-Throughput((throughput)), the number of transactions that a blockchain can process per second,
+Throughput, the number of transactions that a blockchain can process per second,
 is still low, compared to centralized systems.
 
 ====== Why is throughput 'low' in blockchains in general, and in Praos in particular?
