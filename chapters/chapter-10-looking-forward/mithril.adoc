@@ -238,7 +238,7 @@ verification.
 The first certificate in the certificate chain(((certificate chain))) is known as the *genesis
 certificate*. Validating the stake distribution embedded in the genesis
 certificate is only possible by manually signing it with a private key(((private, key)))
-linked to a widely accessible public key(((public, key))), called the *genesis
+linked to a widely accessible public key(((public key))), called the *genesis
 verification key(((verification, key)))*. The use of these specific keys ensures the integrity
 and security of the initial stake distribution and subsequent
 transitions within the blockchain network. You can read more about the
