@@ -122,7 +122,7 @@ This design strikes a balance between expressiveness and security:
 * Ethereum(((Ethereum))) smart contracts(((smart contract))) are powerful and flexible but also extremely challenging to implement correctly. Their context encompasses the entire state of the blockchain, complicating the prediction of execution outcomes. This has led to several notorious exploits and bugs, resulting in the unexpected loss of millions of ether.
 
 
-Cardano's EUTXO model(((EUTXO model))), incorporating datums, redeemers, and contexts, is both powerful and flexible enough to match the capabilities of Ethereum while remaining simple enough to enhance predictability regarding transaction outcomes.
+Cardano's EUTXO model(((EUTXO, model))), incorporating datums, redeemers, and contexts, is both powerful and flexible enough to match the capabilities of Ethereum while remaining simple enough to enhance predictability regarding transaction outcomes.
 
 Cardano transactions can be validated _locally_, without needing to submit them to the blockchain first, since the context includes only the transaction itself along with its inputs(((transaction, input))) and outputs(((transaction, output))). Although a transaction may fail upon submission – such as when another transaction has already spent an expected input – if it succeeds, it will yield the predicted result.
 
@@ -132,7 +132,7 @@ Transaction determinism(((determinism))) is extremely important and deserves fur
 
 On a blockchain like Ethereum, the outcome of a transaction can potentially be influenced by _any_ activity occurring on the blockchain. This makes it impossible to determine the effect of a transaction off-chain before submission.
 
-In contrast, on a blockchain using the EUTXO model(((EUTXO model))), the outcome of a transaction is solely determined by the transaction itself, its inputs and outputs, and nothing else. Therefore, it _is_ possible to predict the effect of a transaction off-chain before submission.
+In contrast, on a blockchain using the EUTXO model(((EUTXO, model))), the outcome of a transaction is solely determined by the transaction itself, its inputs and outputs, and nothing else. Therefore, it _is_ possible to predict the effect of a transaction off-chain before submission.
 
 As mentioned above, the only aspect that may change on an EUTXO blockchain is the set of UTXOs. However, the outputs themselves remain immutable. A transaction may encounter a situation where its inputs(((transaction, input))) are consumed by other transactions before it is submitted, leading to failure without incurring a fee(((transaction, fees))). Nonetheless, if all inputs(((transaction, input))) remain unspent, the transaction will produce the predicted outcome.
 
@@ -162,7 +162,7 @@ image::atomic_swap_utxo.png[]
 
 This approach has at least two issues: first, the partially signed transaction must be sent off-chain, which is not ideal and can be cumbersome for users. Second, Alice must find Bob and agree on the terms of the swap, which again requires an off-chain process.
 
-Within the EUTXO model(((EUTXO model))), this can be enhanced by employing a script to enforce the swap's terms. Alice can create a transaction that spends her NFT and generates an output locked by a script that requires _someone_ (potentially Bob, but Alice does not need to specify) to send 100 ada to Alice to unlock it.
+Within the EUTXO model(((EUTXO, model))), this can be enhanced by employing a script to enforce the swap's terms. Alice can create a transaction that spends her NFT and generates an output locked by a script that requires _someone_ (potentially Bob, but Alice does not need to specify) to send 100 ada to Alice to unlock it.
 
 So how does this work?
 
@@ -180,7 +180,7 @@ In practice, the script will likely also enable Alice to reclaim her NFT at any 
 
 Anyone will be able to spend this UTXO and obtain Alice's NFT, provided they also send 100 ada to Alice.
 
-.Alice and Bob perform an atomic swap(((atomic swap))) in the EUTXO model(((EUTXO model)))
+.Alice and Bob perform an atomic swap(((atomic swap))) in the EUTXO model(((EUTXO, model)))
 image::atomic_swap_eutxo_3.png[]
 
 In this example, Alice ceases control of her NFT by sending it to a script address while ensuring that she will receive 100 ada if someone other than herself wishes to spend that UTXO.
@@ -271,7 +271,7 @@ image::vesting_example.png[]
 
 ===== Composability
 
-One of the key strengths of the EUTXO model(((EUTXO model))) is the _composability_ of smart contracts(((smart contract))).
+One of the key strengths of the EUTXO model(((EUTXO, model))) is the _composability_ of smart contracts(((smart contract))).
 
 In the account-based model(((account-based model))), while smart contracts can interact with each other, these interactions can be unpredictable and may lead to unintended outcomes.
 
@@ -331,7 +331,7 @@ image::double_satisfaction_3.png[]
 
 ====== Flash loans
 
-The composability(((composability))) of smart contracts(((smart contract))) in the EUTXO model(((EUTXO model))) often results in unexpected features ‘for free’ that would need to be explicitly implemented in other models.
+The composability(((composability))) of smart contracts(((smart contract))) in the EUTXO model(((EUTXO, model))) often results in unexpected features ‘for free’ that would need to be explicitly implemented in other models.
 
 As discussed earlier, one example is the ability to combine atomic swaps(((atomic swap))) into a single transaction.
 
@@ -364,7 +364,7 @@ The transaction is balanced(((transaction, balanced))) (100 ada + 50 DJED go in,
 
 ==== Beyond validation: other uses of smart contracts(((smart contract)))
 
-One way to understand the transition from the UTXO model (((UTXO, model))) to the EUTXO model(((EUTXO model))) is by examining addresses.
+One way to understand the transition from the UTXO model (((UTXO, model))) to the EUTXO model(((EUTXO, model))) is by examining addresses.
 In the UTXO model, whenever a transaction tries to spend a UTXO(((UTXO))), it must be signed using the signing key(((signing key))) corresponding to the address. The EUTXO model introduces script addresses, meaning that transactions trying to spend outputs(((transaction, output))) from script addresses must be validated by the corresponding script.
 
 The address of a UTXO determines how spending it is validated. By moving from the UTXO model to the EUTXO model, a new method for validating inputs(((transaction, input))) is added – by executing scripts.
