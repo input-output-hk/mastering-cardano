@@ -211,7 +211,7 @@ https://www.intersectmbo.org/[Intersect] empowers a distributed network of build
 
 ==== How Intersect operates
 
-Intersect ((((Intersect))) aims to administer the governing processes for Cardano’s continued roadmap and development of the Cardano protocol. Intersect is currently facilitating the rollout of Cardano’s governance features. Visit the Intersect latest https://www.intersectmbo.org/news[news] page to keep up to speed with the latest developments.
+Intersect (((Intersect))) aims to administer the governing processes for Cardano’s continued roadmap and development of the Cardano protocol. Intersect is currently facilitating the rollout of Cardano’s governance features. Visit the Intersect latest https://www.intersectmbo.org/news[news] page to keep up to speed with the latest developments.
 
 All Cardano ecosystem participants are welcome to become Intersect members. Made up of a distributed group of participants, including the foremost experts on Cardano and current ecosystem contributors(((current ecosystem contributors))), Intersect aims to facilitate healthy discussions and sound decision-making amongst its members and the community to uncover pain points and champion successes.
 
