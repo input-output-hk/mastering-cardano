@@ -640,7 +640,7 @@ A non-binding poll was also proposed on Ekklesia asking DReps to signal their pr
 
 *Smart contracts*
 
-Smart contracts can leverage the EUTXO model to enforce deterministic behavior from a limited set of actors, with no single entity acting unilaterally(((no single entity acting unilaterally))). The preference is for a predictable 'can’t be evil' model instead of a hopeful 'don't be evil' setup.
+Smart contracts can leverage the EUTXO model to enforce deterministic behavior from a limited set of actors, with no single entity acting unilaterally. The preference is for a predictable 'can’t be evil' model instead of a hopeful 'don't be evil' setup.
 
 The Cardano constitution mandates that treasury withdrawals include independent audits, on-chain oversight, and separate, auditable accounts that delegate to the auto-abstain voting option(((delegate to the auto-abstain voting option))) (not an SPO).
 
