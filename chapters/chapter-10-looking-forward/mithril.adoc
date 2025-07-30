@@ -298,7 +298,7 @@ The Mithril research paper(((Mithril, research paper))) mathematically demonstra
 security: it formalizes the security guarantee by showing that the
 protocol realizes the ideal functionality under specific conditions,
 relying on a computational hardness assumption and the collision
-resistance of a hash function(((hash, function))). The proof involves a series of hybrid
+resistance of a hash function(((hash function))). The proof involves a series of hybrid
 games comparing the real protocol with an idealized version to show that
 the adversary's probability of success is negligible. The security proof
 is supported by some lemmas:
