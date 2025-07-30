@@ -153,7 +153,7 @@ Early in 2022, IOG and the CF held workshops to hammer out a way forward for the
 
 *What is an MBO?*
 
-The MBO is a central hub that unites different groups, including thousands of stake pool operators(((stake pool operator))), Cardano ambassadors(((Cardano ambassadors))), open-source projects running on Cardano, IO, CF, EMURGO, and all ada holders. Members will own and run the MBO, staffing the steering committees.
+The MBO is a central hub that unites different groups, including thousands of stake pool operators(((stake pool, operator))), Cardano ambassadors(((Cardano ambassadors))), open-source projects running on Cardano, IO, CF, EMURGO, and all ada holders. Members will own and run the MBO, staffing the steering committees.
 
 image::5.3_gov_concepts.png[]
 *Figure 5.3:* Governance concepts defined, based on the slide from ScotFest 2022
