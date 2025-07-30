@@ -151,7 +151,7 @@ https://book.world.dev.cardano.org/[Cardano operations book] website.
 
 In proof-of-stake(((stake))) systems, the costs for an attacker producing data and
 for a defender verifying this data are more balanced than in
-proof-of-work systems(((proof-of-work systems))), where the attacker's costs for producing data are
+proof-of-work systems(((proof-of-work))), where the attacker's costs for producing data are
 significantly higher than the defender's costs for verification.
 
 This motivated many design principles of the Cardano node(((Cardano node))), such as:
