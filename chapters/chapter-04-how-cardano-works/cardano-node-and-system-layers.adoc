@@ -128,7 +128,7 @@ legitimate.
 * _Network communication._ The cardano-node facilitates
 communication between nodes. It propagates information about new
 transactions and blocks across the network, ensuring all nodes remain
-synchronized. This P2P communication(((P2P communication))) is vital for maintaining the
+synchronized. This P2P communication(((P2P))) is vital for maintaining the
 network's decentralized nature.
 * _Consensus participation._ Cardano uses a
 proof-of-stake consensus mechanism(((proof-of-stake consensus mechanism))) called Ouroboros. The cardano-node
