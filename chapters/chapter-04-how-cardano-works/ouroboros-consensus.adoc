@@ -246,7 +246,7 @@ That slot leader(((slot leader))):
 
 Cardano accumulates rewards (from block minting and fees) and distributes them to stake pools and delegators at the end of each epoch according to an incentive formula.
 
-Then, all stake pool operators(((stake pool operators))) verify the validity of the previous block during the next slot by:
+Then, all stake pool operators(((stake pool operator))) verify the validity of the previous block during the next slot by:
 
 * Checking the block’s signature to ensure it was signed by a registered pool’s key.
 * Verifying the VRF proof included in the block, which confirms the slot leader’s output, was below the threshold.
