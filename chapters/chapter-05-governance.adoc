@@ -533,7 +533,7 @@ The https://gov.tools/[GovTool] is a central hub for interacting with Cardano’
 Intersect initially evaluated multiple tools to support DReps. GovTool was initially prioritized for its open APIs, but https://docs.ekklesiademocracy.org/en/latest/[Ekklesia] was subsequently implemented as an early signalling tool to “temperature check” the DRep sentiments ahead of on-chain governance actions(((ahead of on-chain governance actions))). Ekklesia does not host a formal vote, but rather a critical indicator to aid in building consensus. Only proposals that surpassed 50% support in Ekklesia, at the snapshot, were eligible for inclusion in the 2025 budget info action. You can review all the proposals on Ekklesia.
 
 Several proposals, including Intersect’s, were updated following feedback from DReps but once proposals are submitted as part of a budget info action(((budget info action))) on-chain, they are immutable. The budget info action(((budget info action))) is presented to DReps for an on-chain vote.
-The budget process and tooling caused some confusion and frustration, an obvious area for improvement for the future. There have been calls to abolish the off-chain debates, and move to on-chain info actions followed by treasury withdrawals. Some suggested making immutable metadata for governance actions a requirement in the Cardano Constitution, highlighting a desire to enhance transparency and permanence in on-chain decisions(((permanence in on-chain decisions))).
+The budget process and tooling caused some confusion and frustration, an obvious area for improvement for the future. There have been calls to abolish the off-chain debates, and move to on-chain info actions followed by treasury withdrawals. Some suggested making immutable metadata for governance actions a requirement in the Cardano constitution, highlighting a desire to enhance transparency and permanence in on-chain decisions(((permanence in on-chain decisions))).
 
 The governance tools working group has begun decentralizing ownership and maintaining the GovTool
 and constitutional committee portal(((constitutional, committee portal))). Community members are invited to participate in feature development, with discussions ongoing in the https://discord.com/channels/1136727663583698984/1212344688523214869[wg-governance-tools] Discord channel.
@@ -634,7 +634,7 @@ On the back of lengthy community feedback(((lengthy community feedback))), there
 
 The final temperature check in Ekklesia produced 40 proposals that met the threshold, with 39 of those requested Intersect as their Administrator. You can read all of the proposals on the Cardano Forum, starting with the https://forum.cardano.org/t/overview-a-cardano-blockchain-ecosystem-budget/143049[Cardano Budget 2025 Overview].
 
-On June 14, 2025, an X post by @gomadrep confirmed the ₳275M https://gov.tools/connected/governance_actions/e14de8d9dc4f4ddf3fe9250a8a926e20f10e99b86bd0610b77d7a054981591ee#0[Budget Info Action (BIA)] had passed. 63.66% of DReps, 93.26% of SPOs and 6/7 of the Cardano Constitution approved.
+On June 14, 2025, an X post by @gomadrep confirmed the ₳275M https://gov.tools/connected/governance_actions/e14de8d9dc4f4ddf3fe9250a8a926e20f10e99b86bd0610b77d7a054981591ee#0[Budget Info Action (BIA)] had passed. 63.66% of DReps, 93.26% of SPOs and 6/7 of the Cardano constitution approved.
 
 A non-binding poll was also proposed on Ekklesia asking DReps to signal their preferred approach for submitting Treasury Withdrawals. Ultimately, the community voted for Option E: 39 individual Treasury Withdrawals, one per proposal.
 
@@ -642,16 +642,16 @@ A non-binding poll was also proposed on Ekklesia asking DReps to signal their pr
 
 Smart contracts can leverage the EUTXO model to enforce deterministic behavior from a limited set of actors, with no single entity acting unilaterally(((no single entity acting unilaterally))). The preference is for a predictable 'can’t be evil' model instead of a hopeful 'don't be evil' setup.
 
-The Cardano Constitution mandates that treasury withdrawals include independent audits, on-chain oversight, and separate, auditable accounts that delegate to the auto-abstain voting option(((delegate to the auto-abstain voting option))) (not an SPO).
+The Cardano constitution mandates that treasury withdrawals include independent audits, on-chain oversight, and separate, auditable accounts that delegate to the auto-abstain voting option(((delegate to the auto-abstain voting option))) (not an SPO).
 
-To align with the Cardano constitution(((Cardano Constitution))), there needs to be:
+To align with the Cardano constitution(((Cardano constitution))), there needs to be:
 
 * A means to hold Treasury ada securely and transparently, auditable at any time
 * A mechanism for releasing funds to vendors after set milestones
 * Safeguards to ensure no single entity can act alone when moving funds
 * Independent verification from any oversight body to allay concerns and build trust.
 
-As part of the changes to the budget process, a _smart contract working group_ was set up under the _budget committee_ to oversee the automation of treasury fund management with smart contracts. The solution was delivered through Intersect by IOG, SundaeLabs, and Xerberus. The implementation of smart contracts to automate treasury fund management satisfies Article 4, section 2 of the Cardano Constitution:
+As part of the changes to the budget process, a _smart contract working group_ was set up under the _budget committee_ to oversee the automation of treasury fund management with smart contracts. The solution was delivered through Intersect by IOG, SundaeLabs, and Xerberus. The implementation of smart contracts to automate treasury fund management satisfies Article 4, section 2 of the Cardano constitution:
 
 _“Development of Cardano Blockchain ecosystem budgets and the administration of such budgets shall utilize, to the extent possible and beneficial, smart contracts and other blockchain based tools to facilitate decision-making and ensure transparency.”_
 
