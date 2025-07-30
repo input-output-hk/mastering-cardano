@@ -1413,7 +1413,7 @@ lower barrier to entry for DApp development. The new Marlowe DApp starter
 kit (DSK), which will be maintained by the Marlowe Foundation(((Marlowe, Foundation))),
 will highlight these advancements and streamline onboarding for small and
 medium-sized businesses, developers, infrastructure providers, and stake pool
-operators(((SPOs))).
+operators(((stake pool, operator))).
 
 Once the intellectual property rights for Marlowe are moved from IO to
 the Marlowe Foundation, the Marlowe repositories will be moved to an
@@ -1436,7 +1436,7 @@ potential by implementing critical updates to its validator and tech
 stack, transforming the Marlowe Runtime, protocols, and contracts into
 competitive products. These updates will create new business
 opportunities by making Marlowe tools essential for small and medium
-businesses, developers, infrastructure providers, and stake pool operators(((SPOs)))
+businesses, developers, infrastructure providers, and stake pool operators(((stake pool, operator)))
 (SPOs). The Marlowe 2025 application targets the following areas:
 
 * Marlowe DApp starter kit
@@ -5127,7 +5127,7 @@ mainnet has not experienced any downtime. An event happened in January
 2023 that affected the functionality of around half of all Cardano
 nodes(((Cardano, node))). During this event, the network was still
 processing transactions, and within minutes, nodes started to recover
-by being manually restarted by stake pool operators(((SPOs))) or by
+by being manually restarted by stake pool operators(((stake pool, operator))) or by
 system management software. After the
 restart, the nodes that were down managed to continue growing the chain
 and producing blocks. The consensus algorithm worked, and the network
