@@ -371,7 +371,7 @@ The settlement and scripting layer also called the ledger layer(((ledger layer))
 the rules governing blockchain data. These rules govern transaction
 logic for ada and other Cardano native assets(((Cardano native assets))). The ledger layer has a
 multi-era ledger implementation(((multi-era ledger implementation))) derived from a set of formal
-specifications. These formal specifications(((formal specifications))) define the core Cardano
+specifications. These formal specifications(((formal specification))) define the core Cardano
 components of the ledger layer and the rules for their use. The
 https://github.com/IntersectMBO/cardano-ledger[Cardano ledger]
 repository lists all eras and provides the formal ledger specification
