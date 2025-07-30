@@ -333,7 +333,7 @@ simultaneous upgrades. Nevertheless, a hard fork still needs to be
 triggered, and the mechanism to do this will change from the
 genesis-key-based mechanism to the one defined in
 https://cips.cardano.org/cip/CIP-1694[CIP-1694]. The genesis key
-mechanism requires that 70% of all SPOs(((SPOs))) first upgrade to the new node
+mechanism requires that 70% of all SPOs(((stake pool, operator))) first upgrade to the new node
 version, and then a consensus of five out of seven genesis keys(((genesis, keys))) needs to
 be reached to trigger the hard fork. The genesis keys were distributed
 such that three belong to IO, two to Emurgo(((Emurgo))), and two to the Cardano
