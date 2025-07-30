@@ -372,7 +372,7 @@ Intersect forms temporary groups called working groups to address specific needs
 * Works under a specific committee but may collaborate with others
 * Reports their progress and findings to their overseeing committee(s).
 
-Intersect's *hard fork working group* was one of the busiest as it oversaw the Chang and Plomin upgrades. It began as just three attendees on the first call in February 2024. As the working group has met at least weekly, often more frequently, the attendee list has grown to over sixty. The group’s last call was almost a year later on Tuesday, February 11, 2025, fulfilling its remit to oversee all aspects of the Chang and Plomin hard forks(((Plomin hard forks))) to a successful conclusion.
+Intersect's *hard fork working group* was one of the busiest as it oversaw the Chang and Plomin upgrades. It began as just three attendees on the first call in February 2024. As the working group has met at least weekly, often more frequently, the attendee list has grown to over sixty. The group’s last call was almost a year later on Tuesday, February 11, 2025, fulfilling its remit to oversee all aspects of the Chang and Plomin hard forks(((hard fork, Plomin))) to a successful conclusion.
 
 To learn more, head over to the Intersect https://intersect.gitbook.io/intersect-working-groups/[working groups(((working groups)))] space for a complete list and further details.
 Committees are elected by Intersect members only, using a one-member, one-vote system. Elections take place twice yearly. Half of each committee’s members were elected in the first elections in October 2024, and the remaining members were elected in 2025. The official final numbers for newly elected committees were made up of a 'Who’s Who' of Cardano’s brains trust:
