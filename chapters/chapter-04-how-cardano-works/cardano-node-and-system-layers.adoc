@@ -326,7 +326,7 @@ compatible with the previous versions.
 
 The HFC(((HFC))) technology allows for the combination of two incompatible
 protocols into one, resulting in a sequential combination(((sequential combination))) of the two
-protocols(((protocols))). This enables Cardano to integrate blocks from all development
+protocols(((protocol))). This enables Cardano to integrate blocks from all development
 phases. Furthermore, the entire network(((network))) – comprising all connected
 Cardano nodes – can upgrade gradually, eliminating the need for
 simultaneous upgrades. Nevertheless, a hard fork still needs to be
