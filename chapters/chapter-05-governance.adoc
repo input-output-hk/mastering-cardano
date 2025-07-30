@@ -323,7 +323,7 @@ The PC is a subcommittee within the TSC that focuses on optimizing Cardano’s s
 * Technical parameters advisory group
 * Governance parameters advisory group.
 
-Membership in this technical group is by invitation only. However, anyone can submit suggestions for parameter changes(((parameter changes, suggestions))) on the Cardano Forum. The PC also participates in monthly calls with Cardano’s stake pool operators to share updates and answer questions.
+Membership in this technical group is by invitation only. However, anyone can submit suggestions for parameter changes(((parameter change, suggestions))) on the Cardano Forum. The PC also participates in monthly calls with Cardano’s stake pool operators to share updates and answer questions.
 
 Matthew Capps’ http://twitter.com/cryptstitution/status/1725745468821344432?s=46[X thread], _Protocol Change Proposal-001: Chronology of Documented Events_, provides insight into the careful consideration and deliberation involved in a parameter change(((parameter change))).
 
