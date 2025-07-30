@@ -131,7 +131,7 @@ transactions and blocks across the network, ensuring all nodes remain
 synchronized. This P2P communication(((P2P))) is vital for maintaining the
 network's decentralized nature.
 * _Consensus participation._ Cardano uses a
-proof-of-stake consensus mechanism(((proof-of-stake consensus mechanism))) called Ouroboros. The cardano-node
+proof-of-stake consensus mechanism(((proof-of-stake))) called Ouroboros. The cardano-node
 software enables nodes to participate in this consensus(((consensus))) process. Stake
 pool nodes, in particular, play a significant role in producing new
 blocks and validating transactions based on their stake in the network.
