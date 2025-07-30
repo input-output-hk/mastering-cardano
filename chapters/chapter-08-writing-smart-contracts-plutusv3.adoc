@@ -199,7 +199,7 @@ Cardano(((Cardano))) smart contract languages can be grouped into three categori
 ==== Native languages
 
 The Cardano node can only process native languages. Currently, there are
-two available: simple scripts(((simple scripts))) and Plutus(((Plutus))).
+two available: simple scripts(((simple script))) and Plutus(((Plutus))).
 
 The Shelley era(((era, Shelley))) introduced script addresses and
 https://developers.cardano.org/docs/get-started/cardano-cli/simple-scripts/[simple
