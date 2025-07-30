@@ -243,7 +243,7 @@ The second value used in the epoch nonce(((epoch, nonce))) is the hash of the la
 The epoch nonce, the absolute slot number, and the pool’s VRF secret key are then combined to generate a random output for each slot. This output is weighted by the pool’s stake relative to the total ada staked in the system. If the weighted value is below a certain threshold, the pool is permitted to create a block – winning the game of Limbo for that slot!
 
 ==== Security
-Security is maintained by ensuring only the pool operator knows when they will create a block. The pool’s VRF secret key(((VRF, secret key))) is used to determine leadership selection, while the VRF public key is published on the blockchain. This ensures that only the pool operator is aware of their block-making opportunity, while others can verify the VRF signature after the block is made. This process ensures fairness and prevents anyone else from predicting block creation, making it impossible for attackers to target a stake pool with a DDoS attack.
+Security is maintained by ensuring only the pool operator knows when they will create a block. The pool’s VRF secret key(((verifiable random function, secret key))) is used to determine leadership selection, while the VRF public key is published on the blockchain. This ensures that only the pool operator is aware of their block-making opportunity, while others can verify the VRF signature after the block is made. This process ensures fairness and prevents anyone else from predicting block creation, making it impossible for attackers to target a stake pool with a DDoS attack.
 
 === Slot battles, height battles, forkers, and propagation
 
