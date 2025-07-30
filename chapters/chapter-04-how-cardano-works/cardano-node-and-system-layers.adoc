@@ -284,7 +284,7 @@ An important task of the consensus layer is _selecting slot leaders(((selecting 
 proof-of-work(((proof-of-work))) blockchains, any node can produce a block at any time,
 provided that they have sufficient hashing power(((hashing power))). By contrast, in proof
 of stake(((stake))), time is divided into slots, and each slot has a number of
-designated slot leaders(((slot leaders))) who can produce blocks in that slot. It is the
+designated slot leaders(((slot leader))) who can produce blocks in that slot. It is the
 responsibility of the consensus protocol(((consensus protocol))) to decide to assign slot
 leaders to slots(((slots))). Further explanations can be found in the
 proof-of-stake and Ouroboros(((Ouroboros))) sections.
