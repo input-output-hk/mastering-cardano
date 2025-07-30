@@ -1792,7 +1792,7 @@ Cardano CLI(((Cardano, CLI))) or an off-chain code library to check whether a tr
 be validated before on-chain execution. If the transaction is valid, it will be
 processed on the network, given that all UTXO inputs are present and the
 processing time falls within the transaction's validity interval. In case these
-conditions are not met, the transaction will fail without charging the user any fees, unlike in Ethereum, where users must pay gas fees(((gas fees))) for transactions
+conditions are not met, the transaction will fail without charging the user any fees, unlike in Ethereum, where users must pay gas fees(((gas fee))) for transactions
 that can ultimately fail. We say that transactions on Cardano are deterministic.
 This does not mean
 we know for sure if a transaction will be processed because a UTXO input might
