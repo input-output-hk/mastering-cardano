@@ -10,7 +10,7 @@ Decentralized Applications(((decentralized application))) (DApps) aim to empower
 
 === Traditional web application architecture
 
-To be able to appreciate the novelty that decentralized applications bring, we first provide an overview of traditional web applications(((web application))). <<fig-tradweb>> depicts an abstract overview of traditional web application interaction.
+To be able to appreciate the novelty that decentralized applications bring, we first provide an overview of traditional web applications. <<fig-tradweb>> depicts an abstract overview of traditional web application interaction.
 
 [[fig-tradweb]]
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
