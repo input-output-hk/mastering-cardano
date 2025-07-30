@@ -30,7 +30,7 @@ Every CIP has the following format:
 
 The concept is developed as a written proposal and submitted as a pull request to the CIP repository after initial discussion and feedback. The CIP editors then publicly process the updated draft CIP as follows:
 
-image::../images/5.1_cip_workflow.png[]
+image::5.1_cip_workflow.png[]
 
 *Figure 5.1:* CIP workflow from CIP-0001
 
