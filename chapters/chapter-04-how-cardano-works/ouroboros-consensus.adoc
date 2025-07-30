@@ -97,7 +97,7 @@ often prioritizing those with higher transaction fees.
 image::ouroboros_mempool.png[Each validator (miner/SPO) has its own mempool]
 
 Network participants (miners) [in Cardano — stake pool operators (SPOs)] independently assemble candidate blocks from their mempool
-and _compete_ to solve a cryptographic puzzle (proof of work) [in Cardano — proof of stake(((proof of stake)))].
+and _compete_ to solve a cryptographic puzzle (proof of work) [in Cardano — proof of stake(((proof-of-stake)))].
 The first miner to find a valid solution broadcasts the block to the rest of the network.
 
 Once verified, the new block is appended to each node’s local copy of the blockchain,
