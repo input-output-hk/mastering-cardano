@@ -151,7 +151,7 @@ Cardano stake pool operators set two types of fees:
 
 As an open protocol, Cardano allows anyone to create and operate a stake pool using the free and open-source software(((free and open-source software))) (FOSS) – `cardano-node` and `cardano-cli`. However, it is essential for stake pool operators to possess the technical expertise required to operate a pool reliably and securely. While the requirements outlined in this section are not authoritative, they are generally recognized as critical for successful stake pool operation.
 
-It is also important to note that many community-made tools(((tool, community-made))) and scripts are available, which significantly lower the technical barrier to entry for operating a stake pool. These tools assist with operational tasks but are not a substitute for the necessary technical knowledge or skills required for effective stake pool management.
+It is also important to note that many community-made tools and scripts are available, which significantly lower the technical barrier to entry for operating a stake pool. These tools assist with operational tasks but are not a substitute for the necessary technical knowledge or skills required for effective stake pool management.
 
 ==== Linux
 
