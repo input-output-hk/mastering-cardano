@@ -381,7 +381,7 @@ ledger specification] repository will eventually replace it. Some
 practical ledger explanations can also be found in the
 https://cardano-ledger.readthedocs.io/en/latest/[Cardano ledger docs].
 
-The ledger layer is stateless and consists exclusively of pure functions(((pure functions)))
+The ledger layer is stateless and consists exclusively of pure functions(((pure function)))
 that define how the ledger is updated with each new block. These
 functions are derived from the formal ledger rules(((ledger rules))) using the extended
 UTXO accounting model. The scripting layer(((scripting layer))) handles rules for smart
