@@ -52,7 +52,7 @@ Cardano cryptographic keys are made up of ed25519 key pairs(((ed25519, key pairs
 
 ==== Wallet keys
 
-`root.skey` -  the most sensitive private key of any wallet. An attacker can use this key to derive the Cardano wallet payment.skey and stake.skey. In case of a hardware wallet(((hardware, wallet))) malfunction, the wallet’s 12 or 24 word seed phrase can be converted to a root.skey. The payment and stake keys can be recovered by using the CLI and root.skey. A root.skey can thus not only be used to generate private keys for Cardano, but also for other blockchains such as Bitcoin.
+`root.skey` -  the most sensitive private key of any wallet. An attacker can use this key to derive the Cardano wallet payment.skey and stake.skey. In case of a hardware wallet(((hardware wallet))) malfunction, the wallet’s 12 or 24 word seed phrase can be converted to a root.skey. The payment and stake keys can be recovered by using the CLI and root.skey. A root.skey can thus not only be used to generate private keys for Cardano, but also for other blockchains such as Bitcoin.
 
 `payment.skey` - a highly sensitive Cardano payment address(((address, payment))) private signing key file. This file provides access to tokens in the payment address and should be kept safe at all times.
 
