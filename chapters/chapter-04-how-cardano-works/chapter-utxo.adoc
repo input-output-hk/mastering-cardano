@@ -335,7 +335,7 @@ The composability(((composability))) of smart contracts(((smart contract))) in t
 
 As discussed earlier, one example is the ability to combine atomic swaps(((atomic swap))) into a single transaction.
 
-Another example is _flash loans_. A flash loan(((flash loan))) is a loan taken out and repaid within the same transaction. On Ethereum(((Ethereum))), the popular decentralized exchange (DEX) Uniswap(((Uniswap))) offers flash loans(((flash loans))) as a special feature that required explicit implementation in its smart contract code.
+Another example is _flash loans_. A flash loan(((flash loan))) is a loan taken out and repaid within the same transaction. On Ethereum(((Ethereum))), the popular decentralized exchange (DEX) Uniswap(((Uniswap))) offers flash loans as a special feature that required explicit implementation in its smart contract code.
 
 Our simple atomic-swap script enables flash loans ‘out of the box’, without the need for explicit implementation.
 
