@@ -1,3 +1,5 @@
+:imagesdir: ../images
+
 [[chapter5-cardano-governance]]
 == Cardano governance
 
