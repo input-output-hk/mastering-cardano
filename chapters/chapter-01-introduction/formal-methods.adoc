@@ -166,7 +166,7 @@ Haskell is the programming language of choice for building the core
 Cardano node (((Cardano node))), including networking, consensus, and ledger
 components. It is functional, has a strong typing system, and has been
 around for several decades, boasting a dedicated user and maintainer
-base. In fact, prior to using proof assistants(((proof assistants))) for specification,
+base. In fact, prior to using proof assistants(((proof assistant))) for specification,
 Haskell(((Haskell))) was the language for writing both the specification and the
 implementation, with the difference between the two being the level of
 optimization.
