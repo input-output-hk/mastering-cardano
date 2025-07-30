@@ -463,7 +463,7 @@ CIP-1694 defines seven categories of governance actions(((governance actions, ca
 3. Updates to the constitution: proposes a change to the off-chain constitution, recorded as an on-chain hash of the text document.
 4. Hard fork initiation: triggers a non-backward compatible upgrade of the network.
 5. Protocol parameter changes: proposes a change to one or more updatable protocol parameters.
-6. Treasury withdrawals(((treasury, withdrawals))): proposals for how to spend funds from the Cardano treasury.
+6. Treasury withdrawals(((treasury, withdrawal))): proposals for how to spend funds from the Cardano treasury.
 7. Info: simply provide information and don’t require enactment.
 
 Governance actions vary in complexity. Info Actions and Treasury Withdrawals are relatively straightforward, but Constitutional updates require metadata, a constitution hash, a URL, and a proposal policy script. Protocol Parameter Changes(((protocol parameters, changes))) and Hard Fork Initiation are non-trivial to implement, requiring technical expertise. To demystify some of the processes, the CF published https://cardanofoundation.org/blog/understanding-cardano-governance-actions[flow charts] to encourage wider participation.
