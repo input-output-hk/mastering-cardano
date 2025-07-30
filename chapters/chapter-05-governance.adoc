@@ -520,7 +520,7 @@ SanchoNet(((SanchoNet))) goes beyond simple testing. It also serves as a platfor
 * Engaging stakeholders: encouraging community participation and feedback on the evolving governance features
 * Building a collaborative future: as SanchoNet matured, it became a space where ideas became reality, contributions shaped the ecosystem, and fully decentralized decision-making took root.
 
-SanchoNet has proven itself robust to adversarial behavior. Mike Hornan of Able Pool SPO orchestrated a sustained community-driven stress test on SanchoNet, ensuring the network has the required resilience to handle thousands of governance actions concurrently(((thousands of governance actions concurrently))).
+SanchoNet has proven itself robust to adversarial behavior. Mike Hornan of Able Pool SPO orchestrated a sustained community-driven stress test on SanchoNet, ensuring the network has the required resilience to handle thousands of governance actions concurrently.
 
 === Governance tools
 
