@@ -387,7 +387,7 @@ functions are derived from the formal ledger rules(((ledger rules))) using the e
 UTXO accounting model. The scripting layer(((scripting layer))) handles rules for smart
 contract logic, such as spending, minting, staking, and certification
 script logic. Transaction logic not involving smart contracts is managed
-by the settlement layer(((settlement layer))), which also provides
+by the settlement layer(((settlement and scripting layer))), which also provides
 https://developers.cardano.org/docs/get-started/cardano-cli/simple-scripts/[simple
 scripts] – a basic smart contract language that enables multi-signature
 addresses and time locks(((time locks))). An overview of Cardano smart contract
