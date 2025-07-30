@@ -175,7 +175,7 @@ protocol:
 * The *Mithril client,* both a library and a node, retrieves artifacts (e.g.
 a Merkle proof(((Merkle proof))) or an archive file) and verifies that they are genuinely
 signed by a Mithril multi-signature(((Mithril, multi-signature))). The node version runs in a
-WASM-compatible browser(((WASM-compatible, browser))) or as a standalone binary with a command-line
+WASM-compatible browser or as a standalone binary with a command-line
 interface.
 
 *Certified data types and their use cases*
