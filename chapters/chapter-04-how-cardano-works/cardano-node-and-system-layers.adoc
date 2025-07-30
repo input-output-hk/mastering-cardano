@@ -302,7 +302,7 @@ adopted.
 
 The consensus layer was designed not only to perform the above-mentioned
 tasks, but also to emphasize the _compositionality_, making it usable
-with many different consensus algorithms(((consensus algorithms))) and ledgers. This enables the
+with many different consensus algorithms(((consensus algorithm))) and ledgers. This enables the
 _hard fork combinator (HFC)_ technology that allows combining multiple
 ledgers and regard them as a single blockchain(((single blockchain))). Because of the hard fork
 combinator, a new node version designed for the latest ledger era(((ledger era))) also
