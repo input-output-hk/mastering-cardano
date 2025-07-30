@@ -13,7 +13,7 @@ with high security and decentralization (see the <<Mithril security (advanced)>>
 section). While the Cardano blockchain offers robust security, starting
 a new node(((node))), syncing it with the network, or exchanging data can be slow
 and resource intensive – requiring 24GB of RAM, 150GB (and growing) of
-storage, and over 24 hours for initial synchronization(((synchronization))). Mithril,
+storage, and over 24 hours for initial synchronization. Mithril,
 developed for Cardano as part of the Basho development phase(((Basho, development phase))), focuses on
 optimization, scalability, and interoperability(((interoperability))). Practical use cases for
 Mithril include data synchronization(((data, synchronization))) for light and full-node wallets and
