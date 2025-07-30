@@ -129,7 +129,7 @@ Bitcoin uses proof of work, and Cardano uses proof of stake, or more precisely, 
 In proof of work, the network participants (miners) _compete_ with each other to find a 'magic number' (nonce) that makes the block fulfill a rule (complexity).
 So proof of work is like a _race_ where all the _miners_ have to jump through hoops to be rewarded.
 
-Proof of work(((proof of work))) is then like a hurdle race, where there is only one winner.
+Proof of work(((proof-of-work))) is then like a hurdle race, where there is only one winner.
 
 
 ===== What is the 'race' about?
