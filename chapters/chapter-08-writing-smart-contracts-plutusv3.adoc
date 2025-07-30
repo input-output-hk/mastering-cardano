@@ -522,7 +522,7 @@ Additionally, there exists another currency within the World Mobile
 ecosystem – Earth node non-fungible token (ENNFT). ENNFTs are created
 using Cardano's native token functionality and are issued to Earth node
 owners who locked 100,000 WMT to a smart contract before January 4,
-2023. These NFTs(((NFTs))) provide monthly rewards; each month, Earth node owners
+2023. These NFTs(((NFT))) provide monthly rewards; each month, Earth node owners
 receive 1,300 WMT (1.3%) for maintaining their node.
 
 *Cardano within the WMT sharing economy model*
@@ -4958,7 +4958,7 @@ asset creation. From the
 https://iohk.io/en/blog/posts/2025/05/09/native-tokens-in-the-extended-utxo-model/[IO
 blog on native tokens] we get the following use cases for native tokens:
 
-* Digital collectibles and credentials. NFTs(((NFTs))) can represent ownership of digital
+* Digital collectibles and credentials. NFTs(((NFT))) can represent ownership of digital
 art, in-game assets, event tickets, or even academic credentials – benefiting
 from the security and transparency of the Cardano ledger.
 * Supply chain and asset tracking. Tokens can represent physical items and track
