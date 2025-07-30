@@ -57,7 +57,7 @@ The Cardano node IPC protocols are best described as protocol suites(((protocol,
 
 ===== Node-to-node (NtN) IPC
 
-The NtN IPC is responsible for transferring transactions, block header transfers, and fetching blocks between TCP connected nodes. This IPC uses the following mini protocols(((mini, protocols))):
+The NtN IPC is responsible for transferring transactions, block header transfers, and fetching blocks between TCP connected nodes. This IPC uses the following mini protocols(((mini-protocols))):
 
 * *chain-sync*
 * *block-fetch*
