@@ -38,7 +38,7 @@ Each type of wallet has unique features, advantages, and considerations. Your ch
 
 ==== Hardware wallets
 
-Hardware wallets(((hardware wallets))) are physical devices that store users’ private keys securely offline. They connect to a computer via USB ports and are designed to provide the highest level of security for digital assets. By keeping private keys offline, hardware wallets protect cryptocurrencies and digital assets from online hacking attempts, malware, and other cyber threats.
+Hardware wallets(((hardware wallet))) are physical devices that store users’ private keys securely offline. They connect to a computer via USB ports and are designed to provide the highest level of security for digital assets. By keeping private keys offline, hardware wallets protect cryptocurrencies and digital assets from online hacking attempts, malware, and other cyber threats.
 
 These wallets strike an excellent balance between security and usability, making them particularly well-suited for long-term investors or individuals with substantial digital asset holdings. While considerations such as cost and potential risks of physical loss exist, the security benefits of keeping private keys offline often outweigh these drawbacks.
 
