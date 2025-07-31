@@ -628,10 +628,7 @@ current-kes-period = (4492800+(CurrentTime-1596059091))/129600
 printf '%(%s)T\n' -1
 ----
 
-Some noteworthy Cardano community members have developed fully parameterized methods to calculate the current KES period for any given network, such as https://github.com/gitmachtl/scripts/blob/master/cardano/mainnet/0x_showCurrentEpochKES.sh[this one]. Their contributions are invaluable.
-
 *You must generate a new KES key pair and a new `operational certificate` before the end of the validity period, which lasts exactly 62 KES periods*. Your block-producing node will need to be restarted using a new `kes.sk` and a new `operational certificate`. This process is called `KES rotation`. *One period corresponds to 1.5 days. That is why KES rotation must occur every 93 days at most.* However, you can perform this rotation earlier if it is more convenient.
-
 
 In the example above using `--kes-period 694` , the `operational certificate(((operational certificate)))` will certify that the `kes.sk` is valid until the network reaches the `kes-period 756`.
 
