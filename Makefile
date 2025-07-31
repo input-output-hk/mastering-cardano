@@ -5,7 +5,6 @@ all: epub pdf
 
 epub:
 	bundle exec asciidoctor-epub3 \
-		-r asciidoctor-diagram \
 		-a imagesdir=images \
 		-a rouge-style=github \
 		--failure-level WARN \
@@ -14,7 +13,6 @@ epub:
 
 pdf:
 	bundle exec asciidoctor-pdf \
-		-r asciidoctor-diagram \
 		-r ./theme/custom-highlight.rb \
 		-a rouge-style=custom-highlight \
 		-a imagesdir=images \

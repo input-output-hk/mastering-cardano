@@ -1,2 +1,4 @@
 /dist
 act.sh
+.envrc
+GEMINI.md
