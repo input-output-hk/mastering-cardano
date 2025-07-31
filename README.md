@@ -1,4 +1,4 @@
-# **Mastering Cardano: An Open-Source Guide to the Cardano Ecosystem**
+# **Mastering Cardano: An open-source guide to the Cardano ecosystem**
 
 ![Mastering Cardano Cover](images/cover.png)
 
@@ -12,7 +12,7 @@ Welcome to **Mastering Cardano**, a comprehensive, open-source book dedicated to
 
 "Mastering Cardano" provides a thorough exploration of the Cardano blockchain, from its foundational principles to the intricacies of smart contract development and decentralized governance. The book is structured to cater to a wide audience, including developers, stake pool operators, students, and enthusiasts.
 
-### **Table of Contents**
+### **Table of contents**
 
 1. **Introduction**: A primer on blockchain technology, smart contracts, and the foundational concepts of Cardano.
 2. **Cryptography**: An overview of the cryptographic principles that secure the Cardano network.
@@ -25,7 +25,7 @@ Welcome to **Mastering Cardano**, a comprehensive, open-source book dedicated to
 9. **Decentralized Applications (DApps)**: An introduction to building and interacting with DApps on Cardano.
 10. **Looking Forward**: A glimpse into the future of Cardano, including scaling solutions like Hydra and Mithril.
 
-## **How to Use This Book**
+## **How to use this book**
 
 "Mastering Cardano" is designed to be flexible. You can read it from start to finish or follow one of the suggested reading paths tailored to your interests:
 
@@ -35,7 +35,7 @@ Welcome to **Mastering Cardano**, a comprehensive, open-source book dedicated to
 * **Stake Pool Operator Path**: For those interested in running and maintaining a stake pool.
 * **Cardano Governance and Future Path**: For readers interested in the long-term vision and governance of Cardano.
 
-## **Building the Book**
+## **Building the book**
 
 This book is written in AsciiDoc. To build your own PDF and EPUB versions from the source, please follow these steps.
 
@@ -44,9 +44,9 @@ This book is written in AsciiDoc. To build your own PDF and EPUB versions from t
 * **Ruby and Bundler**: The build process relies on Ruby and Bundler. Please ensure you have a recent version of Ruby installed.
 * **Graphviz**: Required for rendering diagrams in the book.
 
-### **Build Instructions**
+### **Build instructions**
 
-1. **Clone the Repository**:
+1. **Clone the repository**:
    ```
    git clone https://github.com/input-output-hk/mastering-cardano.git
    cd mastering-cardano
@@ -79,7 +79,7 @@ The generated files will be placed in the `dist/` directory.
 
 To contribute, please fork the repository and submit a pull request with your proposed changes. For more significant changes, we recommend opening an issue first to discuss your ideas with the community.
 
-## **About the Authors**
+## **About the authors**
 
 "Mastering Cardano" is authored by **Dr. Lars Brünjes**, Director of Education at IO, and **Prof. Joshua Ellul**, Director of the Centre for DLT at the University of Malta, with contributions from numerous experts and community members. This book is a testament to the collaborative and open-source spirit of the Cardano ecosystem.
 
