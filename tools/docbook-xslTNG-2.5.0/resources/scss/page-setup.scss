@@ -1,0 +1,356 @@
+/* ************************************************************
+
+There are four things to consider:
+
+1. Page size
+
+   Layouts for A4, A5, and (US) Letter are provided.
+
+2. Page style
+
+   In "article" style, page margins are uniform and every page
+   has the same headers and footers. In "book" style, the page
+   margins shift on recto/verso pages to account for the gutter
+   and the headers and footers vary on recto/verso pages.
+
+3. Draft mode
+
+   In draft mode, a "draft" watermark is added to each page.
+
+4. Landscape mode
+
+   In landscape mode, pages are rotated 90 degrees. Pages
+   are portrait unless landscape is requested.
+
+************************************************************ */
+
+:root {
+    --margin-inner: 1in;
+    --margin-outer: 1in;
+    --margin-above: 1in;
+    --margin-below: 1in;
+    font-size: var(--default-font-size);
+    line-height: var(--default-line-height);
+}
+
+html.article-style.A4 {
+    --margin-inner: 2.5cm;
+    --margin-outer: 2.5cm;
+}
+
+html.article-style.A5 {
+    --margin-inner: 1.9cm;
+    --margin-outer: 1.9cm;
+}
+
+html.article-style.Letter {
+    --margin-inner: 1.0in;
+    --margin-outer: 1.0in;
+}
+
+html.book-style.A4 {
+    --margin-inner: 2.8cm;
+    --margin-outer: 2.5cm;
+}
+
+html.book-style.A5 {
+    --margin-inner: 2.2cm;
+    --margin-outer: 1.9cm;
+}
+
+html.book-style.Letter {
+    --margin-inner: 1.25in;
+    --margin-outer: 1.0in;
+}
+
+@page {
+    margin-top: var(--margin-above);
+    margin-bottom: var(--margin-below);
+    /* n.b. both --margin-outer so that pages are centered by default */
+    margin-left: var(--margin-outer);
+    margin-right: var(--margin-outer);
+    counter-reset: footnote;
+    @top-left {
+        content: "";
+    }
+    @top-center {
+        content: "";
+    }
+    @top-right {
+        content: "";
+    }
+    @bottom-left {
+        content: "";
+    }
+    @bottom-center {
+        content: "";
+    }
+    @bottom-right {
+        content: "";
+    }
+    @footnote {
+        float: bottom page;
+        border-top: thin solid black;
+        border-length: 30%;
+        padding-top: 0.5em;
+    }
+}
+
+@mixin draft-right {
+    background-image: url('draft-right.svg');
+    background-position: calc(100% - 0.5cm) 0.5cm;
+    background-repeat: no-repeat;
+    background-size: 2.5cm;
+    background-origin: border-box;
+    background-clip: border-box;
+}
+
+@mixin draft-left {
+    background-image: url('draft-left.svg');
+    background-position: 0.5cm 0.5cm;
+    background-repeat: no-repeat;
+    background-size: 2.5cm;
+    background-origin: border-box;
+    background-clip: border-box;
+}
+
+@mixin article-page-margin-boxes {
+    @top-center {
+        content: string(DocumentTitle);
+    }
+    @bottom-center {
+        content: counter(page);
+    }
+}
+
+@mixin article-page-margin-boxes-first {
+    @top-center {
+        content: "";
+    }
+    @bottom-center {
+        content: counter(page);
+    }
+}
+
+/* The default page margin boxes are bank */
+@mixin article-page-margin-boxes-blank {
+}
+
+@each $pagesize in [A4, A5, Letter] {
+    @each $orient in [portrait, landscape] {
+        @each $draft in [final, draft] {
+            $dlabel: "";
+            @if ($draft == "draft") {
+                $dlabel: "-draft";
+            }
+
+            @page #{$pagesize}-article-flow-#{$orient}#{$dlabel} {
+                @if ($orient == "landscape") {
+                    size: $pagesize landscape;
+                } @else {
+                    size: $pagesize;
+                }
+                @if ($draft == draft) {
+                    @include draft-right;
+                }
+                @include article-page-margin-boxes;
+            }
+
+            @page #{$pagesize}-article-flow-#{$orient}#{$dlabel}:first {
+                @if ($orient == "landscape") {
+                    size: $pagesize landscape;
+                } @else {
+                    size: $pagesize;
+                }
+                @if ($draft == draft) {
+                    @include draft-right;
+                }
+                @include article-page-margin-boxes;
+            }
+
+            @page #{$pagesize}-article-flow-#{$orient}#{$dlabel}:blank {
+                @if ($orient == "landscape") {
+                    size: $pagesize landscape;
+                } @else {
+                    size: $pagesize;
+                }
+                @if ($draft == draft) {
+                    @include draft-right;
+                }
+                @include article-page-margin-boxes-blank;
+            }
+        }
+    }
+}
+
+@mixin book-page-recto {
+    margin-left: var(--margin-inner);
+    margin-right: var(--margin-outer);
+    @top-center {
+        content: string(SectionTitle);
+    }
+    @bottom-right {
+        content: counter(page);
+    }
+}
+
+@mixin book-page-recto-first {
+    margin-left: var(--margin-inner);
+    margin-right: var(--margin-outer);
+    @bottom-right {
+        content: counter(page);
+    }
+}
+
+@mixin book-page-recto-blank {
+    margin-left: var(--margin-inner);
+    margin-right: var(--margin-outer);
+    @bottom-right {
+        content: counter(page);
+    }
+}
+
+@mixin book-page-verso {
+    margin-left: var(--margin-outer);
+    margin-right: var(--margin-inner);
+    @top-center {
+        content: string(ComponentTitle);
+    }
+    @bottom-left {
+        content: counter(page);
+    }
+}
+
+@mixin book-page-verso-first {
+    margin-left: var(--margin-outer);
+    margin-right: var(--margin-inner);
+    @bottom-left {
+        content: counter(page);
+    }
+}
+
+@mixin book-page-verso-blank {
+    margin-left: var(--margin-outer);
+    margin-right: var(--margin-inner);
+    @bottom-left {
+        content: counter(page);
+    }
+}
+
+@each $pagesize in [A4, A5, Letter] {
+    @each $orient in [portrait, landscape] {
+        @each $draft in [final, draft] {
+            $dlabel: "";
+            @if ($draft == "draft") {
+                $dlabel: "-draft";
+            }
+
+            @page #{$pagesize}-book-title-flow-#{$orient}#{$dlabel} {
+                @if ($orient == "landscape") {
+                    size: $pagesize landscape;
+                } @else {
+                    size: $pagesize;
+                }
+                @if ($draft == draft) {
+                    @include draft-right;
+                }
+            }
+
+            @page #{$pagesize}-book-flow-#{$orient}#{$dlabel}:right {
+                @if ($orient == "landscape") {
+                    size: $pagesize landscape;
+                } @else {
+                    size: $pagesize;
+                }
+                @if ($draft == "draft") {
+                    @include draft-right;
+                }
+                @include book-page-recto;
+            }
+
+            @page #{$pagesize}-book-flow-#{$orient}#{$dlabel}:right:first {
+                @if ($orient == "landscape") {
+                    size: $pagesize landscape;
+                } @else {
+                    size: $pagesize;
+                }
+                @if ($draft == "draft") {
+                    @include draft-right;
+                }
+                @include book-page-recto-first;
+            }
+
+            @page #{$pagesize}-book-flow-#{$orient}#{$dlabel}:right:blank {
+                @if ($orient == "landscape") {
+                    size: $pagesize landscape;
+                } @else {
+                    size: $pagesize;
+                }
+                @if ($draft == "draft") {
+                    @include draft-right;
+                }
+                @include book-page-recto-blank;
+            }
+
+            @page #{$pagesize}-book-flow-#{$orient}#{$dlabel}:left {
+                @if ($orient == "landscape") {
+                    size: $pagesize landscape;
+                } @else {
+                    size: $pagesize;
+                }
+                @if ($draft == "draft") {
+                    @include draft-left;
+                }
+                @include book-page-verso;
+            }
+
+            @page #{$pagesize}-book-flow-#{$orient}#{$dlabel}:left:first {
+                @if ($orient == "landscape") {
+                    size: $pagesize landscape;
+                } @else {
+                    size: $pagesize;
+                }
+                @if ($draft == "draft") {
+                    @include draft-left;
+                }
+                @include book-page-verso-first;
+            }
+
+            @page #{$pagesize}-book-flow-#{$orient}#{$dlabel}:left:blank {
+                @if ($orient == "landscape") {
+                    size: $pagesize landscape;
+                } @else {
+                    size: $pagesize;
+                }
+                @if ($draft == "draft") {
+                    @include draft-left;
+                }
+                @include book-page-verso-blank;
+            }
+        }
+    }
+}
+
+@each $pagesize in [A4, A5, Letter] {
+    html.article-style.#{$pagesize} body {
+    }
+
+    html.book-style.#{$pagesize} body {
+    }
+
+    html.book-style.#{$pagesize} body .list-of-titles {
+        counter-reset: page;
+    }
+
+    html.book-style.#{$pagesize} body .division,
+    html.book-style.#{$pagesize} body .component,
+    html.book-style.#{$pagesize} body .list-of-titles {
+        break-before: right;
+    }
+}
+
+/* ============================================================ */
+
+html.article-style .list-of-titles div .title {
+    string-set: ComponentTitle content()
+}

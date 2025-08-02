@@ -1,0 +1,221 @@
+:root {
+    --background-color: inherit;
+    hyphens: auto;
+    --default-font-size: 11pt;
+}
+
+/* This comes after the orientation configuration. It establishes
+   a "title flow" for books before the first component. */
+@each $pagesize in [A4, A5, Letter] {
+    html.book-style.#{$pagesize} body {
+        page: #{$pagesize}-book-title-flow;
+    }
+    html.book-style.#{$pagesize} body.landscape {
+        page: #{$pagesize}-book-title-flow-landscape;
+    }
+    html.book-style.#{$pagesize} body.draft {
+        page: #{$pagesize}-book-title-flow-portrait-draft;
+    }
+    html.book-style.#{$pagesize} body.draft.landscape {
+        page: #{$pagesize}-book-title-flow-landscape-draft;
+    }
+}
+
+body {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.book > header {
+    padding: 0;
+    border: inherit;
+}
+
+.division > header > h1 {
+    string-set: DocumentTitle content(),
+                DivisionTitle content(),
+                ComponentTitle "",
+                SectionTitle "";
+}
+
+.component > header > h1 {
+    string-set: DocumentTitle content(),
+                DivisionTitle content(),
+                ComponentTitle content(),
+                SectionTitle "";
+}
+
+.division > header > h2 {
+    string-set: DivisionTitle content(),
+                ComponentTitle "",
+                SectionTitle "";
+}
+
+.component > header > h2 {
+    string-set: ComponentTitle content(),
+                SectionTitle "";
+}
+
+.section > header > h1,
+.section > header > h2,
+.section > header > h3 {
+    string-set: SectionTitle content();
+}
+
+.page-break-avoid {
+    page-break-inside: avoid;
+}
+
+h1 {
+    bookmark-level: 1;
+    bookmark-state: closed;
+}
+
+h2 {
+    bookmark-level: 2;
+    bookmark-state: closed;
+}
+
+.article > header > h2 {
+    bookmark-level: none;
+}
+
+header {
+}
+
+.verbatim {
+    hyphens: none;
+}
+
+.example header {
+    page-break-before: avoid;
+}
+
+.book .lot {
+    margin-top: 1em;
+}
+
+.part .list-of-titles {
+    display: none;
+}
+
+.toc a::after {
+    content: leader(dotted) " " target-counter(attr(href url), page);
+}
+
+.footnote {
+    float: footnote;
+    margin-left: 0.75rem;
+    font-size: 1rem;
+    font-weight: normal;
+    font-family: var(--body-family);
+}
+
+.table-footnotes {
+    padding-top: 0.25rem;
+}
+
+.table-footnotes .footnote {
+    float: none;
+    text-indent: -0.75rem;
+    margin-left: 0.75rem;
+}
+
+.indexref::before {
+    content: target-counter(attr(href url), page);
+}
+
+details {
+    display: none;
+}
+
+a, a:visited {
+    text-decoration: none;
+}
+
+.error * {
+    background-color: inherit;
+    color: inherit;
+    padding: inherit;
+}
+
+span.error {
+    display: inline;
+    border: none;
+    padding: inherit;
+    margin: inherit;
+}
+
+span.error::before {
+    content: none;
+}
+
+span.error::after {
+    content: none;
+}
+
+span.error.broken-link::after {
+    content: none;
+}
+
+.annotations {
+    border-top: none;
+    page-break-before: always;
+}
+
+.xlink-arc-list {
+    font-style: normal;
+}
+
+.xlink-arc-delim {
+    display: inline;
+}
+
+.admonition {
+    background-color: inherit;
+} 
+
+.admonition .icon {
+    color: inherit;
+}    
+
+.admonition .icon {
+    padding-top: 3.5rem;
+}
+
+.division body > header .copyright {
+    float: bottom;
+}
+
+.article > header .abstract {
+    margin-left: 1em;
+    margin-right: 1em;
+    font-style: italic;
+    border: none;
+}
+
+/* Work around bug in AntennaHouse V7.0 MR2 for MacOSX */
+span.footnote p {
+    margin-bottom: 0pt;
+}
+
+/* ============================================================ */
+
+.book-style .component > header {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.book-style .component > header h1,
+.book-style .component > header h2,
+.book-style .component > header h3 {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* xref with pagenumber ====================================== */
+
+.xref-pagenum::after {
+    content: target-counter(attr(href), page);
+    font-style:normal;
+}

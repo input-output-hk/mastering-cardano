@@ -1,0 +1,95 @@
+/* This provides CSS support for the in-page ToC */
+
+html.js {
+    .pagetoc {
+        position: fixed;
+        top: 3rem;
+        right: 1em;
+        width: 18rem;
+        font-size: 95%;
+
+        height: calc(100% - 5em);
+        overflow: hidden;
+    }
+
+    .pagetoc .toggle {
+        cursor: pointer;
+    }
+    
+    .pagetoc a {
+        text-decoration: none;
+    }
+
+    .tocwrapper {
+        border-left: 1px solid #aaaaaa;
+        padding-left: 0.25rem;
+        line-height: 1.5;
+    }
+
+    .pagetoc .ctrl {
+        position: fixed;
+        right: 1em;
+        z-index: 2;
+        opacity: 1;
+        height: 0;
+    }
+
+    .tocwrapper {
+        .li::before {
+            display: inline-block;
+            content: " ";
+            width: 0.75rem;
+            text-indent: 0;
+        }
+
+        .li.active::before {
+            content: "•";
+            text-indent: 0;
+        }
+
+        .li {
+            color: var(--primary-variant-color);
+            margin-left: 1.5rem;
+            text-indent: -1.5rem;
+            margin-top: 0.25rem;
+        }
+
+        .li.active {
+            color: var(--on-secondary-color);
+        }
+
+        .depth1 {
+            padding-left: 1.5rem;
+        }
+
+        .depth2 {
+            padding-left: 2.5rem;
+        }
+        
+        .depth3 {
+            padding-left: 3.5rem;
+            font-size: 80%;
+        }
+
+        .depth4 {
+            padding-left: 4.0rem;
+            font-size: 80%;
+        }
+
+        .depth5 {
+            padding-left: 4.5rem;
+            font-size: 80%;
+        }
+
+        .depth6 {
+            padding-left: 5.0rem;
+            font-size: 80%;
+        }
+    }
+
+    @media screen and (max-width: 82rem) {
+        .pagetoc {
+            display: none;
+        }
+    }
+}
