@@ -16,7 +16,7 @@ While _Mastering Cardano_ is structured to provide you with a comprehensive and 
 Think of these paths as curated journeys designed to help you quickly hone in on the information most relevant to your specific interests. You can choose to read _Mastering Cardano_ cover-to-cover, or you can jump directly to the chapters and sections that you are most interested in and that will accelerate your learning in a particular area.
 
 [[preface-howtonavigate]]
-=== How to navigtate this book
+=== How to navigate this book
 
 Before you dive into the chapters, take a moment to review the available reading paths. Each path will suggest a sequence of chapters and sections, along with a brief description of what you'll learn. You might find a path that perfectly aligns with your current goals, or perhaps one that helps you discover new areas of interest within Cardano.
 
