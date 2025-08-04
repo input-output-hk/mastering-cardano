@@ -1,0 +1,28 @@
+name: Build PDF
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4.4'
+          bundler-cache: true
+
+      - name: Build PDF
+        run: ./build-pdf.sh
+
+      - name: Upload PDF Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Book-PDF
+          path: dist/mastering-cardano-v1.0.0.pdf
