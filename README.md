@@ -8,6 +8,13 @@ Welcome to _Mastering Cardano_, a comprehensive, open-source book dedicated to e
 
 _Mastering Cardano_ is a living document, intended to evolve with the Cardano platform. We invite you, the reader, to join us in this journey of learning and contribution.
 
+## Licence
+Copyright © 2025 by IOG Singapore Pte. Ltd.
+
+This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+
+To view a copy of this license, visit [Deed - Attribution-NonCommercial-ShareAlike 4.0 International - Creative Commons](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
 ## **About the Book**
 
 _Mastering Cardano_ provides a thorough exploration of the Cardano blockchain, from its foundational principles to the intricacies of smart contract development and decentralized governance. The book is structured to cater to a wide audience, including developers, stake pool operators, students, and enthusiasts.
@@ -84,3 +91,4 @@ To contribute, please fork the repository and submit a pull request with your pr
 _Mastering Cardano_ is authored by _Dr. Lars Brünjes_, Director of Education at IO, and _Prof. Joshua Ellul_, Director of the Centre for DLT at the University of Malta, with contributions from numerous experts and community members. This book is a testament to the collaborative and open-source spirit of the Cardano ecosystem.
 
 We hope you enjoy reading _Mastering Cardano_ and find it a valuable resource on your journey into the world of blockchain. Happy reading!
+
