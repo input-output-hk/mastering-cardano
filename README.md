@@ -2,7 +2,7 @@
 
 ![Mastering Cardano Cover](images/cover.png)
 
-**Mastering Cardano is now available from [Book.io](https://book.io/)! [Purchase your copy here (coming soon!)](https://www.google.com/search?q=https://book.io/placeholder-for-mastering-cardano).**
+**Mastering Cardano is now available from [Book.io](https://book.io/)! [Purchase your copy here](https://book.io/book/mastering-cardano/).**
 
 Welcome to _Mastering Cardano_, a comprehensive, open-source book dedicated to exploring the depths of the Cardano blockchain. This book is a collaborative effort, written by experts and the community, for anyone interested in understanding, building on, or participating in the Cardano ecosystem.
 
