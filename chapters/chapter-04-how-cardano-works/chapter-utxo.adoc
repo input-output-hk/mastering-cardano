@@ -197,13 +197,12 @@ Validation occurs in two _phases_.
 
 ====== Phase 1
 
-The first phase consists of ‘cheap’, quick checks. These checks do not incur a fee(((transaction, fees))), even if they fail. They include, but are not limited to, the ‘indeterministic’ aspects of validation(((validation))) – things that cannot be verified before submission.
+The first phase consists of ‘cheap’, quick checks, and do not incur a fee(((transaction, fees))), even if they fail. These checks are deterministic, meaning they can be verified locally before submission based on the transaction’s contents and the current ledger state. They include:
 
-One such check concerns the availability of inputs(((transaction, input))): a transaction is only valid if all its inputs remain _unspent_. It is possible for a transaction's inputs to be consumed between its creation and submission and the time when a node validates it. This means that while the transaction may appear valid upon submission, it can become invalid if a concurrent transaction spends one of its inputs before it is included in a block.
-
-Another check is the _balance check_: the sum of input values must equal the sum of output values minus transaction fees (ignoring the minting or burning of _native tokens_ for simplicity). This check is deterministic and can be performed before submission.
-
-Transactions also include a _validity interval_, specifying a time range within which the transaction is valid. Both ends of this interval can either be unrestricted or tied to specific slots. For a transaction to be valid, the block’s slot must fall within this interval, so during validation(((validation))), the node ensures this condition is met before including the transaction in a block.
+* Input availability: A transaction is only valid if all its inputs remain unspent in the ledger’s UTXO set at the time of validation. Note that inputs can be spent by a concurrent transaction between creation and validation, which may cause a transaction to fail this check after submission.
+* Balance check: The sum of input values must equal the sum of output values minus transaction fees (ignoring native token minting or burning for simplicity).
+* Validity interval: The transaction specifies a time range (in slots) within which it is valid, and the node ensures the block’s slot falls within this interval.
+* Required signatures: Nodes verify that all necessary signatures are present.
 
 .Validity intervals
 image::validity_intervals.png[]
