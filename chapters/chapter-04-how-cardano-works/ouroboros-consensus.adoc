@@ -336,7 +336,7 @@ Chronos removes the need for external time sources such as Network Time Protocol
 This makes the system more resilient to time-based attacks.
 For example, it becomes much harder for an attacker to isolate a node by feeding it a false clock and disrupting its slot scheduling.
 
-===== Ouroboros Leios (2022, 2205) a high throughput and parallel processing consensus protocol
+===== Ouroboros Leios (2022, 2025) a high throughput and parallel processing consensus protocol
 
 The previous variants of Ouroboros have shown that a proof of stake consensus is practical, secure and resilient.
 However, challenges remain. The biggest one of them is throughput.
