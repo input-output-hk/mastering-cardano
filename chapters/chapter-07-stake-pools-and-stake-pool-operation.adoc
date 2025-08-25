@@ -833,7 +833,7 @@ If you wish to retire a pool, you can easily create a `deregistration certificat
 cardano-cli stake-pool deregistration-certificate --cold-verification-key-file ./pool.vk --epoch 410 --out-file pool.deregistration
 ----
 
-The `--epoch` parameter specifies the desired epoch for the pool to become inactive. This epoch must be in the future, but it cannot exceed 18 months. This limit is defined by the `eMax` value in the `mainnet-shelley-genesis.json` configuration file on the Cardano mainnet.
+The `--epoch` parameter specifies the desired epoch for the pool to become inactive. This epoch must be in the future, but it cannot exceed 18 epochs. This limit is defined by the `eMax` value in the `mainnet-shelley-genesis.json` configuration file on the Cardano mainnet.
 
 When a pool operator sends a deregistration certificate on-chain, they will receive a refund of the 500 ada deposit paid for the initial pool registration as an incentive for deregistering the pool.
 
