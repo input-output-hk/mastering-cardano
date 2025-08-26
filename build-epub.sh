@@ -27,6 +27,7 @@ echo "▸ cleaning $OUTDIR/"; rm -rf "$ABS_OUTDIR"/*
 echo "▸ Asciidoctor  ➜  DocBook"
 bundle exec asciidoctor -b docbook \
   -a imagesdir=images --failure-level WARN \
+  -a version="${VERSION}" \
   main.adoc -o "$SRC_XML"
 
 echo "▸ Staging images for XSLT processor"

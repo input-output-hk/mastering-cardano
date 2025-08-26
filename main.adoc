@@ -1,7 +1,7 @@
 // Basic info: title, author, etc.
 = Mastering Cardano
 Lars Brünjes <lars.bruenjes@iohk.io>; Joshua Ellul <joshua.ellul@um.edu.mt>;
-:revnumber: v0.1
+:revnumber: {version}
 :description: This is the description of your book
 //
 // Set the cover image

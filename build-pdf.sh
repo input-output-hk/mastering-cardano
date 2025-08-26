@@ -16,6 +16,7 @@ bundle exec asciidoctor-pdf \
 	-a pdf-themesdir=theme \
 	-a pdf-fontsdir="theme;GEM_FONTS_DIR" \
 	-a pdf-theme=custom \
+	-a version="${VERSION}" \
 	--failure-level WARN \
 	main.adoc \
 	-o dist/${FILENAME}-${VERSION}.pdf
