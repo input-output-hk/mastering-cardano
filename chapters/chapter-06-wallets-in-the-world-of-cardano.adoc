@@ -7,17 +7,15 @@
 [[wallets-fundamentals]]
 === Fundamentals of digital wallets
 
-A digital wallet(((digital wallet))), also referred to as a crypto wallet, or cryptocurrency wallet, is a digital version of a regular wallet. However, instead of holding cash, personal identification, or cards, it stores special digital keys that enable interaction with various blockchains, allowing users to manage digital assets such as cryptocurrencies, tokens, or non-fungible tokens (NFTs).
-
-These keys allow you to access and manage your digital assets. Just like a key that opens the lock of a safe, these digital keys do the same -- but give you access to funds and assets stored in the digital wallet.
+A digital wallet(((digital wallet))), also referred to as a crypto wallet or cryptocurrency wallet, is a digital version of a regular wallet. However, instead of holding cash, personal identification, or cards, it stores a set of cryptographic keys that enable interaction with a blockchain, enabling users to manage digital assets such as cryptocurrencies, tokens, or non-fungible tokens (NFTs).
 
 At its core, a digital wallet serves two primary purposes:
 
-* *Secure storage of keys* — your wallet securely stores your keys, which are unique, sophisticated digital codes known as public keys and private keys. The public key is like your email address; you share it with others to receive cryptocurrency. The private key, akin to your email password, allows you to send or spend your cryptocurrency, and must be kept secret.
+* *Secure storage of keys* — the wallet securely stores the keys, which are unique, sophisticated digital codes known as public keys and private keys. The public key is like an email address. It can be shared with others to receive cryptocurrency. The private key, akin to the email password, allows sending or spending cryptocurrency. The private key must be kept secret.
 
-* *Transaction management* — a wallet enables you to send and receive digital currencies, such as ada, Cardano's native currency. When you send cryptocurrency, you essentially sign off ownership to the receiver's wallet. Your private key validates this transaction, acting as a digital signature that provides mathematical proof of your authorization.
+* *Transaction management* — a wallet enables sending and receiving digital currencies, such as ada, Cardano's native currency. When sending cryptocurrency, you're essentially signing off ownership to the receiver's wallet. Your private key validates this transaction, acting as a digital signature that provides mathematical proof of the authorization.
 
-It is crucial to understand that a wallet does not physically store your cryptocurrency. Instead, it holds the cryptographic information required to access and transact with your digital assets on the blockchain, the underlying technology of cryptocurrencies. This makes your wallet a crucial tool for managing your digital assets securely and efficiently. In this section, you will learn about the types of wallets as well as details of how wallets work in Cardano.
+It is crucial to understand that a wallet does _not_ store cryptocurrency. Rather, the wallet holds the cryptographic information required to access and transact with your digital assets on the blockchain, the underlying technology of cryptocurrencies. This makes the wallet a crucial tool for managing digital assets securely and efficiently. In this section, you will learn about the types of wallets and how wallets work in Cardano.
 
 [[wallets-types]]
 ==== Types of wallets
@@ -26,13 +24,13 @@ Maintaining the security and accessibility of your digital assets is crucial. Th
 
 Each type offers a different balance of security and convenience, catering to various needs and preferences. Let's explore these three main types of wallets before diving into the specifics:
 
-* *Hardware wallets* — imagine a hardware wallet as a secure USB stick that stores your cryptocurrency and other digital assets offline (i.e. on a device that is not connected to the Internet). These physical devices are considered one of the safest options because they keep your private keys completely disconnected from the internet, reducing the risk of hacking. They are ideal for long-term investors who want to keep their assets secure for an extended period.
+* *Hardware wallets* — imagine a hardware wallet as a secure USB stick that stores your cryptographic keys offline (ie, on a device that is not connected to the internet). These physical devices are considered one of the safest options because they keep your private keys completely disconnected from the internet, reducing the risk of hacking. They are ideal for long-term investors who want to keep their assets secure for an extended period.
 
 * *Software wallets* — software wallets are applications that can be installed on your computer or smartphone. They are more convenient for daily transactions, striking a balance between security and accessibility. Since they are connected to the internet, they are considered hot wallets. While they are generally secure, they are more vulnerable to online threats than hardware wallets. Software wallets are ideal for active trading users who require frequent access to cryptocurrencies.
 
-* *Paper wallets* — a paper wallet is a physical document that contains a public address for receiving cryptocurrencies and a private key for spending or transferring them. It's a piece of paper with public and private keys, printed as QR codes. Paper wallets offer a highly secure method for storing cryptocurrencies since they are entirely offline. However, they can be easily damaged or lost, and they are not as convenient for quick or frequent transactions.
+* *Paper wallets* — a paper wallet is a physical document that contains a public address for receiving cryptocurrencies and a private key for spending or transferring them. It's a piece of paper with public and private keys printed as QR codes. Paper wallets offer a highly secure method for storing cryptocurrencies since they are entirely offline. However, they can be easily damaged or lost, and they are not as convenient for quick or frequent transactions.
 
-It is also important to note that paper and hardware wallets are also known as “cold wallets” or “cold storage” wallets, as they always keep private keys offline.
+It is important to note that paper and hardware wallets are known as 'cold wallets' or 'cold storage' wallets, as they always keep private keys offline.
 
 Each type of wallet has unique features, advantages, and considerations. Your choice depends on your specific needs, such as the level of security you require, how frequently you plan to access your cryptocurrency, and your comfort level with technology. The following sections provide an in-depth exploration of each type, helping you determine which wallet best suits your journey into the world of Cardano and the blockchain.
 
@@ -58,7 +56,7 @@ Let’s examine the pros and cons of using hardware wallets and some common mode
 
 *Cons of hardware wallets*
 
-* *Cost* — unlike software or paper wallets, hardware wallets come with a price tag. The cost can be a barrier for people just starting with cryptocurrencies or those with a small amount of digital assets.
+* *Cost* — unlike software or paper wallets, hardware wallets come with a hefty price tag. The cost can be a barrier for people just starting with cryptocurrencies or those with a small amount of digital assets.
 
 * *Physical damage or loss* — while they are less prone to online threats, hardware wallets are physical devices that can be damaged, lost, or stolen. Users must take precautions to protect their devices and back up their recovery phrases.
 
@@ -66,29 +64,29 @@ Let’s examine the pros and cons of using hardware wallets and some common mode
 
 *Common hardware wallets in the market*
 
-This section presents a list of hardware wallets to illustrate some available options. Please note that the authors are not involved in the development of these wallets and do not endorse any specific products -- and we recommend that you do your own research to find other hardware wallets and decide which one best suits your needs.
+This section presents a list of hardware wallets to illustrate some available options. Please note that the authors are not involved in the development of these wallets and do not endorse any specific products -- and we recommend that you do your own research to decide which one best suits your needs.
 
-* *Ledger* — this is one of the most popular hardware wallets, known for its security and support for many cryptocurrencies. You can learn more about it on its link:https://www.ledger.com/[website].
+* link:https://www.ledger.com/[*Ledger*] — this is one of the most popular hardware wallets, known for its security and support for many cryptocurrencies.
 
-* *Trezor* — Trezor is another popular brand in the hardware wallet space, offering high-security levels and an intuitive interface. You can learn more about it on its link:https://trezor.io/[website].
+* link:https://trezor.io/[*Trezor*] — Trezor is another popular brand in the hardware wallet space, offering high-security levels and an intuitive interface.
 
-* *Keystone* — this hardware wallet is open-source and provides an extra layer of security by keeping your private keys entirely offline. You can learn more about it on its link:https://keyst.one/[website].
+* link:https://keyst.one/[*Keystone*] — this hardware wallet is open-source and provides an extra layer of security by keeping your private keys entirely offline.
 
 For a more extensive list of hardware wallets, you can review link:https://github.com/INTERPOL-Innovation-Centre/HardwareWallets_DF_List[this compilation] provided by Interpol (for digital forensics detection).
 
 ==== Software wallets
 
-Software wallets(((software wallets)))store cryptocurrency private keys on internet-connected devices like computers or smartphones. They offer convenient access to digital assets, facilitating easy transactions through mobile, desktop applications, or web browser extensions.
+Software wallets(((software wallets)))store private keys on internet-connected devices like computers or smartphones. They offer convenient access to digital assets, facilitating easy transactions through mobile, desktop applications, or web browser extensions.
 
 Let's explore the pros and cons of software wallets, along with a review of some popular options.
 
 *Pros of software wallets*
 
-* *Accessible*  — software wallets provide easy access, allowing users to manage cryptocurrencies and other digital assets, perform transactions, and check balances quickly from any location with internet connectivity.
+* *Accessibility*  — software wallets provide easy access, allowing users to manage cryptocurrencies and other digital assets, perform transactions, and check balances quickly from any location with internet connectivity.
 
-* *User-friendly* — these wallets typically feature intuitive interfaces, making it straightforward for users to navigate, conduct transactions, and monitor their holdings, catering to beginners and experienced users.
+* *User-friendly* — these wallets typically feature intuitive interfaces, making it straightforward for users to navigate, conduct transactions, and monitor their holdings, catering to beginners and experienced alike.
 
-* *Cost-effective* — unlike hardware wallets, software wallets are generally free to download and use, making them appealing to those new to cryptocurrencies or with smaller holdings.
+* *Cost-effectiveness* — unlike hardware wallets, software wallets are generally free to download and use, making them appealing to those new to cryptocurrencies or with smaller holdings.
 
 * *Integration with exchanges and other features* — many software wallets offer additional features such as integrated exchanges, staking, and support for multiple cryptocurrencies, enhancing their functionality beyond mere storage.
 
@@ -102,21 +100,21 @@ Let's explore the pros and cons of software wallets, along with a review of some
 
 *Common software wallets in the market*
 
-Please note that the software wallet examples provided below are for informational purposes only and do not imply any endorsement or recommendation of a specific option.
+The software wallet examples provided below are for informational purposes only and do not imply any endorsement or recommendation of a specific option.
 
-* *MetaMask* — primarily known for its integration with the Ethereum network, MetaMask is a popular software wallet that also supports a variety of Ethereum-compatible tokens. It's available as a browser extension and a mobile app, providing flexibility in how users access their digital assets. You can learn more about it on its link:https://metamask.io/[website].
+* link:https://metamask.io/[*MetaMask*] — primarily known for its integration with the Ethereum network, MetaMask is a popular software wallet that also supports a variety of Ethereum-compatible tokens. It's available as a browser extension and mobile app, providing flexibility in how users access their digital assets.
 
-* *Exodus* — a multi-currency wallet known for its attractive user interface and ease of use. Exodus supports various cryptocurrencies, including Cardano, and offers features like an integrated exchange and live charts. Exodus is available as a mobile app, a Web3 wallet browser extension, and a desktop application for most popular operating systems. You can learn more about it on its link:https://www.exodus.com/[website].
+* link:https://www.exodus.com/[*Exodus*] — a multi-currency wallet known for its attractive user interface and ease of use. Exodus supports various cryptocurrencies, including Cardano, and offers features like an integrated exchange and live charts. Exodus is available as a mobile app, a Web3 wallet browser extension, and a desktop application for the most popular operating systems.
 
-* *Coinomi*  — a multi-currency wallet available on desktop and mobile platforms; it supports many cryptocurrencies and allows purchasing cryptocurrency through integration with some partners. It's known for its robust privacy features and its ability to swap coins within the wallet. You can learn more about it on its link:https://www.coinomi.com/[website].
+* link:https://www.coinomi.com/[*Coinomi*]  — a multi-currency wallet available on desktop and mobile platforms. It supports many cryptocurrencies and allows purchasing cryptocurrency through integration with some partners. It's known for its robust privacy features and its ability to swap coins within the wallet.
 
-* *Atomic Wallet* — an open-source, multi-currency wallet that supports over 300 cryptocurrencies. It offers features such as atomic swaps, a built-in exchange, strong encryption, and robust security measures. It’s available as a mobile app and a desktop application for major operating systems. You can learn more about it on its link:https://atomicwallet.io/[website].
+* link:https://atomicwallet.io/[*Atomic Wallet*] — an open-source, multi-currency wallet that supports over 300 cryptocurrencies. It offers features such as atomic swaps, a built-in exchange, strong encryption, and robust security measures. It’s available as a mobile app and desktop application for major operating systems.
 
 These software wallets cater to a broad spectrum of needs and preferences, from casual users to more privacy-focused individuals. When choosing a software wallet, consider factors like supported currencies, security features, ease of use, and any specific functionalities that align with your cryptocurrency usage habits.
 
 ==== Paper wallets
 
-Paper wallets(((paper wallets))) are a form of cold storage for cryptocurrencies and digital assets -- i.e. they remain disconnected from the Internet and therefore are not vulnerable to online hacking attacks. A paper wallet is a physical document containing all the necessary data for accessing and managing digital assets. This document typically includes a public address (used by others that want to send funds to the wallet) and a private key, which allows the owner to access and transfer funds in the specific wallet.
+Paper wallets(((paper wallets))) are a form of cold storage for cryptographic keys -- i.e. these wallets are never connected to the internet and therefore are not vulnerable to online hacking attacks. A paper wallet is a physical document containing all the necessary data for accessing and managing digital assets. This document typically includes a public address (used by others that want to send funds to the wallet) and a private key, which allows the owner to access and transfer funds in the specific wallet.
 
 Let's explore the advantages and disadvantages of paper wallets, along with some standard practices in the blockchain realm for effective management.
 
@@ -130,7 +128,7 @@ Let's explore the advantages and disadvantages of paper wallets, along with some
 
 *Cons of paper wallets*
 
-* *User-friendliness* — paper wallets can be less user-friendly, particularly for individuals unfamiliar with blockchain technology. The process of transferring funds to and from a paper wallet is more cumbersome than using software or hardware wallets.
+* *Low user-friendliness* — paper wallets can be less user-friendly, particularly for individuals unfamiliar with blockchain technology. The process of transferring funds to and from a paper wallet is more cumbersome than using software or hardware wallets.
 
 * *Durability and loss risk* — paper is prone to wear, tear, damage, and loss. If the paper wallet is damaged or lost without a backup, the funds stored on it become irretrievable. Remember, if someone steals your paper wallet they can then withdraw all assets stored in the digital wallet!
 
@@ -140,7 +138,7 @@ Next, we will review some standard methods for generating a paper wallet.
 
 *Standard practices to create and manage a paper wallet*
 
-The following practices are _general_ recommendations intended for informational purposes only.
+The following practices are _general_ recommendations intended for informational purposes _only_.
 
 * *Using a software or hardware wallet* — a common practice for generating a paper wallet is to create a pair of public and private keys using secure software or hardware wallets. After these keys are generated, the public key can be printed on paper for future reference. If needed, a QR code can be created to represent each key.
 
@@ -170,7 +168,7 @@ Imagine selling lemonade and asking people to leave money in a locked box at you
 
 *Private keys*
 
-The wallet private key(((private key))) is like the key to that locked box. Like a public key, it consists of a string of letters and numbers, but should always be kept secret since it allows you to access and control your assets. With your private key, you can send your cryptocurrency and digital assets to others, sign transactions to prove you own the assets, and even access your funds if you switch to a new wallet.
+The private key(((private key))) is like the key to that locked box. Like a public key, it consists of a string of letters and numbers, but should always be kept secret since it allows you to access and control your assets. With your private key, you can send your cryptocurrency and digital assets to others, sign transactions to prove you own the assets, and even access your funds if you switch to a new wallet.
 
 Following the example of selling lemonade, you only hold the key to the padlock, allowing you to open it and retrieve the money left by customers. If someone else gains access to your key, they can take all the money, just as obtaining your private key enables unauthorized access to your cryptocurrency.
 
@@ -211,9 +209,9 @@ Ethereum addresses begin with _0x_, a common prefix denoting hexadecimal encodin
 1BoatSLRHtKNngkdXEeobR76b53LETtpyT
 ----
 
-Bitcoin addresses start with _1_, _3_, or _bc1_ for different address formats; the example shows one of the most common types, beginning with _1_.
+Bitcoin addresses start with _1_, _3_, or _bc1_ for different address formats. The example shows one of the most common types, beginning with _1_.
 
-Please note that these addresses are provided as examples only and should not be used for actual transactions. Each cryptocurrency wallet generates a unique set of addresses for the specific user, ensuring the security and privacy of the assets.
+Please note that these addresses are provided as examples only and should _not_ be used for actual transactions. Each cryptocurrency wallet generates a unique set of addresses for the specific user, ensuring the security and privacy of the assets.
 
 [[create-wallet]]
 ==== Creating a wallet address
@@ -224,9 +222,9 @@ The process of creating a wallet address may vary depending on the blockchain, b
 
 . *Hashing* — the public key is then passed through a hashing algorithm – a cryptographic function that converts data into a fixed-size string of characters. This process helps enhance security and privacy.
 
-. *Formatting* — after hashing, the result undergoes additional transformations, including the addition of a network identifier (which helps differentiate between different cryptocurrency addresses) and a checksum (which helps detect errors in the address). The final output is your wallet address.
+. *Formatting* — after hashing, the result undergoes additional transformations, including the addition of a network identifier to help differentiate between cryptocurrency addresses, and a checksum to help detect errors in the address. The final output is your wallet address.
 
-Once it is created, a wallet address has a set of common characteristics regardless of the blockchain:
+Once created, a wallet address has a set of common characteristics regardless of the blockchain:
 
 * *Uniqueness* — each wallet address is unique, ensuring that funds sent to the address reach the correct recipient.
 
@@ -244,7 +242,7 @@ Cardano wallets are designed to store, send, and receive ada, the native currenc
 
 ==== Cardano wallets are designed for ada
 
-Firstly, it is crucial to understand that Cardano wallets are specifically designed for the ada cryptocurrency. Even though you can have a wallet that allows you to store assets from different blockchains, it’s important to highlight that, just like you might have a specific wallet or pocket for coins or cards, Cardano wallets are made to handle the particular requirements and features of ada and the Cardano blockchain.
+Firstly, it is crucial to understand that Cardano wallets are _specifically designed for the ada cryptocurrency_. Even though you can have a wallet that allows you to store assets from different blockchains, it’s important to highlight that, just like you might have a specific wallet or pocket for coins or cards, Cardano wallets are made to handle the particular requirements and features of ada and the Cardano blockchain.
 
 ==== Types of Cardano wallets
 
@@ -262,7 +260,7 @@ A full-node wallet performs several key functions:
 
 * _Network participation_ — helps the network by relaying transactions and blocks to other nodes.
 
-* _Security and privacy_ — by not relying on external sources for transaction verification, it offers its users increased security and privacy.
+* _Security and privacy_ — by not relying on external sources for transaction verification, it offers increased security and privacy.
 
 An example of a full-node wallet is the link:https://daedaluswallet.io/[Daedalus wallet]. It allows users to fully participate in the network, including sending and receiving transactions, staking ada for rewards, and interacting with smart contracts, such as those written in Plutus, Aiken, or Marlowe programming languages.
 
@@ -271,23 +269,23 @@ An example of a full-node wallet is the link:https://daedaluswallet.io/[Daedalus
 A light wallet(((light wallet))), also known as a lightweight wallet, does not download the entire blockchain. Instead, it relies on other nodes in the network to provide the necessary information to manage the user's funds and assets. Light wallets are much faster to set up and require less storage space than full-node wallets.
 
 Using a light wallet is similar to using a map app on your phone. You don't need to download every map detail, but you can still find your way around.
-Light wallets, such as Lace or Yoroi, allow users to interact with smart contracts without the need to run a full node. They can create transactions, sign them, and broadcast them to the network for execution. These wallets are handy for everyday users who want to engage with blockchain transactions without the technical overhead of maintaining a full copy of the Cardano blockchain.
+Light wallets, such as Lace or Yoroi, allow users to interact with smart contracts without the need to run a full node. They can create, sign, and broadcast transactions. These wallets are handy for everyday users who want to engage with blockchain transactions without the technical overhead of maintaining a full copy of the Cardano blockchain.
 
 The wallets in the Cardano ecosystem are constantly evolving, so the list is not exhaustive. For a current list of the wallets available in Cardano, you can look at community websites like link:https://builtoncardano.com/[BuiltOnCardano] or link:https://docs.cardano.org/about-cardano/new-to-cardano/types-of-wallets[the Cardano documentation page about wallets].
 
 ==== Staking and delegation
 
-Cardano wallets offer a unique feature called staking and delegation. By staking your ada within the wallet, you can participate in the network's operation and earn rewards. Think of it like putting your money in a savings account where it earns interest, but in this case, you're helping to secure the network and validate transactions.
+Cardano wallets offer unique features called staking and delegation. By staking your ada within the wallet, you can participate in the network's operation and earn rewards. Think of it like putting your money in a savings account where it earns interest, but in this case, you're helping to secure the network and validate transactions.
 
-Staking and delegation are two key concepts in proof-of-stake (PoS) blockchains, such as Cardano, which utilizes a variation called Ouroboros.
+Staking and delegation are two key concepts in proof-of-stake (PoS) blockchains, such as Cardano.
 
-_Staking_ refers to the process of holding funds in a wallet to support the operations of a blockchain network. Essentially, it involves locking cryptocurrencies to receive rewards. Note that Cardano offers its users liquid staking, allowing them to spend their funds at any time. In PoS blockchains, staking contributes to the network's security and governance because the staked coins are used to select validators who confirm transactions and create new blocks.
+_Staking_ refers to the process of holding funds in a wallet to support the operations of a blockchain network. Essentially, it involves locking cryptocurrencies to receive rewards. Cardano offers its users _liquid staking_, meaning users can spend their funds at any time. In PoS blockchains, staking contributes to the network's security and governance because the staked coins are used to select validators who confirm transactions and create new blocks.
 
 _Delegation_, on the other hand, is the act of entrusting your staking power to a stake pool, a server node that maintains the network and processes transactions. Delegation allows wallet holders to participate in the staking process without running a node themselves. By delegating their stake, users can earn rewards proportional to the amount of cryptocurrency they delegate.
 
 ==== Security features
 
-Security is a top priority for Cardano wallets. They are equipped with various security features to ensure your ada and other assets are safe from unauthorized access. Here are some of the Cardano wallets’ vital security features:
+Security is a top priority for Cardano wallets, which are equipped with various security features to ensure your ada and other assets are safe from unauthorized access. Here are some of the Cardano wallets’ vital security features:
 
 * _Encryption_ — wallets use strong encryption to protect private keys and other sensitive data stored on the user's device.
 
@@ -295,7 +293,7 @@ Security is a top priority for Cardano wallets. They are equipped with various s
 
 * _Password protection_ — users can set a password to access the wallet application, adding an additional layer of security.
 
-* _Cold storage_ — some wallets offer the ability to store funds offline, which is known as cold storage. This dramatically reduces the risk of online hacking attempts.
+* _Cold storage_ — some wallets offer the ability to store funds offline (known as cold storage). This dramatically reduces the risk of online hacking attempts.
 
 * _Multi-signature support_ — specific wallets support multi-signature configurations, which require multiple parties to sign a transaction before it can be executed. This enhances security for larger funds or organizational use.
 
@@ -313,7 +311,7 @@ Some Cardano wallets allow you to interact with decentralized applications (DApp
 
 ==== A comparison of Cardano wallets and other blockchain wallets
 
-Cardano wallets are designed specifically for the Cardano blockchain. They are tailored to interact with their unique features, such as the Ouroboros proof-of-stake consensus mechanism, native tokens, and smart contracts written in Plutus, Marlowe, or other supported programming languages.
+Cardano wallets are designed to interact specifically with the Cardano blockchain's features, including the Ouroboros PoS consensus mechanism, native tokens, and smart contracts written in Plutus, Marlowe, or other supported programming languages.
 
 Next, we present some notable distinctions between Cardano wallets and wallets for other blockchains.
 
@@ -323,7 +321,7 @@ Next, we present some notable distinctions between Cardano wallets and wallets f
 
 * _Native token support_ — unlike other wallets that require smart contracts to handle tokens, Cardano wallets support native tokens, which do not require smart contracts, thereby reducing the cost and complexity of token transactions.
 
-* _Smart contract integration_ — Cardano wallets can interact with smart contracts on the Cardano blockchain, including those written in Plutus or Marlowe, for example. This integration enables users to participate in complex financial contracts and decentralized applications (DApps).
+* _Smart contract integration_ — Cardano wallets can interact with smart contracts on the Cardano blockchain, including those written in Plutus or Marlowe, for example. This integration enables users to participate in complex financial contracts and DApps.
 
 * _Minimum ada requirement_ — transactions on the Cardano network require a minimum amount of ada to be included in the transaction to be valid. Cardano wallets automatically handle this requirement.
 
@@ -345,7 +343,7 @@ This section discusses some of the wallets designed explicitly for the Cardano e
 
 ===== Full-node wallets
 
-Remember that when opened, a full-node wallet downloads the entire blockchain, requiring specific software and storage. Let’s discuss Daedalus, the full-node Cardano wallet available on the market.
+Remember that, when opened, a full-node wallet downloads the entire blockchain, requiring specific software and storage. Let’s discuss Daedalus, the full-node Cardano wallet available on the market.
 
 Daedalus is one of Cardano's official wallets developed by IO. Daedalus is an open-source desktop software wallet for storing ada. As a full-node wallet, Daedalus downloads the entire Cardano blockchain, verifying every transaction to ensure maximum security.
 
@@ -353,7 +351,7 @@ The main features of Daedalus are:
 
 * _Maximum security and completely trustless operation_ — with full-node synchronization, you achieve maximum security and completely trustless operation, eliminating the need for centrally hosted third-party servers.
 
-* _Unlimited accounting_ — with Daedalus's hierarchical deterministic (HD) wallet implementation, you can manage any number of wallets. You can also have more control over how your funds are organized and use its robust backup and restoration features to recover your funds if necessary.
+* _Unlimited accounting_ — with Daedalus's hierarchical deterministic (HD) wallet implementation, you can manage any number of wallets. You can also have more control over how your funds are organized and use its robust backup and restoration features to recover your wallet if necessary.
 
 * _Availability for any desktop operating system_ — Daedalus runs on Windows, macOS, and Linux, supporting all major desktop operating systems. It is built with web technologies on top of Electron, a battle-proven open-source platform for writing cross-platform desktop applications.
 
@@ -363,7 +361,7 @@ Finally, you are encouraged to visit the Daedalus link:https://github.com/input-
 
 ===== Light wallets
 
-While full-node wallets keep a copy of the entire Cardano node, a light wallet does not need to download the complete history of blockchain records. Instead, it links to a website where the full blockchain is accessed, making it faster and easier to use. Light wallets are usually distributed as browser plugins or mobile applications.
+While full-node wallets keep a copy of the entire Cardano blockchain, a light wallet does not need to download the complete history of blockchain records. Instead, it links to a website where the full blockchain is accessed, making it faster and easier to use. Light wallets are usually distributed as browser plugins or mobile applications.
 
 This section explores some of the most prominent light wallets in the Cardano space. As this is not a tutorial, the section only offers an overview of key features. However, links and learning resources are provided for each light wallet to explore further.
 
@@ -371,9 +369,9 @@ Let’s start our journey through the Cardano light wallet space!
 
 *Lace*
 
-Lace began life as a slim, browser-based wallet for Cardano, designed to make holding and sending ada as simple as opening a new tab. Fast-forward to its latest release, and Lace has evolved into a full-featured Web3 launchpad: it now supports main-net Bitcoin alongside ada and Cardano native tokens, integrates NFT management and one-click staking into the same clean interface, and replaces long wallet addresses with short, human-readable Handles. All of this is wrapped in an intuitive extension that installs on Chrome, Brave, Edge, or Firefox in seconds.
+Lace began life as a slim, browser-based wallet for Cardano, designed to make holding and sending ada as simple as opening a new tab. Fast-forward to its latest release, and Lace has evolved into a full-featured Web3 launchpad that now supports mainnet Bitcoin alongside ada and Cardano native tokens, integrates NFT management and one-click staking into the same clean interface, and replaces long wallet addresses with short, human-readable Handles. All of this is wrapped in an intuitive extension that installs on Chrome, Brave, Edge, or Firefox in seconds.
 
-But Lace is more than a place to park your coins. Built-in governance tools enable you to cast votes or delegate voting power directly from your wallet. At the same time, a DApp connector drops you straight into DeFi, games, and marketplaces across the Cardano ecosystem. Add a fiat on-ramp, bundled transactions to save on fees, and optional Nami-mode compatibility for older dApps, and Lace becomes a single, lightweight gateway to staking, trading, collecting, and shaping the future of Cardano, as well as Bitcoin and Web3.
+But Lace is more than a place to park your coins. Built-in governance tools enable you to cast votes or delegate voting power directly from your wallet. At the same time, a DApp connector drops you straight into DeFi, games, and marketplaces across the Cardano ecosystem. Add a fiat on-ramp, bundled transactions to save on fees, and optional Nami-mode compatibility for older DApps, and Lace becomes a single, lightweight gateway to staking, trading, collecting, and shaping the future of Cardano, as well as Bitcoin and Web3.
 
 Below is a quick tour of what the new Lace can do for you:
 
@@ -385,19 +383,19 @@ Below is a quick tour of what the new Lace can do for you:
 
 * *Earn rewards automatically* — one-click staking, plus a visual stake-pool explorer, helps you delegate ada and start earning in minutes.
 
-* *Tap into Cardano dApps* — the _DApp connector_ links you to DeFi, games, and marketplaces with one confirmation.
+* *Tap into Cardano DApps* — the _DApp connector_ links you to DeFi, games, and marketplaces with one confirmation.
 
 * *Save on fees* — bundle transactions to send multiple assets to several addresses while paying a single network fee.
 
-* *Stay organised* — built-in address book and full transaction history keep your portfolio tidy.
+* *Stay organized* — built-in address book and full transaction history keep your portfolio tidy.
 
 * *Secure your keys* — integrates with the Ledger wallet for cold-storage peace of mind.
 
 * *Vote on the future* — through link:https://tempo.vote/[Tempo.vote] and link:https://gov.tools/[GovTools], you can delegate voting power or cast ballots without leaving walletlink:https://www.lace.io/blog/lace-1-24-0-release?utm_source=chatgpt.com[lace.io].
 
-* *Swap to Nami Mode* — Lace now includes an optional Nami compatibility mode. Flip it on in settings, and Lace exposes the same API that older Cardano dApps expect from Nami—perfect for users migrating from the original Nami wallet and for sites that haven’t yet updated their code. It also serves as a beginner-friendly view while the ecosystem transitions to Lace as the default wallet.
+* *Swap to Nami Mode* — Lace now includes an optional Nami compatibility mode. Flip it on in settings, and Lace exposes the same API that older Cardano DApps expect from Nami. This is perfect for users migrating from the original Nami wallet and for sites that haven’t yet updated their code. It also serves as a beginner-friendly view while the ecosystem transitions to Lace as the default wallet.
 
-You can get started with Lace by clicking the Add to browser button on link:https://www.lace.io/[its website].
+You can get started with Lace by clicking the *Add to browser* button on link:https://www.lace.io/[its website].
 
 [caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
 .Lace wallet’s website.
@@ -407,7 +405,7 @@ Lace is open-source software released under the link:https://github.com/input-ou
 
 *Nami*
 
-Nami(((Name wallet))) is a browser-based wallet extension designed for the Cardano blockchain. It enables users to interact with decentralized applications (DApps) and smart contracts on the Cardano network. Nami facilitates the management of ada and other Cardano-native tokens and the ability to delegate ada to stake pools for earning rewards.
+Nami(((Name wallet))) is a browser-based wallet extension designed for the Cardano blockchain. It enables users to interact with DApps and smart contracts on the Cardano network. Nami facilitates the management of ada and other Cardano-native tokens and the ability to delegate ada to stake pools for earning rewards.
 
 The wallet is designed to be user-friendly and secure. It stores and transacts with cryptocurrencies on the Cardano blockchain and integrates with various Cardano ecosystem tools and services, making it a convenient choice for users looking to engage with smart contracts and DApps.
 
@@ -419,7 +417,7 @@ Here are some of Nami’s main features:
 
 * _Integrated DApp connector_ — Nami offers a built-in connector for interacting with Cardano DApps directly through the wallet.
 
-* _NFT support_ — Nami supports Cardano-based non-fungible tokens (NFTs), allowing users to send, receive, and manage NFTs alongside their cryptocurrency assets.
+* _NFT support_ — Nami supports Cardano-based NFTs, allowing users to send, receive, and manage NFTs alongside their cryptocurrency assets.
 
 * _Sending and receiving transactions_ — users can easily send and receive ada and other Cardano native tokens.
 
@@ -447,7 +445,7 @@ Eternl(((Eternl wallet))), previously known as CCVault, is a wallet for the Card
 
 * _User-friendly interface_ — the wallet's intuitive and clean interface makes it easy for beginners and experienced users to navigate and manage their ada and other Cardano native tokens.
 
-* _Multi-asset management_ — users can store, send, and receive ada and various Cardano native tokens (CNFTs), including non-fungible tokens (NFTs), directly within the wallet.
+* _Multi-asset management_ — users can store, send, and receive ada and various Cardano native tokens (CNFTs), including NFTs, directly within the wallet.
 
 * _Delegation and staking_ — Eternl allows users to delegate their ada to stake pools directly from the wallet, enabling them to earn staking rewards while contributing to the network's security.
 
@@ -475,7 +473,7 @@ Since Eternl is a community wallet, everyone can suggest additional features. Vi
 
 *Yoroi*
 
-Yoroi(((Yoroi wallet))) is an open-source light wallet for daily use on Cardano, developed by Emurgo, a global blockchain solutions provider focusing on promoting Cardano-based applications. Emurgo is one of the three founding organizations of Cardano, alongside IO and the Cardano Foundation. Yoroi is designed for Cardano users, offering a simple and efficient way to manage ada and other Cardano-native tokens. Here's a rundown of its main features:
+Yoroi(((Yoroi wallet))) is an open-source light wallet for daily use on Cardano, developed by Emurgo, a global blockchain solutions provider focusing on promoting Cardano-based applications. Emurgo is one of the three founding organizations of Cardano, alongside IOHK and the Cardano Foundation. Yoroi is designed for Cardano users, offering a simple and efficient way to manage ada and other Cardano-native tokens. Here's a rundown of its main features:
 
 * _Yoroi is available as a browser extension and mobile app_ for Chrome, Firefox, and Edge, as well as iOS and Android, offering flexibility in how users access their wallets.
 
