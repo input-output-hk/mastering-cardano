@@ -28,9 +28,9 @@ To become an active block producer, a node requires the following cryptographic 
 * the __operational certificate__ (op.cert)
 * the __key evolving signature (KES) signing key__ (kes.skey)
 
-When a full node is not started with these files, it is referred to as a passive node, or when connected to a block producer, a __relay__. A relay sits between the open Cardano network and block producing node of a stake pool. Its purpose is to allow a block producing node to interact with the network securely as the block producing node should only be connected and known to the specific relays the stake pool operator (SPO) controls. This separation of concerns reduces the attack surface of a stake pool and allows the block producing node to focus on minting blocks and propagating these to a small set of well-known relays, which will in turn propagate the blocks to the wider network. Relays are typically publicly known as they are registered with the pool, so other relays can find them in a peer-to-peer manner. Relays may also be run privately with static topologies(((static topologies))) listing other relays.
+When a full node is not started with these files, it is referred to as a _passive node_, or when connected to a block producer, a __relay__. A relay sits between the open Cardano network and block producing node of a stake pool. Its purpose is to allow a block producing node to interact with the network securely as the block producing node should only be connected and known to the specific relays the SPO controls. This separation of concerns reduces the attack surface of a stake pool and allows the block producing node to focus on minting blocks and propagating these to a small set of well-known relays, which will in turn propagate the blocks to the wider network. Relays are typically publicly known as they are registered with the pool, so other relays can find them in a peer-to-peer manner. Relays may also be run privately with static topologies(((static topologies))) listing other relays.
 
-Cardano uses a proof of stake (PoS) consensus mechanism(((consensus mechanism))). Network participants holding ada (Cardano’s native token) can delegate their stake to a stake pool, effectively pooling their resources and increasing the pool’s chances of being selected to validate a block and earn rewards.
+Cardano uses a Proof of Stake (PoS) consensus mechanism(((consensus mechanism))). Network participants holding ada (Cardano’s native token) can delegate their stake to a stake pool, effectively pooling their resources and increasing the pool’s chances of being selected to validate a block and earn rewards.
 
 Stake pools are run by SPOs, who are responsible for maintaining the pool’s infrastructure and ensuring that the pool operates reliably. The rewards earned by the pool are then distributed among the stakeholders who have delegated their ada to the pool, proportional to their stake.
 
@@ -48,7 +48,7 @@ These roles work together to ensure the reliable and secure operation of the Car
 
 ==== Keys
 
-Cardano cryptographic keys are made up of ed25519 key pairs(((ed25519, key pairs))), which include a public verification key file and a private key file. The public key filename is commonly formatted as `public.vkey`, whereas the private key filename is typically formatted as `private.skey`. The private key file, used to sign transactions, is highly sensitive and must  be properly protected. Under all circumstances, this entails limiting third-party access to your private keys. The most effective way to prevent private key exposure is to ensure that it is never stored on any internet-connected device for any length of time. Please note the key pair file names are examples and may be named differently.
+Cardano cryptographic keys are made up of ed25519 key pairs(((ed25519, key pairs))), which include a public verification key file and a private key file. The public key filename is commonly formatted as `public.vkey`, whereas the private key filename is typically formatted as `private.skey`. The private key file, used to sign transactions, is highly sensitive and must be properly protected. Under all circumstances, this entails limiting third-party access to your private keys. The most effective way to prevent private key exposure is to ensure that it is never stored on any internet-connected device for any length of time. Please note the key pair file names are examples and may be named differently.
 
 ==== Wallet keys
 
@@ -82,7 +82,7 @@ KES keys are operational node keys(((operational node keys))) that authenticate 
 
 Stake pool keys and some supporting files include:
 
-`cold.skey` -  a private, offline signing key file for a Cardano stake pool, which is  very sensitive. The cold.skey is required to:
+`cold.skey` -  a private, offline signing key file for a Cardano stake pool, which is very sensitive. The cold.skey is required to:
 
 * register a stake pool
 * update stake pool registration parameters
@@ -103,7 +103,7 @@ Current Cardano wallet addresses are encoded in bech32 format and consist of two
 
 An enterprise address(((address, enterprise))) is a specific type of Cardano wallet address without the ability to participate in staking. Enterprise addresses might be used by exchanges that wish to comply with regulations or in cases where staking is not desired.
 
-`payment.addr` -  a payment address is usually generated using both a payment.vkey and a stake.vkey, associating the resulting address with both keys. Usually the payment.vkey and stake.vkey are derived from the same cryptographic entropy(((cryptographic, entropy))) or root.skey, which refers to the same original secret or seed phrase. The first payment address of any wallet is known as the base address. Cardano supports HD wallets, so any number of payment addresses can be derived from the same secret phrase.
+`payment.addr` -  a payment address is usually generated using both a payment.vkey and a stake.vkey, associating the resulting address with both keys. Usually, the payment.vkey and stake.vkey are derived from the same cryptographic entropy(((cryptographic, entropy))) or root.skey, which refers to the same original secret or seed phrase. The first payment address of any wallet is known as the _base_ address. Cardano supports HD wallets, so any number of payment addresses can be derived from the same secret phrase.
 
 `stake.addr` - a stake address for a Cardano wallet is generated using the stake.vkey file. It controls protocol participation, enables stake pool creation, and facilitates delegation and receiving rewards. This address cannot receive payments but is used to receive rewards from participating in the protocol. Only one stake address can be derived from a single original secret, thus all payment.addr(((payment.addr))) associated with the same secret share the same stake address component.
 
@@ -111,9 +111,9 @@ It is also possible to combine payment.vkey(((payment.vkey))) and stake.vkey fro
 
 ==== Pool saturation
 
-The protocol parameter `k` defines the saturation point(((saturation point))) for stake pool rewards. This saturation point is calculated by dividing `Cardano's total supply by k`. As of this writing, with k set at 500, the saturation point is approximately 70 million ada. A stake pool with total stake above this saturation point will receive more slots and should mint more blocks. However, rewards for the pool are capped at the saturation point. This results in diminishing returns as the same rewards pot is distributed among a larger total delegation. This incentivizes participants to avoid delegating to saturated pools.
+The protocol parameter `k` defines the saturation point(((saturation point))) for stake pool rewards. This saturation point is calculated by dividing `Cardano's total supply by k`. As of this writing, with k set at 500, the saturation point is approximately 70m ada. A stake pool with total stake above this saturation point will receive more slots and should mint more blocks. However, rewards for the pool are capped at the saturation point. This results in diminishing returns as the same rewards pot is distributed among a larger total delegation. This incentivizes participants to avoid delegating to saturated pools.
 
-Reaching saturation is a positive sign for a pool, as it indicates the pool’s popularity and substantial stake. However, it also means that delegators may have to look for alternative pools if they wish to delegate additional stake. The SPO of the saturated pool can also adjust parameters(((parameter))), such as increasing pool minting fees, to manage the saturation level.
+Reaching saturation is a positive sign for a pool, as it indicates the pool’s popularity and substantial stake. However, it also means that delegators may have to look for alternative pools if they wish to delegate additional stake. The operator of the saturated pool can also adjust parameters(((parameter))), such as increasing pool minting fees, to manage the saturation level.
 
 The SPO can also open additional pools, leveraging the popularity of the first pool to attract stake to the new ones. This practice, known as pool-splitting or multi-pools, remains a contentious topic in the Cardano community. From a decentralization(((decentralization))) perspective, an SPO should refrain from pool splitting unless they can fully saturate the existing pool with pledge, effectively turning it into a private pool before opening a new public one. Distributed pool production increases the minimum attack vector (MAV) and protects against Sybil attacks (where a malicious actor creates multiple entities or accounts to gain control over block production).
 
@@ -121,9 +121,9 @@ The SPO can also open additional pools, leveraging the popularity of the first p
 
 Pledge is a specific type of delegation registered on-chain as part of the pool registration process. This means that the pool’s owner/s permanently delegate a certain amount of ada to the pool, registering a pledge commitment. If the pool fails to meet the pledge commitment – meaning the amount pledged on-chain exceeds the total ada in the pool’s pledge wallets at the epoch transition snapshot(((epoch, transition snapshot))) – no rewards will be paid. To resolve this, the pool must either adjust the registration to lower the pledge so it becomes valid again or return the pledge to the designated owner addresses, fulfilling the original commitment.
 
-To prevent Sybil attacks, Cardano uses a well-designed incentive model that encourages stake pool owners to associate as much pledge as possible with their pools. A higher pledge makes the stake pool more financially attractive to potential delegators. Staking rewards increase linearly with the amount of pledge, reaching maximum rewards when the pool is fully saturated.  Such a pool earns nearly 30% more rewards than a pool with no pledge. Saturated pools are often referred to as private stake pools(((private stake pool))), as the incentive to add delegation diminishes once the saturation threshold is met.
+To prevent Sybil attacks, Cardano uses a well-designed incentive model that encourages stake pool owners to associate as much pledge as possible with their pools. A higher pledge makes the stake pool more financially attractive to potential delegators. Staking rewards increase linearly with the amount of pledge, reaching maximum rewards when the pool is fully saturated. Such a pool earns nearly 30% more rewards than a pool with no pledge. Saturated pools are often referred to as private stake pools(((private stake pool))), as the incentive to add delegation diminishes once the saturation threshold is met.
 
-As there is no minimum pledge requirement, a stake pool(((stake pool))) can operate with zero pledge. However, having a pledge demonstrates the owner’s commitment, which can help build trust among delegators.  Declaring pledge can also carry potential risks, as this information is publicly available on-chain. The SPO could become a target for criminal activity attempting to steal the pledge. Additionally, regulatory requirements that mandate the disclosure of SPO identities in certain jurisdictions can pose further security risks.
+As there is no minimum pledge requirement, a stake pool(((stake pool))) can operate with zero pledge. However, having a pledge demonstrates the owner’s commitment, which can help build trust among delegators. Declaring pledge can also carry potential risks, as this information is publicly available on-chain. The SPO could become a target for criminal activity attempting to steal the pledge. Additionally, regulatory requirements that mandate the disclosure of SPO identities in certain jurisdictions can pose further security risks.
 
 Franken addresses(((Franken address))) could be useful in these scenarios. An SPO could declare the pledge while managing the pool without direct access to the payment key of the pledge. The SPO would only have access to their wallet with a payment key securing minimal funds for day-to-day operations sufficient to pay for pool maintenance fees. The main pledge is secured with another wallet’s payment key. The owner address would consist of one payment address from the pledge wallet and the staking address from the SPO wallet. As long as the pledge resides on this mangled address, the SPO can incorporate the stake as pledge without the risk of physical extortion, as they would have no access to the pledge payment key.
 
@@ -137,25 +137,25 @@ The declared fees of a Cardano stake pool, determined by its operator, are criti
 * time spent on pool and server maintenance
 * marketing expenses, regulatory compliance costs, including management and reporting duties
 
-The fee structure determines how much of the rewards generated by the pool are retained by the operator and how much is distributed to delegators. If the pool does not mint blocks in an epoch, no rewards are generated and no fees are paid. Pool fees are always taken from the rewards, meaning they can diminish delegators' rewards. However, fees are never taken from delegators’ stake, as Cardano natively uses non-custodial, https://www.essentialcardano.io/glossary/liquid-staking[liquid staking].
+The fee structure determines how much of the rewards generated by the pool are retained by the operator and how much is distributed to delegators. If the pool does not mint blocks in an epoch, no rewards are generated and no fees are paid. Pool fees are always taken from the rewards, meaning they can diminish delegators' rewards. However, fees are _never_ taken from delegators’ stake, as Cardano natively uses non-custodial, https://www.essentialcardano.io/glossary/liquid-staking[liquid staking].
 
-Cardano stake pool operators set two types of fees:
+Cardano SPOs set two types of fees:
 
 * *Fixed fee* (minPoolCost): specified as a set amount in ada, this fee is intended to cover the fixed cost of pool operation. As of writing, the minimum mandatory fee is 170 ada per epoch.
-* *Variable fee*: specified as a percentage, this fee can be deducted from the total staking rewards after the fixed fee is applied. Unlike the fixed fee, which remains constant as long as at least one block is minted in an epoch, the variable fee depends on the pool’s performance and the number of minted blocks relative to expected blocks. The more blocks minted, the higher the total rewards, the higher the variable fee payout for the operator. Typically, at the time of writing, the variable fee ranges from 0% to 5%.
+* *Variable fee*: specified as a percentage, this fee can be deducted from the total staking rewards after the fixed fee is applied. Unlike the fixed fee, which remains constant as long as at least one block is minted in an epoch, the variable fee depends on the pool’s performance and the number of minted blocks relative to expected blocks. The more blocks minted, the higher the total rewards, and the higher the variable fee payout for the operator. Typically, at the time of writing, the variable fee ranges from 0% to 5%.
 
 *_Note:_* While a 5% variable fee may seem significant, it should always be assessed in relation to the expected return on staking (ROS). As of writing, the ROS is approximately 4% per year. A stake pool that sets a 5% variable fee will only reduce the annual ROS by 0.2 percentage points, resulting in a ROS of 3.8% per year.
 
 [[spo-requirements]]
 === SPO requirements
 
-As an open protocol, Cardano allows anyone to create and operate a stake pool using the free and open-source software(((free and open-source software))) (FOSS) – `cardano-node` and `cardano-cli`. However, it is essential for stake pool operators to possess the technical expertise required to operate a pool reliably and securely. While the requirements outlined in this section are not authoritative, they are generally recognized as critical for successful stake pool operation.
+As an open protocol, Cardano allows anyone to create and operate a stake pool using the free and open-source software(((free and open-source software))) (FOSS) – `cardano-node` and `cardano-cli`. However, it is essential for SPOs to possess the technical expertise required to operate a pool reliably and securely. While the requirements outlined in this section are not authoritative, they are generally recognized as critical for successful stake pool operation.
 
 It is also important to note that many community-made tools and scripts are available, which significantly lower the technical barrier to entry for operating a stake pool. These tools assist with operational tasks but are not a substitute for the necessary technical knowledge or skills required for effective stake pool management.
 
 ==== Linux
 
-A strong understanding of and ability to navigate, utilize, and manage the Linux operating system is a must for any stake pool operator. While cardano-node binaries are available for Linux, Mac, and Windows with each release, only Linux is supported in the block producer and relay roles. It is possible to build from source and operate cardano-node and cardano-cli on OpenBSD and potentially other Unix-based operating systems(((Unix-based operating systems))), but this is an advanced and separate topic.
+A strong understanding of and ability to navigate, utilize, and manage the Linux operating system is a must for any SPO. While cardano-node binaries are available for Linux, Mac, and Windows with each release, only Linux is supported in the block producer and relay roles. It is possible to build from source and operate cardano-node and cardano-cli on OpenBSD and potentially other Unix-based operating systems(((Unix-based operating systems))), but this is an advanced and separate topic.
 
 Suggested readings and courses:
 
@@ -240,15 +240,15 @@ First, the epoch nonce is considered. This is a random number formed from two ke
 
 The second value used in the epoch nonce(((epoch, nonce))) is the hash of the last block from the previous epoch. These values are concatenated and hashed to produce the epoch nonce, which is the same for all pools.
 
-The epoch nonce, the absolute slot number, and the pool’s VRF secret key are then combined to generate a random output for each slot. This output is weighted by the pool’s stake relative to the total ada staked in the system. If the weighted value is below a certain threshold, the pool is permitted to create a block – winning the game of Limbo for that slot!
+The epoch nonce, the absolute slot number, and the pool’s secret VRF key are then combined to generate a random output for each slot. This output is weighted by the pool’s stake relative to the total ada staked in the system. If the weighted value is below a certain threshold, the pool is permitted to create a block – winning the game of Limbo for that slot!
 
 ==== Security
-Security is maintained by ensuring only the pool operator knows when they will create a block. The pool’s VRF secret key(((verifiable random function, secret key))) is used to determine leadership selection, while the VRF public key is published on the blockchain. This ensures that only the pool operator is aware of their block-making opportunity, while others can verify the VRF signature after the block is made. This process ensures fairness and prevents anyone else from predicting block creation, making it impossible for attackers to target a stake pool with a DDoS attack.
+Security is maintained by ensuring only the pool operator knows when they will create a block. The pool’s VRF secret key(((verifiable random function, secret key))) is used to determine leadership selection, while the public VRF key is published on the blockchain. This ensures that only the pool operator is aware of their block-making opportunity, while others can verify the VRF signature after the block is made. This process ensures fairness and prevents anyone else from predicting block creation, making it impossible for attackers to target a stake pool with a DDoS attack.
 
 === Slot battles, height battles, forkers, and propagation
 
 ==== Ouroboros leader selection review
-Based on the Ouroboros protocol, Cardano stake pools create blocks on behalf of their delegators. This protocol operates a lottery in every slot (one per second, per current parameters), with a pool’s chance of being selected as a leader proportional to its stake. If a pool wins the lottery, it becomes the leader for that slot. While the full details of the algorithm are covered in the  https://eprint.iacr.org/2016/889.pdf[Ouroboros paper] and other sections of this book, the key point is that any pool with stake can potentially be a leader in any slot. This can result in multiple pools being chosen as leaders for the same or nearly the same slot. However, only one block can be accepted on the chain for a given slot, leading to situations known in the Cardano community as ‘battles.’
+Based on the Ouroboros protocol, Cardano stake pools create blocks on behalf of their delegators. This protocol operates a lottery in every slot (one per second, per current parameters), with a pool’s chance of being selected as a leader proportional to its stake. If a pool wins the lottery, it becomes the leader for that slot. While the full details of the algorithm are covered in the https://eprint.iacr.org/2016/889.pdf[Ouroboros paper] and other sections of this book, the key point is that any pool with stake can potentially be a leader in any slot. This can result in multiple pools being chosen as leaders for the same or nearly the same slot. However, only one block can be accepted on the chain for a given slot, leading to situations known in the Cardano community as ‘battles.’
 
 ==== Types of battles
 To understand the types of battles in Cardano, it is essential to review key aspects of blockchain functionality. Consider the illustration below featuring three blocks, starting with the one on the left at height 8,265,668 in slot 244,252, with a block hash of ‘c7b2…​8bac.’ The next block, with a hash of ‘f777…​498c’ at height 8,265,669, includes the parent hash ‘c7b2…​8bac,’ indicating it is built on the previous block. This block was created 9 slots (9 seconds, per current protocol parameters) later, in slot 244,261. Finally, the third block at height 8,265,670, which includes the parent hash ‘f777…​498c,’ was created in slot 244,309. This illustrates how blocks are sequentially built upon one another, contributing to the growth of the blockchain.
@@ -260,7 +260,7 @@ A slot battle is a situation when two blocks are presented at the same height, h
 image::nittygritty-illustration-2.png[width=50%,title="Slot Battle"]
 
 ==== Height battles
-A height battle occurs when two blocks are presented at the same height, share the same parent hash, but have different slots.
+A height battle occurs when two blocks are presented at the same height and share the same parent hash, but have different slots.
 
 image::nittygritty-illustration-3.png[width=50%,title="Height Battle"]
 
@@ -280,7 +280,7 @@ The following table summarizes the types of contention we can have on the Cardan
 |===
 
 ==== Resolution of battles and forks
-When a battle or fork occurs on the network, all nodes must reach consensus on which block to add to the chain and which one(s) to discard. In the Praos era (post-Vasil hard fork), two primary rules guide this decision:
+When a battle or fork occurs, all nodes must reach consensus on which block to add to the chain and which one(s) to discard. In the Praos era (post-Vasil hard fork), two primary rules guide this decision:
 
 .  Chain Length, the longest chain length is always preferred.
 .  If the chain length is the same, we choose the block with the lowest block vrf.
@@ -302,11 +302,11 @@ In the typical situation, over 90% of the blocks on the chain are created smooth
 
 1.  Pool A creates a block in slot 10
 2.  Pool A sends a block to all of its peers on the network
-3.  Pool A's peers forward the block further to all of their peers and so on.  Some nodes receive the block in slot 10, some in slot 11, some in slot 12, etc.
+3.  Pool A's peers forward the block further to all of their peers, and so on.  Some nodes receive the block in slot 10, some in slot 11, some in slot 12, etc.
 4.  Pool B creates a block in slot 15 and because it already has seen Pool A's block, it builds on top of it and extends the chain further and the cycle continues.
 
 ===== The height battle example
-But what if pool B creates a block in slot 15 and does not have pool A’s block yet? This scenario leads to a height battle, as both pool A’s block in slot 10 and pool B’s block in slot 15 will share the same parent block. The contention is settled by comparing the block VRF(((block VRF))) values; the block with the lowest VRF value will be added to the chain, while the other block will be discarded.
+But what if pool B creates a block in slot 15 and does _not_ have pool A’s block yet? This scenario leads to a height battle, as both pool A’s block in slot 10 and pool B’s block in slot 15 will share the same parent block. The contention is settled by comparing the block VRF(((block VRF))) values. The block with the lowest VRF value will be added to the chain and the other block will be discarded.
 
 ===== The slot battle example
 The slot battle example illustrates a scenario where both pool A and pool B create a block in slot 10, leading to immediate contention. This situation results in a slot battle, where the block with the lowest VRF value is added to the chain, and the other block is discarded.
@@ -323,7 +323,7 @@ Sometimes, pool operators encounter problems with their nodes that slow down blo
 1.  Pool A creates a block in slot 10
 2.  Pool B is assigned a block in slot 11 but is very slow to generate the block and it takes 5 seconds to create and propagate the block to other nodes.
 3.  Meanwhile Pool C is assigned a block in slot 14 and since it hasn't seen Pool B's block yet, it builds on top of Pool A's block.
-4.  Finally in slot 15 Pool B’s block is distributed and all nodes need to pick between Pool B’s block and Pool C’s block when if all pools were operating at full speed, Pool B’s block would have been the one that was added to the chain and then Pool C’s block would have built on top of that.
+4.  Finally, in slot 15, Pool B’s block is distributed and all nodes need to pick between Pool B’s block and Pool C’s block when -if all pools were operating at full speed- Pool B’s block would have been the one added to the chain and Pool C’s block would have built on top of it.
 
 Underpowered nodes can cause pools to lose blocks without justification, resulting in lower chain density and reduced decentralization. This highlights the importance of having a robust block distribution strategy(((block distribution strategy))) for pool operators.
 
@@ -334,7 +334,7 @@ Underpowered nodes can cause pools to lose blocks without justification, resulti
 
 As its name suggests, the Cardano command line interface (`cardano-cli`) is the low-level CLI component of the `cardano-node` repository. It serves as a perfect companion to cardano-node, often built alongside it or provided as a pre-compiled binary(((pre-compiled binary))). The primary purpose of `cardano-cli` is to interact with the blockchain managed by cardano-node. Would you drive a car without a steering wheel?
 
-This section focuses on the subset of `cardano-cli` commands most useful to Cardano stake pool(((stake pool))) operators. It outlines the steps required to set up a stake pool from the very beginning, including:
+This section focuses on the subset of `cardano-cli` commands most useful to Cardano SPOs(((stake pool))). It outlines the steps required to set up a stake pool from the very beginning, including:
 
 * Key generation for addresses and pools
 * Certificate generation
@@ -448,7 +448,7 @@ Three things to note:
 
 ==== Staking key pair
 
-Using the address generated above has one significant drawback: it can receive and send ada but has no staking rights associated with it, making it what we call an enterprise address(((address, enterprise))). To enable staking rights, we need to add a staking key to the address.
+Using the address generated above has one significant drawback. It can receive and send ada but has no staking rights associated with it, making it what we call an _enterprise address_(((address, enterprise))). To enable staking rights, we need to add a staking key to the address.
 
 In the same folder where the payment key(((payment key))) pair is located, let’s generate a *staking* key pair. Following convention, we will call them `stake.vk` and `stake.sk`:
 
@@ -480,7 +480,7 @@ stake1uy4hlpcmhd026m4ny9y9uxl94rez479g8h0sqalljf9zehguqnhcm
 
 ==== Building an address
 
-As noted, both the payment key pair and the staking key pair can be used to generate addresses. While the payment address (or enterprise address) can be used to receive or send ada, the staking address serves a different purpose. A staking address is not functional on its own; it only becomes active when linked to ada residing within a payment address.
+As noted, both the payment key pair and the staking key pair can be used to generate addresses. While the payment address (or enterprise address) can be used to receive or send ada, the staking address serves a different purpose. A staking address is not functional on its own. It only becomes active when linked to ada residing within a payment address.
 
 ----
 cardano-cli address build  --payment-verification-key-file ./payment.vk --stake-verification-key-file ./stake.vk --mainnet > base.addr
@@ -499,7 +499,7 @@ Note that this address is longer than an `enterprise address(((address, enterpri
 
 ==== File summary #1
 
-Your working directory should now contain 7 files:
+Your working directory should now contain seven files:
 
 ----
 1. base.addr
@@ -513,7 +513,7 @@ Your working directory should now contain 7 files:
 
 It is now time to back up these key pairs and send some ada to the base.addr to fund the next venture: creating a stake pool(((stake pool))).
 
-==== Stake pool related key pairs
+==== Stake pool-related key pairs
 
 The creation and operation of a Cardano stake pool relies on three public/private key(((private key))) pairs.
 
@@ -538,7 +538,7 @@ Notice that in addition to the `cold-verification-key-file` and `cold-signing-ke
 }
 ----
 
-This `counter` will be used to create an `operational certificate(((operational certificate)))` for the stake pool. For now, let's keep in mind that the `operational certificate` is generated by using this `counter` and a KES public key defined in the section "KES keys pair".
+This `counter` will be used to create an `operational certificate(((operational certificate)))` for the stake pool. For now, let's keep in mind that the `operational certificate` is generated by using this `counter` and a KES public key defined in the section 'KES keys pair'.
 
 We have not yet registered the Cardano stake pool, but we can already determine its future on-chain ID.
 
@@ -554,7 +554,7 @@ pool1xhjzslnkyxvj23almagsmzeck0el7989cqz9rlms8a0pvdly0de
 
 ==== VRF keys pair
 
-The VRF key pair is used by the node to determine whether to attempt signing a block. At every slot, the node checks this condition.
+The node uses the VRF key pair to determine whether to attempt signing a block. At every slot, the node checks this condition.
 ----
 cardano-cli node key-gen-VRF --verification-key-file ./vrf.vk --signing-key-file ./vrf.sk
 ----
@@ -659,7 +659,7 @@ and replies
 }
 ----
 
-Notice here that by the time we generated our first `operational certificate`, 1 kes-period passed. See the difference between `"qKesCurrentKesPeriod": 695` and `"qKesStartKesInterval": 694` !
+Notice here that by the time we generated our first `operational certificate`, one kes-period passed. See the difference between `"qKesCurrentKesPeriod": 695` and `"qKesStartKesInterval": 694` !
 
 *Rotation example with a `counter` reset:*
 
@@ -716,8 +716,8 @@ Your working directory should now contain 16 files:
 
 Certificates are actions performed on the ledger allowing to:
 
-* Register a stake address (and deregister)
-* Register a stake pool (and deregister)
+* Register and deregister a stake address
+* Register and deregister a stake pool
 * Delegate an address to a stake pool
 
 [discrete]
@@ -731,7 +731,7 @@ For now, let’s create the registration certificate with the following command:
 cardano-cli stake-address registration-certificate --stake-verification-key-file ./stake.vk --out-file stake.registration
 ----
 
-A deregistration certificate(((deregistration certificate))) for an address can also be generated using the `cardano-cli stake-address deregistration-certificate` command. This is the recommended method for stopping participation in ada staking. To incentivize users, deregistering an address refunds the 2 ada deposit paid during registration. More about this later.
+A deregistration certificate(((deregistration certificate))) for an address can also be generated using the `cardano-cli stake-address deregistration-certificate` command. This is the recommended method for stopping participation in ada staking. To incentivize users, deregistering an address refunds the two ada deposit paid during registration. More about this later.
 
 [discrete]
 ==== Stake pool registration
@@ -767,7 +767,7 @@ cardano-cli stake-pool registration-certificate \
 
 `--vrf-verification-key-file`: other pools will check whether the pool had the right to produce a block for a given slot.
 
-`--pool-reward-account-verification-key-file`: specifies the stake.vk of the base.addr that will  receive the rewards for running the pool. Only one reward account can be assigned to a stake pool(((stake pool))).
+`--pool-reward-account-verification-key-file`: specifies the stake.vk of the base.addr that will receive the rewards for running the pool. Only one reward account can be assigned to a stake pool(((stake pool))).
 
 
 *The reward address will not be required to sign the transaction sending the certificate on-chain.*
@@ -775,13 +775,13 @@ cardano-cli stake-pool registration-certificate \
 
 `--pool-cost`: the fixed cost(((fixed cost))) the pool will charge before calculating the margin fee. It cannot be set lower than 340 ada or 340000000 lovelaces at this time on mainnet.
 
-`--pool-margin`: the percentage fee(((percentage fee))) taken by the pool on the remaining rewards after pool cost has been deducted from all block rewards. Its boundaries are 0 (0 %) and 1 (100%). In this example, it is set at 2%
+`--pool-margin`: the percentage fee(((percentage fee))) taken by the pool on the remaining rewards after pool cost has been deducted from all block rewards. Its boundaries are zero (0 %) and one (100%). In this example, it is set at 2%
 
-`--pool-owner-stake-verification-key-file`: specifies the `stake.vk` of the `base.addr(((base.addr)))` used  as the pledge for the pool. While it can be the same as the reward account, a different address may be chosen. Multiple base addresses can be used for pledging.
+`--pool-owner-stake-verification-key-file`: specifies the `stake.vk` of the `base.addr(((base.addr)))` used as the pledge for the pool. While it can be the same as the reward account, a different address may be chosen. Multiple base addresses can be used for pledging.
 
 *The transaction sending the certificate will include a signature for each and every address referenced as a pool owner.*
 
-`--pool-pledge`: defines the minimum amount in lovelace that must collectively be present in the owner(s) account(s). If this requirement is not met, the pool will forfeit all rewards, both for delegators and the pool itself. To ensure flexibility or avoid risks in this example, it is set to 0.
+`--pool-pledge`: defines the minimum amount in lovelace that must collectively be present in the owner(s) account(s). If this requirement is not met, the pool will forfeit all rewards, both for delegators and the pool itself. To ensure flexibility or avoid risks in this example, it is set to zero.
 
 *The address(es) declared as pool’s pledge must all be delegated to the pool being registered.*
 
@@ -909,11 +909,11 @@ cardano-cli query protocol-parameters --mainnet > pparameters.json
 `pparameter.json` includes a detailed list of smart contract-related costing models and essential information for estimating transaction costs. For our purposes, we will focus on the transaction cost estimation details.
 
 [discrete]
-==== UTxOs in an address
+==== UTXOs in an address
 
 To manually build the transaction that will post the previously created certificates, we must identify which UTXO to use. A UTXO is uniquely identified on-chain by the combination of a transaction hash (TxHash) and a transaction index (TxIx)(((transaction, index))). An address can hold multiple UTXOs, making it essential to determine the specific UTXO for this transaction.
 
-We can access the UTxO(s) of an address as follows:
+We can access the UTXO(s) of an address as follows:
 
 ----
 cardano-cli query utxo --address addr1q9m8pcfxszyvx7gytqc2s9l400aund8z7sazfs2jtfy4h3ft07r3hw6744htxg2gtcd7t28j9tu2s0wlqpmllyj29nwssucyxn --mainnet
@@ -990,7 +990,7 @@ cardano-cli transaction calculate-min-fee \
 --protocol-params-file pparameters.json
 ----
 
-You may adjust the `--tx-in-count`, `--tx-out-count`, and `--witness-count` values accordingly. Here, we consume one UTxO, have the change sent back in a single address and will sign the transaction with 3 witnesses (a.k.a. secret keys).
+You may adjust the `--tx-in-count`, `--tx-out-count`, and `--witness-count` values accordingly. Here, we consume one UTXO, have the change sent back in a single address, and will sign the transaction with three witnesses (a.k.a. secret keys).
 
 The command replies :
 
@@ -1024,17 +1024,17 @@ cardano-cli transaction build-raw \
 ====
 
 *`--tx-out` value is expressed in lovelaces.
-Registering an address requires a deposit of 2 ada (2000000 lovelaces).
+Registering an address requires a deposit of two ada (2000000 lovelaces).
 Registering a pool requires a deposit of 500 ada (500000000 lovelaces).
-This means that the change to the `base.addr` will be : *_value = input - (502 deposit + transaction fee)_* Deregistration of an address or a pool will be accounted for by adding 2 ada or 500 ada, respectively, to the ada change value one must calculate to correctly balance a transaction! For example, to deregister simultaneously a base address and a pool: *_value = (input + 502 deposit) - transaction fee_*.
+This means that the change to the `base.addr` will be : *_value = input - (502 deposit + transaction fee)_* Deregistration of an address or a pool will be accounted for by adding two ada or 500 ada, respectively, to the ada change value one must calculate to correctly balance a transaction! For example, to deregister simultaneously a base address and a pool: *_value = (input + 502 deposit) - transaction fee_*.
 ====
 
-* `--invalid-hereafter`: The slot tip of the network plus some slots to give your transaction time to get accepted by the network. Here, 1000 slots (seconds on mainnet) or ~ 15 minutes in the future, from the last query we made at `"slot": 90368116`.
+* `--invalid-hereafter`: The slot tip of the network plus some slots to give your transaction time to get accepted by the network. Here, 1,000 slots (seconds on mainnet) or ~ 15 minutes in the future, from the last query we made at `"slot": 90368116`.
 * `--fee`: the exact value we calculated earlier.
 * `--certificate-file`: adding a certificate to the transaction.
 
 
-*Note:*  The order in which the certificates are declared will matter in the final transaction. You cannot delegate to a pool that does not exist yet. You cannot register a pool with an owner’s address that is not registered yet. Hence, we register the `base.addr` (its staking part) first, then the pool and finally delegate to it.
+*Note:*  The order in which the certificates are declared will matter in the final transaction. You cannot delegate to a pool that does not exist yet, and you cannot register a pool with an owner’s address that is not registered yet. Hence, we register the `base.addr` (its staking part) first, then the pool, and finally delegate to it.
 
 [discrete]
 ==== Sign and send a transaction
@@ -1067,7 +1067,7 @@ Congratulations! It is all done, the pool is now registered! With some delegated
 
 ==== 	Rewards withdrawal
 
-As the pool grows in saturation, it will eventually mint blocks and start accumulating ada rewards. These rewards, however, reside in the stake account associated with the base.addr and are not immediately available as UTXOs.
+As the pool becomes saturated, it will eventually mint blocks and start accumulating ada rewards. These rewards, however, reside in the stake account associated with the base.addr and are not immediately available as UTXOs.
 
 To access these rewards, let’s query a random address that has accumulated ada:
 
@@ -1103,7 +1103,7 @@ cardano-cli transaction build-raw \
 
 `--withdrawal`: specifies from which `stake.addr` rewards will be withdrawn from; `+` separates the address from the value withdrawn in lovelace.
 
-Since we only create a fake transaction in order to calculate transaction fees, we set the value withdrawn at 0.
+Since we only create a fake transaction in order to calculate transaction fees, we set the value withdrawn at zero.
 
 Next, run:
 
@@ -1169,7 +1169,7 @@ cardano-cli transaction submit \
 
 ==== Epilogue
 
-This guide details all the necessary `cardano-cli` actions to become an autonomous stake pool operator on Cardano. Hopefully, this document has clarified the numerous components involved.
+This guide details all the necessary `cardano-cli` actions to become an autonomous SPO on Cardano. Hopefully, this document has clarified the numerous components involved.
 
 Community tools, like https://github.com/cardano-community/guild-operators[Guild-Operators] or the https://github.com/gitmachtl/scripts[Stake Pool Operators Scripts] repositories, abstract most of the steps described. Additionally, operations requiring a running instance of `cardano-node` (to query or post on the ledger) can be performed using a copycat of `cardano-cli` called https://github.com/blockfrost/blockfrost-cardano-cli[`blockfrost-cardano-cli`]. It can be sometimes faster than querying your local `cardano-node` instance!
 
@@ -1179,7 +1179,7 @@ Given the importance of handling private keys securely, it’s recommended to us
 
 === Keeping time
 
-Ouroboros is the protocol powering Cardano, symbolized by the eternal serpent consuming its own tail. Until https://eprint.iacr.org/2019/838.pdf[Ouroboros Chronos] is implemented, the ‘timeless’ Ouroboros relies on stake pool operators to help maintain accurate time.
+Ouroboros is the protocol powering Cardano, symbolized by the serpent eternally consuming its own tail. Until https://eprint.iacr.org/2019/838.pdf[Ouroboros Chronos] is implemented, the ‘timeless’ Ouroboros relies on SPOs to help maintain accurate time.
 
 Clock synchronization is essential in distributed networks. Nodes must prevent clock drift, which occurs when they measure time at slightly different rates. In Ubuntu and other Linux distributions, various network time protocol (NTP) programs help reduce time synchronization offsets to a few milliseconds. One commonly used program is Chrony, which should be installed and running on the node or relay for Cardano. On Ubuntu, Chrony can be installed using `apt install chrony`.
 
@@ -1203,7 +1203,7 @@ leapsectz right/UTC
 ----
 ==== Comments on the example configuration
 
-* To add NTP servers, include their IP address (e.g., 192.168.2.100) or DNS name (e.g., time.google.com) in the chrony.conf file.
+* To add NTP servers, include their IP address (eg, 192.168.2.100) or DNS name (e.g., time.google.com) in the chrony.conf file.
 
 * Setting lower values for minpoll and maxpoll reduces time drift; maxsources sets the maximum number of sources used from the pool.
 
@@ -1211,15 +1211,15 @@ leapsectz right/UTC
 
 * In the example configuration, a local Stratum 1 GPS source (192.168.2.100) on a LAN is used with a fast polling rate. Additionally, two public NTP servers (Stratum 3 Cloudflare and Stratum 1 Google) are included with slower polling rates. Be cautious with overly-aggressive polling rates to avoid being blacklisted by public timesync servers.
 
-* On modern fiber connections near the timesync server, it is recommended to use a lower value for Chrony’s internal estimate of how fast or slow the computer clock runs relative to the timesync server. Setting maxupdateskew to 5.0 (down from the default 1000 ppm) helps maintain higher precision in time synchronization.
+* On modern fiber connections near the timesync server, it is recommended to use a lower value for Chrony’s internal estimate of how fast or slow the computer clock runs relative to the timesync server. Setting maxupdateskew to 5.0 (down from the default 1,000 ppm) helps maintain higher precision in time synchronization.
 
 * Chrony can adjust system clocks more frequently by setting a lower makestep value. For example, makestep 0.1 -1 adjusts the clock whenever a drift of 0.1 seconds occurs. Network Interface Cards (NICs) with an internal clock for timestamps (which can be identified using ethtool -T) can also be enabled for hardware timestamping with hwtimestamp and the interface name or * for all interfaces.
 
 * Drift may be checked with `chronyc tracking` and `chronyc sourcestats` to view offsets and skew.
 
-* Rtsync can be set to enable the kernel to periodically synchronize the system clock with the real-time clock, typically every 11 minutes on Linux. If the connected timesync server does not provide leap second updates in advance, the leapsectz option (e.g., leapsectz right/UTC) may be configured. In general, it is recommended to use Coordinated Universal Time (UTC) for server time, as this is the global standard and the format most GPS-based timesync servers report in.
+* Rtsync can be set to enable the kernel to periodically synchronize the system clock with the real-time clock, typically every 11 minutes on Linux. If the connected timesync server does not provide leap second updates in advance, the leapsectz option (eg, leapsectz right/UTC) may be configured. In general, it is recommended to use Coordinated Universal Time (UTC) for server time, as this is the global standard and the format most GPS-based timesync servers report in.
 
-With that out of the way in a fairly short time (pun intended), a stake pool operator will be able to keep Cardano nodes collaborating well with the rest of the network in a timely manner!
+With that out of the way in a fairly short time (pun intended), an SPO will be able to keep Cardano nodes collaborating well with the rest of the network in a timely manner!
 
 === Server security and hardening
 
@@ -1233,7 +1233,7 @@ This section addresses the security considerations for becoming an SPO. We will 
 
 Outlined here are common best practices in IT server administration for any project.
 
-*Note*: All examples listed here are suggestions for commands you can use on the Unix operating system (OS). Please conduct your own research (DYOR) or refer to the command-related manual (RTFM) for verification.
+*Note*: All examples listed here are suggestions for commands you can use on the Unix operating system. Please conduct your own research (DYOR) or refer to the command-related manual (RTFM) for verification.
 
 '''''
 
@@ -1247,8 +1247,8 @@ Outlined here are common best practices in IT server administration for any proj
 * Avoid running services as root whenever possible, as this increases the risk of unauthorized access and data breaches.
 * Monitor exposed services, as they can be targets for cyberattacks. Be aware of the services running on your server and take steps to secure them. It is advisable not to leave any unused ports open, as they can provide unauthorized access. Disable any unnecessary open ports or services, or filter them using appropriate firewall rules. You can list open ports and their associated services using commands like: `sudo netstat -latupen` , `sudo lsof -i`, `sudo ss -antlp`. Some of these commands will also list services listening on 127.0.0.1, which is on the loopback interface (lo).
 * Implement Fail2Ban to block unauthorized access attempts and denial-of-service (DoS) attempts. This tool helps block or delay persistent and/or malicious IP addresses, such as port scanners, crawlers, and those using brute-force techniques, from accessing your server.
-* Change your server DNS to use known secure DNS (e.g. 1.1.1.1 and 1.0.0.1)
-* Use a hardware or software firewall on your server to restrict ports and allow only necessary traffic. Firewall rules can mitigate DoS attacks and port flooding by implementing connection limit rules; refer to iptables-extensions(8) for examples. Consider the firewall as a backup mechanism after assessing the open services. While a firewall can help prevent further administrative incidents, it may also increase complexity and require additional attention.
+* Change your server DNS to use known secure DNS (eg, 1.1.1.1 and 1.0.0.1)
+* Use a hardware or software firewall on your server to restrict ports and allow only necessary traffic. Firewall rules can mitigate DoS attacks and port flooding by implementing connection limit rules. Refer to iptables-extensions(8) for examples. Consider the firewall as a backup mechanism after assessing the open services. While a firewall can help prevent further administrative incidents, it may also increase complexity and require additional attention.
 * Keep your server’s operating system and installed software up-to-date to ensure that you have the latest security patches and fixes.
 * Disable IPv6 on your server if it is not in use, as it can serve as a potential attack vector. Use the following command to edit the configuration file: `nano /etc/sysctl.conf`. Then, add the line: `net.ipv6.conf.all.disable_ipv6 = 1`.
 * Limit the programs with suid or sgid bit set. You may list them all with: $ `sudo find / -type f \( -perm -4000 -o -perm -2000 \) -exec ls -l {} \;`
@@ -1311,7 +1311,7 @@ Key security considerations for securing SSH include:
 
 ==== Use a VPN (as alternative to SSH tunneling)
 
-It is beneficial for SPOs to use a virtual private network (VPN) (e.g. WireGuard) to access a server backend (such as Grafana or Prometheus) due to enhanced security and accessibility. A VPN establishes a secure and encrypted connection between the client device and the server backend, protecting transmitted data from potential eavesdropping or tampering.
+It is beneficial for SPOs to use a virtual private network (VPN) (eg WireGuard) to access a server backend (such as Grafana or Prometheus) due to enhanced security and accessibility. A VPN establishes a secure and encrypted connection between the client device and the server backend, protecting transmitted data from potential eavesdropping or tampering.
 
 This protection is especially important when accessing sensitive information like financial data, personal details, or confidential blockchain data. Additionally, a VPN enables remote access to the server backend, allowing SPOs to connect from anywhere with an internet connection. This capability is particularly useful for SPOs managing nodes remotely or across different locations. Furthermore, using a VPN can help bypass geographical restrictions or censorship. Overall, employing a VPN to access a server backend effectively secures and facilitates access to sensitive information and resources for SPOs.
 
@@ -1319,38 +1319,38 @@ This protection is especially important when accessing sensitive information lik
 
 Monitoring is a crucial part of stake pool operation. It helps minimize the chance for lost blocks and can allow the operator to maximize rewards for delegators along with contributing to strong network performance on the Cardano blockchain.
 
-* Reliability: Monitoring helps ensure the full-time availability of a stake pool to mint and propagate assigned blocks in a reliable manner. By diligent monitoring of key metrics such as blockheight, uptime, timesync, KES expiry period, unadopted blocks, missed slots, etc., patterns of Stake Pool service disruption can be detected and prevented.
-* Capacity Planning: By analyzing historical resource usage data, future resource requirements can be forecast to anticipate capacity constraints and allow the operator to scale infrastructure proactively to meet evolving Cardano Stake Pool operation needs, thereby avoiding performance degradation or service outages due to insufficient resources.
+* Reliability: monitoring helps ensure the full-time availability of a stake pool to mint and propagate assigned blocks in a reliable manner. By diligent monitoring of key metrics such as blockheight, uptime, timesync, KES expiry period, unadopted blocks, missed slots, etc., patterns of stake pool service disruption can be detected and prevented.
+* Capacity planning: by analyzing historical resource usage data, future resource requirements can be forecast to anticipate capacity constraints and allow the operator to scale infrastructure proactively to meet evolving Cardano stake pool operation needs, thereby avoiding performance degradation or service outages due to insufficient resources.
 
 ==== Prometheus
 
-Prometheus is an open-source monitoring and alerting toolkit. It is designed for reliability, scalability, and simplicity in monitoring complex IT environments. Prometheus is often recommended for scraping Cardano Stake Pools metrics for several reasons:
+Prometheus is an open-source monitoring and alerting toolkit. It is designed for reliability, scalability, and simplicity in monitoring complex IT environments. Prometheus is often recommended for scraping Cardano stake pools metrics for several reasons:
 
-* Powerful Data Model and Query Language: Prometheus employs a multi-dimensional data model and PromQL (Prometheus Query Language) for querying and analyzing time-series data. This model allows for flexible and efficient querying of metrics based on various dimensions such as labels, enabling operators to gain deep insights into the performance and health of an operator’s stake pool infrastructure. With PromQL, operators can perform complex aggregations, transformations, and statistical analysis on time-series data, making it easier to identify trends, anomalies, and patterns in monitored metrics.
-* Scalability and Reliability: Prometheus is designed to be highly scalable and reliable, capable of handling large-scale deployments with thousands of servers, containers, or microservices. It employs a pull-based model, where Prometheus servers periodically scrape metrics from instrumented targets, providing a scalable approach to monitoring dynamic environments. Additionally, Prometheus supports federation, allowing multiple Prometheus servers to aggregate and federate metrics from different sources, enabling horizontal scalability and distributed monitoring setups. Its robust architecture and proven reliability make it suitable for mission-critical IT environments where uptime and performance are paramount.
-* Rich Ecosystem and Integration: Prometheus has a vibrant ecosystem with a wide range of integrations and exporters for collecting metrics from various systems, applications, and services. It supports integrations with popular technologies such as Kubernetes, Docker, AWS, and more, making it easy to monitor modern cloud-native environments and microservices architectures. Additionally, Prometheus integrates seamlessly with other tools in the monitoring ecosystem, such as Grafana for visualization, Alertmanager for alerting, and third-party storage solutions like Thanos for long-term storage and high availability. This rich ecosystem of integrations and complementary tools enhances the flexibility and extensibility of Prometheus, making it a versatile choice for monitoring diverse IT environments.
+* Powerful data model and query language: Prometheus employs a multi-dimensional data model and Prometheus Query Language (PromQL) for querying and analyzing time-series data. This model allows for flexible and efficient querying of metrics based on various dimensions such as labels, enabling operators to gain deep insights into the performance and health of an operator’s stake pool infrastructure. With PromQL, operators can perform complex aggregations, transformations, and statistical analysis on time-series data, making it easier to identify trends, anomalies, and patterns in monitored metrics.
+* Scalability and reliability: Prometheus is designed to be highly scalable and reliable, capable of handling large-scale deployments with thousands of servers, containers, or microservices. It employs a pull-based model, where Prometheus servers periodically scrape metrics from instrumented targets, providing a scalable approach to monitoring dynamic environments. Additionally, Prometheus supports federation, allowing multiple Prometheus servers to aggregate and federate metrics from different sources, enabling horizontal scalability and distributed monitoring setups. Its robust architecture and proven reliability make it suitable for mission-critical IT environments where uptime and performance are paramount.
+* Rich ecosystem and integration: Prometheus has a vibrant ecosystem with a wide range of integrations and exporters for collecting metrics from various systems, applications, and services. It supports integrations with popular technologies such as Kubernetes, Docker, AWS, and more, making it easy to monitor modern cloud-native environments and microservices architectures. Additionally, Prometheus integrates seamlessly with other tools in the monitoring ecosystem, such as Grafana for visualization, Alertmanager for alerting, and third-party storage solutions like Thanos for long-term storage and high availability. This rich ecosystem of integrations and complementary tools enhances the flexibility and extensibility of Prometheus, making it a versatile choice for monitoring diverse IT environments.
 
-For Cardano Stake Pools these are typical targets to scrape for Prometheus:
+These are typical targets to scrape for Prometheus for Cardano stake pools:
 
 * The Cardano-node built-in EKG Prometheus exporter with Cardano node metrics on blockheight, missed-slots, KES expiry and more.
-* The open source `node_exporter`, an open source Prometheus exporter for hardware and OS metrics exposed by *NIX kernels for metrics on CPU, memory, disk usage, timesync and others.
+* The open source `node_exporter`, an open source Prometheus exporter for hardware and operating system metrics exposed by *NIX kernels for metrics on CPU, memory, disk usage, timesync and others.
 * https://cardano-community.github.io/guild-operators/[Cardano Guild Operators Koios SPO Tools] to expose `CNCLI` Prometheus metrics on block.db metrics such as number of sequentially missed blocks, adopted blocks, epoch luck, etc.
 
 The Prometheus scrape targets are defined via a `.yml` configuration file (typically named `prometheus.yml`). To double check syntax, you can run `./promtool check config prometheus.yml`.
-Before adding a visualization layer to Prometheus like Grafana it is recommended to connect to the Prometheus web portal (by default on localhost:9090) to double check that scraping targets are reachable. Check that the status is green and `up` on all configured endpoints in `Status -> Targets`. This status page is very helpful to debug scrape endpoint connections.
+Before adding a visualization layer like Grafana to Prometheus, it is recommended to connect to the Prometheus web portal (by default on localhost:9090) to double check that scraping targets are reachable. Check that the status is green and `up` on all configured endpoints in `Status -> Targets`. This status page is very helpful to debug scrape endpoint connections.
 
-To scrape remote servers securely various techniques exist, see also Server Hardening.
-For example, one could use a web server such as Nginx and configure it as a Reverse Proxy for the endpoint metrics to be scraped by Prometheus with Transport Layer Security (TLS) encryption in place. You can use TLS for IPs. You can also scrape Prometheus over a WireGuard VPN or other VPN service. Firewall rules should ensure that only the Prometheus monitoring server may access the remote endpoint.
+Various techniques exist to scrape remote servers securely. See Server Hardening also.
+For example, one could use a web server such as Nginx and configure it as a reverse proxy for the endpoint metrics to be scraped by Prometheus with Transport Layer Security (TLS) encryption in place. You can use TLS for IPs. You can also scrape Prometheus over a WireGuard VPN or other VPN service. Firewall rules should ensure that only the Prometheus monitoring server may access the remote endpoint.
 
 *_Note:_*  Prometheus and Grafana server should be run separately from the block producing node, to avoid competition of compute resources, and disruption of block production. Ideally, a separate monitoring host should be set up. If a separate host is not available, a passive relay host may be used.
 
 ==== Grafana
 
-Grafana is an open-source platform for monitoring and observability, specializing in data visualization and analytics. It allows operators to create dashboards, charts, and graphs to visualize and analyze metrics from various data sources. It is an ideal companion to display Prometheus metrics. Stake pool operators generally opt to use Grafana alongside Prometheus for the following reasons:
+Grafana is an open-source platform for monitoring and observability, specializing in data visualization and analytics. It allows operators to create dashboards, charts, and graphs to visualize and analyze metrics from various data sources. It is an ideal companion to display Prometheus metrics. SPOs generally opt to use Grafana alongside Prometheus for the following reasons:
 
-* Flexible Visualization and Dashboards: Grafana provides a highly flexible and customizable platform for visualizing metrics and building dashboards. It offers a wide variety of visualization options, including graphs, gauges, tables, heatmaps, and more, allowing operators to create rich, interactive dashboards tailored to their specific monitoring needs. Grafana supports multiple data sources, including Prometheus, Graphite, InfluxDB, Elasticsearch, and many others, enabling operators to consolidate metrics from different sources into a single unified dashboard for comprehensive monitoring and analysis.
-* Extensibility and Integration: Grafana is highly extensible and supports integration with a vast ecosystem of data sources, plugins, and extensions. It offers a plugin architecture that allows developers to create custom data source plugins, panel visualizations, and integrations with third-party services. This extensibility enables Grafana to adapt to diverse monitoring environments and integrate seamlessly with existing tools and systems. Additionally, Grafana supports features such as annotations, templating, and alerts, enhancing its functionality and making it a versatile platform for monitoring IT services.
-* Community and Adoption: Grafana has a large and active community of users, developers, and contributors, driving innovation and adoption in the monitoring space. The Grafana community has developed a wide range of plugins, dashboards, and integrations, which are freely available through the Grafana Plugin Repository and community forums. This vibrant ecosystem of community-contributed content provides operators with access to a wealth of resources and pre-built solutions for monitoring various technologies, applications, and infrastructure components. Additionally, Grafana’s popularity and widespread adoption make it a de facto standard for visualization and monitoring in many organizations, ensuring long-term support, stability, and continued development of the platform.
+* Flexible visualization and dashboards: Grafana provides a highly flexible and customizable platform for visualizing metrics and building dashboards. It offers a wide variety of visualization options, including graphs, gauges, tables, heatmaps, and more, allowing operators to create rich, interactive dashboards tailored to their specific monitoring needs. Grafana supports multiple data sources, including Prometheus, Graphite, InfluxDB, Elasticsearch, and many others, enabling operators to consolidate metrics from different sources into a single unified dashboard for comprehensive monitoring and analysis.
+* Extensibility and integration: Grafana is highly extensible and supports integration with a vast ecosystem of data sources, plugins, and extensions. It offers a plugin architecture that allows developers to create custom data source plugins, panel visualizations, and integrations with third-party services. This extensibility enables Grafana to adapt to diverse monitoring environments and integrate seamlessly with existing tools and systems. Additionally, Grafana supports features such as annotations, templating, and alerts, enhancing its functionality and making it a versatile platform for monitoring IT services.
+* Community and adoption: Grafana has a large and active community of users, developers, and contributors, driving innovation and adoption in the monitoring space. The Grafana community has developed a wide range of plugins, dashboards, and integrations, which are freely available through the Grafana Plugin Repository and community forums. This vibrant ecosystem of community-contributed content provides operators with access to a wealth of resources and pre-built solutions for monitoring various technologies, applications, and infrastructure components. Additionally, Grafana’s popularity and widespread adoption make it a de facto standard for visualization and monitoring in many organizations, ensuring long-term support, stability, and continued development of the platform.
 
 Some Prometheus exporters like `node_exporter` come with their own pre-configured Grafana dashboard.  `Cardano-node` does not have a default Grafana dashboard yet, but the community has created various dashboards and shared those online to copy and adapt or for inspiration.
 
