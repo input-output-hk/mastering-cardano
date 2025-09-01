@@ -572,7 +572,7 @@ Let's have a look:
 The VRF key will reside on the connected block-producing node(((block-producing node))), as it is used as a parameter to start `cardano-node`.
 
 
-*Note*: While it is possible to modify the VRF key of a stake pool by sending a new pool registration certificate, doing so will forfeit pool rewards for two epochs. This requirement helps encourage tight security practices.
+*Note*: while it is possible to modify the VRF key of a stake pool by sending a new pool registration certificate, doing so will forfeit pool rewards for two epochs. This requirement helps encourage tight security practices.
 
 ==== KES keys pair
 
@@ -659,7 +659,7 @@ and replies
 }
 ----
 
-Notice here that by the time we generated our first `operational certificate`, one kes-period passed. See the difference between `"qKesCurrentKesPeriod": 695` and `"qKesStartKesInterval": 694` !
+Notice here that by the time we generated our first `operational certificate`, one kes-period had passed. See the difference between `"qKesCurrentKesPeriod": 695` and `"qKesStartKesInterval": 694` !
 
 *Rotation example with a `counter` reset:*
 
@@ -723,7 +723,7 @@ Certificates are actions performed on the ledger allowing to:
 [discrete]
 ==== Address registration (and deregistration)
 
-The stake component within a base address(((address, base))) (base.addr) must be registered on the ledger before it can be used to delegate ada, receive staking rewards, or declare the pool's pledge or receive pool rewards. This is accomplished by submitting a registration certificate for the corresponding stake address (stake.addr) on the blockchain.
+The stake component within a base address(((address, base))) (base.addr) must be registered on the ledger before it can be used to delegate ada, receive staking rewards, declare the pool's pledge, or receive pool rewards. This is accomplished by submitting a registration certificate for the corresponding stake address (stake.addr) on the blockchain.
 
 For now, let’s create the registration certificate with the following command:
 
@@ -773,7 +773,7 @@ cardano-cli stake-pool registration-certificate \
 *The reward address will not be required to sign the transaction sending the certificate on-chain.*
 
 
-`--pool-cost`: the fixed cost(((fixed cost))) the pool will charge before calculating the margin fee. It cannot be set lower than 340 ada or 340000000 lovelaces at this time on mainnet.
+`--pool-cost`: the fixed cost(((fixed cost))) the pool will charge before calculating the margin fee. It cannot be set lower than 340 ada or 340,000,000 lovelaces at this time on mainnet.
 
 `--pool-margin`: the percentage fee(((percentage fee))) taken by the pool on the remaining rewards after pool cost has been deducted from all block rewards. Its boundaries are zero (0 %) and one (100%). In this example, it is set at 2%
 
@@ -785,7 +785,7 @@ cardano-cli stake-pool registration-certificate \
 
 *The address(es) declared as pool’s pledge must all be delegated to the pool being registered.*
 
-`--pool-relay-ipv4`: the IP address of the relay node(((node, relay))) used to shield the block produced from connections to the wider network. Note that an ipv6 option exists.
+`--pool-relay-ipv4`: the IP address of the relay node(((node, relay))) used to shield the block produced from connections to the wider network. Note that an IPv6 option exists.
 
 `--pool-relay-port`: specifies the port on which the relay cardano-node(((cardano-node))) will be listening.
 
@@ -951,7 +951,7 @@ cardano-cli query tip --mainnet
 [[basic-transaction]]
 ==== Basic transaction
 
-In this section we will create a single transaction that will post the `stake.registration` of the `base.addr`, the `pool.registration` and the `delegation.certificate` that were generated in the previous sections. All in one go.
+In this section, we will create a single transaction that will post the `stake.registration` of the `base.addr`, the `pool.registration` and the `delegation.certificate` that were generated in the previous sections. All in one go!
 
 [discrete]
 ==== Estimate the transaction fee
@@ -970,9 +970,9 @@ cardano-cli transaction build-raw \
 --out-file tx.draft
 ----
 
-Because it is a `tx.draft` all values are set to `0`.
+Because it is a `tx.draft`, all values are set to `0`.
 
-* `--tx-in`: the UTxO that will be consumed in the format *`TxHash#TxIx`*. Nothing prevents you from consuming more UTxO! Use additional `--tx-in` lines to do so.
+* `--tx-in`: the UTXO that will be consumed in the format *`TxHash#TxIx`*. Nothing prevents you from consuming more UTXOs! Use additional `--tx-in` lines to do so.
 * `--tx-out`: the address where ada change will be sent back to. Nothing prevents you from specifying more than one address! Use additional `--tx-out` lines to do so.
 * `--invalid-hereafter`: the transaction will be valid until this slot height is reached.
 * `--fee`: the transaction fee of what we want to calculate!
@@ -1000,7 +1000,7 @@ The command replies :
 
 Perfect! Only 0.197313 ada. Not too expensive for a transaction containing three certificates.
 
-*Note*: Transaction fees are deterministic and as such, have a lower bound. However, users can always choose to pay more than the required amount. It is important to handle fee inputs with care.
+*Note*: Transaction fees are deterministic. As such, they have a lower bound. However, users can always choose to pay more than the required amount. It is important to handle fee inputs with care.
 
 [discrete]
 ==== Build the final transaction
@@ -1017,15 +1017,15 @@ cardano-cli transaction build-raw \
 --out-file tx.final
 ----
 
-* `--tx-in UTxO_TxHash#TxIx`: `TxHash`#`TxIx` of the UTxO you want to consume!
+* `--tx-in UTxO_TxHash#TxIx`: `TxHash`#`TxIx` of the UTXO you want to consume!
 * `--tx-out $(cat base.addr)+value`
 
 [IMPORTANT]
 ====
 
 *`--tx-out` value is expressed in lovelaces.
-Registering an address requires a deposit of two ada (2000000 lovelaces).
-Registering a pool requires a deposit of 500 ada (500000000 lovelaces).
+Registering an address requires a deposit of two ada (2,000,000 lovelaces).
+Registering a pool requires a deposit of 500 ada (500,000,000 lovelaces).
 This means that the change to the `base.addr` will be : *_value = input - (502 deposit + transaction fee)_* Deregistration of an address or a pool will be accounted for by adding two ada or 500 ada, respectively, to the ada change value one must calculate to correctly balance a transaction! For example, to deregister simultaneously a base address and a pool: *_value = (input + 502 deposit) - transaction fee_*.
 ====
 
@@ -1103,7 +1103,7 @@ cardano-cli transaction build-raw \
 
 `--withdrawal`: specifies from which `stake.addr` rewards will be withdrawn from; `+` separates the address from the value withdrawn in lovelace.
 
-Since we only create a fake transaction in order to calculate transaction fees, we set the value withdrawn at zero.
+Since we only create a fake transaction to calculate transaction fees, we set the value withdrawn at zero.
 
 Next, run:
 
@@ -1186,7 +1186,7 @@ Clock synchronization is essential in distributed networks. Nodes must prevent c
 After installing Chrony, it is recommended to configure the default configuration file (`/etc/chrony/chrony.conf`) with nearby, high-performance NTP servers. These servers should be polled frequently to minimize drift from the global clock. NTP servers are categorized by stratum levels, where:
 
 * *Stratum 0*: reserved for atomic clocks or other highly accurate time sources
-* *Stratum 1*: suitable for systems that can deviate only within a few milliseconds of stratum 0
+* *Stratum 1*: suitable for systems that can deviate only within a few milliseconds of stratum zero
 * Higher strata indicate further deviations from precise time.
 
 To check the stratum level, use the command `chrony ntpdata`. Below is an example of a typical `chrony.conf` configuration:
@@ -1203,7 +1203,7 @@ leapsectz right/UTC
 ----
 ==== Comments on the example configuration
 
-* To add NTP servers, include their IP address (eg, 192.168.2.100) or DNS name (e.g., time.google.com) in the chrony.conf file.
+* To add NTP servers, include their IP address (eg, 192.168.2.100) or DNS name (eg, time.google.com) in the chrony.conf file.
 
 * Setting lower values for minpoll and maxpoll reduces time drift; maxsources sets the maximum number of sources used from the pool.
 
@@ -1258,7 +1258,7 @@ Outlined here are common best practices in IT server administration for any proj
 
 ==== Node security
 
-* It is highly recommended not to operate both the block producer and a public relay on the same host. Since the relay is publicly exposed, if it becomes compromised or is under attack (eg, DoS), your block producer may also go offline, leading to missed block production opportunities, which can negatively impact your ranking and associated rewards. To mitigate this risk, secure the block producer behind a firewall, allowing it to connect only to the relay nodes. The relay nodes can then connect to the block producer and other peer relays.
+* It is highly recommended _not_ to operate both the block producer and a public relay on the same host. Since the relay is publicly exposed, if it becomes compromised or is under attack (eg, DoS), your block producer may also go offline, leading to missed block production opportunities, which can negatively impact your ranking and associated rewards. To mitigate this risk, secure the block producer behind a firewall, allowing it to connect only to the relay nodes. The relay nodes can then connect to the block producer and other peer relays.
 * It is recommended to only store the essential files (such as kes.skey, vrf.skey, etc) on your server for running the Cardano node. It is also strongly recommended to keep other files related to your wallet/pool, such as private keys, on a separate, secure, and preferably air-gapped device.
 * Additionally, it is important to avoid running any programs, including `cardano-node` and `db-sync`, with root privileges. Instead, create a non-privileged account and use it for these tasks, and this applies to both non-containerized and containerized environments.
 * It is always advisable to use a hardware wallet for your pool as it will keep your private keys safe and secure.
@@ -1339,8 +1339,7 @@ These are typical targets to scrape for Prometheus for Cardano stake pools:
 The Prometheus scrape targets are defined via a `.yml` configuration file (typically named `prometheus.yml`). To double check syntax, you can run `./promtool check config prometheus.yml`.
 Before adding a visualization layer like Grafana to Prometheus, it is recommended to connect to the Prometheus web portal (by default on localhost:9090) to double check that scraping targets are reachable. Check that the status is green and `up` on all configured endpoints in `Status -> Targets`. This status page is very helpful to debug scrape endpoint connections.
 
-Various techniques exist to scrape remote servers securely. See Server Hardening also.
-For example, one could use a web server such as Nginx and configure it as a reverse proxy for the endpoint metrics to be scraped by Prometheus with Transport Layer Security (TLS) encryption in place. You can use TLS for IPs. You can also scrape Prometheus over a WireGuard VPN or other VPN service. Firewall rules should ensure that only the Prometheus monitoring server may access the remote endpoint.
+Various techniques exist to scrape remote servers securely. See Server Hardening also. For example, one could use a web server such as Nginx and configure it as a reverse proxy for the endpoint metrics to be scraped by Prometheus with Transport Layer Security (TLS) encryption in place. You can use TLS for IPs. You can also scrape Prometheus over a WireGuard VPN or other VPN service. Firewall rules should ensure that only the Prometheus monitoring server may access the remote endpoint.
 
 *_Note:_*  Prometheus and Grafana server should be run separately from the block producing node, to avoid competition of compute resources, and disruption of block production. Ideally, a separate monitoring host should be set up. If a separate host is not available, a passive relay host may be used.
 
@@ -1352,7 +1351,7 @@ Grafana is an open-source platform for monitoring and observability, specializin
 * Extensibility and integration: Grafana is highly extensible and supports integration with a vast ecosystem of data sources, plugins, and extensions. It offers a plugin architecture that allows developers to create custom data source plugins, panel visualizations, and integrations with third-party services. This extensibility enables Grafana to adapt to diverse monitoring environments and integrate seamlessly with existing tools and systems. Additionally, Grafana supports features such as annotations, templating, and alerts, enhancing its functionality and making it a versatile platform for monitoring IT services.
 * Community and adoption: Grafana has a large and active community of users, developers, and contributors, driving innovation and adoption in the monitoring space. The Grafana community has developed a wide range of plugins, dashboards, and integrations, which are freely available through the Grafana Plugin Repository and community forums. This vibrant ecosystem of community-contributed content provides operators with access to a wealth of resources and pre-built solutions for monitoring various technologies, applications, and infrastructure components. Additionally, Grafana’s popularity and widespread adoption make it a de facto standard for visualization and monitoring in many organizations, ensuring long-term support, stability, and continued development of the platform.
 
-Some Prometheus exporters like `node_exporter` come with their own pre-configured Grafana dashboard.  `Cardano-node` does not have a default Grafana dashboard yet, but the community has created various dashboards and shared those online to copy and adapt or for inspiration.
+Some Prometheus exporters like `node_exporter` come with their own pre-configured Grafana dashboard. `Cardano-node` does not have a default Grafana dashboard yet, but the community has created various dashboards and shared those online to copy and adapt or for inspiration.
 
 Grafana dashboards can be easily configured with a graphical drag & drop interface or editing the JSON configuration file.
 
@@ -1360,20 +1359,20 @@ Grafana dashboards can be easily configured with a graphical drag & drop interfa
 
 Effective alerting options exist within Prometheus and Grafana, and alerts may be configured with either service:
 
-* Prometheus Alertmanager: Alertmanager is a component of the Prometheus monitoring system responsible for handling alerts generated by Prometheus servers. It receives alerts from Prometheus via its alerting rules and then performs actions based on those alerts, such as sending notifications to various alerting channels (e.g., email, Slack, PagerDuty, Telegram, xMatters). Alertmanager focuses on managing and routing alerts efficiently, ensuring that the right notifications reach the appropriate recipients according to defined alert routing and suppression rules. Alertmanager is tightly integrated with Prometheus and is primarily designed to work with Prometheus-generated alerts. It provides native integration with Prometheus’s alerting rules and relies on Prometheus’s pull-based model for collecting metrics. While Alertmanager can integrate with other monitoring systems and services via webhooks and APIs, its primary focus is on handling alerts generated by Prometheus. The Prometheus Alertmanager is configured via YAML-files.
+* Prometheus Alertmanager: Alertmanager is a component of the Prometheus monitoring system responsible for handling alerts generated by Prometheus servers. It receives alerts from Prometheus via its alerting rules and then performs actions based on those alerts, such as sending notifications to various alerting channels (eg, email, Slack, PagerDuty, Telegram, xMatters, etc.). Alertmanager focuses on managing and routing alerts efficiently, ensuring that the right notifications reach the appropriate recipients according to defined alert routing and suppression rules. Alertmanager is tightly integrated with Prometheus and is primarily designed to work with Prometheus-generated alerts. It provides native integration with Prometheus’s alerting rules and relies on Prometheus’s pull-based model for collecting metrics. While Alertmanager can integrate with other monitoring systems and services via webhooks and APIs, its primary focus is on handling alerts generated by Prometheus. The Prometheus Alertmanager is configured via YAML-files.
 
-* Grafana Alerting: Grafana Alerting is a feature built into the Grafana platform that enables operators to create and manage alerts directly within the graphical Grafana dashboards. It allows operators to define alert conditions based on query results from data sources and configure alert notifications to be sent via various channels (e.g., email, Slack, PagerDuty, Telegram, xMatters) Grafana Alerting is tightly integrated with Grafana’s visualization and dashboarding capabilities, enabling operators to create rich, interactive dashboards with embedded alerts and seamlessly transition between monitoring and alerting workflows within the Grafana interface. Grafana Alerting offers integration capabilities with various data sources and external systems. Grafana Alerting allows operators to define alert conditions based on data queries from diverse data sources, enabling flexible and customizable alerting workflows tailored to specific monitoring environments. Additionally, Grafana Alerting can integrate with external notification services and platforms, providing users with a wide range of options for alert notification delivery.
+* Grafana Alerting: Grafana Alerting is a feature built into the Grafana platform that enables operators to create and manage alerts directly within the graphical Grafana dashboards. It allows operators to define alert conditions based on query results from data sources and configure alert notifications to be sent via various channels (eg, email, Slack, PagerDuty, Telegram, xMatters, etc.) Grafana Alerting is tightly integrated with Grafana’s visualization and dashboarding capabilities, enabling operators to create rich, interactive dashboards with embedded alerts and seamlessly transition between monitoring and alerting workflows within the Grafana interface. Grafana Alerting offers integration capabilities with various data sources and external systems. Grafana Alerting allows operators to define alert conditions based on data queries from diverse data sources, enabling flexible and customizable alerting workflows tailored to specific monitoring environments. Additionally, Grafana Alerting can integrate with external notification services and platforms, providing users with a wide range of options for alert notification delivery.
 
 Thresholds can be defined for each relevant monitoring metric to determine when alerts are triggered. Useful alerts include:
 
-* Last blockheight: Did the block producer lag behind the anticipated blockheight?
-* Disc usage: Is disk space running out?
-* Missed or ghosted blocks: Did the block producer miss minting or propagating a sequential number of assigned blocks?
-* Missed slot leadership checks: Did the block producer miss checking leadership eligibility for a large number of slots?
-* Available memory: Is memory usage too high and potentially affecting node performance?
-* Endpoint availability: Are all relevant endpoints for scraping available?
-* KES expiry: How much time is left before KES keys expire?
-* Time synchronization: Is the server time out of sync?
+* Last blockheight: did the block producer lag behind the anticipated blockheight?
+* Disc usage: is disk space running out?
+* Missed or ghosted blocks: did the block producer miss minting or propagating a sequential number of assigned blocks?
+* Missed slot leadership checks: did the block producer miss checking leadership eligibility for a large number of slots?
+* Available memory: is memory usage too high and potentially affecting node performance?
+* Endpoint availability: are all relevant endpoints for scraping available?
+* KES expiry: how much time is left before KES keys expire?
+* Time synchronization: is the server time out of sync?
 
 For advanced alert routing and communication, cloud platforms such as xMatters or PagerDuty can be added as another layer between the generated alerts from either Prometheus or Grafana with the potential benefits:
 
@@ -1385,25 +1384,25 @@ For advanced alert routing and communication, cloud platforms such as xMatters o
 
 ==== Zabbix
 
-https://www.zabbix.com/[Zabbix] is another integrated, all-in-one monitoring solution with out-of-the-box capabilities for monitoring diverse IT components and can be configured to monitor Cardano Nodes. Prometheus and Grafana do offer more scalability, flexibility, and customization options, but Zabbix is an alternative.
+https://www.zabbix.com/[Zabbix] is another integrated, all-in-one monitoring solution with out-of-the-box capabilities for monitoring diverse IT components and can be configured to monitor Cardano nodes. Prometheus and Grafana do offer more scalability, flexibility, and customization options, but Zabbix is a viable alternative.
 
 ==== RTView
 
 https://docs.cardano.org/cardano-components/cardano-rtview[RTView] is a real-time monitoring program that provides visibility on the state of running Cardano nodes. It supports multiple node monitoring, even if the nodes work on different machines.
 
-The main benefit of RTView is simplicity. It is simple to use; technically there is no installation, you just unpack an archive and run an executable. It is also simple to configure through an interactive dialog and shows particular changes the user should make in the node configuration files.
+The main benefit of RTView is simplicity. It is simple to use. Technically, there is no installation, you just unpack an archive and run an executable. It is also simple to configure through an interactive dialog and shows particular changes the user should make in the node configuration files.
 
-RTView does render a webpage dashboard and offers a less-complex but robust alternative to a well-configured Prometheus and Grafana monitoring setup.
+RTView does render a web page dashboard and offers a less-complex but robust alternative to a well-configured Prometheus and Grafana monitoring setup.
 
 ==== Koios gLiveview
 
-https://cardano-community.github.io/guild-operators/Scripts/gliveview/[Koios gLiveView] is a local monitoring tool to use in addition to remote monitoring tools like Prometheus and Grafana, Zabbix or RTView. This is especially useful for systemd deployments  as it provides a terminal UI to monitor real time node status for Stake Pool operators.
+https://cardano-community.github.io/guild-operators/Scripts/gliveview/[Koios gLiveView] is a local monitoring tool to use besides remote monitoring tools like Prometheus and Grafana, Zabbix or RTView. This is especially useful for systemd deployments as it provides a terminal UI to monitor real-time node status for SPOs.
 
-*_Note:_*  If Koios gLiveView is launched on a block producer with an up-to-date block.db the tool will show block minting metrics and real-time left until the next block.
+*_Note:_*  If Koios gLiveView is launched on a block producer with an up-to-date block.db, the tool will show block minting metrics and real time left until the next block.
 
 ==== Manual Cardano log review
 
-For Stake pool operators it is important to be able to read and interpret logs from cardano-node to troubleshoot and find potential issues. It is best practice to investigate each missed block and determine what went wrong. Long-term luck should be near 100% and while block collisions within the same slot occur, they are uncommon. About 5% of all blocks result in slot battles, as the outcome of a slot battle is random, about 2.5% of blocks are expected to be lost over time.
+It is important for SPOs to be able to read and interpret logs from cardano-node to troubleshoot and find potential issues. It is best practice to investigate each missed block and determine what went wrong. Long-term luck should be near 100% and while block collisions within the same slot occur, they are uncommon. About 5% of all blocks result in slot battles, as the outcome of a slot battle is random, about 2.5% of blocks are expected to be lost over time.
 
 Ideally, an operator will investigate issues that affect block production within a stake pool and make adjustments to ensure smooth and reliable operation moving forward.
 
@@ -1413,21 +1412,21 @@ This is a typical debugging sequence:
 * Was more than one block missed in sequence? If so, this is likely a serious issue such as an improperly started node, expired KES keys, or hardware or server failure.
 * If a single block was lost, it is time to debug.
 * Search the node log for the slot number it missed.
-* Did the block producer recognize it was it’s turn to mint a block (nodeIsLeader)?
+* Did the block producer recognize it was its turn to mint a block (nodeIsLeader)?
 * Did the block producer mint the block? What was the blockheight and blockhash?
 * Did the block producer add this block to its local chain or did it run into an internal fork?
 * Did the relays see this blockhash and add it to their local chains?
 * Blockheight can also be investigated in any of the public Cardano blockchain explorers.
 * Did another pool mint this blockheight with the same slot number? If so, this was the result of a slot collision and is normal.
 * Did another pool mint this blockheight with a different slot number? This is considered a Height battle and is usually the result of a misconfigured pool.
-** If the block was propagated within its slot time (one second) it was very likely a race condition and the other pool was awarded the block based on a lower VRF hash. Not much can be done about these conditions at this time outside of working with the pool operators with misconfigured stake pools.
+** If the block was propagated within its slot time (one second) it was very likely a race condition and the other pool was awarded the block based on a lower VRF hash. Not much can be done about these conditions at this time besides working with the pool operators with misconfigured stake pools.
 ** If block propagation took longer than the awarded slot, it needs to be investigated. It is possible that a bottleneck or misconfiguration exists, preventing speedy propagation such as poor upload bandwidth.
 
 Pool operators may choose to assist in diagnosing network-wide issues while, although rare, benefit from as many data-points as possible. Operators can consider contributing information about nodes to the following community services and keep informed about new and upcoming services:
 
 * Operators may send the current chain tip of their block producer to Pooltool via https://github.com/cardano-community/cncli/blob/develop/USAGE.md#sendtip-command[cncli-SendTip]. This will show a green badge on Pooltool with current tip height and helps Pooltool to capture orphan blocks. While this doesn’t guarantee every orphan block made will be seen by Pooltool, a large number of reported orphaned blocks across pools can help diagnose wider network issues.
 * Operators may also share the number of blocks assigned for an epoch and validate the correctness of past epochs via https://github.com/cardano-community/cncli/blob/develop/USAGE.md#sendslots-command[cncli-SendSlots]. This helps to debug issues on Leaderlog calculation and can increase pool performance visibility for delegators.
-* Block propagation metrics may also be sent to monitor network propagation of new blocks as seen by the local cardano-node with the https://cardano-community.github.io/guild-operators/Scripts/blockperf/[blockPerf.sh] script; a public dashboard is in the works to display these metrics. Pooltool may also be checked regularly and operators can compare their own block propagation times with other operators.
+* Block propagation metrics may also be sent to monitor network propagation of new blocks as seen by the local cardano-node with the https://cardano-community.github.io/guild-operators/Scripts/blockperf/[blockPerf.sh] script. A public dashboard is in the works to display these metrics. Pooltool may also be checked regularly and operators can compare their own block propagation times with other operators.
 
 '''''
 
