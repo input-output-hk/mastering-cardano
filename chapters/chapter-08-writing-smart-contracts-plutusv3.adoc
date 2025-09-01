@@ -16,7 +16,7 @@ _University of Edinburgh and IO_
 Smart contracts(((smart contract))) for the Cardano blockchain run in a language called
 Plutus. Roughly speaking, Plutus plays the role for Cardano that the
 Ethereum Virtual Machine(((EVM))) (EVM) does for Ethereum(((Ethereum))). But where the EVM
-requires a dense forty-two-page yellow paper to define, the key
+requires a dense 42-page yellow paper to define, the key
 concepts of Plutus can be spelled out in less than one page.
 
 The reason for this is that Plutus is based on the lambda calculus(((lambda calculus))),
@@ -32,10 +32,10 @@ The reason for designing a language with such a tiny core is tied
 closely to the needs of the Cardano blockchain. Any significant
 updating of Cardano, including a change to the definition of Plutus,
 requires a hard fork, and it is highly desirable to avoid these. How
-do you design a system that can last unchanged for the next fifty
-years? Base your design on a system that is fifty years old!
+do you design a system that can last unchanged for the next 50
+years? Base your design on a system that is 50 years old!
 
-Because this fifty-year-old theory would now be executed directly on
+Because this 50-year-old theory would now be executed directly on
 the Cardano blockchain, carrying billions of dollars of value, there
 was a business case for formally validating that theory. Input | Output
 (IO)(((IO))) hired James Chapman(((Chapman, James))) to validate our variant of
@@ -51,7 +51,7 @@ certificates to ensure that phases of the compiler(((compiler))) optimize code
 correctly. James is now head of formal methods for IO.
 
 Everything should be made as simple as possible, but not simpler.
-Arguably, our initial simple design is too simple. It requires
+Arguably, our initial simple design is _too_ simple. It requires
 representing data types as higher-order functions(((function, higher-order))),
 but we had reason to believe the extra cost was negligible. Always check your
 assumptions! Once the system was up and running, performance
@@ -68,15 +68,15 @@ creating Plutus scripts, using the Plinth language embedded into
 Haskell. On Ethereum, one must learn the special-purpose language
 Solidity(((Solidity))) to write smart contracts that compile to the EVM.
 In contrast, on Cardano, one can use the Haskell language, designed by an
-expert team of researchers thirty years ago. It has a mature and
+expert team of researchers 30 years ago. It has a mature and
 stable core, even though it is still an actively growing research
-language. The brilliant idea to apply Haskell in this way is due
-to Manuel Chakravarty(((Chakravarty, Manuel))), a contributor to both
+language. The brilliant idea to apply Haskell in this way came from
+Manuel Chakravarty(((Chakravarty, Manuel))), a contributor to both
 the design and implementation of Haskell.
 
-In addition to Plinth (embedded in Haskell), a wide range of
+Besides Plinth (embedded in Haskell), a wide range of
 other languages can also be used to generate smart contracts in
-Plutus to run on Cardano. These include: Aiken (a stand-alone
+Plutus to run on Cardano. These include: Aiken (a standalone
 language), Plutarch (also embedded in Haskell), Plu-ts (embedded in
 TypeScript), OpShin (embedded in Python), Scalus (embedded in Scala),
 Helios (which runs on top of JavaScript and TypeScript), and Pluto
@@ -92,7 +92,7 @@ the opportunity I've had to work with them and with everyone at
 IO. I'm particularly grateful to Charles Hoskinson(((Hoskinson, Charles))) for the
 opportunity to collaborate with IO. It's been an amazing
 experience – it's not often that you can suggest a practical
-application of a fifty-year-old theory and have people take you
+application of a 50-year-old theory and have people take you
 seriously!
 
 [[chapter8-marlowe-preface]]
@@ -129,7 +129,7 @@ construction and tracking contract activity by other participants.
 
 * _The Marlowe TypeScript SDK(((TS-SDK)))_ fully integrates Marlowe as a component
 within a complete DApp, including contract creation and initialization,
-as well as execution.
+and execution.
 
 * _The Marlowe Playground(((Marlowe, playground)))_ provides the environment for learning Marlowe
 through its Blockly(((Blockly))) representation, as well as simulation and analysis
@@ -168,7 +168,7 @@ University of Kent in 2017 and became part of IO in 2019. As of autumn
 Marlowe Language Community Interest Company (CIC), a non-profit
 organization (UK company number 16010921). This CIC supports Marlowe
 users and developers by overseeing development, maintenance, education,
-and training. It also hosts Marlowe open-source software repositories
+and training. It also hosts Marlowe's open-source software repositories
 and maintains the ecosystem's online presence.
 
 With Tomasz Rybarczyk, I have been funded under Catalyst Fund13(((Catalyst, Fund13))),
@@ -271,7 +271,7 @@ Plutus Core(((Plutus core))) compiler(((compiler)))
 * https://github.com/Plutonomicon/pluto[Pluto]: a DSL resembling UPLC(((UPLC)))
 with some syntactic sugar, written in a Haskell-like syntax.
 
-One can read more about languages that compile to UPLC(((UPLC))) at the official
+You can read more about languages that compile to UPLC(((UPLC))) at the official
 https://plutus.cardano.intersectmbo.org/docs/delve-deeper/languages[Plinth docs].
 The logic in all compiled Cardano smart contract languages follows the
 same rules defined by Plutus. Learning one compiled language also helps a
@@ -299,7 +299,7 @@ transaction fees. These tools can also help analyze the fees users will
 encounter while interacting with a Plutus script. The official
 documentation provides more information on the
 https://docs.cardano.org/about-cardano/explore-more/fee-structure/[Cardano
-fee structure]. Links to Cardano developer tools are provided at the
+fee structure]. There are links to Cardano developer tools at the
 end of this section.
 
 Some examples of projects that can be built using
@@ -390,7 +390,7 @@ explores the security and best practices of Marlowe in more detail.
 
 Sometimes, smart contract code is referred to as on-chain code(((on-chain, code))) because
 it runs in the node during the inclusion of new transactions that aim to
-spend a UTXO at a script address. Off-chain code(((off-chain code))), in contrast, runs on
+spend an UTXO at a script address. Off-chain code(((off-chain code))), in contrast, runs on
 the user's or a service provider's device and queries the blockchain,
 builds, signs, and submits transactions. A web application that
 connects with a wallet and interacts with one or more smart contracts is
@@ -401,7 +401,7 @@ off-chain code and interacts with one or more smart contracts that
 represent the on-chain code. Off-chain code tasks can be
 performed with a command line tool, such as the
 https://github.com/IntersectMBO/cardano-cli/tree/main[Cardano CLI], or
-with the help of libraries and builder tools that are embedded in
+with the help of libraries and builder tools embedded in
 popular programming languages. Some of them include:
 
 * https://blockfrost.dev/sdks[Blockfrost SDK]: enables access to the
@@ -463,7 +463,7 @@ model highly scalable in terms of deployment. Instead of depending on a
 centralized network operator to continuously assess the network's
 capacity and demand, which is always changing, the network's expansion
 is driven by the communities that require access to the internet. Smart
-contracts play a key role here: they remove intermediaries and
+contracts play a key role here. They remove intermediaries and
 incentivize network expansion through an automated reward system,
 whereby operators are rewarded for providing good-quality services.
 
@@ -522,20 +522,20 @@ Additionally, there exists another currency within the World Mobile
 ecosystem – Earth node non-fungible token (ENNFT). ENNFTs are created
 using Cardano's native token functionality and are issued to Earth node
 owners who locked 100,000 WMT to a smart contract before January 4,
-2023. These NFTs(((NFT))) provide monthly rewards; each month, Earth node owners
+2023. These NFTs(((NFT))) provide monthly rewards. Each month, Earth node owners
 receive 1,300 WMT (1.3%) for maintaining their node.
 
 *Cardano within the WMT sharing economy model*
 
 In contrast to traditional network models, the operation and maintenance
-of nodes within the WMT sharing economy model is shared with
+of nodes within the WMT economy model is shared with
 communities and local businesses. This approach enhances scalability and
 reduces costs by allocating resources to areas where they are most
 needed. Leveraging blockchain technology and smart contracts offers
 numerous advantages that align seamlessly with this distributed model:
 
 * *Transparency*: Cardano records information that can be easily
-accessible to different stakeholders to make more informed decisions
+accessible by different stakeholders to make more informed decisions
 * *Privacy*: user information is stored using private/public
 encryption(((encryption, private/public))) provided by Cardano
 * *Immutability*: Cardano's EUTXO model ensures transaction immutability
@@ -554,8 +554,7 @@ image::sc_cardano_address.png[width=400,height=280,title="Cardano address"]
 
 Both parts of a Cardano address are cryptographically derived from the
 private key(((private key))), containing the same owner information. The
-payment part,
-which is always present, determines the conditions under which a UTXO at
+payment part, which is always present, determines the conditions under which a UTXO at
 the address can be spent. It is either defined by the hash of a public
 key or a Plutus script. If it contains a public key hash(((public key, hash))), UTXOs can only
 be spent if the transaction is signed with the corresponding private
@@ -613,9 +612,9 @@ image::sc_address_types.png[width=900,height=162,title="Address types, source: h
 In Cardano addresses(((Cardano, address))), the sequence of bytes (decoded from _Bech32_ or
 _Base58_) consists of two parts – a one-byte header and a payload of
 several bytes. Depending on the header, the interpretation and length of
-the payload vary. In the header byte, the bits from 7 to 4 indicate
-the type of addresses being used; we'll call these four bits the header
-type. The remaining four bits from 3 to 0 are either unused or refer to
+the payload vary. In the header byte, the bits from seven to four indicate
+the type of addresses being used. We'll call these four bits the _header
+type_. The remaining four bits from three to zero are either unused or refer to
 what we call the network tag. You can see a graphical representation
 below:
 
@@ -735,8 +734,7 @@ Marlowe team, initially at the University of Kent with support from a
 research grant from IO, and later as an internal engineering team within
 IO. The Marlowe team at IO was also collaborating with the
 https://www.uwyo.edu/acct-fin/cbdi/[Wyoming Center for Blockchain and Digital
-Innovation] (CBDI)
-at the University of Wyoming. More information about
+Innovation] (CBDI) at the University of Wyoming. More information about
 the research conducted for Marlowe can be found on the official
 documentation page, which also lists
 https://docs.marlowe-lang.org/docs/platform-and-architecture/platform#research-based[published
@@ -1032,7 +1030,7 @@ financial contracts. Some examples include:
 deposit of currency
 * A choice from a set of options.
 
-Crucially, a contract cannot wait indefinitely for an action: if no
+Crucially, a contract cannot wait indefinitely for an action. If no
 action has been initiated by a set time (the timeout), the contract will
 continue with an alternative behavior. For example, it may refund any
 funds in the contract as a remedial action. Marlowe contracts can branch
@@ -1060,7 +1058,7 @@ Marlowe has _six_ ways of building contracts. Five of these methods –
 contracts, and the sixth method, `Close`, is a simple contract. At each
 step of execution, besides returning a new state and continuation
 contract, it is possible that effects – payments – and warnings can also
-be generated. A description of each of the methods that the Contract
+be generated. A description of each of the methods that the contract
 data type defines can be found in the
 https://docs.marlowe-lang.org/docs/platform-and-architecture/marlowe-language-guide#about-a-marlowe-contract[Marlowe
 language guide] hosted on the official documentation page.
@@ -1214,9 +1212,9 @@ statement, we use the `ValueEQ` constructor. It takes the value that
 Charlie chose and compares it to a number. We retrieve the value from
 Charlie's choice by using the `ChoiceValue` constructor and input the
 `ChoiceId` statement that we previously used. The value to which we
-compare it is 1, for which we again use the `Constant` constructor.
+compare it is one, for which we again use the `Constant` constructor.
 The first case that follows the conditional statement is when the choice
-equals 1, which means that the funds from Bob will go to Alice. To
+equals one, which means that the funds from Bob will go to Alice. To
 transfer the funds from Bob's internal account to Alice's internal
 account, we use the `Pay` constructor. We first specify the party that
 sends the money, for which we can use the `Role` statement. After that, we
@@ -1230,7 +1228,7 @@ the end, we write the `Close` constructor, which means that the funds
 from the internal accounts will be sent back to the external account of
 those parties. The second `Pay` statement is the same, but the roles of
 Alice and Bob are reversed, as Charlie will send the funds to Bob if he
-makes choice 2.
+makes choice two.
 
 Let us look at another, more complex example that uses the same Marlowe
 constructors. The contract will be an escrow that regulates a funds
@@ -1307,7 +1305,7 @@ account, with the amount defined by the _Price_ parameter. The next
 confirms everything is fine, and the contract closes. This is handled
 using a `Choice` statement, where the buyer has only one option. In the
 second case, the buyer reports a problem, and the funds are returned to
-the buyer's internal account. Two further possibilities arise: if the
+the buyer's internal account. Two further possibilities arise. If the
 seller agrees with the problem, the contract closes, and the buyer's
 funds are transferred back to their external account. If the seller
 disputes the issue, and no action is taken by the timeout, the contract
