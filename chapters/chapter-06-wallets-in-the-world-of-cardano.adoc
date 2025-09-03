@@ -78,7 +78,7 @@ For a more extensive list of hardware wallets, you can review link:https://githu
 
 ==== Software wallets
 
-Software wallets(((software wallets))) store cryptocurrency private keys on internet-connected devices like computers or smartphones. They offer convenient access to digital assets, facilitating easy transactions through mobile, desktop applications, or web browser extensions.
+Software wallets(((software wallets)))store cryptocurrency private keys on internet-connected devices like computers or smartphones. They offer convenient access to digital assets, facilitating easy transactions through mobile, desktop applications, or web browser extensions.
 
 Let's explore the pros and cons of software wallets, along with a review of some popular options.
 
