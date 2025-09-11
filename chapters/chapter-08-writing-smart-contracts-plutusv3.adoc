@@ -2987,7 +2987,7 @@ newtype TxId = TxId {getTxId :: PlutusTx.BuiltinByteString}
 
 For PlutusV3 scripts, a datum(((datum))) is no longer necessary to be attached to a UTXO
 when creating it at a script address, as was the case for PlutusV2 scripts.
-For this reason, the script info for a spending script maybe contains a datum.
+For this reason, the script info for a spending script contains a [purple]#Maybe Datum# type. 
 
 [source,haskell]
 ----
@@ -3092,11 +3092,11 @@ and one time the [blue]#head# function.
 
 Since we are working with a spending script, the script info contains the spending
 constructor followed by the transaction output
-reference(((transaction, output reference))) and maybe a datum. We use
+reference(((transaction, output reference))) and the [purple]#Maybe Datum# type. We use
 once the [blue]#tail# function and the [blue]#head# function to extract it. Because
 we now have something of type [purple]#Maybe V2.Datum#, we cannot directly convert
 it to an integer. We again use the [blue]#constrArgs# function and then only once
-the [blue]#head# function since there should be only one element in the list -the datum.
+the [blue]#head# function since there should be only one element in the list - the datum.
 After that we have the datum in untyped form, and we can apply the
 [blue]#unsafeDataAsI# function to convert it to an integer number.
 
@@ -3448,7 +3448,7 @@ data ScriptPurpose
 The [purple]#ScriptPurpose# data type is structured in the same way as the
 [purple]#ScriptInfo# data type, except the constructor names are different
 and the _Spending_ constructor holds only a transaction output
-reference(((transaction, output reference))), maybe without a datum.
+reference(((transaction, output reference))), without the [purple]#Maybe Datum# type.
 The keys for the datums are datum hashes that map to actual datums.
 
 Next comes the transaction ID(((transaction, ID))) of type
@@ -3846,7 +3846,7 @@ For instructions on how to create a wallet and generate a seed phrase,
 see chapter <<wallets-in-the-world-of-cardano, Wallets in the world of Cardano>>.
 Next, we define a provider to help us query the blockchain and
 submit transactions. We use https://blockfrost.io/[BlockFrost]. For the
-code to work, one has to provide their Blockfrost key, which users can get
+code to work, one has to provide their BlockFrost key, which users can get
 for free at the official website. The key is tied to a specific network
 (mainnet, preprod, preview, or SanchoNet). The off-chain code we will
 present in this and other sections was tested on the _preview_ network.
@@ -4083,7 +4083,7 @@ redeemer for a custom data type at the
 https://meshjs.dev/apis/transaction/smart-contract#redeemer[Using redeemer]
 MeshJS docs section that also showcases a code example.
 
-If that the redeemer does not represent a custom data type,
+If the redeemer does not represent a custom data type,
 but rather a Plutus supported type as eg an [purple]#Integer#, we would define
 the redeemer as:
 
