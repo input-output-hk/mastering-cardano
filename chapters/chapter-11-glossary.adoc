@@ -2,7 +2,7 @@
 [[glossary]]
 == Glossary
 
-For Cardano-related terms and definitions, refer to the 
+For Cardano-related terms, refer to the 
 https://www.essentialcardano.io/glossary[Essential Cardano glossary],
 which features a search bar at the top of the page. 
 
