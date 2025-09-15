@@ -3,7 +3,9 @@ set -euo pipefail
 
 # ── Book Settings ─────────────────────────────────────────────────
 FILENAME="mastering-cardano"
-VERSION="v1.0.0"
+VERSION="$(cat VERSION)"
+
+echo "building PDF for version $VERSION"
 
 rm -rf dist/images-processed
 mkdir -p dist/images-processed
