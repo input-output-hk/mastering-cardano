@@ -59,19 +59,42 @@ This book is written in AsciiDoc. To build your own PDF and EPUB versions from t
    cd mastering-cardano
    ```
 
-2. Install dependencies, as follows:
+2. Install Ruby and build tools:
+   On Debian-based systems (like Ubuntu), you can install Ruby and build tools with:
+   ```
+   sudo apt-get install -y ruby-full build-essential
+   ```
+
+3. Install Bundler:
+   Install Bundler for the current user:
+   ```
+   gem install bundler --user-install
+   ```
+
+4. Set up environment variables:
+   Set up the necessary environment variables to use user-installed gems. First, check your Ruby version:
+   ```
+   ruby --version
+   ```
+   Then export the path using your Ruby version (replace `X.Y.0` with your version, e.g., `3.1.0`):
+   ```
+   export PATH="$HOME/.local/share/gem/ruby/X.Y.0/bin:$PATH"
+   export BUNDLE_PATH="$HOME/.local/share/gem"
+   ```
+
+5. Install dependencies, as follows:
    This project uses Bundler to manage Ruby gems. Install the required gems with:
    ```
    bundle install
    ```
 
-3. Install Graphviz:
+6. Install Graphviz:
    On Debian-based systems (like Ubuntu), you can install Graphviz with:
    ```
    sudo apt-get update && sudo apt-get install -y graphviz
    ```
 
-4. Build the book:
+7. Build the book:
    You can build both the PDF and EPUB versions using the Makefile: `make`
 
    Alternatively, you can build each format individually:
