@@ -2,9 +2,9 @@
 [[glossary]]
 == Glossary
 
-For Cardano-related glossary terms refer to the 
+For Cardano-related terms, refer to the 
 https://www.essentialcardano.io/glossary[Essential Cardano glossary],
-which contains a search bar at the top of the page. 
+which features a search bar at the top of the page. 
 
 If you find a term in the book that is not covered in the glossary and needs an explanation, please contribute a new glossary entry in the
 https://github.com/input-output-hk/essential-cardano-content/tree/main/content/glossary[Essential Cardano GitHub repository]. 
