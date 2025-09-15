@@ -3,7 +3,9 @@ set -euo pipefail
 
 # ── book specific ────────────────────────────────────────────────────
 FILENAME="mastering-cardano"
-VERSION="v1.0.0"
+VERSION="$(cat VERSION)"
+
+echo "building EPUB for version $VERSION"
 
 # ── locate toolchain (absolute) ──────────────────────────────────────
 TNGROOT="$(realpath tools/docbook-xslTNG-2.5.0)"

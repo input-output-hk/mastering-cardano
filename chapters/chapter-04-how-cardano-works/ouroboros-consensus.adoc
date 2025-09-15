@@ -30,7 +30,8 @@ The fundamental reasons boil down to simple facts of nature:
 
 For example, imagine setting up a financial system that settles transactions worldwide, with a server located on every continent.
 
-image::ouroboros_distributed_system.png[A global distributed system]
+.A global distributed system
+image::ouroboros_distributed_system.png[]
 
 You would want to ensure:
 
@@ -63,7 +64,8 @@ Else,
 choose between low latency or consistency.
 ____
 
-image::ouroboros_pcaelc_theorem.png[PCAELC theorem]
+.PCAELC theorem
+image::ouroboros_pcaelc_theorem.png[]
 
 
 In our example of a global financial system,
@@ -94,7 +96,8 @@ they can differ slightly due to network latency and topology, or policy differen
 Miners select transactions from their mempool when building a new block,
 often prioritizing those with higher transaction fees.
 
-image::ouroboros_mempool.png[Each validator (miner/SPO) has its own mempool]
+.Each validator (miner/SPO) has its own mempool
+image::ouroboros_mempool.png[]
 
 Network participants (miners) [in Cardano — stake pool operators (SPOs)] independently assemble candidate blocks from their mempool
 and _compete_ to solve a cryptographic puzzle (proof of work) [in Cardano — proof of stake(((proof-of-stake)))].
@@ -111,12 +114,14 @@ until it is assumed that a block has been immutably added to the blockchain fore
 Eventually, one branch of the fork becomes longer as more blocks are added,
 and it is that longer branch that will be adopted by all nodes.
 
-image::ouroboros_longest_chain.png[Longest chain]
+.Longest chain
+image::ouroboros_longest_chain.png[]
 
 All honest nodes converge on this _longest chain_, discarding blocks from shorter forks.
 Transactions in the discarded blocks may be re-added to the mempool if they haven’t already been confirmed in some block in the longest chain.
 
-image::ouroboros_longest_chain_consensus.png[validators continue in the longest chain]
+.Validators continue in the longest chain
+image::ouroboros_longest_chain_consensus.png[]
 
 At this point, it is important to mention how similar the original Nakamoto consensus(((Nakamoto, Consensus))) and the Ouroboros consensus are.
 In fact, Ouroboros is Nakamoto consensus(((Nakamoto, Consensus))).
@@ -136,7 +141,8 @@ Proof of work(((proof-of-work))) is then like a hurdle race, where there is only
 
 We can see a block of the Bitcoin network as a data structure with the following fields:
 
-image::ouroboros_basic_block_structure.png[Basic block structure]
+.Basic block structure
+image::ouroboros_basic_block_structure.png[]
 
 And then, the 'race' is about trying to calculate the hash function that given the data and the nonce(((nonce))),
 returns a current block hash(((current block hash))) that has the desired number of leading zeros ('0000') -- this can also be thought about as finding a current block hash that is less than a desired threshold.
@@ -144,11 +150,13 @@ returns a current block hash(((current block hash))) that has the desired number
 But in order to calculate the current block hash(((current block hash))), the only way is to try nonce numbers at random.
 Like in this image, we try with 0, 17... and so on.
 
-image::ouroboros_trying_with_nonce.png[Different attempts to find a nonce]
+.Different attempts to find a nonce
+image::ouroboros_trying_with_nonce.png[]
 
 Until, finally, we find the nonce that produces the correct current block hash:
 
-image::ouroboros_valid_nonce.png[Found a nonce that Works]
+.Found a nonce that Works
+image::ouroboros_valid_nonce.png[]
 
 As you can imagine, this approach of randomly generating a nonce(((nonce))) and testing whether the resulting hash meets the desired difficulty is very computationally intensive.
 
