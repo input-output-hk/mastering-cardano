@@ -13,6 +13,9 @@ Lars Brünjes <lars.bruenjes@iohk.io>; Joshua Ellul <joshua.ellul@um.edu.mt>;
 // Render as a book; each chapter will get its own section.
 :doctype: book
 //
+// Start chapters on odd pages.
+:media: prepress
+//
 // Prefix nmbered chapter titles with "Chapter"
 :chapter-label: Chapter
 //

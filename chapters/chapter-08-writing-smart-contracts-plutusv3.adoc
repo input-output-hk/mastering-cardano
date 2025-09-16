@@ -2166,7 +2166,7 @@ This also applies to all other functions defined in any module used for
 Plinth coding. One can read more about GHC language pragmas at the
 https://wiki.haskell.org/Language_Pragmas[Haskell wiki], which provides
 links to official GHC documentation. The
-https://downloads.haskell.org/ghc/latest/docs/users_guide/using-optimisation.html#ghc-flag--ffull-laziness[GHC docs]
+link:++https://downloads.haskell.org/ghc/latest/docs/users_guide/using-optimisation.html#ghc-flag--ffull-laziness++[GHC docs]
 also cover various GHC compiler(((compiler))) options. We name our module `Week02.Validators`.
 The naming of modules through the <<chapter8-plutus-smart-contracts,
 Plutus smart contracts>> code examples section follows the naming from the
