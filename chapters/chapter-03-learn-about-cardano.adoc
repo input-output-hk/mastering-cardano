@@ -16,7 +16,7 @@ The project is pioneered by https://iohk.io/[IO], the https://www.cardanofoundat
 
 Cardano's development adheres to an _evidence-based engineering approach_, applying formal logic to the software development cycle. This rigorous process, starting with published research papers and progressing to formal specifications and reference implementations, ensures correctness, safety, and code reliability.
 
-Prof. Aggelos Kiayias(((Kiayias, Aggelos))), chief scientist at IO, states: _'When you go about designing a system, you have to present the system in the context of the research domain in which it belongs, why the system has the benefits it claims to have, and what exactly is the problem that the system is solving. There are a lot of benefits in taking such a first principles approach.'_
+Prof. Aggelos Kiayias(((Kiayias, Aggelos))), chief scientist at IO, states: _'When you go about designing a system, you have to present the system in the context of the research domain in which it belongs, why the system has the benefits it claims to have, and what exactly is the problem that the system is solving. There are a lot of advantages in taking such a first principles approach.'_
 
 === Core principles of Cardano
 
@@ -50,7 +50,7 @@ As a third-generation blockchain, Cardano combines the strengths of earlier gene
 ==== Sustainability and governance
 _Governance_ is central to Cardano's design, ensuring system sustainability and adaptability. A well-developed governance strategy promotes effective, democratic funding for long-term development and organic growth in a decentralized manner. Decentralized governance empowers all users with a voice and control over the protocol’s future.
 
-As Charles Hoskinson (((Hoskinson, Charles)))stated:
+As Charles Hoskinson (((Hoskinson, Charles))) stated:
 _'Governance is not optional. No matter who you are, what you do, when you create something that other people use, the first question is how do we upgrade, maintain, and change it to meet our needs?'_
 
 Cardano’s governance model (((Cardano, governance model))) reflects a _liquid and representative democracy_. Through individual participation and immutable vote recording, ada(((ada))) holders can decide on the distribution of treasury(((treasury))) funds and Cardano's future development.
@@ -82,7 +82,7 @@ Cardano's (((Cardano, advantages))) unique strengths stem from its foundational 
 - _Functional environment for business use cases_ — Cardano provides a foundation for global, decentralized finance, supporting a range of DApps with functional and domain-specific smart contracts and multi-asset tokens.
 
 === Cardano community and ecosystem growth
-Cardano (((Cardano, ecosystem growth)))benefits from a vibrant and thriving ecosystem that promotes active engagement with builders, developers, content creators, and users. The Cardano ecosystem is a dynamic and rapidly-growing collection of projects, organizations, creators, and builders who are working together to improve and develop the platform even further.
+Cardano (((Cardano, ecosystem growth))) benefits from a vibrant and thriving ecosystem that promotes active engagement with builders, developers, content creators, and users. The Cardano ecosystem is a dynamic and rapidly-growing collection of projects, organizations, creators, and builders who are working together to improve and develop the platform even further.
 
 As a community-driven ecosystem, there is a strong focus on innovation, collaboration, and cooperation between innovators, smart contract developers, content creators, and DApp developers building on Cardano. The aim is to grow the contributor ecosystem even more each year.
 
