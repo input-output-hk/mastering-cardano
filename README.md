@@ -4,7 +4,7 @@
 
 ![Mastering Cardano Cover](images/cover.png)
 
-**Mastering Cardano está disponible en formato electrónico (en inglés) en [Book.io](https://book.io/). [Para adquirirlo, haz click en este enlace](https://book.io/book/mastering-cardano/).**
+**Mastering Cardano está disponible en formato electrónico (en inglés) en [Book.io](https://book.io/). Para adquirirlo, [haz click en este enlace](https://book.io/book/mastering-cardano/).**
 
 Bienvenido a _Mastering Cardano:, un libro integral y de código abierto dedicado a explorar a fondo la blockchain de Cardano. Esta obra es un esfuerzo colaborativo escrito por expertos y miembros de la comunidad pensada para que cualquier persona interesada en comprender, desarrollar o participar en el ecosistema de Cardano pueda dar sus primeros pasos o ahondar en aspectos específicos de Cardano.
 
