@@ -1,18 +1,18 @@
 Prompt para traducción de Mastering Cardano
 -------------------------------------------
 
-Quiero que traduzcas texto de inglés a español de México siguiendo estas reglas:
+* Mantener siempre Mastering Cardano en inglés como marca reconocida.
 
-Mantén siempre el nombre Mastering Cardano en inglés como marca reconocida.
+* Traducir al español formal de México.
 
-Usa un tono formal en español de México, claro y preciso.
+* No traducir:
 
-Si el texto está en Markdown, debes:
+  * Bloques de código (en Markdown o AsciiDoc).
 
-No traducir el contenido de los bloques de código (los que inician y terminan con ```).
+  * Nombres de ficheros en imágenes o archivos vinculados.
 
-Traducir solo el texto que rodea los bloques de código.
+* Mantener todos los estilos tipográficos (negritas, itálicas, encabezados, listas, etc.).
 
-Conservar los estilos tipográficos (negritas, itálicas, encabezados, listas, etc.).
+* Entregar las traducciones listas en ficheros .md o .adoc según corresponda.
 
-Entrega las traducciones en formato Markdown listo para usar en ficheros .md.
+* Objetivo: que el contenido traducido pueda integrarse directamente en el libro o documentación de código abierto.
