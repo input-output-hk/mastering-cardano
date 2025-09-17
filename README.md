@@ -10,118 +10,120 @@ Bienvenido a _Mastering Cardano:, un libro integral y de código abierto dedicad
 
 _Mastering Cardano_ es un documento vivo, diseñado para evolucionar junto con la plataforma Cardano. Lo invitamos a usted, lector, a acompañarnos en este camino de aprendizaje y colaboración.
 
-## License
+## Licencia
 
-Copyright © 2025 by IOG Singapore Pte. Ltd.
+Copyright © 2025 por IOG Singapore Pte. Ltd.
 
-This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+Esta obra está licenciada bajo una Licencia Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International.
 
-To view a copy of this license, visit [Deed - Attribution-NonCommercial-ShareAlike 4.0 International - Creative Commons](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+Para consultar una copia de esta licencia, visite [Deed - Attribution-NonCommercial-ShareAlike 4.0 International - Creative Commons](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
-## **About the Book**
+## Acerca del libro
 
-_Mastering Cardano_ provides a thorough exploration of the Cardano blockchain, from its foundational principles to the intricacies of smart contract development and decentralized governance. The book is structured to cater to a wide audience, including developers, stake pool operators, students, and enthusiasts.
+_Mastering Cardano_ ofrece una exploración exhaustiva de la blockchain de Cardano, desde sus principios fundamentales hasta las complejidades del desarrollo de contratos inteligentes y la gobernanza descentralizada. El libro está estructurado para atender a una amplia audiencia, incluidos desarrolladores, operadores de stake pools, estudiantes y entusiastas.
 
-### **Table of contents**
+### Tabla de contenidos
 
-1. _Introduction_ — a primer on blockchain technology, smart contracts, and the foundational concepts of Cardano.
-2. _Cryptography_ — an overview of the cryptographic principles that secure the Cardano network.
-3. _Learn about Cardano_ — a deep dive into the history, core principles, and ecosystem of Cardano.
-4. _How Cardano works_ — detailed explanations of the Cardano node, the EUTXO model, Ouroboros consensus, and native assets.
-5. _Cardano governance_ — an exploration of Cardano's decentralized governance model, including CIPs, Project Catalyst, and the Age of Voltaire.
-6. _Cardano digital wallets_ — a guide to using and understanding digital wallets within the Cardano ecosystem.
-7. _Stake pools and stake pool operation_ — a comprehensive guide for aspiring and current stake pool operators.
-8. _Writing smart contracts_ — a practical guide to developing smart contracts on Cardano using Plutus and Marlowe.
-9. _Decentralized applications (DApps)_ — an introduction to building and interacting with DApps on Cardano.
-10. _Looking forward_ — a glimpse into the future of Cardano, including scaling solutions like Hydra and Mithril.
+1. _Introducción_ — una introducción a la tecnología blockchain, los contratos inteligentes y los conceptos fundamentales de Cardano.  
+2. _Criptografía_ — una visión general de los principios criptográficos que aseguran la red Cardano.  
+3. _Conozca Cardano_ — un análisis profundo de la historia, principios centrales y ecosistema de Cardano.  
+4. _Cómo funciona Cardano_ — explicaciones detalladas del nodo de Cardano, el modelo EUTXO, el consenso Ouroboros y los activos nativos.  
+5. _Gobernanza de Cardano_ — una exploración del modelo de gobernanza descentralizada de Cardano, incluyendo los CIPs, Project Catalyst y la Era de Voltaire.  
+6. _Carteras digitales de Cardano_ — una guía para usar y comprender las carteras digitales dentro del ecosistema Cardano.  
+7. _Stake pools y operación de stake pools_ — una guía integral para operadores de stake pools, tanto aspirantes como actuales.  
+8. _Escritura de contratos inteligentes_ — una guía práctica para desarrollar contratos inteligentes en Cardano utilizando Plutus y Marlowe.  
+9. _Aplicaciones descentralizadas (DApps)_ — una introducción a la construcción e interacción con DApps en Cardano.  
+10. _Mirando hacia el futuro_ — una visión del porvenir de Cardano, incluyendo soluciones de escalabilidad como Hydra y Mithril.  
 
-## **How to use this book**
+## Cómo usar este libro
 
-_Mastering Cardano_ is designed to be flexible. You can read it from start to finish or follow one of the suggested reading paths tailored to your interests:
+_Mastering Cardano_ está diseñado para ser flexible. Puede leerse de principio a fin o seguir uno de los caminos de lectura sugeridos de acuerdo con sus intereses:
 
-* _Cardano fundamentals path_ — for beginners who want a solid understanding of blockchain and Cardano.
-* _Smart contracts developer path_ — for developers looking to build smart contracts and DApps on Cardano.
-* _Cardano user path_ — for non-technical users who want to learn how to use and interact with the Cardano ecosystem.
-* _Stake pool operator path_ — for those interested in running and maintaining a stake pool.
-* _Cardano governance and future path_ — for readers interested in the long-term vision and governance of Cardano.
+* _Ruta de fundamentos de Cardano_ — para principiantes que desean una comprensión sólida de blockchain y Cardano.  
+* _Ruta para desarrolladores de contratos inteligentes_ — para desarrolladores que buscan construir contratos inteligentes y DApps en Cardano.  
+* _Ruta para usuarios de Cardano_ — para usuarios no técnicos que desean aprender a usar e interactuar con el ecosistema Cardano.  
+* _Ruta para operadores de stake pool_ — para quienes estén interesados en administrar y mantener un stake pool.  
+* _Ruta de gobernanza y futuro de Cardano_ — para lectores interesados en la visión a largo plazo y en la gobernanza de Cardano.  
 
-## **Building the book**
+## Construcción del libro
 
-This book is written in AsciiDoc. To build your own PDF and EPUB versions from the source, please follow these steps.
+Este libro está escrito en AsciiDoc. Para generar sus propias versiones en PDF y EPUB a partir del código fuente, siga estos pasos.  
 
-### **Prerequisites**
+### Prerrequisitos
 
-* _Ruby and Bundler_ — the build process relies on Ruby and Bundler. Please ensure you have a recent version of Ruby installed.
-* _Graphviz_ — required for rendering diagrams in the book.
+* _Ruby y Bundler_ — el proceso de construcción depende de Ruby y Bundler. Asegúrese de tener instalada una versión reciente de Ruby.  
+* _Graphviz_ — requerido para renderizar diagramas en el libro.  
 
-### **Build instructions**
+### Instrucciones de construcción
 
-1. Clone the repository, as follows:
+1. Clone el repositorio, como se indica:  
 
-   ```
+   ```bash
    git clone https://github.com/input-output-hk/mastering-cardano.git
    cd mastering-cardano
-   ```
+   ```  
 
-2. Install Ruby and build tools:
-   On Debian-based systems (like Ubuntu), you can install Ruby and build tools with:
+2. Instale Ruby y las herramientas de compilación:  
+   En sistemas basados en Debian (como Ubuntu), puede instalar Ruby y las herramientas de compilación con:  
 
-   ```
+   ```bash
    sudo apt-get install -y ruby-full build-essential
-   ```
+   ```  
 
-3. Install Bundler:
-   Install Bundler for the current user:
+3. Instale Bundler:  
+   Instale Bundler para el usuario actual:  
 
-   ```
+   ```bash
    gem install bundler --user-install
-   ```
+   ```  
 
-4. Set up environment variables:
-   Set up the necessary environment variables to use user-installed gems. First, check your Ruby version:
+4. Configure las variables de entorno:  
+   Configure las variables de entorno necesarias para usar las gemas instaladas por el usuario. Primero, verifique su versión de Ruby:  
 
-   ```
+   ```bash
    ruby --version
-   ```
+   ```  
 
-   Then export the path using your Ruby version (replace `X.Y.0` with your version, e.g., `3.1.0`):
+   Luego exporte la ruta usando su versión de Ruby (reemplace `X.Y.0` con su versión, por ejemplo, `3.1.0`):  
 
-   ```
+   ```bash
    export PATH="$HOME/.local/share/gem/ruby/X.Y.0/bin:$PATH"
    export BUNDLE_PATH="$HOME/.local/share/gem"
-   ```
+   ```  
 
-5. Install dependencies, as follows:
-   This project uses Bundler to manage Ruby gems. Install the required gems with:
+5. Instale las dependencias, como sigue:  
+   Este proyecto utiliza Bundler para gestionar las gemas de Ruby. Instale las gemas requeridas con:  
 
-   ```
+   ```bash
    bundle install
-   ```
+   ```  
 
-6. Install Graphviz:
-   On Debian-based systems (like Ubuntu), you can install Graphviz with:
+6. Instale Graphviz:  
+   En sistemas basados en Debian (como Ubuntu), puede instalar Graphviz con:  
 
-   ```
+   ```bash
    sudo apt-get update && sudo apt-get install -y graphviz
-   ```
+   ```  
 
-7. Build the book:
-   You can build both the PDF and EPUB versions using the Makefile: `make`
+7. Compile el libro:  
+   Puede compilar tanto la versión en PDF como en EPUB utilizando el Makefile: `make`  
 
-   Alternatively, you can build each format individually:
-   * To build the PDF: `make pdf`
-   * To build the EPUB: `make epub`
+   De forma alternativa, puede compilar cada formato individualmente:  
+   * Para generar el PDF: `make pdf`  
+   * Para generar el EPUB: `make epub`  
 
-The generated files will be placed in the `dist/` directory.
+Los archivos generados se colocarán en el directorio `dist/`.  
 
-## **Contributing**
+## Contribuciones
 
-_Mastering Cardano_ is a community-driven project, and we welcome contributions of all kinds. Whether you're fixing a typo, clarifying a concept, or adding new content, your input is valuable.
+_Mastering Cardano_ es un proyecto impulsado por la comunidad, y damos la bienvenida a todo tipo de contribuciones. Ya sea corrigiendo un error tipográfico, aclarando un concepto o agregando nuevo contenido, su participación es valiosa.  
 
-To contribute, please fork the repository and submit a pull request with your proposed changes. For more significant changes, we recommend opening an issue first to discuss your ideas with the community.
+Para contribuir, bifurque el repositorio y envíe una pull request con sus cambios propuestos. Para cambios más significativos, recomendamos abrir primero un issue para discutir sus ideas con la comunidad.  
 
-## **About the authors**
+## Acerca de los autores
 
-_Mastering Cardano_ is authored by _Dr. Lars Brünjes_, Director of Education at IO, and _Prof. Joshua Ellul_, Director of the Centre for DLT at the University of Malta, with contributions from numerous experts and community members. This book is a testament to the collaborative and open-source spirit of the Cardano ecosystem.
+_Mastering Cardano_ está escrito por el _Dr. Lars Brünjes_, Director de Educación en Input | Output, y el _Prof. Joshua Ellul_, Director del Centre for DLT en la Universidad de Malta, con contribuciones de numerosos expertos y miembros de la comunidad. Este libro es un testimonio del espíritu colaborativo y de código abierto del ecosistema Cardano.  
 
-We hope you enjoy reading _Mastering Cardano_ and find it a valuable resource on your journey into the world of blockchain. Happy reading!
+Esperamos que disfrute la lectura de _Mastering Cardano_ y lo considere un recurso valioso en su camino hacia el mundo de blockchain.
+
+¡Disfrute la lectura!
