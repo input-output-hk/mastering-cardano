@@ -1,14 +1,17 @@
-# **Mastering Cardano: An open-source guide to the Cardano ecosystem**
+# **Mastering Cardano: Una guía de código abierto al ecosistema de Cardano**
+
+> _Esta traducción al español se encuentra actualmente en desarrollo._
 
 ![Mastering Cardano Cover](images/cover.png)
 
-**Mastering Cardano is now available from [Book.io](https://book.io/)! [Purchase your copy here](https://book.io/book/mastering-cardano/).**
+**Mastering Cardano está disponible en formato electrónico (en inglés) en [Book.io](https://book.io/). [Para adquirirlo, haz click en este enlace](https://book.io/book/mastering-cardano/).**
 
-Welcome to _Mastering Cardano_, a comprehensive, open-source book dedicated to exploring the depths of the Cardano blockchain. This book is a collaborative effort, written by experts and the community, for anyone interested in understanding, building on, or participating in the Cardano ecosystem.
+Bienvenido a _Mastering Cardano:, un libro integral y de código abierto dedicado a explorar a fondo la blockchain de Cardano. Esta obra es un esfuerzo colaborativo escrito por expertos y miembros de la comunidad pensada para que cualquier persona interesada en comprender, desarrollar o participar en el ecosistema de Cardano pueda dar sus primeros pasos o ahondar en aspectos específicos de Cardano.
 
-_Mastering Cardano_ is a living document, intended to evolve with the Cardano platform. We invite you, the reader, to join us in this journey of learning and contribution.
+_Mastering Cardano_ es un documento vivo, diseñado para evolucionar junto con la plataforma Cardano. Lo invitamos a usted, lector, a acompañarnos en este camino de aprendizaje y colaboración.
 
-## Licence
+## License
+
 Copyright © 2025 by IOG Singapore Pte. Ltd.
 
 This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -54,6 +57,7 @@ This book is written in AsciiDoc. To build your own PDF and EPUB versions from t
 ### **Build instructions**
 
 1. Clone the repository, as follows:
+
    ```
    git clone https://github.com/input-output-hk/mastering-cardano.git
    cd mastering-cardano
@@ -61,22 +65,27 @@ This book is written in AsciiDoc. To build your own PDF and EPUB versions from t
 
 2. Install Ruby and build tools:
    On Debian-based systems (like Ubuntu), you can install Ruby and build tools with:
+
    ```
    sudo apt-get install -y ruby-full build-essential
    ```
 
 3. Install Bundler:
    Install Bundler for the current user:
+
    ```
    gem install bundler --user-install
    ```
 
 4. Set up environment variables:
    Set up the necessary environment variables to use user-installed gems. First, check your Ruby version:
+
    ```
    ruby --version
    ```
+
    Then export the path using your Ruby version (replace `X.Y.0` with your version, e.g., `3.1.0`):
+
    ```
    export PATH="$HOME/.local/share/gem/ruby/X.Y.0/bin:$PATH"
    export BUNDLE_PATH="$HOME/.local/share/gem"
@@ -84,12 +93,14 @@ This book is written in AsciiDoc. To build your own PDF and EPUB versions from t
 
 5. Install dependencies, as follows:
    This project uses Bundler to manage Ruby gems. Install the required gems with:
+
    ```
    bundle install
    ```
 
 6. Install Graphviz:
    On Debian-based systems (like Ubuntu), you can install Graphviz with:
+
    ```
    sudo apt-get update && sudo apt-get install -y graphviz
    ```
@@ -114,4 +125,3 @@ To contribute, please fork the repository and submit a pull request with your pr
 _Mastering Cardano_ is authored by _Dr. Lars Brünjes_, Director of Education at IO, and _Prof. Joshua Ellul_, Director of the Centre for DLT at the University of Malta, with contributions from numerous experts and community members. This book is a testament to the collaborative and open-source spirit of the Cardano ecosystem.
 
 We hope you enjoy reading _Mastering Cardano_ and find it a valuable resource on your journey into the world of blockchain. Happy reading!
-
