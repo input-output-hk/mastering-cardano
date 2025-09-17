@@ -1,31 +1,30 @@
 
 [[foreword-lars]]
-== Foreword by Lars Brünjes
+== Prólogo de Lars Brünjes
 
-People often ask what drew me to Cardano. It wasn’t just one thing, but a combination that, for a mathematician like me, was simply irresistible.
+A menudo me preguntan qué me atrajo a Cardano. No fue una sola cosa, sino una combinación que, para un matemático como yo, resultaba sencillamente irresistible.
 
-First, there was the intellectual pull. I’ve spent my career in Number Theory and have a long-standing love for functional programming, especially Haskell. The chance to work on a blockchain built from peer-reviewed research and coded in Haskell was, frankly, a dream scenario. It was a project that valued getting things right from the start, which is a stark contrast to the tech world’s usual 'move fast and break things' mantra. We’ve felt that pressure to cut corners, and I’m proud that we always chose rigor when people's trust—and their savings—were on the line.
+En primer lugar, estaba el atractivo intelectual. He dedicado mi carrera a la Teoría de Números y tengo un arraigado aprecio por la programación funcional, en particular con Haskell. La oportunidad de trabajar en una blockchain construida a partir de investigación arbitrada y programada en Haskell fue, francamente, un escenario de ensueño. Era un proyecto que valoraba hacer las cosas bien desde el principio, en claro contraste con el mantra habitual del mundo tecnológico de “muévete rápido y rompe cosas”. Hemos sentido esa presión por acortar caminos, y me enorgullece que siempre hayamos elegido el rigor cuando estaban en juego la confianza de las personas —y sus ahorros—.
 
-The second reason was the mission itself: building a financial operating system for those who have been left behind. Early in my career, you were often told to choose: do something interesting or do something meaningful. I once saw a job posting to optimize gambling machine algorithms. The math was fascinating, but I couldn't stomach the ethics. On the other hand, you could do something undeniably good, like building roads in the developing world, but I wouldn't have been using the skills I was passionate about.
+La segunda razón era la misión en sí: construir un sistema operativo financiero para quienes han quedado rezagados. Al inicio de mi carrera, a uno le decían con frecuencia que tenía que elegir: hacer algo interesante o hacer algo significativo. Una vez vi una oferta de trabajo para optimizar algoritmos de máquinas de juego. La matemática era fascinante, pero no podía aceptar la ética de ello. Por otro lado, uno podía hacer algo indudablemente bueno, como construir carreteras en los países en desarrollo, pero no estaría utilizando las habilidades por las que sentía pasión.
 
-Cardano was the first time I saw a project that didn't ask me to choose. It was a chance to tackle incredibly hard problems in cryptography and game theory for a cause that could genuinely change lives. It had the elegance of Bitcoin without boiling the oceans to secure it—our Ouroboros protocol is about a million times more energy-efficient. And it had the flexibility of Ethereum, but with our EUTXO model, which gives developers a level of safety and predictability that makes formal verification a practical tool, not just a theory.
+Cardano fue la primera vez que vi un proyecto que no me obligaba a elegir. Era la oportunidad de abordar problemas extraordinariamente difíciles en criptografía y teoría de juegos por una causa que realmente podía transformar vidas. Tenía la elegancia de Bitcoin sin “hervir los océanos” para asegurarla —nuestro protocolo Ouroboros es alrededor de un millón de veces más eficiente energéticamente—. Y tenía la flexibilidad de Ethereum, pero con nuestro modelo EUTXO, que brinda a los desarrolladores un nivel de seguridad y previsibilidad que hace de la verificación formal una herramienta práctica, no solo una teoría.
 
-Which brings us to this book.
+Y todo ello nos lleva a este libro.
 
-Cardano is a huge undertaking. It spans everything from the nuts and bolts of network protocols to the high-level world of smart contracts and governance. It would have been pure arrogance to try and write this alone. Truthfully, I didn't know nearly enough about many parts of it.
+Cardano es una iniciativa de gran envergadura. Abarca desde los componentes esenciales de los protocolos de red hasta el mundo de alto nivel de los contratos inteligentes y la gobernanza. Habría sido pura arrogancia intentar escribirlo yo solo. La verdad es que no sabía lo suficiente sobre muchos de sus componentes.
 
-That's why this book had to be a team effort, just like Cardano itself. My main co-author, Professor Joshua Ellul, my entire education team at Input | Output, and many others from the wider Cardano community, all pitched in. It only makes sense. Cardano is open source, and so is this book. We see it as a living document.
+Por eso este libro tenía que ser un esfuerzo de equipo, igual que Cardano. Mi coautor principal, el profesor Joshua Ellul, todo mi equipo de educación en Input | Output y muchos otros miembros de la comunidad de Cardano contribuyeron a que este libro sea una realizad. Este esfuerzo colaborativo, es lo que tiene sentido. Cardano es de código abierto, y este libro también. Lo concebimos como un documento vivo.
 
-And that's where you come in. We're inviting you, the reader, to help us shape its future—to correct, refine, and expand it as Cardano grows.
+Y ahí es donde usted entra. Lo invitamos, lector, a ayudarnos a darle forma al futuro de este libro: a corregirlo, refinarlo y ampliarlo conforme Cardano crece.
 
-We wrote this book for a wide audience. Whether you're a developer ready to build, a stake pool operator keeping the network secure, a student digging into cryptography, or you're simply curious about how it all works—there's a path for you in these pages.
+Escribimos este libro para un público amplio. Ya sea que usted sea un desarrollador listo para construir, un operador de stake pool que mantiene segura la red, un estudiante que profundiza en la criptografía o simplemente alguien con curiosidad por entender cómo funcionan las cosas, en estas páginas hay un camino para usted.
 
-So whatever brought you here—building, learning, or just curiosity—welcome. We're excited to have you with us.
+Así que, sea lo que sea que lo haya traído hasta aquí —construir, aprender o simple curiosidad—, bienvenido. Nos entusiasma contar con usted.
 
-Happy reading!
+¡Feliz lectura!
 
 _Dr. Lars Brünjes +
-Director of Education, IOG +
-L'Agulhas, South Africa +
-July 10, 2025_
-
+Director de Educación, Input | Output +
+L'Agulhas, Sudáfrica +
+10 de julio de 2025_
