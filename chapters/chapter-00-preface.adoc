@@ -3,49 +3,46 @@ include::foreword-lars.adoc[]
 
 include::foreword-joshua.adoc[]
 
-== Welcome to Mastering Cardano!
+== ¡Bienvenido a Mastering Cardano!
 
-Congratulations on choosing _Mastering Cardano_ as your canonical reference to the exciting world of blockchain, decentralization, and the Cardano ecosystem. Whether you're a seasoned developer, a curious enthusiast, or a business professional looking to leverage cutting-edge technology, this  open source book is designed to equip you with the knowledge and skills you need. This book is a living, breathing Cardano community resource and will evolve to incorporate changes and updates as Cardano and its ecosystem grow and develop.
+Felicidades por elegir _Mastering Cardano_ como su referencia canónica al emocionante mundo de la tecnología blockchain, la descentralización y el ecosistema de Cardano. Ya sea que usted sea un desarrollador con amplia experiencia, un entusiasta curioso o un profesional de negocios que busca aprovechar tecnología de vanguardia, este libro de código abierto está diseñado para proporcionarle los conocimientos y las habilidades que necesita. Este libro es un recurso vivo de la comunidad de Cardano y evolucionará para incorporar cambios y actualizaciones a medida que Cardano y su ecosistema crezcan y se desarrollen.
 
-Happy reading!
+=== Su recorrido, a su manera
 
-=== Your journey, your way
-
-While _Mastering Cardano_ is structured to provide a comprehensive and logical progression through its topics, we recognize that every learner has unique prior knowledge and goals. Therefore, we encourage you to explore our suggested reading paths as an alternative to a strictly linear approach.
-
-Think of these paths as curated journeys designed to help you quickly hone in on the information most relevant to your specific interests. You can choose to read _Mastering Cardano_ cover-to-cover, or jump directly to the chapters and sections that you are most interested in to accelerate your learning in a particular area.
+Aunque _Mastering Cardano_ está estructurado para proporcionar una guía completa de principio a fin, entendemos que cada lector tiene objetivos, experiencia y tiempos distintos. Por ello, además de la lectura lineal, proponemos rutas de lectura organizadas que le ayudarán a concentrarse rápidamente en la información que más le importa.
 
 [[preface-howtonavigate]]
-=== How to navigate this book
+=== Cómo navegar este libro
 
-Before diving into the chapters, take a moment to review the available reading paths. Each path will suggest a sequence of chapters and sections, along with a brief description of what you'll learn. You might find a path that perfectly aligns with your current goals, or perhaps one that helps you discover new areas of interest within Cardano.
+Antes de adentrarse en los capítulos, tómese un momento para revisar las rutas de lectura disponibles y el mapa general del contenido. Puede optar por leer de forma lineal o elegir una ruta que se alinee con sus metas actuales. Cada ruta señala capítulos y secciones recomendadas, sugiere puntos de profundización y temas relacionados, y también le permite descubrir nuevas áreas de interés dentro de Cardano.
 
-We believe that by offering these flexible reading options and supplemental resources, _Mastering Cardano_ will serve as an even more powerful and personalized tool on your journey to becoming a Cardano expert.
+Creemos que, al ofrecer estas opciones de lectura flexibles, _Mastering Cardano_ se convierte en una herramienta más personalizada para su trayecto de aprendizaje en Cardano.
 
-==== Dive deeper
+==== Profundice más
 
-We believe in continuous learning. Throughout _Mastering Cardano_, you'll find curated reference links to essential research papers, insightful blog posts, and other valuable articles. These resources are carefully selected to provide you with opportunities to dive deeper into specific topics, understand the underlying theory, and stay current with the rapidly evolving Cardano landscape.
+Creemos en el aprendizaje continuo. A lo largo de _Mastering Cardano_ encontrará referencias para ampliar conocimientos, ejercicios prácticos y enlaces a recursos comunitarios y a documentación oficial. Úselos para explorar más a fondo, validar su comprensión y mantenerse al día con la rápida evolución del ecosistema de Cardano.
 
-==== Why choose a reading path?
+==== ¿Por qué elegir una ruta de lectura?
 
-- Tailored learning — focus on what matters most to you, whether it is smart contract development, staking, network architecture, or DApp creation
-- Time efficiency — get up to speed faster by prioritizing key concepts and practical applications for your specific needs
-- Goal-oriented — each path is designed with a clear objective in mind, helping you achieve your learning goals more effectively
-- Flexible exploration — even if you follow a specific path, you can branch out and explore other sections as required.
+- Aprendizaje a medida — concéntrese en lo que más le importa, ya sean fundamentos, desarrollo de contratos inteligentes, *staking*, arquitectura de red o creación de DApps.
+- Eficiencia en el tiempo — avance con mayor rapidez al priorizar conceptos clave y aplicaciones prácticas según sus necesidades.
+- Orientación a objetivos — cada ruta se diseña con un propósito claro, ayudándole a alcanzar sus metas de aprendizaje de forma más eficaz.
+- Exploración flexible — incluso al seguir una ruta específica, puede ramificarse y explorar otras secciones cuando lo requiera.
 
-=== Suggested reading paths
-- _Cardano fundamentals path_ — ideal for anyone new to blockchain or Cardano, this path provides a solid foundational understanding of the Cardano ecosystem, its core principles, and its journey
-- _Smart contracts developer path_ — for developers eager to build on Cardano, this path guides you through the essential concepts and practical skills needed to write, test, and deploy smart contracts using Aiken and Plutus
-- _Cardano user path_ — for non-technical readers and blockchain enthusiasts, this path helps you understand the Cardano ecosystem, manage assets, explore NFTs, and engage with the community without delving into code
-- _Stake pool operator path_ — for readers whose goal is to learn how to run a node and start a stake pool, but are not necessarily interested in programming smart contracts or DApps
-- _Cardano governance and future path_ — for readers keen on Cardano's long-term vision, this path explores the principles of decentralized governance, the mechanisms for community decision-making, and the exciting future developments shaping the network.
+=== Rutas de lectura sugeridas
 
-image::mc_learning_paths.png[title="Learning paths"]
+- _Ruta de fundamentos de Cardano_ — ideal para personas que son nuevas en el mundo de blockchain o en Cardano; proporciona una base sólida sobre el ecosistema de Cardano, sus principios centrales y su evolución.
+- _Ruta para Desarrolladores de Contratos Inteligentes_ — esta ruta está diseñada para desarrolladores de software que desean crear soluciones en Cardano; cubre las habilidades prácticas necesarias para escribir, probar y desplegar contratos inteligentes utilizando Aiken y Plutus.
+- _Ruta para usuarios de Cardano_ — pensada para lectores no técnicos y entusiastas de blockchain, esta ruta ayuda a comprender el ecosistema de Cardano, administrar activos, explorar NFTs y participar en la comunidad sin necesidad de adentrarse en el código.
+- _Ruta para operadores de stake pool_ — para lectores que desean aprender a operar y mantener un *stake pool*, pero que no están interesado en programar contratos inteligentes o DApps.
+- _Ruta sobre gobernanza y el futuro de Cardano_ — ideal para lectores interesados en la visión a largo plazo de Cardano, esta ruta explora los principios de la gobernanza descentralizada, los mecanismos de toma de decisiones comunitarias y los emocionantes desarrollos futuros que están dando forma a la red.
 
-==== Cardano fundamentals 
-Explore the vision and challenges of blockchain, delve into the cryptography that secures the network, and then get a robust introduction to Cardano's unique design, history, and innovative protocols.
+image::mc_learning_paths.png[title="Rutas de lectura"]
 
-===== Suggested chapters and sections:
+==== Fundamentos de Cardano 
+Explore la visión y los retos de la tecnología blockchain, profundice en la criptografía y el consenso, y conozca el diseño único de Cardano, su historia y sus protocolos innovadores.
+
+===== Capítulos y secciones sugeridos:
 - <<preface-howtonavigate>>
 - <<preface-howtocontribute>>
 - <<introduction>>
@@ -53,10 +50,10 @@ Explore the vision and challenges of blockchain, delve into the cryptography tha
 - <<chapter3-learn-about-Cardano>>
 - <<how-cardano-works>>
 
-==== Smart contracts developer
-Understand Cardano's unique functional programming and the EUTXO model, then dive directly into the specifics of writing smart contracts and DApps.
+==== Desarrollador de contratos inteligentes
+Comprenda la singular programación funcional de Cardano y el modelo EUTXO, para después profundizar directamente en los aspectos específicos de la escritura de contratos inteligentes y DApps.
 
-===== Suggested chapters and sections:
+===== Capítulos y secciones sugeridos:
 - <<preface-howtonavigate>>
 - <<preface-howtocontribute>>
 - <<introduction>>
@@ -64,45 +61,47 @@ Understand Cardano's unique functional programming and the EUTXO model, then div
 - <<writing-smart-contracts>>
 - <<decentralized-applications>>
 
-==== Cardano user 
-Learn the foundational blockchain concepts, then discover how to interact with the network using wallets, manage your digital assets, and understand native tokens and NFTs.
+==== Usuario de Cardano 
+Aprenda los conceptos fundamentales de blockchain y descubra cómo usar billeteras digitales, mantener seguros sus activos digitales y entender los tokens nativos y los NFTs.
 
-===== Suggested chapters and sections:
+===== Capítulos y secciones sugeridos:
 - <<preface-howtonavigate>>
 - <<preface-howtocontribute>>
 - <<introduction>>
 - <<how-cardano-works>>
 - <<wallets-in-the-world-of-cardano>>
 
-==== Stake pool operators 
-Begin by understanding the core components of the Cardano network, delve into how consensus is reached and incentives work, and then focus on the specifics of setting up and operating a stake pool.
+==== Operadores de stake pool 
+Comience por entender los componentes esenciales de la red Cardano, profundice en cómo se logra el consenso y, después, concéntrese en los aspectos específicos de la configuración y operación de un *stake pool*.
 
-===== Suggested chapters and sections:
+===== Capítulos y secciones sugeridos:
 - <<preface-howtonavigate>>
 - <<preface-howtocontribute>>
 - <<how-cardano-works>>
 - <<wallets-in-the-world-of-cardano>>
-- <<stake-pools-and-stake-pool-operation>>:
+- <<stake-pools-and-stake-pool-operation>>
 
-==== Cardano governance and future 
-Understand how Cardano's governance model operates, explore key initiatives like Project Catalyst and CIPs, and look ahead to future advancements and the Cardano 2.0 vision.
+==== Gobernanza y futuro de Cardano 
+Comprenda cómo funciona el modelo de gobernanza de Cardano, explore iniciativas clave como Project Catalyst y los CIPs, y dé un vistazo a los futuros avances y la visión de Cardano 2.0.
 
-===== Suggested chapters & sections:
+===== Capítulos y secciones sugeridos:
 - <<preface-howtonavigate>>
 - <<preface-howtocontribute>>
 - <<chapter5-cardano-governance>>
 - <<chapter10-mithril>>
 - <<chapter10-hydra>>
 
-=== Join the community: contribute to Mastering Cardano
-_Mastering Cardano_ is more than just a book; it is intended to be a community-driven resource that grows and improves with the collective knowledge of the Cardano ecosystem. The world of blockchain is dynamic, and we believe the best way to keep this resource current, accurate, and truly comprehensive is through your valuable contributions.
+=== Únase a la comunidad: contribuya a Mastering Cardano
 
-We encourage you to become an active participant in shaping the future editions of this book. Whether you spot a typo, have a clearer explanation for a complex concept, discover an outdated reference, or identify an area that needs more depth, your input is incredibly valuable. We kindly ask that you first spend some time navigating the book and its content, getting to know its structure and sections, so that your feedback is most valuable.
+_Mastering Cardano_ es más que un libro; está concebido como un recurso impulsado por la comunidad que crece y mejora con el conocimiento colectivo del ecosistema de Cardano. El mundo de la blockchain es dinámico, y creemos que la mejor manera de mantener este recurso actualizado, preciso y verdaderamente integral es mediante sus valiosas contribuciones.
+
+Lo animamos a convertirse en un participante activo en la conformación de las futuras ediciones de este libro. Ya sea que detecte un error tipográfico, tenga una explicación más clara para un concepto complejo, descubra una referencia desactualizada o identifique un área que requiera mayor profundidad, su aporte es de gran valor. Le pedimos amablemente que primero dedique algo de tiempo a navegar por el libro y su contenido, familiarizándose con su estructura y secciones, para que sus comentarios resulten lo más valiosos posible.
 
 [[preface-howtocontribute]]
-==== How can you contribute?
-_Mastering Cardano_ is an evolving community resource that will improve with contributions and corrections from the Cardano community. Please raise a pull request in our https://github.com/input-output-hk/mastering-cardano[Mastering Cardano repository] with your suggested improvements.
+==== ¿Cómo puede contribuir?
 
-- Suggest enhancements — have an idea for a new section, a better example, or a more efficient way to explain something? Share it!
-- Propose updates — as Cardano evolves, so too should this book. Help us keep the content fresh and relevant.
-- Report issues — found an issue, broken link, or typo? Let us know!
+_Mastering Cardano_ es un recurso comunitario en evolución que mejorará con las contribuciones y correcciones de la comunidad de Cardano. Por favor envíe un _pull request_ en nuestro https://github.com/input-output-hk/mastering-cardano[repositorio de Mastering Cardano] con las mejoras que desee hacernos llegar.
+
+- Sugerir mejoras — ¿tiene una idea para una nueva sección, un mejor ejemplo o una manera más eficiente de explicar algo? ¡Compártala!
+- Proponer actualizaciones — a medida que Cardano evoluciona, este libro también debe hacerlo. Ayúdenos a mantener el contenido actualizado y relevante.
+- Informar problemas — ¿encontró un problema, un enlace roto o un error tipográfico? ¡Háganoslo saber!
