@@ -351,10 +351,7 @@ approval(((community, review))). The committee provides clear information on Car
 
 How it works:
 
-* the _product committee_ provides a list of approved projects
-* the _budget committee_ will then assign costs to these projects and create a budget proposal
-* the community will vote on the budget proposal at the annual members meeting (AMM)
-* upon approval, funds will be allocated from the Cardano treasury through on-chain voting.
+The budget process has evolved over time. The current process, introduced February 2025, involves a public proposal submission phase where anyone could submit any ideas, followed by an off-chain filtering event using the Ekklesia tool. Following that, a budget info action is submitted, and then another off-chain voting event in Ekklesia takes place to decide the amounts for treasury withdrawals. Only after these steps are completed can a treasury withdrawal governance actions be submitted.
 
 image::5.4_budget_roadmap.png[]
 Figure 4. Budget roadmap.
