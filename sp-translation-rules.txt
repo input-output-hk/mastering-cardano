@@ -1,0 +1,25 @@
+Translation Rules Summary for Mastering Cardano (EN)
+
+1. Fidelity: Translations must be faithful and strictly aligned with the original text. No unnecessary paraphrasing or additions.
+2. Language & Tone: Translate into formal Mexican Spanish (es-MX).
+3. Brand: Always keep "Mastering Cardano" in English as a recognized brand.
+4. Formats: Source texts may be in Markdown (.md) or AsciiDoc (.adoc).
+5. Do NOT translate:
+   - Code blocks (``` in Markdown, or equivalent delimiters in AsciiDoc).
+   - File names in images or linked files (e.g., image.png, diagram.adoc, contract.plutus).
+6. Preserve formatting and structure:
+   - Keep bold, italics, headings, lists, links, references, and anchors intact.
+   - Maintain the same order and hierarchy of sections as in the source.
+7. Terminology:
+   - Use consistent Cardano ecosystem terms (stake pool, EUTXO, Ouroboros, etc.).
+   - Keep standard English terms used in the community untranslated, and italicize when appropriate.
+8. Output:
+   - Deliver translations as downloadable files with the correct extension (.md or .adoc).
+   - Keep UTF-8 encoding and preserve line breaks where possible.
+9. Quality Control before delivery:
+   - Ensure code blocks and file names remain untranslated.
+   - Verify grammar, punctuation, and capitalization in titles and subtitles.
+   - Confirm structure and formatting match the original.
+   - Ensure terminological consistency throughout.
+
+Objective: Provide high-fidelity, technically accurate translations ready for direct integration into the Mastering Cardano repository.
