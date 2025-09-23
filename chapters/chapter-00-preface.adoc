@@ -62,7 +62,7 @@ Comprenda la singular programación funcional de Cardano y el modelo EUTXO, para
 - <<decentralized-applications>>
 
 ==== Usuario de Cardano 
-Aprenda los conceptos fundamentales de blockchain y descubra cómo usar carteras digitales, mantener seguros sus activos digitales y entender los tokens nativos y los NFTs.
+Aprenda los conceptos fundamentales de blockchain y descubra cómo usar billeteras digitales, mantener seguros sus activos digitales y entender los tokens nativos y los NFTs.
 
 ===== Capítulos y secciones sugeridos:
 - <<preface-howtonavigate>>
