@@ -414,11 +414,8 @@ providing numerous tools to easily build DApps on Cardano. It also
 integrates the popular https://react.dev/[React] library.
 * https://lucid.spacebudz.io/[Lucid]: a popular JavaScript/TypeScript
 library for off-chain code, which is further developed by the
-https://no-witness-labs.github.io/evolution-sdk/[Evolution-SDK]
-project. The Evolution-SDK project was temporarily called
-Lucid Evolution(((Lucid Evolution))) and was funded by
-https://projectcatalyst.io/funds/11/cardano-open-developers/anastasia-labs-lucid-evolution-redefining-off-chain-transactions-in-cardano[Catalyst
-Fund11].
+https://anastasia-labs.github.io/lucid-evolution/[Lucid Evolution]
+project.
 * https://atlas-app.io/[Atlas]: an all-in-one, Haskell-native
 application backend for writing off-chain code for Plutus smart
 contracts.
