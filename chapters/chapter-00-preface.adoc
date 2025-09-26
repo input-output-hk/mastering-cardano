@@ -35,7 +35,7 @@ We believe in continuous learning. Throughout _Mastering Cardano_, you'll find c
 
 === Suggested reading paths
 - _Cardano fundamentals path_ — ideal for anyone new to blockchain or Cardano, this path provides a solid foundational understanding of the Cardano ecosystem, its core principles, and its journey
-- _Smart contracts developer path_ — for developers eager to build on Cardano, this path guides you through the essential concepts and practical skills needed to write, test, and deploy smart contracts using Aiken and Plutus
+- _Smart contracts developer path_ — for developers eager to build on Cardano, this path guides you through the essential concepts and practical skills needed to write, test, and deploy smart contracts using Plinth & Marlowe. Aiken content is coming soon!  
 - _Cardano user path_ — for non-technical readers and blockchain enthusiasts, this path helps you understand the Cardano ecosystem, manage assets, explore NFTs, and engage with the community without delving into code
 - _Stake pool operator path_ — for readers whose goal is to learn how to run a node and start a stake pool, but are not necessarily interested in programming smart contracts or DApps
 - _Cardano governance and future path_ — for readers keen on Cardano's long-term vision, this path explores the principles of decentralized governance, the mechanisms for community decision-making, and the exciting future developments shaping the network.
