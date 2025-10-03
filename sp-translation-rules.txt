@@ -14,6 +14,11 @@ Translation Rules Summary for Mastering Cardano (EN)
    - Use consistent Cardano ecosystem terms (stake pool, EUTXO, Ouroboros, etc.).
    - Always translate 'proofs' as 'pruebas formales' in the context of formal methods and blockchain.
    - Always translate 'property testing' as 'pruebas de propiedades' in the context of formal methods.
+   - Always translate 'composability' as 'composibilidad' in technical contexts (e.g., software, Haskell, blockchain).
+   - Always translate 'composable' as 'composible' when used as an adjective.
+   - Keep 'Template Haskell' always in English as it is a proper name of a Haskell extension.
+   - Always translate 'deadlocks' as 'bloqueos mutuos (deadlocks)'.
+   - Always translate 'race conditions' as 'condiciones de carrera (race conditions)'.
    - Keep standard English terms used in the community untranslated, and italicize when appropriate.
 8. Output:
    - Deliver translations as downloadable files with the correct extension (.md or .adoc).
