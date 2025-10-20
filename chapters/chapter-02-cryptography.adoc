@@ -62,30 +62,30 @@ Si un espía escucha la comunicación inicial donde se comparte la clave, puede 
 [#img_sym]
 image::symmetricenc.png[]
 
-<<img_sym>> muestra cómo funciona el cifrado simétrico, donde la Parte A tiene la intención de enviar datos cifrados a la Parte B. En el diagrama se utiliza la siguiente notación:
+<<img_sym>> muestra cómo funciona el cifrado simétrico, donde el Participante A tiene la intención de enviar datos cifrados al Participante B. En el diagrama se utiliza la siguiente notación:
 
 - Los diferentes pasos del proceso se denotan con números en un recuadro azul.
 - La línea continua en el paso 2 representa la comunicación entre las partes.
 - Las líneas discontinuas en la parte superior indican alguna forma de comunicación previa para acordar la clave compartida.
-- Las líneas de puntos representan acciones que las partes (o sus computadoras) realizan por sí mismas.
+- Las líneas de puntos representan acciones que los participantes (o sus computadoras) realizan por sí mismos.
 
 Los pasos involucrados en el proceso son los siguientes:
 
-    * El paso 0 generalmente ocurre antes de que las partes se comuniquen a través del medio utilizado para transmitir datos cifrados. Las partes deben acordar una clave de cifrado(((cifrado)))/descifrado compartida, que se utilizará tanto para el cifrado como para el descifrado. Esta clave podría ser generada por la Parte A, la Parte B, o incluso generada en conjunto — no importa siempre que ambas partes tengan acceso a la misma clave compartida. Es importante tener en cuenta que cualquier parte que posea la clave específica puede tanto descifrar como cifrar mensajes.
+    * El paso 0 generalmente ocurre antes de que los participantes se comuniquen a través del medio utilizado para transmitir datos cifrados. Los participantes deben acordar una clave de cifrado(((cifrado)))/descifrado compartida, que se utilizará tanto para el cifrado como para el descifrado. Esta clave podría ser generada por el Participante A, el Participante B, o incluso generada en conjunto — no importa siempre que ambos participantes tengan acceso a la misma clave compartida. Es importante tener en cuenta que cualquier participante que tenga la clave específica puede tanto descifrar como cifrar mensajes.
 
-    * Una vez que la parte emisora (en este caso, la Parte A) tiene la clave, puede cifrar los datos destinados a la otra parte aplicando el algoritmo de cifrado simétrico usando la clave, como se muestra en el paso 1. El algoritmo producirá los datos cifrados.
+    * Una vez que la parte emisora (en este caso, el Participante A) tiene la clave, puede cifrar los datos destinados a la otra parte aplicando el algoritmo de cifrado simétrico usando la clave, como se muestra en el paso 1. El algoritmo producirá los datos cifrados.
 
-    * Después de eso, la Parte A, la parte emisora, transmitirá los datos cifrados generados en el paso 1 al destinatario previsto, la Parte B. Los espías no podrán descifrar los mensajes si la clave solo es conocida por las partes A y B, incluso si el mensaje de datos cifrados es interceptado por un espía footnote:[siempre que la fortaleza de la clave de cifrado/descifrado sea suficiente].
+    * Después de eso, el Participante A, la parte emisora, transmitirá los datos cifrados generados en el paso 1 al destinatario previsto, el Participante B. Los espías no podrán descifrar los mensajes si la clave solo es conocida por los participantes A y B, incluso si el mensaje de datos cifrados es interceptado por un espía footnote:[siempre que la fortaleza de la clave de cifrado/descifrado sea suficiente].
 
-    * Al recibir los datos cifrados, la Parte B, la parte receptora, puede descifrarlos con la clave utilizando el algoritmo de descifrado.
+    * Al recibir los datos cifrados, el Participante B, la parte receptora, puede descifrarlos con la clave empleando el algoritmo de descifrado.
 
-La misma clave puede ser utilizada tanto por la Parte A como por la Parte B para cifrar y descifrar datos, permitiéndoles enviar y recibir mensajes de forma segura entre sí. Esta seguridad depende de que la clave permanezca confidencial y no se filtre a ningún tercero.
+La misma clave puede ser utilizada tanto por el Participante A como por el Participante B para cifrar y descifrar datos, permitiéndoles enviar y recibir mensajes de forma segura entre sí. Esta seguridad depende de que la clave permanezca confidencial y no se filtre a ningún tercero.
 
 El cifrado simétrico(((cifrado))) es fácil de entender e implementar, ya que se basa en una única clave de cifrado/descifrado. Sin embargo, no ofrece garantías con respecto a:
 
-- *Procedencia del mensaje* — cualquier parte con acceso a la clave compartida puede cifrar datos, lo que hace imposible determinar el remitente del mensaje cifrado.
+- *Procedencia del mensaje* — cualquier participante con acceso a la clave compartida puede cifrar datos, lo que hace imposible determinar el remitente del mensaje cifrado.
 
-- *Confidencialidad* — no hay seguridad de que los mensajes destinados a una parte específica sean vistos exclusivamente por esa parte.
+- *Confidencialidad* — no hay garantía de que los mensajes dirigidos a un participante específico sean vistos exclusivamente por ese participante.
 
 ==== Cifrado asimétrico
 
@@ -104,17 +104,17 @@ image::asymmetricenc.png[]
 
 <<img_asym>> muestra una visión general de cómo funciona típicamente la comunicación con cifrado de clave asimétrica(((cifrado))). Las principales diferencias en el proceso se resaltan en rojo, y a continuación se describen los pasos involucrados:
 
-* En lugar de requerir que el emisor y el receptor acuerden una clave de cifrado/descifrado compartida, el cifrado asimétrico(((cifrado asimétrico))) les permite divulgar sus claves públicas. Tanto el emisor como el receptor pueden hacer visibles sus claves públicas a todo el mundo sin preocupación. El paso 0 muestra cómo la clave pública de la Parte B es visible para la Parte A.
+* En lugar de requerir que el emisor y el receptor acuerden una clave de cifrado/descifrado compartida, el cifrado asimétrico(((cifrado asimétrico))) les permite divulgar sus claves públicas. Tanto el emisor como el receptor pueden hacer visibles sus claves públicas a todo el mundo sin preocupación. El paso 0 muestra cómo la clave pública del Participante B es visible para el Participante A.
 
-* La Parte A puede entonces cifrar mensajes destinados a la Parte B introduciendo los datos brutos (en este caso, 'Data2') junto con la clave pública de la Parte B(((clave pública))) en el algoritmo de cifrado asimétrico(((cifrado asimétrico))) (mostrado en el paso 1). El algoritmo de cifrado producirá los datos cifrados.
+* El Participante A puede entonces cifrar mensajes destinados al Participante B introduciendo los datos crudos (en este caso, 'Data2') junto con la clave pública del Participante B(((clave pública))) en el algoritmo de cifrado asimétrico(((cifrado asimétrico))) (mostrado en el paso 1). El algoritmo de cifrado generará los datos cifrados.
 
-* Después de eso, la Parte A puede enviar los datos cifrados a la Parte B (mostrado en el paso 2), con la confianza de que solo la Parte B podrá descifrar los datos, ya que solo se pueden descifrar usando la clave privada de la Parte B(((clave privada))), que se mantiene confidencial.
+* Después de eso, el Participante A puede enviar los datos cifrados al Participante B (mostrado en el paso 2), con la confianza de que solo el Participante B podrá descifrar los datos, ya que solo se pueden descifrar usando la clave privada del Participante B(((clave privada))), que se mantiene confidencial.
 
-* Finalmente, la Parte B puede introducir los datos cifrados recibidos y su clave privada en el algoritmo de descifrado (mostrado en el paso 3), que producirá el mensaje real destinado a ellos (que es 'Data2').
+* Finalmente, el Participante B puede introducir los datos cifrados recibidos y su clave privada en el algoritmo de descifrado (como se muestra en el paso 3), que producirá el mensaje real destinado a ellos (que es 'Data2').
 
-El cifrado asimétrico no permite que la Parte B envíe mensajes de vuelta a la Parte A usando la misma clave de cifrado/descifrado. Esto asegura que los mensajes destinados a una parte específica solo puedan ser descifrados por esa parte. Para responder, la Parte B simplemente usa la clave pública de la Parte A para cifrar mensajes.
+El cifrado asimétrico no permite que el Participante B envíe mensajes de vuelta al Participante A usando la misma clave de cifrado/descifrado. Esto asegura que los mensajes destinados a un participante específico solo puedan ser descifrados por éste. Para responder, el Participante B utiliza la clave pública del Participante A para cifrar mensajes.
 
-Aunque el cifrado asimétrico(((cifrado asimétrico))) asegura que solo el destinatario previsto pueda descifrar un mensaje en particular, no impide que un remitente se haga pasar por otra persona. Esto también se aplica al cifrado de clave simétrica cuando la clave de cifrado/descifrado compartida se ve comprometida. Por ejemplo, consideremos un actor malicioso, la Parte C, que tiene acceso a la clave pública de la Parte B(((clave pública))). La Parte C podría cifrar mensajes destinados a la Parte B y enviarlos, afirmando falsamente ser la Parte A. La Parte B no tendría forma de identificar que los mensajes son en realidad de la Parte C. La solución a este problema son las _firmas digitales_, que se discutirán a continuación.
+Aunque el cifrado asimétrico(((cifrado asimétrico))) asegura que solo el destinatario previsto pueda descifrar un mensaje en particular, no impide que un remitente se haga pasar por otra persona. Esto también se aplica al cifrado con clave simétrica cuando la clave de cifrado/descifrado compartida se ve comprometida. Por ejemplo, consideremos un actor malicioso, el Participante C, que tiene acceso a la clave pública del Participante B(((clave pública))). El Participante C podría cifrar mensajes dirigidos al Participante B y enviarlos, afirmando falsamente que es el Participante A. El Participante B no tendría forma de identificar que los mensajes son, en realidad, del Participante C. La solución a este problema son las _firmas digitales_, que se discutirán a continuación.
 
 === Firmas digitales
 
@@ -142,29 +142,29 @@ image::verify_signature.png[]
 
 Verificar un mensaje firmado digitalmente implica los siguientes pasos:
 
-1. El destinatario primero debe haber recibido el mensaje (p. ej., 'Hello') y la firma digital asociada (p. ej., c1f3...691c).
+1. El destinatario debe haber recibido primero el mensaje (p. ej., 'Hello') y la firma digital asociada (p. ej., c1f3...691c).
 
 2. El destinatario luego descifra la firma digital usando la clave pública del remitente(((clave pública))). El valor descifrado debe ser el hash (huella digital única) del mensaje original (p. ej., 185f...1969 mostrado en la parte inferior derecha de <<img_verify_signature>>).
 
-3. El destinatario calcula el hash del mensaje recibido y lo compara con el hash descifrado obtenido en el paso anterior. Si coinciden, el destinatario puede estar seguro de que el remitente creó el mensaje. Específicamente, el destinatario puede garantizar que el par de claves privada/pública(((clave pública))) del remitente(((par de claves))) se utilizó para generar la firma digital. Dado que la firma digital es el hash cifrado, y el hash identifica de forma única la pieza de datos específica, se puede confirmar que los datos no han sido alterados desde que se creó la firma digital y que se fueron creados por el remitente (usando su par de claves pública/privada).
+3. El destinatario calcula el hash del mensaje recibido y lo compara con el hash descifrado obtenido en el paso anterior. Si coinciden, el destinatario puede estar seguro de que el remitente es el creador del mensaje. Específicamente, el destinatario puede garantizar que el par de claves privada/pública(((clave pública))) del remitente(((par de claves))) se utilizó para generar la firma digital. Dado que la firma digital es el hash cifrado, y el hash identifica de forma única la pieza de datos específica, se puede confirmar que los datos no han sido alterados desde que se creó la firma digital y que se fueron creados por el remitente (usando su par de claves pública/privada).
 
 La siguiente sección explora cómo los principales componentes criptográficos ayudan a mantener y asegurar los sistemas blockchain.
 
 ==== Funciones de hash
 
-Las funciones de hash son fundamentales para las blockchains. A continuación se presentan algunos ejemplos específicos donde se utilizan funciones de hash en sistemas blockchain.
+Las funciones de hash son fundamentales para las blockchains. A continuación se presentan algunos ejemplos específicos de cómo se utilizan funciones de hash en sistemas blockchain.
 
-. *Identificador único de bloque* — las blockchains consisten en bloques de transacciones y otra información. Cada bloque está asociado con un identificador único, que se deriva usando una función de hash sobre los datos del bloque.
+. *Identificador único de bloque* — las blockchains consisten en bloques de transacciones y de otra información. Cada bloque está asociado a un identificador único, derivado mediante una función de hash de los datos del bloque.
 
-. *Identificador único de transacción* — las transacciones suelen estar asociadas con un hash de transacción, que es un identificador único de la transacción específica generado al codificar los datos de la transacción específica. A lo largo de este libro, se presentan diversos ejemplos de ésto.
+. *Identificador único de transacción* — las transacciones suelen estar asociadas con un hash de transacción, que es un identificador único de la transacción específica generado al codificar los datos de la transacción específica. A lo largo de este libro, se presentan diversos ejemplos de esto.
 
 . *Identificador de script* — los hashes se utilizan a menudo para identificar código/scripts de contratos inteligentes específicos — como se verá en varias partes del libro.
 
-. *Para encadenar bloques* — los bloques se encadenan de manera inmutable haciendo que el bloque más reciente haga referencia al hash del bloque anterior. Si alguna información en el bloque anterior cambia, se nota inmediatamente porque el hash del bloque anterior ya no coincidiría con el hash almacenado en el bloque más reciente. De hecho, esta técnica no solo proporciona una solución para el bloque anterior, sino que también invalida el hash si cualquier parte del historial de bloques más antiguos se cambia, incluso ligeramente. En consecuencia, todos los bloques generados después del bloque respectivo y sus hashes también se invalidarían.
+. *Para encadenar bloques* — los bloques se encadenan de forma inmutable, de modo que el bloque más reciente haga referencia al hash del bloque anterior. Si alguna información en el bloque anterior cambia, se nota inmediatamente porque el hash del bloque anterior ya no coincidiría con el hash almacenado en el bloque más reciente. De hecho, esta técnica no solo proporciona una solución para el bloque anterior, sino que también invalida el hash si cualquier parte del historial de bloques más antiguos se cambia, incluso ligeramente. En consecuencia, todos los bloques generados después del bloque respectivo y sus hashes también se invalidarían.
 
 . *Derivación de direcciones* — los algoritmos de hash se utilizan a menudo en las blockchains como un medio para derivar direcciones de billetera — p. ej., como se discute en la sección <<create-wallet>>.
 
-. *Merkleización(((merkle)))* permite compactar grandes colecciones de elementos de datos en una estructura más pequeña, es decir, un árbol de Merkle, y aún así poder probar que un elemento de datos en particular está representado dentro del árbol de Merkle sin tener que almacenar todos los elementos de datos. La Merkleización se discute más adelante en la sección <<chapter8-marlowe-security>>.
+. *Merkleización(((merkle)))* permite compactar grandes colecciones de elementos de datos en una estructura más pequeña, es decir, un árbol de Merkle, y, aun así, probar que un elemento de datos en particular está representado en el árbol de Merkle sin tener que almacenar todos los elementos de datos. La Merkleización se discute más adelante en la sección <<chapter8-marlowe-security>>.
 
 . *Almacenamiento direccionado por contenido(((almacenamiento direccionado por contenido)))* — cuando se requiere hacer referencia a otra información o archivos (por ejemplo, desde un contrato inteligente), a menudo es útil referirse al archivo (o información) específico usando almacenamiento direccionado por contenido, que se refiere a dicha información/archivos usando un hash de su contenido. Al hacerlo, es posible determinar inmediatamente si los contenidos han cambiado, ya que la referencia para encontrar la información/archivo es un hash que debe coincidir con el hash calculado del contenido, lo que se puede hacer en cualquier momento. Además, dicho esquema de referencia permite la deduplicación, por ejemplo, si se hace referencia a los mismos datos de imagen dos veces, solo se necesita almacenar una versión del archivo, ya que ambas referencias se resolverían al mismo hash.
 
@@ -172,7 +172,7 @@ Las funciones de hash son fundamentales para las blockchains. A continuación se
 
 . *Generación de billeteras* — los pares de claves pública/privada(((clave privada))) se generan usando algoritmos de cifrado asimétrico(((cifrado asimétrico))), que proporcionan la base para identidades/billeteras que se pueden generar sobre la marcha de manera descentralizada.
 
-. *Firma/prueba y verificación de transacciones* — una vez que un usuario tiene una billetera (al generar un par de claves pública/privada), puede crear y firmar transacciones y probar a cualquiera que la transacción es válida y fue generada usando la billetera respectiva. Por ejemplo, cuando alguien quiere transferir fondos de su billetera a otra persona, los detalles de la transacción se firman digitalmente usando la clave privada de la billetera. A partir de entonces, cualquier otra persona puede verificar que la transacción fue iniciada por la billetera respectiva, ya que pueden verificar la firma digital contra la clave pública de la billetera.
+. *Firma/prueba y verificación de transacciones* — una vez que un usuario tiene una billetera (al generar un par de claves pública/privada), puede crear y firmar transacciones y probar a cualquiera que la transacción es válida y fue generada con la billetera correspondiente. Por ejemplo, cuando alguien quiere transferir fondos de su billetera a otra persona, los detalles de la transacción se firman digitalmente usando la clave privada de la billetera. A partir de entonces, cualquier otra persona puede verificar que la transacción fue iniciada por la billetera respectiva, ya que pueden verificar la firma digital contra la clave pública de la billetera.
 
 === Recursos adicionales sobre criptografía
 
