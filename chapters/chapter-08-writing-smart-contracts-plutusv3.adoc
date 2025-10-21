@@ -261,8 +261,7 @@ DSL; IO supports its development
 * https://github.com/HarmonicLabs/plu-ts[Plu-ts]: a typed eDSL in
 TypeScript
 * https://opshin.dev/[OpShin]: a typed eDSL in Python
-* https://github.com/hyperion-bt/helios[Helios]: a
-JavaScript/TypeScript SDK and typed DSL
+* https://helios-lang.io/[Helios]: a JavaScript/TypeScript SDK and typed DSL
 * https://github.com/plutonomicon/plutarch-plutus[Plutarch]: a typed
 eDSL in Haskell for writing efficient Plutus validators
 * https://scalus.org/[Scalus]: a typed eDSL in Scala
