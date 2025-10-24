@@ -1,21 +1,17 @@
 
 [[foreword-joshua]]
-== Foreword by Joshua Ellul
+== Joshua Ellul序文
 
-I had the pleasure of being introduced to Dr Lars Brünjes (fellow author of this book and Director of Education at Input | Output (IO)) in 2019. At the time, I was just starting out a role as the Director of the Centre for DLT at the University of Malta and was focusing on programme and curriculum development of a multidisciplinary Master's programme in Blockchain and DLT. I could not have met Lars at a better time, since I wanted to ensure Cardano was covered in the smart contract programming course (so as to ensure that different smart contract programming paradigms were covered), and who better to handle it than someone from the Cardano ecosystem itself. We explored different initiatives to collaborate on—and besides Lars being involved in guest lectures—two notable collaborative efforts emerged: (i) we organized an instance of the Cardano Days workshops at the University of Malta for which we were honored to have IO's education team lead the event; and (ii) this book, Mastering Cardano.
+私が嬉しくも本書の共同著者でありInput | Output (IO)の教育ディレクターであるLars Brünjes博士の知己を得ることができたのは2019年のことでした。当時、マルタ大学DLTセンターのディレクターとしての役割を始めたばかりだった私は、ブロックチェーンとDLTの学際的な修士課程のプログラムとカリキュラム開発に注力していました。このLarsとの出会いは最高のタイミングでした。というのも、私はスマートコントラクトプログラミングコースで絶対にCardanoを採り上げたかったし（さまざまなスマートコントラクトのプログラミングパラダイムを網羅しようとしていたので）、それを扱うのにCardanoエコシステムのメンバーに勝る適任者はいないでしょう。私たちは共同で取り組むためのイニシアチブを模索しました。そして、Larsがゲスト講師として関わることに加えて、注目すべき2つの共同作業が生まれました。一つ目は、マルタ大学でCardano Daysワークショップを開催し、IOの教育チームにこのイベントを主導してもらうという栄誉を得ました。そして二つ目が、本書『Mastering Cardano』です。
 
-Through involvement in Mastering Cardano, I've had the opportunity and pleasure to work with Lars, and others from the IO education team, whom I would like to thank for making the experience more than enjoyable—including Alejandro (Garcia), Arturo (Jose Arturo Mora), Jesse (Smith), Luka (Kurnjek), and Niamh (Ahern), and John (Greene) from the Cardano Foundation. Indeed, as Lars has noted, Mastering Cardano should be a living book that will need updating as progress and development are made in the Cardano ecosystem—and therefore the book should be seen as the community's, who we encourage to get involved in keeping this book alive and open source.
+私は『Mastering Cardano』に関わる中で、LarsやIO教育チームの他の人々と仕事をする機会と喜びを得ました。この経験を楽しみ以上のものにしてくれた、Alejandro Garcia、Jose Arturo Mora、Jesse Smith、Luka Kurnjek、Niamh Ahern、そしてCardano財団のJohn Greenの諸氏をはじめとする人々に、感謝の意を表します。実際、Larsが指摘したように、『Mastering Cardano』は、Cardanoエコシステムの発展と開発に伴い更新が必要な、生きている本であるべきです。したがって、本書は、この本を存続させ、オープンソースに保つことに取り組むコミュニティのものと見なされるべきです。
 
-Throughout the drafting, writing, and editing of the book, it became clearer to me that Cardano is not just another blockchain. It is a blockchain built with decentralization and scientific philosophy as guiding principles—and it is exactly these principles that have helped shape my career this past decade. As someone who has worked at the intersection of technology, education, policy, and regulation (which I believe can be beneficial if done right), I see Cardano as more than just a blockchain, but as a living experiment in how critical digital infrastructure can be responsibly developed, governed, and meaningfully applied to real-world applications and global challenges. My hope is that this book equips readers not only to get started with Cardano, but also appreciate why Cardano is different (and not just another blockchain). 
+本書の草稿、執筆、編集を通して、私の中でCardanoは単なるブロックチェーンではないことがどんどん明確になっていきました。これは、分散性と科学哲学を基本原理として構築されたブロックチェーンであり、この10年間の私の業績を形作るのに役立ったのは、まさにこれらの原理です。技術、教育、政策、規制（これは、正しく行われれば有益だと私が信じるものです）が交差する場で働いてきた私は、Cardanoを単なるブロックチェーンではなく、重要なデジタルインフラがいかに責任を持って開発され、管理され、現実世界のアプリケーションやグローバルな課題に有意義に適用され得るかを知るための、生きた実験と見ています。私の望みは、この本が読者にCardanoを使い始めるだけでなく、Cardanoがなぜ違うのか（そして単なる別のブロックチェーンではないこと）を理解してもらうことです。
 
-Whether you are new to Cardano, a developer, a stake pool operator, interested in Cardano's governance, or are reading this book for another purpose—I invite you to explore what Cardano has to offer towards a more open, accountable, and decentralized future.
+あなたがCardano初心者であっても、開発者であっても、ステークプールオペレーターであっても、Cardanoのガバナンスに興味がある方であっても、あるいは別の目的でこの本を読んでいる方であっても、私は、よりオープンで、説明責任があり、分散化された未来に向けてCardanoが提供するものを、ぜひ探求していただきたいと願っています。
 
-_Prof. Joshua Ellul +
-Associate Professor +
-Department of Computer Science, and Centre for DLT +
-University of Malta +
-Malta +
-July 2025_
-
-
-
+_Joshua Ellul教授 +
+准教授 +
+マルタ大学コンピューターサイエンス学科およびDLTセンター +
+マルタ +
+2025年7月_
