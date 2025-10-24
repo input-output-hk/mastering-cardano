@@ -32,6 +32,7 @@ We would like to thank the following people who have contributed to the writing 
 
 - Ahern, Niamh
 - Baram, Reza
+- Bruset, Trym
 - Bush, Brian
 - Chapman, James
 - Fajen, Joseph
