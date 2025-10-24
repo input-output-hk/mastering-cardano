@@ -1,5 +1,7 @@
 # **Mastering Cardano: An open-source guide to the Cardano ecosystem**
 
+> 🇯🇵 Japanese version, under development
+
 ![Mastering Cardano Cover](images/cover.png)
 
 **Mastering Cardano is now available from [Book.io](https://book.io/)! [Purchase your copy here](https://book.io/book/mastering-cardano/).**
