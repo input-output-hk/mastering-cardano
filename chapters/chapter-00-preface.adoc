@@ -3,49 +3,57 @@ include::foreword-lars.adoc[]
 
 include::foreword-joshua.adoc[]
 
-== Welcome to Mastering Cardano!
+== Mastering Cardanoへようこそ！
 
-Congratulations on choosing _Mastering Cardano_ as your canonical reference to the exciting world of blockchain, decentralization, and the Cardano ecosystem. Whether you're a seasoned developer, a curious enthusiast, or a business professional looking to leverage cutting-edge technology, this  open source book is designed to equip you with the knowledge and skills you need. This book is a living, breathing Cardano community resource and will evolve to incorporate changes and updates as Cardano and its ecosystem grow and develop.
+ブロックチェーン、分散化、Cardanoエコシステムというエキサイティングな世界を探求するための典拠となる参考文献として、『Mastering Cardano』を選ばれたことにお祝いを申し上げます。経験豊富な開発者であれ、好奇心旺盛な愛好家であれ、あるいは最先端のテクノロジーを活用したいと考えているビジネス専門家であれ、このオープンソースの書籍は、必要とする知識とスキルを身につけられるように設計されています。本書は、Cardanoコミュニティの生きているリソースであり、Cardanoとそのエコシステムの成長と発展に伴い、変更点や更新情報を取り入れて進化していきます。
 
-Happy reading!
+本書をお楽しみください。
 
-=== Your journey, your way
+=== あなたの旅、あなたの道
 
-While _Mastering Cardano_ is structured to provide a comprehensive and logical progression through its topics, we recognize that every learner has unique prior knowledge and goals. Therefore, we encourage you to explore our suggested reading paths as an alternative to a strictly linear approach.
+『Mastering Cardano』は、トピックが網羅的かつ論理的な順序で構成されていますが、私たちは、学習者一人ひとりが異なる予備知識や目標を持っていることを認識しています。したがって、厳密に順番通りに読み進める以外の方法として、推奨される読書パスを試してみることをお勧めします。
 
-Think of these paths as curated journeys designed to help you quickly hone in on the information most relevant to your specific interests. You can choose to read _Mastering Cardano_ cover-to-cover, or jump directly to the chapters and sections that you are most interested in to accelerate your learning in a particular area.
+これらの読書パスは、特定の興味にもっとも関連性の高い情報に速やかに集中できるように設計された、厳選された道のりだと考えてください。『Mastering Cardano』を最初から最後まで通して読むこともできますし、特定の分野の学習を加速させるために、もっとも興味のある章やセクションに直接進むことも可能です。
 
 [[preface-howtonavigate]]
-=== How to navigate this book
+=== 本書の読み進め方
 
-Before diving into the chapters, take a moment to review the available reading paths. Each path will suggest a sequence of chapters and sections, along with a brief description of what you'll learn. You might find a path that perfectly aligns with your current goals, or perhaps one that helps you discover new areas of interest within Cardano.
+章に入る前に、利用可能な読書パスを確認してみてください。各パスでは、学習内容の簡単な説明とともに、章とセクションの順序が提案されています。現在の目標に完全に一致する道を見つけたり、Cardanoの中で新しい関心分野を発見するのに役立つ道を見つけられるかもしれません。
 
-We believe that by offering these flexible reading options and supplemental resources, _Mastering Cardano_ will serve as an even more powerful and personalized tool on your journey to becoming a Cardano expert.
+これらの柔軟な読書オプションと補足資料を提供することで、『Mastering Cardano』が、Cardanoエキスパートになるための、さらに強力でパーソナライズされたツールとなると信じています。
 
-==== Dive deeper
+==== より深く掘り下げる
 
-We believe in continuous learning. Throughout _Mastering Cardano_, you'll find curated reference links to essential research papers, insightful blog posts, and other valuable articles. These resources are carefully selected to provide you with opportunities to dive deeper into specific topics, understand the underlying theory, and stay current with the rapidly evolving Cardano landscape.
+私たちは継続的な学習を信条としています。『Mastering Cardano』の全体を通じて、厳選された、重要な研究論文や洞察に満ちたブログ記事、その他の価値ある記事への参照リンクが付されています。これらの資料は、特定のトピックをより深く掘り下げ、基礎となる理論を理解し、急速に進化するCardanoの状況について最新の情報を得続ける機会を提供するために、注意深く選ばれています。
 
-==== Why choose a reading path?
+==== 読書パスを選ぶ理由
 
-- Tailored learning — focus on what matters most to you, whether it is smart contract development, staking, network architecture, or DApp creation
-- Time efficiency — get up to speed faster by prioritizing key concepts and practical applications for your specific needs
-- Goal-oriented — each path is designed with a clear objective in mind, helping you achieve your learning goals more effectively
-- Flexible exploration — even if you follow a specific path, you can branch out and explore other sections as required.
+- カスタマイズされた学習—スマートコントラクト開発、ステーキング、ネットワークアーキテクチャー、DApp作成など、自分にとってもっとも重要なことに焦点を当てることができます。
 
-=== Suggested reading paths
-- _Cardano fundamentals path_ — ideal for anyone new to blockchain or Cardano, this path provides a solid foundational understanding of the Cardano ecosystem, its core principles, and its journey
-- _Smart contracts developer path_ — for developers eager to build on Cardano, this path guides you through the essential concepts and practical skills needed to write, test, and deploy smart contracts using Plinth & Marlowe. Aiken content is coming soon!  
-- _Cardano user path_ — for non-technical readers and blockchain enthusiasts, this path helps you understand the Cardano ecosystem, manage assets, explore NFTs, and engage with the community without delving into code
-- _Stake pool operator path_ — for readers whose goal is to learn how to run a node and start a stake pool, but are not necessarily interested in programming smart contracts or DApps
-- _Cardano governance and future path_ — for readers keen on Cardano's long-term vision, this path explores the principles of decentralized governance, the mechanisms for community decision-making, and the exciting future developments shaping the network.
+- 時間効率—特定のニーズに合わせて、重要な概念と実用的な応用を優先することで、より早く習熟できます。
 
-image::mc_learning_paths.png[title="Learning paths"]
+- 目標指向—各パスは明確な目標を念頭に置いて設計されており、学習目標をより効果的に達成するのに役立ちます。
 
-==== Cardano fundamentals 
-Explore the vision and challenges of blockchain, delve into the cryptography that secures the network, and then get a robust introduction to Cardano's unique design, history, and innovative protocols.
+- 柔軟な探求—特定のパスをたどっても、必要に応じて分岐して他のセクションを探求することができます。
 
-===== Suggested chapters and sections:
+=== 推奨読書パス
+
+- *Cardanoの基礎パス*—ブロックチェーンやCardanoを初めて学ぶ人に最適です。Cardanoエコシステム、その核となる原則、これまでの道のりについて、しっかりとした基礎知識を提供します。
+
+- *スマートコントラクト開発者パス*—Cardanoでの構築を熱望する開発者向けです。AikenやPlutusを使用してスマートコントラクトを作成、テスト、デプロイするために必要な必須概念と実践的なスキルを案内します。
+
+- *Cardanoユーザーパス*—技術的な知識を持たない読者やブロックチェーン愛好家向けです。コードを掘り下げることなく、Cardanoエコシステムを理解し、資産を管理し、NFTを探求し、コミュニティと関わるのに役立ちます。
+
+- *ステークプールオペレーターパス*—ノードの実行方法とステークプールの開始方法を学習することを目的としつつも、スマートコントラクトやDAppのプログラミングには必ずしも関心がない読者向けです。
+
+- *Cardanoのガバナンスと未来パス*—Cardanoの長期ビジョンに関心のある読者向けです。分散型ガバナンスの原則、コミュニティの意思決定メカニズム、ネットワークを形作るエキサイティングな将来の開発を探求します
+
+image::mc_learning_paths.png[title="ラーニングパス"]
+
+==== Cardanoの基礎 
+ブロックチェーンのビジョンと課題を探り、ネットワークを保護する暗号技術を掘り下げてから、Cardano独自の設計、歴史、革新的なプロトコルについて詳細に学びます。
+
+===== 推奨される章とセクション:
 - <<preface-howtonavigate>>
 - <<preface-howtocontribute>>
 - <<introduction>>
@@ -53,10 +61,10 @@ Explore the vision and challenges of blockchain, delve into the cryptography tha
 - <<chapter3-learn-about-Cardano>>
 - <<how-cardano-works>>
 
-==== Smart contracts developer
-Understand Cardano's unique functional programming and the EUTXO model, then dive directly into the specifics of writing smart contracts and DApps.
+==== スマートコントラクト開発者
+Cardano独自の関数型プログラミングとEUTXOモデルを理解してから、直接スマートコントラクトとDApp作成の説明に進みます
 
-===== Suggested chapters and sections:
+===== 推奨される章とセクション:
 - <<preface-howtonavigate>>
 - <<preface-howtocontribute>>
 - <<introduction>>
@@ -64,45 +72,47 @@ Understand Cardano's unique functional programming and the EUTXO model, then div
 - <<writing-smart-contracts>>
 - <<decentralized-applications>>
 
-==== Cardano user 
-Learn the foundational blockchain concepts, then discover how to interact with the network using wallets, manage your digital assets, and understand native tokens and NFTs.
+==== Cardanoユーザー 
+ブロックチェーンの基本概念を学び、ウォレットを使用してネットワークと対話する方法、デジタル資産を管理する方法、ネイティブトークンとNFTを理解する方法を学習します。
 
-===== Suggested chapters and sections:
+===== 推奨される章とセクション:
 - <<preface-howtonavigate>>
 - <<preface-howtocontribute>>
 - <<introduction>>
 - <<how-cardano-works>>
 - <<wallets-in-the-world-of-cardano>>
 
-==== Stake pool operators 
-Begin by understanding the core components of the Cardano network, delve into how consensus is reached and incentives work, and then focus on the specifics of setting up and operating a stake pool.
+==== ステークプールオペレーター
+Cardanoネットワークのコアコンポーネントを理解することから始め、どのようにコンセンサスが達成され、インセンティブが機能するかを掘り下げたのち、ステークプールのセットアップと運営の詳細に焦点を当てます。
 
-===== Suggested chapters and sections:
+===== 推奨される章とセクション:
 - <<preface-howtonavigate>>
 - <<preface-howtocontribute>>
 - <<how-cardano-works>>
 - <<wallets-in-the-world-of-cardano>>
 - <<stake-pools-and-stake-pool-operation>>:
 
-==== Cardano governance and future 
-Understand how Cardano's governance model operates, explore key initiatives like Project Catalyst and CIPs, and look ahead to future advancements and the Cardano 2.0 vision.
+==== Cardanoのガバナンスと未来
+Cardanoのガバナンスモデルがどのように機能するかを理解し、Project CatalystやCIPといった主要なイニシアチブを検討し、将来の進歩とCardano 2.0ビジョンを展望します。
 
-===== Suggested chapters & sections:
+===== 推奨される章とセクション:
 - <<preface-howtonavigate>>
 - <<preface-howtocontribute>>
 - <<chapter5-cardano-governance>>
 - <<chapter10-mithril>>
 - <<chapter10-hydra>>
 
-=== Join the community: contribute to Mastering Cardano
-_Mastering Cardano_ is more than just a book; it is intended to be a community-driven resource that grows and improves with the collective knowledge of the Cardano ecosystem. The world of blockchain is dynamic, and we believe the best way to keep this resource current, accurate, and truly comprehensive is through your valuable contributions.
+=== コミュニティに参加する：Mastering Cardanoに貢献する
+『Mastering Cardano』は単なる書籍以上のものです。Cardanoエコシステムの集合的な知識とともに成長し、改善されていくことを意図した、コミュニティ主導のリソースです。ブロックチェーンの世界はダイナミックです。私たちは、このリソースを最新、正確、そして真に包括的なものに保つ最善の方法は、皆さんからの貴重な貢献であると信じています。
 
-We encourage you to become an active participant in shaping the future editions of this book. Whether you spot a typo, have a clearer explanation for a complex concept, discover an outdated reference, or identify an area that needs more depth, your input is incredibly valuable. We kindly ask that you first spend some time navigating the book and its content, getting to know its structure and sections, so that your feedback is most valuable.
+ぜひ、本書の将来の版を形作る積極的な参加者となってください。誤植を見つけたり、複雑な概念に対してより明確な説明ができたり、古くなった参照を発見したり、さらに深く掘り下げる必要のある分野を特定したり。いずれの場合も、皆さんの意見には計り知れないほどの価値があります。フィードバックが最大限に価値あるものとなるよう、まずは少し時間をかけて本書の内容を読み進め、構造やセクションを把握してみてください。
 
 [[preface-howtocontribute]]
-==== How can you contribute?
-_Mastering Cardano_ is an evolving community resource that will improve with contributions and corrections from the Cardano community. Please raise a pull request in our https://github.com/input-output-hk/mastering-cardano[Mastering Cardano repository] with your suggested improvements or comment in our dedicated https://discord.com/channels/826816523368005654/1402331758032191660[Discord channel].
+==== 貢献するには
+『Mastering Cardano』は、Cardanoコミュニティからの貢献と修正によって改善される、進化するコミュニティリソースです。改善点を提案するには、https://github.com/input-output-hk/mastering-cardano[Mastering Cardanoリポジトリ] でプルリクエストを提出してください。
 
-- Suggest enhancements — have an idea for a new section, a better example, or a more efficient way to explain something? Share it!
-- Propose updates — as Cardano evolves, so too should this book. Help us keep the content fresh and relevant.
-- Report issues — found an issue, broken link, or typo? Let us know!
+- 改良を提案する—新しいセクション、より良い例、より効率的な説明方法についてアイデアがある場合は、ぜひ共有してください。
+
+- 更新を提案する—Cardanoの進化に合わせて、本書も更新する必要があります。コンテンツを新鮮で的を射たものに保つのにご協力ください。
+
+- 問題を報告する—問題、リンク切れ、誤植などを見つけたら、お知らせください。
