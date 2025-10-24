@@ -1,31 +1,31 @@
 
 [[foreword-lars]]
-== Foreword by Lars Brünjes
+== Lars Brünjes序文
 
-People often ask what drew me to Cardano. It wasn’t just one thing, but a combination that, for a mathematician like me, was simply irresistible.
+私はよく、なぜCardanoに惹かれたのかと尋ねられます。それは一つの理由によるものではなく、私のような数学者が単純に抗うことのできない組み合わせによるものでした。
 
-First, there was the intellectual pull. I’ve spent my career in Number Theory and have a long-standing love for functional programming, especially Haskell. The chance to work on a blockchain built from peer-reviewed research and coded in Haskell was, frankly, a dream scenario. It was a project that valued getting things right from the start, which is a stark contrast to the tech world’s usual 'move fast and break things' mantra. We’ve felt that pressure to cut corners, and I’m proud that we always chose rigor when people's trust—and their savings—were on the line.
+第一に、知的な魅力がありました。私は数論で実績を積み、関数型プログラミング、特にHaskellを長年愛してきました。査読を受けた研究から構築され、Haskellでコーディングされたブロックチェーンに取り組む機会は、率直に言って夢のシナリオでした。このプロジェクトは最初から物事を正しく進めることを重視していましたが、これは、テクノロジー界の常套句である「スピードが一番、壊して学べ（Move fast and break things）」とはまったく対照的です。妥協すべきではないかと感じることもありましたが、人々の信頼、そして貯蓄が懸かっているときに、常に厳格さを選んできたことを、私たちは誇りに思っています。
 
-The second reason was the mission itself: building a financial operating system for those who have been left behind. Early in my career, you were often told to choose: do something interesting or do something meaningful. I once saw a job posting to optimize gambling machine algorithms. The math was fascinating, but I couldn't stomach the ethics. On the other hand, you could do something undeniably good, like building roads in the developing world, but I wouldn't have been using the skills I was passionate about.
+二つ目の理由は、取り残されている人々のために金融オペレーティングシステムを構築するという使命そのものでした。仕事を始めたばかりの頃には、興味のあることをするのか、意味のあることをするのか、どちらかを選べとよく言われました。ギャンブルマシンのアルゴリズムを最適化するという求人を見たことがありますが、数学は魅力的だったものの、倫理的に耐えられませんでした。一方、途上国で道路を建設するといったような、間違いなく人のためになるようなこともできましたが、そこでは私が情熱を注いでいたスキルは使えなかったでしょう。
 
-Cardano was the first time I saw a project that didn't ask me to choose. It was a chance to tackle incredibly hard problems in cryptography and game theory for a cause that could genuinely change lives. It had the elegance of Bitcoin without boiling the oceans to secure it—our Ouroboros protocol is about a million times more energy-efficient. And it had the flexibility of Ethereum, but with our EUTXO model, which gives developers a level of safety and predictability that makes formal verification a practical tool, not just a theory.
+Cardanoは、私がそのような選択をしないで済んだ初のプロジェクトです。それは、人々の人生を真に変え得るようなことのために、暗号学やゲーム理論の信じられないほど難しい問題に取り組むチャンスでした。ここでは、約100万倍のエネルギー効率を誇るOuroborosプロトコルのおかげで、安全性のために海を沸騰させることなくビットコインの優雅さを実現できましたし、イーサリアムの柔軟性も備えていました。ただしここでは、私たち独自のEUTXOモデルを使用しています。これは、形式検証を単なる理論ではなく実用ツールにするような、ある程度の安全性と予測可能性を開発者に提供します。
 
-Which brings us to this book.
+そして、この本がまとめられることになりました。
 
-Cardano is a huge undertaking. It spans everything from the nuts and bolts of network protocols to the high-level world of smart contracts and governance. It would have been pure arrogance to try and write this alone. Truthfully, I didn't know nearly enough about many parts of it.
+Cardanoは巨大な事業です。ネットワークプロトコルの根幹からスマートコントラクトやガバナンスといったハイレベルな世界まで、あらゆるものを網羅しています。これを一人で執筆するというのは、傲慢以外の何物でもないでしょう。正直なところ、私はその多くの部分について限られた知識しか持っていませんでした。
 
-That's why this book had to be a team effort, just like Cardano itself. My main co-author, Professor Joshua Ellul, my entire education team at Input | Output, and many others from the wider Cardano community, all pitched in. It only makes sense. Cardano is open source, and so is this book. We see it as a living document.
+したがって本書は、チームとして取り組むべきものでした。そう、ちょうどCardano自体がそうであるように。私の主な共同著者であるJoshua Ellul教授、Input | Outputの教育チーム全体、そしてCardanoコミュニティの多くの人々が、一丸となって協力してくれました。それは実に理にかなっています。Cardanoはオープンソースであり、この本も同様です。私たちはこれを、生きている文書と考えています。
 
-And that's where you come in. We're inviting you, the reader, to help us shape its future—to correct, refine, and expand it as Cardano grows.
+ここで皆さんの出番となります。読者の皆さんには、Cardanoの成長に合わせて、この本の未来を形作る、すなわちこれを修正し、洗練させ、拡張していく手助けをしてもらいたいのです。
 
-We wrote this book for a wide audience. Whether you're a developer ready to build, a stake pool operator keeping the network secure, a student digging into cryptography, or you're simply curious about how it all works—there's a path for you in these pages.
+私たちはこの本を幅広い読者層に向けて書きました。今にも構築しようとしている開発者であろうと、ネットワークの安全を支えるステークプールオペレーターであろうと、暗号技術を深く掘り下げて学ぶ学生であろうと、単に全体の仕組みに興味があるだけであろうと、この本の中にはその目的に合った道筋があります。
 
-So whatever brought you here—building, learning, or just curiosity—welcome. We're excited to have you with us.
+ですから、皆さんがここにたどり着いた理由が、構築するためであれ、学ぶためであれ、あるいは単なる好奇心であれ、歓迎します。私たちは皆さんと共に進むことを楽しみにしています。
 
-Happy reading!
+本書をお楽しみください。
 
 _Dr. Lars Brünjes +
-Director of Education, IOG +
-L'Agulhas, South Africa +
-July 10, 2025_
+IOG教育ディレクター +
+南アフリカ、アグラス +
+2025年7月10日_
 
