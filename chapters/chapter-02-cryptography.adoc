@@ -1,188 +1,185 @@
-
 :imagesdir: ../images
 
 [[chap-crypto]]
-== Cryptography
+== Criptografía
 
-Cryptography is a fundamental building block of blockchain systems, DLTs, smart contracts, and cryptocurrencies. This chapter offers an overview of cryptography(((cryptography))) and its role in blockchain, focusing on hash functions(((hash function))), encryption(((encryption))) techniques, and digital signatures(((digital signatures))). While in-depth technical details are beyond the scope of this chapter, resources for further exploration are provided at the end of the chapter.
+La criptografía es un pilar fundamental de los sistemas blockchain, las DLT, los contratos inteligentes y las criptomonedas. Este capítulo ofrece una visión general de la criptografía(((criptografía))) y su papel en la blockchain, centrándose en las funciones de hash(((función de hash))), las técnicas de cifrado(((cifrado))) y las firmas digitales(((firmas digitales))). Aunque los detalles técnicos profundos están fuera del alcance de este capítulo, al final se proporcionan recursos para una mayor exploración.
 
-=== Hashing functions
+=== Funciones de hash
 
-Early in computing history, it became evident that messages between digital systems can change during transmission due to issues with the communication medium or other reasons. A solution to this problem became pressing. An initial solution involved adding an extra parity bit to the data sent between devices, serving as a safety guarantee to check whether the data had changed. 
+Al principio de la historia de la computación, se hizo evidente que los mensajes entre sistemas digitales pueden cambiar durante la transmisión debido a problemas con el medio de comunicación u otras razones. Encontrar una solución a este problema se volvió prioritario. Una solución inicial implicó agregar un bit de paridad adicional a los datos enviados entre dispositivos, sirviendo como una garantía de seguridad para verificar si los datos habían cambiado.
 
-A computer bit can either be 0 or 1. For a naive implementation of a parity bit, if the total number of bits set to 1 in a data packet is odd, then the parity bit is set to 1; if even, it is set to 0. However, since the parity bit can only store a single 0 or 1, there is a high chance that errors could occur undetected. For example, if two bits that were originally 0s were altered to 1s, the naive parity bit would still appear valid. Although better parity schemes exist, they remain insufficient for the large amounts of data being transmitted.
+Un bit de computadora puede ser 0 o 1. Para una implementación ingenua de un bit de paridad, si el número total de bits establecidos en 1 en un paquete de datos es impar, entonces el bit de paridad se establece en 1; si es par, se establece en 0. Sin embargo, dado que el bit de paridad solo puede almacenar un único 0 o 1, existe una alta probabilidad de que ocurran errores sin ser detectados. Por ejemplo, si dos bits que originalmente eran 0 se alteraran a 1, el bit de paridad ingenuo seguiría pareciendo válido. Aunque existen mejores esquemas de paridad, siguen siendo insuficientes para las grandes cantidades de datos que se transmiten.
 
-Building on this concept, checksums(((checksum))) were introduced. Unlike parity bits, which encode sanity check information into a single bit, checksums use larger data sizes for encoding such checks, ranging from single to multiple bytes.
+Basándose en este concepto, se introdujeron los checksums(((checksum))). A diferencia de los bits de paridad, que codifican información de verificación de integridad en un solo bit, los checksums utilizan tamaños de datos más grandes para codificar dichas verificaciones, que van desde uno hasta múltiples bytes.
 
-In fact, sanity checks are not only essential for ensuring data integrity but also for verifying that data has not been altered when stored on the same device. While checksums are effective for providing these sanity checks, a risk of undetected errors remains. This risk arises because two different pieces of data can yield the same checksum value.
+De hecho, las verificaciones de integridad no solo son esenciales para garantizar la integridad de los datos, sino también para verificar que los datos no hayan sido alterados cuando se almacenan en el mismo dispositivo. Aunque los checksums son efectivos para proporcionar estas verificaciones de integridad, persiste el riesgo de errores no detectados. Este riesgo surge porque dos piezas de datos diferentes pueden producir el mismo valor de checksum.
 
-A more effective sanity check was needed, which is where hashes came into play. Hashes serve as sanity checks similar to checksums but are designed to make it (nearly) impossible for an original piece of data and an altered version to produce the same hash value. They can be thought of as unique digital fingerprints that identify specific data. Given any arbitrary input, a hash algorithm will output a unique fingerprint, or hash. The same input will consistently yield the same hash output.
+Se necesitaba una verificación de integridad más efectiva, y ahí es donde entraron en juego los hashes. Los hashes sirven como verificaciones de integridad similares a los checksums, pero están diseñados para que sea (casi) imposible que una pieza de datos original y una versión alterada produzcan el mismo valor de hash. Pueden considerarse como huellas digitales únicas que identifican datos específicos. Dada cualquier entrada arbitraria, un algoritmo de hash producirá una huella digital única, o hash. La misma entrada producirá consistentemente la misma salida de hash.
 
-To reiterate the point, the algorithm will produce a unique fingerprint in a manner where it is (nearly) impossible for two different inputs of data to generate the same hash. If even a single bit of the input data changes, the output hash will change drastically. By storing or sending the fingerprint with the original data, it is possible to verify whether the original data has been altered. If it has been altered, then the fingerprint will not match. Additionally, the algorithms used to generate hashes must ensure that it is (nearly) impossible for an altered piece of data and its associated fingerprint (hash) to result in a match. In summary, hash functions(((hash function))) provide a solution that guarantees a piece of data has not changed over time and space.
+Dicho de otra manera, el algoritmo producirá una huella digital única de tal manera que es (casi) imposible que dos entradas de datos diferentes generen el mismo hash. Si incluso un solo bit de los datos de entrada cambia, el hash de salida cambiará drásticamente. Al almacenar o enviar la huella digital con los datos originales, es posible verificar si los datos originales han sido alterados. Si han sido alterados, entonces la huella digital no coincidirá. Además, los algoritmos utilizados para generar hashes deben garantizar que sea (casi) imposible que una pieza de datos alterada y su huella digital asociada (hash) resulten en una coincidencia. De formas más concreta podemos decir que las funciones de hash(((función de hash))) proporcionan una solución que garantiza que una pieza de datos no ha cambiado en el tiempo y el espacio.
 
-[caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
-.A depiction of different inputs fed into a hashing algorithm and outputs from the hashing algorithm over varying space (exact locations) and time (over 10 years).
+[caption="Figura {counter:figure}. ", reftext="Figura {figure}"]
+.Una representación de diferentes entradas alimentadas a un algoritmo de hash y las salidas del algoritmo de hash en diferentes espacios (ubicaciones exactas) y tiempos (más de 10 años).
 [#img_hashing]
 image::hashing.png[]
 
-<<img_hashing>> depicts different inputs and outputs for a hashing algorithm (specifically the SHA-256 hashing algorithm). In the leftmost depiction, the text 'Hello' is passed into the hashing algorithm, which generates a hash (ie, a unique fingerprint of the text 'Hello') that starts with the characters '185f' and ends with the characters '1969'. You can test hash generation in different ways:
+<<img_hashing>> muestra diferentes entradas y salidas para un algoritmo de hash (específicamente el algoritmo de hash SHA-256). En la representación de la izquierda, el texto 'Hello' se pasa al algoritmo de hash, que genera un hash (es decir, una huella digital única del texto 'Hello') que comienza con los caracteres '185f' y termina con los caracteres '1969'. Puedes probar la generación de hashes de diferentes maneras:
 
-* Such as by using either of these tools: https://emn178.github.io/online-tools/sha256.html or https://codebeautify.org/sha256-hash-generator
-* In fact, if you type in the text: Hello
-* You should see that you end up with the following output hash: 185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969
-* Both tools should output the exact same hash for the exact same input text. In fact, any tool that implements the SHA-256 hashing algorithm should output the exact same hash for the exact same input.
+* Usando cualquiera de estas herramientas: https://emn178.github.io/online-tools/sha256.html o https://codebeautify.org/sha256-hash-generator
+* De hecho, cuando se escribe el texto: Hello
+* Se debería ver que el siguiente hash de salida: 185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969
+* Ambas herramientas deberían producir exactamente el mismo hash para exactamente el mismo texto de entrada. A decir verdad, cualquier herramienta que implemente el algoritmo de hash SHA-256 debería producir exactamente el mismo hash para la misma entrada.
 
-Looking back at <<img_hashing>>, comparing the hashes from the first and second depictions, it becomes obvious that even the smallest change in text leads to a drastically different generated hash. Use the hashing tools listed above to try this out for yourself. Yet if the exact same text is entered into a hashing algorithm, even over larger periods of time and in different locations, the exact same hash will be generated for the same input. For example, if you input the text 'Hello' 20 years ago in the USA (the leftmost depiction in <<img_hashing>>), and I also input 'Hello' now (20 years later), then the exact same hash will be generated.
+Volviendo a <<img_hashing>>, al comparar los hashes de la primera y segunda representación, se hace evidente que incluso el cambio más pequeño en el texto conduce a un hash generado drásticamente diferente. Utilice las herramientas de hash listadas arriba para probarlo por usted mismo. Sin embargo, si se introduce exactamente el mismo texto en un algoritmo de hash, incluso durante períodos de tiempo más largos y en diferentes ubicaciones, se generará exactamente el mismo hash para la misma entrada. Por ejemplo, si hubiera introducido el texto 'Hello' hace 20 años en EE. UU. (la representación de la izquierda en <<img_hashing>>), y yo también introduce 'Hello' ahora (20 años después), se generará exactamente el mismo hash.
 
-// Once a hash is generated, potentially sent, and ultimately stored, anyone with a copy of the hash can be assured that the associated data used to generate the hash has not been altered.
+// Una vez que se genera un hash, potencialmente se envía y finalmente se almacena, cualquiera con una copia del hash puede estar seguro de que los datos asociados utilizados para generar el hash no han sido alterados.
 
-To summarize, hash functions(((hash function))) guarantee that data remains unchanged by storing the generated hash of the respective data. As long as the hash remains unchanged, it can be verified that the respective data has not been modified. However, if someone alters the data and adjusts the hash to match the new data, the receiver would be unable to detect this change. We will discuss a solution to this issue later in this chapter.
+Las funciones de hash(((función de hash))) garantizan que los datos permanezcan sin cambios al almacenar el hash generado de los datos correspondientes. Mientras el hash permanezca intacto, se puede verificar que los datos asociados no han sido modificados.  Sin embargo, si alguien altera los datos y ajusta el hash para que coincida con los nuevos datos, el receptor no podría detectar este cambio.  
 
-While hash functions(((hash function))) solve a significant problem for communicating devices, they do not ensure the _privacy_ of the data. We will now explore encryption(((encryption))) techniques designed to provide data privacy.
+Discutiremos una solución a este problema más adelante en este capítulo.
 
+Aunque las funciones de hash(((función de hash))) resuelven un problema significativo para los dispositivos de comunicación, no garantizan la _privacidad_ de los datos. Ahora exploraremos las técnicas de cifrado(((cifrado))) diseñadas para proporcionar privacidad de datos.
 
-=== Encryption techniques
+=== Técnicas de cifrado
 
-Though blockchain platforms do not primarily utilize encryption(((encryption))) techniques to guarantee data privacy in the traditional sense, they do employ these techniques to provide other essential guarantees, which we will discuss later in this chapter. We now provide an overview of encryption(((encryption))) techniques to help readers appreciate the content presented later.
+Aunque las plataformas blockchain no utilizan principalmente técnicas de cifrado(((cifrado))) para garantizar la privacidad de los datos en el sentido tradicional, sí emplean estas técnicas para ofrecer otras garantías esenciales, que discutiremos más adelante en este capítulo.  
 
-// Yet encryption and decryption are fundamental for digital signatures.
+A continuación, presentamos una descripción general de las técnicas de cifrado(((cifrado))) para ayudar al lector a comprender mejor el contenido que se expondrá más adelante.
 
-Encryption techniques were originally proposed to enable secure communication between parties, preventing eavesdroppers from deciphering or understanding the exchanged information. These techniques are classified into _symmetric_ and _asymmetric_ encryption.
+// Sin embargo, el cifrado y el descifrado son fundamentales para las firmas digitales.
 
-==== Symmetric encryption
+Las técnicas de cifrado se propusieron originalmente para permitir la comunicación segura entre emisores y receptores, evitando que los espías descifraran o entendieran la información intercambiada. Estas técnicas se clasifican en cifrado _simétrico_ y _asimétrico_.
 
-Encryption uses keys to both encrypt (encode) and decrypt (unlock) data. Symmetric encryption employs the same key for both processes. Similar to a physical lock, the same key is used for locking and unlocking, specifically during encryption(((encryption))) and decryption. This digital key is shared among the communicating parties, which typically requires prior sharing through a different communication medium.
+==== Cifrado simétrico
 
-If an eavesdropper listens to the initial communication where the key is shared, they can decrypt future messages and inject encrypted messages without either party being aware. This occurs because the eavesdropper would have access to the encryption/decryption key. Therefore, it is crucial to share such keys securely, ensuring that an eavesdropper cannot intercept them.
+El cifrado utiliza claves tanto para cifrar (codificar) como para descifrar (desbloquear) datos. El cifrado simétrico emplea la misma clave para ambos procesos. Similar a una cerradura física, se utiliza la misma clave para cerrar y abrir, específicamente durante el cifrado(((cifrado))) y el descifrado. Esta clave digital se comparte entre las partes que se comunican, lo que generalmente requiere un intercambio previo a través de un medio de comunicación diferente.
 
-[caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
-.An overview of typical communication using symmetric encryption.
+Si un espía escucha la comunicación inicial donde se comparte la clave, puede descifrar mensajes futuros e inyectar mensajes cifrados sin que ninguna de las partes se dé cuenta. Esto ocurre porque el espía tendría acceso a la clave de cifrado/descifrado. Por lo tanto, es crucial compartir dichas claves de forma segura, asegurando que un espía no pueda interceptarlas.
+
+[caption="Figura {counter:figure}. ", reftext="Figura {figure}"]
+.Una visión general de la comunicación típica usando cifrado simétrico.
 [#img_sym]
 image::symmetricenc.png[]
 
-<<img_sym>> depicts how symmetric encryption works, where Party A intends to send encrypted data to Party B. The following notation is used in the diagram:
+<<img_sym>> muestra cómo funciona el cifrado simétrico, donde el Participante A tiene la intención de enviar datos cifrados al Participante B. En el diagrama se utiliza la siguiente notación:
 
-- The different steps in the process are denoted by numbers in circles
-- The solid line in step 2 represents communication between the parties
-- The dashed lines at the top indicate some form of prior communication to agree on the shared key
-- The dotted lines represent actions that the parties (or their computers) undertake themselves.
+- Los diferentes pasos del proceso se denotan con números en un recuadro azul.
+- La línea continua en el paso 2 representa la comunicación entre las partes.
+- Las líneas discontinuas en la parte superior indican alguna forma de comunicación previa para acordar la clave compartida.
+- Las líneas de puntos representan acciones que los participantes (o sus computadoras) realizan por sí mismos.
 
-The steps involved in the process are as follows:
+Los pasos involucrados en el proceso son los siguientes:
 
-    * Step 0 typically occurs before the parties communicate over the medium used to transmit encrypted data. The parties must agree on a shared encryption(((encryption)))/decryption key, which will be used for both encryption and decryption. This key could be generated by Party A, Party B, or even generated together — it does not matter as long as both parties have access to the same shared key. It is important to note that any party possessing the specific key can both decrypt and encrypt messages.
+    * El paso 0 generalmente ocurre antes de que los participantes se comuniquen a través del medio utilizado para transmitir datos cifrados. Los participantes deben acordar una clave de cifrado(((cifrado)))/descifrado compartida, que se utilizará tanto para el cifrado como para el descifrado. Esta clave podría ser generada por el Participante A, el Participante B, o incluso generada en conjunto — no importa siempre que ambos participantes tengan acceso a la misma clave compartida. Es importante tener en cuenta que cualquier participante que tenga la clave específica puede tanto descifrar como cifrar mensajes.
 
-    * Once the sending party (in this case, Party A) has the key, they can encrypt the data intended for the other party by applying the symmetric encryption algorithm using the key, as depicted in step 1. The algorithm will output the encrypted data.
+    * Una vez que la parte emisora (en este caso, el Participante A) tiene la clave, puede cifrar los datos destinados a la otra parte aplicando el algoritmo de cifrado simétrico usando la clave, como se muestra en el paso 1. El algoritmo producirá los datos cifrados.
 
-    * After that, Party A, the sending party, will transmit the encrypted data generated in step 1 to the intended recipient, Party B. Eavesdroppers will not be able to decrypt the messages if the key is known only to parties A and B, even if the encrypted data message is intercepted by an eavesdropper footnote:[provided that the encryption/decryption key strength is sufficient].
+    * Después de eso, el Participante A, la parte emisora, transmitirá los datos cifrados generados en el paso 1 al destinatario previsto, el Participante B. Los espías no podrán descifrar los mensajes si la clave solo es conocida por los participantes A y B, incluso si el mensaje de datos cifrados es interceptado por un espía footnote:[siempre que la fortaleza de la clave de cifrado/descifrado sea suficiente].
 
-    * Upon receiving the encrypted data, Party B, the receiving party, can decrypt it with the key using the decryption algorithm.
+    * Al recibir los datos cifrados, el Participante B, la parte receptora, puede descifrarlos con la clave empleando el algoritmo de descifrado.
 
-The same key can be used by both Party A and Party B to encrypt and decrypt data, allowing them to securely send and receive messages to each other. This security relies on the key remaining confidential and not being leaked to any third party.
+La misma clave puede ser utilizada tanto por el Participante A como por el Participante B para cifrar y descifrar datos, permitiéndoles enviar y recibir mensajes de forma segura entre sí. Esta seguridad depende de que la clave permanezca confidencial y no se filtre a ningún tercero.
 
-Symmetric encryption(((encryption))) is straightforward to understand and implement, as it relies on a single encryption/decryption key. However, it does not offer guarantees regarding:
+El cifrado simétrico(((cifrado))) es fácil de entender e implementar, ya que se basa en una única clave de cifrado/descifrado. Sin embargo, no ofrece garantías con respecto a:
 
-- *Message provenance* — any party with access to the shared key can encrypt data, making it impossible to determine the sender of the encrypted message.
+- *Procedencia del mensaje* — cualquier participante con acceso a la clave compartida puede cifrar datos, lo que hace imposible determinar el remitente del mensaje cifrado.
 
-- *Confidentiality* — there is no assurance that messages intended for a specific party will be viewed exclusively by that party.
+- *Confidencialidad* — no hay garantía de que los mensajes dirigidos a un participante específico sean vistos exclusivamente por ese participante.
 
-==== Asymmetric encryption
+==== Cifrado asimétrico
 
-The introduction of _asymmetric encryption_ in the 1970s provided a more secure solution to mitigate potential eavesdroppers. It ensures that messages can only be decrypted by the intended recipient. In asymmetric encryption(((asymmetric encryption))), each communicating party has two keys:
+La introducción del _cifrado asimétrico_ en la década de 1970 proporcionó una solución más segura para mitigar a los posibles espías. Asegura que los mensajes solo puedan ser descifrados por el destinatario previsto. En el cifrado asimétrico(((cifrado asimétrico))), cada parte comunicante tiene dos claves:
 
-- A _public key_ associated with the recipient, which is made publicly available. Any party wishing to encrypt data intended for the recipient will use this key.
+- Una _clave pública_ asociada con el destinatario, que se hace pública. Cualquier parte que desee cifrar datos destinados al destinatario utilizará esta clave.
 
-- A _private key_ that the recipient keeps confidential. This private key(((private key))) is used to decrypt messages encrypted with their public key(((public key))).
+- Una _clave privada_ que el destinatario mantiene confidencial. Esta clave privada(((clave privada))) se utiliza para descifrar mensajes cifrados con su clave pública(((clave pública))).
 
-The public and private keys are intimately linked (hence the term key pair(((key pair))) ), and it is impossible footnote:[or rather computationally infeasible] to derive the private key from the public key.
+Las claves pública y privada están íntimamente ligadas (de ahí el término par de claves(((par de claves))) ), y es imposible footnote:[o más bien computacionalmente inviable] derivar la clave privada a partir de la clave pública.
 
-[caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
-.An overview of typical communication using asymmetric encryption.
+[caption="Figura {counter:figure}. ", reftext="Figura {figure}"]
+.Una visión general de la comunicación típica usando cifrado asimétrico.
 [#img_asym]
 image::asymmetricenc.png[]
 
-<<img_asym>> depicts an overview of how asymmetric key encryption(((encryption))) communication typically works. The main differences in the process are highlighted in red, and a description of the steps involved follows:
+<<img_asym>> muestra una visión general de cómo funciona típicamente la comunicación con cifrado de clave asimétrica(((cifrado))). Las principales diferencias en el proceso se resaltan en rojo, y a continuación se describen los pasos involucrados:
 
-* Instead of requiring communicating parties to agree on a shared encryption/decryption key, asymmetric encryption(((asymmetric encryption))) allows parties to disclose their public keys. Parties can make their public keys visible to the entire world without concern. Step 0 shows how Party B’s public key is visible to Party A. 
+* En lugar de requerir que el emisor y el receptor acuerden una clave de cifrado/descifrado compartida, el cifrado asimétrico(((cifrado asimétrico))) les permite divulgar sus claves públicas. Tanto el emisor como el receptor pueden hacer visibles sus claves públicas a todo el mundo sin preocupación. El paso 0 muestra cómo la clave pública del Participante B es visible para el Participante A.
 
-* Party A can then encrypt messages intended for Party B by inputting the raw data (in this case, 'Data2') along with Party B’s public key(((public key))) into the asymmetric encryption(((asymmetric encryption))) algorithm (depicted in step 1). The encryption algorithm will produce the encrypted data.
+* El Participante A puede entonces cifrar mensajes destinados al Participante B introduciendo los datos crudos (en este caso, 'Data2') junto con la clave pública del Participante B(((clave pública))) en el algoritmo de cifrado asimétrico(((cifrado asimétrico))) (mostrado en el paso 1). El algoritmo de cifrado generará los datos cifrados.
 
-* After that, Party A can send the encrypted data to Party B (depicted in step 2), confident that only Party B will be able to decrypt the data since it can only be decrypted using Party B’s private key(((private key))), which they keep confidential.
+* Después de eso, el Participante A puede enviar los datos cifrados al Participante B (mostrado en el paso 2), con la confianza de que solo el Participante B podrá descifrar los datos, ya que solo se pueden descifrar usando la clave privada del Participante B(((clave privada))), que se mantiene confidencial.
 
-* Finally, Party B can input the received encrypted data and their private key into the decryption algorithm (depicted in step 3), which will output the actual message intended for them (which is 'Data2').
+* Finalmente, el Participante B puede introducir los datos cifrados recibidos y su clave privada en el algoritmo de descifrado (como se muestra en el paso 3), que producirá el mensaje real destinado a ellos (que es 'Data2').
 
-Asymmetric encryption does not allow Party B to send messages back to Party A using the same encryption/decryption key. This ensures that messages intended for a specific party can only be decrypted by that party. To reply, Party B simply uses Party A's public key to encrypt messages.
+El cifrado asimétrico no permite que el Participante B envíe mensajes de vuelta al Participante A usando la misma clave de cifrado/descifrado. Esto asegura que los mensajes destinados a un participante específico solo puedan ser descifrados por éste. Para responder, el Participante B utiliza la clave pública del Participante A para cifrar mensajes.
 
-While asymmetric encryption(((asymmetric encryption))) ensures that only the intended recipient can decrypt a particular message, it does not prevent a sender from impersonating someone else. This also applies to symmetric key encryption when the shared encryption/decryption key is compromised. For instance, consider a malicious actor, Party C, who has access to Party B's public key(((public key))). Party C could encrypt messages intended for Party B and send them, falsely claiming to be Party A. Party B would have no means to identify that the messages are actually from Party C. The solution to this issue is _digital signatures_, which will be discussed next.
+Aunque el cifrado asimétrico(((cifrado asimétrico))) asegura que solo el destinatario previsto pueda descifrar un mensaje en particular, no impide que un remitente se haga pasar por otra persona. Esto también se aplica al cifrado con clave simétrica cuando la clave de cifrado/descifrado compartida se ve comprometida. Por ejemplo, consideremos un actor malicioso, el Participante C, que tiene acceso a la clave pública del Participante B(((clave pública))). El Participante C podría cifrar mensajes dirigidos al Participante B y enviarlos, afirmando falsamente que es el Participante A. El Participante B no tendría forma de identificar que los mensajes son, en realidad, del Participante C. La solución a este problema son las _firmas digitales_, que se discutirán a continuación.
 
-=== Digital signatures
+=== Firmas digitales
 
-Digital signatures address the issue of sender impersonation by allowing anyone to verify that a message was created and digitally signed by a specific sending party and that the content remains unchanged. Digital signatures contain two fundamental components: _public key encryption_ and _hashing algorithms_. <<img_create_signature>> depicts the process of creating a digital signature.
+Las firmas digitales abordan el problema de la suplantación del remitente al permitir que cualquiera verifique que un mensaje fue creado y firmado digitalmente por una parte emisora específica y que el contenido permanece sin cambios. Las firmas digitales contienen dos componentes fundamentales: _cifrado de clave pública_ y _algoritmos de hash_. <<img_create_signature>> muestra el proceso de creación de una firma digital.
 
-[caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
-.A depiction of how digital signatures are created.
+[caption="Figura {counter:figure}. ", reftext="Figura {figure}"]
+.Una representación de cómo se crean las firmas digitales.
 [#img_create_signature]
 image::create_signature.png[]
 
+Crear una firma digital implica los siguientes pasos:
 
-Creating a digital signature involves these steps:
+1. Un algoritmo de hash codifica el contenido del mensaje (p. ej., Hello), creando una huella digital única (hash) de los datos originales (p. ej., 185f...1969). Esta huella digital identifica de forma única el contenido original.
 
-1. A hashing algorithm hashes the message content (eg, Hello), creating a unique fingerprint (hash) of the original data (eg, 185f...1969). This fingerprint uniquely identifies the original content.
+2. El hash resultante se cifra con la clave privada del remitente usando cifrado de clave pública. El hash cifrado es la firma digital (p. ej., c1f3...691c).
 
-2. The resulting hash is encrypted with the sender's private key using public key encryption. The encrypted hash is the digital signature (eg, c1f3...691c).
+3. El remitente puede entonces transmitir el contenido del mensaje junto con la firma digital generada. A partir de entonces, cualquier destinatario puede verificar que el remitente creó el mensaje y que no ha sido alterado.
 
-3. The sender can then transmit the message content along with the generated digital signature. Thereafter, any recipient can verify that the sender created the message and that it has not been altered.
+<<img_verify_signature>> muestra el proceso de verificación de una firma digital.
 
-<<img_verify_signature>> depicts the process of verifying a digital signature..
-
-[caption="Figure {counter:figure}. ", reftext="Figure {figure}"]
-.A depiction of how digital signatures are verified.
+[caption="Figura {counter:figure}. ", reftext="Figura {figure}"]
+.Una representación de cómo se verifican las firmas digitales.
 [#img_verify_signature]
 image::verify_signature.png[]
 
-Verifying a digitally-signed message involves these steps:
+Verificar un mensaje firmado digitalmente implica los siguientes pasos:
 
-1. The recipient should first have received the message (eg, 'Hello') and the associated digital signature (eg, c1f3...691c).
+1. El destinatario debe haber recibido primero el mensaje (p. ej., 'Hello') y la firma digital asociada (p. ej., c1f3...691c).
 
-2. The recipient then decrypts the digital signature using the sender's public key(((public key))). The decrypted value should be the hash (unique fingerprint) of the original message (eg, 185f...1969 depicted in the bottom right of <<img_verify_signature>>).
+2. El destinatario luego descifra la firma digital usando la clave pública del remitente(((clave pública))). El valor descifrado debe ser el hash (huella digital única) del mensaje original (p. ej., 185f...1969 mostrado en la parte inferior derecha de <<img_verify_signature>>).
 
-3. The recipient computes the hash of the received message and compares it to the decrypted hash obtained in the previous step. If they match, the recipient can be certain that the sender created the message. Specifically, the recipient can guarantee that the sender's private/public key(((public key))) pair(((key pair))) was used to generate the digital signature. Since the digital signature is the encrypted hash, and the hash uniquely identifies the specific piece of data, it can be confirmed that the data has not been altered since the digital signature was created and that it originated from the sender (using their public/private key pair).
+3. El destinatario calcula el hash del mensaje recibido y lo compara con el hash descifrado obtenido en el paso anterior. Si coinciden, el destinatario puede estar seguro de que el remitente es el creador del mensaje. Específicamente, el destinatario puede garantizar que el par de claves privada/pública(((clave pública))) del remitente(((par de claves))) se utilizó para generar la firma digital. Dado que la firma digital es el hash cifrado, y el hash identifica de forma única la pieza de datos específica, se puede confirmar que los datos no han sido alterados desde que se creó la firma digital y que se fueron creados por el remitente (usando su par de claves pública/privada).
 
-The next section explores how the main cryptographic building blocks help maintain and secure blockchain systems.
+La siguiente sección explora cómo los principales componentes criptográficos ayudan a mantener y asegurar los sistemas blockchain.
 
-==== Hashing functions
+==== Funciones de hash
 
-Hashing functions are fundamental to blockchains. Below are some specific examples where hashing functions are used in blockchain systems.
+Las funciones de hash son fundamentales para las blockchains. A continuación se presentan algunos ejemplos específicos de cómo se utilizan funciones de hash en sistemas blockchain.
 
-. *Unique block identifier* — blockchains consist of blocks of transactions and other information. Each block is associated with a unique identifier, which is derived using a hashing function on the block's data.
+. *Identificador único de bloque* — las blockchains consisten en bloques de transacciones y de otra información. Cada bloque está asociado a un identificador único, derivado mediante una función de hash de los datos del bloque.
 
-. *Unique transaction identifier* — transactions are typically associated with a transaction hash, which is a unique identifier of the specific transaction generated by hashing the specific transaction's data. Various examples of this can be seen throughout this book.
+. *Identificador único de transacción* — las transacciones suelen estar asociadas con un hash de transacción, que es un identificador único de la transacción específica generado al codificar los datos de la transacción específica. A lo largo de este libro, se presentan diversos ejemplos de esto.
 
-. *Script identifier* — hashes are often used to identify specific smart contract code/scripts — as will be seen in various parts of the book.
+. *Identificador de script* — los hashes se utilizan a menudo para identificar código/scripts de contratos inteligentes específicos — como se verá en varias partes del libro.
 
-. *To chain blocks together* — blocks are immutably chained together by having the most recent block reference to the previous block's hash. If any information in the previous block changes, it becomes immediately noticeable because the previous block’s hash would no longer match the hash stored in the most recent block. In fact, this technique not only provides a solution for the previous block, but also invalidates the hash if any part of the history of older blocks is changed, even slightly. Consequently, all blocks generated after the respective block and their hashes would also be invalidated.
+. *Para encadenar bloques* — los bloques se encadenan de forma inmutable, de modo que el bloque más reciente haga referencia al hash del bloque anterior. Si alguna información en el bloque anterior cambia, se nota inmediatamente porque el hash del bloque anterior ya no coincidiría con el hash almacenado en el bloque más reciente. De hecho, esta técnica no solo proporciona una solución para el bloque anterior, sino que también invalida el hash si cualquier parte del historial de bloques más antiguos se cambia, incluso ligeramente. En consecuencia, todos los bloques generados después del bloque respectivo y sus hashes también se invalidarían.
 
-. *Address derivation* — hashing algorithms are often used in blockchains as a means of deriving wallet addresses — eg, as discussed in the <<create-wallet>> section.
+. *Derivación de direcciones* — los algoritmos de hash se utilizan a menudo en las blockchains como un medio para derivar direcciones de billetera — p. ej., como se discute en la sección <<create-wallet>>.
 
-. *Merkleization(((merkle)))* allows for large collections of data items to be compacted into a smaller structure, ie, a Merkle tree, and still be able to prove that a particular data item is represented within the Merkle tree without having to store the full data items. Merkleization is discussed later in the <<chapter8-marlowe-security>> section.
+. *Merkleización(((merkle)))* permite compactar grandes colecciones de elementos de datos en una estructura más pequeña, es decir, un árbol de Merkle, y, aun así, probar que un elemento de datos en particular está representado en el árbol de Merkle sin tener que almacenar todos los elementos de datos. La Merkleización se discute más adelante en la sección <<chapter8-marlowe-security>>.
 
-. *Content-addressed storage(((content-addressed storage)))* — when other information or files are required to be referenced (for example, from a smart contract), it is often helpful to refer to the specific file (or information) using content-addressed storage, which refers to such information/files using a hash of their content. By doing so, it is immediately possible to determine whether the contents have been changed, since the reference to find the information/file is a hash that should match the computed hash of the content, which can be done at any point. Furthermore, such a referencing scheme enables deduplication, for example, if the same image data is referred to twice, only one version of the file needs to be stored, as both references would resolve to the same hash.
+. *Almacenamiento direccionado por contenido(((almacenamiento direccionado por contenido)))* — cuando se requiere hacer referencia a otra información o archivos (por ejemplo, desde un contrato inteligente), a menudo es útil referirse al archivo (o información) específico usando almacenamiento direccionado por contenido, que se refiere a dicha información/archivos usando un hash de su contenido. Al hacerlo, es posible determinar inmediatamente si los contenidos han cambiado, ya que la referencia para encontrar la información/archivo es un hash que debe coincidir con el hash calculado del contenido, lo que se puede hacer en cualquier momento. Además, dicho esquema de referencia permite la deduplicación, por ejemplo, si se hace referencia a los mismos datos de imagen dos veces, solo se necesita almacenar una versión del archivo, ya que ambas referencias se resolverían al mismo hash.
 
+==== Firmas digitales y técnicas de cifrado
 
-==== Digital signatures and encryption techniques
+. *Generación de billeteras* — los pares de claves pública/privada(((clave privada))) se generan usando algoritmos de cifrado asimétrico(((cifrado asimétrico))), que proporcionan la base para identidades/billeteras que se pueden generar sobre la marcha de manera descentralizada.
 
-. *Wallet generation* — public/private key(((private key)))- pairs are generated using asymmetric encryption(((asymmetric encryption))) algorithms, which provide the basis for identities/wallets that can be generated on the fly in a decentralized manner.
+. *Firma/prueba y verificación de transacciones* — una vez que un usuario tiene una billetera (al generar un par de claves pública/privada), puede crear y firmar transacciones y probar a cualquiera que la transacción es válida y fue generada con la billetera correspondiente. Por ejemplo, cuando alguien quiere transferir fondos de su billetera a otra persona, los detalles de la transacción se firman digitalmente usando la clave privada de la billetera. A partir de entonces, cualquier otra persona puede verificar que la transacción fue iniciada por la billetera respectiva, ya que pueden verificar la firma digital contra la clave pública de la billetera.
 
-. *Signing/proving and verification of transactions* — once a user has a wallet (by generating a public/private key-pair), they can subsequently create and sign transactions and prove to anyone that the transaction is valid and was generated using the respective wallet. For example, when someone wants to transfer funds from their wallet to another person, the transaction details are digitally signed using the wallet's private key. Thereafter, anyone else can verify that the transaction was indeed initiated by the respective wallet, as they can check the digital signature against the wallet's public key.
+=== Recursos adicionales sobre criptografía
 
+En este capítulo, solo proporcionamos una visión general superficial de las primitivas criptográficas necesarias para apreciar el resto de este libro. Para aprender más sobre este tema, recomendamos los siguientes recursos:
 
-=== Pointers to cryptography resources
+* Real-World Cryptography, por David Wong: https://www.manning.com/books/real-world-cryptography
 
-In this chapter, we only provided a cursory overview of cryptographic primitives required to appreciate the rest of this book. Further cryptography resources:
+* Cryptography Made Simple, por Nigel Smart: https://link.springer.com/book/10.1007/978-3-319-21936-3
 
-* Real-World Cryptography, by David Wong: https://www.manning.com/books/real-world-cryptography
-
-* Cryptography Made Simple, by Nigel Smart: https://link.springer.com/book/10.1007/978-3-319-21936-3
-
-* Handbook of Applied Cryptography, by Alfred J. Menezes, Paul C. van Oorschot and Scott A. Vanstone: https://cacr.uwaterloo.ca/hac/
-
-
+* Handbook of Applied Cryptography, por Alfred J. Menezes, Paul C. van Oorschot y Scott A. Vanstone: https://cacr.uwaterloo.ca/hac/

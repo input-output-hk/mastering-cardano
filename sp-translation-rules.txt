@@ -19,6 +19,7 @@ Translation Rules Summary for Mastering Cardano (EN)
    - Keep 'Template Haskell' always in English as it is a proper name of a Haskell extension.
    - Always translate 'deadlocks' as 'bloqueos mutuos (deadlocks)'.
    - Always translate 'race conditions' as 'condiciones de carrera (race conditions)'.
+   - Always translate 'hashing' as 'codificar'.
    - Keep standard English terms used in the community untranslated, and italicize when appropriate.
 8. Output:
    - Deliver translations as downloadable files with the correct extension (.md or .adoc).
