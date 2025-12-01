@@ -366,7 +366,7 @@ These limitations led to a discussion paper<<OuroborosLeiosDiscussion>>,
 where Input Output engineers began brainstorming a better version of Ouroboros: Leios.
 
 Leios would have a pipeline architecture,
-which would hepl exploit idle resource time and approach the theoretical throughput limit of network bandwidth.
+which would help exploit idle resource time and approach the theoretical throughput limit of network bandwidth.
 
 In the begining of the pipeline, all transactions would be stored in Input Blocks (IBs).
 Which will allow it to create IBs close to network capacity.
