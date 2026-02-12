@@ -3,7 +3,7 @@ name: Build EPUB (TNG)
 on:
   push:
     branches:
-      - main
+      - "**"
 
 jobs:
   build-epub:
@@ -29,6 +29,9 @@ jobs:
           distribution: 'temurin'
           java-version: '11'
 
+      - name: Load version from file
+        run: echo "VERSION=$(cat VERSION)" >> $GITHUB_ENV
+
       - name: Build EPUB
         run: ./build-epub.sh
 
@@ -36,4 +39,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Book-EPUB-TNG
-          path: dist/mastering-cardano-v1.0.0.epub
+          path: dist/mastering-cardano-${{ env.VERSION}}.epub
